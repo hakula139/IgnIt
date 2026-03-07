@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{ config.language }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block title %}<title>{{ config.title }}</title>{% endblock %}
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+      integrity="sha384-zh0CIslj3dSU/d5pMzlntMRacfkGsmTEoMb0OY9ynMKXLKbVLSyG/Az9kkntbOT"
+      crossorigin="anonymous"
+    >
+    {% block head %}{% endblock %}
+  </head>
+
+  <body>
+    {% block body %}{% endblock %}
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+      integrity="sha384-bB3MnKf0Wq9PLTGPZ3Kd39JmSMbDBDW6gqaYMr7VDmieQCqhRGhtOtv0Cv0BsUl"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+      integrity="sha384-hCXGrKiQ8LpOwqjR8HcXwvAdhjMvMSqskOcR+M1oxMKJpfclTWTKFHFgWYEfXMdM"
+      crossorigin="anonymous"
+      onload="renderMathInElement(document.body)"
+    ></script>
+  </body>
+</html>

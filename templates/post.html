@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}<title>{{ title }} - {{ config.title }}</title>{% endblock %}
+
+{% block head %}
+    {%- if description %}
+    <meta name="description" content="{{ description }}">
+    {%- endif %}
+    <link rel="canonical" href="{{ url | safe }}">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:url" content="{{ url | safe }}">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="{{ config.title }}">
+    {%- if featured_image %}
+    <meta property="og:image" content="{{ config.base_url | safe }}{{ featured_image | safe }}">
+    {%- endif %}
+    <meta name="twitter:card" content="{% if featured_image %}summary_large_image{% else %}summary{% endif %}">
+{% endblock %}
+
+{% block body %}
+<article>
+  <header>
+    <h1>{{ title }}</h1>
+    {% if date %}<time datetime="{{ date }}">{{ date }}</time>{% endif %}
+  </header>
+  {% if toc %}<aside>{{ toc | safe }}</aside>{% endif %}
+  <div class="content">{{ content | safe }}</div>
+</article>
+{% endblock %}

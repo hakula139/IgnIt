@@ -1,0 +1,13 @@
+name = "IgnIt"
+description = "A clean, feature-rich theme for kiln — inspired by Hugo LoveIt"
+license = "MIT"
+min_kiln_version = "0.1.0"
+
+[author]
+name = "Hakula"
+link = "https://hakula.xyz"
+
+[params]
+code_max_lines = 40
+emojis = true
+fontawesome = true
