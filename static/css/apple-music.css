@@ -1,0 +1,23 @@
+/* Apple Music embed — light/dark toggle */
+
+.apple-music-wrapper {
+  margin: 1rem 0;
+}
+
+.apple-music-light {
+  display: block;
+  border: 0;
+}
+
+.apple-music-dark {
+  display: none;
+  border: 0;
+}
+
+[theme='dark'] .apple-music-light {
+  display: none;
+}
+
+[theme='dark'] .apple-music-dark {
+  display: block;
+}
