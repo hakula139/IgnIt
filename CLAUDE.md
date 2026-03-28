@@ -42,10 +42,13 @@ IgnIt is a kiln theme inspired by Hugo LoveIt. It provides MiniJinja templates, 
 
 ### JavaScript
 
-- ES6: `const`/`let`, arrow functions, template literals, `for...of`.
+- ES6: `const` / `let`, arrow functions, template literals, `for...of`.
 - `'use strict'` at top of each file.
 - IIFE wrapper `(() => { ... })()` for script isolation.
 
 ### Git Conventions
 
-Same as kiln: `type(scope): description` commit messages, atomic commits.
+- Commit messages: `type(scope): description`
+  - Types: `feat`, `fix`, `refactor`, `docs`, `chore`, `style`
+  - Scope: area of change (e.g., `template`, `css`, `js`)
+- Keep commits atomic — one logical change per commit.
