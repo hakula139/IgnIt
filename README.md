@@ -6,7 +6,14 @@ A clean, feature-rich theme for [kiln](https://github.com/hakula139/kiln) — in
 
 ## Overview
 
-IgnIt is a [kiln](https://github.com/hakula139/kiln) theme that carries forward the spirit of the Hugo LoveIt theme with a ground-up reimplementation using MiniJinja templates. It includes KaTeX math support, Open Graph / Twitter Card meta, syntax-highlighted code blocks, and a directive-based shortcode system.
+IgnIt is a [kiln](https://github.com/hakula139/kiln) theme that carries forward the spirit of the Hugo LoveIt theme with a ground-up reimplementation using MiniJinja templates. It includes:
+
+- KaTeX math support
+- Open Graph / Twitter Card meta tags
+- Syntax-highlighted code blocks
+- Directive-based shortcode system (music embeds, etc.)
+- Taxonomy pages — categories card grid, tag cloud
+- Term pages — year-grouped post lists with numbered pagination and page-jump
 
 ## Installation
 
@@ -31,17 +38,28 @@ IgnIt provides default parameters that can be overridden in your site's `config.
 code_max_lines = 40    # Max visible lines in code blocks before scrolling
 emojis = true          # Enable emoji replacement
 fontawesome = true     # Enable Font Awesome icon replacement
+paginate = 10          # Items per page on term pages
 ```
 
 ## Theme Structure
 
 ```text
 .
-├── theme.toml         # Theme metadata and default parameters
-├── templates/         # MiniJinja templates
-│   ├── base.html      # Base layout (KaTeX math support)
-│   └── post.html      # Post template (OG / Twitter Card meta)
-└── static/            # Static assets (CSS, JS, images)
+├── theme.toml                    # Theme metadata and default parameters
+├── static/
+│   ├── css/
+│   │   ├── apple-music.css       # Apple Music embed light / dark toggle
+│   │   ├── table.css             # Default table styles
+│   │   └── taxonomy.css          # Taxonomy page layout and pagination
+│   └── js/
+│       └── pagination.js         # Page-jump controls for pagination
+└── templates/
+    ├── base.html                 # Base layout (KaTeX math support)
+    ├── post.html                 # Post template (OG / Twitter Card meta)
+    ├── taxonomy.html             # Taxonomy index (categories grid / tag cloud)
+    ├── term.html                 # Term page (year-grouped posts, pagination)
+    └── directives/
+        └── music.html            # Music embed directive (Apple / NetEase / QQ)
 ```
 
 ## License
