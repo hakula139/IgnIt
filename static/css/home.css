@@ -1,0 +1,25 @@
+/* Home page — profile section */
+
+.home-profile {
+  max-width: 960px;
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.home-avatar {
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.home-title {
+  margin: 0.5rem 0 0.25rem;
+  font-size: 1.5rem;
+}
+
+.home-subtitle {
+  margin: 0;
+  font-style: italic;
+  color: var(--color-muted);
+}

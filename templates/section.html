@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}<title>{{ section_title }} - {{ config.title }}</title>{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="/css/taxonomy.css">
+{%- endblock %}
+
+{% block body %}
+  <div class="taxonomy-page">
+    <h2 class="taxonomy-title">
+      <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;{{ section_title }}
+    </h2>
+
+  {%- for group in page_groups %}
+    {%- if group.key %}
+    <h3 class="year-heading">{{ group.key }}</h3>
+    {%- endif %}
+    {%- for page in group.pages %}
+    <article class="post-entry">
+      <a href="{{ page.url | safe }}" class="post-entry-link">{{ page.title }}</a>
+      {%- if page.date %}
+      <span class="post-entry-date">{{ page.date[5:10] }}</span>
+      {%- endif %}
+    </article>
+    {%- endfor %}
+  {%- endfor %}
+
+  {%- include "_partials/pagination.html" %}
+  </div>
+{%- endblock %}

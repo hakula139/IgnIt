@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block head %}
+  <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/taxonomy.css">
+{%- endblock %}
+
+{% block body %}
+{%- set profile = config.params.home.profile %}
+{%- if profile %}
+  <div class="home-profile">
+    {%- if profile.avatar %}
+    <img class="home-avatar" src="{{ profile.avatar | safe }}" alt="{{ config.author.name }}">
+    {%- endif %}
+    {%- if profile.title %}
+    <h1 class="home-title">{{ profile.title }}</h1>
+    {%- endif %}
+    {%- if profile.subtitle %}
+    <p class="home-subtitle">{{ profile.subtitle }}</p>
+    {%- endif %}
+  </div>
+{%- endif %}
+
+{%- if pages %}
+  <div class="taxonomy-page">
+  {%- for page in pages %}
+    <article class="post-entry">
+      <a href="{{ page.url | safe }}" class="post-entry-link">{{ page.title }}</a>
+      {%- if page.date %}
+      <span class="post-entry-date">{{ page.date[5:10] }}</span>
+      {%- endif %}
+    </article>
+  {%- endfor %}
+
+  {%- include "_partials/pagination.html" %}
+  </div>
+{%- endif %}
+{%- endblock %}
