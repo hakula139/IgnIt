@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}<title>{{ term_name }} - {{ singular }} - {{ config.title }}</title>{% endblock %}
+{% block title %}<title>{{ section_title }} - {{ config.title }}</title>{% endblock %}
 
 {% block head %}
   <link rel="stylesheet" href="/css/taxonomy.css">
@@ -9,13 +9,7 @@
 {% block body %}
   <div class="taxonomy-page">
     <h2 class="taxonomy-title">
-      {%- if singular == "category" -%}
-        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;{{ term_name }}
-      {%- elif singular == "tag" -%}
-        <i class="fas fa-tag fa-fw" aria-hidden="true"></i>&nbsp;{{ term_name }}
-      {%- else -%}
-        {{ term_name }}
-      {%- endif -%}
+      <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;{{ section_title }}
     </h2>
 
   {%- set current_year = now()[0:4] %}

@@ -9,19 +9,27 @@ IgnIt is a kiln theme inspired by Hugo LoveIt. It provides MiniJinja templates, 
 ```text
 .
 ├── static/
-│   ├── css/               # Stylesheets
+│   ├── css/                 # Stylesheets
 │   │   ├── apple-music.css
+│   │   ├── home.css
 │   │   ├── table.css
 │   │   └── taxonomy.css
-│   └── js/                # Scripts
+│   └── js/                  # Scripts
 │       └── pagination.js
 └── templates/
-    ├── base.html          # Base layout (KaTeX, block definitions)
-    ├── post.html          # Post page (OG / Twitter Card meta)
-    ├── taxonomy.html      # Taxonomy index (categories grid / tag cloud)
-    ├── term.html          # Term page (year-grouped posts, pagination)
-    └── directives/
-        └── music.html     # Music embed directive
+    ├── _partials/           # Shared template fragments ({% include %})
+    │   ├── meta-og.html     # OG / Twitter Card meta tags
+    │   ├── pagination.html  # Pagination nav + page-jump script
+    │   └── post-entry.html  # Post entry (title + conditional date)
+    ├── base.html            # Base layout (KaTeX, block definitions)
+    ├── home.html            # Home page (paginated post listing)
+    ├── page.html            # Standalone page (about, etc.)
+    ├── post.html            # Post page (article meta via partial)
+    ├── section.html         # Section listing (year-grouped posts, pagination)
+    ├── taxonomy.html        # Taxonomy index (categories grid / tag cloud)
+    ├── term.html            # Term page (year-grouped posts, pagination)
+    └── directives/          # Markdown directive templates
+        └── music.html       # Music embed directive
 ```
 
 ## Coding Conventions
@@ -32,6 +40,7 @@ IgnIt is a kiln theme inspired by Hugo LoveIt. It provides MiniJinja templates, 
 - **`{%- block ... %}`** in parent strips preceding whitespace for clean composed output.
 - **`{%- endblock %}`** in children strips trailing newline to avoid double blank lines.
 - **`{%- if/for/endif/endfor %}`** (left-trim) to eat template tag whitespace while preserving HTML indentation.
+- **Partials** live in `_partials/` and are included via `{% include "_partials/name.html" %}`.
 - **HTML attribute order**: identity (`src`, `href`) → verification (`integrity`, `crossorigin`) → behavior (`defer`, `type`) → callbacks (`onload`).
 
 ### CSS

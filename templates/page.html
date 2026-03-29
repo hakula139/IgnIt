@@ -3,17 +3,14 @@
 {% block title %}<title>{{ title }} - {{ config.title }}</title>{% endblock %}
 
 {% block head %}
-{%- set og_type = "article" -%}
+{%- set og_type = "website" -%}
 {%- include "_partials/meta-og.html" %}
 {%- endblock %}
 
 {% block body %}
-  <article>
+  <article class="page">
     <header>
       <h1>{{ title }}</h1>
-      {%- if date %}
-      <time datetime="{{ date }}">{{ date }}</time>
-      {%- endif %}
     </header>
     {%- if toc %}
     <aside>{{ toc | safe }}</aside>
