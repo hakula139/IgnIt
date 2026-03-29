@@ -11,13 +11,17 @@ IgnIt is a kiln theme inspired by Hugo LoveIt. It provides MiniJinja templates, 
 ├── static/
 │   ├── css/               # Stylesheets
 │   │   ├── apple-music.css
+│   │   ├── home.css
 │   │   ├── table.css
 │   │   └── taxonomy.css
 │   └── js/                # Scripts
 │       └── pagination.js
 └── templates/
     ├── base.html          # Base layout (KaTeX, block definitions)
+    ├── home.html          # Home page (paginated post listing)
+    ├── page.html          # Standalone page (about, etc.)
     ├── post.html          # Post page (OG / Twitter Card meta)
+    ├── section.html       # Section listing (year-grouped posts, pagination)
     ├── taxonomy.html      # Taxonomy index (categories grid / tag cloud)
     ├── term.html          # Term page (year-grouped posts, pagination)
     └── directives/
