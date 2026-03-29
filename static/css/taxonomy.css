@@ -1,18 +1,5 @@
 /* Taxonomy pages — layout, category grid, tag cloud, pagination */
 
-/*
- * Property order convention (grouped, outside-in):
- *   1. Positioning    — position, top/right/bottom/left, z-index
- *   2. Display / Flow — display, flex-*, grid-*, gap, align-*, justify-*, order
- *   3. Sizing         — width, min/max-width, height, min/max-height
- *   4. Spacing        — margin (outside), padding (inside)
- *   5. Overflow       — overflow, overflow-wrap, white-space, text-overflow
- *   6. Typography     — font-size, font-weight, line-height, text-align, color
- *   7. Visual         — background, border, border-radius, box-shadow, opacity
- *   8. Animation      — transition, transform, animation
- *   9. Interaction    — cursor, pointer-events, appearance
- */
-
 :root {
   --color-muted: #a9a9b3;
 }
@@ -43,21 +30,24 @@
 
 .post-entry {
   display: flex;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
   margin: 0.25rem 0 0.25rem 1.5rem;
 }
 
 .post-entry-link {
-  min-width: 10%;
+  flex: 1 1 auto;
+  min-width: 0;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 .post-entry-date {
-  flex-shrink: 0;
-  width: 5em;
+  flex: 0 0 auto;
+  min-width: 10ch;
+  white-space: nowrap;
   text-align: right;
   color: var(--color-muted);
 }
