@@ -19,7 +19,8 @@ IgnIt is a kiln theme inspired by Hugo LoveIt. It provides MiniJinja templates, 
 └── templates/
     ├── _partials/           # Shared template fragments ({% include %})
     │   ├── meta-og.html     # OG / Twitter Card meta tags
-    │   └── pagination.html  # Pagination nav + page-jump script
+    │   ├── pagination.html  # Pagination nav + page-jump script
+    │   └── post-entry.html  # Post entry (title + conditional date)
     ├── base.html            # Base layout (KaTeX, block definitions)
     ├── home.html            # Home page (paginated post listing)
     ├── page.html            # Standalone page (about, etc.)

@@ -25,12 +25,7 @@
   {%- set current_year = now()[0:4] %}
   <div class="taxonomy-page">
   {%- for page in pages %}
-    <article class="post-entry">
-      <a href="{{ page.url | safe }}" class="post-entry-link">{{ page.title }}</a>
-      {%- if page.date %}
-      <span class="post-entry-date">{{ page.date[0:10] if page.date[0:4] != current_year else page.date[5:10] }}</span>
-      {%- endif %}
-    </article>
+    {%- include "_partials/post-entry.html" %}
   {%- endfor %}
 
   {%- include "_partials/pagination.html" %}
