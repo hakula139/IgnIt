@@ -117,18 +117,6 @@
     border-bottom: 1px solid var(--color-glass-border);
   }
 
-  /* Post card for home page listing */
-  .post-card {
-    position: relative;
-    height: 21.5rem;
-    overflow: hidden;
-    border-radius: var(--radius-card);
-    box-shadow: var(--shadow-card);
-    background: var(--color-glass);
-    backdrop-filter: blur(16px) saturate(1.2);
-    border: 1px solid var(--color-glass-border);
-  }
-
   /* Callout / admonition base */
   .callout {
     border-radius: 0.5rem;

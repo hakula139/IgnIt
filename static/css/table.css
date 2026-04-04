@@ -1,6 +1,6 @@
 /* Default table styles — auto-width with horizontal scroll */
 
-.content table {
+.prose table {
   width: auto;
   min-width: initial;
   display: block;
@@ -9,12 +9,12 @@
 }
 
 /* Dense table variant for compact data (truth tables, etc.) */
-.content .dense-table table {
+.prose .dense-table table {
   font-size: 0.85rem;
 }
 
-.content .dense-table th,
-.content .dense-table td {
+.prose .dense-table th,
+.prose .dense-table td {
   padding: 0.3rem 0.5rem;
   white-space: nowrap;
 }

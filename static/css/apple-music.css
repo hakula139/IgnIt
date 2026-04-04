@@ -14,10 +14,10 @@
   border: 0;
 }
 
-[theme='dark'] .apple-music-light {
+[data-theme="dark"] .apple-music-light {
   display: none;
 }
 
-[theme='dark'] .apple-music-dark {
+[data-theme="dark"] .apple-music-dark {
   display: block;
 }
