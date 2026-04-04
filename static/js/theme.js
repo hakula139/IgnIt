@@ -5,8 +5,7 @@
   const DARK = 'dark';
   const LIGHT = 'light';
 
-  const prefersDark = () =>
-    window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const prefersDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   const getStoredTheme = () => localStorage.getItem(STORAGE_KEY);
 
@@ -29,13 +28,11 @@
   }
 
   // Listen for system preference changes (when no explicit choice stored)
-  window
-    .matchMedia('(prefers-color-scheme: dark)')
-    .addEventListener('change', (e) => {
-      if (!getStoredTheme()) {
-        setTheme(e.matches ? DARK : LIGHT);
-      }
-    });
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!getStoredTheme()) {
+      setTheme(e.matches ? DARK : LIGHT);
+    }
+  });
 
   // Expose toggle for the theme switch button
   window.__toggleTheme = toggleTheme;
