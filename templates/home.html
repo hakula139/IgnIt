@@ -23,43 +23,39 @@
 {%- endif %}
 
 {%- if pages %}
-  {%- set current_year = now()[0:4] %}
   <div class="max-w-4xl mx-auto px-4 py-6 space-y-4">
     {%- for page in pages %}
     {%- if page.featured_image %}
     <article class="home-card group">
       <a href="{{ page.url | safe }}" class="block h-full">
         <div
-          class="absolute inset-0 bg-cover transition-transform duration-500 ease-out xl:group-hover:scale-110"
+          class="absolute inset-0 bg-cover transition-[transform,filter] duration-700 ease-out xl:group-hover:scale-115 xl:group-hover:blur-sm"
           style="background-image: url('{{ config.base_url | safe }}{{ page.featured_image | safe }}'); background-position: {{ page.featured_image_position | default('center') }}"
         ></div>
 
-        <div class="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent xl:group-hover:from-black/80 xl:group-hover:via-black/40 transition-all duration-500"></div>
+        <div class="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent xl:group-hover:from-black/85 xl:group-hover:via-black/50 transition-all duration-700"></div>
 
         <div class="absolute inset-x-0 bottom-0 p-5">
-          <h2 class="text-lg font-bold text-white drop-shadow-md xl:group-hover:-translate-y-1 transition-transform duration-500">
+          <h2 class="text-lg font-bold text-white drop-shadow-md xl:group-hover:-translate-y-1 transition-transform duration-700">
             {{ page.title }}
           </h2>
 
           {%- if page.date %}
-          {%- set page_year = page.date[0:4] %}
           <div class="mt-1.5 text-sm text-white/75">
-            <time datetime="{{ page.date }}">
-              {%- if page_year == current_year %}{{ page.date[5:10] }}{%- else %}{{ page.date[0:10] }}{%- endif %}
-            </time>
+            <time datetime="{{ page.date }}">{{ page.date[0:10] }}</time>
           </div>
           {%- endif %}
 
           {%- if page.description %}
-          <p class="mt-2 text-sm text-white/70 line-clamp-2 xl:max-h-0 xl:opacity-0 xl:group-hover:max-h-20 xl:group-hover:opacity-100 transition-all duration-500">
+          <p class="mt-2 text-sm text-white/70 line-clamp-2 xl:max-h-0 xl:opacity-0 xl:group-hover:max-h-20 xl:group-hover:opacity-100 transition-all duration-700">
             {{ page.description }}
           </p>
           {%- endif %}
 
           {%- if page.tags %}
-          <div class="mt-2 flex flex-wrap gap-1.5 overflow-hidden xl:max-h-0 xl:opacity-0 xl:group-hover:max-h-16 xl:group-hover:opacity-100 transition-all duration-500 delay-75">
+          <div class="mt-2 flex flex-wrap gap-1.5 overflow-hidden xl:max-h-0 xl:opacity-0 xl:group-hover:max-h-16 xl:group-hover:opacity-100 transition-all duration-700 delay-100">
             {%- for tag in page.tags %}
-            <span class="px-2 py-0.5 text-xs text-white/80 bg-white/15 rounded-full">{{ tag }}</span>
+            <span class="px-2 py-0.5 text-xs text-white/80 bg-white/15 rounded-full backdrop-blur-sm">{{ tag }}</span>
             {%- endfor %}
           </div>
           {%- endif %}
@@ -72,9 +68,8 @@
         {{ page.title }}
       </a>
       {%- if page.date %}
-      {%- set page_year = page.date[0:4] %}
       <time datetime="{{ page.date }}" class="shrink-0 text-sm text-(--color-text-secondary) tabular-nums">
-        {%- if page_year == current_year %}{{ page.date[5:10] }}{%- else %}{{ page.date[0:10] }}{%- endif %}
+        {{ page.date[0:10] }}
       </time>
       {%- endif %}
     </article>

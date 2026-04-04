@@ -1,21 +1,21 @@
 {%- if pagination.total_pages > 1 %}
-    <nav class="mt-8">
-      <ul class="pagination flex items-center justify-center gap-1" data-base-url="{{ pagination.base_url | safe }}">
+    <nav class="mt-8 flex justify-center">
+      <ul class="pagination inline-flex items-center gap-1 px-3 py-2 glass-panel" data-base-url="{{ pagination.base_url | safe }}">
       {%- for item in pagination.items %}
         {%- if item.number %}
         <li>
           <a
             href="{{ item.url | safe }}"
-            class="inline-flex items-center justify-center min-w-[2rem] h-8 px-2 rounded-lg text-sm transition-colors
-              {%- if item.is_current %} font-bold text-(--color-link-hover) bg-(--color-link-hover)/10
-              {%- else %} text-(--color-text-secondary) hover:text-(--color-link-hover) hover:bg-(--color-bg-secondary)/50
+            class="inline-flex items-center justify-center min-w-[2.25rem] h-9 px-2.5 rounded-lg text-sm font-medium transition-colors
+              {%- if item.is_current %} text-(--color-link-hover) bg-(--color-link-hover)/15
+              {%- else %} text-(--color-text-secondary) hover:text-(--color-link-hover) hover:bg-(--color-link-hover)/8
               {%- endif %}"
           >{{ item.number }}</a>
         </li>
         {%- else %}
         <li class="pagination-item ellipsis">
-          <span class="pagination-link pagination-jump inline-flex items-center justify-center min-w-[2rem] h-8 px-2 rounded-lg text-sm text-(--color-text-tertiary) cursor-pointer hover:text-(--color-link-hover)" role="button" tabindex="0" title="Jump to page">&hellip;</span>
-          <input class="pagination-input hidden w-12 h-8 text-center text-sm rounded-lg bg-(--color-bg-secondary)/50 border border-(--color-border)" type="number" min="1" max="{{ pagination.total_pages }}" aria-label="Jump to page">
+          <span class="pagination-jump inline-flex items-center justify-center min-w-[2.25rem] h-9 px-2.5 rounded-lg text-sm text-(--color-text-tertiary) cursor-pointer hover:text-(--color-link-hover) hover:bg-(--color-link-hover)/8 transition-colors" role="button" tabindex="0" title="Jump to page">&hellip;</span>
+          <input class="pagination-input hidden w-14 h-9 text-center text-sm rounded-lg bg-(--color-bg)/60 backdrop-blur-sm border border-(--color-border) text-(--color-text) focus:outline-none focus:border-(--color-link-hover) transition-colors" type="number" min="1" max="{{ pagination.total_pages }}" aria-label="Jump to page">
         </li>
         {%- endif %}
       {%- endfor %}
