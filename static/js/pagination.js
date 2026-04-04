@@ -9,15 +9,15 @@
   const base = pagination.dataset.baseUrl;
 
   const showInput = (li) => {
-    li.querySelector('.pagination-jump').classList.add('hidden');
+    li.querySelector('.pagination-jump').style.display = 'none';
     const input = li.querySelector('.pagination-input');
-    input.classList.remove('hidden');
+    input.style.display = '';
     input.focus();
   };
 
   const hideInput = (li) => {
-    li.querySelector('.pagination-jump').classList.remove('hidden');
-    li.querySelector('.pagination-input').classList.add('hidden');
+    li.querySelector('.pagination-jump').style.display = '';
+    li.querySelector('.pagination-input').style.display = 'none';
   };
 
   for (const el of document.querySelectorAll('.pagination-jump')) {

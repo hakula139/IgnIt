@@ -26,36 +26,27 @@
   <div class="max-w-4xl mx-auto px-4 py-6 space-y-4">
     {%- for page in pages %}
     {%- if page.featured_image %}
-    <article class="home-card group">
+    <article class="home-card">
       <a href="{{ page.url | safe }}" class="block h-full">
         <div
-          class="absolute inset-0 bg-cover transition-[transform,filter] duration-700 ease-out xl:group-hover:scale-115 xl:group-hover:blur-sm"
+          class="home-card-image"
           style="background-image: url('{{ config.base_url | safe }}{{ page.featured_image | safe }}'); background-position: {{ page.featured_image_position | default('center') }}"
         ></div>
-
-        <div class="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent xl:group-hover:from-black/85 xl:group-hover:via-black/50 transition-all duration-700"></div>
-
-        <div class="absolute inset-x-0 bottom-0 p-5">
-          <h2 class="text-lg font-bold text-white drop-shadow-md xl:group-hover:-translate-y-1 transition-transform duration-700">
-            {{ page.title }}
-          </h2>
-
+        <div class="home-card-overlay"></div>
+        <div class="home-card-body">
+          <h2 class="home-card-title">{{ page.title }}</h2>
           {%- if page.date %}
-          <div class="mt-1.5 text-sm text-white/75">
+          <div class="home-card-meta">
             <time datetime="{{ page.date }}">{{ page.date[0:10] }}</time>
           </div>
           {%- endif %}
-
           {%- if page.description %}
-          <p class="mt-2 text-sm text-white/70 line-clamp-2 xl:max-h-0 xl:opacity-0 xl:group-hover:max-h-20 xl:group-hover:opacity-100 transition-all duration-700">
-            {{ page.description }}
-          </p>
+          <p class="home-card-desc">{{ page.description }}</p>
           {%- endif %}
-
           {%- if page.tags %}
-          <div class="mt-2 flex flex-wrap gap-1.5 overflow-hidden xl:max-h-0 xl:opacity-0 xl:group-hover:max-h-16 xl:group-hover:opacity-100 transition-all duration-700 delay-100">
+          <div class="home-card-tags">
             {%- for tag in page.tags %}
-            <span class="px-2 py-0.5 text-xs text-white/80 bg-white/15 rounded-full backdrop-blur-sm">{{ tag }}</span>
+            <span class="home-card-tag">{{ tag }}</span>
             {%- endfor %}
           </div>
           {%- endif %}
@@ -63,12 +54,12 @@
       </a>
     </article>
     {%- else %}
-    <article class="glass-panel px-5 py-4 flex items-center justify-between gap-4">
-      <a href="{{ page.url | safe }}" class="flex-1 min-w-0 font-medium truncate hover:text-(--color-link-hover) transition-colors">
+    <article class="glass-panel flex items-center justify-between gap-4 px-5 py-4">
+      <a href="{{ page.url | safe }}" class="min-w-0 flex-1 truncate font-medium transition-colors hover:text-(--color-link-hover)">
         {{ page.title }}
       </a>
       {%- if page.date %}
-      <time datetime="{{ page.date }}" class="shrink-0 text-sm text-(--color-text-secondary) tabular-nums">
+      <time datetime="{{ page.date }}" class="shrink-0 text-sm tabular-nums text-(--color-text-secondary)">
         {{ page.date[0:10] }}
       </time>
       {%- endif %}

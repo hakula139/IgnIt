@@ -6,16 +6,14 @@
         <li>
           <a
             href="{{ item.url | safe }}"
-            class="inline-flex items-center justify-center min-w-[2.25rem] h-9 px-2.5 rounded-lg text-sm font-medium transition-colors
-              {%- if item.is_current %} text-(--color-link-hover) bg-(--color-link-hover)/15
-              {%- else %} text-(--color-text-secondary) hover:text-(--color-link-hover) hover:bg-(--color-link-hover)/8
-              {%- endif %}"
+            class="pagination-link"
+            {%- if item.is_current %} aria-current="page"{%- endif %}
           >{{ item.number }}</a>
         </li>
         {%- else %}
-        <li class="pagination-item ellipsis">
-          <span class="pagination-jump inline-flex items-center justify-center min-w-[2.25rem] h-9 px-2.5 rounded-lg text-sm text-(--color-text-tertiary) cursor-pointer hover:text-(--color-link-hover) hover:bg-(--color-link-hover)/8 transition-colors" role="button" tabindex="0" title="Jump to page">&hellip;</span>
-          <input class="pagination-input hidden w-14 h-9 text-center text-sm rounded-lg bg-(--color-bg)/60 backdrop-blur-sm border border-(--color-border) text-(--color-text) focus:outline-none focus:border-(--color-link-hover) transition-colors" type="number" min="1" max="{{ pagination.total_pages }}" aria-label="Jump to page">
+        <li>
+          <span class="pagination-link pagination-ellipsis pagination-jump" role="button" tabindex="0" title="Jump to page">&hellip;</span>
+          <input class="pagination-input" style="display: none" type="number" min="1" max="{{ pagination.total_pages }}" aria-label="Jump to page">
         </li>
         {%- endif %}
       {%- endfor %}
