@@ -1,31 +1,15 @@
 {
   "version": "0.2",
-  "language": "en",
-  "ignorePaths": [
-    "node_modules",
-    "pnpm-lock.yaml",
-    "static/dist"
+  "language": "en,en-GB",
+  "useGitignore": true,
+  "allowCompoundWords": true,
+  "dictionaryDefinitions": [
+    {
+      "name": "project-words",
+      "path": "./.cspell/words.txt",
+      "addWords": true
+    }
   ],
-  "words": [
-    "autoplay",
-    "callout",
-    "endfor",
-    "endif",
-    "fontawesome",
-    "glassmorphism",
-    "hakula",
-    "hashchange",
-    "minijinja",
-    "netease",
-    "outchain",
-    "palenight",
-    "scrollbar",
-    "shortcode",
-    "songid",
-    "songtype",
-    "startingwith",
-    "syntect",
-    "tailwindcss",
-    "tabular"
-  ]
+  "dictionaries": ["project-words"],
+  "ignorePaths": ["pnpm-lock.yaml", "static/dist"]
 }
