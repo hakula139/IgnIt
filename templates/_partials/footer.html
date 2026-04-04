@@ -1,0 +1,25 @@
+{%- set footer = config.params.footer | default({}) -%}
+<footer class="glass-panel mx-4 mb-4 mt-8 px-6 py-4 text-center text-sm text-(--color-text-secondary)">
+  <div class="max-w-6xl mx-auto">
+    {%- if footer.since %}
+    <p>
+      &copy; {{ footer.since }}–{{ now()[0:4] }} {{ config.author.name }}
+      {%- if footer.license %}
+      &middot;
+      <a href="{{ footer.license_url | default('#') }}" class="hover:text-(--color-link-hover)">
+        {{ footer.license }}
+      </a>
+      {%- endif %}
+    </p>
+    {%- else %}
+    <p>&copy; {{ now()[0:4] }} {{ config.author.name }}</p>
+    {%- endif %}
+
+    {%- if footer.powered_by | default(true) %}
+    <p class="mt-1 text-(--color-text-tertiary)">
+      Powered by <a href="https://github.com/hakula139/kiln" class="hover:text-(--color-link-hover)">kiln</a>
+      &amp; <a href="https://github.com/hakula139/IgnIt" class="hover:text-(--color-link-hover)">IgnIt</a>
+    </p>
+    {%- endif %}
+  </div>
+</footer>
