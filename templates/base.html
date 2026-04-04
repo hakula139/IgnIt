@@ -3,25 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {%- block title %}<title>{{ config.title }}</title>{% endblock %}
-  <link rel="stylesheet" href="{{ config.base_url }}/css/style.css">
-  <link rel="stylesheet" href="{{ config.base_url }}/css/syntax.css">
-  {%- include "_partials/head-deps.html" %}
+  {% block title %}<title>{{ config.title }}</title>{% endblock %}
+  <link rel="stylesheet" href="{{ config.base_url | safe }}/css/style.css">
+  <link rel="stylesheet" href="{{ config.base_url | safe }}/css/syntax.css">
+  {% include "_partials/head-deps.html" %}
   {%- block head %}{% endblock %}
 </head>
 
 <body
   class="min-h-screen flex flex-col bg-(--color-bg) text-(--color-text)"
   {%- if config.params.background and config.params.background.image %}
-  style="--bg-image: url('{{ config.base_url }}{{ config.params.background.image }}')"
+  style="--bg-image: url('{{ config.base_url | safe }}{{ config.params.background.image | safe }}')"
   {%- endif %}
 >
-  <script src="{{ config.base_url }}/js/theme.js"></script>
-  {%- include "_partials/header.html" %}
+  <script src="{{ config.base_url | safe }}/js/theme.js"></script>
+  {% include "_partials/header.html" %}
   <main class="flex-1 pt-16">
     {%- block body %}{% endblock %}
   </main>
-  {%- include "_partials/footer.html" %}
+  {% include "_partials/footer.html" %}
   {%- block scripts %}{% endblock %}
 </body>
 </html>
