@@ -1,0 +1,114 @@
+/* Syntax highlighting — Material palette
+   Maps syntect CSS classes to light/dark color tokens.
+   Light: Material Light  |  Dark: Material Palenight */
+
+/* ── Light Theme ── */
+
+.highlight { color: #546e7a; background: #fafafa; }
+.highlight .source { color: #546e7a; }
+.highlight .keyword { color: #7c4dff; }
+.highlight .storage { color: #7c4dff; }
+.highlight .entity { color: #6182b8; }
+.highlight .support { color: #6182b8; }
+.highlight .string { color: #91b859; }
+.highlight .constant { color: #f76d47; }
+.highlight .constant.numeric { color: #f76d47; }
+.highlight .variable { color: #e2931d; }
+.highlight .punctuation { color: #39adb5; }
+.highlight .comment { color: #91b3b0; font-style: italic; }
+.highlight .invalid { color: #e53935; }
+.highlight .meta.tag { color: #e53935; }
+
+/* ── Dark Theme ── */
+
+[data-theme="dark"] .highlight { color: #b0bec5; background: #212121; }
+[data-theme="dark"] .highlight .source { color: #b0bec5; }
+[data-theme="dark"] .highlight .keyword { color: #c792ea; }
+[data-theme="dark"] .highlight .storage { color: #c792ea; }
+[data-theme="dark"] .highlight .entity { color: #82aaff; }
+[data-theme="dark"] .highlight .support { color: #82aaff; }
+[data-theme="dark"] .highlight .string { color: #c3e88d; }
+[data-theme="dark"] .highlight .constant { color: #f78c6c; }
+[data-theme="dark"] .highlight .constant.numeric { color: #f78c6c; }
+[data-theme="dark"] .highlight .variable { color: #ffcb6b; }
+[data-theme="dark"] .highlight .punctuation { color: #89ddff; }
+[data-theme="dark"] .highlight .comment { color: #546e7a; font-style: italic; }
+[data-theme="dark"] .highlight .invalid { color: #f07178; }
+[data-theme="dark"] .highlight .meta.tag { color: #f07178; }
+
+/* ── Code Block Structure ── */
+
+.code-block {
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.code-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.375rem 0.75rem;
+  background: rgba(0, 0, 0, 0.04);
+  font-size: 0.75rem;
+}
+
+[data-theme="dark"] .code-header {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.code-lang {
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.copy-btn {
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  color: var(--color-text-tertiary);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--color-link-hover);
+}
+
+.code-body {
+  overflow-x: auto;
+}
+
+.code-body[data-max-lines] {
+  max-height: calc(var(--max-lines, 40) * 1.5em + 1rem);
+  overflow-y: auto;
+}
+
+.highlight table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.highlight .line-numbers {
+  width: 1px;
+  padding: 0.5rem 0;
+  text-align: right;
+  user-select: none;
+}
+
+.highlight .line-numbers pre {
+  padding: 0 0.75rem 0 0.5rem;
+  color: var(--color-text-tertiary);
+  opacity: 0.5;
+}
+
+.highlight .code {
+  padding: 0.5rem 0;
+}
+
+.highlight .code pre {
+  padding: 0 1rem;
+}
