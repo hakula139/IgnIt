@@ -8,16 +8,55 @@
 {%- endblock %}
 
 {% block body %}
-  <article>
-    <header>
-      <h1>{{ title }}</h1>
-      {%- if date %}
-      <time datetime="{{ date }}">{{ date }}</time>
+  <div class="max-w-6xl mx-auto px-4 py-6">
+    <div class="xl:flex xl:gap-8">
+      {# Article column #}
+      <article class="glass-panel flex-1 min-w-0">
+        {%- if featured_image %}
+        <div class="aspect-[21/9] overflow-hidden rounded-t-[var(--radius-card)]">
+          <img src="{{ featured_image | safe }}" alt="{{ title }}" class="w-full h-full object-cover">
+        </div>
+        {%- endif %}
+
+        <div class="p-6 sm:p-8">
+          <header class="mb-6">
+            <h1 class="text-2xl sm:text-3xl font-semibold leading-tight">{{ title }}</h1>
+            {%- if date %}
+            <time datetime="{{ date }}" class="mt-2 block text-sm text-(--color-text-secondary)">{{ date }}</time>
+            {%- endif %}
+          </header>
+
+          {# Mobile TOC (collapsible, < xl) #}
+          {%- if toc %}
+          <details class="xl:hidden mb-6 rounded-lg bg-(--color-bg-secondary)/50 border border-(--color-border)">
+            <summary class="px-4 py-2.5 cursor-pointer text-sm font-medium text-(--color-text-secondary) select-none">
+              Table of Contents
+            </summary>
+            <div class="px-4 pb-3 text-sm">{{ toc | safe }}</div>
+          </details>
+          {%- endif %}
+
+          <div class="prose max-w-none">{{ content | safe }}</div>
+        </div>
+      </article>
+
+      {# Desktop TOC sidebar (sticky, xl only) #}
+      {%- if toc %}
+      <aside class="hidden xl:block xl:w-64 shrink-0">
+        <div class="glass-panel sticky top-20 p-4 text-sm max-h-[calc(100vh-6rem)] overflow-y-auto">
+          <h2 class="font-semibold text-(--color-text) mb-2">Table of Contents</h2>
+          {{ toc | safe }}
+        </div>
+      </aside>
       {%- endif %}
-    </header>
-    {%- if toc %}
-    <aside>{{ toc | safe }}</aside>
-    {%- endif %}
-    <div class="content">{{ content | safe }}</div>
-  </article>
+    </div>
+  </div>
+{%- endblock %}
+
+{% block scripts %}
+{%- set cdn = config.params.cdn | default("https://cdn.jsdelivr.net/npm") -%}
+{%- if math | default(false) %}
+  <script src="{{ cdn }}/katex@0.16/dist/katex.min.js" defer></script>
+  <script src="{{ cdn }}/katex@0.16/dist/contrib/auto-render.min.js" defer onload="renderMathInElement(document.body)"></script>
+{%- endif %}
 {%- endblock %}
