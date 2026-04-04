@@ -2,52 +2,76 @@
 
 ## Project Overview
 
-IgnIt is a kiln theme inspired by Hugo LoveIt. It provides MiniJinja templates, static CSS / JS assets, and default parameters for [kiln](https://github.com/hakula139/kiln) sites.
+IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It provides MiniJinja templates, compiled CSS, and JS assets for [kiln](https://github.com/hakula139/kiln) sites.
 
 ### Theme Structure
 
 ```text
 .
+├── assets/
+│   └── css/
+│       └── main.css             # Tailwind source (@theme, @layer, @variant)
 ├── static/
-│   ├── css/                 # Stylesheets
-│   │   ├── apple-music.css
-│   │   ├── home.css
-│   │   ├── table.css
-│   │   └── taxonomy.css
-│   └── js/                  # Scripts
-│       └── pagination.js
+│   ├── css/
+│   │   ├── apple-music.css      # Apple Music embed light / dark toggle
+│   │   ├── style.css            # Compiled Tailwind output (committed)
+│   │   ├── syntax.css           # Syntax highlighting (Material palette)
+│   │   └── table.css            # Default table styles
+│   └── js/
+│       ├── pagination.js        # Page-jump controls for pagination
+│       └── theme.js             # Dark mode toggle + system preference
 └── templates/
-    ├── _partials/           # Shared template fragments ({% include %})
-    │   ├── meta-og.html     # OG / Twitter Card meta tags
-    │   ├── pagination.html  # Pagination nav + page-jump script
-    │   └── post-entry.html  # Post entry (title + conditional date)
-    ├── base.html            # Base layout (KaTeX, block definitions)
-    ├── home.html            # Home page (paginated post listing)
-    ├── page.html            # Standalone page (about, etc.)
-    ├── post.html            # Post page (article meta via partial)
-    ├── section.html         # Section listing (year-grouped posts, pagination)
-    ├── taxonomy.html        # Taxonomy index (categories grid / tag cloud)
-    ├── term.html            # Term page (year-grouped posts, pagination)
-    └── directives/          # Markdown directive templates
-        └── music.html       # Music embed directive
+    ├── _partials/               # Shared template fragments ({% include %})
+    │   ├── footer.html          # Glass-panel footer (copyright, license)
+    │   ├── head-deps.html       # Conditional CDN deps (FontAwesome, KaTeX)
+    │   ├── header.html          # Fixed nav header with menu + theme toggle
+    │   ├── meta-og.html         # OG / Twitter Card meta tags
+    │   ├── pagination.html      # Pagination nav + page-jump input
+    │   └── post-entry.html      # Post entry (title + conditional date)
+    ├── base.html                # Base layout (glass panels, background image)
+    ├── home.html                # Home page (profile + paginated post list)
+    ├── page.html                # Standalone page (glass card, collapsible TOC)
+    ├── post.html                # Post page (glass card, sticky TOC sidebar)
+    ├── section.html             # Section listing (year-grouped, glass card)
+    ├── taxonomy.html            # Taxonomy index (tag cloud / category grid)
+    ├── term.html                # Term page (year-grouped, pagination)
+    └── directives/
+        └── music.html           # Music embed directive
 ```
+
+### CSS Architecture
+
+Source CSS lives in `assets/css/main.css` using Tailwind CSS v4 conventions:
+
+- `@theme { ... }` — design tokens (colors, fonts, radii, shadows)
+- `@variant dark` — dark mode via `[data-theme="dark"]` attribute
+- `@layer base` — dark mode overrides, background image, selection, links
+- `@layer components` — glass panels, callout types, prose overrides
+- Templates use Tailwind utility classes directly for layout and styling
+
+To rebuild CSS: `pnpm build` (or `pnpm dev` for watch mode).
 
 ## Coding Conventions
 
 ### HTML Templates
 
-- **`<head>` and `<body>` at 0-indent** in `base.html`. Block content uses 2-space indent.
-- **`{%- block ... %}`** in parent strips preceding whitespace for clean composed output.
-- **`{%- endblock %}`** in children strips trailing newline to avoid double blank lines.
-- **`{%- if/for/endif/endfor %}`** (left-trim) to eat template tag whitespace while preserving HTML indentation.
+- Use `| safe` filter on all URL outputs to prevent MiniJinja HTML-escaping slashes.
 - **Partials** live in `_partials/` and are included via `{% include "_partials/name.html" %}`.
-- **HTML attribute order**: identity (`src`, `href`) → verification (`integrity`, `crossorigin`) → behavior (`defer`, `type`) → callbacks (`onload`).
+- **Whitespace control**: Use `{%-` (left-trim) to eat template tag whitespace while preserving HTML indentation. Use `-%}` (right-trim) sparingly.
+
+### Tailwind Class Ordering
+
+Follow this order for utility classes in HTML attributes:
+layout → sizing → spacing → overflow → typography → visual → transitions → interactivity
+
+Example: `class="flex items-center w-full px-4 py-2 text-sm text-(--color-text) bg-(--color-bg) rounded-lg transition-colors cursor-pointer"`
 
 ### CSS
 
-- **Property order** (grouped, outside-in): positioning → display / flow → sizing → spacing → overflow → typography → visual → animation → interaction. Convention documented at the top of `taxonomy.css`.
-- **CSS custom properties** for repeated values (e.g., `--color-muted`).
-- **Class naming**: `component-element` pattern (e.g., `category-card-title`, `post-entry-link`, `pagination-item`).
+- **Design tokens** in `@theme { ... }` block — colors, fonts, radii, shadows.
+- **Custom properties** prefixed with `--color-`, `--radius-`, `--shadow-`.
+- **Component classes** only for multi-property patterns that repeat (`.glass-panel`, `.callout-*`).
+- Prefer Tailwind utilities over custom CSS.
 
 ### JavaScript
 
@@ -61,3 +85,4 @@ IgnIt is a kiln theme inspired by Hugo LoveIt. It provides MiniJinja templates, 
   - Types: `feat`, `fix`, `refactor`, `docs`, `chore`, `style`
   - Scope: area of change (e.g., `template`, `css`, `js`)
 - Keep commits atomic — one logical change per commit.
+- PRs: assign to `hakula139`, label `enhancement` for `feat`.
