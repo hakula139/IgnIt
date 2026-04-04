@@ -1,4 +1,4 @@
-/* Default table styles — auto-width with horizontal scroll */
+/* ── Table Defaults ── */
 
 .prose table {
   width: auto;
@@ -7,7 +7,8 @@
   overflow-x: auto;
 }
 
-/* Dense table variant for compact data (truth tables, etc.) */
+/* ── Dense Variant ── */
+
 .prose .dense-table table {
   font-size: 0.85rem;
 }

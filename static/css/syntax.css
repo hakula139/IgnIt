@@ -1,6 +1,5 @@
-/* Syntax highlighting — Material palette
-   Maps syntect CSS classes to light/dark color tokens.
-   Light: Material Light  |  Dark: Material Palenight */
+/* ── Syntax Highlighting ── */
+/* Material Light (light) / Material Palenight (dark) */
 
 /* ── Light Theme ── */
 
@@ -137,6 +136,8 @@
 .copy-btn:hover {
   color: var(--color-link-hover);
 }
+
+/* ── Code Body ── */
 
 .code-body {
   overflow-x: auto;
