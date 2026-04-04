@@ -95,18 +95,24 @@ title = "Site Title"
 subtitle = "A short tagline"
 ```
 
-## Theme Development
+## Setup
 
-IgnIt uses Tailwind CSS v4 for styling. To modify styles:
+Build the compiled CSS (required before first use):
 
 ```bash
 pnpm install     # Install dependencies
+pnpm build       # Build static/dist/style.css (minified)
+```
+
+## Theme Development
+
+Source CSS: `assets/css/main.css` (Tailwind `@theme` tokens, custom components).
+Compiled output: `static/dist/style.css` (gitignored build artifact).
+
+```bash
 pnpm dev         # Watch mode — rebuilds CSS on template changes
 pnpm build       # Production build (minified)
 ```
-
-Source CSS: `assets/css/main.css` (Tailwind `@theme` tokens, custom components).
-Compiled output: `static/dist/style.css` (committed for zero-dep usage).
 
 ## License
 
