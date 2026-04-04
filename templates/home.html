@@ -30,8 +30,8 @@
     <article class="home-card group">
       <a href="{{ page.url | safe }}" class="block h-full">
         <div
-          class="absolute inset-0 bg-cover bg-center transition-transform duration-500 ease-out xl:group-hover:scale-110"
-          style="background-image: url('{{ config.base_url | safe }}{{ page.featured_image | safe }}')"
+          class="absolute inset-0 bg-cover transition-transform duration-500 ease-out xl:group-hover:scale-110"
+          style="background-image: url('{{ config.base_url | safe }}{{ page.featured_image | safe }}'); background-position: {{ page.featured_image_position | default('center') }}"
         ></div>
 
         <div class="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent xl:group-hover:from-black/80 xl:group-hover:via-black/40 transition-all duration-500"></div>
