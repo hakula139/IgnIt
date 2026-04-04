@@ -101,13 +101,13 @@ Build the compiled CSS (required before first use):
 
 ```bash
 pnpm install     # Install dependencies
-pnpm build       # Build static/dist/style.css (minified)
+pnpm build       # Build static/dist/style.min.css
 ```
 
 ## Theme Development
 
 Source CSS: `assets/css/main.css` (Tailwind `@theme` tokens, custom components).
-Compiled output: `static/dist/style.css` (gitignored build artifact).
+Compiled output: `static/dist/style.min.css` (gitignored build artifact).
 
 ```bash
 pnpm dev         # Watch mode — rebuilds CSS on template changes
