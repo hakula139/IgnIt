@@ -117,6 +117,16 @@
     border-bottom: 1px solid var(--color-glass-border);
   }
 
+  /* Home page image card */
+  .home-card {
+    position: relative;
+    height: 22rem;
+    overflow: hidden;
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--color-glass-border);
+  }
+
   /* Callout / admonition base */
   .callout {
     border-radius: 0.5rem;
