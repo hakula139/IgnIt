@@ -1,7 +1,7 @@
 {%- set menu_items = config.menu.main | default([]) -%}
 <header class="header-nav">
   <div class="flex items-center justify-between w-full max-w-6xl mx-auto">
-    <a href="{{ config.base_url | safe }}/" class="text-lg font-semibold text-(--color-text) hover:text-(--color-link-hover) transition-colors">
+    <a href="{{ config.base_url | safe }}/" class="text-lg font-semibold text-text hover:text-link-hover transition-colors">
       {{ config.title }}
     </a>
 
@@ -10,7 +10,7 @@
       {%- for item in menu_items %}
       <a
         href="{{ item.url | safe }}"
-        class="px-3 py-1.5 text-sm text-(--color-text-secondary) hover:text-(--color-link-hover) rounded-lg hover:bg-(--color-bg)/50 transition-colors"
+        class="px-3 py-1.5 text-sm text-text-secondary hover:text-link-hover rounded-lg hover:bg-bg/50 transition-colors"
         {%- if item.external %} target="_blank" rel="noopener noreferrer"{% endif %}
       >
         {%- if item.icon %}<i class="{{ item.icon }} fa-fw"></i> {% endif -%}
@@ -20,7 +20,7 @@
 
       <button
         onclick="window.__toggleTheme()"
-        class="ml-2 p-2 text-(--color-text-secondary) hover:text-(--color-link-hover) rounded-lg transition-colors cursor-pointer"
+        class="ml-2 p-2 text-text-secondary hover:text-link-hover rounded-lg transition-colors cursor-pointer"
         aria-label="Toggle theme"
       >
         <svg class="w-5 h-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -35,7 +35,7 @@
     {# Mobile menu toggle #}
     <button
       id="mobile-menu-toggle"
-      class="sm:hidden p-2 text-(--color-text-secondary) hover:text-(--color-link-hover) cursor-pointer"
+      class="sm:hidden p-2 text-text-secondary hover:text-link-hover cursor-pointer"
       aria-label="Toggle menu"
       onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
     >
@@ -50,7 +50,7 @@
     {%- for item in menu_items %}
     <a
       href="{{ item.url | safe }}"
-      class="block px-6 py-2 text-sm text-(--color-text-secondary) hover:text-(--color-link-hover) hover:bg-(--color-bg)/30 transition-colors"
+      class="block px-6 py-2 text-sm text-text-secondary hover:text-link-hover hover:bg-bg/30 transition-colors"
       {%- if item.external %} target="_blank" rel="noopener noreferrer"{% endif %}
     >
       {%- if item.icon %}<i class="{{ item.icon }} fa-fw"></i> {% endif -%}
@@ -59,7 +59,7 @@
     {%- endfor %}
     <button
       onclick="window.__toggleTheme()"
-      class="w-full px-6 py-2 text-left text-sm text-(--color-text-secondary) hover:text-(--color-link-hover) hover:bg-(--color-bg)/30 transition-colors cursor-pointer"
+      class="w-full px-6 py-2 text-left text-sm text-text-secondary hover:text-link-hover hover:bg-bg/30 transition-colors cursor-pointer"
     >
       Toggle theme
     </button>

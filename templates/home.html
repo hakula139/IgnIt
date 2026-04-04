@@ -16,7 +16,7 @@
       <h1 class="text-xl font-semibold">{{ profile.title }}</h1>
       {%- endif %}
       {%- if profile.subtitle %}
-      <p class="mt-2 text-sm text-(--color-text-secondary)">{{ profile.subtitle }}</p>
+      <p class="mt-2 text-sm text-text-secondary">{{ profile.subtitle }}</p>
       {%- endif %}
     </div>
   </div>
@@ -55,11 +55,11 @@
     </article>
     {%- else %}
     <article class="glass-panel flex items-center justify-between gap-4 px-5 py-4">
-      <a href="{{ page.url | safe }}" class="min-w-0 flex-1 truncate font-medium transition-colors hover:text-(--color-link-hover)">
+      <a href="{{ page.url | safe }}" class="min-w-0 flex-1 truncate font-medium transition-colors hover:text-link-hover">
         {{ page.title }}
       </a>
       {%- if page.date %}
-      <time datetime="{{ page.date }}" class="shrink-0 text-sm tabular-nums text-(--color-text-secondary)">
+      <time datetime="{{ page.date }}" class="shrink-0 text-sm tabular-nums text-text-secondary">
         {{ page.date[0:10] }}
       </time>
       {%- endif %}

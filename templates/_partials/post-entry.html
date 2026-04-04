@@ -1,7 +1,7 @@
     <article class="flex items-center justify-between gap-4 py-1.5">
-      <a href="{{ page.url | safe }}" class="flex-1 min-w-0 truncate hover:text-(--color-link-hover) transition-colors">{{ page.title }}</a>
+      <a href="{{ page.url | safe }}" class="flex-1 min-w-0 truncate hover:text-link-hover transition-colors">{{ page.title }}</a>
       {%- if page.date %}
-      <time datetime="{{ page.date }}" class="shrink-0 text-sm text-(--color-text-secondary) tabular-nums">
+      <time datetime="{{ page.date }}" class="shrink-0 text-sm text-text-secondary tabular-nums">
         {{- page.date[0:10] if page.date[0:4] != current_year else page.date[5:10] -}}
       </time>
       {%- endif %}

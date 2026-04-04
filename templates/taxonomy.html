@@ -18,10 +18,10 @@
         {%- for term in terms %}
         <a
           href="{{ term.url | safe }}"
-          class="inline-block px-3 py-1.5 text-sm rounded-full bg-(--color-bg-secondary)/60 border border-(--color-border) hover:text-(--color-link-hover) hover:border-(--color-link-hover)/30 transition-colors"
+          class="inline-block rounded-full border border-border bg-bg-secondary/60 px-3 py-1.5 text-sm transition-colors hover:border-link-hover/30 hover:text-link-hover"
         >
           {{ term.name }}
-          <sup class="text-xs text-(--color-text-tertiary)">{{ term.pages | length }}</sup>
+          <sup class="text-xs text-text-tertiary">{{ term.pages | length }}</sup>
         </a>
         {%- endfor %}
       </div>
@@ -29,19 +29,19 @@
       {%- else %}
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {%- for term in terms %}
-        <div class="rounded-xl bg-(--color-bg-secondary)/30 border border-(--color-border) p-4">
+        <div class="rounded-xl border border-border bg-bg-secondary/30 p-4">
           <h3 class="font-medium mb-2">
-            <a href="{{ term.url | safe }}" class="hover:text-(--color-link-hover) transition-colors">
+            <a href="{{ term.url | safe }}" class="hover:text-link-hover transition-colors">
               <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ term.name }}
             </a>
           </h3>
           {%- for page in term.pages[:5] %}
-          <a href="{{ page.url | safe }}" class="block text-sm text-(--color-text-secondary) hover:text-(--color-link-hover) truncate py-0.5 transition-colors">
+          <a href="{{ page.url | safe }}" class="block text-sm text-text-secondary hover:text-link-hover truncate py-0.5 transition-colors">
             {{ page.title }}
           </a>
           {%- endfor %}
           {%- if term.pages | length > 5 %}
-          <a href="{{ term.url | safe }}" class="block text-sm text-(--color-text-tertiary) hover:text-(--color-link-hover) mt-1 transition-colors">
+          <a href="{{ term.url | safe }}" class="block text-sm text-text-tertiary hover:text-link-hover mt-1 transition-colors">
             More &raquo;
           </a>
           {%- endif %}
