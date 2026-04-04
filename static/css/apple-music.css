@@ -4,14 +4,13 @@
   margin: 1rem 0;
 }
 
-.apple-music-light {
+.apple-music-wrapper iframe {
   display: block;
   border: 0;
 }
 
 .apple-music-dark {
   display: none;
-  border: 0;
 }
 
 [data-theme="dark"] .apple-music-light {

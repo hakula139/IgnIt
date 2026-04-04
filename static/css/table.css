@@ -5,7 +5,6 @@
   min-width: initial;
   display: block;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
 }
 
 /* Dense table variant for compact data (truth tables, etc.) */
