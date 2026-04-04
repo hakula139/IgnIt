@@ -106,7 +106,7 @@ pnpm build       # Production build (minified)
 ```
 
 Source CSS: `assets/css/main.css` (Tailwind `@theme` tokens, custom components).
-Compiled output: `static/css/style.css` (committed for zero-dep usage).
+Compiled output: `static/dist/style.css` (committed for zero-dep usage).
 
 ## License
 

@@ -14,9 +14,10 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 ├── static/
 │   ├── css/
 │   │   ├── apple-music.css      # Apple Music embed light / dark toggle
-│   │   ├── style.css            # Compiled Tailwind output (committed)
 │   │   ├── syntax.css           # Syntax highlighting (Material palette)
 │   │   └── table.css            # Default table styles
+│   ├── dist/
+│   │   └── style.css            # Compiled Tailwind output (committed)
 │   └── js/
 │       ├── pagination.js        # Page-jump controls for pagination
 │       └── theme.js             # Dark mode toggle + system preference

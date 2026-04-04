@@ -4,8 +4,7 @@
   "ignorePaths": [
     "node_modules",
     "pnpm-lock.yaml",
-    "static/css/style.css",
-    "static/css/syntax.css"
+    "static/dist"
   ],
   "words": [
     "autoplay",
@@ -19,6 +18,7 @@
     "minijinja",
     "netease",
     "outchain",
+    "palenight",
     "scrollbar",
     "shortcode",
     "songid",
