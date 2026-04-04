@@ -2,26 +2,28 @@
 
 {% block title %}<title>{{ section_title }} - {{ config.title }}</title>{% endblock %}
 
-{% block head %}
-  <link rel="stylesheet" href="/css/taxonomy.css">
-{%- endblock %}
-
 {% block body %}
-  <div class="taxonomy-page">
-    <h2 class="taxonomy-title">
-      <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;{{ section_title }}
-    </h2>
+  <div class="max-w-4xl mx-auto px-4 py-6">
+    <div class="glass-panel p-6 sm:p-8">
+      <h2 class="text-xl font-semibold mb-6">
+        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i> {{ section_title }}
+      </h2>
 
-  {%- set current_year = now()[0:4] %}
-  {%- for group in page_groups %}
-    {%- if group.key %}
-    <h3 class="year-heading">{{ group.key }}</h3>
-    {%- endif %}
-    {%- for page in group.pages %}
-    {%- include "_partials/post-entry.html" %}
-    {%- endfor %}
-  {%- endfor %}
+      {%- set current_year = now()[0:4] %}
+      {%- for group in page_groups %}
+      {%- if group.key %}
+      <h3 class="text-lg font-medium text-(--color-text-secondary) mt-6 mb-3 border-b border-(--color-border) pb-1">
+        {{ group.key }}
+      </h3>
+      {%- endif %}
+      <div class="space-y-1">
+        {%- for page in group.pages %}
+        {%- include "_partials/post-entry.html" %}
+        {%- endfor %}
+      </div>
+      {%- endfor %}
 
-  {%- include "_partials/pagination.html" %}
+      {%- include "_partials/pagination.html" %}
+    </div>
   </div>
 {%- endblock %}

@@ -1,20 +1,26 @@
 {%- if pagination.total_pages > 1 %}
-    <nav>
-      <ul class="pagination" data-base-url="{{ pagination.base_url | safe }}">
+    <nav class="mt-8">
+      <ul class="pagination flex items-center justify-center gap-1" data-base-url="{{ pagination.base_url | safe }}">
       {%- for item in pagination.items %}
         {%- if item.number %}
-        <li class="pagination-item{% if item.is_current %} active{% endif %}">
-          <span class="pagination-link"><a href="{{ item.url | safe }}">{{ item.number }}</a></span>
+        <li>
+          <a
+            href="{{ item.url | safe }}"
+            class="inline-flex items-center justify-center min-w-[2rem] h-8 px-2 rounded-lg text-sm transition-colors
+              {%- if item.is_current %} font-bold text-(--color-link-hover) bg-(--color-link-hover)/10
+              {%- else %} text-(--color-text-secondary) hover:text-(--color-link-hover) hover:bg-(--color-bg-secondary)/50
+              {%- endif %}"
+          >{{ item.number }}</a>
         </li>
         {%- else %}
         <li class="pagination-item ellipsis">
-          <span class="pagination-link pagination-jump" role="button" tabindex="0" title="Jump to page">&hellip;</span>
-          <input class="pagination-input" type="number" min="1" max="{{ pagination.total_pages }}" aria-label="Jump to page">
+          <span class="pagination-link pagination-jump inline-flex items-center justify-center min-w-[2rem] h-8 px-2 rounded-lg text-sm text-(--color-text-tertiary) cursor-pointer hover:text-(--color-link-hover)" role="button" tabindex="0" title="Jump to page">&hellip;</span>
+          <input class="pagination-input hidden w-12 h-8 text-center text-sm rounded-lg bg-(--color-bg-secondary)/50 border border-(--color-border)" type="number" min="1" max="{{ pagination.total_pages }}" aria-label="Jump to page">
         </li>
         {%- endif %}
       {%- endfor %}
       </ul>
     </nav>
 
-    <script src="/js/pagination.js" defer></script>
+    <script src="{{ config.base_url }}/js/pagination.js" defer></script>
 {%- endif %}

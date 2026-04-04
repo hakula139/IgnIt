@@ -1,34 +1,45 @@
 {% extends "base.html" %}
 
-{% block head %}
-  <link rel="stylesheet" href="/css/home.css">
-  <link rel="stylesheet" href="/css/taxonomy.css">
-{%- endblock %}
-
 {% block body %}
 {%- set profile = config.params.home.profile %}
 {%- if profile %}
-  <div class="home-profile">
-    {%- if profile.avatar %}
-    <img class="home-avatar" src="{{ profile.avatar | safe }}" alt="{{ config.author.name }}">
-    {%- endif %}
-    {%- if profile.title %}
-    <h1 class="home-title">{{ profile.title }}</h1>
-    {%- endif %}
-    {%- if profile.subtitle %}
-    <p class="home-subtitle">{{ profile.subtitle }}</p>
-    {%- endif %}
+  <div class="max-w-4xl mx-auto px-4 pt-6">
+    <div class="glass-panel p-6 sm:p-8 text-center">
+      {%- if profile.avatar %}
+      <img
+        class="w-24 h-24 rounded-full mx-auto mb-4 shadow-md"
+        src="{{ profile.avatar | safe }}"
+        alt="{{ config.author.name }}"
+      >
+      {%- endif %}
+      {%- if profile.title %}
+      <h1 class="text-xl font-semibold">{{ profile.title }}</h1>
+      {%- endif %}
+      {%- if profile.subtitle %}
+      <p class="mt-2 text-sm text-(--color-text-secondary)">{{ profile.subtitle }}</p>
+      {%- endif %}
+    </div>
   </div>
 {%- endif %}
 
 {%- if pages %}
   {%- set current_year = now()[0:4] %}
-  <div class="taxonomy-page">
-  {%- for page in pages %}
-    {%- include "_partials/post-entry.html" %}
-  {%- endfor %}
+  <div class="max-w-4xl mx-auto px-4 py-6 space-y-4">
+    {%- for page in pages %}
+    <article class="glass-panel px-5 py-4 flex items-center justify-between gap-4">
+      <a href="{{ page.url }}" class="flex-1 min-w-0 font-medium truncate hover:text-(--color-link-hover) transition-colors">
+        {{ page.title }}
+      </a>
+      {%- if page.date %}
+      {%- set page_year = page.date[0:4] %}
+      <time datetime="{{ page.date }}" class="shrink-0 text-sm text-(--color-text-secondary) tabular-nums">
+        {%- if page_year == current_year %}{{ page.date[5:10] }}{%- else %}{{ page.date[0:10] }}{%- endif %}
+      </time>
+      {%- endif %}
+    </article>
+    {%- endfor %}
 
-  {%- include "_partials/pagination.html" %}
+    {%- include "_partials/pagination.html" %}
   </div>
 {%- endif %}
 {%- endblock %}
