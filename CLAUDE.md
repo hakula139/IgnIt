@@ -29,7 +29,7 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
     │   ├── pagination.html      # Pagination nav + page-jump input
     │   └── post-entry.html      # Post entry (title + conditional date)
     ├── base.html                # Base layout (glass panels, background image)
-    ├── home.html                # Home page (profile + paginated post list)
+    ├── home.html                # Home page (profile + image cards with hover reveal)
     ├── page.html                # Standalone page (glass card, collapsible TOC)
     ├── post.html                # Post page (glass card, sticky TOC sidebar)
     ├── section.html             # Section listing (year-grouped, glass card)
@@ -46,7 +46,7 @@ Source CSS lives in `assets/css/main.css` using Tailwind CSS v4 conventions:
 - `@theme { ... }` — design tokens (colors, fonts, radii, shadows)
 - `@variant dark` — dark mode via `[data-theme="dark"]` attribute
 - `@layer base` — dark mode overrides, background image, selection, links
-- `@layer components` — glass panels, callout types, prose overrides
+- `@layer components` — glass panels, home cards, callout types, prose overrides
 - Templates use Tailwind utility classes directly for layout and styling
 
 To rebuild CSS: `pnpm build` (or `pnpm dev` for watch mode).
@@ -70,7 +70,7 @@ Example: `class="flex items-center w-full px-4 py-2 text-sm text-(--color-text) 
 
 - **Design tokens** in `@theme { ... }` block — colors, fonts, radii, shadows.
 - **Custom properties** prefixed with `--color-`, `--radius-`, `--shadow-`.
-- **Component classes** only for multi-property patterns that repeat (`.glass-panel`, `.callout-*`).
+- **Component classes** only for multi-property patterns that repeat (`.glass-panel`, `.home-card`, `.callout-*`).
 - Prefer Tailwind utilities over custom CSS.
 
 ### JavaScript
@@ -86,3 +86,9 @@ Example: `class="flex items-center w-full px-4 py-2 text-sm text-(--color-text) 
   - Scope: area of change (e.g., `template`, `css`, `js`)
 - Keep commits atomic — one logical change per commit.
 - PRs: assign to `hakula139`, label `enhancement` for `feat`.
+
+### Spell Checking
+
+- Run `npx cspell "**/*"` before committing. Config in `cspell.json`.
+- Add project-specific words to the `words` array in `cspell.json`.
+- Generated files (`pnpm-lock.yaml`, compiled CSS) are excluded via `ignorePaths`.
