@@ -37,9 +37,7 @@
 {%- endif -%}
 <div class="music-player-wrapper">
   <iframe
-    frameborder="no"
-    marginwidth="0"
-    marginheight="0"
+    style="border: 0"
     width="100%"
     height="{{ height }}"
     src="https://music.163.com/outchain/player?type={{ outchain_type }}&id={{ id }}&auto=0&height={{ inner_height }}"
@@ -50,9 +48,7 @@
 {%- set height = named_args.height | default("86") -%}
 <div class="music-player-wrapper">
   <iframe
-    frameborder="no"
-    marginwidth="0"
-    marginheight="0"
+    style="border: 0"
     width="100%"
     height="{{ height }}"
     src="https://i.y.qq.com/n2/m/outchain/player/index.html?songid={{ id }}&songtype=0"

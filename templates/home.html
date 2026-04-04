@@ -27,7 +27,7 @@
   <div class="max-w-4xl mx-auto px-4 py-6 space-y-4">
     {%- for page in pages %}
     <article class="glass-panel px-5 py-4 flex items-center justify-between gap-4">
-      <a href="{{ page.url }}" class="flex-1 min-w-0 font-medium truncate hover:text-(--color-link-hover) transition-colors">
+      <a href="{{ page.url | safe }}" class="flex-1 min-w-0 font-medium truncate hover:text-(--color-link-hover) transition-colors">
         {{ page.title }}
       </a>
       {%- if page.date %}
