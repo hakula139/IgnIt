@@ -17,7 +17,7 @@
   /* Stronger bottom gradient on mobile for text readability.
      No backdrop-filter — avoids the inherent blur-edge seam. */
   .home-card-overlay {
-    @apply absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black/5 transition-[background] duration-700;
+    @apply absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black/5;
   }
 
   /* Mobile layout matches the desktop hovered state: title in upper
@@ -58,9 +58,15 @@
   /* ── Desktop: Title Centered by Default, Reveal on Hover ── */
 
   @media (min-width: 1280px) {
-    /* Restore lighter overlay for desktop (frost handles readability on hover) */
+    /* Lighter base overlay for desktop; darker hover state on ::after */
     .home-card-overlay {
       @apply from-black/65 via-black/30 to-black/10;
+    }
+
+    /* CSS gradients aren't animatable, so the darker hover gradient
+       lives on ::after and fades in via opacity transition. */
+    .home-card-overlay::after {
+      @apply absolute inset-0 content-[''] opacity-0 bg-linear-to-t from-black/85 via-black/50 to-black/20 transition-opacity duration-700;
     }
 
     .home-card-body {
@@ -96,8 +102,8 @@
       @apply scale-card-hover blur-sm;
     }
 
-    .home-card:hover .home-card-overlay {
-      @apply from-black/85 via-black/50 to-black/20;
+    .home-card:hover .home-card-overlay::after {
+      @apply opacity-100;
     }
 
     .home-card:hover .home-card-body::before {
