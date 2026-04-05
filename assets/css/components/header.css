@@ -24,7 +24,7 @@
   }
 
   .header-mobile {
-    @apply absolute inset-x-0 top-14 py-2 bg-white/75 rounded-t-none border-t-0 sm:hidden;
+    @apply absolute inset-x-0 top-14 py-2 bg-white/75 rounded-t-none border-t-0 md:hidden;
 
     @variant dark {
       @apply bg-bg/80;

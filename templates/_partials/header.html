@@ -6,7 +6,7 @@
     </a>
 
     {# Desktop navigation #}
-    <nav class="hidden items-center gap-1 whitespace-nowrap sm:flex">
+    <nav class="hidden items-center gap-1 whitespace-nowrap md:flex">
       {%- for item in menu_items %}
       <a
         href="{{ item.url | safe }}"
@@ -31,7 +31,7 @@
     {# Mobile menu toggle #}
     <button
       id="mobile-menu-toggle"
-      class="header-icon sm:hidden"
+      class="header-icon md:hidden"
       aria-label="Toggle menu"
       onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
     >
