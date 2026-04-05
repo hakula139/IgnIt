@@ -35,6 +35,16 @@
       <div class="home-card-body">
         <h2 class="home-card-title">{{ page.title }}</h2>
         <div class="home-card-reveal">
+          {%- if page.description %}
+          <p class="home-card-desc">{{ page.description }}</p>
+          {%- endif %}
+          {%- if page.tags %}
+          <div class="home-card-tags">
+            {%- for tag in page.tags %}
+            <a href="{{ tag.url | safe }}" class="home-card-tag">{{ tag.name }}</a>
+            {%- endfor %}
+          </div>
+          {%- endif %}
           {%- if page.date or page.section %}
           <div class="home-card-meta">
             {%- if page.date %}
@@ -48,16 +58,6 @@
               </a>
             </span>
             {%- endif %}
-          </div>
-          {%- endif %}
-          {%- if page.description %}
-          <p class="home-card-desc">{{ page.description }}</p>
-          {%- endif %}
-          {%- if page.tags %}
-          <div class="home-card-tags">
-            {%- for tag in page.tags %}
-            <a href="{{ tag.url | safe }}" class="home-card-tag">{{ tag.name }}</a>
-            {%- endfor %}
           </div>
           {%- endif %}
         </div>
