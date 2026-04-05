@@ -2,7 +2,7 @@
   .callout {
     --callout-color: #448aff;
 
-    @apply my-4 rounded-lg border-l-4 px-4 py-3;
+    @apply my-4 px-4 py-3 rounded-lg border-l-4;
     border-left-color: var(--callout-color);
     background: color-mix(in srgb, var(--callout-color) 10%, transparent);
   }

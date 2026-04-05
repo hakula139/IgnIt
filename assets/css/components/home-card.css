@@ -28,8 +28,14 @@
      mask-image fades the blur from transparent (top) to opaque (bottom),
      creating a smooth transition from clear image into frosted content. */
   .home-card-body::before {
-    @apply absolute inset-0 -z-10 content-[''] pointer-events-none backdrop-blur-lg backdrop-saturate-125 bg-linear-to-b from-transparent to-black/50;
-    mask-image: linear-gradient(to bottom, transparent, black 50%);
+    @apply absolute inset-0 -z-10 content-[''] backdrop-blur-lg backdrop-saturate-125 bg-linear-to-b from-transparent to-black/50 pointer-events-none;
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(0, 0, 0, 0.1) 30%,
+      rgba(0, 0, 0, 0.4) 50%,
+      black 70%
+    );
   }
 
   .home-card-title {
@@ -45,7 +51,7 @@
   }
 
   .home-card-tags {
-    @apply mt-2 flex flex-wrap justify-center gap-1.5;
+    @apply flex flex-wrap justify-center gap-1.5 mt-2;
   }
 
   .home-card-tag {
@@ -61,7 +67,7 @@
 
     /* Frost hidden by default, fades in on hover */
     .home-card-body::before {
-      @apply opacity-0 transition-opacity duration-[600ms];
+      @apply opacity-0 transition-opacity duration-600;
     }
 
     .home-card-title {
