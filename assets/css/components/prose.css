@@ -30,4 +30,18 @@
   .prose :where(p, li) {
     @apply wrap-break-word;
   }
+
+  /* ── Tables ── */
+
+  .prose table {
+    @apply block w-auto overflow-x-auto;
+  }
+
+  .prose .dense-table table {
+    @apply text-sm;
+  }
+
+  .prose .dense-table :where(th, td) {
+    @apply px-2 py-1 whitespace-nowrap;
+  }
 }
