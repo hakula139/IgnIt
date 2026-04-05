@@ -20,15 +20,17 @@
 
   /* ── Gradient Frost ── */
 
+  /* Mobile layout matches the desktop hovered state: title in upper
+     area, reveal content at the bottom, frost always visible. */
   .home-card-body {
-    @apply absolute inset-x-0 bottom-0 z-10 px-5 pb-5 pt-16 text-center;
+    @apply absolute inset-0 z-10 flex flex-col items-center justify-center p-5 text-center;
   }
 
-  /* Pseudo-element for gradient frosted glass.
+  /* Blur-only frost (no darkening — the overlay handles contrast).
      mask-image fades the blur from transparent (top) to opaque (bottom),
      creating a smooth transition from clear image into frosted content. */
   .home-card-body::before {
-    @apply absolute inset-0 -z-10 content-[''] backdrop-blur-lg backdrop-saturate-125 bg-linear-to-b from-transparent to-black/50 pointer-events-none;
+    @apply absolute inset-0 -z-10 content-[''] backdrop-blur-lg backdrop-saturate-125 pointer-events-none;
     mask-image: linear-gradient(
       to bottom,
       transparent,
@@ -39,7 +41,7 @@
   }
 
   .home-card-title {
-    @apply text-xl font-bold leading-snug text-white drop-shadow-text;
+    @apply -translate-y-10 text-xl font-bold leading-snug text-white drop-shadow-text;
   }
 
   .home-card-meta {
@@ -50,6 +52,10 @@
     @apply mt-2 text-sm leading-relaxed text-white/80 line-clamp-3;
   }
 
+  .home-card-reveal {
+    @apply absolute inset-x-0 bottom-0 px-5 pb-5;
+  }
+
   .home-card-tags {
     @apply flex flex-wrap justify-center gap-1.5 mt-2;
   }
@@ -58,11 +64,11 @@
     @apply px-2 py-0.5 text-xs text-white/85 rounded-full bg-white/15;
   }
 
-  /* ── Desktop: Centered Title + Fade-Slide Reveal ── */
+  /* ── Desktop: Title Centered by Default, Reveal on Hover ── */
 
   @media (min-width: 1280px) {
     .home-card-body {
-      @apply inset-0 flex flex-col items-center justify-center p-6;
+      @apply p-6;
     }
 
     /* Frost hidden by default, fades in on hover */
@@ -71,7 +77,7 @@
     }
 
     .home-card-title {
-      @apply text-2xl transition-[translate] duration-500;
+      @apply translate-y-0 text-2xl transition-[translate] duration-500;
     }
 
     .home-card-meta {
@@ -86,10 +92,8 @@
       @apply text-white/80;
     }
 
-    /* Absolutely positioned at the bottom so it doesn't affect
-       title centering. Fades in + slides up (no overflow clipping). */
     .home-card-reveal {
-      @apply absolute inset-x-0 bottom-0 px-6 pb-6 opacity-0 translate-y-3 transition-[opacity,translate] duration-500;
+      @apply px-6 pb-6 opacity-0 translate-y-3 transition-[opacity,translate] duration-500;
     }
 
     .home-card:hover .home-card-image {
