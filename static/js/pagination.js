@@ -21,7 +21,14 @@
   };
 
   for (const el of document.querySelectorAll('.pagination-jump')) {
-    el.addEventListener('click', () => showInput(el.closest('li')));
+    const activate = () => showInput(el.closest('li'));
+    el.addEventListener('click', activate);
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activate();
+      }
+    });
   }
 
   for (const input of document.querySelectorAll('.pagination-input')) {
