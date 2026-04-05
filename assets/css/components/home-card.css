@@ -18,15 +18,16 @@
     @apply absolute inset-0 bg-linear-to-t from-black/65 via-black/30 to-black/10 transition-[background] duration-700;
   }
 
-  /* ── Mobile: Gradient Frost ── */
+  /* ── Gradient Frost ── */
 
   .home-card-body {
     @apply absolute inset-x-0 bottom-0 z-10 px-5 pb-5 pt-16 text-center;
   }
 
-  /* Pseudo-element for the gradient frosted glass effect.
+  /* Pseudo-element for gradient frosted glass.
      mask-image fades the blur from transparent (top) to opaque (bottom),
-     creating a smooth transition from clear image into frosted content. */
+     creating a smooth transition from clear image into frosted content.
+     saturate(1.2) enriches colors behind the frost (iOS-style). */
   .home-card-body::before {
     content: '';
     @apply absolute inset-0 -z-10 pointer-events-none;
@@ -62,15 +63,15 @@
   @media (min-width: 1280px) {
     .home-card-body {
       @apply inset-0 p-6;
-      /* Grid: title gets remaining space (centered), reveal fills bottom */
       display: grid;
       grid-template-rows: 1fr auto;
       align-items: center;
     }
 
-    /* Remove mobile frost on desktop */
+    /* Frost hidden by default, fades in on hover */
     .home-card-body::before {
-      display: none;
+      opacity: 0;
+      transition: opacity 600ms ease;
     }
 
     .home-card-title {
@@ -90,7 +91,7 @@
       @apply text-white/80;
     }
 
-    /* CSS Grid 0fr→1fr for smooth height animation.
+    /* CSS Grid 0fr → 1fr for smooth height animation.
        As the reveal expands, the body's "auto" row grows and the
        "1fr" title row shrinks — the title glides upward naturally. */
     .home-card-reveal {
@@ -113,6 +114,10 @@
 
     .home-card:hover .home-card-overlay {
       @apply from-black/85 via-black/50 to-black/20;
+    }
+
+    .home-card:hover .home-card-body::before {
+      opacity: 1;
     }
 
     .home-card:hover .home-card-title {
