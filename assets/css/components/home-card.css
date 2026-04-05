@@ -23,7 +23,7 @@
   }
 
   .home-card-title {
-    @apply text-lg font-bold leading-[1.4] text-white drop-shadow-text transition-[translate] duration-700;
+    @apply text-lg font-bold leading-[1.4] text-white drop-shadow-text;
   }
 
   .home-card-meta {
@@ -31,45 +31,62 @@
   }
 
   .home-card-desc {
-    @apply mt-2 overflow-hidden text-sm text-white/70 line-clamp-2;
+    @apply mt-2 text-sm text-white/70 line-clamp-3;
   }
 
   .home-card-tags {
-    @apply flex flex-wrap mt-2 gap-1.5 overflow-hidden;
+    @apply mt-2 flex flex-wrap gap-1.5;
   }
 
   .home-card-tag {
-    @apply px-2 py-0.5 text-xs text-white/80 rounded-full bg-white/15;
+    @apply rounded-full bg-white/15 px-2 py-0.5 text-xs text-white/80;
   }
 
+  /* ── Desktop Hover Reveal ── */
+
   @media (min-width: 1280px) {
+    .home-card-body {
+      @apply transition-[translate] duration-500;
+    }
+
+    .home-card-title,
+    .home-card-meta {
+      @apply transition-[translate,opacity] duration-500;
+    }
+
     .home-card-desc,
     .home-card-tags {
-      @apply max-h-0 opacity-0 transition-[max-height,opacity] duration-700;
+      @apply translate-y-2 opacity-0 transition-[translate,opacity] duration-500;
+    }
+
+    .home-card-desc {
+      @apply delay-75;
     }
 
     .home-card-tags {
-      @apply delay-100;
+      @apply delay-150;
     }
 
     .home-card:hover .home-card-image {
-      @apply scale-135 blur-sm;
+      @apply scale-card-hover blur-sm;
     }
 
     .home-card:hover .home-card-overlay {
       @apply bg-linear-to-t from-black/85 via-black/50 to-transparent;
     }
 
-    .home-card:hover .home-card-title {
+    .home-card:hover .home-card-body {
       @apply -translate-y-1;
     }
 
-    .home-card:hover .home-card-desc {
-      @apply max-h-20 opacity-100;
+    .home-card:hover .home-card-title,
+    .home-card:hover .home-card-meta {
+      @apply -translate-y-0.5;
     }
 
+    .home-card:hover .home-card-desc,
     .home-card:hover .home-card-tags {
-      @apply max-h-16 opacity-100;
+      @apply translate-y-0 opacity-100;
     }
   }
 

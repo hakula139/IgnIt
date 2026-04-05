@@ -6,6 +6,7 @@ fontawesome
 glassmorphism
 hakula
 hashchange
+katex
 minijinja
 ndash
 netease
