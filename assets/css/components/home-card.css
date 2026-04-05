@@ -18,48 +18,66 @@
     @apply absolute inset-0 bg-linear-to-t from-black/65 via-black/30 to-black/10 transition-[background] duration-700;
   }
 
-  /* Mobile: content at bottom, everything visible */
+  /* ── Mobile: Glass Panel at Bottom ── */
+
   .home-card-body {
-    @apply absolute inset-x-0 bottom-0 px-6 pb-6 text-center;
+    @apply absolute inset-x-0 bottom-0 z-10 px-5 pt-4 pb-5 text-center;
+    @apply rounded-t-xl backdrop-blur-md bg-black/35;
   }
 
   .home-card-title {
-    @apply text-2xl font-bold leading-snug text-white drop-shadow-text;
+    @apply text-xl font-bold leading-snug text-white drop-shadow-text;
   }
 
   .home-card-meta {
-    @apply mt-2 text-sm text-white/75;
+    @apply mt-2 text-sm text-white/80;
   }
 
   .home-card-desc {
-    @apply mt-3 text-sm leading-relaxed text-white/70 line-clamp-3;
+    @apply mt-2 text-sm leading-relaxed text-white/80 line-clamp-3;
   }
 
   .home-card-tags {
-    @apply mt-3 flex flex-wrap justify-center gap-1.5;
+    @apply mt-2 flex flex-wrap justify-center gap-1.5;
   }
 
   .home-card-tag {
-    @apply px-2 py-0.5 text-xs text-white/80 rounded-full bg-white/15;
+    @apply px-2 py-0.5 text-xs text-white/85 rounded-full bg-white/15;
   }
 
-  /* ── Desktop Hover Reveal ── */
+  /* ── Desktop: Centered Title + Hover Reveal ── */
 
   @media (min-width: 1280px) {
     .home-card-body {
-      @apply inset-0 flex flex-col items-center justify-center pb-0;
+      /* Cover card, center the title */
+      @apply inset-0 flex flex-col items-center justify-center p-6;
+      /* Remove mobile glass */
+      @apply rounded-none backdrop-blur-none bg-transparent;
       @apply transition-[transform] duration-600;
     }
 
     .home-card-title {
-      @apply text-3xl;
+      @apply text-2xl;
       @apply transition-[transform] duration-500;
     }
 
-    /* CSS Grid 0fr→1fr for height animation */
+    .home-card-meta {
+      @apply text-white/75;
+    }
+
+    .home-card-desc {
+      @apply text-white/70;
+    }
+
+    .home-card-tag {
+      @apply text-white/80;
+    }
+
+    /* CSS Grid 0fr→1fr for smooth height animation */
     .home-card-reveal {
       display: grid;
       grid-template-rows: 0fr;
+      width: 100%;
       opacity: 0;
       transition:
         grid-template-rows 600ms ease,
@@ -78,12 +96,14 @@
       @apply from-black/85 via-black/50 to-black/20;
     }
 
+    /* Nudge the centered group upward so content fills
+       the upper portion with some breathing room below. */
     .home-card:hover .home-card-body {
-      @apply -translate-y-[15%];
+      @apply -translate-y-[5%];
     }
 
     .home-card:hover .home-card-title {
-      @apply -translate-y-2;
+      @apply -translate-y-1;
     }
 
     .home-card:hover .home-card-reveal {
