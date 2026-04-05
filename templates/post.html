@@ -33,9 +33,9 @@
               {%- endif %}
               {%- if section %}
               <span>
-                {%- if date %} · {% endif -%}
+                {%- if date %}&ensp;·&ensp;{% endif -%}
                 <a href="{{ section.url | safe }}" class="text-text-secondary hover:text-link-hover transition-colors">
-                  <i class="far fa-folder fa-fw" aria-hidden="true"></i>{{ section.name }}
+                  <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ section.name }}
                 </a>
               </span>
               {%- endif %}

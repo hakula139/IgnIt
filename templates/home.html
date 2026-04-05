@@ -42,9 +42,9 @@
             {%- endif %}
             {%- if page.section %}
             <span>
-              {%- if page.date %} · {% endif -%}
+              {%- if page.date %}&ensp;·&ensp;{% endif -%}
               <a href="{{ page.section.url | safe }}" class="home-card-link">
-                <i class="far fa-folder fa-fw" aria-hidden="true"></i>{{ page.section.name }}
+                <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ page.section.name }}
               </a>
             </span>
             {%- endif %}
