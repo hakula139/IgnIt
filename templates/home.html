@@ -1,5 +1,19 @@
 {% extends "base.html" %}
 
+{% block head %}
+{%- if config.description %}
+  <meta name="description" content="{{ config.description }}">
+{%- endif %}
+  <meta property="og:title" content="{{ config.title }}">
+{%- if config.description %}
+  <meta property="og:description" content="{{ config.description }}">
+{%- endif %}
+  <meta property="og:url" content="{{ config.base_url | safe }}/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ config.title }}">
+  <meta name="twitter:card" content="summary">
+{%- endblock %}
+
 {% block body %}
 {%- set profile = config.params.home.profile %}
 {%- if profile %}
