@@ -45,15 +45,17 @@
     @apply px-2 py-0.5 text-xs text-white/85 rounded-full bg-white/15;
   }
 
-  /* ── Desktop: Centered Title + Hover Reveal ── */
+  /* ── Desktop: Centered Title + Bottom-Fill Reveal ── */
 
   @media (min-width: 1280px) {
     .home-card-body {
-      /* Cover card, center the title */
-      @apply inset-0 flex flex-col items-center justify-center p-6;
+      @apply inset-0 p-6;
       /* Remove mobile glass */
       @apply rounded-none backdrop-blur-none bg-transparent;
-      @apply transition-[transform] duration-600;
+      /* Grid: title gets remaining space (centered), reveal fills bottom */
+      display: grid;
+      grid-template-rows: 1fr auto;
+      align-items: center;
     }
 
     .home-card-title {
@@ -73,7 +75,9 @@
       @apply text-white/80;
     }
 
-    /* CSS Grid 0fr→1fr for smooth height animation */
+    /* CSS Grid 0fr→1fr for smooth height animation.
+       As the reveal expands, the body's "auto" row grows and the
+       "1fr" title row shrinks — the title glides upward naturally. */
     .home-card-reveal {
       display: grid;
       grid-template-rows: 0fr;
@@ -94,12 +98,6 @@
 
     .home-card:hover .home-card-overlay {
       @apply from-black/85 via-black/50 to-black/20;
-    }
-
-    /* Nudge the centered group upward so content fills
-       the upper portion with some breathing room below. */
-    .home-card:hover .home-card-body {
-      @apply -translate-y-[5%];
     }
 
     .home-card:hover .home-card-title {
