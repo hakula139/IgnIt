@@ -73,25 +73,9 @@
     }
   }
 
-  /* ── Profile & Text Card ── */
+  /* ── Profile ── */
 
   .profile-avatar {
     @apply h-24 w-24 mx-auto mb-4 rounded-full shadow-md;
-  }
-
-  .text-card {
-    @apply flex items-center justify-between gap-4 px-5 py-4;
-  }
-
-  .text-card-title {
-    @apply min-w-0 flex-1 truncate font-medium transition-colors;
-  }
-
-  .text-card-title:hover {
-    @apply text-link-hover;
-  }
-
-  .text-card-date {
-    @apply shrink-0 text-sm tabular-nums text-text-secondary;
   }
 }

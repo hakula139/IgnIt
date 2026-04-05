@@ -54,12 +54,12 @@
       </a>
     </article>
     {%- else %}
-    <article class="glass-panel text-card">
-      <a href="{{ page.url | safe }}" class="text-card-title">
+    <article class="glass-panel post-entry px-5 py-4">
+      <a href="{{ page.url | safe }}" class="post-entry-title font-medium">
         {{ page.title }}
       </a>
       {%- if page.date %}
-      <time datetime="{{ page.date }}" class="text-card-date">
+      <time datetime="{{ page.date }}" class="post-entry-date">
         {{ page.date[0:10] }}
       </time>
       {%- endif %}
