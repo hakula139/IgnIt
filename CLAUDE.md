@@ -10,45 +10,74 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 .
 ├── assets/
 │   └── css/
-│       └── main.css             # Tailwind source (@theme, @layer, @variant)
+│       ├── main.css               # Entry: tokens, dark mode, partial imports
+│       ├── base.css               # @layer base (html, body, a, selection)
+│       └── components/
+│           ├── glass-panel.css    # .glass-panel, .header-nav, .site-footer
+│           ├── header.css         # .header-logo, .header-link, .header-icon, .header-mobile-*
+│           ├── home-card.css      # .home-card-*, .profile-avatar, .text-card-*
+│           ├── content.css        # .article-title, .toc-collapse, .toc-trigger, .toc-body, .toc-sidebar
+│           ├── listing.css        # .year-heading, .tag-pill, .category-card, .post-entry-*
+│           ├── pagination.css     # .pagination-link, .pagination-ellipsis, .pagination-input
+│           ├── callout.css        # .callout, .callout-note … .callout-quote, dark overrides
+│           └── prose.css          # .prose variable overrides, code, word-break
 ├── static/
 │   ├── css/
-│   │   ├── apple-music.css      # Apple Music embed light / dark toggle
-│   │   ├── syntax.css           # Syntax highlighting (Material palette)
-│   │   └── table.css            # Default table styles
+│   │   ├── apple-music.css        # Apple Music embed light / dark toggle
+│   │   ├── syntax.css             # Syntax highlighting (Material palette)
+│   │   └── table.css              # Default table styles
 │   ├── dist/
-│   │   └── style.min.css        # Compiled Tailwind output (gitignored)
+│   │   └── style.min.css          # Compiled Tailwind output (committed for submodule consumers)
 │   └── js/
-│       ├── pagination.js        # Page-jump controls for pagination
-│       └── theme.js             # Dark mode toggle + system preference
+│       ├── pagination.js          # Page-jump controls for pagination
+│       └── theme.js               # Dark mode toggle + system preference
 └── templates/
-    ├── _partials/               # Shared template fragments ({% include %})
-    │   ├── footer.html          # Glass-panel footer (copyright, license)
-    │   ├── head-deps.html       # Conditional CDN deps (FontAwesome, KaTeX)
-    │   ├── header.html          # Fixed nav header with menu + theme toggle
-    │   ├── meta-og.html         # OG / Twitter Card meta tags
-    │   ├── pagination.html      # Pagination nav + page-jump input
-    │   └── post-entry.html      # Post entry (title + conditional date)
-    ├── base.html                # Base layout (glass panels, background image)
-    ├── home.html                # Home page (profile + image cards with hover reveal)
-    ├── page.html                # Standalone page (glass card, collapsible TOC)
-    ├── post.html                # Post page (glass card, sticky TOC sidebar)
-    ├── section.html             # Section listing (year-grouped, glass card)
-    ├── taxonomy.html            # Taxonomy index (tag cloud / category grid)
-    ├── term.html                # Term page (year-grouped, pagination)
+    ├── _partials/                  # Shared template fragments ({% include %})
+    │   ├── footer.html            # Glass-panel footer (copyright, license)
+    │   ├── head-deps.html         # Conditional CDN deps (FontAwesome, KaTeX)
+    │   ├── header.html            # Fixed nav header with menu + theme toggle
+    │   ├── meta-og.html           # OG / Twitter Card meta tags
+    │   ├── pagination.html        # Pagination nav + page-jump input
+    │   └── post-entry.html        # Post entry (title + conditional date)
+    ├── base.html                   # Base layout (glass panels, background image)
+    ├── home.html                   # Home page (profile + image cards with hover reveal)
+    ├── page.html                   # Standalone page (glass card, collapsible TOC)
+    ├── post.html                   # Post page (glass card, sticky TOC sidebar)
+    ├── section.html                # Section listing (year-grouped, glass card)
+    ├── taxonomy.html               # Taxonomy index (tag cloud / category grid)
+    ├── term.html                   # Term page (year-grouped, pagination)
     └── directives/
-        └── music.html           # Music embed directive
+        └── music.html              # Music embed directive
 ```
 
 ### CSS Architecture
 
-Source CSS lives in `assets/css/main.css` using Tailwind CSS v4 conventions:
+Source CSS lives in `assets/css/` using Tailwind CSS v4 conventions:
 
-- `@theme { ... }` — design tokens (colors, fonts, radii, shadows)
-- `@variant dark` — dark mode via `[data-theme="dark"]` attribute
-- `@layer base` — dark mode overrides, background image, selection, links
-- `@layer components` — glass panels, home cards, callout types, prose overrides
-- Templates use Tailwind utility classes directly for layout and styling
+- **`main.css`** — Entry point: `@import 'tailwindcss'`, `@theme` tokens, `@variant dark`, dark-mode token overrides, then `@import` for each partial. The Tailwind CLI inlines all imports before compilation, so tokens and utilities are available in every partial.
+- **`base.css`** — `@layer base` styles: `html`, `body`, `body::before` (background image), `::selection`, `a`, scroll offset.
+- **`components/*.css`** — `@layer components` partials, one per concern. Each file wraps all rules in `@layer components { ... }`.
+
+#### Design Tokens
+
+Defined in `@theme { ... }` in `main.css`. Custom properties follow these prefixes:
+
+- `--color-*` — colors (bg, text, link, border, card, selection)
+- `--radius-*` — border radii
+- `--shadow-*` — box shadows
+
+#### Component Classes vs. Inline Utilities
+
+Templates use semantic component class names for repeated multi-property patterns. Inline Tailwind utilities are acceptable for:
+
+- Simple layout helpers (1–3 utilities)
+- One-off modifiers or responsive overrides
+
+Use `@apply` in the appropriate CSS partial for anything else. Use canonical Tailwind v4 class names (e.g., `text-link-hover` not `text-(--color-link-hover)`, `rounded-card` not `rounded-(--radius-card)`).
+
+#### Build Output
+
+`static/dist/style.min.css` is the compiled output, committed to git so submodule consumers get a working theme without needing Node.js. **Always run `pnpm build` before committing** to keep the compiled output in sync with source.
 
 To rebuild CSS: `pnpm build` (or `pnpm dev` for watch mode).
 
@@ -65,14 +94,15 @@ To rebuild CSS: `pnpm build` (or `pnpm dev` for watch mode).
 Follow this order for utility classes in HTML attributes:
 layout → sizing → spacing → overflow → typography → visual → transitions → interactivity
 
-Example: `class="flex items-center w-full px-4 py-2 text-sm text-(--color-text) bg-(--color-bg) rounded-lg transition-colors cursor-pointer"`
+Example: `class="flex items-center w-full px-4 py-2 text-sm text-text bg-bg rounded-lg transition-colors cursor-pointer"`
 
 ### CSS
 
 - **Design tokens** in `@theme { ... }` block — colors, fonts, radii, shadows.
 - **Custom properties** prefixed with `--color-`, `--radius-`, `--shadow-`.
-- **Component classes** only for multi-property patterns that repeat (`.glass-panel`, `.home-card`, `.callout-*`).
+- **Component classes** for multi-property patterns that repeat. One CSS partial per concern under `components/`.
 - Prefer Tailwind utilities over custom CSS.
+- `@import` order in `main.css` determines cascade order within the same `@layer`.
 
 ### JavaScript
 

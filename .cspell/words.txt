@@ -7,7 +7,12 @@ glassmorphism
 hakula
 hashchange
 minijinja
+ndash
 netease
+noopener
+noreferrer
+nums
+onclick
 outchain
 palenight
 scrollbar

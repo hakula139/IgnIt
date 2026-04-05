@@ -1,0 +1,31 @@
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply flex min-h-screen flex-col text-text leading-[1.75] bg-bg transition-colors duration-300;
+  }
+
+  body::before {
+    @apply fixed inset-0 z-[-1] content-[''];
+    background: var(--bg-image, var(--color-bg)) center / cover no-repeat;
+  }
+
+  ::selection {
+    @apply bg-selection;
+  }
+
+  a {
+    @apply text-link no-underline transition-colors duration-300;
+  }
+
+  a:hover {
+    @apply text-link-hover;
+  }
+
+  /* Scroll offset for fixed header */
+  [id] {
+    @apply scroll-mt-18;
+  }
+}

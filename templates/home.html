@@ -3,11 +3,11 @@
 {% block body %}
 {%- set profile = config.params.home.profile %}
 {%- if profile %}
-  <div class="max-w-4xl mx-auto px-4 pt-6">
-    <div class="glass-panel p-6 sm:p-8 text-center">
+  <div class="mx-auto max-w-4xl px-4 pt-6">
+    <div class="glass-panel p-6 text-center sm:p-8">
       {%- if profile.avatar %}
       <img
-        class="w-24 h-24 rounded-full mx-auto mb-4 shadow-md"
+        class="profile-avatar"
         src="{{ profile.avatar | safe }}"
         alt="{{ config.author.name }}"
       >
@@ -23,7 +23,7 @@
 {%- endif %}
 
 {%- if pages %}
-  <div class="max-w-4xl mx-auto px-4 py-6 space-y-4">
+  <div class="mx-auto max-w-4xl space-y-4 px-4 py-6">
     {%- for page in pages %}
     {%- if page.featured_image %}
     <article class="home-card">
@@ -54,12 +54,12 @@
       </a>
     </article>
     {%- else %}
-    <article class="glass-panel flex items-center justify-between gap-4 px-5 py-4">
-      <a href="{{ page.url | safe }}" class="min-w-0 flex-1 truncate font-medium transition-colors hover:text-link-hover">
+    <article class="glass-panel text-card">
+      <a href="{{ page.url | safe }}" class="text-card-title">
         {{ page.title }}
       </a>
       {%- if page.date %}
-      <time datetime="{{ page.date }}" class="shrink-0 text-sm tabular-nums text-text-secondary">
+      <time datetime="{{ page.date }}" class="text-card-date">
         {{ page.date[0:10] }}
       </time>
       {%- endif %}

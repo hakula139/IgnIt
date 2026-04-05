@@ -1,0 +1,37 @@
+@layer components {
+  .header-logo {
+    @apply text-lg font-semibold text-text transition-colors;
+  }
+
+  .header-logo:hover {
+    @apply text-link-hover;
+  }
+
+  .header-link {
+    @apply px-3 py-1.5 text-sm text-text-secondary rounded-lg transition-colors;
+  }
+
+  .header-link:hover {
+    @apply text-link-hover bg-bg/50;
+  }
+
+  .header-icon {
+    @apply p-2 text-text-secondary rounded-lg transition-colors cursor-pointer;
+  }
+
+  .header-icon:hover {
+    @apply text-link-hover;
+  }
+
+  .header-mobile {
+    @apply absolute inset-x-0 top-14 py-2 rounded-t-none border-t-0 sm:hidden;
+  }
+
+  .header-mobile-link {
+    @apply block px-6 py-2 text-left text-sm text-text-secondary transition-colors cursor-pointer;
+  }
+
+  .header-mobile-link:hover {
+    @apply text-link-hover bg-bg/30;
+  }
+}

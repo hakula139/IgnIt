@@ -1,0 +1,97 @@
+@layer components {
+  @keyframes image-fade-in {
+    from {
+      opacity: 0;
+      transform: scale(1.03);
+    }
+  }
+
+  .home-card {
+    @apply relative h-88 overflow-hidden rounded-card border border-white/8 bg-card shadow-card;
+  }
+
+  .home-card-image {
+    @apply absolute inset-0 bg-cover animate-image-fade-in transition-[scale,filter] duration-1000;
+  }
+
+  .home-card-overlay {
+    @apply absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent transition-[background] duration-700;
+  }
+
+  .home-card-body {
+    @apply absolute inset-x-0 bottom-0 p-5;
+  }
+
+  .home-card-title {
+    @apply text-lg font-bold leading-[1.4] text-white drop-shadow-text transition-[translate] duration-700;
+  }
+
+  .home-card-meta {
+    @apply mt-1.5 text-sm text-white/75;
+  }
+
+  .home-card-desc {
+    @apply mt-2 overflow-hidden text-sm text-white/70 line-clamp-2;
+  }
+
+  .home-card-tags {
+    @apply flex flex-wrap mt-2 gap-1.5 overflow-hidden;
+  }
+
+  .home-card-tag {
+    @apply px-2 py-0.5 text-xs text-white/80 rounded-full bg-white/15;
+  }
+
+  @media (min-width: 1280px) {
+    .home-card-desc,
+    .home-card-tags {
+      @apply max-h-0 opacity-0 transition-[max-height,opacity] duration-700;
+    }
+
+    .home-card-tags {
+      @apply delay-100;
+    }
+
+    .home-card:hover .home-card-image {
+      @apply scale-135 blur-sm;
+    }
+
+    .home-card:hover .home-card-overlay {
+      @apply bg-linear-to-t from-black/85 via-black/50 to-transparent;
+    }
+
+    .home-card:hover .home-card-title {
+      @apply -translate-y-1;
+    }
+
+    .home-card:hover .home-card-desc {
+      @apply max-h-20 opacity-100;
+    }
+
+    .home-card:hover .home-card-tags {
+      @apply max-h-16 opacity-100;
+    }
+  }
+
+  /* ── Profile & Text Card ── */
+
+  .profile-avatar {
+    @apply h-24 w-24 mx-auto mb-4 rounded-full shadow-md;
+  }
+
+  .text-card {
+    @apply flex items-center justify-between gap-4 px-5 py-4;
+  }
+
+  .text-card-title {
+    @apply min-w-0 flex-1 truncate font-medium transition-colors;
+  }
+
+  .text-card-title:hover {
+    @apply text-link-hover;
+  }
+
+  .text-card-date {
+    @apply shrink-0 text-sm tabular-nums text-text-secondary;
+  }
+}

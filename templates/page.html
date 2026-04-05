@@ -8,18 +8,16 @@
 {%- endblock %}
 
 {% block body %}
-  <div class="max-w-4xl mx-auto px-4 py-6">
+  <div class="mx-auto max-w-4xl px-4 py-6">
     <article class="glass-panel p-6 sm:p-8">
       <header class="mb-6">
-        <h1 class="text-2xl sm:text-3xl font-semibold leading-tight">{{ title }}</h1>
+        <h1 class="article-title">{{ title }}</h1>
       </header>
 
       {%- if toc %}
-      <details class="mb-6 rounded-lg bg-bg-secondary/50 border border-border">
-        <summary class="px-4 py-2.5 cursor-pointer text-sm font-medium text-text-secondary select-none">
-          Table of Contents
-        </summary>
-        <div class="px-4 pb-3 text-sm">{{ toc | safe }}</div>
+      <details class="toc-collapse">
+        <summary class="toc-trigger">Table of Contents</summary>
+        <div class="toc-body">{{ toc | safe }}</div>
       </details>
       {%- endif %}
 
