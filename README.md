@@ -109,7 +109,7 @@ pnpm build       # Build static/dist/style.min.css
 ## Theme Development
 
 Source CSS: `assets/css/main.css` (Tailwind `@theme` tokens, custom components).
-Compiled output: `static/dist/style.min.css` (gitignored build artifact).
+Compiled output: `static/dist/style.min.css` (committed so submodule consumers work without Node.js).
 
 ```bash
 pnpm dev         # Watch mode — rebuilds CSS on template changes
