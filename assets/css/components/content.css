@@ -18,4 +18,30 @@
   .toc-sidebar {
     @apply sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto p-4 text-sm;
   }
+
+  /* ── TOC Navigation ── */
+
+  .toc ul {
+    @apply m-0 list-none p-0;
+  }
+
+  .toc > ul > li > ul {
+    @apply pl-3;
+  }
+
+  .toc > ul > li > ul > li > ul {
+    @apply pl-3;
+  }
+
+  .toc li {
+    @apply my-0.5;
+  }
+
+  .toc a {
+    @apply block border-l-2 border-border py-0.5 pl-3 text-text-secondary no-underline transition-colors;
+  }
+
+  .toc a:hover {
+    @apply border-link text-link;
+  }
 }
