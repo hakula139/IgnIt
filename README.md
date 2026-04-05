@@ -42,7 +42,7 @@ IgnIt provides default parameters that can be overridden in your site's `config.
 ```toml
 [params]
 cdn = "https://cdn.jsdelivr.net/npm"  # CDN base URL for dependencies
-code_max_lines = 40                   # Max visible lines in code blocks before scrolling
+code_max_lines = 40                   # Max visible lines before scrolling
 emojis = true                         # Enable emoji replacement
 fontawesome = true                    # Enable Font Awesome icon loading
 paginate = 10                         # Items per page on listing pages
@@ -54,8 +54,8 @@ Set a fixed background image with glassmorphism content panels:
 
 ```toml
 [params.background]
-image = "/images/bg.webp"
-position = "right center"   # CSS background-position (default: center)
+image = "/images/bg.webp"             # Path to background image
+position = "right center"             # CSS background-position (default: center)
 ```
 
 When unset, panels use solid backgrounds (theme works without a background image).
@@ -66,15 +66,15 @@ When unset, panels use solid backgrounds (theme works without a background image
 [[menu.main]]
 name = "Posts"
 url = "/posts/"
-icon = "fas fa-archive"   # Font Awesome class (optional)
-weight = 1                # Sort order (ascending)
+icon = "fas fa-archive"               # Font Awesome class (optional)
+weight = 1                            # Sort order (ascending)
 
 [[menu.main]]
 name = "GitHub"
 url = "https://github.com/user"
 icon = "fab fa-github"
 weight = 10
-external = true           # Opens in new tab
+external = true                       # Opens in new tab
 ```
 
 ### Footer
