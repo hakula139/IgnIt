@@ -58,14 +58,11 @@
     @apply px-2 py-0.5 text-xs text-white/85 rounded-full bg-white/15;
   }
 
-  /* ── Desktop: Centered Title + Bottom-Fill Reveal ── */
+  /* ── Desktop: Centered Title + Fade-Slide Reveal ── */
 
   @media (min-width: 1280px) {
     .home-card-body {
-      @apply inset-0 p-6;
-      display: grid;
-      grid-template-rows: 1fr auto;
-      align-items: center;
+      @apply inset-0 flex flex-col items-center justify-center p-6;
     }
 
     /* Frost hidden by default, fades in on hover */
@@ -91,21 +88,15 @@
       @apply text-white/80;
     }
 
-    /* CSS Grid 0fr → 1fr for smooth height animation.
-       As the reveal expands, the body's "auto" row grows and the
-       "1fr" title row shrinks — the title glides upward naturally. */
+    /* Absolutely positioned at the bottom so it doesn't affect
+       title centering. Fades in + slides up (no overflow clipping). */
     .home-card-reveal {
-      display: grid;
-      grid-template-rows: 0fr;
-      width: 100%;
+      @apply absolute inset-x-0 bottom-0 px-6 pb-6;
       opacity: 0;
+      transform: translateY(0.75rem);
       transition:
-        grid-template-rows 600ms ease,
-        opacity 400ms ease;
-    }
-
-    .home-card-reveal > div {
-      overflow: hidden;
+        opacity 500ms ease,
+        transform 500ms ease;
     }
 
     .home-card:hover .home-card-image {
@@ -121,12 +112,12 @@
     }
 
     .home-card:hover .home-card-title {
-      @apply -translate-y-1;
+      @apply -translate-y-4;
     }
 
     .home-card:hover .home-card-reveal {
-      grid-template-rows: 1fr;
       opacity: 1;
+      transform: translateY(0);
     }
   }
 
