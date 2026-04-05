@@ -14,30 +14,21 @@
     @apply absolute inset-0 bg-cover animate-image-fade-in transition-[scale,filter] duration-1000;
   }
 
+  /* Stronger bottom gradient on mobile for text readability.
+     No backdrop-filter — avoids the inherent blur-edge seam. */
   .home-card-overlay {
-    @apply absolute inset-0 bg-linear-to-t from-black/65 via-black/30 to-black/10 transition-[background] duration-700;
+    @apply absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black/5 transition-[background] duration-700;
   }
 
-  /* ── Gradient Frost ── */
-
   /* Mobile layout matches the desktop hovered state: title in upper
-     area, reveal content at the bottom, frost always visible. */
+     area, reveal content at the bottom. */
   .home-card-body {
     @apply absolute inset-0 z-10 flex flex-col items-center justify-center p-5 text-center;
   }
 
-  /* Blur-only frost (no darkening — the overlay handles contrast).
-     mask-image fades the blur from transparent (top) to opaque (bottom),
-     creating a smooth transition from clear image into frosted content. */
+  /* Frost pseudo-element for desktop hover only. Hidden on mobile. */
   .home-card-body::before {
-    @apply absolute inset-0 -z-10 content-[''] backdrop-blur-lg backdrop-saturate-125 pointer-events-none;
-    mask-image: linear-gradient(
-      to bottom,
-      transparent,
-      rgba(0, 0, 0, 0.1) 30%,
-      rgba(0, 0, 0, 0.4) 50%,
-      black 70%
-    );
+    @apply hidden absolute inset-0 -z-10 content-[''] backdrop-blur-lg backdrop-saturate-125 pointer-events-none;
   }
 
   .home-card-title {
@@ -67,13 +58,18 @@
   /* ── Desktop: Title Centered by Default, Reveal on Hover ── */
 
   @media (min-width: 1280px) {
+    /* Restore lighter overlay for desktop (frost handles readability on hover) */
+    .home-card-overlay {
+      @apply from-black/65 via-black/30 to-black/10;
+    }
+
     .home-card-body {
       @apply p-6;
     }
 
-    /* Frost hidden by default, fades in on hover */
+    /* Frost visible on desktop, hidden by default, fades in on hover */
     .home-card-body::before {
-      @apply opacity-0 transition-opacity duration-600;
+      @apply block opacity-0 transition-opacity duration-600;
     }
 
     .home-card-title {
