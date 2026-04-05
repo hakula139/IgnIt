@@ -12,6 +12,10 @@
   const setTheme = (theme) => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem(STORAGE_KEY, theme);
+    const label = `Switch to ${theme === DARK ? 'light' : 'dark'} mode`;
+    for (const btn of document.querySelectorAll('[aria-label^="Switch to"]')) {
+      btn.setAttribute('aria-label', label);
+    }
   };
 
   const toggleTheme = () => {
