@@ -31,6 +31,20 @@
     @apply wrap-break-word;
   }
 
+  /* ── Images ── */
+
+  .prose img {
+    @apply rounded-lg;
+  }
+
+  .prose figure {
+    @apply text-center;
+  }
+
+  .prose figcaption {
+    @apply text-text-tertiary;
+  }
+
   /* ── Tables ── */
 
   .prose table {
