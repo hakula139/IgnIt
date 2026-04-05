@@ -27,33 +27,42 @@
     {%- for page in pages %}
     {%- if page.featured_image %}
     <article class="home-card">
-      <a href="{{ page.url | safe }}" class="block h-full">
-        <div
-          class="home-card-image"
-          style="background-image: url('{{ config.base_url | safe }}{{ page.featured_image | safe }}'); background-position: {{ page.featured_image_position | default('center', true) }}"
-        ></div>
-        <div class="home-card-overlay"></div>
-        <div class="home-card-body">
-          <h2 class="home-card-title">{{ page.title }}</h2>
-          <div class="home-card-reveal">
+      <div
+        class="home-card-image"
+        style="background-image: url('{{ config.base_url | safe }}{{ page.featured_image | safe }}'); background-position: {{ page.featured_image_position | default('center', true) }}"
+      ></div>
+      <div class="home-card-overlay"></div>
+      <div class="home-card-body">
+        <h2 class="home-card-title">{{ page.title }}</h2>
+        <div class="home-card-reveal">
+          {%- if page.date or page.section %}
+          <div class="home-card-meta">
             {%- if page.date %}
-            <div class="home-card-meta">
-              <time datetime="{{ page.date }}">{{ page.date[0:10] }}</time>
-            </div>
+            <time datetime="{{ page.date }}">{{ page.date[0:10] }}</time>
             {%- endif %}
-            {%- if page.description %}
-            <p class="home-card-desc">{{ page.description }}</p>
-            {%- endif %}
-            {%- if page.tags %}
-            <div class="home-card-tags">
-              {%- for tag in page.tags %}
-              <span class="home-card-tag">{{ tag }}</span>
-              {%- endfor %}
-            </div>
+            {%- if page.section %}
+            <span>
+              {%- if page.date %} · {% endif -%}
+              <a href="{{ page.section.url | safe }}" class="home-card-link">
+                <i class="far fa-folder fa-fw" aria-hidden="true"></i>{{ page.section.name }}
+              </a>
+            </span>
             {%- endif %}
           </div>
+          {%- endif %}
+          {%- if page.description %}
+          <p class="home-card-desc">{{ page.description }}</p>
+          {%- endif %}
+          {%- if page.tags %}
+          <div class="home-card-tags">
+            {%- for tag in page.tags %}
+            <a href="{{ tag.url | safe }}" class="home-card-tag">{{ tag.name }}</a>
+            {%- endfor %}
+          </div>
+          {%- endif %}
         </div>
-      </a>
+      </div>
+      <a href="{{ page.url | safe }}" class="home-card-link-cover"></a>
     </article>
     {%- else %}
     <article class="glass-panel post-entry px-5 py-4">

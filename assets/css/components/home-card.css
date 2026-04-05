@@ -47,7 +47,25 @@
   }
 
   .home-card-tag {
-    @apply px-2 py-0.5 text-xs text-white/85 rounded-full bg-white/15;
+    @apply px-2 py-0.5 text-xs text-white/85 no-underline rounded-full bg-white/15 transition-colors;
+  }
+
+  .home-card-tag:hover {
+    @apply text-white bg-white/30;
+  }
+
+  .home-card-link {
+    @apply text-white/80 no-underline transition-colors;
+  }
+
+  .home-card-link:hover {
+    @apply text-white;
+  }
+
+  /* Invisible anchor covering the entire card; sits between the
+     overlay and .home-card-body (z-10) so interactive links work. */
+  .home-card-link-cover {
+    @apply absolute inset-0 z-[5];
   }
 
   /* ── Desktop: Title Centered by Default, Reveal on Hover ── */

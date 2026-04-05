@@ -14,15 +14,32 @@
       <article class="glass-panel min-w-0 flex-1">
         {%- if featured_image %}
         <div class="aspect-[21/9] overflow-hidden rounded-t-[var(--radius-card)]">
-          <img src="{{ featured_image | safe }}" alt="{{ title }}" class="h-full w-full object-cover" style="object-position: {{ featured_image_position | default('center', true) }}">
+          <img
+            src="{{ featured_image | safe }}"
+            alt="{{ title }}"
+            class="h-full w-full object-cover"
+            style="object-position: {{ featured_image_position | default('center', true) }}"
+          >
         </div>
         {%- endif %}
 
         <div class="p-6 sm:p-8">
           <header class="mb-6">
             <h1 class="article-title">{{ title }}</h1>
-            {%- if date %}
-            <time datetime="{{ date }}" class="mt-2 block text-sm text-text-secondary">{{ date }}</time>
+            {%- if date or section %}
+            <div class="mt-2 text-sm text-text-secondary">
+              {%- if date %}
+              <time datetime="{{ date }}">{{ date }}</time>
+              {%- endif %}
+              {%- if section %}
+              <span>
+                {%- if date %} · {% endif -%}
+                <a href="{{ section.url | safe }}" class="text-text-secondary hover:text-link-hover transition-colors">
+                  <i class="far fa-folder fa-fw" aria-hidden="true"></i>{{ section.name }}
+                </a>
+              </span>
+              {%- endif %}
+            </div>
             {%- endif %}
           </header>
 
