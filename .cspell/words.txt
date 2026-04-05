@@ -30,3 +30,4 @@ startingwith
 syntect
 tabular
 tailwindcss
+xmark

@@ -33,7 +33,7 @@
       id="mobile-menu-toggle"
       class="header-icon md:hidden"
       aria-label="Toggle menu"
-      onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+      onclick="document.getElementById('mobile-menu').classList.toggle('hidden'); this.querySelector('i').classList.toggle('fa-bars'); this.querySelector('i').classList.toggle('fa-xmark')"
     >
       <i class="fas fa-bars fa-fw"></i>
     </button>
