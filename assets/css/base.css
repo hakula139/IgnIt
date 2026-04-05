@@ -4,7 +4,7 @@
   }
 
   body {
-    @apply flex min-h-screen flex-col text-text leading-[1.75] bg-bg transition-colors duration-300;
+    @apply flex flex-col min-h-screen text-text leading-[1.75] bg-bg transition-colors duration-300;
   }
 
   body::before {

@@ -19,7 +19,7 @@
   }
 
   .prose code {
-    @apply rounded bg-bg-code px-1.5 py-0.5 text-[0.875em];
+    @apply px-1.5 py-0.5 text-[0.875em] rounded bg-bg-code;
   }
 
   .prose code::before,

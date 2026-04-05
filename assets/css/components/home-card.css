@@ -35,11 +35,11 @@
   }
 
   .home-card-tags {
-    @apply mt-2 flex flex-wrap gap-1.5;
+    @apply flex flex-wrap mt-2 gap-1.5;
   }
 
   .home-card-tag {
-    @apply rounded-full bg-white/15 px-2 py-0.5 text-xs text-white/80;
+    @apply px-2 py-0.5 text-xs text-white/80 rounded-full bg-white/15;
   }
 
   /* ── Desktop Hover Reveal ── */

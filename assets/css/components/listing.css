@@ -20,7 +20,7 @@
   }
 
   .post-entry-title {
-    @apply min-w-0 flex-1 truncate transition-colors;
+    @apply flex-1 min-w-0 truncate transition-colors;
   }
 
   .post-entry-title:hover {
