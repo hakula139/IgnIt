@@ -26,11 +26,6 @@
     @apply absolute inset-0 z-10 flex flex-col items-center justify-center p-5 text-center;
   }
 
-  /* Frost pseudo-element for desktop hover only. Hidden on mobile. */
-  .home-card-body::before {
-    @apply hidden absolute inset-0 -z-10 content-[''] backdrop-blur-lg backdrop-saturate-125 pointer-events-none;
-  }
-
   .home-card-title {
     @apply -translate-y-10 text-xl font-bold leading-snug text-white drop-shadow-text;
   }
@@ -66,16 +61,11 @@
     /* CSS gradients aren't animatable, so the darker hover gradient
        lives on ::after and fades in via opacity transition. */
     .home-card-overlay::after {
-      @apply absolute inset-0 content-[''] opacity-0 bg-linear-to-t from-black/85 via-black/50 to-black/20 transition-opacity duration-700;
+      @apply absolute inset-0 content-[''] opacity-0 bg-linear-to-t from-black/70 via-black/35 to-black/15 transition-opacity duration-700;
     }
 
     .home-card-body {
       @apply p-6;
-    }
-
-    /* Frost visible on desktop, hidden by default, fades in on hover */
-    .home-card-body::before {
-      @apply block opacity-0 transition-opacity duration-600;
     }
 
     .home-card-title {
@@ -103,10 +93,6 @@
     }
 
     .home-card:hover .home-card-overlay::after {
-      @apply opacity-100;
-    }
-
-    .home-card:hover .home-card-body::before {
       @apply opacity-100;
     }
 
