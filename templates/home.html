@@ -30,7 +30,7 @@
       <a href="{{ page.url | safe }}" class="block h-full">
         <div
           class="home-card-image"
-          style="background-image: url('{{ config.base_url | safe }}{{ page.featured_image | safe }}'); background-position: {{ page.featured_image_position | default('center') }}"
+          style="background-image: url('{{ config.base_url | safe }}{{ page.featured_image | safe }}'); background-position: {{ page.featured_image_position | default('center', true) }}"
         ></div>
         <div class="home-card-overlay"></div>
         <div class="home-card-body">

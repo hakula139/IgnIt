@@ -14,7 +14,7 @@
       <article class="glass-panel min-w-0 flex-1">
         {%- if featured_image %}
         <div class="aspect-[21/9] overflow-hidden rounded-t-[var(--radius-card)]">
-          <img src="{{ featured_image | safe }}" alt="{{ title }}" class="h-full w-full object-cover">
+          <img src="{{ featured_image | safe }}" alt="{{ title }}" class="h-full w-full object-cover" style="object-position: {{ featured_image_position | default('center', true) }}">
         </div>
         {%- endif %}
 
