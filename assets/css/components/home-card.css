@@ -23,7 +23,7 @@
   /* Mobile layout matches the desktop hovered state: title in upper
      area, reveal content at the bottom. */
   .home-card-body {
-    @apply absolute inset-0 z-10 flex flex-col items-center justify-center p-5 text-center;
+    @apply absolute inset-0 z-10 flex flex-col items-center justify-center p-5 text-center pointer-events-none;
   }
 
   .home-card-title {
@@ -47,7 +47,7 @@
   }
 
   .home-card-tag {
-    @apply px-2 py-0.5 text-xs text-white/85 no-underline rounded-full bg-white/15 transition-colors;
+    @apply px-2 py-0.5 text-xs text-white/85 no-underline rounded-full bg-white/15 transition-colors pointer-events-auto;
   }
 
   .home-card-tag:hover {
@@ -55,7 +55,7 @@
   }
 
   .home-card-link {
-    @apply text-white/80 no-underline transition-colors;
+    @apply text-white/80 no-underline transition-colors pointer-events-auto;
   }
 
   .home-card-link:hover {
@@ -65,7 +65,7 @@
   /* Invisible anchor covering the entire card; sits between the
      overlay and .home-card-body (z-10) so interactive links work. */
   .home-card-link-cover {
-    @apply absolute inset-0 z-[5];
+    @apply absolute inset-0 z-5;
   }
 
   /* ── Desktop: Title Centered by Default, Reveal on Hover ── */
