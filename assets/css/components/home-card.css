@@ -31,7 +31,7 @@
   }
 
   .home-card-meta {
-    @apply mt-2 text-sm text-white/80;
+    @apply mt-3 text-sm text-white/80;
   }
 
   .home-card-desc {
