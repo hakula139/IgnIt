@@ -18,7 +18,7 @@
   }
 
   .pagination-input {
-    @apply h-9 w-14 text-center text-sm text-text rounded-lg border border-border outline-none backdrop-blur-xs transition-colors duration-200;
+    @apply h-9 min-w-9 w-9 text-center text-sm text-text rounded-lg border border-border outline-none backdrop-blur-xs transition-colors duration-200;
     background: color-mix(in srgb, var(--color-bg) 60%, transparent);
   }
 
