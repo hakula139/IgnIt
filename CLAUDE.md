@@ -28,6 +28,7 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 │   ├── dist/
 │   │   └── style.min.css                   # Compiled Tailwind output (committed for submodule consumers)
 │   └── js/
+│       ├── code-copy.js                    # Copy-to-clipboard for code blocks
 │       ├── pagination.js                   # Page-jump controls for pagination
 │       └── theme.js                        # Dark mode toggle + system preference
 └── templates/
