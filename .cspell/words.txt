@@ -7,7 +7,9 @@ glassmorphism
 hakula
 hashchange
 hiragino
+jetbrains
 pingfang
+sarasa
 sfmono
 katex
 minijinja
