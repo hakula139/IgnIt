@@ -6,6 +6,9 @@ fontawesome
 glassmorphism
 hakula
 hashchange
+hiragino
+pingfang
+sfmono
 katex
 minijinja
 ndash
