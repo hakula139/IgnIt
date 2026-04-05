@@ -9,18 +9,7 @@
         <i class="far fa-folder-open fa-fw" aria-hidden="true"></i> {{ section_title }}
       </h2>
 
-      {%- for group in page_groups %}
-      {%- if group.key %}
-      <h3 class="year-heading">{{ group.key }}</h3>
-      {%- endif %}
-      <div class="space-y-1">
-        {%- for page in group.pages %}
-        {%- include "_partials/post-entry.html" %}
-        {%- endfor %}
-      </div>
-      {%- endfor %}
-
-      {%- include "_partials/pagination.html" %}
+      {%- include "_partials/year-grouped-listing.html" %}
     </div>
   </div>
 {%- endblock %}
