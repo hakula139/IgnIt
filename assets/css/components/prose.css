@@ -73,4 +73,22 @@
   .prose .dense-table :where(th, td) {
     @apply px-2 py-1 whitespace-nowrap;
   }
+
+  /* ── Footnotes ── */
+
+  .prose .footnote-definition {
+    @apply flex gap-2 mt-4 pt-4 border-t border-border text-sm text-text-secondary;
+  }
+
+  .prose .footnote-definition-label {
+    @apply shrink-0 text-link font-semibold;
+  }
+
+  .prose .footnote-definition p {
+    @apply my-0;
+  }
+
+  .prose .footnote-reference a {
+    @apply text-link font-semibold no-underline;
+  }
 }

@@ -2,9 +2,30 @@
   .callout {
     --callout-color: #448aff;
 
-    @apply my-4 px-4 py-3 rounded-lg border-l-4;
+    @apply my-4 rounded-lg border-l-4;
     border-left-color: var(--callout-color);
     background: color-mix(in srgb, var(--callout-color) 10%, transparent);
+  }
+
+  .callout-title {
+    @apply px-4 py-2.5 text-sm font-semibold cursor-pointer select-none;
+    color: var(--callout-color);
+  }
+
+  .callout-title::marker {
+    color: var(--callout-color);
+  }
+
+  .callout-body {
+    @apply px-4 pb-3;
+  }
+
+  .callout-body > :first-child {
+    @apply mt-0;
+  }
+
+  .callout-body > :last-child {
+    @apply mb-0;
   }
 
   /* Variant colors — kiln outputs class="callout note", class="callout info", etc. */
