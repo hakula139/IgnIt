@@ -35,7 +35,7 @@
   }
 
   .home-card-desc {
-    @apply mt-2 text-sm leading-relaxed text-white/80 line-clamp-3;
+    @apply mt-2 text-sm leading-relaxed text-white/80 line-clamp-3 whitespace-pre-line;
   }
 
   .home-card-reveal {
