@@ -29,11 +29,13 @@
   /* Hide native spinner arrows on number inputs. */
   .pagination-input::-webkit-inner-spin-button,
   .pagination-input::-webkit-outer-spin-button {
+    appearance: none;
     -webkit-appearance: none;
-    margin: 0;
+    @apply m-0;
   }
 
   .pagination-input {
+    appearance: textfield;
     -moz-appearance: textfield;
   }
 }
