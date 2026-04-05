@@ -56,6 +56,7 @@ Set a fixed background image with glassmorphism content panels:
 [params.background]
 image = "/images/bg.webp"             # Path to background image
 position = "right center"             # CSS background-position (default: center)
+position_mobile = "60% center"        # Mobile background-position (default: position)
 ```
 
 When unset, panels use solid backgrounds (theme works without a background image).

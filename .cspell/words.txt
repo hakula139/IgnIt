@@ -2,15 +2,13 @@ autoplay
 callout
 endfor
 endif
+ensp
 fontawesome
 glassmorphism
 hakula
 hashchange
 hiragino
 jetbrains
-pingfang
-sarasa
-sfmono
 katex
 minijinja
 ndash
@@ -21,7 +19,10 @@ nums
 onclick
 outchain
 palenight
+pingfang
+sarasa
 scrollbar
+sfmono
 shortcode
 songid
 songtype
