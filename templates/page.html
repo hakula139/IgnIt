@@ -27,9 +27,5 @@
 {%- endblock %}
 
 {% block scripts %}
-{%- set cdn = config.params.cdn | default("https://cdn.jsdelivr.net/npm") -%}
-{%- if math | default(false) %}
-  <script src="{{ cdn | safe }}/katex@0.16/dist/katex.min.js" defer></script>
-  <script src="{{ cdn | safe }}/katex@0.16/dist/contrib/auto-render.min.js" defer onload="renderMathInElement(document.body)"></script>
-{%- endif %}
+{%- include "_partials/math.html" %}
 {%- endblock %}
