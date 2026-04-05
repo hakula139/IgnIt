@@ -31,6 +31,21 @@
     @apply wrap-break-word;
   }
 
+  /* ── Heading Anchors ── */
+
+  .prose :where(h1, h2, h3, h4, h5, h6) {
+    @apply relative;
+  }
+
+  .prose :where(h2, h3, h4, h5, h6)::before {
+    @apply absolute -left-5 text-link opacity-0 transition-opacity;
+    content: '#';
+  }
+
+  .prose :where(h2, h3, h4, h5, h6):hover::before {
+    @apply opacity-60;
+  }
+
   /* ── Images ── */
 
   .prose img {
