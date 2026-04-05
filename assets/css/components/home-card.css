@@ -26,15 +26,9 @@
 
   /* Pseudo-element for gradient frosted glass.
      mask-image fades the blur from transparent (top) to opaque (bottom),
-     creating a smooth transition from clear image into frosted content.
-     saturate(1.2) enriches colors behind the frost (iOS-style). */
+     creating a smooth transition from clear image into frosted content. */
   .home-card-body::before {
-    content: '';
-    @apply absolute inset-0 -z-10 pointer-events-none;
-    -webkit-backdrop-filter: blur(16px) saturate(1.2);
-    backdrop-filter: blur(16px) saturate(1.2);
-    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black 50%);
+    @apply absolute inset-0 -z-10 content-[''] pointer-events-none backdrop-blur-lg backdrop-saturate-125 bg-linear-to-b from-transparent to-black/50;
     mask-image: linear-gradient(to bottom, transparent, black 50%);
   }
 
@@ -67,13 +61,11 @@
 
     /* Frost hidden by default, fades in on hover */
     .home-card-body::before {
-      opacity: 0;
-      transition: opacity 600ms ease;
+      @apply opacity-0 transition-opacity duration-[600ms];
     }
 
     .home-card-title {
-      @apply text-2xl;
-      @apply transition-[transform] duration-500;
+      @apply text-2xl transition-[translate] duration-500;
     }
 
     .home-card-meta {
@@ -91,12 +83,7 @@
     /* Absolutely positioned at the bottom so it doesn't affect
        title centering. Fades in + slides up (no overflow clipping). */
     .home-card-reveal {
-      @apply absolute inset-x-0 bottom-0 px-6 pb-6;
-      opacity: 0;
-      transform: translateY(0.75rem);
-      transition:
-        opacity 500ms ease,
-        transform 500ms ease;
+      @apply absolute inset-x-0 bottom-0 px-6 pb-6 opacity-0 translate-y-3 transition-[opacity,translate] duration-500;
     }
 
     .home-card:hover .home-card-image {
@@ -108,16 +95,15 @@
     }
 
     .home-card:hover .home-card-body::before {
-      opacity: 1;
+      @apply opacity-100;
     }
 
     .home-card:hover .home-card-title {
-      @apply -translate-y-4;
+      @apply -translate-y-10;
     }
 
     .home-card:hover .home-card-reveal {
-      opacity: 1;
-      transform: translateY(0);
+      @apply opacity-100 translate-y-0;
     }
   }
 
