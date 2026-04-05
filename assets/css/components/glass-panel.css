@@ -8,11 +8,7 @@
   }
 
   .header-nav {
-    @apply fixed inset-x-0 top-0 z-50 flex h-14 items-center px-6 border-b border-b-white/20 bg-white/75 backdrop-blur-lg backdrop-saturate-125 transition-colors duration-300;
-
-    @variant dark {
-      @apply border-b-white/8 bg-bg/80;
-    }
+    @apply fixed inset-x-0 top-0 z-50 flex h-14 items-center px-6 rounded-none border-0 border-b shadow-none;
   }
 
   .site-footer {
