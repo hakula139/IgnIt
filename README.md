@@ -55,6 +55,7 @@ Set a fixed background image with glassmorphism content panels:
 ```toml
 [params.background]
 image = "/images/bg.webp"
+position = "right center"   # CSS background-position (default: center)
 ```
 
 When unset, panels use solid backgrounds (theme works without a background image).

@@ -9,7 +9,7 @@
 
   body::before {
     @apply fixed inset-0 -z-10 content-[''];
-    background: var(--bg-image, var(--color-bg)) center / cover no-repeat;
+    background: var(--bg-image, var(--color-bg)) var(--bg-position, center) / cover no-repeat;
   }
 
   ::selection {

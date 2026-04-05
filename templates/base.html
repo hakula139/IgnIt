@@ -13,7 +13,7 @@
 
 <body
   {%- if config.params.background and config.params.background.image %}
-  style="--bg-image: url('{{ config.base_url | safe }}{{ config.params.background.image | safe }}')"
+  style="--bg-image: url('{{ config.base_url | safe }}{{ config.params.background.image | safe }}'){% if config.params.background.position %}; --bg-position: {{ config.params.background.position }}{% endif %}"
   {%- endif %}
 >
   {% include "_partials/header.html" %}
