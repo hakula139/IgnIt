@@ -29,7 +29,7 @@
             {%- if date or section %}
             <div class="mt-2 text-sm text-text-secondary">
               {%- if date %}
-              <time datetime="{{ date }}">{{ date }}</time>
+              <time datetime="{{ date }}">{{ date[:10] }}</time>
               {%- endif %}
               {%- if section %}
               <span>
