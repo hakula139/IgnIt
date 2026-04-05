@@ -115,7 +115,7 @@
     }
 
     .home-card:hover .home-card-title {
-      @apply -translate-y-10;
+      @apply -translate-y-14;
     }
 
     .home-card:hover .home-card-reveal {
