@@ -21,6 +21,7 @@
     {%- block body %}{% endblock %}
   </main>
   {% include "_partials/footer.html" %}
+  <script src="{{ config.base_url | safe }}/js/code-copy.js" defer></script>
   {%- block scripts %}{% endblock %}
 </body>
 </html>
