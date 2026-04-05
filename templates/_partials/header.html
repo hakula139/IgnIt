@@ -23,8 +23,8 @@
         class="header-icon ml-2"
         aria-label="Switch to dark mode"
       >
-        <i class="fas fa-moon fa-fw dark:hidden"></i>
-        <i class="fas fa-sun fa-fw hidden dark:inline"></i>
+        <i class="fas fa-moon fa-fw dark:!hidden" aria-hidden="true"></i>
+        <i class="fas fa-sun fa-fw !hidden dark:!inline-block" aria-hidden="true"></i>
       </button>
     </nav>
 
@@ -55,10 +55,10 @@
       onclick="window.__toggleTheme()"
       class="header-mobile-link w-full"
     >
-      <i class="fas fa-moon fa-fw dark:hidden"></i>
-      <i class="fas fa-sun fa-fw hidden dark:inline"></i>
-      <span class="dark:hidden">Switch to dark mode</span>
-      <span class="hidden dark:inline">Switch to light mode</span>
+      <i class="fas fa-moon fa-fw dark:!hidden" aria-hidden="true"></i>
+      <i class="fas fa-sun fa-fw !hidden dark:!inline-block" aria-hidden="true"></i>
+      <span class="dark:!hidden">Switch to dark mode</span>
+      <span class="!hidden dark:!inline">Switch to light mode</span>
     </button>
   </div>
 </header>
