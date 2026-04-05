@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i assets/css/main.css -o static/dist/style.min.css --minify",
+    "dev": "tailwindcss -i assets/css/main.css -o static/dist/style.min.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4",
+    "@tailwindcss/typography": "^0.5",
+    "tailwindcss": "^4.2.2"
+  }
+}

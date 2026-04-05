@@ -8,13 +8,24 @@
 {%- endblock %}
 
 {% block body %}
-  <article class="page">
-    <header>
-      <h1>{{ title }}</h1>
-    </header>
-    {%- if toc %}
-    <aside>{{ toc | safe }}</aside>
-    {%- endif %}
-    <div class="content">{{ content | safe }}</div>
-  </article>
+  <div class="mx-auto max-w-4xl px-4 py-6">
+    <article class="glass-panel p-6 sm:p-8">
+      <header class="mb-6">
+        <h1 class="article-title">{{ title }}</h1>
+      </header>
+
+      {%- if toc %}
+      <details class="toc-collapse">
+        <summary class="toc-trigger">Table of Contents</summary>
+        <div class="toc-body">{{ toc | safe }}</div>
+      </details>
+      {%- endif %}
+
+      <div class="prose max-w-none">{{ content | safe }}</div>
+    </article>
+  </div>
+{%- endblock %}
+
+{% block scripts %}
+{%- include "_partials/math.html" %}
 {%- endblock %}

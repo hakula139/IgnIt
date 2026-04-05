@@ -2,51 +2,50 @@
 
 {% block title %}<title>{{ kind | capitalize }} - {{ config.title }}</title>{% endblock %}
 
-{% block head %}
-  <link rel="stylesheet" href="/css/taxonomy.css">
-{%- endblock %}
-
 {% block body %}
-  <div class="taxonomy-page">
-    <h2 class="taxonomy-title">
-      {%- if kind == "categories" -%}
-        All Categories
-      {%- elif kind == "tags" -%}
-        All Tags
-      {%- else -%}
-        All {{ kind | capitalize }}
-      {%- endif -%}
-    </h2>
+  <div class="mx-auto max-w-4xl px-4 py-6">
+    <div class="glass-panel p-6 sm:p-8">
+      <h2 class="mb-6 text-xl font-semibold">
+        {%- if kind == "tags" -%}
+          All Tags
+        {%- else -%}
+          All {{ kind | capitalize }}
+        {%- endif -%}
+      </h2>
 
-  {%- if kind == "categories" %}
-    <div class="category-grid">
-    {%- for term in terms %}
-      <div class="category-card">
-        <h3 class="category-card-title">
-          <a href="{{ term.url | safe }}">
-            <i class="far fa-folder fa-fw" aria-hidden="true"></i>&nbsp;{{ term.name }}
-          </a>
-        </h3>
-      {%- for page in term.pages[:5] %}
-        <article class="post-entry">
-          <a href="{{ page.url | safe }}" class="post-entry-link">{{ page.title }}</a>
-        </article>
-      {%- endfor %}
-      {%- if term.pages | length > 5 %}
-        <span class="category-card-more">
-          <a href="{{ term.url | safe }}">More &raquo;</a>
-        </span>
-      {%- endif %}
+      {%- if kind == "tags" %}
+      <div class="flex flex-wrap gap-3">
+        {%- for term in terms %}
+        <a href="{{ term.url | safe }}" class="tag-pill">
+          {{ term.name }}
+          <sup class="text-xs text-text-tertiary">{{ term.pages | length }}</sup>
+        </a>
+        {%- endfor %}
       </div>
-    {%- endfor %}
-    </div>
 
-  {%- elif kind == "tags" %}
-    <div class="tag-cloud">
-    {%- for term in terms %}
-      <a href="{{ term.url | safe }}">{{ term.name }} <sup>{{ term.pages | length }}</sup></a>
-    {%- endfor %}
+      {%- else %}
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+        {%- for term in terms %}
+        <div class="category-card">
+          <h3 class="mb-2 font-medium">
+            <a href="{{ term.url | safe }}" class="transition-colors hover:text-link-hover">
+              <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ term.name }}
+            </a>
+          </h3>
+          {%- for page in term.pages[:5] %}
+          <a href="{{ page.url | safe }}" class="block truncate py-0.5 text-sm text-text-secondary transition-colors hover:text-link-hover">
+            {{ page.title }}
+          </a>
+          {%- endfor %}
+          {%- if term.pages | length > 5 %}
+          <a href="{{ term.url | safe }}" class="mt-1 block text-sm text-text-tertiary transition-colors hover:text-link-hover">
+            More &raquo;
+          </a>
+          {%- endif %}
+        </div>
+        {%- endfor %}
+      </div>
+      {%- endif %}
     </div>
-  {%- endif %}
   </div>
 {%- endblock %}

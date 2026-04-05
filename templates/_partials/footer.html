@@ -1,0 +1,26 @@
+{%- set footer = config.params.footer | default({}) -%}
+{%- set current_year = now()[0:4] -%}
+<footer class="glass-panel site-footer">
+  <div class="mx-auto max-w-6xl">
+    {%- if footer.since %}
+    <p>
+      &copy; {{ footer.since }}&ndash;{{ current_year }} {{ config.author.name }}
+      {%- if footer.license %}
+      &middot;
+      <a href="{{ footer.license_url | default('#') | safe }}" class="hover:text-link-hover">
+        {{ footer.license }}
+      </a>
+      {%- endif %}
+    </p>
+    {%- else %}
+    <p>&copy; {{ current_year }} {{ config.author.name }}</p>
+    {%- endif %}
+
+    {%- if footer.powered_by | default(true) %}
+    <p class="mt-1">
+      Powered by <a href="https://github.com/hakula139/kiln" class="hover:text-link-hover">kiln</a>
+      &amp; <a href="https://github.com/hakula139/IgnIt" class="hover:text-link-hover">IgnIt</a>
+    </p>
+    {%- endif %}
+  </div>
+</footer>

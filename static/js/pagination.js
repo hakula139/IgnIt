@@ -8,11 +8,26 @@
 
   const base = pagination.dataset.baseUrl;
 
+  const showInput = (li) => {
+    li.querySelector('.pagination-jump').style.display = 'none';
+    const input = li.querySelector('.pagination-input');
+    input.style.display = '';
+    input.focus();
+  };
+
+  const hideInput = (li) => {
+    li.querySelector('.pagination-jump').style.display = '';
+    li.querySelector('.pagination-input').style.display = 'none';
+  };
+
   for (const el of document.querySelectorAll('.pagination-jump')) {
-    el.addEventListener('click', () => {
-      const li = el.closest('li');
-      li.classList.add('editing');
-      li.querySelector('.pagination-input').focus();
+    const activate = () => showInput(el.closest('li'));
+    el.addEventListener('click', activate);
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        activate();
+      }
     });
   }
 
@@ -22,19 +37,17 @@
       if (n >= 1 && n <= parseInt(input.max, 10)) {
         location.href = n === 1 ? `${base}/` : `${base}/page/${n}/`;
       }
-      input.closest('li').classList.remove('editing');
+      hideInput(input.closest('li'));
     };
 
     input.addEventListener('keydown', (e) => {
       if (e.key === 'Enter') {
         go();
       } else if (e.key === 'Escape') {
-        input.closest('li').classList.remove('editing');
+        hideInput(input.closest('li'));
       }
     });
 
-    input.addEventListener('blur', () => {
-      input.closest('li').classList.remove('editing');
-    });
+    input.addEventListener('blur', () => hideInput(input.closest('li')));
   }
 })();

@@ -1,6 +1,8 @@
     <article class="post-entry">
-      <a href="{{ page.url | safe }}" class="post-entry-link">{{ page.title }}</a>
+      <a href="{{ page.url | safe }}" class="post-entry-title">{{ page.title }}</a>
       {%- if page.date %}
-      <span class="post-entry-date">{{ page.date[0:10] if page.date[0:4] != current_year else page.date[5:10] }}</span>
+      <time datetime="{{ page.date }}" class="post-entry-date">
+        {{- page.date[5:10] -}}
+      </time>
       {%- endif %}
     </article>

@@ -1,34 +1,89 @@
 {% extends "base.html" %}
 
 {% block head %}
-  <link rel="stylesheet" href="/css/home.css">
-  <link rel="stylesheet" href="/css/taxonomy.css">
+{%- set og_type = "website" -%}
+{%- include "_partials/meta-og.html" %}
 {%- endblock %}
 
 {% block body %}
 {%- set profile = config.params.home.profile %}
 {%- if profile %}
-  <div class="home-profile">
-    {%- if profile.avatar %}
-    <img class="home-avatar" src="{{ profile.avatar | safe }}" alt="{{ config.author.name }}">
-    {%- endif %}
-    {%- if profile.title %}
-    <h1 class="home-title">{{ profile.title }}</h1>
-    {%- endif %}
-    {%- if profile.subtitle %}
-    <p class="home-subtitle">{{ profile.subtitle }}</p>
-    {%- endif %}
+  <div class="mx-auto max-w-4xl px-4 pt-6">
+    <div class="glass-panel p-6 text-center sm:p-8">
+      {%- if profile.avatar %}
+      <img
+        class="profile-avatar"
+        src="{{ profile.avatar | safe }}"
+        alt="{{ config.author.name }}"
+      >
+      {%- endif %}
+      {%- if profile.title %}
+      <h1 class="text-xl font-semibold">{{ profile.title }}</h1>
+      {%- endif %}
+      {%- if profile.subtitle %}
+      <p class="mt-2 text-sm text-text-secondary">{{ profile.subtitle }}</p>
+      {%- endif %}
+    </div>
   </div>
 {%- endif %}
 
 {%- if pages %}
-  {%- set current_year = now()[0:4] %}
-  <div class="taxonomy-page">
-  {%- for page in pages %}
-    {%- include "_partials/post-entry.html" %}
-  {%- endfor %}
+  <div class="mx-auto max-w-4xl space-y-4 px-4 py-6">
+    {%- for page in pages %}
+    {%- if page.featured_image %}
+    <article class="home-card">
+      <div
+        class="home-card-image"
+        style="background-image: url('{{ page.featured_image | safe }}'); background-position: {{ page.featured_image_position | default('center', true) }}"
+      ></div>
+      <div class="home-card-overlay"></div>
+      <div class="home-card-body">
+        <h2 class="home-card-title">{{ page.title }}</h2>
+        <div class="home-card-reveal">
+          {%- if page.description %}
+          <p class="home-card-desc">{{ page.description }}</p>
+          {%- endif %}
+          {%- if page.tags %}
+          <div class="home-card-tags">
+            {%- for tag in page.tags %}
+            <a href="{{ tag.url | safe }}" class="home-card-tag">{{ tag.name }}</a>
+            {%- endfor %}
+          </div>
+          {%- endif %}
+          {%- if page.date or page.section %}
+          <div class="home-card-meta">
+            {%- if page.date %}
+            <time datetime="{{ page.date }}">{{ page.date[0:10] }}</time>
+            {%- endif %}
+            {%- if page.section %}
+            <span>
+              {%- if page.date %}&ensp;·&ensp;{% endif -%}
+              <a href="{{ page.section.url | safe }}" class="home-card-link">
+                <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ page.section.name }}
+              </a>
+            </span>
+            {%- endif %}
+          </div>
+          {%- endif %}
+        </div>
+      </div>
+      <a href="{{ page.url | safe }}" class="home-card-link-cover" aria-label="{{ page.title }}"></a>
+    </article>
+    {%- else %}
+    <article class="glass-panel post-entry px-5 py-4">
+      <a href="{{ page.url | safe }}" class="post-entry-title font-medium">
+        {{ page.title }}
+      </a>
+      {%- if page.date %}
+      <time datetime="{{ page.date }}" class="post-entry-date">
+        {{ page.date[0:10] }}
+      </time>
+      {%- endif %}
+    </article>
+    {%- endif %}
+    {%- endfor %}
 
-  {%- include "_partials/pagination.html" %}
+    {%- include "_partials/pagination.html" %}
   </div>
 {%- endif %}
 {%- endblock %}

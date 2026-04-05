@@ -1,0 +1,72 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+@source "../../templates/**/*.html";
+
+/* ── Design Tokens ── */
+
+@theme {
+  /* Typography */
+  --font-sans:
+    system-ui, -apple-system, 'Segoe UI', Roboto, 'Sarasa Gothic SC', 'Source Han Sans SC',
+    'PingFang SC', 'Hiragino Sans', 'Noto Sans CJK SC', 'Microsoft YaHei', Emoji, 'Helvetica Neue',
+    Arial, sans-serif;
+  --font-mono:
+    'JetBrains Mono', ui-monospace, 'Source Code Pro', SFMono-Regular, Menlo, Consolas,
+    'Liberation Mono', monospace;
+
+  /* Colors */
+  --color-bg: #fff;
+  --color-bg-secondary: #f5f5f7;
+  --color-bg-code: #f5f5f7;
+  --color-text: #161209;
+  --color-text-secondary: #73737e;
+  --color-text-tertiary: #a9a9b3;
+  --color-link: #1a7a8a;
+  --color-link-hover: #00838f;
+  --color-border: #e8e8ed;
+  --color-card: #2a2a2e;
+  --color-selection: rgba(53, 166, 247, 0.25);
+
+  /* Surfaces */
+  --radius-card: 1.25rem;
+  --shadow-card: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
+  --drop-shadow-text: 0 1px 2px rgba(0, 0, 0, 0.3);
+
+  /* Motion */
+  --scale-card-hover: 135%;
+  --animate-image-fade-in: image-fade-in 0.6s ease;
+  --default-transition-timing-function: ease;
+}
+
+/* ── Dark Mode ── */
+
+@variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@layer base {
+  [data-theme='dark'] {
+    --color-bg: #292a2d;
+    --color-bg-secondary: #232326;
+    --color-bg-code: #1e1e22;
+    --color-text: #c8c8d0;
+    --color-text-secondary: #97979f;
+    --color-text-tertiary: #636369;
+    --color-link: #78c0d4;
+    --color-link-hover: #55bde2;
+    --color-border: #3a3a42;
+    --color-card: #1a1a1e;
+    --color-selection: rgba(50, 112, 194, 0.4);
+  }
+}
+
+/* ── Partials ── */
+
+@import './base.css';
+@import './components/glass-panel.css';
+@import './components/header.css';
+@import './components/home-card.css';
+@import './components/content.css';
+@import './components/listing.css';
+@import './components/pagination.css';
+@import './components/callout.css';
+@import './components/prose.css';

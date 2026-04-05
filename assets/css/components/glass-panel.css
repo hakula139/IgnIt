@@ -1,0 +1,21 @@
+@layer components {
+  .glass-panel {
+    @apply rounded-card border border-white/20 bg-white/60 shadow-card backdrop-blur-lg backdrop-saturate-125 transition-colors duration-300;
+
+    @variant dark {
+      @apply border-white/8 bg-bg/60;
+    }
+  }
+
+  .header-nav {
+    @apply fixed inset-x-0 top-0 z-50 flex items-center h-14 px-6 bg-white/75 rounded-none border-0 border-b shadow-none;
+
+    @variant dark {
+      @apply bg-bg/80;
+    }
+  }
+
+  .site-footer {
+    @apply mx-4 mb-4 mt-8 px-6 py-4 text-center text-sm text-text-secondary;
+  }
+}

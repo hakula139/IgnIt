@@ -1,0 +1,39 @@
+@layer components {
+  .pagination-link {
+    @apply inline-flex items-center justify-center h-9 min-w-9 px-2.5 text-sm font-medium text-text-secondary rounded-lg transition-colors duration-200;
+  }
+
+  .pagination-link:hover {
+    @apply text-link-hover;
+    background-color: color-mix(in srgb, var(--color-link-hover) 8%, transparent);
+  }
+
+  .pagination-link[aria-current='page'] {
+    @apply text-link-hover;
+    background-color: color-mix(in srgb, var(--color-link-hover) 15%, transparent);
+  }
+
+  .pagination-ellipsis {
+    @apply text-text-tertiary cursor-pointer;
+  }
+
+  .pagination-input {
+    @apply h-9 min-w-9 w-9 text-center text-sm text-text rounded-lg border border-border outline-none backdrop-blur-xs transition-colors duration-200;
+    background: color-mix(in srgb, var(--color-bg) 60%, transparent);
+  }
+
+  .pagination-input:focus {
+    @apply border-link-hover;
+  }
+
+  /* Hide native spinner arrows on number inputs. */
+  .pagination-input::-webkit-inner-spin-button,
+  .pagination-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .pagination-input {
+    -moz-appearance: textfield;
+  }
+}

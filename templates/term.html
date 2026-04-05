@@ -2,32 +2,18 @@
 
 {% block title %}<title>{{ term_name }} - {{ singular }} - {{ config.title }}</title>{% endblock %}
 
-{% block head %}
-  <link rel="stylesheet" href="/css/taxonomy.css">
-{%- endblock %}
-
 {% block body %}
-  <div class="taxonomy-page">
-    <h2 class="taxonomy-title">
-      {%- if singular == "category" -%}
-        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;{{ term_name }}
-      {%- elif singular == "tag" -%}
-        <i class="fas fa-tag fa-fw" aria-hidden="true"></i>&nbsp;{{ term_name }}
-      {%- else -%}
-        {{ term_name }}
-      {%- endif -%}
-    </h2>
+  <div class="mx-auto max-w-4xl px-4 py-6">
+    <div class="glass-panel p-6 sm:p-8">
+      <h2 class="mb-6 text-xl font-semibold">
+        {%- if singular == "tag" -%}
+          <i class="fas fa-tag fa-fw" aria-hidden="true"></i> {{ term_name }}
+        {%- else -%}
+          {{ term_name }}
+        {%- endif -%}
+      </h2>
 
-  {%- set current_year = now()[0:4] %}
-  {%- for group in page_groups %}
-    {%- if group.key %}
-    <h3 class="year-heading">{{ group.key }}</h3>
-    {%- endif %}
-    {%- for page in group.pages %}
-    {%- include "_partials/post-entry.html" %}
-    {%- endfor %}
-  {%- endfor %}
-
-  {%- include "_partials/pagination.html" %}
+      {%- include "_partials/year-grouped-listing.html" %}
+    </div>
   </div>
 {%- endblock %}

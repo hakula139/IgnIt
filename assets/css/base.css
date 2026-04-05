@@ -1,0 +1,38 @@
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply flex flex-col min-h-screen text-text leading-[1.75] bg-bg transition-colors duration-300;
+  }
+
+  body::before {
+    @apply fixed inset-0 -z-10 content-[''];
+    background: var(--bg-image, var(--color-bg))
+      var(--bg-position-mobile, var(--bg-position, center)) / cover no-repeat;
+  }
+
+  @media (min-width: 640px) {
+    body::before {
+      background-position: var(--bg-position, center);
+    }
+  }
+
+  ::selection {
+    @apply bg-selection;
+  }
+
+  a {
+    @apply text-link no-underline transition-colors duration-300;
+  }
+
+  a:hover {
+    @apply text-link-hover;
+  }
+
+  /* Scroll offset for fixed header */
+  [id] {
+    @apply scroll-mt-18;
+  }
+}

@@ -10,5 +10,6 @@
       "addWords": true
     }
   ],
-  "dictionaries": ["project-words"]
+  "dictionaries": ["project-words"],
+  "ignorePaths": ["pnpm-lock.yaml", "static/dist"]
 }

@@ -8,6 +8,7 @@ name = "Hakula"
 link = "https://hakula.xyz"
 
 [params]
+cdn = "https://cdn.jsdelivr.net/npm"
 code_max_lines = 40
 emojis = true
 fontawesome = true

@@ -1,0 +1,33 @@
+@layer components {
+  .year-heading {
+    @apply mt-6 mb-3 pb-1 text-lg font-medium text-text-secondary border-b border-border;
+  }
+
+  .tag-pill {
+    @apply inline-block px-3 py-1.5 text-sm rounded-full border border-border bg-bg-secondary/60 transition-colors;
+  }
+
+  .tag-pill:hover {
+    @apply text-link-hover border-link-hover/30;
+  }
+
+  .category-card {
+    @apply p-4 rounded-xl border border-border bg-bg-secondary/30;
+  }
+
+  .post-entry {
+    @apply flex items-center justify-between gap-4 py-1.5;
+  }
+
+  .post-entry-title {
+    @apply flex-1 min-w-0 truncate transition-colors;
+  }
+
+  .post-entry-title:hover {
+    @apply text-link-hover;
+  }
+
+  .post-entry-date {
+    @apply shrink-0 text-sm tabular-nums text-text-secondary;
+  }
+}
