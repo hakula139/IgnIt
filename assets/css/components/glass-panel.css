@@ -1,9 +1,9 @@
 @layer components {
   .glass-panel {
-    @apply rounded-card border border-white/20 bg-white/75 shadow-card backdrop-blur-lg backdrop-saturate-125 transition-colors duration-300;
+    @apply rounded-card border border-white/20 bg-white/60 shadow-card backdrop-blur-lg backdrop-saturate-125 transition-colors duration-300;
 
     @variant dark {
-      @apply border-white/8 bg-bg/80;
+      @apply border-white/8 bg-bg/60;
     }
   }
 
