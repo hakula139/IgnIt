@@ -27,7 +27,7 @@
   }
 
   .home-card-title {
-    @apply -translate-y-10 text-xl font-bold leading-snug text-white drop-shadow-text;
+    @apply -translate-y-14 text-xl font-bold leading-snug text-white drop-shadow-text;
   }
 
   .home-card-meta {
