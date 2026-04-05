@@ -2,7 +2,7 @@
       <a href="{{ page.url | safe }}" class="post-entry-title">{{ page.title }}</a>
       {%- if page.date %}
       <time datetime="{{ page.date }}" class="post-entry-date">
-        {{- page.date[0:10] if page.date[0:4] != current_year else page.date[5:10] -}}
+        {{- page.date[5:10] -}}
       </time>
       {%- endif %}
     </article>

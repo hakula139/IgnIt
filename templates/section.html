@@ -9,7 +9,6 @@
         <i class="far fa-folder-open fa-fw" aria-hidden="true"></i> {{ section_title }}
       </h2>
 
-      {%- set current_year = now()[0:4] %}
       {%- for group in page_groups %}
       {%- if group.key %}
       <h3 class="year-heading">{{ group.key }}</h3>
