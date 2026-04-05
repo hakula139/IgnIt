@@ -19,6 +19,7 @@
   --color-link: #161209;
   --color-link-hover: #00838f;
   --color-border: #f0f0f0;
+  --color-card: #2a2a2e;
   --color-selection: rgba(53, 166, 247, 0.25);
 
   --radius-card: 1.25rem;
@@ -40,6 +41,7 @@
     --color-link: #a9a9b3;
     --color-link-hover: #55bde2;
     --color-border: #363636;
+    --color-card: #1a1a1e;
     --color-selection: rgba(50, 112, 194, 0.4);
   }
 }
@@ -117,21 +119,21 @@
 
   /* ── Home Page Image Card ── */
 
-  @keyframes card-reveal {
+  @keyframes image-fade-in {
     from {
       opacity: 0;
-      transform: scale(0.97);
+      transform: scale(1.03);
     }
   }
 
   .home-card {
-    @apply relative h-88 overflow-hidden rounded-card shadow-card;
+    @apply relative h-88 overflow-hidden rounded-card bg-card shadow-card;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    animation: card-reveal 0.6s ease;
   }
 
   .home-card-image {
     @apply absolute inset-0 bg-cover;
+    animation: image-fade-in 0.6s ease;
     transition:
       scale 1s ease,
       filter 1s ease;

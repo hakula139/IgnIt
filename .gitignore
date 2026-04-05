@@ -8,9 +8,6 @@
 # Dependencies
 node_modules/
 
-# Build output
-static/dist/
-
 # Claude Code
 .claude/plans/
 .claude/settings.local.json
