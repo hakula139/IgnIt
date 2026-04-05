@@ -10,45 +10,45 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 .
 ├── assets/
 │   └── css/
-│       ├── main.css               # Entry: tokens, dark mode, partial imports
-│       ├── base.css               # @layer base (html, body, a, selection)
+│       ├── main.css                        # Entry: tokens, dark mode, partial imports
+│       ├── base.css                        # @layer base (html, body, a, selection)
 │       └── components/
-│           ├── glass-panel.css    # .glass-panel, .header-nav, .site-footer
-│           ├── header.css         # .header-logo, .header-link, .header-icon, .header-mobile-*
-│           ├── home-card.css      # .home-card-*, .profile-avatar, .text-card-*
-│           ├── content.css        # .article-title, .toc-collapse, .toc-trigger, .toc-body, .toc-sidebar
-│           ├── listing.css        # .year-heading, .tag-pill, .category-card, .post-entry-*
-│           ├── pagination.css     # .pagination-link, .pagination-ellipsis, .pagination-input
-│           ├── callout.css        # .callout, .callout-note … .callout-quote, dark overrides
-│           └── prose.css          # .prose variable overrides, code, word-break
+│           ├── glass-panel.css             # .glass-panel, .header-nav, .site-footer
+│           ├── header.css                  # .header-logo, .header-link, .header-icon, .header-mobile-*
+│           ├── home-card.css               # .home-card-*, .profile-avatar, .text-card-*
+│           ├── content.css                 # .article-title, .toc-collapse, .toc-trigger, .toc-body, .toc-sidebar
+│           ├── listing.css                 # .year-heading, .tag-pill, .category-card, .post-entry-*
+│           ├── pagination.css              # .pagination-link, .pagination-ellipsis, .pagination-input
+│           ├── callout.css                 # .callout, .callout-note ... .callout-quote, dark overrides
+│           └── prose.css                   # .prose variable overrides, code, word-break
 ├── static/
 │   ├── css/
-│   │   ├── apple-music.css        # Apple Music embed light / dark toggle
-│   │   └── syntax.css             # Syntax highlighting (Material palette)
+│   │   ├── apple-music.css                 # Apple Music embed light / dark toggle
+│   │   └── syntax.css                      # Syntax highlighting (Material palette)
 │   ├── dist/
-│   │   └── style.min.css          # Compiled Tailwind output (committed for submodule consumers)
+│   │   └── style.min.css                   # Compiled Tailwind output (committed for submodule consumers)
 │   └── js/
-│       ├── pagination.js          # Page-jump controls for pagination
-│       └── theme.js               # Dark mode toggle + system preference
+│       ├── pagination.js                   # Page-jump controls for pagination
+│       └── theme.js                        # Dark mode toggle + system preference
 └── templates/
-    ├── _partials/                  # Shared template fragments ({% include %})
-    │   ├── footer.html            # Glass-panel footer (copyright, license)
-    │   ├── head-deps.html         # Conditional CDN deps (FontAwesome, KaTeX)
-    │   ├── header.html            # Fixed nav header with menu + theme toggle
-    │   ├── math.html              # Conditional KaTeX runtime scripts
-    │   ├── meta-og.html           # OG / Twitter Card meta tags
-    │   ├── pagination.html        # Pagination nav + page-jump input
-    │   ├── post-entry.html        # Post entry (title + conditional date)
-    │   └── year-grouped-listing.html  # Year-grouped post list with pagination
-    ├── base.html                   # Base layout (glass panels, background image)
-    ├── home.html                   # Home page (profile + image cards with hover reveal)
-    ├── page.html                   # Standalone page (glass card, collapsible TOC)
-    ├── post.html                   # Post page (glass card, sticky TOC sidebar)
-    ├── section.html                # Section listing (year-grouped, glass card)
-    ├── taxonomy.html               # Taxonomy index (tag cloud / category grid)
-    ├── term.html                   # Term page (year-grouped, pagination)
+    ├── _partials/                          # Shared template fragments ({% include %})
+    │   ├── footer.html                     # Glass-panel footer (copyright, license)
+    │   ├── head-deps.html                  # Conditional CDN deps (FontAwesome, KaTeX)
+    │   ├── header.html                     # Fixed nav header with menu + theme toggle
+    │   ├── math.html                       # Conditional KaTeX runtime scripts
+    │   ├── meta-og.html                    # OG / Twitter Card meta tags
+    │   ├── pagination.html                 # Pagination nav + page-jump input
+    │   ├── post-entry.html                 # Post entry (title + conditional date)
+    │   └── year-grouped-listing.html       # Year-grouped post list with pagination
+    ├── base.html                           # Base layout (glass panels, background image)
+    ├── home.html                           # Home page (profile + image cards with hover reveal)
+    ├── page.html                           # Standalone page (glass card, collapsible TOC)
+    ├── post.html                           # Post page (glass card, sticky TOC sidebar)
+    ├── section.html                        # Section listing (year-grouped, glass card)
+    ├── taxonomy.html                       # Taxonomy index (tag cloud / category grid)
+    ├── term.html                           # Term page (year-grouped, pagination)
     └── directives/
-        └── music.html              # Music embed directive
+        └── music.html                      # Music embed directive
 ```
 
 ### CSS Architecture
