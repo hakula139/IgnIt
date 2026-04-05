@@ -35,21 +35,25 @@
         <div class="home-card-overlay"></div>
         <div class="home-card-body">
           <h2 class="home-card-title">{{ page.title }}</h2>
-          {%- if page.date %}
-          <div class="home-card-meta">
-            <time datetime="{{ page.date }}">{{ page.date[0:10] }}</time>
+          <div class="home-card-reveal">
+            <div>
+              {%- if page.date %}
+              <div class="home-card-meta">
+                <time datetime="{{ page.date }}">{{ page.date[0:10] }}</time>
+              </div>
+              {%- endif %}
+              {%- if page.description %}
+              <p class="home-card-desc">{{ page.description }}</p>
+              {%- endif %}
+              {%- if page.tags %}
+              <div class="home-card-tags">
+                {%- for tag in page.tags %}
+                <span class="home-card-tag">{{ tag }}</span>
+                {%- endfor %}
+              </div>
+              {%- endif %}
+            </div>
           </div>
-          {%- endif %}
-          {%- if page.description %}
-          <p class="home-card-desc">{{ page.description }}</p>
-          {%- endif %}
-          {%- if page.tags %}
-          <div class="home-card-tags">
-            {%- for tag in page.tags %}
-            <span class="home-card-tag">{{ tag }}</span>
-            {%- endfor %}
-          </div>
-          {%- endif %}
         </div>
       </a>
     </article>

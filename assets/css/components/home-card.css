@@ -15,27 +15,28 @@
   }
 
   .home-card-overlay {
-    @apply absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent transition-[background] duration-700;
+    @apply absolute inset-0 bg-linear-to-t from-black/65 via-black/30 to-black/10 transition-[background] duration-700;
   }
 
+  /* Mobile: content at bottom, everything visible */
   .home-card-body {
-    @apply absolute inset-x-0 bottom-0 p-5;
+    @apply absolute inset-x-0 bottom-0 px-6 pb-6 text-center;
   }
 
   .home-card-title {
-    @apply text-lg font-bold leading-[1.4] text-white drop-shadow-text;
+    @apply text-2xl font-bold leading-snug text-white drop-shadow-text;
   }
 
   .home-card-meta {
-    @apply mt-1.5 text-sm text-white/75;
+    @apply mt-2 text-sm text-white/75;
   }
 
   .home-card-desc {
-    @apply mt-2 text-sm text-white/70 line-clamp-3;
+    @apply mt-3 text-sm leading-relaxed text-white/70 line-clamp-3;
   }
 
   .home-card-tags {
-    @apply flex flex-wrap mt-2 gap-1.5;
+    @apply mt-3 flex flex-wrap justify-center gap-1.5;
   }
 
   .home-card-tag {
@@ -46,25 +47,27 @@
 
   @media (min-width: 1280px) {
     .home-card-body {
-      @apply transition-[translate] duration-500;
+      @apply inset-0 flex flex-col items-center justify-center pb-0;
+      @apply transition-[transform] duration-600;
     }
 
-    .home-card-title,
-    .home-card-meta {
-      @apply transition-[translate,opacity] duration-500;
+    .home-card-title {
+      @apply text-3xl;
+      @apply transition-[transform] duration-500;
     }
 
-    .home-card-desc,
-    .home-card-tags {
-      @apply translate-y-2 opacity-0 transition-[translate,opacity] duration-500;
+    /* CSS Grid 0fr→1fr for height animation */
+    .home-card-reveal {
+      display: grid;
+      grid-template-rows: 0fr;
+      opacity: 0;
+      transition:
+        grid-template-rows 600ms ease,
+        opacity 400ms ease;
     }
 
-    .home-card-desc {
-      @apply delay-75;
-    }
-
-    .home-card-tags {
-      @apply delay-150;
+    .home-card-reveal > div {
+      overflow: hidden;
     }
 
     .home-card:hover .home-card-image {
@@ -72,21 +75,20 @@
     }
 
     .home-card:hover .home-card-overlay {
-      @apply bg-linear-to-t from-black/85 via-black/50 to-transparent;
+      @apply from-black/85 via-black/50 to-black/20;
     }
 
     .home-card:hover .home-card-body {
-      @apply -translate-y-1;
+      @apply -translate-y-[15%];
     }
 
-    .home-card:hover .home-card-title,
-    .home-card:hover .home-card-meta {
-      @apply -translate-y-0.5;
+    .home-card:hover .home-card-title {
+      @apply -translate-y-2;
     }
 
-    .home-card:hover .home-card-desc,
-    .home-card:hover .home-card-tags {
-      @apply translate-y-0 opacity-100;
+    .home-card:hover .home-card-reveal {
+      grid-template-rows: 1fr;
+      opacity: 1;
     }
   }
 
