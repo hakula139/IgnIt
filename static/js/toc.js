@@ -5,7 +5,9 @@
 
   const initToc = () => {
     const tocElements = document.querySelectorAll('.toc');
-    if (!tocElements.length) return;
+    if (!tocElements.length) {
+      return;
+    }
 
     // Build a map from heading ID → TOC link(s)
     const headingIds = [];
@@ -21,12 +23,16 @@
       }
     }
 
-    if (!headingIds.length) return;
+    if (!headingIds.length) {
+      return;
+    }
 
     let activeId = null;
 
     const setActive = (id) => {
-      if (id === activeId) return;
+      if (id === activeId) {
+        return;
+      }
 
       // Deactivate previous
       if (activeId && tocLinks.has(activeId)) {
@@ -88,7 +94,9 @@
     // Observe all headings referenced in the TOC
     for (const id of headingIds) {
       const el = document.getElementById(id);
-      if (el) observer.observe(el);
+      if (el) {
+        observer.observe(el);
+      }
     }
 
     // Activate the first heading initially
