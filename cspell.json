@@ -11,9 +11,5 @@
     }
   ],
   "dictionaries": ["project-words"],
-  "ignorePaths": [
-    "pnpm-lock.yaml",
-    "static/",
-    "**/LICENSE"
-  ]
+  "ignorePaths": ["pnpm-lock.yaml", "static/", "**/LICENSE"]
 }
