@@ -57,7 +57,11 @@
   @apply my-[1.5em];
 }
 
-/* Heading anchors — must be unlayered to override Typography link styles */
+/*
+ * Heading anchors need rules in two places:
+ * - Unlayered (here): overrides Typography's link underline in @layer utilities
+ * - @layer components (below): visual positioning, color, and hover reveal
+ */
 .prose .heading-anchor {
   @apply no-underline;
 }
