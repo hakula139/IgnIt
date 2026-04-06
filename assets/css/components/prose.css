@@ -43,6 +43,8 @@
 
 .prose .code-block table {
   margin: 0;
+  width: max-content;
+  min-width: 100%;
   font-size: inherit;
   line-height: inherit;
 }
