@@ -24,67 +24,55 @@
 
 /* Prevent Tailwind utility collision with syntect class names (e.g. "block") */
 .prose .highlight span {
-  display: inline;
+  @apply inline;
 }
 
 /* Reset Typography plugin styles inside structured code blocks */
 .prose .code-block pre {
-  margin: 0;
-  padding: 0;
-  background: transparent;
-  border-radius: 0;
+  @apply m-0 p-0 bg-transparent rounded-none whitespace-pre overflow-visible;
   font-size: inherit;
-  white-space: pre;
-  overflow: visible;
 }
 
 .prose .code-block td {
-  padding: 0.75rem 0;
+  @apply py-3 px-0;
 }
 
 .prose .code-block .line-numbers {
-  text-align: right;
+  @apply text-right;
 }
 
 .prose .code-block .line-numbers pre {
-  padding: 0 0.5rem 0 1rem;
+  @apply py-0 pr-2 pl-4;
 }
 
 .prose .code-block .code pre {
-  padding: 0 1rem 0 0.75rem;
+  @apply py-0 pr-4 pl-3;
 }
 
 .prose .code-block table {
-  margin: 0;
-  width: max-content;
-  min-width: 100%;
+  @apply m-0 w-max min-w-full;
   font-size: inherit;
   line-height: inherit;
 }
 
 /* Restore prose-level margins on the .code-block wrapper (since pre margins are reset) */
 .prose .code-block {
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
+  @apply my-[1.5em];
 }
 
 /* Heading anchors — must be unlayered to override Typography link styles */
 .prose .heading-anchor {
-  text-decoration: none;
+  @apply no-underline;
 }
 
 /* Clear section breaks before h2 headings */
 .prose :where(h2) {
-  margin-top: 2.5em;
-  padding-top: 1.5em;
-  border-top: 1px solid var(--color-border);
+  @apply mt-[2.5em] pt-[1.5em] border-t border-border;
 }
 
 /* Skip separator on the very first element */
 .prose > :first-child {
-  margin-top: 0;
-  padding-top: 0;
-  border-top: none;
+  @apply mt-0 pt-0 border-t-0;
 }
 
 @layer components {
