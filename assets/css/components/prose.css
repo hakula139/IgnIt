@@ -82,12 +82,11 @@
     @apply relative;
   }
 
-  .prose :where(h2, h3, h4, h5, h6)::before {
-    @apply absolute -left-5 text-link opacity-0 transition-opacity;
-    content: '#';
+  .prose .heading-anchor {
+    @apply absolute -left-5 text-link no-underline opacity-0 transition-opacity;
   }
 
-  .prose :where(h2, h3, h4, h5, h6):hover::before {
+  .prose :where(h2, h3, h4, h5, h6):hover .heading-anchor {
     @apply opacity-60;
   }
 
