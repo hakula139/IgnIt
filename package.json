@@ -5,7 +5,8 @@
     "build:js": "esbuild assets/js/*.js --outdir=static/js --minify --out-extension:.js=.min.js",
     "build": "pnpm build:css && pnpm build:js",
     "dev:css": "tailwindcss -i assets/css/main.css -o static/css/style.min.css --watch",
-    "dev": "pnpm dev:css"
+    "dev": "pnpm dev:css",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4",
