@@ -22,6 +22,15 @@
   --tw-prose-td-borders: var(--color-border);
 }
 
+/* Reset Typography plugin pre styles inside structured code blocks */
+.prose .code-block pre {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  overflow: visible;
+}
+
 @layer components {
   .prose a:hover {
     @apply text-link-hover;
