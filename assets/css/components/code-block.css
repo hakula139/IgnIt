@@ -58,6 +58,26 @@
 
   .code-body > .highlight {
     @apply overflow-x-auto overflow-y-hidden min-h-0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-text-tertiary) transparent;
+  }
+
+  .code-body > .highlight::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+  }
+
+  .code-body > .highlight::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .code-body > .highlight::-webkit-scrollbar-thumb {
+    @apply rounded-full;
+    background: var(--color-border);
+  }
+
+  .code-body > .highlight::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-tertiary);
   }
 
   .code-body[data-max-lines] > .highlight {
@@ -76,7 +96,7 @@
   }
 
   .highlight .line-numbers pre {
-    @apply pr-3 pl-2 text-text-tertiary opacity-50;
+    @apply pr-3 pl-4 text-text-tertiary opacity-50;
   }
 
   .highlight .code {
