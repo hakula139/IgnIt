@@ -108,9 +108,9 @@ pnpm build       # Build static/css/style.min.css + static/js/*.min.js
 
 ## Theme Development
 
-Source CSS: `assets/css/main.css` (Tailwind `@theme` tokens, custom components).
-Source JS: `assets/js/*.js` (code blocks, TOC tracking, pagination, theme toggle).
-Compiled output: `static/` (committed so submodule consumers work without Node.js).
+- Source CSS: `assets/css/main.css` (Tailwind `@theme` tokens, custom components)
+- Source JS: `assets/js/*.js` (code blocks, TOC tracking, pagination, theme toggle)
+- Compiled output: `static/` (committed so submodule consumers work without Node.js)
 
 ```bash
 pnpm dev         # Watch mode — rebuilds CSS on changes
