@@ -38,6 +38,10 @@
   overflow: visible;
 }
 
+.prose .code-block td {
+  padding: 0;
+}
+
 .prose .code-block .line-numbers pre {
   padding: 0 0.5rem 0 1rem;
 }
