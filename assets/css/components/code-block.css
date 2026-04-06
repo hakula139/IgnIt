@@ -92,7 +92,7 @@
   }
 
   .highlight .line-numbers {
-    @apply w-px py-2 text-right select-none;
+    @apply w-px py-3 text-right select-none;
   }
 
   .highlight .line-numbers pre {
@@ -100,7 +100,7 @@
   }
 
   .highlight .code {
-    @apply py-2;
+    @apply py-3;
   }
 
   .highlight .code pre {
