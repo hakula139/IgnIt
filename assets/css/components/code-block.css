@@ -96,7 +96,7 @@
   }
 
   .highlight .line-numbers pre {
-    @apply pr-3 pl-4 text-text-tertiary opacity-50;
+    @apply pr-2 pl-4 text-text-tertiary opacity-50;
   }
 
   .highlight .code {
@@ -104,6 +104,6 @@
   }
 
   .highlight .code pre {
-    @apply px-4;
+    @apply pl-3 pr-4;
   }
 }

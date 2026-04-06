@@ -39,11 +39,11 @@
 }
 
 .prose .code-block .line-numbers pre {
-  padding: 0 0.75rem 0 1.5rem;
+  padding: 0 0.5rem 0 1rem;
 }
 
 .prose .code-block .code pre {
-  padding: 0 1rem;
+  padding: 0 1rem 0 0.75rem;
 }
 
 .prose .code-block table {
@@ -58,6 +58,11 @@
 .prose .code-block {
   margin-top: 1.5em;
   margin-bottom: 1.5em;
+}
+
+/* Heading anchors — must be unlayered to override Typography link styles */
+.prose .heading-anchor {
+  text-decoration: none;
 }
 
 /* Clear section breaks before h2 headings */
