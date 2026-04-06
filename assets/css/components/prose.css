@@ -29,7 +29,16 @@
   background: transparent;
   border-radius: 0;
   font-size: inherit;
+  white-space: pre;
   overflow: visible;
+}
+
+.prose .code-block .line-numbers pre {
+  padding: 0 0.75rem 0 1.5rem;
+}
+
+.prose .code-block .code pre {
+  padding: 0 1rem;
 }
 
 .prose .code-block table {
