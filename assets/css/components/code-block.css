@@ -87,11 +87,6 @@
 
   /* ── Highlight Table Layout ── */
 
-  /* Prevent Tailwind utilities from colliding with syntect class names (e.g. "block") */
-  .highlight span {
-    @apply inline;
-  }
-
   .highlight table {
     @apply min-w-full w-max border-collapse;
   }

@@ -22,6 +22,11 @@
   --tw-prose-td-borders: var(--color-border);
 }
 
+/* Prevent Tailwind utility collision with syntect class names (e.g. "block") */
+.prose .highlight span {
+  display: inline;
+}
+
 /* Reset Typography plugin styles inside structured code blocks */
 .prose .code-block pre {
   margin: 0;
