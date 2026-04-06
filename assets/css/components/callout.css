@@ -33,7 +33,7 @@
     @apply ml-auto text-[0.625rem] shrink-0 transition-transform duration-200;
   }
 
-  details.callout:not([open]) .callout-title::after {
+  .callout.collapsed .callout-title::after {
     @apply -rotate-90;
   }
 
@@ -41,8 +41,7 @@
     @apply grid grid-rows-[1fr] transition-[grid-template-rows] duration-300;
   }
 
-  .callout-body.collapsing,
-  .callout-body.expanding {
+  .callout.collapsed .callout-body {
     @apply grid-rows-[0fr];
   }
 
