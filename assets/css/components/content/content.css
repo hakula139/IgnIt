@@ -25,11 +25,7 @@
     @apply m-0 list-none p-0;
   }
 
-  .toc > ul > li > ul {
-    @apply pl-3;
-  }
-
-  .toc > ul > li > ul > li > ul {
+  .toc ul ul {
     @apply pl-3;
   }
 
