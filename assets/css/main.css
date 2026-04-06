@@ -66,6 +66,7 @@
 @import './components/header.css';
 @import './components/home-card.css';
 @import './components/content.css';
+@import './components/code-block.css';
 @import './components/listing.css';
 @import './components/pagination.css';
 @import './components/callout.css';

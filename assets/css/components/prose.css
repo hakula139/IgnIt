@@ -22,13 +22,20 @@
   --tw-prose-td-borders: var(--color-border);
 }
 
-/* Reset Typography plugin pre styles inside structured code blocks */
+/* Reset Typography plugin styles inside structured code blocks */
 .prose .code-block pre {
   margin: 0;
   padding: 0;
   background: transparent;
   border-radius: 0;
+  font-size: inherit;
   overflow: visible;
+}
+
+.prose .code-block table {
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 /* Restore prose-level margins on the .code-block wrapper (since pre margins are reset) */
