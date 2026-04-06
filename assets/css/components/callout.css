@@ -38,14 +38,23 @@
   }
 
   .callout-body {
-    @apply px-4 pb-2;
+    @apply grid grid-rows-[1fr] transition-[grid-template-rows] duration-300;
   }
 
-  .callout-body > :first-child {
+  .callout-body.collapsing,
+  .callout-body.expanding {
+    @apply grid-rows-[0fr];
+  }
+
+  .callout-body-inner {
+    @apply overflow-hidden min-h-0 px-4 pb-2;
+  }
+
+  .callout-body-inner > :first-child {
     @apply mt-0;
   }
 
-  .callout-body > :last-child {
+  .callout-body-inner > :last-child {
     @apply mb-0;
   }
 
