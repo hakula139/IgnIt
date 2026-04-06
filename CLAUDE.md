@@ -9,33 +9,35 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 ```text
 .
 ├── assets/
-│   └── css/
-│       ├── main.css                        # Entry: tokens, dark mode, partial imports
-│       ├── base.css                        # @layer base (html, body, a, selection)
-│       └── components/
-│           ├── layout/
-│           │   ├── glass-panel.css         # .glass-panel, .header-nav, .site-footer
-│           │   └── header.css              # .header-logo, .header-link, .header-icon, .header-mobile-*
-│           ├── content/
-│           │   ├── content.css             # .article-title, .toc-collapse, .toc-trigger, .toc-sidebar
-│           │   ├── code-block.css          # .code-block, .code-header, .code-body, .copy-btn
-│           │   ├── syntax.css              # Syntax highlighting (Material Light / Palenight)
-│           │   ├── callout.css             # .callout variants, icons, collapse animation
-│           │   └── prose.css               # .prose overrides (unlayered + @layer components)
-│           ├── listing/
-│           │   ├── home-card.css           # .home-card-*, .profile-avatar, .text-card-*
-│           │   ├── listing.css             # .year-heading, .tag-pill, .category-card, .post-entry-*
-│           │   └── pagination.css          # .pagination-link, .pagination-ellipsis, .pagination-input
-│           └── embed/
-│               └── apple-music.css         # Apple Music embed light / dark toggle
-├── static/
 │   ├── css/
-│   │   └── style.min.css                   # Compiled Tailwind output (committed for submodule consumers)
+│   │   ├── main.css                        # Entry: tokens, dark mode, partial imports
+│   │   ├── base.css                        # @layer base (html, body, a, selection)
+│   │   └── components/
+│   │       ├── layout/
+│   │       │   ├── glass-panel.css         # .glass-panel, .header-nav, .site-footer
+│   │       │   └── header.css              # .header-logo, .header-link, .header-icon, .header-mobile-*
+│   │       ├── content/
+│   │       │   ├── content.css             # .article-title, .toc-collapse, .toc-trigger, .toc-sidebar
+│   │       │   ├── code-block.css          # .code-block, .code-header, .code-body, .copy-btn
+│   │       │   ├── syntax.css              # Syntax highlighting (Material Light / Palenight)
+│   │       │   ├── callout.css             # .callout variants, icons, collapse animation
+│   │       │   └── prose.css               # .prose overrides (unlayered + @layer components)
+│   │       ├── listing/
+│   │       │   ├── home-card.css           # .home-card-*, .profile-avatar, .text-card-*
+│   │       │   ├── listing.css             # .year-heading, .tag-pill, .category-card, .post-entry-*
+│   │       │   └── pagination.css          # .pagination-link, .pagination-ellipsis, .pagination-input
+│   │       └── embed/
+│   │           └── apple-music.css         # Apple Music embed light / dark toggle
 │   └── js/
 │       ├── content.js                      # Code block, callout, and heading anchor enhancements
 │       ├── pagination.js                   # Page-jump controls for pagination
 │       ├── theme.js                        # Dark mode toggle + system preference
 │       └── toc.js                          # TOC active heading tracking + section collapse
+├── static/                                 # Build output (committed for submodule consumers)
+│   ├── css/
+│   │   └── style.min.css                   # Compiled Tailwind output
+│   └── js/
+│       └── *.min.js                        # Minified JS via esbuild
 └── templates/
     ├── _partials/                          # Shared template fragments ({% include %})
     │   ├── footer.html                     # Glass-panel footer (copyright, license)
@@ -84,9 +86,14 @@ Use `@apply` in the appropriate CSS partial for anything else. Use canonical Tai
 
 #### Build Output
 
-`static/css/style.min.css` is the compiled output, committed to git so submodule consumers get a working theme without needing Node.js. **Always run `pnpm build` before committing** to keep the compiled output in sync with source.
+`static/` contains compiled output committed to git so submodule consumers get a working theme without needing Node.js:
 
-To rebuild CSS: `pnpm build` (or `pnpm dev` for watch mode).
+- `static/css/style.min.css` — compiled Tailwind CSS
+- `static/js/*.min.js` — minified JS via esbuild
+
+**Always run `pnpm build` before committing** to keep compiled output in sync with source.
+
+To rebuild: `pnpm build` (CSS + JS), `pnpm build:css`, `pnpm build:js`, or `pnpm dev:css` for watch mode.
 
 ## Coding Conventions
 

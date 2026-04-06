@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% block title %}<title>{{ config.title }}</title>{% endblock %}
   <link rel="stylesheet" href="{{ config.base_url | safe }}/css/style.min.css">
-  <script src="{{ config.base_url | safe }}/js/theme.js"></script>
+  <script src="{{ config.base_url | safe }}/js/theme.min.js"></script>
   {% include "_partials/head-deps.html" %}
   {%- block head %}{% endblock %}
 </head>
@@ -20,8 +20,8 @@
     {%- block body %}{% endblock %}
   </main>
   {% include "_partials/footer.html" %}
-  <script src="{{ config.base_url | safe }}/js/content.js" defer></script>
-  <script src="{{ config.base_url | safe }}/js/toc.js" defer></script>
+  <script src="{{ config.base_url | safe }}/js/content.min.js" defer></script>
+  <script src="{{ config.base_url | safe }}/js/toc.min.js" defer></script>
   {%- block scripts %}{% endblock %}
 </body>
 </html>
