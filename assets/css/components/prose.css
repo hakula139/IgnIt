@@ -31,6 +31,26 @@
   overflow: visible;
 }
 
+/* Restore prose-level margins on the .code-block wrapper (since pre margins are reset) */
+.prose .code-block {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+/* Clear section breaks before h2 headings */
+.prose :where(h2) {
+  margin-top: 2.5em;
+  padding-top: 1.5em;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Skip separator on the very first element */
+.prose > :first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
 @layer components {
   .prose a:hover {
     @apply text-link-hover;
