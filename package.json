@@ -6,11 +6,13 @@
     "build": "pnpm build:css && pnpm build:js",
     "dev:css": "tailwindcss -i assets/css/main.css -o static/css/style.min.css --watch",
     "dev": "pnpm dev:css",
+    "spellcheck": "cspell --no-progress \"**/*\"",
     "prepare": "husky"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4",
     "@tailwindcss/typography": "^0.5",
+    "cspell": "^10.0.0",
     "esbuild": "^0.28.0",
     "husky": "^9.1.7",
     "tailwindcss": "^4.2.2"

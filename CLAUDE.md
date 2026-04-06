@@ -134,6 +134,6 @@ Example: `class="flex items-center w-full px-4 py-2 text-sm text-text bg-bg roun
 
 ### Spell Checking
 
-- Run `npx cspell "**/*"` before committing. Config in `cspell.json`.
-- Add project-specific words to the `words` array in `cspell.json`.
-- Generated files (`pnpm-lock.yaml`, compiled CSS) are excluded via `ignorePaths`.
+- Run `pnpm spellcheck` before committing. Config in `cspell.json`.
+- Add project-specific words to `.cspell/words.txt` (one word per line, sorted alphabetically).
+- Generated files (`pnpm-lock.yaml`, `static/`) are excluded via `ignorePaths`.

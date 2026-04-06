@@ -31,3 +31,6 @@ jobs:
 
       - name: Verify compiled output is up to date
         run: git diff --exit-code static/
+
+      - name: Spell check
+        run: pnpm spellcheck
