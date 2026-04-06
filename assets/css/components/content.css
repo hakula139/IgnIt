@@ -1,6 +1,6 @@
 @layer components {
   .article-title {
-    @apply text-2xl font-semibold leading-tight sm:text-3xl;
+    @apply text-xl font-semibold leading-tight sm:text-2xl;
   }
 
   .toc-collapse {
