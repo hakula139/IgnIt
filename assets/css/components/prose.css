@@ -39,7 +39,11 @@
 }
 
 .prose .code-block td {
-  padding: 0;
+  padding: 0.75rem 0;
+}
+
+.prose .code-block .line-numbers {
+  text-align: right;
 }
 
 .prose .code-block .line-numbers pre {
