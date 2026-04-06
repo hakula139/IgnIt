@@ -1,1 +1,4 @@
-static/dist/
+pnpm-lock.yaml
+static/css/
+static/js/
+templates/

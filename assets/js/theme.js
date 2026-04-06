@@ -42,7 +42,9 @@
   // runs in <head> before buttons exist).
   const syncAriaLabels = () => {
     const theme = document.documentElement.getAttribute('data-theme');
-    if (!theme) return;
+    if (!theme) {
+      return;
+    }
     const label = `Switch to ${theme === DARK ? 'light' : 'dark'} mode`;
     for (const btn of document.querySelectorAll('[aria-label^="Switch to"]')) {
       btn.setAttribute('aria-label', label);

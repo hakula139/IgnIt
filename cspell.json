@@ -1,6 +1,6 @@
 {
   "version": "0.2",
-  "language": "en,en-GB",
+  "language": "en",
   "useGitignore": true,
   "allowCompoundWords": true,
   "dictionaryDefinitions": [
@@ -11,5 +11,5 @@
     }
   ],
   "dictionaries": ["project-words"],
-  "ignorePaths": ["pnpm-lock.yaml", "static/dist"]
+  "ignorePaths": ["pnpm-lock.yaml", "static/", "**/LICENSE"]
 }

@@ -99,21 +99,22 @@ subtitle = "A short tagline"
 
 ## Setup
 
-Build the compiled CSS (required before first use):
+Build the compiled assets (required before first use):
 
 ```bash
 pnpm install     # Install dependencies
-pnpm build       # Build static/dist/style.min.css
+pnpm build       # Build static/css/style.min.css + static/js/*.min.js
 ```
 
 ## Theme Development
 
-Source CSS: `assets/css/main.css` (Tailwind `@theme` tokens, custom components).
-Compiled output: `static/dist/style.min.css` (committed so submodule consumers work without Node.js).
+- Source CSS: `assets/css/main.css` (Tailwind `@theme` tokens, custom components)
+- Source JS: `assets/js/*.js` (code blocks, TOC tracking, pagination, theme toggle)
+- Compiled output: `static/` (committed so submodule consumers work without Node.js)
 
 ```bash
-pnpm dev         # Watch mode — rebuilds CSS on template changes
-pnpm build       # Production build (minified)
+pnpm dev         # Watch mode — rebuilds CSS on changes
+pnpm build       # Production build (CSS + JS, minified)
 ```
 
 ## License

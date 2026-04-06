@@ -1,0 +1,57 @@
+@layer components {
+  .article-title {
+    @apply text-xl font-semibold leading-tight sm:text-2xl;
+  }
+
+  .toc-collapse {
+    @apply mb-6 rounded-lg border border-border bg-bg-secondary/50;
+  }
+
+  .toc-trigger {
+    @apply px-4 py-2.5 text-sm font-medium text-text-secondary cursor-pointer select-none;
+  }
+
+  .toc-body {
+    @apply px-4 pb-3 text-sm;
+  }
+
+  .toc-sidebar {
+    @apply sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto p-4 text-sm;
+  }
+
+  /* ── TOC Navigation ── */
+
+  .toc ul {
+    @apply m-0 list-none p-0;
+  }
+
+  .toc ul ul {
+    @apply pl-3;
+  }
+
+  .toc li {
+    @apply my-0.5;
+  }
+
+  .toc a {
+    @apply block border-l-2 border-border py-0.5 pl-3 text-text/70 no-underline transition-colors;
+  }
+
+  .toc a:hover {
+    @apply border-link text-link;
+  }
+
+  .toc a.active {
+    @apply border-link text-link font-medium;
+  }
+
+  /* ── Collapsible TOC Sections ── */
+
+  .toc-sidebar .toc li > ul {
+    @apply max-h-0 overflow-hidden transition-[max-height] duration-300;
+  }
+
+  .toc-sidebar .toc li.active > ul {
+    @apply max-h-96;
+  }
+}

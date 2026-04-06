@@ -1,12 +1,25 @@
 {
   "private": true,
+  "packageManager": "pnpm@10.30.3",
   "scripts": {
-    "build": "tailwindcss -i assets/css/main.css -o static/dist/style.min.css --minify",
-    "dev": "tailwindcss -i assets/css/main.css -o static/dist/style.min.css --watch"
+    "build:css": "tailwindcss -i assets/css/main.css -o static/css/style.min.css --minify",
+    "build:js": "esbuild assets/js/*.js --outdir=static/js --minify --out-extension:.js=.min.js",
+    "build": "pnpm build:css && pnpm build:js",
+    "dev:css": "tailwindcss -i assets/css/main.css -o static/css/style.min.css --watch",
+    "dev": "pnpm dev:css",
+    "format": "prettier --check .",
+    "lint": "markdownlint-cli2 \"**/*.md\"",
+    "spellcheck": "cspell --no-progress \"**/*\"",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4",
     "@tailwindcss/typography": "^0.5",
+    "cspell": "^10.0.0",
+    "esbuild": "^0.28.0",
+    "husky": "^9.1.7",
+    "markdownlint-cli2": "^0.22.0",
+    "prettier": "^3.8.1",
     "tailwindcss": "^4.2.2"
   }
 }
