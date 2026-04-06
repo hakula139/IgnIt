@@ -6,6 +6,7 @@
     "build": "pnpm build:css && pnpm build:js",
     "dev:css": "tailwindcss -i assets/css/main.css -o static/css/style.min.css --watch",
     "dev": "pnpm dev:css",
+    "lint": "markdownlint-cli2 \"**/*.md\"",
     "spellcheck": "cspell --no-progress \"**/*\"",
     "prepare": "husky"
   },
@@ -15,6 +16,7 @@
     "cspell": "^10.0.0",
     "esbuild": "^0.28.0",
     "husky": "^9.1.7",
+    "markdownlint-cli2": "^0.22.0",
     "tailwindcss": "^4.2.2"
   }
 }
