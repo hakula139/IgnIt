@@ -62,11 +62,22 @@
 /* ── Partials ── */
 
 @import './base.css';
-@import './components/glass-panel.css';
-@import './components/header.css';
-@import './components/home-card.css';
-@import './components/content.css';
-@import './components/listing.css';
-@import './components/pagination.css';
-@import './components/callout.css';
-@import './components/prose.css';
+
+/* Layout */
+@import './components/layout/glass-panel.css';
+@import './components/layout/header.css';
+
+/* Content */
+@import './components/content/content.css';
+@import './components/content/code-block.css';
+@import './components/content/syntax.css';
+@import './components/content/callout.css';
+@import './components/content/prose.css';
+
+/* Listing */
+@import './components/listing/home-card.css';
+@import './components/listing/listing.css';
+@import './components/listing/pagination.css';
+
+/* Embed */
+@import './components/embed/apple-music.css';

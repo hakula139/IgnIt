@@ -1,0 +1,113 @@
+@layer components {
+  .callout {
+    --callout-color: #448aff;
+
+    @apply my-4 rounded-lg border-l-4;
+    border-left-color: var(--callout-color);
+    background: color-mix(in srgb, var(--callout-color) 10%, transparent);
+  }
+
+  .callout-title {
+    @apply flex items-center gap-2 px-4 py-2 text-sm font-semibold cursor-pointer select-none;
+    color: var(--callout-color);
+    list-style: none;
+  }
+
+  .callout-title::-webkit-details-marker {
+    @apply hidden;
+  }
+
+  /* Variant icon (left) */
+  .callout-title::before {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    content: var(--callout-icon, '\f05a');
+    @apply shrink-0;
+  }
+
+  /* Chevron (right) */
+  .callout-title::after {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    content: '\f078';
+    @apply ml-auto text-[0.625rem] shrink-0 transition-transform duration-200;
+  }
+
+  .callout.collapsed .callout-title::after {
+    @apply -rotate-90;
+  }
+
+  .callout-body {
+    @apply grid grid-rows-[1fr] transition-[grid-template-rows] duration-300;
+  }
+
+  .callout.collapsed .callout-body {
+    @apply grid-rows-[0fr];
+  }
+
+  .callout-body-inner {
+    @apply overflow-hidden min-h-0 px-4 pb-2;
+  }
+
+  .callout-body-inner > :first-child {
+    @apply mt-0;
+  }
+
+  .callout-body-inner > :last-child {
+    @apply mb-0;
+  }
+
+  /* Variant colors and icons — kiln outputs class="callout note", class="callout info", etc. */
+  .callout.abstract {
+    --callout-color: #00b0ff;
+    --callout-icon: '\f46d'; /* clipboard-list */
+  }
+  .callout.bug {
+    --callout-color: #f50057;
+    --callout-icon: '\f188'; /* bug */
+  }
+  .callout.danger {
+    --callout-color: #ff1744;
+    --callout-icon: '\f0e7'; /* bolt */
+  }
+  .callout.example {
+    --callout-color: #651fff;
+    --callout-icon: '\f03a'; /* list */
+  }
+  .callout.failure {
+    --callout-color: #ff5252;
+    --callout-icon: '\f057'; /* circle-xmark */
+  }
+  .callout.info {
+    --callout-color: #00b8d4;
+    --callout-icon: '\f05a'; /* circle-info */
+  }
+  .callout.note {
+    --callout-color: #448aff;
+    --callout-icon: '\f15c'; /* file-lines */
+  }
+  .callout.question {
+    --callout-color: #64dd17;
+    --callout-icon: '\f059'; /* circle-question */
+  }
+  .callout.quote {
+    --callout-color: #9e9e9e;
+    --callout-icon: '\f10d'; /* quote-left */
+  }
+  .callout.success {
+    --callout-color: #00c853;
+    --callout-icon: '\f058'; /* circle-check */
+  }
+  .callout.tip {
+    --callout-color: #00bfa5;
+    --callout-icon: '\f0eb'; /* lightbulb */
+  }
+  .callout.warning {
+    --callout-color: #ff9100;
+    --callout-icon: '\f071'; /* triangle-exclamation */
+  }
+
+  [data-theme='dark'] .callout {
+    background: color-mix(in srgb, var(--callout-color) 15%, transparent);
+  }
+}

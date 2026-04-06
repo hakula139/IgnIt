@@ -1,0 +1,152 @@
+/* Unlayered — must override @tailwindcss/typography defaults in @layer utilities */
+
+.prose {
+  /* Text */
+  --tw-prose-body: var(--color-text);
+  --tw-prose-headings: var(--color-text);
+  --tw-prose-bold: var(--color-text);
+  --tw-prose-links: var(--color-link);
+  --tw-prose-code: var(--color-text);
+  --tw-prose-pre-bg: var(--color-bg-code);
+
+  /* Lists */
+  --tw-prose-counters: var(--color-text-secondary);
+  --tw-prose-bullets: var(--color-text-secondary);
+
+  /* Decorations */
+  --tw-prose-hr: var(--color-border);
+  --tw-prose-quotes: var(--color-text-secondary);
+  --tw-prose-quote-borders: var(--color-border);
+  --tw-prose-captions: var(--color-text-tertiary);
+  --tw-prose-th-borders: var(--color-border);
+  --tw-prose-td-borders: var(--color-border);
+}
+
+/* Prevent Tailwind utility collision with syntect class names (e.g. "block") */
+.prose .highlight span {
+  @apply inline;
+}
+
+/* Reset Typography plugin styles inside structured code blocks */
+.prose .code-block pre {
+  @apply m-0 p-0 bg-transparent rounded-none whitespace-pre overflow-visible text-[length:inherit];
+}
+
+.prose .code-block td {
+  @apply py-3 px-0;
+}
+
+.prose .code-block .line-numbers {
+  @apply text-right;
+}
+
+.prose .code-block .line-numbers pre {
+  @apply py-0 pr-2 pl-4;
+}
+
+.prose .code-block .code pre {
+  @apply py-0 pr-4 pl-3;
+}
+
+.prose .code-block table {
+  @apply m-0 w-max min-w-full text-[length:inherit] leading-[inherit];
+}
+
+/* Restore prose-level margins on the .code-block wrapper (since pre margins are reset) */
+.prose .code-block {
+  @apply my-[1.5em];
+}
+
+/* Heading anchors — must be unlayered to override Typography link styles */
+.prose .heading-anchor {
+  @apply no-underline;
+}
+
+/* Clear section breaks before h2 headings */
+.prose :where(h2) {
+  @apply mt-[2.5em] pt-[1.5em] border-t border-border;
+}
+
+/* Skip separator on the very first element */
+.prose > :first-child {
+  @apply mt-0 pt-0 border-t-0;
+}
+
+@layer components {
+  .prose a:hover {
+    @apply text-link-hover;
+  }
+
+  .prose code {
+    @apply px-1.5 py-0.5 text-[0.875em] rounded bg-bg-code;
+  }
+
+  .prose code::before,
+  .prose code::after {
+    @apply content-none;
+  }
+
+  .prose :where(p, li) {
+    @apply wrap-break-word;
+  }
+
+  /* ── Heading Anchors ── */
+
+  .prose :where(h1, h2, h3, h4, h5, h6) {
+    @apply relative;
+  }
+
+  .prose .heading-anchor {
+    @apply absolute -left-5 text-link no-underline opacity-0 transition-opacity;
+  }
+
+  .prose :where(h2, h3, h4, h5, h6):hover .heading-anchor {
+    @apply opacity-60;
+  }
+
+  /* ── Images ── */
+
+  .prose img {
+    @apply rounded-lg;
+  }
+
+  .prose figure {
+    @apply text-center;
+  }
+
+  .prose figcaption {
+    @apply text-text-tertiary;
+  }
+
+  /* ── Tables ── */
+
+  .prose table {
+    @apply block w-auto overflow-x-auto;
+  }
+
+  .prose .dense-table table {
+    @apply text-sm;
+  }
+
+  .prose .dense-table :where(th, td) {
+    @apply px-2 py-1 whitespace-nowrap;
+  }
+
+  /* ── Footnotes ── */
+
+  .prose .footnote-definition {
+    @apply flex gap-2 mt-4 pt-4 border-t border-border text-sm text-text-secondary;
+  }
+
+  .prose .footnote-definition-label {
+    @apply shrink-0 text-link font-semibold;
+  }
+
+  .prose .footnote-definition p {
+    @apply my-0;
+  }
+
+  .prose .footnote-reference a {
+    @apply text-link font-semibold no-underline;
+  }
+}
