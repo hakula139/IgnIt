@@ -29,8 +29,7 @@
 
 /* Reset Typography plugin styles inside structured code blocks */
 .prose .code-block pre {
-  @apply m-0 p-0 bg-transparent rounded-none whitespace-pre overflow-visible;
-  font-size: inherit;
+  @apply m-0 p-0 bg-transparent rounded-none whitespace-pre overflow-visible text-[length:inherit];
 }
 
 .prose .code-block td {
@@ -50,9 +49,7 @@
 }
 
 .prose .code-block table {
-  @apply m-0 w-max min-w-full;
-  font-size: inherit;
-  line-height: inherit;
+  @apply m-0 w-max min-w-full text-[length:inherit] leading-[inherit];
 }
 
 /* Restore prose-level margins on the .code-block wrapper (since pre margins are reset) */
