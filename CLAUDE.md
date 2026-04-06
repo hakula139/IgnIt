@@ -13,22 +13,26 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 │       ├── main.css                        # Entry: tokens, dark mode, partial imports
 │       ├── base.css                        # @layer base (html, body, a, selection)
 │       └── components/
-│           ├── glass-panel.css             # .glass-panel, .header-nav, .site-footer
-│           ├── header.css                  # .header-logo, .header-link, .header-icon, .header-mobile-*
-│           ├── home-card.css               # .home-card-*, .profile-avatar, .text-card-*
-│           ├── content.css                 # .article-title, .toc-collapse, .toc-trigger, .toc-body, .toc-sidebar
-│           ├── listing.css                 # .year-heading, .tag-pill, .category-card, .post-entry-*
-│           ├── pagination.css              # .pagination-link, .pagination-ellipsis, .pagination-input
-│           ├── callout.css                 # .callout, .callout-note ... .callout-quote, dark overrides
-│           └── prose.css                   # .prose variable overrides, code, word-break
+│           ├── layout/
+│           │   ├── glass-panel.css         # .glass-panel, .header-nav, .site-footer
+│           │   └── header.css              # .header-logo, .header-link, .header-icon, .header-mobile-*
+│           ├── content/
+│           │   ├── content.css             # .article-title, .toc-collapse, .toc-trigger, .toc-sidebar
+│           │   ├── code-block.css          # .code-block, .code-header, .code-body, .copy-btn
+│           │   ├── syntax.css              # Syntax highlighting (Material Light / Palenight)
+│           │   ├── callout.css             # .callout variants, icons, collapse animation
+│           │   └── prose.css               # .prose overrides (unlayered + @layer components)
+│           ├── listing/
+│           │   ├── home-card.css           # .home-card-*, .profile-avatar, .text-card-*
+│           │   ├── listing.css             # .year-heading, .tag-pill, .category-card, .post-entry-*
+│           │   └── pagination.css          # .pagination-link, .pagination-ellipsis, .pagination-input
+│           └── embed/
+│               └── apple-music.css         # Apple Music embed light / dark toggle
 ├── static/
 │   ├── css/
-│   │   ├── apple-music.css                 # Apple Music embed light / dark toggle
-│   │   └── syntax.css                      # Syntax highlighting (Material palette)
-│   ├── dist/
 │   │   └── style.min.css                   # Compiled Tailwind output (committed for submodule consumers)
 │   └── js/
-│       ├── code-copy.js                    # Copy-to-clipboard for code blocks
+│       ├── content.js                      # Code block, callout, and heading anchor enhancements
 │       ├── pagination.js                   # Page-jump controls for pagination
 │       ├── theme.js                        # Dark mode toggle + system preference
 │       └── toc.js                          # TOC active heading tracking + section collapse
@@ -80,7 +84,7 @@ Use `@apply` in the appropriate CSS partial for anything else. Use canonical Tai
 
 #### Build Output
 
-`static/dist/style.min.css` is the compiled output, committed to git so submodule consumers get a working theme without needing Node.js. **Always run `pnpm build` before committing** to keep the compiled output in sync with source.
+`static/css/style.min.css` is the compiled output, committed to git so submodule consumers get a working theme without needing Node.js. **Always run `pnpm build` before committing** to keep the compiled output in sync with source.
 
 To rebuild CSS: `pnpm build` (or `pnpm dev` for watch mode).
 
@@ -103,7 +107,7 @@ Example: `class="flex items-center w-full px-4 py-2 text-sm text-text bg-bg roun
 
 - **Design tokens** in `@theme { ... }` block — colors, fonts, radii, shadows.
 - **Custom properties** prefixed with `--color-`, `--radius-`, `--shadow-`.
-- **Component classes** for multi-property patterns that repeat. One CSS partial per concern under `components/`.
+- **Component classes** for multi-property patterns that repeat. CSS partials are grouped by concern under `components/` (`layout/`, `content/`, `listing/`, `embed/`).
 - Prefer Tailwind utilities over custom CSS.
 - `@import` order in `main.css` determines cascade order within the same `@layer`.
 

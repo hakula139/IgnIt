@@ -11,5 +11,5 @@
     }
   ],
   "dictionaries": ["project-words"],
-  "ignorePaths": ["pnpm-lock.yaml", "static/dist"]
+  "ignorePaths": ["pnpm-lock.yaml", "static/css"]
 }

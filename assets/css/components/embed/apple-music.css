@@ -1,0 +1,25 @@
+@layer components {
+  /* ── Apple Music Embed ── */
+
+  .apple-music-wrapper {
+    @apply my-4;
+  }
+
+  .apple-music-wrapper iframe {
+    @apply block border-0;
+  }
+
+  /* ── Dark Mode ── */
+
+  .apple-music-dark {
+    @apply hidden;
+  }
+
+  [data-theme='dark'] .apple-music-light {
+    @apply hidden;
+  }
+
+  [data-theme='dark'] .apple-music-dark {
+    @apply block;
+  }
+}
