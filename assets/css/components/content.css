@@ -44,4 +44,18 @@
   .toc a:hover {
     @apply border-link text-link;
   }
+
+  .toc a.active {
+    @apply border-link text-link font-medium;
+  }
+
+  /* ── Collapsible TOC Sections ── */
+
+  .toc-sidebar .toc li > ul {
+    @apply max-h-0 overflow-hidden transition-[max-height] duration-300;
+  }
+
+  .toc-sidebar .toc li.active > ul {
+    @apply max-h-96;
+  }
 }
