@@ -4,11 +4,11 @@
 /* ── Light Theme ── */
 
 .highlight {
-  color: #546e7a;
+  color: #37474f;
   background: #fafafa;
 }
 .highlight .source {
-  color: #546e7a;
+  color: #37474f;
 }
 .highlight .keyword {
   color: #7c4dff;
@@ -23,7 +23,7 @@
   color: #6182b8;
 }
 .highlight .string {
-  color: #91b859;
+  color: #7cb342;
 }
 .highlight .constant {
   color: #f76d47;
@@ -35,10 +35,10 @@
   color: #e2931d;
 }
 .highlight .punctuation {
-  color: #39adb5;
+  color: #00897b;
 }
 .highlight .comment {
-  color: #91b3b0;
+  color: #78909c;
   font-style: italic;
 }
 .highlight .invalid {
