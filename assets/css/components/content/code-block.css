@@ -2,7 +2,11 @@
   /* ── Code Block Container ── */
 
   .code-block {
-    @apply my-4 rounded-lg border border-border overflow-hidden text-sm leading-normal;
+    @apply my-4 rounded-lg border border-white/20 overflow-hidden text-sm leading-normal backdrop-blur-lg backdrop-saturate-125;
+
+    @variant dark {
+      @apply border-white/8;
+    }
   }
 
   /* ── Header (collapsible trigger) ── */
@@ -74,9 +78,10 @@
     max-height: calc(var(--max-lines, 40) * 1.5em + 1rem);
   }
 
-  /* ── Plaintext Highlight ── */
+  /* ── Unstyled Languages (plaintext, markdown, etc.) ── */
 
-  .code-block[data-lang='plaintext'] .highlight {
+  .code-block[data-lang='plaintext'] .highlight,
+  .code-block[data-lang='markdown'] .highlight {
     @apply bg-transparent text-text;
   }
 
@@ -91,7 +96,7 @@
   }
 
   .highlight .line-numbers pre {
-    @apply pr-2 pl-4 text-text-tertiary/50;
+    @apply pr-2 pl-4 text-text-tertiary;
   }
 
   .highlight .code {

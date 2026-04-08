@@ -6,7 +6,7 @@
 
   .highlight {
     color: #37474f;
-    background: #fafafa;
+    @apply bg-[#fafafa]/80;
   }
 
   .highlight .source {
@@ -66,7 +66,7 @@
 
   [data-theme='dark'] .highlight {
     color: #b0bec5;
-    background: #212121;
+    @apply bg-[#212121]/80;
   }
 
   [data-theme='dark'] .highlight .source {

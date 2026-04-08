@@ -65,7 +65,11 @@
   @apply no-underline;
 }
 
-/* Remove Typography backtick pseudo-elements on inline code */
+/* Remove Typography bold and backtick styles on inline code */
+.prose code {
+  @apply font-normal;
+}
+
 .prose code::before,
 .prose code::after {
   @apply content-none;
