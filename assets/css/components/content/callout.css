@@ -4,7 +4,7 @@
   .callout {
     --callout-color: #448aff;
 
-    @apply my-4 rounded-lg border border-white/20 border-l-4 bg-bg-code/60 transition-colors duration-300;
+    @apply my-4 rounded-lg border border-white/20 border-l-4 bg-bg-code/60;
     border-left-color: var(--callout-color);
 
     @variant dark {

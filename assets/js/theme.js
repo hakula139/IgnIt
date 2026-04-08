@@ -18,7 +18,15 @@
     }
   };
 
+  const enableTransition = () => {
+    document.documentElement.classList.add('theme-transition');
+    setTimeout(() => {
+      document.documentElement.classList.remove('theme-transition');
+    }, 300);
+  };
+
   const toggleTheme = () => {
+    enableTransition();
     const current = document.documentElement.getAttribute('data-theme');
     setTheme(current === DARK ? LIGHT : DARK);
   };
@@ -34,6 +42,7 @@
   // Listen for system preference changes (when no explicit choice stored).
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     if (!getStoredTheme()) {
+      enableTransition();
       setTheme(e.matches ? DARK : LIGHT);
     }
   });

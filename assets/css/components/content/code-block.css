@@ -2,7 +2,7 @@
   /* ── Code Block Container ── */
 
   .code-block {
-    @apply my-4 rounded-lg border border-white/20 overflow-hidden text-sm leading-normal transition-colors duration-300;
+    @apply my-4 rounded-lg border border-white/20 overflow-hidden text-sm leading-normal;
 
     @variant dark {
       @apply border-white/8;
@@ -12,7 +12,7 @@
   /* ── Header (collapsible trigger) ── */
 
   .code-header {
-    @apply flex items-center gap-2 px-4 py-2 text-xs bg-bg-code/70 cursor-pointer select-none transition-colors duration-300;
+    @apply flex items-center gap-2 px-4 py-2 text-xs bg-bg-code/70 cursor-pointer select-none;
   }
 
   .code-header .chevron {

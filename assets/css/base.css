@@ -1,3 +1,11 @@
+/* Temporarily enable color transitions during theme toggle (added / removed by JS). */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  @apply transition-colors! duration-300!;
+}
+
 @layer base {
   html {
     @apply scroll-smooth;
