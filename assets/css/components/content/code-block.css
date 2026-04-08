@@ -12,11 +12,11 @@
   /* ── Header (collapsible trigger) ── */
 
   .code-header {
-    @apply flex items-center gap-2 px-4 py-2 border-b border-border text-xs bg-black/4 cursor-pointer select-none transition-colors duration-300;
+    @apply flex items-center gap-2 px-4 py-2 border-b border-border text-xs bg-[#eeeeee]/60 cursor-pointer select-none transition-colors duration-300;
   }
 
   [data-theme='dark'] .code-header {
-    @apply bg-white/6;
+    @apply bg-[#2a2a2a]/60;
   }
 
   .code-header .chevron {
