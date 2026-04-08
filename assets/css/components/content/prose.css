@@ -123,11 +123,15 @@
   /* ── Images ── */
 
   .prose img {
-    @apply rounded-lg;
+    @apply rounded-lg opacity-0 transition-opacity duration-300;
+  }
+
+  .prose img.loaded {
+    @apply opacity-100;
   }
 
   .prose figure {
-    @apply rounded-lg bg-bg-code/60 text-center;
+    @apply rounded-lg text-center;
   }
 
   /* ── Tables ── */

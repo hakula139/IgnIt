@@ -131,6 +131,21 @@
     }
   };
 
+  // ── Image Fade-in ──
+
+  const initImageFadeIn = () => {
+    const markLoaded = (img) => img.classList.add('loaded');
+
+    for (const img of document.querySelectorAll('.prose img')) {
+      if (img.complete && img.naturalWidth > 0) {
+        markLoaded(img);
+      } else {
+        img.addEventListener('load', () => markLoaded(img), { once: true });
+        img.addEventListener('error', () => markLoaded(img), { once: true });
+      }
+    }
+  };
+
   // ── Init ──
 
   const init = () => {
@@ -138,6 +153,7 @@
     initCallouts();
     initTocCollapse();
     initHeadingAnchors();
+    initImageFadeIn();
   };
 
   if (document.readyState === 'loading') {
