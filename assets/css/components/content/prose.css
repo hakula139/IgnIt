@@ -136,7 +136,7 @@
   /* ── Images ── */
 
   .prose img {
-    @apply rounded-lg;
+    @apply mx-auto rounded-lg;
   }
 
   html.image-fade-enabled :where(.prose img, .post-featured-image) {
