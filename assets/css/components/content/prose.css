@@ -140,7 +140,11 @@
   /* ── Footnotes ── */
 
   .prose .footnote-definition {
-    @apply flex gap-2 mt-4 pt-4 border-t border-border text-sm text-text-secondary;
+    @apply flex gap-2 mt-4 pt-4 border-t border-white/20 text-sm text-text-secondary;
+
+    @variant dark {
+      @apply border-white/8;
+    }
   }
 
   .prose .footnote-definition-label {
