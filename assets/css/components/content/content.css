@@ -18,16 +18,14 @@
   }
 
   .toc-trigger::before {
-    @apply shrink-0 text-text-tertiary;
+    @apply shrink-0 font-black text-text-tertiary;
     font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
     content: '\f0ca'; /* list-ul */
   }
 
   .toc-trigger::after {
-    @apply ml-auto shrink-0 text-[0.625rem] text-text-tertiary transition-transform duration-200;
+    @apply ml-auto shrink-0 font-black text-[0.625rem] text-text-tertiary transition-transform duration-200;
     font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
     content: '\f078'; /* chevron-down */
   }
 

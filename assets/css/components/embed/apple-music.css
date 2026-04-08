@@ -11,15 +11,17 @@
 
   /* ── Dark Mode ── */
 
+  .apple-music-light {
+    @variant dark {
+      @apply hidden;
+    }
+  }
+
   .apple-music-dark {
     @apply hidden;
-  }
 
-  [data-theme='dark'] .apple-music-light {
-    @apply hidden;
-  }
-
-  [data-theme='dark'] .apple-music-dark {
-    @apply block;
+    @variant dark {
+      @apply block;
+    }
   }
 }

@@ -20,6 +20,8 @@
   .pagination-input {
     @apply h-9 min-w-9 w-9 text-center text-sm text-text rounded-lg border border-border outline-none backdrop-blur-xs transition-colors duration-200;
     background: color-mix(in srgb, var(--color-bg) 60%, transparent);
+    appearance: textfield;
+    -moz-appearance: textfield;
   }
 
   .pagination-input:focus {
@@ -29,13 +31,6 @@
   /* Hide native spinner arrows on number inputs. */
   .pagination-input::-webkit-inner-spin-button,
   .pagination-input::-webkit-outer-spin-button {
-    appearance: none;
-    -webkit-appearance: none;
-    @apply m-0;
-  }
-
-  .pagination-input {
-    appearance: textfield;
-    -moz-appearance: textfield;
+    @apply appearance-none m-0;
   }
 }
