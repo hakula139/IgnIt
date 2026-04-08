@@ -1,6 +1,6 @@
 @layer components {
   .header-logo {
-    @apply border-b-0 text-lg font-semibold text-text transition-colors;
+    @apply text-lg font-semibold text-text border-b-0 transition-colors;
   }
 
   .header-logo:hover {
