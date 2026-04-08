@@ -88,7 +88,7 @@
 
 @layer components {
   .prose code {
-    @apply px-1.5 py-0.5 rounded bg-bg-code text-[0.875em];
+    @apply px-1.5 py-0.5 rounded bg-bg-code/60 text-[0.875em];
   }
 
   .prose :where(p, li) {
