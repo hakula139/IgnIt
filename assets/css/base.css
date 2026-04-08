@@ -39,8 +39,8 @@ html.theme-transition *::after {
     @apply text-link-hover;
   }
 
-  /* Scroll offset for fixed header. */
+  /* Scroll offset: header (h-14 = 3.5rem) + container padding (py-6 = 1.5rem). */
   [id] {
-    @apply scroll-mt-18;
+    @apply scroll-mt-20;
   }
 }
