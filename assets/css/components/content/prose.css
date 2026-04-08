@@ -57,12 +57,12 @@
 }
 
 /* Override Typography's opaque borders with semi-transparent glass style. */
-.prose :where(hr, blockquote, th, td) {
+.prose :where(hr, blockquote, th, td, thead, tr) {
   border-color: rgb(255 255 255 / 0.2);
-}
 
-:where([data-theme='dark']) .prose :where(hr, blockquote, th, td) {
-  border-color: rgb(255 255 255 / 0.08);
+  @variant dark {
+    border-color: rgb(255 255 255 / 0.08);
+  }
 }
 
 /* Override Typography's default underline; show border on hover instead. */
