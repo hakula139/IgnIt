@@ -3,7 +3,7 @@ html.theme-transition,
 html.theme-transition *,
 html.theme-transition *::before,
 html.theme-transition *::after {
-  @apply transition-colors! duration-300!;
+  @apply transition-[background-color,border-color]! duration-300!;
 }
 
 @layer base {
