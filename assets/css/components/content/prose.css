@@ -56,12 +56,19 @@
   @apply py-0 pr-4 pl-3;
 }
 
-/*
- * Heading anchors need rules in two places:
- * - Unlayered (here): overrides Typography's link underline in @layer utilities.
- * - @layer components (below): visual positioning, color, and hover reveal.
- */
-.prose .heading-anchor {
+/* Override Typography's default underline; show on hover instead. */
+.prose a {
+  @apply no-underline;
+}
+
+.prose a:hover {
+  @apply text-link-hover underline;
+}
+
+/* Heading anchors: unlayered to override Typography's link underline.
+   Visual positioning and hover reveal live in @layer components below. */
+.prose .heading-anchor,
+.prose .heading-anchor:hover {
   @apply no-underline;
 }
 
@@ -76,10 +83,6 @@
 }
 
 @layer components {
-  .prose a:hover {
-    @apply text-link-hover;
-  }
-
   .prose code {
     @apply px-1.5 py-0.5 rounded bg-bg-code text-[0.875em];
   }

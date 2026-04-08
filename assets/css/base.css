@@ -4,7 +4,7 @@
   }
 
   body {
-    @apply flex flex-col min-h-screen text-text leading-[1.75] bg-bg transition-colors duration-300;
+    @apply flex flex-col min-h-screen text-text leading-[1.75] bg-bg;
   }
 
   body::before {
@@ -24,7 +24,7 @@
   }
 
   a {
-    @apply text-link no-underline transition-colors duration-300;
+    @apply text-link no-underline;
   }
 
   a:hover {
