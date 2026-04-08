@@ -9,6 +9,7 @@
 <div class="apple-music-wrapper" id="{{ name }}">
   <iframe
     class="apple-music-light w-full overflow-hidden rounded-xl"
+    title="Apple Music player"
     allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
     height="{{ height }}"
     sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
@@ -16,6 +17,7 @@
   ></iframe>
   <iframe
     class="apple-music-dark w-full overflow-hidden rounded-xl"
+    title="Apple Music player"
     allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
     height="{{ height }}"
     sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
@@ -36,6 +38,7 @@
 <div class="music-player-wrapper">
   <iframe
     class="w-full border-0"
+    title="NetEase Music player"
     height="{{ height }}"
     src="https://music.163.com/outchain/player?type={{ outchain_type }}&id={{ id }}&auto=0&height={{ inner_height }}"
   ></iframe>
@@ -46,6 +49,7 @@
 <div class="music-player-wrapper">
   <iframe
     class="w-full border-0"
+    title="QQ Music player"
     height="{{ height }}"
     src="https://i.y.qq.com/n2/m/outchain/player/index.html?songid={{ id }}&songtype=0"
   ></iframe>
