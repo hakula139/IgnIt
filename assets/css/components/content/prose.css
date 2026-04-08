@@ -65,6 +65,10 @@
   }
 }
 
+.prose :where(li) {
+  @apply my-0.5;
+}
+
 /* Heading anchors and footnote refs: no hover border. */
 .prose .heading-anchor,
 .prose .heading-anchor:hover,
@@ -99,10 +103,6 @@
 
   .prose :where(p, li) {
     @apply wrap-break-word;
-  }
-
-  .prose :where(li) {
-    @apply my-0.5;
   }
 
   /* ── Heading Anchors ── */

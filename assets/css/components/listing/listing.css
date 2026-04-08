@@ -20,11 +20,11 @@
   }
 
   .post-entry {
-    @apply flex items-center justify-between gap-4 py-1.5;
+    @apply flex items-center justify-between gap-4 py-1;
   }
 
   .post-entry-title {
-    @apply flex-1 min-w-0 truncate transition-colors;
+    @apply flex-1 min-w-0 truncate border-b-0 transition-colors;
   }
 
   .post-entry-title:hover {
