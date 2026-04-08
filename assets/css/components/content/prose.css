@@ -123,11 +123,15 @@
   /* ── Images ── */
 
   .prose img {
-    @apply rounded-lg opacity-0 transition-opacity duration-300;
+    @apply rounded-lg;
   }
 
-  .prose img.loaded {
-    @apply opacity-100;
+  html.image-fade-enabled :where(.prose img, .post-featured-image) {
+    @apply invisible opacity-0 transition-opacity duration-300;
+  }
+
+  html.image-fade-enabled :where(.prose img, .post-featured-image).loaded {
+    @apply visible opacity-100;
   }
 
   .prose figure {

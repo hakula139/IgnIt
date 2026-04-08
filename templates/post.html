@@ -13,13 +13,14 @@
       {# Article column #}
       <article class="glass-panel flex-1 min-w-0">
         {%- if featured_image %}
-        <div class="aspect-[21/9] overflow-hidden rounded-t-card bg-bg-code/60">
+        <div class="aspect-[21/9] overflow-hidden rounded-t-card">
           <img
             src="{{ featured_image | safe }}"
             alt="{{ title }}"
-            class="h-full w-full object-cover"
+            class="post-featured-image h-full w-full object-cover"
             style="object-position: {{ featured_image_position | default('center', true) }}"
             loading="eager"
+            decoding="async"
             fetchpriority="high"
           >
         </div>
