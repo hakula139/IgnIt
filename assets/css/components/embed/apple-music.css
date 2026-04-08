@@ -1,4 +1,14 @@
 @layer components {
+  /* ── Shared Music Embed ── */
+
+  .music-player-wrapper {
+    @apply my-4 overflow-hidden rounded-xl;
+  }
+
+  .music-player-wrapper iframe {
+    @apply block border-0;
+  }
+
   /* ── Apple Music Embed ── */
 
   .apple-music-wrapper {
