@@ -23,7 +23,7 @@
     setTheme(current === DARK ? LIGHT : DARK);
   };
 
-  // Apply initial theme (called inline in <head> to prevent flash)
+  // Apply initial theme (called inline in <head> to prevent flash).
   const stored = getStoredTheme();
   if (stored) {
     setTheme(stored);
@@ -31,15 +31,15 @@
     setTheme(DARK);
   }
 
-  // Listen for system preference changes (when no explicit choice stored)
+  // Listen for system preference changes (when no explicit choice stored).
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     if (!getStoredTheme()) {
       setTheme(e.matches ? DARK : LIGHT);
     }
   });
 
-  // Re-sync aria-labels once the DOM is ready (the initial setTheme call
-  // runs in <head> before buttons exist).
+  // Re-sync aria-labels once the DOM is ready. The initial setTheme call
+  // runs in <head> before buttons exist.
   const syncAriaLabels = () => {
     const theme = document.documentElement.getAttribute('data-theme');
     if (!theme) {
@@ -52,6 +52,6 @@
   };
   document.addEventListener('DOMContentLoaded', syncAriaLabels);
 
-  // Expose toggle for the theme switch button
+  // Expose toggle for the theme switch button.
   window.__toggleTheme = toggleTheme;
 })();

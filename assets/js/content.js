@@ -67,7 +67,7 @@
       makeCollapsible(block, header, { skipSelector: '.copy-btn' });
     }
 
-    // Delegated copy handler
+    // Delegated copy handler.
     document.addEventListener('click', (e) => {
       const btn = e.target.closest('.copy-btn');
       if (btn) {
@@ -86,7 +86,7 @@
         continue;
       }
 
-      // Wrap body children in a single element for CSS grid animation
+      // Wrap body children in a single element for CSS grid animation.
       const inner = document.createElement('div');
       inner.className = 'callout-body-inner';
       while (body.firstChild) {
@@ -94,7 +94,7 @@
       }
       body.appendChild(inner);
 
-      // If initially closed, keep open in DOM but visually collapse via CSS
+      // If initially closed, keep open in DOM but visually collapse via CSS.
       if (!callout.open) {
         callout.open = true;
         callout.classList.add('collapsed');

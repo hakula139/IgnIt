@@ -1,4 +1,4 @@
-/* Unlayered — must override @tailwindcss/typography defaults in @layer utilities */
+/* Unlayered — must override @tailwindcss/typography defaults in @layer utilities. */
 
 .prose {
   /* Text */
@@ -22,12 +22,12 @@
   --tw-prose-td-borders: var(--color-border);
 }
 
-/* Prevent Tailwind utility collision with syntect class names (e.g. "block") */
+/* Prevent Tailwind utility collision with syntect class names (e.g. "block"). */
 .prose .highlight span {
   @apply inline;
 }
 
-/* Reset Typography plugin styles inside structured code blocks */
+/* Reset Typography plugin styles inside structured code blocks. */
 .prose .code-block {
   @apply my-[1.5em];
 }
@@ -58,14 +58,14 @@
 
 /*
  * Heading anchors need rules in two places:
- * - Unlayered (here): overrides Typography's link underline in @layer utilities
- * - @layer components (below): visual positioning, color, and hover reveal
+ * - Unlayered (here): overrides Typography's link underline in @layer utilities.
+ * - @layer components (below): visual positioning, color, and hover reveal.
  */
 .prose .heading-anchor {
   @apply no-underline;
 }
 
-/* Remove Typography bold and backtick styles on inline code */
+/* Remove Typography bold and backtick styles on inline code. */
 .prose code {
   @apply font-normal;
 }

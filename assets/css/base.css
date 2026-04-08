@@ -31,7 +31,7 @@
     @apply text-link-hover;
   }
 
-  /* Scroll offset for fixed header */
+  /* Scroll offset for fixed header. */
   [id] {
     @apply scroll-mt-18;
   }
