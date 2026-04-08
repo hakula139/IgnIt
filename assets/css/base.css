@@ -32,11 +32,11 @@ html.theme-transition *::after {
   }
 
   a {
-    @apply text-link no-underline;
+    @apply text-link no-underline border-b-2 border-transparent;
   }
 
   a:hover {
-    @apply text-link-hover;
+    @apply text-link-hover border-current;
   }
 
   /* Scroll offset: main padding (pt-16 = 4rem) + container padding (py-6 = 1.5rem). */

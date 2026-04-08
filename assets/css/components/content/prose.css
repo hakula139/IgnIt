@@ -65,15 +65,6 @@
   }
 }
 
-/* Override Typography's default underline; show border on hover instead. */
-.prose a {
-  @apply no-underline border-b-2 border-transparent;
-}
-
-.prose a:hover {
-  @apply text-link-hover border-current;
-}
-
 /* Heading anchors and footnote refs: no hover border. */
 .prose .heading-anchor,
 .prose .heading-anchor:hover,
