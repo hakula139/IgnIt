@@ -78,15 +78,13 @@
     max-height: calc(var(--max-lines, 40) * 1.5em + 1rem);
   }
 
-  /* ── Unstyled Languages (plaintext, markdown, etc.) ── */
+  /* ── Unstyled Languages ── */
 
-  .code-block[data-lang='plaintext'] .highlight,
-  .code-block[data-lang='markdown'] .highlight {
+  .code-block[data-lang='plaintext'] .highlight {
     @apply bg-transparent text-text;
   }
 
-  .code-block[data-lang='plaintext'] .highlight span,
-  .code-block[data-lang='markdown'] .highlight span {
+  .code-block[data-lang='plaintext'] .highlight span {
     @apply text-inherit;
   }
 
