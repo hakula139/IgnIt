@@ -120,7 +120,7 @@
   }
 
   .prose figcaption {
-    @apply text-text-tertiary;
+    @apply text-text-secondary;
   }
 
   /* ── Borders (glass-consistent semi-transparent) ── */
