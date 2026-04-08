@@ -99,7 +99,11 @@
   }
 
   .highlight .line-numbers pre {
-    @apply pr-2 pl-4 text-text-tertiary;
+    @apply pr-2 pl-4 text-text-secondary;
+  }
+
+  [data-theme='dark'] .highlight .line-numbers pre {
+    @apply text-text-tertiary;
   }
 
   .highlight .code {
