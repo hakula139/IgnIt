@@ -115,6 +115,11 @@
     @apply opacity-60;
   }
 
+  /* Hide anchors inside nested containers where -left-5 would overlap borders. */
+  .prose :where(.callout, blockquote) .heading-anchor {
+    @apply hidden;
+  }
+
   /* ── Images ── */
 
   .prose img {
