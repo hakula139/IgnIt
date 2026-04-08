@@ -123,6 +123,32 @@
     @apply text-text-tertiary;
   }
 
+  /* ── Borders (glass-consistent semi-transparent) ── */
+
+  .prose :where(hr) {
+    @apply border-white/20;
+
+    @variant dark {
+      @apply border-white/8;
+    }
+  }
+
+  .prose :where(blockquote) {
+    @apply border-white/20;
+
+    @variant dark {
+      @apply border-white/8;
+    }
+  }
+
+  .prose :where(th, td) {
+    @apply border-white/20;
+
+    @variant dark {
+      @apply border-white/8;
+    }
+  }
+
   /* ── Tables ── */
 
   .prose table {
