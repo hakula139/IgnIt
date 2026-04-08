@@ -4,13 +4,8 @@
   .callout {
     --callout-color: #448aff;
 
-    @apply my-4 rounded-lg border border-white/20 border-l-4 bg-bg-code/60;
+    @apply my-4 rounded-lg border-l-4 bg-bg-code/60;
     border-left-color: var(--callout-color);
-
-    @variant dark {
-      @apply border-white/8;
-      border-left-color: var(--callout-color);
-    }
   }
 
   .callout-title {

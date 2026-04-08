@@ -6,11 +6,7 @@
   /* ── Mobile TOC (collapsible, < xl) ── */
 
   .toc-collapse {
-    @apply mb-6 rounded-lg border border-white/20 bg-bg-code/60;
-
-    @variant dark {
-      @apply border-white/8;
-    }
+    @apply mb-6 rounded-lg bg-bg-code/60;
   }
 
   .toc-trigger {

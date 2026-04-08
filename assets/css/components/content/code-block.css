@@ -2,11 +2,7 @@
   /* ── Code Block Container ── */
 
   .code-block {
-    @apply my-4 rounded-lg border border-white/20 overflow-hidden text-sm leading-normal;
-
-    @variant dark {
-      @apply border-white/8;
-    }
+    @apply my-4 rounded-lg overflow-hidden text-sm leading-normal;
   }
 
   /* ── Header (collapsible trigger) ── */
