@@ -2,7 +2,7 @@
   /* ── Shared Music Embed ── */
 
   .music-player-wrapper {
-    @apply my-4 overflow-hidden rounded-xl;
+    @apply my-4 overflow-hidden rounded-lg;
   }
 
   .music-player-wrapper iframe {

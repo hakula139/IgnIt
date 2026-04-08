@@ -8,7 +8,7 @@
 {%- set height = named_args.height | default("450") -%}
 <div class="apple-music-wrapper" id="{{ name }}">
   <iframe
-    class="apple-music-light w-full overflow-hidden rounded-xl"
+    class="apple-music-light w-full overflow-hidden rounded-lg"
     title="Apple Music player"
     allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
     height="{{ height }}"
@@ -16,7 +16,7 @@
     src="https://embed.music.apple.com/{{ country }}/{{ type }}/{{ id }}?l=en-GB"
   ></iframe>
   <iframe
-    class="apple-music-dark w-full overflow-hidden rounded-xl"
+    class="apple-music-dark w-full overflow-hidden rounded-lg"
     title="Apple Music player"
     allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
     height="{{ height }}"
