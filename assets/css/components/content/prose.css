@@ -28,12 +28,20 @@
 }
 
 /* Reset Typography plugin styles inside structured code blocks */
+.prose .code-block {
+  @apply my-[1.5em];
+}
+
 .prose .code-block pre {
-  @apply m-0 p-0 bg-transparent rounded-none whitespace-pre overflow-visible text-[length:inherit];
+  @apply m-0 p-0 overflow-visible whitespace-pre rounded-none bg-transparent text-[length:inherit];
+}
+
+.prose .code-block table {
+  @apply m-0 min-w-full w-max text-[length:inherit] leading-[inherit];
 }
 
 .prose .code-block td {
-  @apply py-3 px-0;
+  @apply px-0 py-3;
 }
 
 .prose .code-block .line-numbers {
@@ -48,15 +56,6 @@
   @apply py-0 pr-4 pl-3;
 }
 
-.prose .code-block table {
-  @apply m-0 w-max min-w-full text-[length:inherit] leading-[inherit];
-}
-
-/* Restore prose-level margins on the .code-block wrapper (since pre margins are reset) */
-.prose .code-block {
-  @apply my-[1.5em];
-}
-
 /*
  * Heading anchors need rules in two places:
  * - Unlayered (here): overrides Typography's link underline in @layer utilities
@@ -66,14 +65,10 @@
   @apply no-underline;
 }
 
-/* Clear section breaks before h2 headings */
-.prose :where(h2) {
-  @apply mt-[2.5em] pt-[1.5em] border-t border-border;
-}
-
-/* Skip separator on the very first element */
-.prose > :first-child {
-  @apply mt-0 pt-0 border-t-0;
+/* Remove Typography backtick pseudo-elements on inline code */
+.prose code::before,
+.prose code::after {
+  @apply content-none;
 }
 
 @layer components {
@@ -82,12 +77,7 @@
   }
 
   .prose code {
-    @apply px-1.5 py-0.5 text-[0.875em] rounded bg-bg-code;
-  }
-
-  .prose code::before,
-  .prose code::after {
-    @apply content-none;
+    @apply px-1.5 py-0.5 rounded bg-bg-code text-[0.875em];
   }
 
   .prose :where(p, li) {
@@ -101,7 +91,7 @@
   }
 
   .prose .heading-anchor {
-    @apply absolute -left-5 text-link no-underline opacity-0 transition-opacity;
+    @apply absolute -left-5 text-link opacity-0 no-underline transition-opacity;
   }
 
   .prose :where(h2, h3, h4, h5, h6):hover .heading-anchor {
@@ -143,7 +133,7 @@
   }
 
   .prose .footnote-definition-label {
-    @apply shrink-0 text-link font-semibold;
+    @apply shrink-0 font-semibold text-link;
   }
 
   .prose .footnote-definition p {
@@ -151,6 +141,6 @@
   }
 
   .prose .footnote-reference a {
-    @apply text-link font-semibold no-underline;
+    @apply font-semibold text-link no-underline;
   }
 }
