@@ -85,6 +85,11 @@
     @apply bg-transparent text-text;
   }
 
+  .code-block[data-lang='plaintext'] .highlight span,
+  .code-block[data-lang='markdown'] .highlight span {
+    @apply text-inherit;
+  }
+
   /* ── Highlight Table Layout ── */
 
   .highlight table {
