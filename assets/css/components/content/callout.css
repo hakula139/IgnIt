@@ -4,9 +4,8 @@
   .callout {
     --callout-color: #448aff;
 
-    @apply my-4 rounded-lg border-l-4 transition-colors duration-300;
+    @apply my-4 rounded-lg border-l-4 bg-bg-code/60 transition-colors duration-300;
     border-left-color: var(--callout-color);
-    background: color-mix(in srgb, var(--callout-color) 8%, transparent);
   }
 
   .callout-title {
@@ -124,11 +123,5 @@
   .callout.warning {
     --callout-color: #ff9100;
     --callout-icon: '\f071'; /* triangle-exclamation */
-  }
-
-  /* ── Dark Mode ── */
-
-  [data-theme='dark'] .callout {
-    background: color-mix(in srgb, var(--callout-color) 12%, transparent);
   }
 }
