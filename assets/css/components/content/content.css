@@ -10,11 +10,7 @@
   }
 
   .toc-trigger {
-    @apply flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-text-secondary list-none cursor-pointer select-none;
-  }
-
-  .toc-trigger::-webkit-details-marker {
-    @apply hidden;
+    @apply flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-text-secondary cursor-pointer select-none;
   }
 
   .toc-trigger::before {

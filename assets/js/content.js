@@ -15,6 +15,14 @@
   // ── Collapsible Panels ──
 
   const makeCollapsible = (container, trigger, { skipSelector, preventDefault } = {}) => {
+    const toggle = () => {
+      container.classList.toggle('collapsed');
+      if (trigger.hasAttribute('aria-expanded')) {
+        const expanded = !container.classList.contains('collapsed');
+        trigger.setAttribute('aria-expanded', String(expanded));
+      }
+    };
+
     trigger.addEventListener('click', (e) => {
       if (skipSelector && e.target.closest(skipSelector)) {
         return;
@@ -22,7 +30,14 @@
       if (preventDefault) {
         e.preventDefault();
       }
-      container.classList.toggle('collapsed');
+      toggle();
+    });
+
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
+      }
     });
   };
 
@@ -112,9 +127,14 @@
   const initTocCollapse = () => {
     for (const toc of document.querySelectorAll('.toc-collapse')) {
       const trigger = toc.querySelector('.toc-trigger');
-      if (trigger) {
-        makeCollapsible(toc, trigger);
+      if (!trigger) {
+        continue;
       }
+
+      trigger.setAttribute('role', 'button');
+      trigger.setAttribute('tabindex', '0');
+      trigger.setAttribute('aria-expanded', String(!toc.classList.contains('collapsed')));
+      makeCollapsible(toc, trigger);
     }
   };
 
