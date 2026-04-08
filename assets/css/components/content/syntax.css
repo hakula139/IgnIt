@@ -6,7 +6,7 @@
 
   .highlight {
     color: #37474f;
-    @apply bg-[#fafafa]/60 transition-colors duration-300;
+    @apply bg-bg-code/60 transition-colors duration-300;
   }
 
   .highlight .source {
@@ -66,7 +66,7 @@
 
   [data-theme='dark'] .highlight {
     color: #b0bec5;
-    @apply bg-[#212121]/60;
+    @apply bg-bg-code/60;
   }
 
   [data-theme='dark'] .highlight .source {
