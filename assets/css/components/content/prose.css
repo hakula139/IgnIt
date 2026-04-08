@@ -89,6 +89,11 @@
 
 /* ── Links ── */
 
+/* Override Typography's text-decoration: underline (base border-b handles it). */
+.prose a {
+  @apply no-underline;
+}
+
 /* Heading anchors and footnote refs: no hover border. */
 .prose .heading-anchor,
 .prose .heading-anchor:hover,
