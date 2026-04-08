@@ -45,10 +45,12 @@
 
           {# Mobile TOC (collapsible, < xl) #}
           {%- if toc %}
-          <details class="toc-collapse xl:hidden">
-            <summary class="toc-trigger">Table of Contents</summary>
-            <div class="toc-body">{{ toc | safe }}</div>
-          </details>
+          <div class="toc-collapse collapsed xl:hidden">
+            <div class="toc-trigger">Table of Contents</div>
+            <div class="toc-body-wrapper">
+              <div class="toc-body">{{ toc | safe }}</div>
+            </div>
+          </div>
           {%- endif %}
 
           <div class="prose max-w-none">{{ content | safe }}</div>

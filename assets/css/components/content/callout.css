@@ -49,7 +49,7 @@
   /* ── Body Inner (injected by JS for CSS grid animation) ── */
 
   .callout-body-inner {
-    @apply overflow-hidden min-h-0 px-4 pb-2;
+    @apply overflow-hidden min-h-0 px-4;
   }
 
   .callout-body-inner p {
@@ -61,7 +61,7 @@
   }
 
   .callout-body-inner > :last-child {
-    @apply mb-0;
+    @apply mb-2;
   }
 
   /* ── Variant Colors and Icons ── */

@@ -104,6 +104,17 @@
     }
   };
 
+  // ── Table of Contents ──
+
+  const initTocCollapse = () => {
+    for (const toc of document.querySelectorAll('.toc-collapse')) {
+      const trigger = toc.querySelector('.toc-trigger');
+      if (trigger) {
+        makeCollapsible(toc, trigger);
+      }
+    }
+  };
+
   // ── Heading Anchors ──
 
   const initHeadingAnchors = () => {
@@ -125,6 +136,7 @@
   const init = () => {
     initCodeBlocks();
     initCallouts();
+    initTocCollapse();
     initHeadingAnchors();
   };
 
