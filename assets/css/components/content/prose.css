@@ -1,5 +1,7 @@
 /* Unlayered — must override @tailwindcss/typography defaults in @layer utilities. */
 
+/* ── Typography Tokens ── */
+
 .prose {
   /* Text */
   --tw-prose-body: var(--color-text);
@@ -17,6 +19,8 @@
   --tw-prose-quotes: var(--color-text-secondary);
   --tw-prose-captions: var(--color-text-secondary);
 }
+
+/* ── Code Blocks ── */
 
 /* Prevent Tailwind utility collision with syntect class names (e.g. "block"). */
 .prose .highlight span {
@@ -56,41 +60,6 @@
   @apply py-0 pr-4 pl-3;
 }
 
-/* Override Typography's opaque borders with semi-transparent glass style. */
-.prose :where(hr, blockquote, th, td, thead, tr) {
-  border-color: rgb(255 255 255 / 0.2);
-
-  @variant dark {
-    border-color: rgb(255 255 255 / 0.08);
-  }
-}
-
-/* Override Typography's default underline; show border on hover instead. */
-.prose a {
-  @apply no-underline border-b-2 border-transparent;
-}
-
-.prose a:hover {
-  @apply text-link-hover border-current;
-}
-
-/* Heading anchors and footnote refs: no hover border. */
-.prose .heading-anchor,
-.prose .heading-anchor:hover,
-.prose .footnote-reference a,
-.prose .footnote-reference a:hover {
-  @apply border-b-0;
-}
-
-/* Allow full HDR luminance on capable displays. */
-@media (dynamic-range: high) {
-  .prose figure,
-  .prose img,
-  .post-featured-image {
-    dynamic-range-limit: no-limit;
-  }
-}
-
 /* Remove Typography bold and backtick styles on inline code. */
 .prose code {
   @apply font-normal;
@@ -101,10 +70,61 @@
   @apply content-none;
 }
 
+/* ── Borders ── */
+
+/* Override Typography's opaque borders with semi-transparent glass style. */
+.prose :where(hr, blockquote, th, td, thead, tr) {
+  border-color: rgb(255 255 255 / 0.2);
+
+  @variant dark {
+    border-color: rgb(255 255 255 / 0.08);
+  }
+}
+
+/* ── Lists ── */
+
+.prose :where(li) {
+  @apply my-0.5;
+}
+
+/* ── Links ── */
+
+/* Override Typography's text-decoration and link color on hover. */
+.prose a {
+  @apply pb-0.5 no-underline;
+}
+
+.prose a:hover {
+  @apply text-link-hover;
+}
+
+/* Heading anchors and footnote refs: no hover border. */
+.prose .heading-anchor,
+.prose .heading-anchor:hover,
+.prose .footnote-reference a,
+.prose .footnote-reference a:hover {
+  @apply border-b-0;
+}
+
+/* ── Images ── */
+
+/* Allow full HDR luminance on capable displays. */
+@media (dynamic-range: high) {
+  .prose figure,
+  .prose img,
+  .post-featured-image {
+    dynamic-range-limit: no-limit;
+  }
+}
+
 @layer components {
+  /* ── Code ── */
+
   .prose code {
     @apply px-1.5 py-0.5 rounded bg-bg-code/60 text-[0.875em];
   }
+
+  /* ── Text ── */
 
   .prose :where(p, li) {
     @apply wrap-break-word;
@@ -132,7 +152,7 @@
   /* ── Images ── */
 
   .prose img {
-    @apply rounded-lg;
+    @apply mx-auto rounded-lg;
   }
 
   html.image-fade-enabled :where(.prose img, .post-featured-image) {

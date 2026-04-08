@@ -1,5 +1,6 @@
 autoplay
 callout
+elif
 endfor
 endif
 ensp
@@ -21,6 +22,7 @@ onclick
 outchain
 palenight
 pingfang
+raquo
 sarasa
 scrollbar
 sfmono

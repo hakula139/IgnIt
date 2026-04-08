@@ -1,6 +1,6 @@
 @layer components {
   .header-logo {
-    @apply text-lg font-semibold text-text transition-colors;
+    @apply text-lg font-semibold text-text border-b-0 transition-colors;
   }
 
   .header-logo:hover {
@@ -8,7 +8,7 @@
   }
 
   .header-link {
-    @apply px-3 py-1.5 text-sm text-text-secondary rounded-lg transition-colors;
+    @apply px-3 py-1.5 text-sm text-text-secondary rounded-lg border-b-0 transition-colors;
   }
 
   .header-link:hover {
@@ -32,7 +32,7 @@
   }
 
   .header-mobile-link {
-    @apply block px-6 py-2 text-left text-sm text-text-secondary transition-colors cursor-pointer;
+    @apply block px-6 py-2 text-left text-sm text-text-secondary border-b-0 transition-colors cursor-pointer;
   }
 
   .header-mobile-link:hover {

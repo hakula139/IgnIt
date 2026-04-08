@@ -1,6 +1,6 @@
 @layer components {
   .pagination-link {
-    @apply inline-flex items-center justify-center h-9 min-w-9 px-2.5 text-sm font-medium text-text-secondary rounded-lg transition-colors duration-200;
+    @apply inline-flex items-center justify-center h-9 min-w-9 px-2.5 text-sm font-medium text-text-secondary rounded-lg border-b-0 transition-colors duration-200;
   }
 
   .pagination-link:hover {
