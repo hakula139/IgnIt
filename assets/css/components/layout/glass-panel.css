@@ -16,6 +16,6 @@
   }
 
   .site-footer {
-    @apply mx-4 mb-4 mt-6 px-6 py-4 text-center text-sm text-text-secondary;
+    @apply mx-4 mb-4 px-6 py-4 text-center text-sm text-text-secondary;
   }
 }
