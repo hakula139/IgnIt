@@ -15,7 +15,7 @@
 
   /* Decorations */
   --tw-prose-quotes: var(--color-text-secondary);
-  --tw-prose-captions: var(--color-text-tertiary);
+  --tw-prose-captions: var(--color-text-secondary);
 }
 
 /* Prevent Tailwind utility collision with syntect class names (e.g. "block"). */
@@ -122,10 +122,6 @@
 
   .prose figure {
     @apply text-center;
-  }
-
-  .prose figcaption {
-    @apply text-text-secondary;
   }
 
   /* ── Tables ── */
