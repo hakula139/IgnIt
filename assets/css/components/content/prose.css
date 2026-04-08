@@ -102,7 +102,7 @@
   }
 
   .prose :where(li) {
-    @apply my-1;
+    @apply my-0.5;
   }
 
   /* ── Heading Anchors ── */
