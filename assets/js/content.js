@@ -183,6 +183,23 @@
     }
   };
 
+  // ── External Links ──
+
+  const initExternalLinks = () => {
+    const { hostname } = window.location;
+    for (const link of document.querySelectorAll('.prose a[href]')) {
+      try {
+        const url = new URL(link.href);
+        if (url.hostname && url.hostname !== hostname) {
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+        }
+      } catch {
+        // Skip relative or malformed URLs.
+      }
+    }
+  };
+
   // ── Init ──
 
   const init = () => {
@@ -191,6 +208,7 @@
     initTocCollapse();
     initHeadingAnchors();
     initImageFadeIn();
+    initExternalLinks();
   };
 
   if (document.readyState === 'loading') {

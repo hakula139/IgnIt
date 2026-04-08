@@ -1,3 +1,14 @@
 {
-  "css.lint.validProperties": ["dynamic-range-limit"]
+  "css.lint.validProperties": ["dynamic-range-limit"],
+  "files.associations": {
+    "*.html": "jinja-html"
+  },
+  "json.schemas": [
+    {
+      "fileMatch": ["*.jsonc"],
+      "schema": {
+        "allowTrailingCommas": true
+      }
+    }
+  ]
 }
