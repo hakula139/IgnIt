@@ -82,6 +82,15 @@
   @apply border-b-0;
 }
 
+/* Allow full HDR luminance on capable displays. */
+@media (dynamic-range: high) {
+  .prose figure,
+  .prose img,
+  .post-featured-image {
+    dynamic-range-limit: no-limit;
+  }
+}
+
 /* Remove Typography bold and backtick styles on inline code. */
 .prose code {
   @apply font-normal;
