@@ -1,10 +1,18 @@
+/* Temporarily enable color transitions during theme toggle (added / removed by JS). */
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+  @apply transition-[background-color,border-color]! duration-300!;
+}
+
 @layer base {
   html {
     @apply scroll-smooth;
   }
 
   body {
-    @apply flex flex-col min-h-screen text-text leading-[1.75] bg-bg transition-colors duration-300;
+    @apply flex flex-col min-h-screen text-text leading-[1.75] bg-bg;
   }
 
   body::before {
@@ -24,15 +32,15 @@
   }
 
   a {
-    @apply text-link no-underline transition-colors duration-300;
+    @apply text-link no-underline;
   }
 
   a:hover {
     @apply text-link-hover;
   }
 
-  /* Scroll offset for fixed header */
+  /* Scroll offset: main padding (pt-16 = 4rem) + container padding (py-6 = 1.5rem). */
   [id] {
-    @apply scroll-mt-18;
+    @apply scroll-mt-22;
   }
 }

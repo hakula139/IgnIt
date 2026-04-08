@@ -1,4 +1,4 @@
-/* Unlayered — must override @tailwindcss/typography defaults in @layer utilities */
+/* Unlayered — must override @tailwindcss/typography defaults in @layer utilities. */
 
 .prose {
   /* Text */
@@ -14,26 +14,34 @@
   --tw-prose-bullets: var(--color-text-secondary);
 
   /* Decorations */
-  --tw-prose-hr: var(--color-border);
   --tw-prose-quotes: var(--color-text-secondary);
-  --tw-prose-quote-borders: var(--color-border);
-  --tw-prose-captions: var(--color-text-tertiary);
-  --tw-prose-th-borders: var(--color-border);
-  --tw-prose-td-borders: var(--color-border);
+  --tw-prose-captions: var(--color-text-secondary);
 }
 
-/* Prevent Tailwind utility collision with syntect class names (e.g. "block") */
+/* Prevent Tailwind utility collision with syntect class names (e.g. "block"). */
 .prose .highlight span {
   @apply inline;
 }
 
-/* Reset Typography plugin styles inside structured code blocks */
+/* Reset Typography plugin styles inside structured code blocks. */
+.prose .code-block {
+  @apply my-[1.5em];
+}
+
 .prose .code-block pre {
-  @apply m-0 p-0 bg-transparent rounded-none whitespace-pre overflow-visible text-[length:inherit];
+  @apply m-0 p-0 overflow-visible whitespace-pre rounded-none bg-transparent text-[length:inherit] text-inherit;
+}
+
+.prose .code-block code {
+  @apply text-inherit;
+}
+
+.prose .code-block table {
+  @apply m-0 min-w-full w-max text-[length:inherit] leading-[inherit];
 }
 
 .prose .code-block td {
-  @apply py-3 px-0;
+  @apply px-0 py-3;
 }
 
 .prose .code-block .line-numbers {
@@ -48,46 +56,54 @@
   @apply py-0 pr-4 pl-3;
 }
 
-.prose .code-block table {
-  @apply m-0 w-max min-w-full text-[length:inherit] leading-[inherit];
+/* Override Typography's opaque borders with semi-transparent glass style. */
+.prose :where(hr, blockquote, th, td, thead, tr) {
+  border-color: rgb(255 255 255 / 0.2);
+
+  @variant dark {
+    border-color: rgb(255 255 255 / 0.08);
+  }
 }
 
-/* Restore prose-level margins on the .code-block wrapper (since pre margins are reset) */
-.prose .code-block {
-  @apply my-[1.5em];
+/* Override Typography's default underline; show border on hover instead. */
+.prose a {
+  @apply no-underline border-b-2 border-transparent;
 }
 
-/*
- * Heading anchors need rules in two places:
- * - Unlayered (here): overrides Typography's link underline in @layer utilities
- * - @layer components (below): visual positioning, color, and hover reveal
- */
-.prose .heading-anchor {
-  @apply no-underline;
+.prose a:hover {
+  @apply text-link-hover border-current;
 }
 
-/* Clear section breaks before h2 headings */
-.prose :where(h2) {
-  @apply mt-[2.5em] pt-[1.5em] border-t border-border;
+/* Heading anchors and footnote refs: no hover border. */
+.prose .heading-anchor,
+.prose .heading-anchor:hover,
+.prose .footnote-reference a,
+.prose .footnote-reference a:hover {
+  @apply border-b-0;
 }
 
-/* Skip separator on the very first element */
-.prose > :first-child {
-  @apply mt-0 pt-0 border-t-0;
+/* Allow full HDR luminance on capable displays. */
+@media (dynamic-range: high) {
+  .prose figure,
+  .prose img,
+  .post-featured-image {
+    dynamic-range-limit: no-limit;
+  }
+}
+
+/* Remove Typography bold and backtick styles on inline code. */
+.prose code {
+  @apply font-normal;
+}
+
+.prose code::before,
+.prose code::after {
+  @apply content-none;
 }
 
 @layer components {
-  .prose a:hover {
-    @apply text-link-hover;
-  }
-
   .prose code {
-    @apply px-1.5 py-0.5 text-[0.875em] rounded bg-bg-code;
-  }
-
-  .prose code::before,
-  .prose code::after {
-    @apply content-none;
+    @apply px-1.5 py-0.5 rounded bg-bg-code/60 text-[0.875em];
   }
 
   .prose :where(p, li) {
@@ -97,15 +113,20 @@
   /* ── Heading Anchors ── */
 
   .prose :where(h1, h2, h3, h4, h5, h6) {
-    @apply relative;
+    @apply relative -ml-5 pl-5;
   }
 
   .prose .heading-anchor {
-    @apply absolute -left-5 text-link no-underline opacity-0 transition-opacity;
+    @apply absolute left-0 text-link opacity-0 no-underline transition-opacity;
   }
 
   .prose :where(h2, h3, h4, h5, h6):hover .heading-anchor {
     @apply opacity-60;
+  }
+
+  /* Hide anchors inside nested containers where -left-5 would overlap borders. */
+  .prose :where(.callout, blockquote) .heading-anchor {
+    @apply hidden;
   }
 
   /* ── Images ── */
@@ -114,12 +135,16 @@
     @apply rounded-lg;
   }
 
-  .prose figure {
-    @apply text-center;
+  html.image-fade-enabled :where(.prose img, .post-featured-image) {
+    @apply invisible opacity-0 transition-opacity duration-300;
   }
 
-  .prose figcaption {
-    @apply text-text-tertiary;
+  html.image-fade-enabled :where(.prose img, .post-featured-image).loaded {
+    @apply visible opacity-100;
+  }
+
+  .prose figure {
+    @apply rounded-lg text-center;
   }
 
   /* ── Tables ── */
@@ -139,11 +164,15 @@
   /* ── Footnotes ── */
 
   .prose .footnote-definition {
-    @apply flex gap-2 mt-4 pt-4 border-t border-border text-sm text-text-secondary;
+    @apply flex gap-2 mt-4 pt-4 border-t border-white/20 text-sm text-text-secondary;
+
+    @variant dark {
+      @apply border-white/8;
+    }
   }
 
   .prose .footnote-definition-label {
-    @apply shrink-0 text-link font-semibold;
+    @apply shrink-0 font-semibold text-link;
   }
 
   .prose .footnote-definition p {
@@ -151,6 +180,6 @@
   }
 
   .prose .footnote-reference a {
-    @apply text-link font-semibold no-underline;
+    @apply font-semibold text-link;
   }
 }

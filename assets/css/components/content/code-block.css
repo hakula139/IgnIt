@@ -2,34 +2,25 @@
   /* ── Code Block Container ── */
 
   .code-block {
-    @apply my-4 border border-border rounded-lg overflow-hidden text-sm leading-normal;
-    background: #fafafa;
-  }
-
-  [data-theme='dark'] .code-block {
-    background: #212121;
+    @apply my-4 rounded-lg overflow-hidden text-sm leading-normal;
   }
 
   /* ── Header (collapsible trigger) ── */
 
   .code-header {
-    @apply flex items-center gap-2 px-4 py-2 border-b border-border text-xs cursor-pointer select-none bg-black/4;
-  }
-
-  [data-theme='dark'] .code-header {
-    @apply bg-white/6;
+    @apply flex items-center gap-2 px-4 py-2 text-xs bg-bg-code/70 cursor-pointer select-none;
   }
 
   .code-header .chevron {
-    @apply text-text-tertiary text-[0.625rem] transition-transform duration-200;
+    @apply text-[0.625rem] text-text-tertiary transition-transform duration-200;
   }
 
   .code-lang {
-    @apply text-text-tertiary uppercase tracking-wider font-medium;
+    @apply text-text-tertiary font-medium uppercase tracking-wider;
   }
 
   .copy-btn {
-    @apply ml-auto p-1 rounded text-text-tertiary cursor-pointer transition-colors;
+    @apply ml-auto p-1 rounded text-text-tertiary transition-colors cursor-pointer;
   }
 
   .copy-btn:hover {
@@ -37,10 +28,6 @@
   }
 
   /* ── Collapsed State ── */
-
-  .code-block.collapsed .code-header {
-    @apply border-b-0;
-  }
 
   .code-block.collapsed .code-header .chevron {
     @apply -rotate-90;
@@ -63,8 +50,7 @@
   }
 
   .code-body > .highlight::-webkit-scrollbar {
-    height: 8px;
-    width: 8px;
+    @apply h-2 w-2;
   }
 
   .code-body > .highlight::-webkit-scrollbar-track {
@@ -72,17 +58,16 @@
   }
 
   .code-body > .highlight::-webkit-scrollbar-thumb {
-    @apply rounded-full;
-    background: var(--color-border);
+    @apply rounded-full bg-border;
   }
 
   .code-body > .highlight::-webkit-scrollbar-thumb:hover {
-    background: var(--color-text-tertiary);
+    @apply bg-text-tertiary;
   }
 
   .code-body[data-max-lines] > .highlight {
-    max-height: calc(var(--max-lines, 40) * 1.5em + 1rem);
     @apply overflow-y-auto;
+    max-height: calc(var(--max-lines, 40) * 1.5em + 1rem);
   }
 
   /* ── Highlight Table Layout ── */
@@ -96,7 +81,11 @@
   }
 
   .highlight .line-numbers pre {
-    @apply pr-2 pl-4 text-text-tertiary opacity-50;
+    @apply pr-2 pl-4 text-text-secondary;
+
+    @variant dark {
+      @apply text-text-tertiary;
+    }
   }
 
   .highlight .code {
@@ -104,6 +93,6 @@
   }
 
   .highlight .code pre {
-    @apply pl-3 pr-4;
+    @apply pr-4 pl-3;
   }
 }

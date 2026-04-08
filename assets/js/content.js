@@ -2,6 +2,9 @@
 
 (() => {
   const COPIED_DURATION = 2000;
+  const IMAGE_SELECTOR = '.prose img, .post-featured-image';
+
+  document.documentElement.classList.add('image-fade-enabled');
 
   const createIcon = (classes) => {
     const icon = document.createElement('i');
@@ -12,6 +15,14 @@
   // ── Collapsible Panels ──
 
   const makeCollapsible = (container, trigger, { skipSelector, preventDefault } = {}) => {
+    const toggle = () => {
+      container.classList.toggle('collapsed');
+      if (trigger.hasAttribute('aria-expanded')) {
+        const expanded = !container.classList.contains('collapsed');
+        trigger.setAttribute('aria-expanded', String(expanded));
+      }
+    };
+
     trigger.addEventListener('click', (e) => {
       if (skipSelector && e.target.closest(skipSelector)) {
         return;
@@ -19,7 +30,14 @@
       if (preventDefault) {
         e.preventDefault();
       }
-      container.classList.toggle('collapsed');
+      toggle();
+    });
+
+    trigger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle();
+      }
     });
   };
 
@@ -67,7 +85,7 @@
       makeCollapsible(block, header, { skipSelector: '.copy-btn' });
     }
 
-    // Delegated copy handler
+    // Delegated copy handler.
     document.addEventListener('click', (e) => {
       const btn = e.target.closest('.copy-btn');
       if (btn) {
@@ -86,7 +104,7 @@
         continue;
       }
 
-      // Wrap body children in a single element for CSS grid animation
+      // Wrap body children in a single element for CSS grid animation.
       const inner = document.createElement('div');
       inner.className = 'callout-body-inner';
       while (body.firstChild) {
@@ -94,13 +112,29 @@
       }
       body.appendChild(inner);
 
-      // If initially closed, keep open in DOM but visually collapse via CSS
+      // If initially closed, keep open in DOM but visually collapse via CSS.
       if (!callout.open) {
         callout.open = true;
         callout.classList.add('collapsed');
       }
 
       makeCollapsible(callout, summary, { preventDefault: true });
+    }
+  };
+
+  // ── Table of Contents ──
+
+  const initTocCollapse = () => {
+    for (const toc of document.querySelectorAll('.toc-collapse')) {
+      const trigger = toc.querySelector('.toc-trigger');
+      if (!trigger) {
+        continue;
+      }
+
+      trigger.setAttribute('role', 'button');
+      trigger.setAttribute('tabindex', '0');
+      trigger.setAttribute('aria-expanded', String(!toc.classList.contains('collapsed')));
+      makeCollapsible(toc, trigger);
     }
   };
 
@@ -120,12 +154,43 @@
     }
   };
 
+  // ── Image Fade-in ──
+
+  const initImageFadeIn = () => {
+    const markLoaded = (img) => img.classList.add('loaded');
+    const revealAfterDecode = async (img) => {
+      try {
+        await img.decode();
+      } catch {
+        // `decode()` may reject for broken images or unsupported formats.
+      }
+
+      markLoaded(img);
+    };
+
+    for (const img of document.querySelectorAll(IMAGE_SELECTOR)) {
+      if (img.complete) {
+        if (img.naturalWidth > 0) {
+          void revealAfterDecode(img);
+        } else {
+          markLoaded(img);
+        }
+        continue;
+      }
+
+      img.addEventListener('load', () => void revealAfterDecode(img), { once: true });
+      img.addEventListener('error', () => markLoaded(img), { once: true });
+    }
+  };
+
   // ── Init ──
 
   const init = () => {
     initCodeBlocks();
     initCallouts();
+    initTocCollapse();
     initHeadingAnchors();
+    initImageFadeIn();
   };
 
   if (document.readyState === 'loading') {

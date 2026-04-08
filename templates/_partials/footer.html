@@ -7,7 +7,7 @@
       &copy; {{ footer.since }}&ndash;{{ current_year }} {{ config.author.name }}
       {%- if footer.license %}
       &middot;
-      <a href="{{ footer.license_url | default('#') | safe }}" class="hover:text-link-hover">
+      <a href="{{ footer.license_url | default('#') | safe }}" class="hover:underline">
         {{ footer.license }}
       </a>
       {%- endif %}
@@ -18,8 +18,8 @@
 
     {%- if footer.powered_by | default(true) %}
     <p class="mt-1">
-      Powered by <a href="https://github.com/hakula139/kiln" class="hover:text-link-hover">kiln</a>
-      &amp; <a href="https://github.com/hakula139/IgnIt" class="hover:text-link-hover">IgnIt</a>
+      Powered by <a href="https://github.com/hakula139/kiln" class="hover:underline">kiln</a>
+      &amp; <a href="https://github.com/hakula139/IgnIt" class="hover:underline">IgnIt</a>
     </p>
     {%- endif %}
   </div>

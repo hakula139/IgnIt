@@ -6,14 +6,14 @@
     </a>
 
     {# Desktop navigation #}
-    <nav class="hidden items-center gap-1 whitespace-nowrap md:flex">
+    <nav class="hidden md:flex items-center gap-1 whitespace-nowrap">
       {%- for item in menu_items %}
       <a
         href="{{ item.url | safe }}"
         class="header-link"
         {%- if item.external %} target="_blank" rel="noopener noreferrer"{% endif %}
       >
-        {%- if item.icon %}<i class="{{ item.icon }} fa-fw"></i> {% endif -%}
+        {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i> {% endif -%}
         {{ item.name }}
       </a>
       {%- endfor %}
@@ -37,19 +37,19 @@
       aria-controls="mobile-menu"
       onclick="const m=document.getElementById('mobile-menu'); m.classList.toggle('hidden'); this.setAttribute('aria-expanded', !m.classList.contains('hidden')); this.querySelector('i').classList.toggle('fa-bars'); this.querySelector('i').classList.toggle('fa-xmark')"
     >
-      <i class="fas fa-bars fa-fw"></i>
+      <i class="fas fa-bars fa-fw" aria-hidden="true"></i>
     </button>
   </div>
 
   {# Mobile menu dropdown #}
-  <div id="mobile-menu" class="hidden glass-panel header-mobile">
+  <div id="mobile-menu" class="glass-panel header-mobile hidden">
     {%- for item in menu_items %}
     <a
       href="{{ item.url | safe }}"
       class="header-mobile-link"
       {%- if item.external %} target="_blank" rel="noopener noreferrer"{% endif %}
     >
-      {%- if item.icon %}<i class="{{ item.icon }} fa-fw"></i> {% endif -%}
+      {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i> {% endif -%}
       {{ item.name }}
     </a>
     {%- endfor %}

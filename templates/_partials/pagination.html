@@ -1,6 +1,6 @@
 {%- if pagination.total_pages > 1 %}
-    <nav class="mt-8 flex justify-center">
-      <ul class="pagination inline-flex items-center gap-1 px-3 py-2 glass-panel" data-base-url="{{ pagination.base_url | safe }}">
+    <nav class="mt-8 flex justify-center" aria-label="Pagination">
+      <ul class="glass-panel pagination inline-flex items-center gap-1 px-3 py-2" data-base-url="{{ pagination.base_url | safe }}">
       {%- for item in pagination.items %}
         {%- if item.number %}
         <li>

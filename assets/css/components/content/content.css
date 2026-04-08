@@ -3,20 +3,54 @@
     @apply text-xl font-semibold leading-tight sm:text-2xl;
   }
 
+  /* ── Mobile TOC (collapsible, < xl) ── */
+
   .toc-collapse {
-    @apply mb-6 rounded-lg border border-border bg-bg-secondary/50;
+    @apply mb-6 rounded-lg bg-bg-code/60;
   }
 
   .toc-trigger {
-    @apply px-4 py-2.5 text-sm font-medium text-text-secondary cursor-pointer select-none;
+    @apply flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-text-secondary cursor-pointer select-none;
+  }
+
+  .toc-trigger::before {
+    @apply shrink-0 font-black text-text-tertiary;
+    font-family: 'Font Awesome 6 Free';
+    content: '\f0ca'; /* list-ul */
+  }
+
+  .toc-trigger::after {
+    @apply ml-auto shrink-0 font-black text-[0.625rem] text-text-tertiary transition-transform duration-200;
+    font-family: 'Font Awesome 6 Free';
+    content: '\f078'; /* chevron-down */
+  }
+
+  /* ── TOC Collapse Animation ── */
+
+  .toc-body-wrapper {
+    @apply grid grid-rows-[1fr] transition-[grid-template-rows] duration-300;
   }
 
   .toc-body {
-    @apply px-4 pb-3 text-sm;
+    @apply overflow-hidden min-h-0 px-4 text-sm;
   }
 
+  .toc-body > :last-child {
+    @apply mb-3;
+  }
+
+  .toc-collapse.collapsed .toc-trigger::after {
+    @apply -rotate-90;
+  }
+
+  .toc-collapse.collapsed .toc-body-wrapper {
+    @apply grid-rows-[0fr];
+  }
+
+  /* ── Desktop TOC Sidebar (sticky, xl only) ── */
+
   .toc-sidebar {
-    @apply sticky top-20 max-h-[calc(100vh-6rem)] overflow-y-auto p-4 text-sm;
+    @apply sticky top-22 max-h-[calc(100vh-6.5rem)] overflow-y-auto p-4 text-sm;
   }
 
   /* ── TOC Navigation ── */
