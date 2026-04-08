@@ -91,16 +91,11 @@
 
 /* Override Typography's text-decoration and link color on hover. */
 .prose a {
-  @apply no-underline;
+  @apply pb-0.5 no-underline;
 }
 
 .prose a:hover {
   @apply text-link-hover;
-}
-
-/* Links containing code: border clashes with the code box. */
-.prose a:has(code) {
-  @apply border-b-0;
 }
 
 /* Heading anchors and footnote refs: no hover border. */
