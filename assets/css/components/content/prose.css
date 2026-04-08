@@ -123,11 +123,11 @@
   /* ── Images ── */
 
   .prose img {
-    @apply rounded-lg bg-bg-code/60;
+    @apply rounded-lg;
   }
 
   .prose figure {
-    @apply text-center;
+    @apply rounded-lg bg-bg-code/60 text-center;
   }
 
   /* ── Tables ── */
