@@ -4,9 +4,9 @@
   .callout {
     --callout-color: #448aff;
 
-    @apply my-4 rounded-lg border-l-4;
+    @apply my-4 rounded-lg border-l-4 transition-colors duration-300;
     border-left-color: var(--callout-color);
-    background: color-mix(in srgb, var(--callout-color) 8%, var(--color-bg));
+    background: color-mix(in srgb, var(--callout-color) 8%, transparent);
   }
 
   .callout-title {
@@ -129,6 +129,6 @@
   /* ── Dark Mode ── */
 
   [data-theme='dark'] .callout {
-    background: color-mix(in srgb, var(--callout-color) 12%, var(--color-bg));
+    background: color-mix(in srgb, var(--callout-color) 12%, transparent);
   }
 }

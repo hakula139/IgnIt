@@ -2,7 +2,7 @@
   /* ── Code Block Container ── */
 
   .code-block {
-    @apply my-4 rounded-lg border border-white/20 overflow-hidden text-sm leading-normal backdrop-blur-lg backdrop-saturate-125;
+    @apply my-4 rounded-lg border border-white/20 overflow-hidden text-sm leading-normal transition-colors duration-300;
 
     @variant dark {
       @apply border-white/8;
@@ -12,7 +12,7 @@
   /* ── Header (collapsible trigger) ── */
 
   .code-header {
-    @apply flex items-center gap-2 px-4 py-2 border-b border-border text-xs bg-black/4 cursor-pointer select-none;
+    @apply flex items-center gap-2 px-4 py-2 border-b border-border text-xs bg-black/4 cursor-pointer select-none transition-colors duration-300;
   }
 
   [data-theme='dark'] .code-header {
@@ -76,22 +76,6 @@
   .code-body[data-max-lines] > .highlight {
     @apply overflow-y-auto;
     max-height: calc(var(--max-lines, 40) * 1.5em + 1rem);
-  }
-
-  /* ── Unstyled Languages ── */
-
-  .code-block[data-lang='plaintext'] .highlight {
-    @apply bg-transparent text-text;
-  }
-
-  .code-block[data-lang='plaintext'] .highlight span {
-    @apply text-inherit;
-  }
-
-  /* Markdown keeps syntax highlighting for headings, links, etc. but
-     uses the page text color as its base for better glass readability. */
-  .code-block[data-lang='markdown'] .highlight {
-    @apply text-text;
   }
 
   /* ── Highlight Table Layout ── */
