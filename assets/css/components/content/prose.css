@@ -98,6 +98,11 @@
   @apply text-link-hover;
 }
 
+/* Links containing code: border clashes with the code box. */
+.prose a:has(code) {
+  @apply border-b-0;
+}
+
 /* Heading anchors and footnote refs: no hover border. */
 .prose .heading-anchor,
 .prose .heading-anchor:hover,
