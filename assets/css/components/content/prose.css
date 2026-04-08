@@ -65,20 +65,21 @@
   border-color: rgb(255 255 255 / 0.08);
 }
 
-/* Override Typography's default underline; show on hover instead. */
+/* Override Typography's default underline; show border on hover instead. */
 .prose a {
-  @apply no-underline;
+  @apply no-underline border-b-2 border-transparent;
 }
 
 .prose a:hover {
-  @apply text-link-hover underline;
+  @apply text-link-hover border-current;
 }
 
-/* Heading anchors: unlayered to override Typography's link underline.
-   Visual positioning and hover reveal live in @layer components below. */
+/* Heading anchors and footnote refs: no hover border. */
 .prose .heading-anchor,
-.prose .heading-anchor:hover {
-  @apply no-underline;
+.prose .heading-anchor:hover,
+.prose .footnote-reference a,
+.prose .footnote-reference a:hover {
+  @apply border-b-0;
 }
 
 /* Remove Typography bold and backtick styles on inline code. */
@@ -157,6 +158,6 @@
   }
 
   .prose .footnote-reference a {
-    @apply font-semibold text-link no-underline;
+    @apply font-semibold text-link;
   }
 }
