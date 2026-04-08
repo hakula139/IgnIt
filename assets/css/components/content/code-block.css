@@ -88,6 +88,12 @@
     @apply text-inherit;
   }
 
+  /* Markdown keeps syntax highlighting for headings, links, etc. but
+     uses the page text color as its base for better glass readability. */
+  .code-block[data-lang='markdown'] .highlight {
+    @apply text-text;
+  }
+
   /* ── Highlight Table Layout ── */
 
   .highlight table {
