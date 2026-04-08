@@ -156,11 +156,11 @@
   }
 
   html.image-fade-enabled :where(.prose img, .post-featured-image) {
-    @apply invisible opacity-0 transition-opacity duration-300;
+    @apply invisible opacity-0 scale-[1.03] transition-[opacity,scale] duration-600;
   }
 
   html.image-fade-enabled :where(.prose img, .post-featured-image).loaded {
-    @apply visible opacity-100;
+    @apply visible opacity-100 scale-[1];
   }
 
   .prose figure {

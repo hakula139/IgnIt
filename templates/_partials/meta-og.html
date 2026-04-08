@@ -10,6 +10,6 @@
   <meta property="og:type" content="{{ og_type }}">
   <meta property="og:site_name" content="{{ config.title }}">
 {%- if featured_image %}
-  <meta property="og:image" content="{% if featured_image is startingwith("http") %}{{ featured_image | safe }}{% else %}{{ config.base_url | safe }}{{ featured_image | safe }}{% endif %}">
+  <meta property="og:image" content="{% if featured_image.src is startingwith("http") %}{{ featured_image.src | safe }}{% else %}{{ config.base_url | safe }}{{ featured_image.src | safe }}{% endif %}">
 {%- endif %}
   <meta name="twitter:card" content="{% if featured_image %}summary_large_image{% else %}summary{% endif %}">

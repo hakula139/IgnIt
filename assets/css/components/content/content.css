@@ -3,6 +3,39 @@
     @apply text-xl font-semibold leading-tight sm:text-2xl;
   }
 
+  /* ── Post Banner ── */
+
+  .post-banner {
+    @apply relative overflow-hidden rounded-t-card;
+    /* clip-path instead of overflow + border-radius alone — Chromium doesn't
+       reliably clip transformed children with overflow:hidden + border-radius. */
+    clip-path: inset(0 round var(--radius-card) var(--radius-card) 0 0);
+  }
+
+  .post-banner-media {
+    @apply h-full w-full transition-transform duration-500;
+  }
+
+  .post-banner:hover .post-banner-media {
+    @apply scale-[1.1];
+  }
+
+  .post-banner-image {
+    @apply h-full w-full object-cover;
+  }
+
+  .post-banner-link {
+    @apply block h-full border-b-0;
+  }
+
+  .post-banner-credit {
+    @apply absolute bottom-3 right-3 z-10 px-3 py-1 text-xs text-white/90 rounded-full border border-white/20 bg-black/30 backdrop-blur-md transition-opacity duration-300 pointer-events-none;
+  }
+
+  .post-banner:hover .post-banner-credit {
+    @apply opacity-0;
+  }
+
   /* ── Mobile TOC (collapsible, < xl) ── */
 
   .toc-collapse {
