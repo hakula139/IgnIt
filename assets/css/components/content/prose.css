@@ -113,11 +113,11 @@
   /* ── Heading Anchors ── */
 
   .prose :where(h1, h2, h3, h4, h5, h6) {
-    @apply relative;
+    @apply relative -ml-5 pl-5;
   }
 
   .prose .heading-anchor {
-    @apply absolute -left-5 text-link opacity-0 no-underline transition-opacity;
+    @apply absolute left-0 text-link opacity-0 no-underline transition-opacity;
   }
 
   .prose :where(h2, h3, h4, h5, h6):hover .heading-anchor {
