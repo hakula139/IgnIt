@@ -56,8 +56,7 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
     │       └── year-grouped-listing.html   # Year-grouped post list with pagination
     ├── base.html                           # Base layout (glass panels, background image)
     ├── home.html                           # Home page (profile + image cards with hover reveal)
-    ├── page.html                           # Standalone page (glass card, TOC sidebar)
-    ├── post.html                           # Post page (glass card, banner, TOC sidebar)
+    ├── post.html                           # Article page (glass card, banner, TOC sidebar)
     ├── section.html                        # Section listing (year-grouped, glass card)
     ├── taxonomy.html                       # Taxonomy index (tag cloud / category grid)
     ├── term.html                           # Term page (year-grouped, pagination)
