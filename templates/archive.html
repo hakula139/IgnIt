@@ -4,18 +4,20 @@
 
 {% block body %}
   <div class="max-w-4xl mx-auto px-4 py-6">
-    <div class="glass-panel p-6 sm:p-8">
-      <h2 class="mb-6 text-xl font-semibold">
-        {%- if singular == "section" -%}
-          <i class="far fa-folder-open fa-fw" aria-hidden="true"></i> {{ name }}
-        {%- elif singular == "tag" -%}
-          <i class="fas fa-tag fa-fw" aria-hidden="true"></i> {{ name }}
-        {%- else -%}
-          {{ name }}
-        {%- endif -%}
-      </h2>
+    <div class="glass-glow">
+      <div class="glass-panel p-6 sm:p-8">
+        <h2 class="mb-6 text-xl font-semibold">
+          {%- if singular == "section" -%}
+            <i class="far fa-folder-open fa-fw" aria-hidden="true"></i> {{ name }}
+          {%- elif singular == "tag" -%}
+            <i class="fas fa-tag fa-fw" aria-hidden="true"></i> {{ name }}
+          {%- else -%}
+            {{ name }}
+          {%- endif -%}
+        </h2>
 
-      {%- include "_partials/listing/year-grouped-listing.html" %}
+        {%- include "_partials/listing/year-grouped-listing.html" %}
+      </div>
     </div>
   </div>
 {%- endblock %}

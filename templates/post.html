@@ -11,62 +11,64 @@
   <div class="max-w-6xl mx-auto px-4 py-6">
     <div class="xl:flex xl:gap-8">
       {# Article column #}
-      <article class="flex-1 min-w-0 glass-panel">
-        {%- if featured_image %}
-        <div class="post-banner aspect-[21/9]">
-          <div class="post-banner-media">
-            {%- if featured_image.credit and featured_image.credit.url %}
-            <a href="{{ featured_image.credit.url | safe }}" class="post-banner-link" target="_blank" rel="noopener noreferrer"
-               aria-label="Image credit{% if featured_image.credit.title %}: {{ featured_image.credit.title }}{% endif %}">
-            {%- endif %}
-              <img
-                src="{{ featured_image.src | safe }}"
-                alt="{{ title }}"
-                class="post-featured-image post-banner-image"
-                style="object-position: {{ featured_image.position | default('center', true) }}"
-                loading="eager"
-                decoding="async"
-                fetchpriority="high"
-              >
-            {%- if featured_image.credit and featured_image.credit.url %}
-            </a>
-            {%- endif %}
-          </div>
-          {%- if featured_image.credit and (featured_image.credit.title or featured_image.credit.author) %}
-          <div class="post-banner-credit">
-            {%- if featured_image.credit.title %}{{ featured_image.credit.title }}{% endif -%}
-            {%- if featured_image.credit.title and featured_image.credit.author %} – {% endif -%}
-            {%- if featured_image.credit.author %}{{ featured_image.credit.author }}{% endif -%}
-          </div>
-          {%- endif %}
-        </div>
-        {%- endif %}
-
-        <div class="p-6 sm:p-8">
-          <header class="mb-6">
-            <h1 class="article-title">{{ title }}</h1>
-            {%- if date or section %}
-            <div class="mt-2 text-sm text-text-secondary">
-              {%- if date %}
-              <time datetime="{{ date }}">{{ date[:10] }}</time>
+      <div class="flex-1 min-w-0 glass-glow">
+        <article class="glass-panel">
+          {%- if featured_image %}
+          <div class="post-banner aspect-[21/9]">
+            <div class="post-banner-media">
+              {%- if featured_image.credit and featured_image.credit.url %}
+              <a href="{{ featured_image.credit.url | safe }}" class="post-banner-link" target="_blank" rel="noopener noreferrer"
+                 aria-label="Image credit{% if featured_image.credit.title %}: {{ featured_image.credit.title }}{% endif %}">
               {%- endif %}
-              {%- if section %}
-              <span>
-                {%- if date %}&ensp;·&ensp;{% endif -%}
-                <a href="{{ section.url | safe }}" class="text-text-secondary border-b-0 transition-colors hover:text-link-hover">
-                  <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ section.name }}
-                </a>
-              </span>
+                <img
+                  src="{{ featured_image.src | safe }}"
+                  alt="{{ title }}"
+                  class="post-featured-image post-banner-image"
+                  style="object-position: {{ featured_image.position | default('center', true) }}"
+                  loading="eager"
+                  decoding="async"
+                  fetchpriority="high"
+                >
+              {%- if featured_image.credit and featured_image.credit.url %}
+              </a>
               {%- endif %}
             </div>
+            {%- if featured_image.credit and (featured_image.credit.title or featured_image.credit.author) %}
+            <div class="post-banner-credit">
+              {%- if featured_image.credit.title %}{{ featured_image.credit.title }}{% endif -%}
+              {%- if featured_image.credit.title and featured_image.credit.author %} – {% endif -%}
+              {%- if featured_image.credit.author %}{{ featured_image.credit.author }}{% endif -%}
+            </div>
             {%- endif %}
-          </header>
+          </div>
+          {%- endif %}
 
-          {%- include "_partials/content/toc-mobile.html" %}
+          <div class="p-6 sm:p-8">
+            <header class="mb-6">
+              <h1 class="article-title">{{ title }}</h1>
+              {%- if date or section %}
+              <div class="mt-2 text-sm text-text-secondary">
+                {%- if date %}
+                <time datetime="{{ date }}">{{ date[:10] }}</time>
+                {%- endif %}
+                {%- if section %}
+                <span>
+                  {%- if date %}&ensp;·&ensp;{% endif -%}
+                  <a href="{{ section.url | safe }}" class="text-text-secondary border-b-0 transition-colors hover:text-link-hover">
+                    <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ section.name }}
+                  </a>
+                </span>
+                {%- endif %}
+              </div>
+              {%- endif %}
+            </header>
 
-          <div class="max-w-none prose">{{ content | safe }}</div>
-        </div>
-      </article>
+            {%- include "_partials/content/toc-mobile.html" %}
+
+            <div class="max-w-none prose">{{ content | safe }}</div>
+          </div>
+        </article>
+      </div>
 
       {%- include "_partials/content/toc-sidebar.html" %}
     </div>

@@ -9,7 +9,7 @@
       return;
     }
 
-    if (document.querySelectorAll('.glass-panel').length === 0) {
+    if (document.querySelectorAll('.glass-glow').length === 0) {
       return;
     }
 

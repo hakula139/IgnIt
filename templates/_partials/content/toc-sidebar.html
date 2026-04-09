@@ -1,10 +1,12 @@
 {# Desktop TOC sidebar (sticky, xl only) #}
 {%- if toc %}
 <aside class="toc-sidebar-wrapper">
-  <div class="glass-panel toc-sidebar">
-    <h2 class="toc-sidebar-title">Table of Contents</h2>
-    <div class="toc-sidebar-scroll">
-      {{ toc | safe }}
+  <div class="glass-glow">
+    <div class="glass-panel toc-sidebar">
+      <h2 class="toc-sidebar-title">Table of Contents</h2>
+      <div class="toc-sidebar-scroll">
+        {{ toc | safe }}
+      </div>
     </div>
   </div>
 </aside>

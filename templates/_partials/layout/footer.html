@@ -1,26 +1,28 @@
 {%- set footer = config.params.footer | default({}) -%}
 {%- set current_year = now()[0:4] -%}
-<footer class="glass-panel site-footer">
-  <div class="max-w-6xl mx-auto">
-    {%- if footer.since %}
-    <p>
-      &copy; {{ footer.since }}&ndash;{{ current_year }} {{ config.author.name }}
-      {%- if footer.license %}
-      &middot;
-      <a href="{{ footer.license_url | default('#') | safe }}">
-        {{ footer.license }}
-      </a>
+<div class="glass-glow mx-4 mt-2 mb-4">
+  <footer class="glass-panel site-footer">
+    <div class="max-w-6xl mx-auto">
+      {%- if footer.since %}
+      <p>
+        &copy; {{ footer.since }}&ndash;{{ current_year }} {{ config.author.name }}
+        {%- if footer.license %}
+        &middot;
+        <a href="{{ footer.license_url | default('#') | safe }}">
+          {{ footer.license }}
+        </a>
+        {%- endif %}
+      </p>
+      {%- else %}
+      <p>&copy; {{ current_year }} {{ config.author.name }}</p>
       {%- endif %}
-    </p>
-    {%- else %}
-    <p>&copy; {{ current_year }} {{ config.author.name }}</p>
-    {%- endif %}
 
-    {%- if footer.powered_by | default(true) %}
-    <p class="mt-1">
-      Powered by <a href="https://github.com/hakula139/kiln">kiln</a>
-      &amp; <a href="https://github.com/hakula139/IgnIt">IgnIt</a>
-    </p>
-    {%- endif %}
-  </div>
-</footer>
+      {%- if footer.powered_by | default(true) %}
+      <p class="mt-1">
+        Powered by <a href="https://github.com/hakula139/kiln">kiln</a>
+        &amp; <a href="https://github.com/hakula139/IgnIt">IgnIt</a>
+      </p>
+      {%- endif %}
+    </div>
+  </footer>
+</div>

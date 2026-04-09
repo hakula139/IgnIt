@@ -9,20 +9,22 @@
 {%- set profile = config.params.home.profile %}
 {%- if profile %}
   <div class="max-w-4xl mx-auto px-4 pt-6">
-    <div class="glass-panel p-6 sm:p-8 text-center">
-      {%- if profile.avatar %}
-      <img
-        class="profile-avatar"
-        src="{{ profile.avatar | safe }}"
-        alt="{{ config.author.name }}"
-      >
-      {%- endif %}
-      {%- if profile.title %}
-      <h1 class="text-xl font-semibold">{{ profile.title }}</h1>
-      {%- endif %}
-      {%- if profile.subtitle %}
-      <p class="mt-2 text-sm text-text-secondary">{{ profile.subtitle }}</p>
-      {%- endif %}
+    <div class="glass-glow">
+      <div class="glass-panel p-6 sm:p-8 text-center">
+        {%- if profile.avatar %}
+        <img
+          class="profile-avatar"
+          src="{{ profile.avatar | safe }}"
+          alt="{{ config.author.name }}"
+        >
+        {%- endif %}
+        {%- if profile.title %}
+        <h1 class="text-xl font-semibold">{{ profile.title }}</h1>
+        {%- endif %}
+        {%- if profile.subtitle %}
+        <p class="mt-2 text-sm text-text-secondary">{{ profile.subtitle }}</p>
+        {%- endif %}
+      </div>
     </div>
   </div>
 {%- endif %}
@@ -70,16 +72,18 @@
       <a href="{{ page.url | safe }}" class="home-card-link-cover" aria-label="{{ page.title }}"></a>
     </article>
     {%- else %}
-    <article class="glass-panel post-entry px-5 py-4">
-      <a href="{{ page.url | safe }}" class="post-entry-title font-medium">
-        {{ page.title }}
-      </a>
-      {%- if page.date %}
-      <time datetime="{{ page.date }}" class="post-entry-date">
-        {{ page.date[0:10] }}
-      </time>
-      {%- endif %}
-    </article>
+    <div class="glass-glow">
+      <article class="glass-panel post-entry px-5 py-4">
+        <a href="{{ page.url | safe }}" class="post-entry-title font-medium">
+          {{ page.title }}
+        </a>
+        {%- if page.date %}
+        <time datetime="{{ page.date }}" class="post-entry-date">
+          {{ page.date[0:10] }}
+        </time>
+        {%- endif %}
+      </article>
+    </div>
     {%- endif %}
     {%- endfor %}
 

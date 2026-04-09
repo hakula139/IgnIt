@@ -1,17 +1,14 @@
 @layer components {
-  /* ── Glass Panel Base ── */
+  /* ── Glass Glow Wrapper ── */
 
-  .glass-panel {
+  .glass-glow {
     --glow-size: 1000px;
     --glow-color: rgba(255, 255, 255, 0.03);
     --glow-border-color: rgba(255, 255, 255, 0.8);
 
-    @apply relative
-      rounded-card border border-white/20 bg-white/75 shadow-card
-      backdrop-blur-lg backdrop-saturate-125 backface-hidden;
+    @apply relative rounded-card;
 
     @variant dark {
-      @apply border-white/8 bg-bg/70;
       --glow-color: rgba(255, 255, 255, 0.05);
       --glow-border-color: rgba(255, 255, 255, 0.7);
     }
@@ -19,35 +16,45 @@
 
   /* ── Glass Glow: Ambient Surface Light ── */
 
-  .glass-panel::before {
-    @apply absolute inset-0 -z-1
-      rounded-[inherit] pointer-events-none content-[''];
-    background: radial-gradient(
+  .glass-glow::before {
+    @apply absolute inset-0 z-1
+      rounded-[inherit] pointer-events-none content-['']
+      bg-fixed;
+    background-image: radial-gradient(
       var(--glow-size) circle at var(--glow-x, -9999px) var(--glow-y, -9999px),
       var(--glow-color),
       transparent
     );
-    background-attachment: fixed;
-    will-change: opacity;
   }
 
   /* ── Glass Glow: Border Light ── */
 
-  .glass-panel::after {
-    @apply absolute inset-0 p-px
-      rounded-[inherit] pointer-events-none content-[''];
-    background: radial-gradient(
+  .glass-glow::after {
+    @apply absolute inset-0 z-2 p-px
+      rounded-[inherit] pointer-events-none content-['']
+      bg-fixed;
+    background-image: radial-gradient(
       var(--glow-border-size, 400px) circle at var(--glow-x, -9999px) var(--glow-y, -9999px),
       var(--glow-border-color),
       8%,
       transparent
     );
-    background-attachment: fixed;
-    will-change: opacity;
     mask:
       linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
     mask-composite: exclude;
+  }
+
+  /* ── Glass Panel Base ── */
+
+  .glass-panel {
+    @apply relative
+      rounded-card border border-white/20 bg-white/75 shadow-card
+      backdrop-blur-lg backdrop-saturate-125 backface-hidden;
+
+    @variant dark {
+      @apply border-white/8 bg-bg/70;
+    }
   }
 
   /* ── Header Nav Bar ── */
@@ -65,7 +72,7 @@
   /* ── Footer ── */
 
   .site-footer {
-    @apply mx-4 mt-2 mb-4 px-6 py-4
+    @apply px-6 py-4
       text-center text-sm text-text-tertiary;
   }
 }
