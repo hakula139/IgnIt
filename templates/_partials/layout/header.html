@@ -51,13 +51,7 @@
       aria-label="Toggle menu"
       aria-expanded="false"
       aria-controls="mobile-menu"
-      onclick="
-        const m = document.getElementById('mobile-menu');
-        m.classList.toggle('hidden');
-        this.setAttribute('aria-expanded', !m.classList.contains('hidden'));
-        this.querySelector('i').classList.toggle('fa-bars');
-        this.querySelector('i').classList.toggle('fa-xmark');
-      "
+      onclick="window.__toggleMobileMenu()"
     >
       <i class="fas fa-bars fa-fw" aria-hidden="true"></i>
     </button>
