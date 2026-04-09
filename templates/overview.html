@@ -17,30 +17,30 @@
 
       {%- if kind == "tags" %}
       <div class="flex flex-wrap gap-3">
-        {%- for term in terms %}
-        <a href="{{ term.url | safe }}" class="tag-pill">
-          {{ term.name }}
-          <sup class="text-xs text-text-tertiary">{{ term.pages | length }}</sup>
+        {%- for bucket in buckets %}
+        <a href="{{ bucket.url | safe }}" class="tag-pill">
+          {{ bucket.name }}
+          <sup class="text-xs text-text-tertiary">{{ bucket.pages | length }}</sup>
         </a>
         {%- endfor %}
       </div>
 
       {%- else %}
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-        {%- for term in terms %}
+        {%- for bucket in buckets %}
         <div class="category-card">
           <h3 class="mb-2 font-medium">
-            <a href="{{ term.url | safe }}" class="border-b-0 transition-colors hover:text-link-hover">
-              <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ term.name }}
+            <a href="{{ bucket.url | safe }}" class="border-b-0 transition-colors hover:text-link-hover">
+              <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ bucket.name }}
             </a>
           </h3>
-          {%- for page in term.pages[:5] %}
+          {%- for page in bucket.pages[:5] %}
           <a href="{{ page.url | safe }}" class="block py-0.5 truncate text-sm text-text-secondary border-b-0 transition-colors hover:text-link-hover">
             {{ page.title }}
           </a>
           {%- endfor %}
-          {%- if term.pages | length > 5 %}
-          <a href="{{ term.url | safe }}" class="block mt-1 text-sm text-text-tertiary border-b-0 transition-colors hover:text-link-hover">
+          {%- if bucket.pages | length > 5 %}
+          <a href="{{ bucket.url | safe }}" class="block mt-1 text-sm text-text-tertiary border-b-0 transition-colors hover:text-link-hover">
             More &raquo;
           </a>
           {%- endif %}
