@@ -1,31 +1,17 @@
 {% extends "base.html" %}
 
-{% block title %}<title>{{ kind | capitalize }} - {{ config.title }}</title>{% endblock %}
+{%- set heading = "All " ~ kind | capitalize -%}
+
+{% block title %}<title>{{ heading }} - {{ config.title }}</title>{% endblock %}
 
 {% block body %}
   <div class="mx-auto max-w-4xl px-4 py-6">
     <div class="glass-panel p-6 sm:p-8">
       <h2 class="mb-6 text-xl font-semibold">
-        {%- if kind == "tags" -%}
-          All Tags
-        {%- elif kind == "sections" -%}
-          All Sections
-        {%- else -%}
-          All {{ kind | capitalize }}
-        {%- endif -%}
+        {{- heading -}}
       </h2>
 
-      {%- if kind == "tags" %}
-      <div class="flex flex-wrap gap-3">
-        {%- for bucket in buckets %}
-        <a href="{{ bucket.url | safe }}" class="tag-pill">
-          {{ bucket.name }}
-          <sup class="text-xs text-text-tertiary">{{ bucket.pages | length }}</sup>
-        </a>
-        {%- endfor %}
-      </div>
-
-      {%- else %}
+      {%- if kind == "sections" %}
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
         {%- for bucket in buckets %}
         <div class="category-card">
@@ -40,11 +26,21 @@
           </a>
           {%- endfor %}
           {%- if bucket.pages | length > 5 %}
-          <a href="{{ bucket.url | safe }}" class="block mt-1 text-sm text-text-tertiary border-b-0 transition-colors hover:text-link-hover">
+          <a href="{{ bucket.url | safe }}" class="block mt-1 text-right text-sm text-text-secondary border-b-0 transition-colors hover:text-link-hover">
             More &raquo;
           </a>
           {%- endif %}
         </div>
+        {%- endfor %}
+      </div>
+
+      {%- else %}
+      <div class="flex flex-wrap gap-3">
+        {%- for bucket in buckets %}
+        <a href="{{ bucket.url | safe }}" class="tag-pill">
+          {{ bucket.name }}
+          <sup class="text-xs text-text-tertiary">{{ bucket.pages | length }}</sup>
+        </a>
         {%- endfor %}
       </div>
       {%- endif %}
