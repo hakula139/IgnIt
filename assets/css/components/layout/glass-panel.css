@@ -60,8 +60,7 @@
   /* ── Header Nav Bar ── */
 
   .header-nav {
-    @apply fixed inset-x-0 top-0 z-50
-      flex items-center h-14 px-6
+    @apply flex items-center h-14 px-6
       bg-white/75 rounded-none border-0 border-b shadow-none;
 
     @variant dark {
