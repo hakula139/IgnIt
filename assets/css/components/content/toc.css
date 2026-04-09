@@ -74,7 +74,11 @@
   }
 
   .toc-sidebar {
-    @apply sticky top-22 max-h-[calc(100vh-6.5rem)] p-4 overflow-y-auto text-sm;
+    @apply sticky top-22 max-h-[calc(100vh-6.5rem)] p-4 text-sm;
+  }
+
+  .toc-sidebar-scroll {
+    @apply max-h-[calc(100vh-10rem)] overflow-y-auto;
   }
 
   .toc-sidebar-title {
