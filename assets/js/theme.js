@@ -1,6 +1,8 @@
 'use strict';
 
 (() => {
+  // ── Theme ──
+
   const STORAGE_KEY = 'theme';
   const DARK = 'dark';
   const LIGHT = 'light';
@@ -35,6 +37,19 @@
     setTheme(current === DARK ? LIGHT : DARK);
   };
 
+  // ── Mobile Menu ──
+
+  const toggleMobileMenu = () => {
+    const menu = document.getElementById('mobile-menu');
+    const toggle = document.getElementById('mobile-menu-toggle');
+    menu.classList.toggle('hidden');
+    toggle.setAttribute('aria-expanded', !menu.classList.contains('hidden'));
+    toggle.querySelector('i').classList.toggle('fa-bars');
+    toggle.querySelector('i').classList.toggle('fa-xmark');
+  };
+
+  // ── Initialization ──
+
   // Apply initial theme (called inline in <head> to prevent flash).
   const stored = getStoredTheme();
   if (stored) {
@@ -60,6 +75,8 @@
     }
   });
 
-  // Expose toggle for the theme switch button.
+  // ── Exports ──
+
   window.__toggleTheme = toggleTheme;
+  window.__toggleMobileMenu = toggleMobileMenu;
 })();

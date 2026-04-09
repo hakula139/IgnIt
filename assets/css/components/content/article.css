@@ -13,7 +13,7 @@
   }
 
   .post-banner-media {
-    @apply h-full w-full transition-transform duration-500;
+    @apply w-full h-full transition-transform duration-500;
   }
 
   .post-banner:hover .post-banner-media {
@@ -21,7 +21,7 @@
   }
 
   .post-banner-image {
-    @apply h-full w-full object-cover;
+    @apply w-full h-full object-cover;
   }
 
   .post-banner-link {

@@ -24,7 +24,7 @@
   }
 
   .post-entry-title {
-    @apply flex-1 min-w-0 truncate border-b-0 transition-colors;
+    @apply flex-1 min-w-0 truncate text-text border-b-0 transition-colors;
   }
 
   .post-entry-title:hover {
@@ -32,6 +32,6 @@
   }
 
   .post-entry-date {
-    @apply shrink-0 text-sm tabular-nums text-text-secondary;
+    @apply shrink-0 text-sm tabular-nums text-text-tertiary;
   }
 }

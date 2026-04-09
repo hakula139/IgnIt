@@ -9,7 +9,7 @@
   }
 
   .callout-title {
-    @apply flex items-center gap-2 px-4 py-2 text-sm font-semibold list-none cursor-pointer select-none;
+    @apply flex items-center gap-2 px-4 py-2 text-sm font-semibold list-none select-none cursor-pointer;
     color: var(--callout-color);
   }
 
@@ -26,7 +26,7 @@
 
   /* Chevron (right) */
   .callout-title::after {
-    @apply ml-auto shrink-0 text-[0.625rem] font-black transition-transform duration-200;
+    @apply shrink-0 ml-auto text-[0.625rem] font-black transition-transform duration-200;
     font-family: 'Font Awesome 6 Free';
     content: '\f078';
   }
@@ -48,7 +48,7 @@
   /* ── Body Inner (injected by JS for CSS grid animation) ── */
 
   .callout-body-inner {
-    @apply overflow-hidden min-h-0 px-4;
+    @apply min-h-0 px-4 overflow-hidden;
   }
 
   .callout-body-inner p {

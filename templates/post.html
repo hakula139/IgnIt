@@ -8,10 +8,10 @@
 {%- endblock %}
 
 {% block body %}
-  <div class="mx-auto max-w-6xl px-4 py-6">
+  <div class="max-w-6xl mx-auto px-4 py-6">
     <div class="xl:flex xl:gap-8">
       {# Article column #}
-      <article class="glass-panel flex-1 min-w-0">
+      <article class="flex-1 min-w-0 glass-panel">
         {%- if featured_image %}
         <div class="post-banner aspect-[21/9]">
           <div class="post-banner-media">
@@ -64,7 +64,7 @@
 
           {%- include "_partials/content/toc-mobile.html" %}
 
-          <div class="prose max-w-none">{{ content | safe }}</div>
+          <div class="max-w-none prose">{{ content | safe }}</div>
         </div>
       </article>
 

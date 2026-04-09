@@ -23,7 +23,7 @@
 /* ── Headings ── */
 
 .prose :where(h2) {
-  @apply text-[1.25em] mt-[1.5em];
+  @apply mt-[1.5em] text-[1.25em];
 }
 
 .prose :where(h3) {
@@ -43,7 +43,7 @@
 }
 
 .prose .code-block pre {
-  @apply m-0 p-0 overflow-visible whitespace-pre rounded-none bg-transparent text-[length:inherit] text-inherit;
+  @apply m-0 p-0 overflow-visible whitespace-pre text-[length:inherit] text-inherit rounded-none bg-transparent;
 }
 
 .prose .code-block code {
@@ -118,6 +118,17 @@
 
 /* ── Images ── */
 
+/* Override Tailwind reset (display: block) and Typography margins for non-figure
+   images so inline icons flow naturally. Block images use <figure>. */
+.prose :where(img:not(figure img)) {
+  @apply inline my-1;
+}
+
+/* Remove link border for image-only links (e.g. icon rows). */
+.prose a:has(img) {
+  @apply pb-0 border-b-0;
+}
+
 /* Allow full HDR luminance on capable displays. */
 @media (dynamic-range: high) {
   .prose figure,
@@ -131,7 +142,7 @@
   /* ── Code ── */
 
   .prose code {
-    @apply px-1.5 py-0.5 rounded bg-bg-code/60 text-[0.875em];
+    @apply px-1.5 py-0.5 text-[0.875em] rounded bg-bg-code/60;
   }
 
   /* ── Text ── */
@@ -147,7 +158,7 @@
   }
 
   .prose .heading-anchor {
-    @apply absolute left-0 text-link opacity-0 no-underline transition-opacity;
+    @apply absolute left-0 text-link no-underline opacity-0 transition-opacity;
   }
 
   .prose :where(h2, h3, h4, h5, h6):hover .heading-anchor {
@@ -161,7 +172,7 @@
 
   /* ── Images ── */
 
-  .prose img {
+  .prose figure img {
     @apply mx-auto rounded-lg;
   }
 
@@ -174,7 +185,7 @@
   }
 
   .prose figure {
-    @apply rounded-lg text-center;
+    @apply text-center rounded-lg;
   }
 
   /* ── Tables ── */
@@ -194,7 +205,7 @@
   /* ── Footnotes ── */
 
   .prose .footnote-definition {
-    @apply flex gap-2 mt-4 pt-4 border-t border-white/20 text-sm text-text-secondary;
+    @apply flex gap-2 mt-4 pt-4 border-t border-white/20 text-sm text-text-tertiary;
 
     @variant dark {
       @apply border-white/8;

@@ -1,4 +1,6 @@
 @layer components {
+  /* ── Logo ── */
+
   .header-logo {
     @apply text-lg font-semibold text-text border-b-0 transition-colors;
   }
@@ -7,24 +9,48 @@
     @apply text-link-hover;
   }
 
+  /* ── Desktop Nav Links (icon-only) ── */
+
   .header-link {
-    @apply px-3 py-1.5 text-sm text-text-secondary rounded-lg border-b-0 transition-colors;
+    @apply p-2 text-text-secondary rounded-md border-b-0 transition-colors;
   }
 
   .header-link:hover {
     @apply text-link-hover bg-bg/50;
+
+    @variant dark {
+      @apply bg-white/10;
+    }
   }
 
+  /* ── Group Dividers ── */
+
+  .header-divider {
+    @apply w-px h-5 mx-1 bg-white/20;
+
+    @variant dark {
+      @apply bg-white/8;
+    }
+  }
+
+  /* ── Icon Buttons ── */
+
   .header-icon {
-    @apply p-2 text-text-secondary rounded-lg transition-colors cursor-pointer;
+    @apply p-2 text-text-secondary rounded-md transition-colors cursor-pointer;
   }
 
   .header-icon:hover {
-    @apply text-link-hover;
+    @apply text-link-hover bg-bg/50;
+
+    @variant dark {
+      @apply bg-white/10;
+    }
   }
 
+  /* ── Mobile Dropdown ── */
+
   .header-mobile {
-    @apply absolute inset-x-0 top-14 py-2 bg-white/75 rounded-t-none border-t-0 md:hidden;
+    @apply absolute inset-x-0 top-14 md:hidden py-2 bg-white/75 backdrop-blur-lg backdrop-saturate-125 rounded-t-none border-t-0;
 
     @variant dark {
       @apply bg-bg/80;

@@ -27,7 +27,7 @@
   }
 
   .home-card-title {
-    @apply -translate-y-14 text-xl font-bold leading-snug text-white drop-shadow-text;
+    @apply text-xl font-bold leading-snug text-white -translate-y-14 drop-shadow-text;
   }
 
   .home-card-meta {
@@ -87,7 +87,7 @@
     }
 
     .home-card-title {
-      @apply translate-y-0 text-2xl transition-[translate] duration-500;
+      @apply text-2xl translate-y-0 transition-[translate] duration-500;
     }
 
     .home-card-meta {
@@ -126,6 +126,6 @@
   /* ── Profile ── */
 
   .profile-avatar {
-    @apply h-24 w-24 mx-auto mb-4 rounded-full shadow-md;
+    @apply w-24 h-24 mx-auto mb-4 rounded-full shadow-md;
   }
 }

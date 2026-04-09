@@ -8,8 +8,8 @@
 {% block body %}
 {%- set profile = config.params.home.profile %}
 {%- if profile %}
-  <div class="mx-auto max-w-4xl px-4 pt-6">
-    <div class="glass-panel p-6 text-center sm:p-8">
+  <div class="max-w-4xl mx-auto px-4 pt-6">
+    <div class="glass-panel p-6 sm:p-8 text-center">
       {%- if profile.avatar %}
       <img
         class="profile-avatar"
@@ -28,7 +28,7 @@
 {%- endif %}
 
 {%- if pages %}
-  <div class="mx-auto max-w-4xl space-y-4 px-4 py-6">
+  <div class="max-w-4xl mx-auto space-y-4 px-4 py-6">
     {%- for page in pages %}
     {%- if page.featured_image %}
     <article class="home-card">

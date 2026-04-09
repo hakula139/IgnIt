@@ -2,13 +2,13 @@
   /* ── Code Block Container ── */
 
   .code-block {
-    @apply my-4 rounded-lg overflow-hidden text-sm leading-normal;
+    @apply my-4 overflow-hidden text-sm leading-normal rounded-lg;
   }
 
   /* ── Header (collapsible trigger) ── */
 
   .code-header {
-    @apply flex items-center gap-2 px-4 py-2 text-xs bg-bg-code/70 cursor-pointer select-none;
+    @apply flex items-center gap-2 px-4 py-2 text-xs select-none bg-bg-code/70 cursor-pointer;
   }
 
   .code-header .chevron {
@@ -44,13 +44,13 @@
   }
 
   .code-body > .highlight {
-    @apply overflow-x-auto overflow-y-hidden min-h-0;
+    @apply min-h-0 overflow-x-auto overflow-y-hidden;
     scrollbar-width: thin;
     scrollbar-color: var(--color-text-tertiary) transparent;
   }
 
   .code-body > .highlight::-webkit-scrollbar {
-    @apply h-2 w-2;
+    @apply w-2 h-2;
   }
 
   .code-body > .highlight::-webkit-scrollbar-track {
@@ -81,11 +81,7 @@
   }
 
   .highlight .line-numbers pre {
-    @apply pr-2 pl-4 text-text-secondary;
-
-    @variant dark {
-      @apply text-text-tertiary;
-    }
+    @apply pr-2 pl-4 text-text-tertiary;
   }
 
   .highlight .code {
