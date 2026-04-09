@@ -27,6 +27,8 @@
       var(--glow-color),
       transparent
     );
+    background-attachment: fixed;
+    will-change: opacity;
   }
 
   /* ── Glass Glow: Border Light ── */
@@ -40,6 +42,8 @@
       8%,
       transparent
     );
+    background-attachment: fixed;
+    will-change: opacity;
     mask:
       linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
