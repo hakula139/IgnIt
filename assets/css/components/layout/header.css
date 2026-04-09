@@ -8,7 +8,7 @@
   }
 
   .header-link {
-    @apply px-3 py-1.5 text-sm text-text-secondary rounded-lg border-b-0 transition-colors;
+    @apply p-2 text-text-secondary rounded-lg border-b-0 transition-colors;
   }
 
   .header-link:hover {

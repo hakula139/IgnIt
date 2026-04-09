@@ -11,10 +11,11 @@
       <a
         href="{{ item.url | safe }}"
         class="header-link"
+        title="{{ item.name }}"
+        aria-label="{{ item.name }}"
         {%- if item.external %} target="_blank" rel="noopener noreferrer"{% endif %}
       >
-        {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i> {% endif -%}
-        {{ item.name }}
+        {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i>{% endif -%}
       </a>
       {%- endfor %}
 
