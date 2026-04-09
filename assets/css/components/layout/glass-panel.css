@@ -2,15 +2,29 @@
   /* ── Glass Panel Base ── */
 
   .glass-panel {
-    --glow-border-size: 200px;
+    --glow-size: 800px;
+    --glow-color: rgba(255, 255, 255, 0.06);
     --glow-border-color: rgba(255, 255, 255, 0.5);
 
     @apply relative rounded-card border border-white/20 bg-white/75 shadow-card backdrop-blur-lg backdrop-saturate-125;
 
     @variant dark {
       @apply border-white/8 bg-bg/70;
+      --glow-color: rgba(255, 255, 255, 0.1);
       --glow-border-color: rgba(255, 255, 255, 0.4);
     }
+  }
+
+  /* ── Glass Glow: Ambient Surface Light ── */
+
+  .glass-panel::before {
+    @apply absolute inset-0 -z-1 rounded-[inherit] pointer-events-none content-[''];
+    background: radial-gradient(
+      var(--glow-size) circle at var(--glow-x, -9999px) var(--glow-y, -9999px),
+      var(--glow-color),
+      10%,
+      transparent
+    );
   }
 
   /* ── Glass Glow: Border Light ── */
@@ -18,8 +32,9 @@
   .glass-panel::after {
     @apply absolute inset-0 p-px rounded-[inherit] pointer-events-none content-[''];
     background: radial-gradient(
-      var(--glow-border-size) circle at var(--glow-x, -9999px) var(--glow-y, -9999px),
+      var(--glow-border-size, 400px) circle at var(--glow-x, -9999px) var(--glow-y, -9999px),
       var(--glow-border-color),
+      15%,
       transparent
     );
     mask:
