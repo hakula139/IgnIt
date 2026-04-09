@@ -32,6 +32,6 @@
   }
 
   .post-entry-date {
-    @apply shrink-0 text-sm tabular-nums text-text-secondary;
+    @apply shrink-0 text-sm tabular-nums text-text-tertiary;
   }
 }

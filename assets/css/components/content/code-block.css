@@ -81,11 +81,7 @@
   }
 
   .highlight .line-numbers pre {
-    @apply pr-2 pl-4 text-text-secondary;
-
-    @variant dark {
-      @apply text-text-tertiary;
-    }
+    @apply pr-2 pl-4 text-text-tertiary;
   }
 
   .highlight .code {
