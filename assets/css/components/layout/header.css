@@ -1,4 +1,6 @@
 @layer components {
+  /* ── Logo ── */
+
   .header-logo {
     @apply text-lg font-semibold text-text border-b-0 transition-colors;
   }
@@ -6,6 +8,8 @@
   .header-logo:hover {
     @apply text-link-hover;
   }
+
+  /* ── Desktop Nav Links (icon-only) ── */
 
   .header-link {
     @apply p-2 text-text-secondary rounded-lg border-b-0 transition-colors;
@@ -15,6 +19,8 @@
     @apply text-link-hover bg-bg/50;
   }
 
+  /* ── Icon Buttons ── */
+
   .header-icon {
     @apply p-2 text-text-secondary rounded-lg transition-colors cursor-pointer;
   }
@@ -22,6 +28,8 @@
   .header-icon:hover {
     @apply text-link-hover;
   }
+
+  /* ── Mobile Dropdown ── */
 
   .header-mobile {
     @apply absolute inset-x-0 top-14 py-2 bg-white/75 rounded-t-none border-t-0 md:hidden;
