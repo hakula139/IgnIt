@@ -6,7 +6,7 @@
     --glow-color: rgba(255, 255, 255, 0.03);
     --glow-border-color: rgba(255, 255, 255, 0.8);
 
-    @apply relative rounded-card border border-white/20 bg-white/75 shadow-card backdrop-blur-lg backdrop-saturate-125;
+    @apply relative rounded-card border border-white/20 bg-white/75 shadow-card backdrop-blur-lg backdrop-saturate-125 backface-hidden;
 
     @variant dark {
       @apply border-white/8 bg-bg/70;

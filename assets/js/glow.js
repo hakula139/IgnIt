@@ -30,8 +30,6 @@
       cursorY = e.clientY;
       updatePanels();
     });
-
-    document.addEventListener('scroll', updatePanels, { capture: true, passive: true });
   };
 
   if (document.readyState === 'loading') {
