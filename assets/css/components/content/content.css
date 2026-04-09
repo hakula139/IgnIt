@@ -82,8 +82,16 @@
 
   /* ── Desktop TOC Sidebar (sticky, xl only) ── */
 
+  .toc-sidebar-wrapper {
+    @apply hidden shrink-0 xl:block xl:w-64;
+  }
+
   .toc-sidebar {
     @apply sticky top-22 max-h-[calc(100vh-6.5rem)] overflow-y-auto p-4 text-sm;
+  }
+
+  .toc-sidebar-title {
+    @apply mb-2 font-semibold text-text;
   }
 
   /* ── TOC Navigation ── */

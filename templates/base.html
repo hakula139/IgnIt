@@ -6,7 +6,7 @@
   {% block title %}<title>{{ config.title }}</title>{% endblock %}
   <link rel="stylesheet" href="{{ config.base_url | safe }}/css/style.min.css">
   <script src="{{ config.base_url | safe }}/js/theme.min.js"></script>
-  {% include "_partials/head-deps.html" %}
+  {% include "_partials/layout/head-deps.html" %}
   {%- block head %}{% endblock %}
 </head>
 
@@ -15,11 +15,11 @@
   style="--bg-image: url('{{ config.base_url | safe }}{{ config.params.background.image | safe }}'){% if config.params.background.position %}; --bg-position: {{ config.params.background.position }}{% endif %}{% if config.params.background.position_mobile %}; --bg-position-mobile: {{ config.params.background.position_mobile }}{% endif %}"
   {%- endif %}
 >
-  {% include "_partials/header.html" %}
+  {% include "_partials/layout/header.html" %}
   <main class="flex-1 pt-16">
     {%- block body %}{% endblock %}
   </main>
-  {% include "_partials/footer.html" %}
+  {% include "_partials/layout/footer.html" %}
   <script src="{{ config.base_url | safe }}/js/content.min.js" defer></script>
   <script src="{{ config.base_url | safe }}/js/toc.min.js" defer></script>
   {%- block scripts %}{% endblock %}

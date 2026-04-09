@@ -1,8 +1,8 @@
 {# Desktop TOC sidebar (sticky, xl only) #}
 {%- if toc %}
-<aside class="hidden shrink-0 xl:block xl:w-64">
+<aside class="toc-sidebar-wrapper">
   <div class="glass-panel toc-sidebar">
-    <h2 class="mb-2 font-semibold text-text">Table of Contents</h2>
+    <h2 class="toc-sidebar-title">Table of Contents</h2>
     {{ toc | safe }}
   </div>
 </aside>

@@ -40,16 +40,19 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 │       └── *.min.js                        # Minified JS via esbuild
 └── templates/
     ├── _partials/                          # Shared template fragments ({% include %})
-    │   ├── footer.html                     # Glass-panel footer (copyright, license)
-    │   ├── head-deps.html                  # Conditional CDN deps (FontAwesome, KaTeX)
-    │   ├── header.html                     # Fixed nav header with menu + theme toggle
-    │   ├── math.html                       # Conditional KaTeX runtime scripts
-    │   ├── meta-og.html                    # OG / Twitter Card meta tags
-    │   ├── pagination.html                 # Pagination nav + page-jump input
-    │   ├── post-entry.html                 # Post entry (title + conditional date)
-    │   ├── toc-mobile.html                 # Collapsible TOC (< xl breakpoint)
-    │   ├── toc-sidebar.html                # Sticky TOC sidebar (xl+ breakpoint)
-    │   └── year-grouped-listing.html       # Year-grouped post list with pagination
+    │   ├── layout/
+    │   │   ├── footer.html                 # Glass-panel footer (copyright, license)
+    │   │   ├── head-deps.html              # Conditional CDN deps (FontAwesome, KaTeX)
+    │   │   └── header.html                 # Fixed nav header with menu + theme toggle
+    │   ├── content/
+    │   │   ├── math.html                   # Conditional KaTeX runtime scripts
+    │   │   ├── meta-og.html                # OG / Twitter Card meta tags
+    │   │   ├── toc-mobile.html             # Collapsible TOC (< xl breakpoint)
+    │   │   └── toc-sidebar.html            # Sticky TOC sidebar (xl+ breakpoint)
+    │   └── listing/
+    │       ├── pagination.html             # Pagination nav + page-jump input
+    │       ├── post-entry.html             # Post entry (title + conditional date)
+    │       └── year-grouped-listing.html   # Year-grouped post list with pagination
     ├── base.html                           # Base layout (glass panels, background image)
     ├── home.html                           # Home page (profile + image cards with hover reveal)
     ├── page.html                           # Standalone page (glass card, TOC sidebar)

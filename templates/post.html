@@ -4,7 +4,7 @@
 
 {% block head %}
 {%- set og_type = "article" -%}
-{%- include "_partials/meta-og.html" %}
+{%- include "_partials/content/meta-og.html" %}
 {%- endblock %}
 
 {% block body %}
@@ -62,17 +62,17 @@
             {%- endif %}
           </header>
 
-          {%- include "_partials/toc-mobile.html" %}
+          {%- include "_partials/content/toc-mobile.html" %}
 
           <div class="prose max-w-none">{{ content | safe }}</div>
         </div>
       </article>
 
-      {%- include "_partials/toc-sidebar.html" %}
+      {%- include "_partials/content/toc-sidebar.html" %}
     </div>
   </div>
 {%- endblock %}
 
 {% block scripts %}
-{%- include "_partials/math.html" %}
+{%- include "_partials/content/math.html" %}
 {%- endblock %}
