@@ -135,7 +135,7 @@
 }
 
 /* Remove link border for image-only links (e.g. icon rows). */
-.prose a:has(img) {
+.prose a:has(> img:only-child) {
   @apply pb-0 border-b-0;
 }
 
