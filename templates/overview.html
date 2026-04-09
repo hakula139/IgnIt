@@ -21,7 +21,7 @@
             </a>
           </h3>
           {%- for page in bucket.pages[:5] %}
-          <a href="{{ page.url | safe }}" class="block py-0.5 truncate text-sm text-text-secondary border-b-0 transition-colors hover:text-link-hover">
+          <a href="{{ page.url | safe }}" class="block py-0.5 truncate text-sm text-text border-b-0 transition-colors hover:text-link-hover">
             {{ page.title }}
           </a>
           {%- endfor %}
