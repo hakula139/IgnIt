@@ -16,11 +16,11 @@
   }
 
   .link-avatar {
-    @apply block size-12 shrink-0 rounded-full object-cover;
+    @apply block size-14 shrink-0 rounded-full object-cover;
   }
 
   .link-body {
-    @apply flex min-w-0 flex-col justify-center gap-0.5;
+    @apply flex min-w-0 flex-col justify-center gap-1;
   }
 
   .link-title {
