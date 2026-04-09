@@ -161,7 +161,7 @@
 
   /* ── Images ── */
 
-  .prose img {
+  .prose figure img {
     @apply mx-auto rounded-lg;
   }
 
