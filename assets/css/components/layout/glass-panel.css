@@ -2,8 +2,6 @@
   /* ── Glass Panel Base ── */
 
   .glass-panel {
-    --glow-size: 100px;
-    --glow-color: rgba(255, 255, 255, 0.7);
     --glow-border-size: 200px;
     --glow-border-color: rgba(255, 255, 255, 0.5);
 
@@ -11,20 +9,8 @@
 
     @variant dark {
       @apply border-white/8 bg-bg/70;
-      --glow-color: rgba(255, 255, 255, 0.2);
       --glow-border-color: rgba(255, 255, 255, 0.4);
     }
-  }
-
-  /* ── Glass Glow: Cursor Shadow ── */
-
-  .glass-panel::before {
-    @apply absolute inset-0 -z-1 rounded-[inherit] pointer-events-none content-[''];
-    background: radial-gradient(
-      var(--glow-size) circle at var(--glow-x, -9999px) var(--glow-y, -9999px),
-      var(--glow-color),
-      transparent
-    );
   }
 
   /* ── Glass Glow: Border Light ── */
