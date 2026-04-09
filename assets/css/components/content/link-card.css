@@ -1,40 +1,33 @@
-/* Reset prose img defaults for link card avatars. */
-.prose .link-avatar {
-  @apply block size-12 my-0 rounded-full;
-}
-
 @layer components {
+  .link-grid {
+    @apply my-4 grid gap-3 md:grid-cols-2;
+  }
+
   .link-card {
-    @apply inline-flex items-center gap-3
-      w-full my-1 px-4 py-3
-      text-text no-underline
-      rounded-lg border border-border border-b border-b-border
+    @apply flex h-full items-center gap-3
+      px-4 py-3
+      text-text no-underline border-b-0
+      rounded-lg bg-bg-secondary/50 ring-1 ring-inset ring-border
       transition-colors;
   }
 
-  @media (min-width: 640px) {
-    .link-card {
-      @apply w-[calc(50%-1rem)] mx-1;
-    }
-  }
-
   .link-card:hover {
-    @apply border-text-tertiary;
+    @apply text-text bg-bg-secondary/70 ring-text-tertiary;
   }
 
   .link-avatar {
     @apply size-12 shrink-0 rounded-full object-cover;
   }
 
-  .link-info {
+  .link-body {
     @apply min-w-0;
   }
 
-  .link-name {
+  .link-title {
     @apply truncate text-link font-medium leading-snug;
   }
 
-  .link-card:hover .link-name {
+  .link-card:hover .link-title {
     @apply text-link-hover;
   }
 
