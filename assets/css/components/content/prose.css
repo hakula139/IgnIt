@@ -121,7 +121,12 @@
 /* Override Tailwind reset (display: block) and Typography margins for non-figure
    images so inline icons flow naturally. Block images use <figure>. */
 .prose :where(img:not(figure img)) {
-  @apply inline my-0;
+  @apply inline my-1;
+}
+
+/* Remove link border for image-only links (e.g. icon rows). */
+.prose a:has(img) {
+  @apply border-b-0 pb-0;
 }
 
 /* Allow full HDR luminance on capable displays. */
