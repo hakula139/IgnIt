@@ -6,7 +6,7 @@
   }
 
   .toc ul ul {
-    @apply pl-3;
+    @apply pl-4;
   }
 
   .toc li {

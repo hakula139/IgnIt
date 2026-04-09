@@ -20,6 +20,16 @@
   --tw-prose-captions: var(--color-text-secondary);
 }
 
+/* ── Headings ── */
+
+.prose :where(h2) {
+  @apply text-[1.25em] mt-[1.5em];
+}
+
+.prose :where(h3) {
+  @apply text-[1.1em];
+}
+
 /* ── Code Blocks ── */
 
 /* Prevent Tailwind utility collision with syntect class names (e.g. "block"). */
