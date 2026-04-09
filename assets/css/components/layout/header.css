@@ -12,11 +12,15 @@
   /* ── Desktop Nav Links (icon-only) ── */
 
   .header-link {
-    @apply p-2 text-text-secondary rounded-lg border-b-0 transition-colors;
+    @apply p-2 text-text-secondary rounded-md border-b-0 transition-colors;
   }
 
   .header-link:hover {
     @apply text-link-hover bg-bg/50;
+
+    @variant dark {
+      @apply bg-white/10;
+    }
   }
 
   /* ── Group Dividers ── */
@@ -32,11 +36,15 @@
   /* ── Icon Buttons ── */
 
   .header-icon {
-    @apply p-2 text-text-secondary rounded-lg transition-colors cursor-pointer;
+    @apply p-2 text-text-secondary rounded-md transition-colors cursor-pointer;
   }
 
   .header-icon:hover {
-    @apply text-link-hover;
+    @apply text-link-hover bg-bg/50;
+
+    @variant dark {
+      @apply bg-white/10;
+    }
   }
 
   /* ── Mobile Dropdown ── */
