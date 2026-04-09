@@ -1,11 +1,21 @@
+/* Reset prose img defaults for link card avatars. */
+.prose .link-avatar {
+  @apply block size-12 my-0 rounded-full;
+}
+
 @layer components {
   .link-card {
-    @apply inline-flex items-center gap-3 no-underline
-      w-full sm:w-[calc(50%-0.75rem)] sm:mx-1.5
-      my-1 px-4 py-3
-      text-text
-      rounded-lg border border-border
+    @apply inline-flex items-center gap-3
+      w-full my-1 px-4 py-3
+      text-text no-underline
+      rounded-lg border border-border border-b border-b-border
       transition-colors;
+  }
+
+  @media (min-width: 640px) {
+    .link-card {
+      @apply w-[calc(50%-1rem)] mx-1;
+    }
   }
 
   .link-card:hover {

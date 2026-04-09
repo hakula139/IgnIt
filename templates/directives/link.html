@@ -2,7 +2,7 @@
 {%- set url = named_args.url | default("") -%}
 {%- set desc = named_args.desc | default(name) -%}
 {%- set logo = named_args.logo | default("") -%}
-<a href="{{ url | safe }}"{% if url is startingwith("http") %} rel="noopener" target="_blank"{% endif %} class="link-card">
+<a href="{{ url | safe }}"{% if url is startingwith("http") %} rel="noopener" target="_blank"{% endif %} class="link-card not-prose">
 {%- if logo %}
   <img src="{{ logo | safe }}" alt="{{ name }}" class="link-avatar" loading="lazy">
 {%- endif %}
