@@ -1,7 +1,7 @@
 {%- set footer = config.params.footer | default({}) -%}
 {%- set current_year = now()[0:4] -%}
 <footer class="glass-panel site-footer">
-  <div class="mx-auto max-w-6xl">
+  <div class="max-w-6xl mx-auto">
     {%- if footer.since %}
     <p>
       &copy; {{ footer.since }}&ndash;{{ current_year }} {{ config.author.name }}
