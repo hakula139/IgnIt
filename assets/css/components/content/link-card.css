@@ -20,7 +20,7 @@
   }
 
   .link-body {
-    @apply flex min-w-0 flex-col justify-center;
+    @apply flex min-w-0 flex-col justify-center gap-0.5;
   }
 
   .link-title {
