@@ -14,7 +14,7 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 │   │   ├── base.css                        # @layer base (html, body, a, selection)
 │   │   └── components/
 │   │       ├── layout/
-│   │       │   ├── glass-panel.css         # .glass-panel, .header-nav, .site-footer
+│   │       │   ├── glass-panel.css         # .glass-panel, .glass-glow, .header-nav, .site-footer
 │   │       │   └── header.css              # .header-logo, .header-link, .header-icon, .header-mobile-*
 │   │       ├── content/
 │   │       │   ├── article.css             # .article-title, .post-banner-*
@@ -31,6 +31,7 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 │   │           └── apple-music.css         # Apple Music embed light / dark toggle
 │   └── js/
 │       ├── content.js                      # Code block, callout, heading anchor, and external link enhancements
+│       ├── glow.js                         # Glass panel cursor glow effect
 │       ├── pagination.js                   # Page-jump controls for pagination
 │       ├── theme.js                        # Dark mode toggle + system preference
 │       └── toc.js                          # TOC active heading tracking + section collapse

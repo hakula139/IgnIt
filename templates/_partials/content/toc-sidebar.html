@@ -3,7 +3,9 @@
 <aside class="toc-sidebar-wrapper">
   <div class="glass-panel toc-sidebar">
     <h2 class="toc-sidebar-title">Table of Contents</h2>
-    {{ toc | safe }}
+    <div class="toc-sidebar-scroll">
+      {{ toc | safe }}
+    </div>
   </div>
 </aside>
 {%- endif %}

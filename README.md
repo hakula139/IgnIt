@@ -8,7 +8,7 @@ A clean, feature-rich theme for [kiln](https://github.com/hakula139/kiln) — in
 
 IgnIt is a [kiln](https://github.com/hakula139/kiln) theme built with Tailwind CSS v4 and MiniJinja templates. It features:
 
-- Glassmorphism panels with configurable background image
+- Glassmorphism panels with configurable background image and cursor-tracking border glow
 - Dark / light mode with system preference detection and flash-free manual toggle
 - Home page image cards with gradient overlays and desktop hover reveal (description + tags)
 - Responsive layout with sticky TOC sidebar (desktop) and collapsible TOC (mobile)

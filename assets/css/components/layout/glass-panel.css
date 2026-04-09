@@ -2,11 +2,44 @@
   /* ── Glass Panel Base ── */
 
   .glass-panel {
-    @apply rounded-card border border-white/20 bg-white/75 shadow-card backdrop-blur-lg backdrop-saturate-125;
+    --glow-size: 1000px;
+    --glow-color: rgba(255, 255, 255, 0.03);
+    --glow-border-color: rgba(255, 255, 255, 0.8);
+
+    @apply relative rounded-card border border-white/20 bg-white/75 shadow-card backdrop-blur-lg backdrop-saturate-125;
 
     @variant dark {
       @apply border-white/8 bg-bg/70;
+      --glow-color: rgba(255, 255, 255, 0.05);
+      --glow-border-color: rgba(255, 255, 255, 0.7);
     }
+  }
+
+  /* ── Glass Glow: Ambient Surface Light ── */
+
+  .glass-panel::before {
+    @apply absolute inset-0 -z-1 rounded-[inherit] pointer-events-none content-[''];
+    background: radial-gradient(
+      var(--glow-size) circle at var(--glow-x, -9999px) var(--glow-y, -9999px),
+      var(--glow-color),
+      transparent
+    );
+  }
+
+  /* ── Glass Glow: Border Light ── */
+
+  .glass-panel::after {
+    @apply absolute inset-0 p-px rounded-[inherit] pointer-events-none content-[''];
+    background: radial-gradient(
+      var(--glow-border-size, 400px) circle at var(--glow-x, -9999px) var(--glow-y, -9999px),
+      var(--glow-border-color),
+      8%,
+      transparent
+    );
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
   }
 
   /* ── Header Nav Bar ── */
