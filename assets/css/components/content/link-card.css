@@ -2,22 +2,18 @@
   .link-card {
     @apply inline-flex items-center gap-3 no-underline
       w-full sm:w-[calc(50%-0.75rem)] sm:mx-1.5
-      my-1 px-4 py-3 rounded-xl
-      bg-bg-code/60 text-text
-      transition-transform duration-200;
+      my-1 px-4 py-3
+      text-text
+      rounded-lg border border-border
+      transition-colors;
   }
 
   .link-card:hover {
-    @apply scale-[1.025];
+    @apply border-text-tertiary;
   }
 
   .link-avatar {
-    @apply size-14 shrink-0 rounded-full object-cover
-      transition-transform duration-200;
-  }
-
-  .link-card:hover .link-avatar {
-    @apply rotate-30;
+    @apply size-12 shrink-0 rounded-full object-cover;
   }
 
   .link-info {
@@ -25,7 +21,7 @@
   }
 
   .link-name {
-    @apply truncate text-link text-lg leading-relaxed font-medium;
+    @apply truncate text-link font-medium leading-snug;
   }
 
   .link-card:hover .link-name {
@@ -33,6 +29,6 @@
   }
 
   .link-desc {
-    @apply truncate text-text-secondary text-sm leading-relaxed;
+    @apply truncate text-text-secondary text-sm leading-snug;
   }
 }
