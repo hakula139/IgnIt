@@ -9,7 +9,9 @@
   }
 
   .callout-title {
-    @apply flex items-center gap-2 px-4 py-2 text-sm font-semibold list-none select-none cursor-pointer;
+    @apply flex items-center gap-2 px-4 py-2
+      text-sm font-semibold
+      list-none select-none cursor-pointer;
     color: var(--callout-color);
   }
 
@@ -26,7 +28,9 @@
 
   /* Chevron (right) */
   .callout-title::after {
-    @apply shrink-0 ml-auto text-[0.625rem] font-black transition-transform duration-200;
+    @apply shrink-0 ml-auto
+      text-[0.625rem] font-black
+      transition-transform duration-200;
     font-family: 'Font Awesome 6 Free';
     content: '\f078';
   }

@@ -14,7 +14,10 @@
   }
 
   .toc a {
-    @apply block py-0.5 pl-3 text-text/70 no-underline border-l-2 border-b-0 border-border transition-colors;
+    @apply block py-0.5 pl-3
+      text-text/70 no-underline
+      border-l-2 border-b-0 border-border
+      transition-colors;
   }
 
   .toc a:hover {
@@ -32,7 +35,9 @@
   }
 
   .toc-trigger {
-    @apply flex items-center gap-2 px-4 py-2.5 text-sm font-medium text-text-secondary select-none cursor-pointer;
+    @apply flex items-center gap-2 px-4 py-2.5
+      text-sm font-medium text-text-secondary
+      select-none cursor-pointer;
   }
 
   .toc-trigger::before {
@@ -42,7 +47,9 @@
   }
 
   .toc-trigger::after {
-    @apply shrink-0 ml-auto font-black text-[0.625rem] text-text-tertiary transition-transform duration-200;
+    @apply shrink-0 ml-auto
+      font-black text-[0.625rem] text-text-tertiary
+      transition-transform duration-200;
     font-family: 'Font Awesome 6 Free';
     content: '\f078'; /* chevron-down */
   }

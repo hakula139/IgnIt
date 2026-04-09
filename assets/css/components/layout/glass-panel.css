@@ -6,7 +6,9 @@
     --glow-color: rgba(255, 255, 255, 0.03);
     --glow-border-color: rgba(255, 255, 255, 0.8);
 
-    @apply relative rounded-card border border-white/20 bg-white/75 shadow-card backdrop-blur-lg backdrop-saturate-125 backface-hidden;
+    @apply relative
+      rounded-card border border-white/20 bg-white/75 shadow-card
+      backdrop-blur-lg backdrop-saturate-125 backface-hidden;
 
     @variant dark {
       @apply border-white/8 bg-bg/70;
@@ -18,7 +20,8 @@
   /* ── Glass Glow: Ambient Surface Light ── */
 
   .glass-panel::before {
-    @apply absolute inset-0 -z-1 rounded-[inherit] pointer-events-none content-[''];
+    @apply absolute inset-0 -z-1
+      rounded-[inherit] pointer-events-none content-[''];
     background: radial-gradient(
       var(--glow-size) circle at var(--glow-x, -9999px) var(--glow-y, -9999px),
       var(--glow-color),
@@ -29,7 +32,8 @@
   /* ── Glass Glow: Border Light ── */
 
   .glass-panel::after {
-    @apply absolute inset-0 p-px rounded-[inherit] pointer-events-none content-[''];
+    @apply absolute inset-0 p-px
+      rounded-[inherit] pointer-events-none content-[''];
     background: radial-gradient(
       var(--glow-border-size, 400px) circle at var(--glow-x, -9999px) var(--glow-y, -9999px),
       var(--glow-border-color),
@@ -45,7 +49,9 @@
   /* ── Header Nav Bar ── */
 
   .header-nav {
-    @apply fixed inset-x-0 top-0 z-50 flex items-center h-14 px-6 bg-white/75 rounded-none border-0 border-b shadow-none;
+    @apply fixed inset-x-0 top-0 z-50
+      flex items-center h-14 px-6
+      bg-white/75 rounded-none border-0 border-b shadow-none;
 
     @variant dark {
       @apply bg-bg/80;
@@ -55,6 +61,7 @@
   /* ── Footer ── */
 
   .site-footer {
-    @apply mx-4 mt-2 mb-4 px-6 py-4 text-center text-sm text-text-tertiary;
+    @apply mx-4 mt-2 mb-4 px-6 py-4
+      text-center text-sm text-text-tertiary;
   }
 }

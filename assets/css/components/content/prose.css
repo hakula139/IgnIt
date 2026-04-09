@@ -43,7 +43,9 @@
 }
 
 .prose .code-block pre {
-  @apply m-0 p-0 overflow-visible whitespace-pre text-[length:inherit] text-inherit rounded-none bg-transparent;
+  @apply m-0 p-0 overflow-visible whitespace-pre
+    text-[length:inherit] text-inherit
+    rounded-none bg-transparent;
 }
 
 .prose .code-block code {
@@ -107,13 +109,14 @@
 
 /* ── Links ── */
 
-/* Override Typography's text-decoration and link color on hover. */
-.prose a {
+/* Override Typography's text-decoration: use a bottom-border underline instead.
+   Guard mirrors Typography's own not-prose exclusion to avoid leaking into directives. */
+.prose :where(a:not(.not-prose, .not-prose *)) {
   @apply pb-0.5 no-underline;
-}
 
-.prose a:hover {
-  @apply text-link-hover;
+  &:hover {
+    @apply text-link-hover;
+  }
 }
 
 /* Heading anchors and footnote refs: no hover border. */
@@ -133,7 +136,7 @@
 }
 
 /* Remove link border for image-only links (e.g. icon rows). */
-.prose a:has(img) {
+.prose a:has(> img:only-child) {
   @apply pb-0 border-b-0;
 }
 
@@ -185,7 +188,8 @@
   }
 
   html.image-fade-enabled :where(.prose img, .post-featured-image) {
-    @apply invisible opacity-0 scale-[1.03] transition-[opacity,scale] duration-600;
+    @apply invisible opacity-0 scale-[1.03]
+      transition-[opacity,scale] duration-600;
   }
 
   html.image-fade-enabled :where(.prose img, .post-featured-image).loaded {
@@ -213,7 +217,9 @@
   /* ── Footnotes ── */
 
   .prose .footnote-definition {
-    @apply flex gap-2 mt-4 pt-4 border-t border-white/20 text-sm text-text-tertiary;
+    @apply flex gap-2 mt-4 pt-4
+      text-sm text-text-tertiary
+      border-t border-white/20;
 
     @variant dark {
       @apply border-white/8;

@@ -1,0 +1,37 @@
+@layer components {
+  .link-grid {
+    @apply my-4 grid gap-3 md:grid-cols-2;
+  }
+
+  .link-card {
+    @apply flex min-h-20 items-center gap-4
+      px-4 py-3
+      text-text no-underline border-b-0
+      rounded-lg bg-bg-secondary/50 ring-1 ring-inset ring-border
+      transition-colors;
+  }
+
+  .link-card:hover {
+    @apply text-text bg-bg-secondary/70 ring-text-tertiary;
+  }
+
+  .link-avatar {
+    @apply block size-14 shrink-0 rounded-full object-cover;
+  }
+
+  .link-body {
+    @apply flex min-w-0 flex-col justify-center gap-1;
+  }
+
+  .link-title {
+    @apply truncate text-link font-medium leading-snug;
+  }
+
+  .link-card:hover .link-title {
+    @apply text-link-hover;
+  }
+
+  .link-desc {
+    @apply truncate text-text-secondary text-sm leading-snug;
+  }
+}
