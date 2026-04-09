@@ -3,15 +3,15 @@
 
   .glass-panel {
     --glow-size: 800px;
-    --glow-color: rgba(255, 255, 255, 0.06);
-    --glow-border-color: rgba(255, 255, 255, 0.5);
+    --glow-color: rgba(255, 255, 255, 0.15);
+    --glow-border-color: rgba(255, 255, 255, 0.8);
 
     @apply relative rounded-card border border-white/20 bg-white/75 shadow-card backdrop-blur-lg backdrop-saturate-125;
 
     @variant dark {
       @apply border-white/8 bg-bg/70;
-      --glow-color: rgba(255, 255, 255, 0.1);
-      --glow-border-color: rgba(255, 255, 255, 0.4);
+      --glow-color: rgba(255, 255, 255, 0.25);
+      --glow-border-color: rgba(255, 255, 255, 0.7);
     }
   }
 
