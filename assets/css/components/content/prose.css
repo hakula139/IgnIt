@@ -118,6 +118,13 @@
 
 /* ── Images ── */
 
+/* Override Typography's block-level margins for inline images.
+   Block images use <figure> which gets its own Typography margins. */
+.prose :where(img) {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 /* Allow full HDR luminance on capable displays. */
 @media (dynamic-range: high) {
   .prose figure,
