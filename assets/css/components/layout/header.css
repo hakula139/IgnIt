@@ -19,6 +19,16 @@
     @apply text-link-hover bg-bg/50;
   }
 
+  /* ── Group Dividers ── */
+
+  .header-divider {
+    @apply w-px h-5 mx-1 bg-white/20;
+
+    @variant dark {
+      @apply bg-white/8;
+    }
+  }
+
   /* ── Icon Buttons ── */
 
   .header-icon {

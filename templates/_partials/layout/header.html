@@ -5,23 +5,38 @@
       {{ config.title }}
     </a>
 
-    {# Desktop navigation #}
+    {# Desktop navigation: [internal pages] | [external links] | [theme toggle] #}
     <nav class="hidden md:flex items-center gap-1 whitespace-nowrap">
-      {%- for item in menu_items %}
+      {%- for item in menu_items if not item.external %}
       <a
         href="{{ item.url | safe }}"
         class="header-link"
         title="{{ item.name }}"
         aria-label="{{ item.name }}"
-        {%- if item.external %} target="_blank" rel="noopener noreferrer"{% endif %}
       >
         {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i>{% endif -%}
       </a>
       {%- endfor %}
 
+      <span class="header-divider" aria-hidden="true"></span>
+
+      {%- for item in menu_items if item.external %}
+      <a
+        href="{{ item.url | safe }}"
+        class="header-link"
+        title="{{ item.name }}"
+        aria-label="{{ item.name }}"
+        target="_blank" rel="noopener noreferrer"
+      >
+        {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i>{% endif -%}
+      </a>
+      {%- endfor %}
+
+      <span class="header-divider" aria-hidden="true"></span>
+
       <button
         onclick="window.__toggleTheme()"
-        class="header-icon ml-2"
+        class="header-icon"
         aria-label="Switch to dark mode"
       >
         <i class="fas fa-moon fa-fw dark:!hidden" aria-hidden="true"></i>
