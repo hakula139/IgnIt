@@ -80,6 +80,14 @@
   @apply content-none;
 }
 
+/* ── Blockquotes ── */
+
+/* Remove Typography's auto-inserted quotation marks. */
+.prose :where(blockquote p:first-of-type)::before,
+.prose :where(blockquote p:last-of-type)::after {
+  @apply content-none;
+}
+
 /* ── Borders ── */
 
 /* Override Typography's opaque borders with semi-transparent glass style. */
