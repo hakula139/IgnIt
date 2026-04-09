@@ -50,7 +50,9 @@
   /* ── Mobile Dropdown ── */
 
   .header-mobile {
-    @apply absolute inset-x-0 top-14 md:hidden py-2 bg-white/75 backdrop-blur-lg backdrop-saturate-125 rounded-t-none border-t-0;
+    @apply absolute inset-x-0 top-14 md:hidden py-2
+      bg-white/75 backdrop-blur-lg backdrop-saturate-125
+      rounded-t-none border-t-0;
 
     @variant dark {
       @apply bg-bg/80;
@@ -58,7 +60,9 @@
   }
 
   .header-mobile-link {
-    @apply block px-6 py-2 text-left text-sm text-text-secondary border-b-0 transition-colors cursor-pointer;
+    @apply block px-6 py-2
+      text-left text-sm text-text-secondary
+      border-b-0 transition-colors cursor-pointer;
   }
 
   .header-mobile-link:hover {

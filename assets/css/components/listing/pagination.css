@@ -1,6 +1,10 @@
 @layer components {
   .pagination-link {
-    @apply inline-flex items-center justify-center h-9 min-w-9 px-2.5 text-sm font-medium text-text-secondary rounded-lg border-b-0 transition-colors duration-200;
+    @apply inline-flex items-center justify-center
+      h-9 min-w-9 px-2.5
+      text-sm font-medium text-text-secondary
+      rounded-lg border-b-0
+      transition-colors duration-200;
   }
 
   .pagination-link:hover {
@@ -18,7 +22,10 @@
   }
 
   .pagination-input {
-    @apply w-9 h-9 min-w-9 text-center text-sm text-text rounded-lg border border-border outline-none backdrop-blur-xs transition-colors duration-200;
+    @apply w-9 h-9 min-w-9
+      text-center text-sm text-text
+      rounded-lg border border-border bg-transparent outline-none backdrop-blur-xs
+      transition-colors duration-200;
     background: color-mix(in srgb, var(--color-bg) 60%, transparent);
     appearance: textfield;
     -moz-appearance: textfield;

@@ -12,7 +12,8 @@ html.theme-transition *::after {
   }
 
   body {
-    @apply flex flex-col min-h-screen text-text leading-[1.75] bg-bg;
+    @apply flex flex-col min-h-screen
+      text-text leading-[1.75] bg-bg;
   }
 
   body::before {

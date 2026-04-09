@@ -8,7 +8,9 @@
   /* ── Header (collapsible trigger) ── */
 
   .code-header {
-    @apply flex items-center gap-2 px-4 py-2 text-xs select-none bg-bg-code/70 cursor-pointer;
+    @apply flex items-center gap-2 px-4 py-2
+      text-xs bg-bg-code/70
+      select-none cursor-pointer;
   }
 
   .code-header .chevron {

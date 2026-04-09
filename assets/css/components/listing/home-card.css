@@ -7,11 +7,13 @@
   }
 
   .home-card {
-    @apply relative h-88 overflow-hidden rounded-card border border-white/8 bg-card shadow-card;
+    @apply relative h-88 overflow-hidden
+      rounded-card border border-white/8 bg-card shadow-card;
   }
 
   .home-card-image {
-    @apply absolute inset-0 bg-cover animate-image-fade-in transition-[scale,filter] duration-1000;
+    @apply absolute inset-0 bg-cover
+      animate-image-fade-in transition-[scale,filter] duration-1000;
   }
 
   /* Stronger bottom gradient on mobile for text readability.
@@ -23,11 +25,14 @@
   /* Mobile layout matches the desktop hovered state:
      title in upper area, reveal content at the bottom. */
   .home-card-body {
-    @apply absolute inset-0 z-10 flex flex-col items-center justify-center p-5 text-center pointer-events-none;
+    @apply absolute inset-0 z-10
+      flex flex-col items-center justify-center p-5
+      text-center pointer-events-none;
   }
 
   .home-card-title {
-    @apply text-xl font-bold leading-snug text-white -translate-y-14 drop-shadow-text;
+    @apply text-xl font-bold leading-snug text-white
+      -translate-y-14 drop-shadow-text;
   }
 
   .home-card-meta {
@@ -35,7 +40,8 @@
   }
 
   .home-card-desc {
-    @apply mt-3 text-sm leading-relaxed whitespace-pre-line text-white/80 line-clamp-3;
+    @apply mt-3 text-sm leading-relaxed
+      whitespace-pre-line text-white/80 line-clamp-3;
   }
 
   .home-card-reveal {
@@ -47,7 +53,10 @@
   }
 
   .home-card-tag {
-    @apply px-2 py-0.5 text-xs text-white/85 no-underline rounded-full border-b-0 bg-white/15 transition-colors pointer-events-auto;
+    @apply px-2 py-0.5
+      text-xs text-white/85 no-underline
+      rounded-full border-b-0 bg-white/15
+      transition-colors pointer-events-auto;
   }
 
   .home-card-tag:hover {
@@ -55,7 +64,8 @@
   }
 
   .home-card-link {
-    @apply text-white/80 no-underline border-b-0 transition-colors pointer-events-auto;
+    @apply text-white/80 no-underline border-b-0
+      transition-colors pointer-events-auto;
   }
 
   .home-card-link:hover {
@@ -79,7 +89,9 @@
     /* CSS gradients aren't animatable, so the darker hover gradient
        lives on ::after and fades in via opacity transition. */
     .home-card-overlay::after {
-      @apply absolute inset-0 content-[''] opacity-0 bg-linear-to-t from-black/70 via-black/35 to-black/15 transition-opacity duration-700;
+      @apply absolute inset-0 content-[''] opacity-0
+        bg-linear-to-t from-black/70 via-black/35 to-black/15
+        transition-opacity duration-700;
     }
 
     .home-card-body {
