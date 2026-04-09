@@ -109,13 +109,14 @@
 
 /* ── Links ── */
 
-/* Override Typography's text-decoration and link color on hover. */
-.prose a {
+/* Override Typography's text-decoration: use a bottom-border underline instead.
+   Guard mirrors Typography's own not-prose exclusion to avoid leaking into directives. */
+.prose :where(a:not(.not-prose, .not-prose *)) {
   @apply pb-0.5 no-underline;
-}
 
-.prose a:hover {
-  @apply text-link-hover;
+  &:hover {
+    @apply text-link-hover;
+  }
 }
 
 /* Heading anchors and footnote refs: no hover border. */
