@@ -8,23 +8,21 @@
 {%- endblock %}
 
 {% block body %}
-  <div class="mx-auto max-w-4xl px-4 py-6">
-    <article class="glass-panel p-6 sm:p-8">
-      <header class="mb-6">
-        <h1 class="article-title">{{ title }}</h1>
-      </header>
+  <div class="mx-auto max-w-6xl px-4 py-6">
+    <div class="xl:flex xl:gap-8">
+      {# Article column #}
+      <article class="glass-panel flex-1 min-w-0 p-6 sm:p-8">
+        <header class="mb-6">
+          <h1 class="article-title">{{ title }}</h1>
+        </header>
 
-      {%- if toc %}
-      <div class="toc-collapse collapsed">
-        <div class="toc-trigger">Table of Contents</div>
-        <div class="toc-body-wrapper">
-          <div class="toc-body">{{ toc | safe }}</div>
-        </div>
-      </div>
-      {%- endif %}
+        {%- include "_partials/toc-mobile.html" %}
 
-      <div class="prose max-w-none">{{ content | safe }}</div>
-    </article>
+        <div class="prose max-w-none">{{ content | safe }}</div>
+      </article>
+
+      {%- include "_partials/toc-sidebar.html" %}
+    </div>
   </div>
 {%- endblock %}
 
