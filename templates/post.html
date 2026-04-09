@@ -4,7 +4,7 @@
 
 {% block head %}
 {%- set og_type = "article" -%}
-{%- include "_partials/meta-og.html" %}
+{%- include "_partials/content/meta-og.html" %}
 {%- endblock %}
 
 {% block body %}
@@ -62,33 +62,17 @@
             {%- endif %}
           </header>
 
-          {# Mobile TOC (collapsible, < xl) #}
-          {%- if toc %}
-          <div class="toc-collapse collapsed xl:hidden">
-            <div class="toc-trigger">Table of Contents</div>
-            <div class="toc-body-wrapper">
-              <div class="toc-body">{{ toc | safe }}</div>
-            </div>
-          </div>
-          {%- endif %}
+          {%- include "_partials/content/toc-mobile.html" %}
 
           <div class="prose max-w-none">{{ content | safe }}</div>
         </div>
       </article>
 
-      {# Desktop TOC sidebar (sticky, xl only) #}
-      {%- if toc %}
-      <aside class="hidden shrink-0 xl:block xl:w-64">
-        <div class="glass-panel toc-sidebar">
-          <h2 class="mb-2 font-semibold text-text">Table of Contents</h2>
-          {{ toc | safe }}
-        </div>
-      </aside>
-      {%- endif %}
+      {%- include "_partials/content/toc-sidebar.html" %}
     </div>
   </div>
 {%- endblock %}
 
 {% block scripts %}
-{%- include "_partials/math.html" %}
+{%- include "_partials/content/math.html" %}
 {%- endblock %}

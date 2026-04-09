@@ -2,7 +2,7 @@
 
 {% block head %}
 {%- set og_type = "website" -%}
-{%- include "_partials/meta-og.html" %}
+{%- include "_partials/content/meta-og.html" %}
 {%- endblock %}
 
 {% block body %}
@@ -83,7 +83,7 @@
     {%- endif %}
     {%- endfor %}
 
-    {%- include "_partials/pagination.html" %}
+    {%- include "_partials/listing/pagination.html" %}
   </div>
 {%- endif %}
 {%- endblock %}

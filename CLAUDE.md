@@ -17,7 +17,8 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 │   │       │   ├── glass-panel.css         # .glass-panel, .header-nav, .site-footer
 │   │       │   └── header.css              # .header-logo, .header-link, .header-icon, .header-mobile-*
 │   │       ├── content/
-│   │       │   ├── content.css             # .article-title, .post-banner-*, .toc-collapse, .toc-trigger, .toc-sidebar
+│   │       │   ├── article.css             # .article-title, .post-banner-*
+│   │       │   ├── toc.css                 # .toc, .toc-collapse, .toc-trigger, .toc-sidebar-*
 │   │       │   ├── code-block.css          # .code-block, .code-header, .code-body, .copy-btn
 │   │       │   ├── syntax.css              # Syntax highlighting (Material Light / Palenight)
 │   │       │   ├── callout.css             # .callout variants, icons, collapse animation
@@ -40,18 +41,22 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 │       └── *.min.js                        # Minified JS via esbuild
 └── templates/
     ├── _partials/                          # Shared template fragments ({% include %})
-    │   ├── footer.html                     # Glass-panel footer (copyright, license)
-    │   ├── head-deps.html                  # Conditional CDN deps (FontAwesome, KaTeX)
-    │   ├── header.html                     # Fixed nav header with menu + theme toggle
-    │   ├── math.html                       # Conditional KaTeX runtime scripts
-    │   ├── meta-og.html                    # OG / Twitter Card meta tags
-    │   ├── pagination.html                 # Pagination nav + page-jump input
-    │   ├── post-entry.html                 # Post entry (title + conditional date)
-    │   └── year-grouped-listing.html       # Year-grouped post list with pagination
+    │   ├── layout/
+    │   │   ├── footer.html                 # Glass-panel footer (copyright, license)
+    │   │   ├── head-deps.html              # Conditional CDN deps (FontAwesome, KaTeX)
+    │   │   └── header.html                 # Fixed nav header with menu + theme toggle
+    │   ├── content/
+    │   │   ├── math.html                   # Conditional KaTeX runtime scripts
+    │   │   ├── meta-og.html                # OG / Twitter Card meta tags
+    │   │   ├── toc-mobile.html             # Collapsible TOC (< xl breakpoint)
+    │   │   └── toc-sidebar.html            # Sticky TOC sidebar (xl+ breakpoint)
+    │   └── listing/
+    │       ├── pagination.html             # Pagination nav + page-jump input
+    │       ├── post-entry.html             # Post entry (title + conditional date)
+    │       └── year-grouped-listing.html   # Year-grouped post list with pagination
     ├── base.html                           # Base layout (glass panels, background image)
     ├── home.html                           # Home page (profile + image cards with hover reveal)
-    ├── page.html                           # Standalone page (glass card, collapsible TOC)
-    ├── post.html                           # Post page (glass card, sticky TOC sidebar)
+    ├── post.html                           # Article page (glass card, banner, TOC sidebar)
     ├── section.html                        # Section listing (year-grouped, glass card)
     ├── taxonomy.html                       # Taxonomy index (tag cloud / category grid)
     ├── term.html                           # Term page (year-grouped, pagination)
