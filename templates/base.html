@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% block title %}<title>{{ config.title }}</title>{% endblock %}
+  <link rel="icon" href="{{ config.base_url | safe }}/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="{{ config.base_url | safe }}/apple-touch-icon.png">
+  <link rel="manifest" href="{{ config.base_url | safe }}/manifest.webmanifest">
   <link rel="stylesheet" href="{{ config.base_url | safe }}/css/style.min.css">
   <script src="{{ config.base_url | safe }}/js/theme.min.js"></script>
   {% include "_partials/layout/head-deps.html" %}
