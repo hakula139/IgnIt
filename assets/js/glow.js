@@ -18,24 +18,55 @@
 
     let cursorX = -9999;
     let cursorY = -9999;
+    let cursorInside = false;
     let rafId = 0;
     let trackingEnabled = false;
 
-    const updateGlow = () => {
-      rafId = 0;
-      for (const wrapper of wrappers) {
-        const rect = wrapper.getBoundingClientRect();
-        wrapper.style.setProperty('--glow-x', `${Math.round(cursorX - rect.left)}px`);
-        wrapper.style.setProperty('--glow-y', `${Math.round(cursorY - rect.top)}px`);
-      }
-    };
+    const cachedRects = new Array(wrappers.length);
+    let rectsDirty = true;
 
     const onMouseMove = (e) => {
       cursorX = e.clientX;
       cursorY = e.clientY;
+      cursorInside = true;
+      scheduleUpdate();
+    };
+
+    const invalidateRects = () => {
+      rectsDirty = true;
+      if (cursorInside) {
+        scheduleUpdate();
+      }
+    };
+
+    const scheduleUpdate = () => {
       if (rafId === 0) {
         rafId = requestAnimationFrame(updateGlow);
       }
+    };
+
+    const updateGlow = () => {
+      rafId = 0;
+      if (rectsDirty) {
+        refreshRects();
+      }
+      for (let i = 0; i < wrappers.length; i++) {
+        const rect = cachedRects[i];
+        wrappers[i].style.setProperty('--glow-x', `${Math.round(cursorX - rect.left)}px`);
+        wrappers[i].style.setProperty('--glow-y', `${Math.round(cursorY - rect.top)}px`);
+      }
+    };
+
+    const refreshRects = () => {
+      for (let i = 0; i < wrappers.length; i++) {
+        cachedRects[i] = wrappers[i].getBoundingClientRect();
+      }
+      rectsDirty = false;
+    };
+
+    const onMouseLeave = () => {
+      cursorInside = false;
+      resetGlow();
     };
 
     const resetGlow = () => {
@@ -54,6 +85,10 @@
       if (isDarkTheme()) {
         if (!trackingEnabled) {
           document.addEventListener('mousemove', onMouseMove);
+          document.documentElement.addEventListener('mouseleave', onMouseLeave);
+          window.addEventListener('scroll', invalidateRects, { passive: true });
+          window.addEventListener('resize', invalidateRects, { passive: true });
+          rectsDirty = true;
           trackingEnabled = true;
         }
         return;
@@ -61,6 +96,10 @@
 
       if (trackingEnabled) {
         document.removeEventListener('mousemove', onMouseMove);
+        document.documentElement.removeEventListener('mouseleave', onMouseLeave);
+        window.removeEventListener('scroll', invalidateRects);
+        window.removeEventListener('resize', invalidateRects);
+        cursorInside = false;
         trackingEnabled = false;
       }
 
