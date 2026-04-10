@@ -18,7 +18,7 @@
   /* ── Glass Glow: Ambient Surface Light ── */
 
   .glass-glow::before {
-    content: none;
+    @apply content-none;
   }
 
   @variant dark {
@@ -37,7 +37,7 @@
   /* ── Glass Glow: Border Light ── */
 
   .glass-glow::after {
-    content: none;
+    @apply content-none;
   }
 
   @variant dark {
