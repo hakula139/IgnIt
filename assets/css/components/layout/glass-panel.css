@@ -19,8 +19,10 @@
 
   .glass-glow::before {
     content: none;
+  }
 
-    @variant dark {
+  @variant dark {
+    .glass-glow::before {
       @apply absolute z-1 pointer-events-none content-['']
         rounded-full will-change-transform;
       width: calc(var(--glow-size) * 2);
@@ -36,8 +38,10 @@
 
   .glass-glow::after {
     content: none;
+  }
 
-    @variant dark {
+  @variant dark {
+    .glass-glow::after {
       @apply absolute inset-0 z-2 p-px
         rounded-[inherit] pointer-events-none content-[''];
       background: radial-gradient(
