@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}<title>{{ title }} - {{ config.title }}</title>{% endblock %}
+
+{% block body %}
+  <div class="max-w-4xl mx-auto px-4 py-6">
+    <div class="glass-glow">
+      <div class="glass-panel p-6 sm:p-8 text-center">
+        <h2 class="mb-4 text-6xl font-bold text-text-tertiary">404</h2>
+        <p class="mb-6 text-lg text-text-secondary">
+          The page you requested could not be found.
+        </p>
+        <a
+          href="{{ config.base_url | safe }}/"
+          class="inline-block px-5 py-2 text-sm font-medium bg-card-bg border border-border rounded-card transition-colors hover:text-link-hover"
+        >
+          <i class="fas fa-home fa-fw" aria-hidden="true"></i> Back to Home
+        </a>
+      </div>
+    </div>
+  </div>
+{%- endblock %}
