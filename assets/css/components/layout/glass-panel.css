@@ -3,9 +3,9 @@
 
   .glass-glow {
     --glow-size: 1000px;
-    --glow-color: rgba(0, 0, 0, 0.12);
+    --glow-color: transparent;
     --glow-border-size: 400px;
-    --glow-border-color: rgba(0, 0, 0, 0.3);
+    --glow-border-color: transparent;
 
     @apply relative overflow-hidden rounded-card;
 
@@ -18,31 +18,39 @@
   /* ── Glass Glow: Ambient Surface Light ── */
 
   .glass-glow::before {
-    @apply absolute z-1 pointer-events-none content-['']
-      rounded-full will-change-transform;
-    width: calc(var(--glow-size) * 2);
-    height: calc(var(--glow-size) * 2);
-    top: calc(var(--glow-size) * -1);
-    left: calc(var(--glow-size) * -1);
-    background: radial-gradient(closest-side circle, var(--glow-color), transparent);
-    transform: translate3d(var(--glow-x, -9999px), var(--glow-y, -9999px), 0);
+    content: none;
+
+    @variant dark {
+      @apply absolute z-1 pointer-events-none content-['']
+        rounded-full will-change-transform;
+      width: calc(var(--glow-size) * 2);
+      height: calc(var(--glow-size) * 2);
+      top: calc(var(--glow-size) * -1);
+      left: calc(var(--glow-size) * -1);
+      background: radial-gradient(closest-side circle, var(--glow-color), transparent);
+      transform: translate3d(var(--glow-x, -9999px), var(--glow-y, -9999px), 0);
+    }
   }
 
   /* ── Glass Glow: Border Light ── */
 
   .glass-glow::after {
-    @apply absolute inset-0 z-2 p-px
-      rounded-[inherit] pointer-events-none content-[''];
-    background: radial-gradient(
-      var(--glow-border-size) circle at var(--glow-x, -9999px) var(--glow-y, -9999px),
-      var(--glow-border-color),
-      8%,
-      transparent
-    );
-    mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    mask-composite: exclude;
+    content: none;
+
+    @variant dark {
+      @apply absolute inset-0 z-2 p-px
+        rounded-[inherit] pointer-events-none content-[''];
+      background: radial-gradient(
+        var(--glow-border-size) circle at var(--glow-x, -9999px) var(--glow-y, -9999px),
+        var(--glow-border-color),
+        8%,
+        transparent
+      );
+      mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+    }
   }
 
   /* ── Glass Panel Base ── */
