@@ -9,11 +9,11 @@
       return;
     }
 
-    if (document.querySelectorAll('.glass-glow').length === 0) {
+    const wrappers = document.querySelectorAll('.glass-glow');
+    if (wrappers.length === 0) {
       return;
     }
 
-    const root = document.documentElement;
     let cursorX = -9999;
     let cursorY = -9999;
     let rafPending = false;
@@ -25,8 +25,11 @@
         rafPending = true;
         requestAnimationFrame(() => {
           rafPending = false;
-          root.style.setProperty('--glow-x', `${cursorX}px`);
-          root.style.setProperty('--glow-y', `${cursorY}px`);
+          for (const wrapper of wrappers) {
+            const rect = wrapper.getBoundingClientRect();
+            wrapper.style.setProperty('--glow-x', `${Math.round(cursorX - rect.left)}px`);
+            wrapper.style.setProperty('--glow-y', `${Math.round(cursorY - rect.top)}px`);
+          }
         });
       }
     });
