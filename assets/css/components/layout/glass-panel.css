@@ -3,9 +3,9 @@
 
   .glass-glow {
     --glow-size: 1000px;
-    --glow-color: rgba(255, 255, 255, 0.03);
+    --glow-color: rgba(0, 0, 0, 0.12);
     --glow-border-size: 400px;
-    --glow-border-color: rgba(255, 255, 255, 0.8);
+    --glow-border-color: rgba(0, 0, 0, 0.3);
 
     @apply relative overflow-hidden rounded-card;
 
