@@ -3,17 +3,18 @@
 {%- set type = named_args.type | default("song") -%}
 {%- if server == "apple" -%}
 {#- Apple Music: dual light/dark iframes -#}
+{%- set type = named_args.type | default("playlist") -%}
 {%- set name = named_args.name | default("") -%}
 {%- set country = named_args.country | default("cn") -%}
 {%- set height = named_args.height | default("450") -%}
-<div class="apple-music-wrapper" id="{{ name }}">
+<div class="apple-music-wrapper"{% if name %} id="{{ name }}"{% endif %}>
   <iframe
     class="apple-music-light w-full overflow-hidden rounded-lg"
     title="Apple Music player"
     allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
     height="{{ height }}"
     sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
-    src="https://embed.music.apple.com/{{ country }}/{{ type }}/{{ id }}?l=en-GB"
+    src="https://embed.music.apple.com/{{ country }}/{{ type }}/{{ name }}/{{ id }}"
   ></iframe>
   <iframe
     class="apple-music-dark w-full overflow-hidden rounded-lg"
@@ -21,7 +22,7 @@
     allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
     height="{{ height }}"
     sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
-    src="https://embed.music.apple.com/{{ country }}/{{ type }}/{{ id }}?l=en-GB&amp;theme=dark"
+    src="https://embed.music.apple.com/{{ country }}/{{ type }}/{{ name }}/{{ id }}?theme=dark"
   ></iframe>
 </div>
 {%- elif server == "netease" -%}
