@@ -18,11 +18,12 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 │   │       │   └── header.css              # .header-logo, .header-link, .header-icon, .header-mobile-*
 │   │       ├── content/
 │   │       │   ├── article.css             # .article-title, .post-banner-*
-│   │       │   ├── toc.css                 # .toc, .toc-collapse, .toc-trigger, .toc-sidebar-*
-│   │       │   ├── code-block.css          # .code-block, .code-header, .code-body, .copy-btn
-│   │       │   ├── syntax.css              # Syntax highlighting (Material Light / Palenight)
 │   │       │   ├── callout.css             # .callout variants, icons, collapse animation
-│   │       │   └── prose.css               # .prose overrides (unlayered + @layer components)
+│   │       │   ├── code-block.css          # .code-block, .code-header, .code-body, .copy-btn
+│   │       │   ├── prose.css               # .prose overrides (unlayered + @layer components)
+│   │       │   ├── search.css              # Pagefind modal theming (glass panel, dark mode)
+│   │       │   ├── syntax.css              # Syntax highlighting (Material Light / Palenight)
+│   │       │   └── toc.css                 # .toc, .toc-collapse, .toc-trigger, .toc-sidebar-*
 │   │       ├── listing/
 │   │       │   ├── home-card.css           # .home-card-*, .profile-avatar, .text-card-*
 │   │       │   ├── listing.css             # .year-heading, .tag-pill, .category-card, .post-entry-*
@@ -108,6 +109,7 @@ To rebuild: `pnpm build` (CSS + JS), `pnpm build:css`, `pnpm build:js`, or `pnpm
 - Use `| safe` filter on all URL outputs to prevent MiniJinja HTML-escaping slashes.
 - **Partials** live in `_partials/` and are included via `{% include "_partials/name.html" %}`.
 - **Whitespace control**: Use `{%-` (left-trim) to eat template tag whitespace while preserving HTML indentation. Use `-%}` (right-trim) sparingly.
+- **Attribute wrapping**: When an opening tag exceeds ~100 characters, place each attribute on its own line, indented one level deeper than the tag. Keep lines that are inherently long from a single Jinja expression (e.g., a conditional `content="..."` in a `<meta>` tag) as-is.
 
 ### Tailwind Class Ordering
 
