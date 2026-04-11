@@ -11,9 +11,10 @@
 
   const getStoredTheme = () => localStorage.getItem(STORAGE_KEY);
 
-  const updateAriaLabels = (theme) => {
+  const updateThemeToggleLabels = (theme) => {
     const label = `Switch to ${theme === DARK ? 'light' : 'dark'} mode`;
     for (const btn of document.querySelectorAll('[aria-label^="Switch to"]')) {
+      btn.setAttribute('title', label);
       btn.setAttribute('aria-label', label);
     }
   };
@@ -21,7 +22,7 @@
   const setTheme = (theme) => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem(STORAGE_KEY, theme);
-    updateAriaLabels(theme);
+    updateThemeToggleLabels(theme);
   };
 
   const enableTransition = () => {
@@ -116,7 +117,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     const theme = document.documentElement.getAttribute('data-theme');
     if (theme) {
-      updateAriaLabels(theme);
+      updateThemeToggleLabels(theme);
     }
 
     initSearchModal();
