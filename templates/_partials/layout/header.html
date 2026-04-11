@@ -74,7 +74,11 @@
 
 {# Mobile menu backdrop + dropdown #}
 <div id="mobile-menu" class="hidden">
-  <div class="header-mobile-backdrop" aria-hidden="true"></div>
+  <div
+    class="header-mobile-backdrop"
+    aria-hidden="true"
+    onclick="window.__toggleMobileMenu()"
+  ></div>
   <div class="header-mobile" data-glow-target>
     {%- for item in menu_items %}
     <a
