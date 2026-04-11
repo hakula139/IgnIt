@@ -17,8 +17,13 @@
           <div class="post-banner aspect-[21/9]">
             <div class="post-banner-media">
               {%- if featured_image.credit and featured_image.credit.url %}
-              <a href="{{ featured_image.credit.url | safe }}" class="post-banner-link" target="_blank" rel="noopener noreferrer"
-                 aria-label="Image credit{% if featured_image.credit.title %}: {{ featured_image.credit.title }}{% endif %}">
+              <a
+                href="{{ featured_image.credit.url | safe }}"
+                class="post-banner-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Image credit{% if featured_image.credit.title %}: {{ featured_image.credit.title }}{% endif %}"
+              >
               {%- endif %}
                 <img
                   src="{{ featured_image.src | safe }}"
@@ -45,7 +50,7 @@
 
           <div class="p-6 sm:p-8">
             <header class="mb-6">
-              <h1 class="article-title">{{ title }}</h1>
+              <h1 class="article-title" data-pagefind-meta="title">{{ title }}</h1>
               {%- if date or section %}
               <div class="mt-2 text-sm text-text-secondary">
                 {%- if date %}
@@ -54,7 +59,10 @@
                 {%- if section %}
                 <span>
                   {%- if date %}&ensp;·&ensp;{% endif -%}
-                  <a href="{{ section.url | safe }}" class="text-text-secondary border-b-0 transition-colors hover:text-link-hover">
+                  <a
+                    href="{{ section.url | safe }}"
+                    class="text-text-secondary border-b-0 transition-colors hover:text-link-hover"
+                  >
                     <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ section.name }}
                   </a>
                 </span>
@@ -65,7 +73,7 @@
 
             {%- include "_partials/content/toc-mobile.html" %}
 
-            <div class="max-w-none prose">{{ content | safe }}</div>
+            <div class="max-w-none prose" data-pagefind-body>{{ content | safe }}</div>
           </div>
         </article>
       </div>
