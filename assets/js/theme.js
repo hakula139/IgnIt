@@ -48,6 +48,17 @@
     toggle.querySelector('i').classList.toggle('fa-xmark');
   };
 
+  // ── Search Modal ──
+
+  const openSearchModal = () => {
+    const menu = document.getElementById('mobile-menu');
+    if (menu && !menu.classList.contains('hidden')) {
+      toggleMobileMenu();
+    }
+
+    document.querySelector('pagefind-modal')?.open?.();
+  };
+
   // ── Initialization ──
 
   // Apply initial theme (called inline in <head> to prevent flash).
@@ -77,6 +88,7 @@
 
   // ── Exports ──
 
+  window.__openSearchModal = openSearchModal;
   window.__toggleTheme = toggleTheme;
   window.__toggleMobileMenu = toggleMobileMenu;
 })();
