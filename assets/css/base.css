@@ -7,8 +7,10 @@ html.theme-transition *::after {
 }
 
 @layer base {
-  html {
-    @apply scroll-smooth;
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      @apply scroll-smooth;
+    }
   }
 
   body {
@@ -43,5 +45,9 @@ html.theme-transition *::after {
   /* Scroll offset: main padding (pt-16 = 4rem) + container padding (py-6 = 1.5rem). */
   [id] {
     @apply scroll-mt-22;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-link outline-offset-2;
   }
 }
