@@ -22,13 +22,14 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 │   │       │   ├── code-block.css          # .code-block, .code-header, .code-body, .copy-btn
 │   │       │   ├── link-card.css           # .link-card, .link-avatar, .link-grid
 │   │       │   ├── prose.css               # .prose overrides (unlayered + @layer components)
-│   │       │   ├── search.css              # Pagefind modal theming (glass panel, dark mode)
 │   │       │   ├── syntax.css              # Syntax highlighting (Material Light / Palenight)
 │   │       │   └── toc.css                 # .toc, .toc-collapse, .toc-trigger, .toc-sidebar-*
 │   │       ├── listing/
 │   │       │   ├── home-card.css           # .home-card-*, .profile-avatar, .text-card-*
 │   │       │   ├── listing.css             # .year-heading, .tag-pill, .category-card, .post-entry-*
 │   │       │   └── pagination.css          # .pagination-link, .pagination-ellipsis, .pagination-input
+│   │       ├── search/
+│   │       │   └── search.css              # Pagefind trigger, modal, and result theming
 │   │       └── embed/
 │   │           └── apple-music.css         # Apple Music embed light / dark toggle
 │   └── js/
@@ -83,6 +84,7 @@ Defined in `@theme { ... }` in `main.css`. Custom properties follow these prefix
 - `--color-*` — colors (bg, text, link, border, card, selection)
 - `--radius-*` — border radii
 - `--shadow-*` — box shadows
+- `--surface-*` — glass surface fills, borders, and overlays
 
 #### Component Classes vs. Inline Utilities
 
@@ -124,8 +126,9 @@ Example: `class="flex items-center w-full px-4 py-2 text-sm text-text bg-bg roun
 
 - **Design tokens** in `@theme { ... }` block — colors, fonts, radii, shadows.
 - **Custom properties** prefixed with `--color-`, `--radius-`, `--shadow-`.
-- **Component classes** for multi-property patterns that repeat. CSS partials are grouped by concern under `components/` (`layout/`, `content/`, `listing/`, `embed/`).
+- **Component classes** for multi-property patterns that repeat. CSS partials are grouped by concern under `components/` (`layout/`, `content/`, `listing/`, `search/`, `embed/`).
 - Prefer Tailwind utilities over custom CSS.
+- In `@apply`, use Tailwind v4 trailing-important syntax (`w-auto!`) rather than leading-important syntax (`!w-auto`).
 - `@import` order in `main.css` determines cascade order within the same `@layer`.
 
 ### JavaScript
