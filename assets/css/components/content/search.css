@@ -1,13 +1,28 @@
 @layer components {
   pagefind-modal {
-    --pagefind-ui-scale: 1;
-    --pagefind-ui-primary: var(--color-link);
-    --pagefind-ui-text: var(--color-text);
-    --pagefind-ui-background: var(--color-bg);
-    --pagefind-ui-border: var(--color-border);
-    --pagefind-ui-border-width: 1px;
-    --pagefind-ui-border-radius: 0.5rem;
-    --pagefind-ui-font: var(--font-sans);
+    --pf-font: var(--font-sans);
+    --pf-border-radius: 0.5rem;
+    --pf-text: var(--color-text);
+    --pf-text-secondary: var(--color-text-secondary);
+    --pf-text-muted: var(--color-text-tertiary);
+    --pf-background: transparent;
+    --pf-border: var(--color-border);
+    --pf-border-focus: var(--color-link);
+    --pf-skeleton: var(--color-bg-secondary);
+    --pf-skeleton-shine: var(--color-bg);
+    --pf-hover: rgba(0, 0, 0, 0.04);
+    --pf-mark: var(--color-link);
+    --pf-scroll-shadow: rgba(0, 0, 0, 0.06);
+    --pf-outline-focus: var(--color-link);
+    --pf-shadow-sm: none;
+    --pf-shadow-md: none;
+    --pf-shadow-lg: none;
+    --pf-modal-backdrop: transparent;
+
+    @variant dark {
+      --pf-hover: rgba(255, 255, 255, 0.06);
+      --pf-scroll-shadow: rgba(255, 255, 255, 0.06);
+    }
   }
 
   pagefind-modal::part(backdrop) {
