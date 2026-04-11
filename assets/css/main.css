@@ -102,8 +102,8 @@
 @import './base.css';
 
 /* Layout */
-@import './components/layout/back-to-top.css';
 @import './components/layout/glass-panel.css';
+@import './components/layout/back-to-top.css';
 @import './components/layout/header.css';
 @import './components/layout/print.css';
 
