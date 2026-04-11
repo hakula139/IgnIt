@@ -145,8 +145,11 @@ Example: `class="flex items-center w-full px-4 py-2 text-sm text-text bg-bg roun
 - Keep commits atomic — one logical change per commit.
 - PRs: assign to `hakula139`, label `enhancement` for `feat`.
 
+### Pre-commit
+
+The husky pre-commit hook runs `lint-staged`, which auto-formats staged files with Prettier (including Tailwind class sorting via `prettier-plugin-tailwindcss`), lints Markdown with markdownlint, and spell-checks with cspell. The pre-push hook runs `pnpm build` and verifies `static/` is in sync.
+
 ### Spell Checking
 
-- Run `pnpm spellcheck` before committing. Config in `cspell.json`.
-- Add project-specific words to `.cspell/words.txt` (one word per line, sorted alphabetically).
+- Config in `cspell.json`. Add project-specific words to `.cspell/words.txt` (one word per line, sorted alphabetically).
 - Generated files (`pnpm-lock.yaml`, `static/`) are excluded via `ignorePaths`.
