@@ -36,7 +36,8 @@
     <article class="home-card">
       <div
         class="home-card-image"
-        style="background-image: url('{{ page.featured_image.src | safe }}'); background-position: {{ page.featured_image.position | default('center', true) }}"
+        style="background-image: url('{{ page.featured_image.src | safe }}');
+               background-position: {{ page.featured_image.position | default('center', true) }}"
       ></div>
       <div class="home-card-overlay"></div>
       <div class="home-card-body">

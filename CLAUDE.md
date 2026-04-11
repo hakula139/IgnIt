@@ -14,19 +14,22 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 │   │   ├── base.css                        # @layer base (html, body, a, selection)
 │   │   └── components/
 │   │       ├── layout/
-│   │       │   ├── glass-panel.css         # .glass-panel, .glass-glow, .header-nav, .site-footer
+│   │       │   ├── glass-panel.css         # .glass-panel, .glass-glow, [data-glow-target], .header-nav, .site-footer
 │   │       │   └── header.css              # .header-logo, .header-link, .header-icon, .header-mobile-*
 │   │       ├── content/
 │   │       │   ├── article.css             # .article-title, .post-banner-*
-│   │       │   ├── toc.css                 # .toc, .toc-collapse, .toc-trigger, .toc-sidebar-*
-│   │       │   ├── code-block.css          # .code-block, .code-header, .code-body, .copy-btn
-│   │       │   ├── syntax.css              # Syntax highlighting (Material Light / Palenight)
 │   │       │   ├── callout.css             # .callout variants, icons, collapse animation
-│   │       │   └── prose.css               # .prose overrides (unlayered + @layer components)
+│   │       │   ├── code-block.css          # .code-block, .code-header, .code-body, .copy-btn
+│   │       │   ├── link-card.css           # .link-card, .link-avatar, .link-grid
+│   │       │   ├── prose.css               # .prose overrides (unlayered + @layer components)
+│   │       │   ├── syntax.css              # Syntax highlighting (Material Light / Palenight)
+│   │       │   └── toc.css                 # .toc, .toc-collapse, .toc-trigger, .toc-sidebar-*
 │   │       ├── listing/
 │   │       │   ├── home-card.css           # .home-card-*, .profile-avatar, .text-card-*
 │   │       │   ├── listing.css             # .year-heading, .tag-pill, .category-card, .post-entry-*
 │   │       │   └── pagination.css          # .pagination-link, .pagination-ellipsis, .pagination-input
+│   │       ├── search/
+│   │       │   └── search.css              # Pagefind trigger, modal, and result theming
 │   │       └── embed/
 │   │           └── apple-music.css         # Apple Music embed light / dark toggle
 │   └── js/
@@ -62,6 +65,7 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
     ├── overview.html                       # Bucket overview (tag cloud / section grid)
     ├── post.html                           # Article page (glass card, banner, TOC sidebar)
     └── directives/
+        ├── link.html                       # Link card directive
         └── music.html                      # Music embed directive
 ```
 
@@ -80,6 +84,7 @@ Defined in `@theme { ... }` in `main.css`. Custom properties follow these prefix
 - `--color-*` — colors (bg, text, link, border, card, selection)
 - `--radius-*` — border radii
 - `--shadow-*` — box shadows
+- `--surface-*` — glass surface fills, borders, and overlays
 
 #### Component Classes vs. Inline Utilities
 
@@ -108,6 +113,7 @@ To rebuild: `pnpm build` (CSS + JS), `pnpm build:css`, `pnpm build:js`, or `pnpm
 - Use `| safe` filter on all URL outputs to prevent MiniJinja HTML-escaping slashes.
 - **Partials** live in `_partials/` and are included via `{% include "_partials/name.html" %}`.
 - **Whitespace control**: Use `{%-` (left-trim) to eat template tag whitespace while preserving HTML indentation. Use `-%}` (right-trim) sparingly.
+- **Attribute wrapping**: When an opening tag exceeds ~100 characters, place each attribute on its own line, indented one level deeper than the tag. Keep lines that are inherently long from a single Jinja expression (e.g., a conditional `content="..."` in a `<meta>` tag) as-is.
 
 ### Tailwind Class Ordering
 
@@ -120,8 +126,9 @@ Example: `class="flex items-center w-full px-4 py-2 text-sm text-text bg-bg roun
 
 - **Design tokens** in `@theme { ... }` block — colors, fonts, radii, shadows.
 - **Custom properties** prefixed with `--color-`, `--radius-`, `--shadow-`.
-- **Component classes** for multi-property patterns that repeat. CSS partials are grouped by concern under `components/` (`layout/`, `content/`, `listing/`, `embed/`).
+- **Component classes** for multi-property patterns that repeat. CSS partials are grouped by concern under `components/` (`layout/`, `content/`, `listing/`, `search/`, `embed/`).
 - Prefer Tailwind utilities over custom CSS.
+- In `@apply`, use Tailwind v4 trailing-important syntax (`w-auto!`) rather than leading-important syntax (`!w-auto`).
 - `@import` order in `main.css` determines cascade order within the same `@layer`.
 
 ### JavaScript
@@ -133,13 +140,16 @@ Example: `class="flex items-center w-full px-4 py-2 text-sm text-text bg-bg roun
 ### Git Conventions
 
 - Commit messages: `type(scope): description`
-  - Types: `feat`, `fix`, `refactor`, `docs`, `chore`, `style`
+  - Types: `feat`, `fix`, `refactor`, `docs`, `ci`, `chore`, `style`
   - Scope: area of change (e.g., `template`, `css`, `js`)
 - Keep commits atomic — one logical change per commit.
 - PRs: assign to `hakula139`, label `enhancement` for `feat`.
 
+### Pre-commit
+
+The husky pre-commit hook runs `lint-staged`, which auto-formats staged files with Prettier (including Tailwind class sorting via `prettier-plugin-tailwindcss`), lints Markdown with markdownlint, and spell-checks with cspell. The pre-push hook runs `pnpm build` and verifies `static/` is in sync.
+
 ### Spell Checking
 
-- Run `pnpm spellcheck` before committing. Config in `cspell.json`.
-- Add project-specific words to `.cspell/words.txt` (one word per line, sorted alphabetically).
+- Config in `cspell.json`. Add project-specific words to `.cspell/words.txt` (one word per line, sorted alphabetically).
 - Generated files (`pnpm-lock.yaml`, `static/`) are excluded via `ignorePaths`.

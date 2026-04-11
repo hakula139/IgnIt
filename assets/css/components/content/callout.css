@@ -21,17 +21,19 @@
 
   /* Variant icon (left) */
   .callout-title::before {
-    @apply shrink-0 font-black;
+    @apply shrink-0;
     font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
     content: var(--callout-icon, '\f05a');
   }
 
   /* Chevron (right) */
   .callout-title::after {
     @apply shrink-0 ml-auto
-      text-[0.625rem] font-black
+      text-[0.625rem]
       transition-transform duration-200;
     font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
     content: '\f078';
   }
 

@@ -7,6 +7,10 @@
   <link rel="icon" href="{{ config.base_url | safe }}/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="{{ config.base_url | safe }}/apple-touch-icon.png">
   <link rel="manifest" href="{{ config.base_url | safe }}/manifest.webmanifest">
+  {%- if config.search.enabled %}
+  <link rel="stylesheet" href="{{ config.base_url | safe }}/pagefind/pagefind-component-ui.css">
+  <script src="{{ config.base_url | safe }}/pagefind/pagefind-component-ui.js" type="module"></script>
+  {%- endif %}
   <link rel="stylesheet" href="{{ config.base_url | safe }}/css/style.min.css">
   <script src="{{ config.base_url | safe }}/js/theme.min.js"></script>
   {% include "_partials/layout/head-deps.html" %}
@@ -15,7 +19,9 @@
 
 <body
   {%- if config.params.background and config.params.background.image %}
-  style="--bg-image: url('{{ config.base_url | safe }}{{ config.params.background.image | safe }}'){% if config.params.background.position %}; --bg-position: {{ config.params.background.position }}{% endif %}{% if config.params.background.position_mobile %}; --bg-position-mobile: {{ config.params.background.position_mobile }}{% endif %}"
+  style="--bg-image: url('{{ config.base_url | safe }}{{ config.params.background.image | safe }}')
+    {%- if config.params.background.position %}; --bg-position: {{ config.params.background.position }}{% endif %}
+    {%- if config.params.background.position_mobile %}; --bg-position-mobile: {{ config.params.background.position_mobile }}{% endif %}"
   {%- endif %}
 >
   {% include "_partials/layout/header.html" %}
@@ -23,6 +29,9 @@
     {%- block body %}{% endblock %}
   </main>
   {% include "_partials/layout/footer.html" %}
+  {%- if config.search.enabled %}
+  <pagefind-modal></pagefind-modal>
+  {%- endif %}
   <script src="{{ config.base_url | safe }}/js/content.min.js" defer></script>
   <script src="{{ config.base_url | safe }}/js/glow.min.js" defer></script>
   <script src="{{ config.base_url | safe }}/js/toc.min.js" defer></script>

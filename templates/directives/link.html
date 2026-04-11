@@ -2,12 +2,19 @@
 {%- set url = named_args.url | default("") -%}
 {%- set desc = named_args.desc | default(name) -%}
 {%- set logo = named_args.logo | default("") -%}
-<a href="{{ url | safe }}"{% if url is startingwith("http") %} rel="noopener" target="_blank"{% endif %} class="link-card">
-{%- if logo %}
-  <img src="{{ logo | safe }}" alt="{{ name }}" class="link-avatar" loading="lazy">
-{%- endif %}
-  <div class="link-body">
-    <div class="link-title">{{ name }}</div>
-    <div class="link-desc">{{ desc }}</div>
-  </div>
-</a>
+{#- Wrapper div required because kiln re-parses directive output as Markdown. -#}
+<div>
+  <a
+    href="{{ url | safe }}"
+    {%- if url is startingwith("http") %} rel="noopener" target="_blank"{% endif %}
+    class="link-card"
+  >
+  {%- if logo %}
+    <img src="{{ logo | safe }}" alt="{{ name }}" class="link-avatar" loading="lazy">
+  {%- endif %}
+    <div class="link-body">
+      <div class="link-title">{{ name }}</div>
+      <div class="link-desc">{{ desc }}</div>
+    </div>
+  </a>
+</div>

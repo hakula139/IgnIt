@@ -1,7 +1,10 @@
 {%- if pagination.total_pages > 1 %}
     <nav class="flex justify-center mt-8" aria-label="Pagination">
       <div class="glass-glow inline-flex">
-        <ul class="glass-panel pagination inline-flex items-center gap-1 px-3 py-2" data-base-url="{{ pagination.base_url | safe }}">
+        <ul
+          class="glass-panel pagination inline-flex items-center gap-1 px-3 py-2"
+          data-base-url="{{ pagination.base_url | safe }}"
+        >
         {%- for item in pagination.items %}
           {%- if item.number %}
           <li>
@@ -13,8 +16,20 @@
           </li>
           {%- else %}
           <li>
-            <span class="pagination-link pagination-ellipsis pagination-jump" role="button" tabindex="0" title="Jump to page">&hellip;</span>
-            <input class="pagination-input" style="display: none" type="number" min="1" max="{{ pagination.total_pages }}" aria-label="Jump to page">
+            <span
+              class="pagination-link pagination-ellipsis pagination-jump"
+              role="button"
+              tabindex="0"
+              title="Jump to page"
+            >&hellip;</span>
+            <input
+              class="pagination-input"
+              style="display: none"
+              type="number"
+              min="1"
+              max="{{ pagination.total_pages }}"
+              aria-label="Jump to page"
+            >
           </li>
           {%- endif %}
         {%- endfor %}
