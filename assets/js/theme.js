@@ -46,8 +46,8 @@
     const panel = menu.querySelector('[data-glow-target]');
     menu.classList.toggle('hidden');
     const isOpen = !menu.classList.contains('hidden');
-    toggle.setAttribute('aria-expanded', isOpen);
     panel?.toggleAttribute('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
     toggle.querySelector('i').classList.toggle('fa-bars');
     toggle.querySelector('i').classList.toggle('fa-xmark');
   };
