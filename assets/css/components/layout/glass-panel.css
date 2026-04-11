@@ -1,13 +1,19 @@
 @layer components {
-  .glass-glow {
-    @apply relative overflow-hidden rounded-card;
+  :where(.glass-glow, [data-glow-target]) {
+    @apply relative overflow-hidden;
 
     --glow-size: 1000px;
     --glow-color: transparent;
     --glow-border-size: 400px;
     --glow-border-color: transparent;
+  }
 
-    @variant dark {
+  .glass-glow {
+    @apply rounded-card;
+  }
+
+  @variant dark {
+    :where(.glass-glow, [data-glow-target]) {
       --glow-color: rgba(255, 255, 255, 0.05);
       --glow-border-color: rgba(255, 255, 255, 0.7);
     }
@@ -15,12 +21,12 @@
 
   /* ── Glass Glow: Ambient Surface Light ── */
 
-  .glass-glow::before {
+  :where(.glass-glow, [data-glow-target])::before {
     @apply content-none;
   }
 
   @variant dark {
-    .glass-glow::before {
+    :where(.glass-glow, [data-glow-target])::before {
       @apply absolute z-1 pointer-events-none content-['']
         rounded-full will-change-transform;
       width: calc(var(--glow-size) * 2);
@@ -34,12 +40,12 @@
 
   /* ── Glass Glow: Border Light ── */
 
-  .glass-glow::after {
+  :where(.glass-glow, [data-glow-target])::after {
     @apply content-none;
   }
 
   @variant dark {
-    .glass-glow::after {
+    :where(.glass-glow, [data-glow-target])::after {
       @apply absolute inset-0 z-2 p-px
         rounded-[inherit] pointer-events-none content-[''];
       background: radial-gradient(

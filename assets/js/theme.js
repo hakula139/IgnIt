@@ -50,12 +50,46 @@
 
   // ── Search Modal ──
 
+  const SEARCH_MODAL_DIALOG_SELECTOR = 'dialog.pf-modal';
+
+  const syncSearchModalGlowTarget = () => {
+    const dialog = document.querySelector(SEARCH_MODAL_DIALOG_SELECTOR);
+    if (!dialog) {
+      return false;
+    }
+
+    dialog.toggleAttribute('data-glow-target', true);
+    return true;
+  };
+
+  const initSearchModal = () => {
+    if (!document.querySelector('pagefind-modal')) {
+      return;
+    }
+
+    if (syncSearchModalGlowTarget()) {
+      return;
+    }
+
+    const observer = new MutationObserver(() => {
+      if (syncSearchModalGlowTarget()) {
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(document.body, {
+      subtree: true,
+      childList: true,
+    });
+  };
+
   const openSearchModal = () => {
     const menu = document.getElementById('mobile-menu');
     if (menu && !menu.classList.contains('hidden')) {
       toggleMobileMenu();
     }
 
+    syncSearchModalGlowTarget();
     document.querySelector('pagefind-modal')?.open?.();
   };
 
@@ -84,6 +118,8 @@
     if (theme) {
       updateAriaLabels(theme);
     }
+
+    initSearchModal();
   });
 
   // ── Exports ──
