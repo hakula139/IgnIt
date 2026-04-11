@@ -75,7 +75,7 @@
 {# Mobile menu backdrop + dropdown #}
 <div id="mobile-menu" class="hidden">
   <div class="header-mobile-backdrop" aria-hidden="true"></div>
-  <div class="glass-glow header-mobile rounded-none">
+  <div class="header-mobile" data-glow-target>
     {%- for item in menu_items %}
     <a
       href="{{ item.url | safe }}"

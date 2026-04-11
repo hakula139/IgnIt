@@ -43,8 +43,11 @@
   const toggleMobileMenu = () => {
     const menu = document.getElementById('mobile-menu');
     const toggle = document.getElementById('mobile-menu-toggle');
+    const panel = menu.querySelector('[data-glow-target]');
     menu.classList.toggle('hidden');
-    toggle.setAttribute('aria-expanded', !menu.classList.contains('hidden'));
+    const isOpen = !menu.classList.contains('hidden');
+    toggle.setAttribute('aria-expanded', isOpen);
+    panel?.toggleAttribute('open', isOpen);
     toggle.querySelector('i').classList.toggle('fa-bars');
     toggle.querySelector('i').classList.toggle('fa-xmark');
   };
