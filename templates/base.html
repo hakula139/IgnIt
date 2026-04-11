@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="{{ config.base_url | safe }}/css/style.min.css">
   <script src="{{ config.base_url | safe }}/js/theme.min.js"></script>
   {% include "_partials/layout/head-deps.html" %}
-  {%- if config.params.search | default(false) %}
+  {%- if config.search.enabled %}
   <link rel="stylesheet" href="{{ config.base_url | safe }}/pagefind/pagefind-component-ui.css">
   <script src="{{ config.base_url | safe }}/pagefind/pagefind-component-ui.js" type="module"></script>
   {%- endif %}
@@ -29,7 +29,7 @@
     {%- block body %}{% endblock %}
   </main>
   {% include "_partials/layout/footer.html" %}
-  {%- if config.params.search | default(false) %}
+  {%- if config.search.enabled %}
   <pagefind-modal></pagefind-modal>
   {%- endif %}
   <script src="{{ config.base_url | safe }}/js/content.min.js" defer></script>
