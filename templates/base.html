@@ -29,12 +29,16 @@
     {%- block body %}{% endblock %}
   </main>
   {% include "_partials/layout/footer.html" %}
+  <button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+  </button>
   {%- if config.search.enabled %}
   <pagefind-modal></pagefind-modal>
   {%- endif %}
   <script src="{{ config.base_url | safe }}/js/content.min.js" defer></script>
-  <script src="{{ config.base_url | safe }}/js/glow.min.js" defer></script>
   <script src="{{ config.base_url | safe }}/js/toc.min.js" defer></script>
+  <script src="{{ config.base_url | safe }}/js/glow.min.js" defer></script>
+  <script src="{{ config.base_url | safe }}/js/back-to-top.min.js" defer></script>
   {%- block scripts %}{% endblock %}
 </body>
 </html>
