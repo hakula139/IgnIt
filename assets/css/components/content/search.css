@@ -5,36 +5,36 @@
     --pf-text: var(--color-text);
     --pf-text-secondary: var(--color-text-secondary);
     --pf-text-muted: var(--color-text-tertiary);
-    --pf-background: transparent;
+    --pf-background: var(--color-bg);
     --pf-border: var(--color-border);
     --pf-border-focus: var(--color-link);
     --pf-skeleton: var(--color-bg-secondary);
     --pf-skeleton-shine: var(--color-bg);
-    --pf-hover: rgba(0, 0, 0, 0.04);
+    --pf-hover: var(--color-bg-secondary);
     --pf-mark: var(--color-link);
     --pf-scroll-shadow: rgba(0, 0, 0, 0.06);
     --pf-outline-focus: var(--color-link);
     --pf-shadow-sm: none;
     --pf-shadow-md: none;
     --pf-shadow-lg: none;
-    --pf-modal-backdrop: transparent;
+    --pf-modal-backdrop: rgba(0, 0, 0, 0.4);
 
     @variant dark {
-      --pf-hover: rgba(255, 255, 255, 0.06);
       --pf-scroll-shadow: rgba(255, 255, 255, 0.06);
+      --pf-modal-backdrop: rgba(0, 0, 0, 0.6);
     }
   }
 
   pagefind-modal::part(backdrop) {
-    @apply bg-black/40 backdrop-blur-sm;
+    @apply backdrop-blur-sm;
   }
 
   pagefind-modal::part(modal) {
-    @apply rounded-card border border-white/20 bg-white/80 shadow-card
+    @apply rounded-card border border-white/20 shadow-card
       backdrop-blur-lg backdrop-saturate-125;
 
     @variant dark {
-      @apply border-white/8 bg-bg/85;
+      @apply border-white/8;
     }
   }
 
