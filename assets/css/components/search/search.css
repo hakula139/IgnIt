@@ -2,18 +2,17 @@
   /* Pagefind already owns layout and interaction styles. Theme via --pf-* first,
      and only override the few visual details it does not expose as variables. */
 
+  /* ── Pagefind Theme Variables ── */
+
   pagefind-modal {
     --pf-font: var(--font-sans);
-    --pf-border-radius: 0.75rem;
+    --pf-border-radius: var(--radius-xl);
     --pf-text: var(--color-text);
     --pf-text-secondary: var(--color-text-secondary);
     --pf-text-muted: var(--color-text-tertiary);
     --pf-border-focus: var(--color-link);
     --pf-mark: var(--color-link);
     --pf-outline-focus: var(--color-link);
-  }
-
-  pagefind-modal {
     --pf-background: var(--surface-glass-overlay);
     --pf-border: var(--surface-glass-border);
     --pf-skeleton: var(--color-bg-secondary);
@@ -26,21 +25,24 @@
     --pf-modal-backdrop: var(--surface-overlay-backdrop);
   }
 
+  /* ── Modal Surface ── */
+
   pagefind-modal > dialog.pf-modal {
-    @apply backdrop-blur-lg backdrop-saturate-125;
+    @apply border! rounded-card! backdrop-blur-lg backdrop-saturate-125;
     background: var(--surface-glass-panel) !important;
-    border: 1px solid var(--surface-glass-border) !important;
-    border-radius: var(--radius-card) !important;
+    border-color: var(--surface-glass-border) !important;
   }
 
   pagefind-modal > dialog.pf-modal::backdrop {
     @apply backdrop-blur-sm;
   }
 
+  /* ── Search Input Surface ── */
+
   pagefind-modal .pf-input-wrapper {
     @apply border;
-    border-color: var(--surface-glass-border);
+    background: var(--pf-background);
+    border-color: var(--pf-border);
     border-radius: var(--pf-border-radius);
-    background: var(--surface-glass-overlay);
   }
 }
