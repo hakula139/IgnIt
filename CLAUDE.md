@@ -20,6 +20,7 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 │   │       │   ├── article.css             # .article-title, .post-banner-*
 │   │       │   ├── callout.css             # .callout variants, icons, collapse animation
 │   │       │   ├── code-block.css          # .code-block, .code-header, .code-body, .copy-btn
+│   │       │   ├── link-card.css           # .link-card, .link-avatar, .link-grid
 │   │       │   ├── prose.css               # .prose overrides (unlayered + @layer components)
 │   │       │   ├── search.css              # Pagefind modal theming (glass panel, dark mode)
 │   │       │   ├── syntax.css              # Syntax highlighting (Material Light / Palenight)
@@ -63,6 +64,7 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
     ├── overview.html                       # Bucket overview (tag cloud / section grid)
     ├── post.html                           # Article page (glass card, banner, TOC sidebar)
     └── directives/
+        ├── link.html                       # Link card directive
         └── music.html                      # Music embed directive
 ```
 
