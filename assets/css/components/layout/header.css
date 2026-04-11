@@ -50,7 +50,7 @@
   /* ── Mobile Dropdown ── */
 
   .header-mobile {
-    @apply absolute inset-x-0 top-14 md:hidden py-2
+    @apply fixed inset-x-0 top-14 z-50 md:hidden py-2
       bg-white/75 backdrop-blur-lg backdrop-saturate-125
       rounded-t-none border-t-0;
 
