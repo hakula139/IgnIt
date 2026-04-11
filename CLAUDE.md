@@ -137,7 +137,7 @@ Example: `class="flex items-center w-full px-4 py-2 text-sm text-text bg-bg roun
 ### Git Conventions
 
 - Commit messages: `type(scope): description`
-  - Types: `feat`, `fix`, `refactor`, `docs`, `chore`, `style`
+  - Types: `feat`, `fix`, `refactor`, `docs`, `ci`, `chore`, `style`
   - Scope: area of change (e.g., `template`, `css`, `js`)
 - Keep commits atomic — one logical change per commit.
 - PRs: assign to `hakula139`, label `enhancement` for `feat`.
