@@ -12,7 +12,8 @@
   /* ── Desktop Nav Links (icon-only) ── */
 
   .header-link {
-    @apply p-2 text-text-secondary rounded-md border-b-0 transition-colors;
+    @apply inline-flex items-center justify-center aspect-square p-2
+      text-text-secondary rounded-md border-b-0 transition-colors;
   }
 
   .header-link:hover {
@@ -36,7 +37,8 @@
   /* ── Icon Buttons ── */
 
   .header-icon {
-    @apply p-2 text-text-secondary rounded-md transition-colors cursor-pointer;
+    @apply inline-flex items-center justify-center aspect-square p-2
+      text-text-secondary rounded-md transition-colors cursor-pointer;
   }
 
   .header-icon:hover {
