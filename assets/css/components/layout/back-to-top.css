@@ -3,8 +3,8 @@
     @apply fixed right-6 bottom-40 z-40
       flex items-center justify-center w-11 h-11
       text-text-secondary rounded-full
-      opacity-0 translate-y-2 pointer-events-none
-      transition-[opacity,transform,color,background-color,border-color] duration-300 cursor-pointer;
+      opacity-0 pointer-events-none
+      transition-[opacity,color,background-color,border-color] duration-300 cursor-pointer;
 
     --glow-size: 80px;
     --glow-border-size: 60px;
@@ -16,7 +16,7 @@
   }
 
   .back-to-top.visible {
-    @apply opacity-100 translate-y-0 pointer-events-auto;
+    @apply opacity-100 pointer-events-auto;
   }
 
   @media (prefers-reduced-motion: reduce) {
