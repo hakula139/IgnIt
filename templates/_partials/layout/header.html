@@ -36,9 +36,12 @@
         <span class="header-divider" aria-hidden="true"></span>
 
         {%- if config.search.enabled %}
-        <pagefind-modal-trigger class="header-icon" aria-label="Search">
-          <i class="fas fa-search fa-fw" aria-hidden="true"></i>
-        </pagefind-modal-trigger>
+        <pagefind-modal-trigger
+          compact
+          hide-shortcut
+          class="header-icon"
+          aria-label="Search"
+        ></pagefind-modal-trigger>
         {%- endif %}
         <button
           onclick="window.__toggleTheme()"
@@ -76,10 +79,11 @@
       </a>
       {%- endfor %}
       {%- if config.search.enabled %}
-      <pagefind-modal-trigger class="w-full header-mobile-link" aria-label="Search">
-        <i class="fas fa-search fa-fw" aria-hidden="true"></i>
-        Search
-      </pagefind-modal-trigger>
+      <pagefind-modal-trigger
+        hide-shortcut
+        class="block w-full header-mobile-link"
+        aria-label="Search"
+      ></pagefind-modal-trigger>
       {%- endif %}
       <button
         onclick="window.__toggleTheme()"

@@ -1,13 +1,11 @@
 @layer components {
-  /* ── Glass Glow Wrapper ── */
-
   .glass-glow {
+    @apply relative overflow-hidden rounded-card;
+
     --glow-size: 1000px;
     --glow-color: transparent;
     --glow-border-size: 400px;
     --glow-border-color: transparent;
-
-    @apply relative overflow-hidden rounded-card;
 
     @variant dark {
       --glow-color: rgba(255, 255, 255, 0.05);
@@ -60,24 +58,19 @@
   /* ── Glass Panel Base ── */
 
   .glass-panel {
-    @apply relative
-      rounded-card border border-white/20 bg-white/75 shadow-card
+    @apply relative rounded-card shadow-card
       backdrop-blur-lg backdrop-saturate-125 backface-hidden;
-
-    @variant dark {
-      @apply border-white/8 bg-bg/70;
-    }
+    background: var(--surface-glass-panel);
+    border: 1px solid var(--surface-glass-border);
   }
 
   /* ── Header Nav Bar ── */
 
   .header-nav {
     @apply flex items-center h-14 px-6
-      bg-white/75 rounded-none border-0 border-b shadow-none;
-
-    @variant dark {
-      @apply bg-bg/80;
-    }
+      rounded-none border-0 border-b shadow-none;
+    background: var(--surface-glass-header);
+    border-color: var(--surface-glass-border);
   }
 
   /* ── Footer ── */

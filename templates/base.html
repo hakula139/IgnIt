@@ -7,13 +7,13 @@
   <link rel="icon" href="{{ config.base_url | safe }}/favicon.ico" sizes="32x32">
   <link rel="apple-touch-icon" href="{{ config.base_url | safe }}/apple-touch-icon.png">
   <link rel="manifest" href="{{ config.base_url | safe }}/manifest.webmanifest">
-  <link rel="stylesheet" href="{{ config.base_url | safe }}/css/style.min.css">
-  <script src="{{ config.base_url | safe }}/js/theme.min.js"></script>
-  {% include "_partials/layout/head-deps.html" %}
   {%- if config.search.enabled %}
   <link rel="stylesheet" href="{{ config.base_url | safe }}/pagefind/pagefind-component-ui.css">
   <script src="{{ config.base_url | safe }}/pagefind/pagefind-component-ui.js" type="module"></script>
   {%- endif %}
+  <link rel="stylesheet" href="{{ config.base_url | safe }}/css/style.min.css">
+  <script src="{{ config.base_url | safe }}/js/theme.min.js"></script>
+  {% include "_partials/layout/head-deps.html" %}
   {%- block head %}{% endblock %}
 </head>
 

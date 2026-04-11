@@ -1,0 +1,101 @@
+@layer components {
+  /* Pagefind already owns layout and interaction styles. Theme via --pf-* first,
+     and only override the few visual details it does not expose as variables. */
+
+  pagefind-modal,
+  pagefind-modal-trigger {
+    --pf-font: var(--font-sans);
+    --pf-border-radius: 0.75rem;
+    --pf-text: var(--color-text);
+    --pf-text-secondary: var(--color-text-secondary);
+    --pf-text-muted: var(--color-text-tertiary);
+    --pf-border-focus: var(--color-link);
+    --pf-mark: var(--color-link);
+    --pf-outline-focus: var(--color-link);
+  }
+
+  pagefind-modal {
+    --pf-background: var(--surface-glass-overlay);
+    --pf-border: var(--surface-glass-border);
+    --pf-skeleton: var(--color-bg-secondary);
+    --pf-skeleton-shine: var(--color-bg);
+    --pf-hover: var(--surface-glass-hover);
+    --pf-scroll-shadow: var(--surface-glass-scroll-shadow);
+    --pf-shadow-sm: none;
+    --pf-shadow-md: none;
+    --pf-shadow-lg: var(--shadow-card);
+    --pf-modal-backdrop: var(--surface-overlay-backdrop);
+  }
+
+  pagefind-modal > dialog.pf-modal {
+    @apply backdrop-blur-lg backdrop-saturate-125;
+    background: var(--surface-glass-panel) !important;
+    border: 1px solid var(--surface-glass-border) !important;
+    border-radius: var(--radius-card) !important;
+  }
+
+  pagefind-modal > dialog.pf-modal::backdrop {
+    @apply backdrop-blur-sm;
+  }
+
+  pagefind-modal .pf-input-wrapper {
+    @apply border;
+    border-color: var(--surface-glass-border);
+    border-radius: var(--pf-border-radius);
+    background: var(--surface-glass-overlay);
+  }
+
+  pagefind-modal-trigger.header-icon,
+  pagefind-modal-trigger.header-mobile-link {
+    @apply cursor-pointer;
+
+    --pf-background: transparent;
+    --pf-border: transparent;
+    --pf-hover: transparent;
+    --pf-text-muted: var(--color-text-secondary);
+  }
+
+  pagefind-modal-trigger > .pf-trigger-btn > .pf-trigger-icon {
+    background-color: currentColor !important;
+  }
+
+  pagefind-modal-trigger > .pf-trigger-btn > .pf-trigger-text {
+    color: inherit !important;
+  }
+
+  pagefind-modal-trigger.header-icon > .pf-trigger-btn {
+    @apply w-auto! h-auto! p-2!
+      rounded-md! border-0! bg-transparent! shadow-none!
+      transition-colors;
+  }
+
+  pagefind-modal-trigger.header-icon > .pf-trigger-btn:hover {
+    color: var(--color-link-hover) !important;
+    background: var(--surface-glass-overlay) !important;
+  }
+
+  @variant dark {
+    pagefind-modal-trigger.header-icon > .pf-trigger-btn:hover {
+      background: var(--surface-glass-hover) !important;
+    }
+  }
+
+  pagefind-modal-trigger.header-mobile-link > .pf-trigger-btn {
+    @apply flex items-center justify-start! w-full! h-auto!
+      gap-2! px-6! py-2!
+      text-left! text-sm!
+      rounded-none! border-0! bg-transparent! shadow-none!
+      transition-colors;
+  }
+
+  pagefind-modal-trigger.header-mobile-link > .pf-trigger-btn:hover {
+    color: var(--color-link-hover) !important;
+    background: var(--surface-glass-overlay) !important;
+  }
+
+  @variant dark {
+    pagefind-modal-trigger.header-mobile-link > .pf-trigger-btn:hover {
+      background: var(--surface-glass-hover) !important;
+    }
+  }
+}
