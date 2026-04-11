@@ -74,6 +74,7 @@
 @import './components/content/syntax.css';
 @import './components/content/callout.css';
 @import './components/content/link-card.css';
+@import './components/content/search.css';
 @import './components/content/prose.css';
 
 /* Listing */

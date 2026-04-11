@@ -1,0 +1,29 @@
+@layer components {
+  pagefind-modal {
+    --pagefind-ui-scale: 1;
+    --pagefind-ui-primary: var(--color-link);
+    --pagefind-ui-text: var(--color-text);
+    --pagefind-ui-background: var(--color-bg);
+    --pagefind-ui-border: var(--color-border);
+    --pagefind-ui-border-width: 1px;
+    --pagefind-ui-border-radius: 0.5rem;
+    --pagefind-ui-font: var(--font-sans);
+  }
+
+  pagefind-modal::part(backdrop) {
+    @apply bg-black/40 backdrop-blur-sm;
+  }
+
+  pagefind-modal::part(modal) {
+    @apply rounded-card border border-white/20 bg-white/80 shadow-card
+      backdrop-blur-lg backdrop-saturate-125;
+
+    @variant dark {
+      @apply border-white/8 bg-bg/85;
+    }
+  }
+
+  pagefind-modal-trigger {
+    @apply cursor-pointer;
+  }
+}
