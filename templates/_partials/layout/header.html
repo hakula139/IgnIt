@@ -80,25 +80,30 @@
     <a
       href="{{ item.url | safe }}"
       class="header-mobile-link"
+      style="--item-index: {{ loop.index0 }}"
       {%- if item.external %} target="_blank" rel="noopener noreferrer"{% endif %}
     >
       {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i> {% endif -%}
       {{ item.name }}
     </a>
     {%- endfor %}
+    {%- set extra_index = menu_items | length -%}
     {%- if config.search.enabled %}
     <button
       onclick="window.__openSearchModal()"
       class="w-full header-mobile-link"
+      style="--item-index: {{ extra_index }}"
       aria-label="Search"
     >
       <i class="fas fa-search fa-fw" aria-hidden="true"></i>
       Search
     </button>
+    {%- set extra_index = extra_index + 1 -%}
     {%- endif %}
     <button
       onclick="window.__toggleTheme()"
       class="w-full header-mobile-link"
+      style="--item-index: {{ extra_index }}"
     >
       <i class="fas fa-moon fa-fw dark:hidden!" aria-hidden="true"></i>
       <i class="fas fa-sun fa-fw hidden! dark:inline-block!" aria-hidden="true"></i>

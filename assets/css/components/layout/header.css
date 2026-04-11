@@ -75,4 +75,21 @@
   .header-mobile-link:hover {
     @apply text-link-hover bg-bg/30;
   }
+
+  /* ── Mobile Menu Animations ── */
+
+  @media (prefers-reduced-motion: no-preference) {
+    .header-mobile-backdrop {
+      @apply animate-menu-fade-in;
+    }
+
+    .header-mobile {
+      @apply animate-menu-slide-down;
+    }
+
+    .header-mobile-link {
+      @apply animate-menu-item-fade-in;
+      animation-delay: calc(80ms + var(--item-index, 0) * 40ms);
+    }
+  }
 }
