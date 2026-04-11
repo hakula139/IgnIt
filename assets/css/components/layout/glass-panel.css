@@ -69,7 +69,7 @@
   .header-nav {
     @apply flex items-center h-14 px-6
       rounded-none border-0 border-b shadow-none;
-    background: var(--surface-glass-header);
+    background: var(--surface-glass-panel);
     border-color: var(--surface-glass-border);
   }
 
