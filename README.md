@@ -16,8 +16,13 @@ IgnIt is a [kiln](https://github.com/hakula139/kiln) theme built with Tailwind C
 - KaTeX math support (loaded conditionally per page)
 - Font Awesome icons (loaded conditionally via CDN)
 - Syntax-highlighted code blocks (Material color palette)
-- Directive-based shortcode system (music embeds, etc.)
+- Directive-based shortcode system (music embeds, link cards, etc.)
 - Tag cloud, year-grouped post lists, numbered pagination with page-jump
+- Back-to-top button with smooth scrolling
+- Mobile menu animations with staggered item fade-in
+- Print-optimized styles (hides chrome, shows link URLs, clean typography)
+- Keyboard-accessible focus states (`:focus-visible`)
+- `prefers-reduced-motion` support across all animations
 
 ## Installation
 
@@ -109,7 +114,7 @@ pnpm build       # Build static/css/style.min.css + static/js/*.min.js
 ## Theme Development
 
 - Source CSS: `assets/css/main.css` (Tailwind `@theme` tokens, custom components)
-- Source JS: `assets/js/*.js` (code blocks, TOC tracking, pagination, theme toggle)
+- Source JS: `assets/js/*.js` (code blocks, TOC tracking, back-to-top, pagination, theme toggle, glow effect)
 - Compiled output: `static/` (committed so submodule consumers work without Node.js)
 
 ```bash

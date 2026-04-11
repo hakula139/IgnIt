@@ -16,12 +16,16 @@
   }
 
   .apple-music-wrapper iframe {
-    @apply block border-0;
+    @apply border-0;
   }
 
   /* ── Dark Mode ── */
 
+  /* `display` set per-variant to avoid specificity conflict with `.apple-music-wrapper iframe`. */
+
   .apple-music-light {
+    @apply block;
+
     @variant dark {
       @apply hidden;
     }
