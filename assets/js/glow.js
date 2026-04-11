@@ -25,7 +25,6 @@
 
     let cursorX = -9999;
     let cursorY = -9999;
-    let cursorInside = false;
     let rafId = 0;
     let trackingEnabled = false;
 
@@ -36,15 +35,12 @@
     const onMouseMove = (e) => {
       cursorX = e.clientX;
       cursorY = e.clientY;
-      cursorInside = true;
       scheduleUpdate();
     };
 
     const invalidateRects = () => {
       rectsDirty = true;
-      if (cursorInside) {
-        scheduleUpdate();
-      }
+      scheduleUpdate();
     };
 
     const scheduleUpdate = () => {
@@ -81,14 +77,9 @@
       cachedRects = new Array(targets.length);
       rectsDirty = true;
       resetGlow();
-      if (trackingEnabled && cursorInside) {
+      if (trackingEnabled) {
         scheduleUpdate();
       }
-    };
-
-    const onMouseLeave = () => {
-      cursorInside = false;
-      resetGlow();
     };
 
     const resetGlow = () => {
@@ -105,7 +96,6 @@
 
     const enableTracking = () => {
       document.addEventListener('mousemove', onMouseMove);
-      document.documentElement.addEventListener('mouseleave', onMouseLeave);
       window.addEventListener('scroll', invalidateRects, { passive: true });
       window.addEventListener('resize', invalidateRects, { passive: true });
       trackingEnabled = true;
@@ -114,12 +104,10 @@
     const disableTracking = () => {
       if (trackingEnabled) {
         document.removeEventListener('mousemove', onMouseMove);
-        document.documentElement.removeEventListener('mouseleave', onMouseLeave);
         window.removeEventListener('scroll', invalidateRects);
         window.removeEventListener('resize', invalidateRects);
         trackingEnabled = false;
       }
-      cursorInside = false;
       resetGlow();
     };
 
