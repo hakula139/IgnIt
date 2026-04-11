@@ -136,9 +136,7 @@
       }
     };
 
-    const observer = new MutationObserver(() => {
-      syncGlowTracking();
-    });
+    const observer = new MutationObserver(syncGlowTracking);
 
     observer.observe(document.documentElement, {
       attributes: true,

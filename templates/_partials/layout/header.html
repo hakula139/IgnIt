@@ -66,38 +66,38 @@
         <i class="fas fa-bars fa-fw" aria-hidden="true"></i>
       </button>
     </div>
-
-    {# Mobile menu dropdown #}
-    <div id="mobile-menu" class="glass-panel header-mobile hidden">
-      {%- for item in menu_items %}
-      <a
-        href="{{ item.url | safe }}"
-        class="header-mobile-link"
-        {%- if item.external %} target="_blank" rel="noopener noreferrer"{% endif %}
-      >
-        {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i> {% endif -%}
-        {{ item.name }}
-      </a>
-      {%- endfor %}
-      {%- if config.search.enabled %}
-      <button
-        onclick="window.__openSearchModal()"
-        class="w-full header-mobile-link"
-        aria-label="Search"
-      >
-        <i class="fas fa-search fa-fw" aria-hidden="true"></i>
-        Search
-      </button>
-      {%- endif %}
-      <button
-        onclick="window.__toggleTheme()"
-        class="w-full header-mobile-link"
-      >
-        <i class="fas fa-moon fa-fw dark:!hidden" aria-hidden="true"></i>
-        <i class="fas fa-sun fa-fw !hidden dark:!inline-block" aria-hidden="true"></i>
-        <span class="dark:!hidden">Switch to dark mode</span>
-        <span class="!hidden dark:!inline">Switch to light mode</span>
-      </button>
-    </div>
   </header>
+
+  {# Mobile menu dropdown #}
+  <div id="mobile-menu" class="glass-panel header-mobile hidden">
+    {%- for item in menu_items %}
+    <a
+      href="{{ item.url | safe }}"
+      class="header-mobile-link"
+      {%- if item.external %} target="_blank" rel="noopener noreferrer"{% endif %}
+    >
+      {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i> {% endif -%}
+      {{ item.name }}
+    </a>
+    {%- endfor %}
+    {%- if config.search.enabled %}
+    <button
+      onclick="window.__openSearchModal()"
+      class="w-full header-mobile-link"
+      aria-label="Search"
+    >
+      <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+      Search
+    </button>
+    {%- endif %}
+    <button
+      onclick="window.__toggleTheme()"
+      class="w-full header-mobile-link"
+    >
+      <i class="fas fa-moon fa-fw dark:!hidden" aria-hidden="true"></i>
+      <i class="fas fa-sun fa-fw !hidden dark:!inline-block" aria-hidden="true"></i>
+      <span class="dark:!hidden">Switch to dark mode</span>
+      <span class="!hidden dark:!inline">Switch to light mode</span>
+    </button>
+  </div>
 </div>
