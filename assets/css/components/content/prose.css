@@ -205,20 +205,8 @@
     @apply block w-auto overflow-x-auto;
   }
 
-  .prose th {
+  .prose :where(th, td) {
     @apply whitespace-nowrap;
-  }
-
-  .prose .nowrap-table :where(th, td) {
-    @apply whitespace-nowrap;
-  }
-
-  .prose .dense-table table {
-    @apply text-sm;
-  }
-
-  .prose .dense-table :where(th, td) {
-    @apply px-2 py-1 whitespace-nowrap;
   }
 
   /* ── Footnotes ── */
