@@ -28,7 +28,7 @@
   /* ── Modal Surface ── */
 
   pagefind-modal > dialog.pf-modal {
-    @apply border! rounded-card! backdrop-blur-lg backdrop-saturate-125;
+    @apply rounded-card! border! backdrop-blur-lg backdrop-saturate-125;
     background: var(--surface-glass-panel) !important;
     border-color: var(--surface-glass-border) !important;
   }

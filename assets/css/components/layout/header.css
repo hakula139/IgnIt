@@ -2,7 +2,7 @@
   /* ── Logo ── */
 
   .header-logo {
-    @apply text-lg font-semibold text-text border-b-0 transition-colors;
+    @apply border-b-0 text-lg font-semibold text-text transition-colors;
   }
 
   .header-logo:hover {
@@ -12,12 +12,11 @@
   /* ── Desktop Nav Links (icon-only) ── */
 
   .header-link {
-    @apply inline-flex items-center justify-center aspect-square p-2
-      text-text-secondary rounded-md border-b-0 transition-colors;
+    @apply inline-flex aspect-square items-center justify-center rounded-md border-b-0 p-2 text-text-secondary transition-colors;
   }
 
   .header-link:hover {
-    @apply text-link-hover bg-bg/50;
+    @apply bg-bg/50 text-link-hover;
 
     @variant dark {
       @apply bg-white/10;
@@ -27,7 +26,7 @@
   /* ── Group Dividers ── */
 
   .header-divider {
-    @apply w-px h-5 mx-1 bg-white/20;
+    @apply mx-1 h-5 w-px bg-white/20;
 
     @variant dark {
       @apply bg-white/8;
@@ -37,12 +36,11 @@
   /* ── Icon Buttons ── */
 
   .header-icon {
-    @apply inline-flex items-center justify-center aspect-square p-2
-      text-text-secondary rounded-md transition-colors cursor-pointer;
+    @apply inline-flex aspect-square cursor-pointer items-center justify-center rounded-md p-2 text-text-secondary transition-colors;
   }
 
   .header-icon:hover {
-    @apply text-link-hover bg-bg/50;
+    @apply bg-bg/50 text-link-hover;
 
     @variant dark {
       @apply bg-white/10;
@@ -52,28 +50,24 @@
   /* ── Mobile Backdrop ── */
 
   .header-mobile-backdrop {
-    @apply fixed inset-0 top-14 z-30 md:hidden backdrop-blur-sm;
+    @apply fixed inset-0 top-14 z-30 backdrop-blur-sm md:hidden;
     background: var(--surface-overlay-backdrop);
   }
 
   /* ── Mobile Dropdown ── */
 
   .header-mobile {
-    @apply fixed inset-x-0 top-14 z-40 md:hidden
-      overflow-y-auto max-h-[calc(100dvh-3.5rem)] py-2
-      backdrop-blur-lg backdrop-saturate-125 border-b;
+    @apply fixed inset-x-0 top-14 z-40 max-h-[calc(100dvh-3.5rem)] overflow-y-auto border-b py-2 backdrop-blur-lg backdrop-saturate-125 md:hidden;
     background: var(--surface-glass-panel);
     border-color: var(--surface-glass-border);
   }
 
   .header-mobile-link {
-    @apply block px-6 py-2
-      text-left text-sm text-text-secondary
-      border-b-0 transition-colors cursor-pointer;
+    @apply block cursor-pointer border-b-0 px-6 py-2 text-left text-sm text-text-secondary transition-colors;
   }
 
   .header-mobile-link:hover {
-    @apply text-link-hover bg-bg/30;
+    @apply bg-bg/30 text-link-hover;
   }
 
   /* ── Mobile Menu Animations ── */

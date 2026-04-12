@@ -1,8 +1,6 @@
 @layer components {
   .year-heading {
-    @apply mt-6 mb-3 pb-1
-      text-lg font-medium text-text-secondary
-      border-b border-white/20;
+    @apply mt-6 mb-3 border-b border-white/20 pb-1 text-lg font-medium text-text-secondary;
 
     @variant dark {
       @apply border-white/8;
@@ -10,18 +8,15 @@
   }
 
   .tag-pill {
-    @apply inline-block px-3 py-1.5
-      text-sm
-      rounded-full border border-border bg-bg-secondary/60
-      transition-colors;
+    @apply inline-block rounded-full border border-border bg-bg-secondary/60 px-3 py-1.5 text-sm transition-colors;
   }
 
   .tag-pill:hover {
-    @apply text-link-hover border-link-hover/30;
+    @apply border-link-hover/30 text-link-hover;
   }
 
   .category-card {
-    @apply p-4 rounded-xl border border-border bg-bg-secondary/30;
+    @apply rounded-xl border border-border bg-bg-secondary/30 p-4;
   }
 
   .post-entry {
@@ -29,7 +24,7 @@
   }
 
   .post-entry-title {
-    @apply flex-1 min-w-0 truncate text-text border-b-0 transition-colors;
+    @apply min-w-0 flex-1 truncate border-b-0 text-text transition-colors;
   }
 
   .post-entry-title:hover {
@@ -37,6 +32,6 @@
   }
 
   .post-entry-date {
-    @apply shrink-0 text-sm tabular-nums text-text-tertiary;
+    @apply shrink-0 text-sm text-text-tertiary tabular-nums;
   }
 }

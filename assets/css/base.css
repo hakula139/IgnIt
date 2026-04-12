@@ -14,8 +14,7 @@ html.theme-transition *::after {
   }
 
   body {
-    @apply flex flex-col min-h-screen
-      text-text leading-[1.75] bg-bg;
+    @apply flex min-h-screen flex-col bg-bg leading-[1.75] text-text;
   }
 
   body::before {
@@ -35,11 +34,11 @@ html.theme-transition *::after {
   }
 
   a {
-    @apply text-link no-underline border-b-2 border-transparent;
+    @apply border-b-2 border-transparent text-link no-underline;
   }
 
   a:hover {
-    @apply text-link-hover border-current;
+    @apply border-current text-link-hover;
   }
 
   /* Scroll offset: main padding (pt-16 = 4rem) + container padding (py-6 = 1.5rem). */
@@ -48,6 +47,6 @@ html.theme-transition *::after {
   }
 
   :focus-visible {
-    @apply outline-2 outline-link outline-offset-2;
+    @apply outline-2 outline-offset-2 outline-link;
   }
 }

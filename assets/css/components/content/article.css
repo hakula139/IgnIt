@@ -1,6 +1,6 @@
 @layer components {
   .article-title {
-    @apply text-xl font-semibold leading-tight sm:text-2xl;
+    @apply text-xl leading-tight font-semibold sm:text-2xl;
   }
 
   /* ── Post Banner ── */
@@ -13,7 +13,7 @@
   }
 
   .post-banner-media {
-    @apply w-full h-full transition-transform duration-500;
+    @apply h-full w-full transition-transform duration-500;
   }
 
   .post-banner:hover .post-banner-media {
@@ -21,7 +21,7 @@
   }
 
   .post-banner-image {
-    @apply w-full h-full object-cover;
+    @apply h-full w-full object-cover;
   }
 
   .post-banner-link {
@@ -29,11 +29,7 @@
   }
 
   .post-banner-credit {
-    @apply absolute bottom-3 right-3 z-10
-      px-3 py-1
-      text-xs text-white/90
-      rounded-full border border-white/20 bg-black/30 backdrop-blur-md
-      transition-opacity duration-300 pointer-events-none;
+    @apply pointer-events-none absolute right-3 bottom-3 z-10 rounded-full border border-white/20 bg-black/30 px-3 py-1 text-xs text-white/90 backdrop-blur-md transition-opacity duration-300;
   }
 
   .post-banner:hover .post-banner-credit {

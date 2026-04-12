@@ -4,15 +4,11 @@
   }
 
   .link-card {
-    @apply flex min-h-20 items-center gap-4
-      px-4 py-3
-      text-text no-underline border-b-0
-      rounded-lg bg-bg-secondary/50 ring-1 ring-inset ring-border
-      transition-colors;
+    @apply flex min-h-20 items-center gap-4 rounded-lg border-b-0 bg-bg-secondary/50 px-4 py-3 text-text no-underline ring-1 ring-border transition-colors ring-inset;
   }
 
   .link-card:hover {
-    @apply text-text bg-bg-secondary/70 ring-text-tertiary;
+    @apply bg-bg-secondary/70 text-text ring-text-tertiary;
   }
 
   .link-avatar {
@@ -24,7 +20,7 @@
   }
 
   .link-title {
-    @apply truncate text-link font-medium leading-snug;
+    @apply truncate leading-snug font-medium text-link;
   }
 
   .link-card:hover .link-title {
@@ -32,6 +28,6 @@
   }
 
   .link-desc {
-    @apply truncate text-text-secondary text-sm leading-snug;
+    @apply truncate text-sm leading-snug text-text-secondary;
   }
 }

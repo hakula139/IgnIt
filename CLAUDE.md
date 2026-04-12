@@ -118,13 +118,6 @@ To rebuild: `pnpm build` (CSS + JS), `pnpm build:css`, `pnpm build:js`, or `pnpm
 - **Whitespace control**: Use `{%-` (left-trim) to eat template tag whitespace while preserving HTML indentation. Use `-%}` (right-trim) sparingly.
 - **Attribute wrapping**: When an opening tag exceeds ~100 characters, place each attribute on its own line, indented one level deeper than the tag. Keep lines that are inherently long from a single Jinja expression (e.g., a conditional `content="..."` in a `<meta>` tag) as-is.
 
-### Tailwind Class Ordering
-
-Follow this order for utility classes in HTML attributes:
-layout → sizing → spacing → overflow → typography → visual → transitions → interactivity
-
-Example: `class="flex items-center w-full px-4 py-2 text-sm text-text bg-bg rounded-lg transition-colors cursor-pointer"`
-
 ### CSS
 
 - **Design tokens** in `@theme { ... }` block — colors, fonts, radii, shadows.
@@ -150,7 +143,7 @@ Example: `class="flex items-center w-full px-4 py-2 text-sm text-text bg-bg roun
 
 ### Pre-commit
 
-The husky pre-commit hook runs `lint-staged`, which auto-formats staged files with Prettier (including Tailwind class sorting via `prettier-plugin-tailwindcss`), lints Markdown with markdownlint, and spell-checks with cspell. The pre-push hook runs `pnpm build` and verifies `static/` is in sync.
+The husky pre-commit hook runs `lint-staged`, which auto-formats staged files with Prettier (including Tailwind class sorting in HTML attributes and CSS `@apply` via `prettier-plugin-tailwindcss`), lints Markdown with markdownlint, and spell-checks with cspell. The pre-push hook runs `pnpm build` and verifies `static/` is in sync.
 
 ### Spell Checking
 

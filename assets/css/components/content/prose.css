@@ -43,9 +43,7 @@
 }
 
 .prose .code-block pre {
-  @apply m-0 p-0 overflow-visible whitespace-pre
-    text-[length:inherit] text-inherit
-    rounded-none bg-transparent;
+  @apply m-0 overflow-visible rounded-none bg-transparent p-0 text-[length:inherit] whitespace-pre text-inherit;
 }
 
 .prose .code-block code {
@@ -53,7 +51,7 @@
 }
 
 .prose .code-block table {
-  @apply m-0 min-w-full w-max text-[length:inherit] leading-[inherit];
+  @apply m-0 w-max min-w-full text-[length:inherit] leading-[inherit];
 }
 
 .prose .code-block td {
@@ -132,12 +130,12 @@
 /* Override Tailwind reset (display: block) and Typography margins for non-figure
    images so inline icons flow naturally. Block images use <figure>. */
 .prose :where(img:not(figure img)) {
-  @apply inline my-1;
+  @apply my-1 inline;
 }
 
 /* Remove link border for image-only links (e.g. icon rows). */
 .prose a:has(> img:only-child) {
-  @apply pb-0 border-b-0;
+  @apply border-b-0 pb-0;
 }
 
 /* Allow full HDR luminance on capable displays. */
@@ -153,7 +151,7 @@
   /* ── Code ── */
 
   .prose code {
-    @apply px-1.5 py-0.5 text-[0.875em] rounded bg-bg-code/60;
+    @apply rounded bg-bg-code/60 px-1.5 py-0.5 text-[0.875em];
   }
 
   /* ── Text ── */
@@ -196,7 +194,7 @@
   }
 
   .prose figure {
-    @apply text-center rounded-lg;
+    @apply rounded-lg text-center;
   }
 
   /* ── Tables ── */
@@ -212,9 +210,7 @@
   /* ── Footnotes ── */
 
   .prose .footnote-definition {
-    @apply flex gap-2 mt-4 pt-4
-      text-sm text-text-tertiary
-      border-t border-white/20;
+    @apply mt-4 flex gap-2 border-t border-white/20 pt-4 text-sm text-text-tertiary;
 
     @variant dark {
       @apply border-white/8;

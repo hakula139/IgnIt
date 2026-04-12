@@ -1,10 +1,6 @@
 @layer components {
   .pagination-link {
-    @apply inline-flex items-center justify-center
-      h-9 min-w-9 px-2.5
-      text-sm font-medium text-text-secondary
-      rounded-lg border-b-0
-      transition-colors duration-200;
+    @apply inline-flex h-9 min-w-9 items-center justify-center rounded-lg border-b-0 px-2.5 text-sm font-medium text-text-secondary transition-colors duration-200;
   }
 
   .pagination-link:hover {
@@ -18,14 +14,11 @@
   }
 
   .pagination-ellipsis {
-    @apply text-text-tertiary cursor-pointer;
+    @apply cursor-pointer text-text-tertiary;
   }
 
   .pagination-input {
-    @apply w-9 h-9 min-w-9
-      text-center text-sm text-text
-      rounded-lg border border-border bg-transparent outline-none backdrop-blur-xs
-      transition-colors duration-200;
+    @apply h-9 w-9 min-w-9 rounded-lg border border-border bg-transparent text-center text-sm text-text backdrop-blur-xs transition-colors duration-200 outline-none;
     background: color-mix(in srgb, var(--color-bg) 60%, transparent);
     appearance: textfield;
     -moz-appearance: textfield;

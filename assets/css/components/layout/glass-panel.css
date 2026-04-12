@@ -27,8 +27,7 @@
 
   @variant dark {
     :where(.glass-glow, [data-glow-target])::before {
-      @apply absolute z-1 pointer-events-none content-['']
-        rounded-full will-change-transform;
+      @apply pointer-events-none absolute z-1 rounded-full will-change-transform content-[''];
       width: calc(var(--glow-size) * 2);
       height: calc(var(--glow-size) * 2);
       top: calc(var(--glow-size) * -1);
@@ -46,8 +45,7 @@
 
   @variant dark {
     :where(.glass-glow, [data-glow-target])::after {
-      @apply absolute inset-0 z-2 p-px
-        rounded-[inherit] pointer-events-none content-[''];
+      @apply pointer-events-none absolute inset-0 z-2 rounded-[inherit] p-px content-[''];
       background: radial-gradient(
         var(--glow-border-size) circle at var(--glow-x, -9999px) var(--glow-y, -9999px),
         var(--glow-border-color),
@@ -64,8 +62,7 @@
   /* ── Glass Panel Base ── */
 
   .glass-panel {
-    @apply relative rounded-card shadow-card
-      backdrop-blur-lg backdrop-saturate-125 backface-hidden;
+    @apply relative rounded-card shadow-card backdrop-blur-lg backdrop-saturate-125 backface-hidden;
     background: var(--surface-glass-panel);
     border: 1px solid var(--surface-glass-border);
   }
@@ -73,8 +70,7 @@
   /* ── Header Nav Bar ── */
 
   .header-nav {
-    @apply flex items-center h-14 px-6
-      rounded-none border-0 border-b shadow-none;
+    @apply flex h-14 items-center rounded-none border-0 border-b px-6 shadow-none;
     background: var(--surface-glass-panel);
     border-color: var(--surface-glass-border);
   }
@@ -82,7 +78,6 @@
   /* ── Footer ── */
 
   .site-footer {
-    @apply px-6 py-4
-      text-center text-sm text-text-tertiary;
+    @apply px-6 py-4 text-center text-sm text-text-tertiary;
   }
 }
