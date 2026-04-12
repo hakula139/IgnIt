@@ -1,7 +1,22 @@
 {%- set cdn = config.params.cdn | default("https://cdn.jsdelivr.net/npm") -%}
 {#- FontAwesome (when enabled in config) -#}
 {%- if config.params.fontawesome | default(false) %}
-  <link rel="stylesheet" href="{{ cdn | safe }}/@fortawesome/fontawesome-free@6/css/all.min.css">
+  {%- set fa = cdn ~ "/@fortawesome/fontawesome-free@6" -%}
+  <link
+    rel="preload"
+    href="{{ fa | safe }}/webfonts/fa-solid-900.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  >
+  <link
+    rel="preload"
+    href="{{ fa | safe }}/webfonts/fa-regular-400.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  >
+  <link rel="stylesheet" href="{{ fa | safe }}/css/all.min.css">
 {%- endif %}
 {#- KaTeX (when page has math: true) -#}
 {%- if math | default(false) %}
