@@ -206,6 +206,14 @@
     @apply block w-auto overflow-x-auto;
   }
 
+  .prose th {
+    @apply whitespace-nowrap;
+  }
+
+  .prose .nowrap-table :where(th, td) {
+    @apply whitespace-nowrap;
+  }
+
   .prose .dense-table table {
     @apply text-sm;
   }
