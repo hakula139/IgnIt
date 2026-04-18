@@ -104,23 +104,27 @@ subtitle = "A short tagline"
 
 ## Setup
 
-Build the compiled assets (required before first use):
+Build the Tailwind stylesheet (required before first use):
 
 ```bash
 pnpm install     # Install dependencies
-pnpm build       # Build static/css/style.min.css + static/js/*.min.js
+pnpm build       # Build static/css/style.css
 ```
 
 ## Theme Development
 
-- Source CSS: `assets/css/main.css` (Tailwind `@theme` tokens, custom components)
-- Source JS: `assets/js/*.js` (code blocks, TOC tracking, back-to-top, pagination, theme toggle, glow effect)
-- Compiled output: `static/` (committed so submodule consumers work without Node.js)
+All assets live under `static/`:
+
+- `static/css/_src/` — Tailwind sources (entry, partials); private build input, skipped by kiln
+- `static/css/style.css` — compiled Tailwind output, shipped
+- `static/js/*.js` — JS sources, shipped as-is (no build step)
 
 ```bash
-pnpm dev         # Watch mode — rebuilds CSS on changes
-pnpm build       # Production build (CSS + JS, minified)
+pnpm dev         # Watch mode — rebuilds static/css/style.css on changes
+pnpm build       # One-shot CSS build
 ```
+
+Compression for both CSS and JS is handled at deploy time by `kiln build --minify`, so sources stay readable in the dev server for debugging.
 
 ## License
 

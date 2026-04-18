@@ -6,34 +6,38 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 
 ### Theme Structure
 
+All assets live under a single `static/` tree. Files and directories whose names start with `_` are private build inputs — kiln's `copy_static` skips them when publishing the site.
+
 ```text
 .
-├── assets/
+├── static/                                 # single asset root (committed for submodule consumers)
 │   ├── css/
-│   │   ├── main.css                        # Entry: tokens, dark mode, partial imports
-│   │   ├── base.css                        # @layer base (html, body, a, selection)
-│   │   └── components/
-│   │       ├── layout/
-│   │       │   ├── back-to-top.css         # .back-to-top fixed button with glass styling
-│   │       │   ├── glass-panel.css         # .glass-panel, .glass-glow, [data-glow-target], .header-nav, .site-footer
-│   │       │   ├── header.css              # .header-logo, .header-link, .header-icon, .header-mobile-*, menu animations
-│   │       │   └── print.css               # @media print overrides (hide chrome, clean typography)
-│   │       ├── content/
-│   │       │   ├── article.css             # .article-title, .post-banner-*
-│   │       │   ├── callout.css             # .callout variants, icons, collapse animation
-│   │       │   ├── code-block.css          # .code-block, .code-header, .code-body, .copy-btn
-│   │       │   ├── link-card.css           # .link-card, .link-avatar, .link-grid
-│   │       │   ├── prose.css               # .prose overrides (unlayered + @layer components)
-│   │       │   ├── syntax.css              # Syntax highlighting (Material Light / Palenight)
-│   │       │   └── toc.css                 # .toc, .toc-collapse, .toc-trigger, .toc-sidebar-*
-│   │       ├── listing/
-│   │       │   ├── home-card.css           # .home-card-*, .profile-avatar, .text-card-*
-│   │       │   ├── listing.css             # .year-heading, .tag-pill, .category-card, .post-entry-*
-│   │       │   └── pagination.css          # .pagination-link, .pagination-ellipsis, .pagination-input
-│   │       ├── search/
-│   │       │   └── search.css              # Pagefind trigger, modal, and result theming
-│   │       └── embed/
-│   │           └── apple-music.css         # Apple Music embed light / dark toggle
+│   │   ├── _src/                           # private: Tailwind sources (not shipped)
+│   │   │   ├── main.css                    # Entry: tokens, dark mode, partial imports
+│   │   │   ├── base.css                    # @layer base (html, body, a, selection)
+│   │   │   └── components/
+│   │   │       ├── layout/
+│   │   │       │   ├── back-to-top.css     # .back-to-top fixed button with glass styling
+│   │   │       │   ├── glass-panel.css     # .glass-panel, .glass-glow, [data-glow-target], .header-nav, .site-footer
+│   │   │       │   ├── header.css          # .header-logo, .header-link, .header-icon, .header-mobile-*, menu animations
+│   │   │       │   └── print.css           # @media print overrides (hide chrome, clean typography)
+│   │   │       ├── content/
+│   │   │       │   ├── article.css         # .article-title, .post-banner-*
+│   │   │       │   ├── callout.css         # .callout variants, icons, collapse animation
+│   │   │       │   ├── code-block.css      # .code-block, .code-header, .code-body, .copy-btn
+│   │   │       │   ├── link-card.css       # .link-card, .link-avatar, .link-grid
+│   │   │       │   ├── prose.css           # .prose overrides (unlayered + @layer components)
+│   │   │       │   ├── syntax.css          # Syntax highlighting (Material Light / Palenight)
+│   │   │       │   └── toc.css             # .toc, .toc-collapse, .toc-trigger, .toc-sidebar-*
+│   │   │       ├── listing/
+│   │   │       │   ├── home-card.css       # .home-card-*, .profile-avatar, .text-card-*
+│   │   │       │   ├── listing.css         # .year-heading, .tag-pill, .category-card, .post-entry-*
+│   │   │       │   └── pagination.css      # .pagination-link, .pagination-ellipsis, .pagination-input
+│   │   │       ├── search/
+│   │   │       │   └── search.css          # Pagefind trigger, modal, and result theming
+│   │   │       └── embed/
+│   │   │           └── apple-music.css     # Apple Music embed light / dark toggle
+│   │   └── style.css                       # Compiled Tailwind output (shipped)
 │   └── js/
 │       ├── back-to-top.js                  # Scroll-triggered back-to-top button
 │       ├── content.js                      # Code block, callout, heading anchor, and external link enhancements
@@ -41,11 +45,6 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 │       ├── pagination.js                   # Page-jump controls for pagination
 │       ├── theme.js                        # Dark mode toggle + system preference
 │       └── toc.js                          # TOC active heading tracking + section collapse
-├── static/                                 # Build output (committed for submodule consumers)
-│   ├── css/
-│   │   └── style.min.css                   # Compiled Tailwind output
-│   └── js/
-│       └── *.min.js                        # Minified JS via esbuild
 └── templates/
     ├── _partials/                          # Shared template fragments ({% include %})
     │   ├── layout/
@@ -74,7 +73,7 @@ IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It pr
 
 ### CSS Architecture
 
-Source CSS lives in `assets/css/` using Tailwind CSS v4 conventions:
+Source CSS lives in `static/css/_src/` using Tailwind CSS v4 conventions:
 
 - **`main.css`** — Entry point: `@import 'tailwindcss'`, `@theme` tokens, `@variant dark`, dark-mode token overrides, then `@import` for each partial. The Tailwind CLI inlines all imports before compilation, so tokens and utilities are available in every partial.
 - **`base.css`** — `@layer base` styles: `html`, `body`, `body::before` (background image), `::selection`, `a`, scroll offset.
@@ -100,14 +99,16 @@ Use `@apply` in the appropriate CSS partial for anything else. Use canonical Tai
 
 #### Build Output
 
-`static/` contains compiled output committed to git so submodule consumers get a working theme without needing Node.js:
+`static/` holds the shipped bundle, committed so submodule consumers get a working theme without needing Node.js:
 
-- `static/css/style.min.css` — compiled Tailwind CSS
-- `static/js/*.min.js` — minified JS via esbuild
+- `static/css/style.css` — compiled Tailwind CSS (not minified; kiln `--minify` compresses at deploy time)
+- `static/js/*.js` — JS sources, shipped as-is (no build step; kiln `--minify` compresses at deploy time)
 
-**Always run `pnpm build` before committing** to keep compiled output in sync with source.
+`static/css/_src/` holds Tailwind partials and the entry file — build-only, never shipped (skipped by kiln's `_*` convention).
 
-To rebuild: `pnpm build` (CSS + JS), `pnpm build:css`, `pnpm build:js`, or `pnpm dev:css` for watch mode.
+**Always run `pnpm build` before committing CSS changes** to keep the compiled stylesheet in sync with `_src/`.
+
+To rebuild: `pnpm build` for a one-shot build, or `pnpm dev` for watch mode. Both run Tailwind only; JS files have no build step.
 
 ## Coding Conventions
 
