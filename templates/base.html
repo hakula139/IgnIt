@@ -11,11 +11,11 @@
   <link rel="stylesheet" href="{{ config.base_url | safe }}/pagefind/pagefind-component-ui.css">
   <script src="{{ config.base_url | safe }}/pagefind/pagefind-component-ui.js" type="module"></script>
   {%- endif %}
-  <link rel="stylesheet" href="{{ config.base_url | safe }}/css/style.min.css">
+  <link rel="stylesheet" href="{{ config.base_url | safe }}/css/style.css">
   {%- if page_css %}
   <link rel="stylesheet" href="{{ page_css | safe }}">
   {%- endif %}
-  <script src="{{ config.base_url | safe }}/js/theme.min.js"></script>
+  <script src="{{ config.base_url | safe }}/js/theme.js"></script>
   {% include "_partials/layout/head-deps.html" %}
   {%- block head %}{% endblock %}
 </head>
@@ -38,10 +38,10 @@
   {%- if config.search.enabled %}
   <pagefind-modal></pagefind-modal>
   {%- endif %}
-  <script src="{{ config.base_url | safe }}/js/content.min.js" defer></script>
-  <script src="{{ config.base_url | safe }}/js/toc.min.js" defer></script>
-  <script src="{{ config.base_url | safe }}/js/glow.min.js" defer></script>
-  <script src="{{ config.base_url | safe }}/js/back-to-top.min.js" defer></script>
+  <script src="{{ config.base_url | safe }}/js/content.js" defer></script>
+  <script src="{{ config.base_url | safe }}/js/toc.js" defer></script>
+  <script src="{{ config.base_url | safe }}/js/glow.js" defer></script>
+  <script src="{{ config.base_url | safe }}/js/back-to-top.js" defer></script>
   {%- block scripts %}{% endblock %}
 </body>
 </html>

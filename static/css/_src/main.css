@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
-@source '../../templates/**/*.html';
+@source '../../../templates/**/*.html';
 
 /* ── Design Tokens ── */
 
