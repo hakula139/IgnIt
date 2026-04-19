@@ -1,0 +1,31 @@
+# IgnIt theme translations — English.
+#
+# Flat key = value TOML. Keys are referenced from templates via {{ t("key") }},
+# with optional Python-style {name} placeholders resolved through t() kwargs.
+# `date_format` is a strftime pattern consumed by the `| localdate` filter.
+# en.toml is the fallback for any key missing from another language.
+
+date_format = "%B %-d, %Y"
+
+# Header / navigation
+search = "Search"
+toggle_menu = "Toggle menu"
+switch_to_dark = "Switch to dark mode"
+switch_to_light = "Switch to light mode"
+
+# Listing
+pagination = "Pagination"
+jump_to_page = "Jump to page"
+more = "More"
+all_sections = "All Sections"
+all_tags = "All Tags"
+
+# Content
+table_of_contents = "Table of Contents"
+back_to_top = "Back to top"
+link_to = "Link to"
+
+# 404
+error_404_title = "404"
+page_not_found = "The page you requested could not be found."
+back_to_home = "Back to Home"
