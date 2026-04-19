@@ -1,4 +1,4 @@
-# IgnIt 主题翻译 —— 简体中文。
+# IgnIt 主题翻译 —— 简体中文
 #
 # 扁平的 key = value TOML。模板通过 {{ t("key") }} 引用，可选的
 # Python 风格 {name} 占位符由 t() 的关键字参数填充。

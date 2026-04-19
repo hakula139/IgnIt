@@ -1,4 +1,4 @@
-# IgnIt theme translations — English.
+# IgnIt theme translations — English
 #
 # Flat key = value TOML. Keys are referenced from templates via {{ t("key") }},
 # with optional Python-style {name} placeholders resolved through t() kwargs.
