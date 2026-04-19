@@ -24,6 +24,7 @@ all_tags = "All Tags"
 table_of_contents = "Table of Contents"
 back_to_top = "Back to top"
 link_to = "Link to"
+image_credit = "Image credit"
 
 # 404
 error_404_title = "404"

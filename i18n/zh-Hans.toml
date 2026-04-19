@@ -24,6 +24,7 @@ all_tags = "所有标签"
 table_of_contents = "目录"
 back_to_top = "回到顶部"
 link_to = "链接到"
+image_credit = "图片来源"
 
 # 404
 error_404_title = "404"

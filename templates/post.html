@@ -22,7 +22,7 @@
                 class="post-banner-link"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Image credit{% if featured_image.credit.title %}: {{ featured_image.credit.title }}{% endif %}"
+                aria-label="{{ t('image_credit') }}{% if featured_image.credit.title %}: {{ featured_image.credit.title }}{% endif %}"
               >
               {%- endif %}
                 <img
@@ -54,7 +54,7 @@
               {%- if date or section %}
               <div class="mt-2 text-sm text-text-secondary">
                 {%- if date %}
-                <time datetime="{{ date }}">{{ date[:10] }}</time>
+                <time datetime="{{ date }}">{{ date | localdate }}</time>
                 {%- endif %}
                 {%- if section %}
                 <span>
