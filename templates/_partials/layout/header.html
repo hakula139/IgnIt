@@ -9,11 +9,12 @@
       {# Desktop navigation: [internal pages] | [external links] | [theme utilities] #}
       <nav class="hidden md:flex items-center gap-1 whitespace-nowrap">
         {%- for item in menu_items if not item.external %}
+        {%- set item_label = t(item.name) %}
         <a
           href="{{ item.url | safe }}"
           class="header-link"
-          title="{{ item.name }}"
-          aria-label="{{ item.name }}"
+          title="{{ item_label }}"
+          aria-label="{{ item_label }}"
         >
           {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i>{% endif -%}
         </a>
@@ -22,11 +23,12 @@
         <span class="header-divider" aria-hidden="true"></span>
 
         {%- for item in menu_items if item.external %}
+        {%- set item_label = t(item.name) %}
         <a
           href="{{ item.url | safe }}"
           class="header-link"
-          title="{{ item.name }}"
-          aria-label="{{ item.name }}"
+          title="{{ item_label }}"
+          aria-label="{{ item_label }}"
           target="_blank" rel="noopener noreferrer"
         >
           {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i>{% endif -%}
@@ -90,7 +92,7 @@
       {%- if item.external %} target="_blank" rel="noopener noreferrer"{% endif %}
     >
       {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i> {% endif -%}
-      {{ item.name }}
+      {{ t(item.name) }}
     </a>
     {%- endfor %}
     {%- set extra_index = menu_items | length -%}
