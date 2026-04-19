@@ -906,9 +906,6 @@
   .text-text-tertiary {
     color: var(--color-text-tertiary);
   }
-  .capitalize {
-    text-transform: capitalize;
-  }
   .italic {
     font-style: italic;
   }

@@ -12,8 +12,9 @@
   const getStoredTheme = () => localStorage.getItem(STORAGE_KEY);
 
   const updateThemeToggleLabels = (theme) => {
-    const label = `Switch to ${theme === DARK ? 'light' : 'dark'} mode`;
-    for (const btn of document.querySelectorAll('[aria-label^="Switch to"]')) {
+    for (const btn of document.querySelectorAll('[data-i18n-dark]')) {
+      const label = theme === DARK ? btn.dataset.i18nLight : btn.dataset.i18nDark;
+      if (!label) continue;
       btn.setAttribute('title', label);
       btn.setAttribute('aria-label', label);
     }
