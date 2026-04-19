@@ -39,8 +39,8 @@
         <button
           onclick="window.__openSearchModal()"
           class="header-icon"
-          title="Search"
-          aria-label="Search"
+          title="{{ t('search') }}"
+          aria-label="{{ t('search') }}"
         >
           <i class="fas fa-search fa-fw" aria-hidden="true"></i>
         </button>
@@ -48,8 +48,10 @@
         <button
           onclick="window.__toggleTheme()"
           class="header-icon"
-          title="Switch to dark mode"
-          aria-label="Switch to dark mode"
+          title="{{ t('switch_to_dark') }}"
+          aria-label="{{ t('switch_to_dark') }}"
+          data-i18n-dark="{{ t('switch_to_dark') }}"
+          data-i18n-light="{{ t('switch_to_light') }}"
         >
           <i class="fas fa-moon fa-fw dark:hidden!" aria-hidden="true"></i>
           <i class="fas fa-sun fa-fw hidden! dark:inline-block!" aria-hidden="true"></i>
@@ -60,8 +62,8 @@
       <button
         id="mobile-menu-toggle"
         class="md:hidden header-icon"
-        title="Toggle menu"
-        aria-label="Toggle menu"
+        title="{{ t('toggle_menu') }}"
+        aria-label="{{ t('toggle_menu') }}"
         aria-expanded="false"
         aria-controls="mobile-menu"
         onclick="window.__toggleMobileMenu()"
@@ -97,10 +99,10 @@
       onclick="window.__openSearchModal()"
       class="w-full header-mobile-link"
       style="--item-index: {{ extra_index }}"
-      aria-label="Search"
+      aria-label="{{ t('search') }}"
     >
       <i class="fas fa-search fa-fw" aria-hidden="true"></i>
-      Search
+      {{ t('search') }}
     </button>
     {%- set extra_index = extra_index + 1 -%}
     {%- endif %}
@@ -108,11 +110,13 @@
       onclick="window.__toggleTheme()"
       class="w-full header-mobile-link"
       style="--item-index: {{ extra_index }}"
+      data-i18n-dark="{{ t('switch_to_dark') }}"
+      data-i18n-light="{{ t('switch_to_light') }}"
     >
       <i class="fas fa-moon fa-fw dark:hidden!" aria-hidden="true"></i>
       <i class="fas fa-sun fa-fw hidden! dark:inline-block!" aria-hidden="true"></i>
-      <span class="dark:hidden!">Switch to dark mode</span>
-      <span class="hidden! dark:inline!">Switch to light mode</span>
+      <span class="dark:hidden!">{{ t('switch_to_dark') }}</span>
+      <span class="hidden! dark:inline!">{{ t('switch_to_light') }}</span>
     </button>
   </div>
 </div>

@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
-{%- set heading = "All " ~ kind | capitalize -%}
+{%- if kind == "sections" -%}
+  {%- set heading = t('all_sections') -%}
+{%- else -%}
+  {%- set heading = t('all_tags') -%}
+{%- endif -%}
 
 {% block title %}<title>{{ heading }} - {{ config.title }}</title>{% endblock %}
 
@@ -34,7 +38,7 @@
               href="{{ bucket.url | safe }}"
               class="block mt-1 text-right text-sm text-text-tertiary border-b-0 transition-colors hover:text-link-hover"
             >
-              More &raquo;
+              {{ t('more') }} &raquo;
             </a>
             {%- endif %}
           </div>
