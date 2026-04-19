@@ -2,10 +2,7 @@
 #
 # 扁平的 key = value TOML。模板通过 {{ t("key") }} 引用，可选的
 # Python 风格 {name} 占位符由 t() 的关键字参数填充。
-# `date_format` 是 `| localdate` 过滤器使用的 strftime 格式。
 # 缺失的键会回退至 en.toml。
-
-date_format = "%Y年%-m月%-d日"
 
 # 页首 / 导航
 search = "搜索"

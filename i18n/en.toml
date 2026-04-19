@@ -2,10 +2,7 @@
 #
 # Flat key = value TOML. Keys are referenced from templates via {{ t("key") }},
 # with optional Python-style {name} placeholders resolved through t() kwargs.
-# `date_format` is a strftime pattern consumed by the `| localdate` filter.
 # en.toml is the fallback for any key missing from another language.
-
-date_format = "%B %-d, %Y"
 
 # Header / navigation
 search = "Search"

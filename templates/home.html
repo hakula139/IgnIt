@@ -56,7 +56,7 @@
           {%- if page.date or page.section %}
           <div class="home-card-meta">
             {%- if page.date %}
-            <time datetime="{{ page.date }}">{{ page.date | localdate }}</time>
+            <time datetime="{{ page.date }}">{{ page.date[:10] }}</time>
             {%- endif %}
             {%- if page.section %}
             <span>
@@ -80,7 +80,7 @@
         </a>
         {%- if page.date %}
         <time datetime="{{ page.date }}" class="post-entry-date">
-          {{ page.date | localdate }}
+          {{ page.date[:10] }}
         </time>
         {%- endif %}
       </article>
