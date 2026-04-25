@@ -1,7 +1,7 @@
 {# Mobile TOC (collapsible, < xl) #}
 {%- if toc %}
 <div class="toc-collapse collapsed xl:hidden">
-  <div class="toc-trigger">Table of Contents</div>
+  <div class="toc-trigger">{{ t('table_of_contents') }}</div>
   <div class="toc-body-wrapper">
     <div class="toc-body">{{ toc | safe }}</div>
   </div>

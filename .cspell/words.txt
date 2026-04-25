@@ -12,6 +12,7 @@ hiragino
 inlines
 jetbrains
 katex
+kwargs
 minijinja
 ndash
 netease

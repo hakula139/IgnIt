@@ -12,8 +12,11 @@
   const getStoredTheme = () => localStorage.getItem(STORAGE_KEY);
 
   const updateThemeToggleLabels = (theme) => {
-    const label = `Switch to ${theme === DARK ? 'light' : 'dark'} mode`;
-    for (const btn of document.querySelectorAll('[aria-label^="Switch to"]')) {
+    for (const btn of document.querySelectorAll('[data-i18n-dark]')) {
+      const label = theme === DARK ? btn.dataset.i18nLight : btn.dataset.i18nDark;
+      if (!label) {
+        continue;
+      }
       btn.setAttribute('title', label);
       btn.setAttribute('aria-label', label);
     }
@@ -40,6 +43,17 @@
 
   // ── Mobile Menu ──
 
+  const updateMobileMenuToggleLabels = (isOpen) => {
+    for (const btn of document.querySelectorAll('[data-i18n-open]')) {
+      const label = isOpen ? btn.dataset.i18nClose : btn.dataset.i18nOpen;
+      if (!label) {
+        continue;
+      }
+      btn.setAttribute('title', label);
+      btn.setAttribute('aria-label', label);
+    }
+  };
+
   const toggleMobileMenu = () => {
     const menu = document.getElementById('mobile-menu');
     const toggle = document.getElementById('mobile-menu-toggle');
@@ -47,9 +61,10 @@
     menu.classList.toggle('hidden');
     const isOpen = !menu.classList.contains('hidden');
     panel?.toggleAttribute('open', isOpen);
-    toggle.setAttribute('aria-expanded', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
     toggle.querySelector('i').classList.toggle('fa-bars');
     toggle.querySelector('i').classList.toggle('fa-xmark');
+    updateMobileMenuToggleLabels(isOpen);
   };
 
   // ── Search Modal ──

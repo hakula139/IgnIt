@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="{{ config.language }}">
+{# data-i18n-jump-to: JS-injected heading anchors read i18n from <html> (no per-element carrier). #}
+<html lang="{{ config.language }}" data-i18n-jump-to="{{ t('jump_to') }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -32,7 +33,7 @@
     {%- block body %}{% endblock %}
   </main>
   {% include "_partials/layout/footer.html" %}
-  <button id="back-to-top" class="back-to-top glass-panel" data-glow-target aria-label="Back to top" title="Back to top">
+  <button id="back-to-top" class="back-to-top glass-panel" data-glow-target aria-label="{{ t('back_to_top') }}" title="{{ t('back_to_top') }}">
     <i class="fas fa-arrow-up" aria-hidden="true"></i>
   </button>
   {%- if config.search.enabled %}

@@ -1,0 +1,33 @@
+# IgnIt theme translations — English
+#
+# Flat key = value TOML. Keys are referenced from templates via {{ t("key") }},
+# with optional Python-style {name} placeholders resolved through t() kwargs.
+# en.toml is the fallback for any key missing from another language.
+#
+# Menu item names from `config.menu.main` are translated via `t(item.name)`;
+# add a key per menu entry (or t() falls through to the literal name).
+
+# Header / navigation
+search = "Search"
+open_menu = "Open menu"
+close_menu = "Close menu"
+switch_to_dark = "Switch to dark mode"
+switch_to_light = "Switch to light mode"
+
+# Listing
+pagination = "Pagination"
+jump_to_page = "Jump to page"
+more = "More"
+all_sections = "All Sections"
+all_tags = "All Tags"
+
+# Content
+table_of_contents = "Table of Contents"
+back_to_top = "Back to top"
+jump_to = "Jump to"
+image_credit = "Image credit"
+
+# 404
+error_404_title = "404"
+page_not_found = "The page you requested could not be found."
+back_to_home = "Back to home"

@@ -22,7 +22,7 @@
                 class="post-banner-link"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Image credit{% if featured_image.credit.title %}: {{ featured_image.credit.title }}{% endif %}"
+                aria-label="{{ t('image_credit') }}{% if featured_image.credit.title %}: {{ featured_image.credit.title }}{% endif %}"
               >
               {%- endif %}
                 <img
