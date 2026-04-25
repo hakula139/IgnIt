@@ -8,12 +8,12 @@
 search = "搜索"
 open_menu = "开启菜单"
 close_menu = "关闭菜单"
-switch_to_dark = "切换到暗色模式"
-switch_to_light = "切换到亮色模式"
+switch_to_dark = "切换至暗色主题"
+switch_to_light = "切换至亮色主题"
 
 # 列表
 pagination = "分页"
-jump_to_page = "跳转到指定页"
+jump_to_page = "跳转至指定页"
 more = "更多"
 all_sections = "所有分类"
 all_tags = "所有标签"
@@ -21,7 +21,7 @@ all_tags = "所有标签"
 # 内容
 table_of_contents = "目录"
 back_to_top = "回到顶部"
-link_to = "链接到"
+jump_to = "跳转至"
 image_credit = "图片来源"
 
 # 404
