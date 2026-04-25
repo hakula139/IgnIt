@@ -61,7 +61,7 @@
     menu.classList.toggle('hidden');
     const isOpen = !menu.classList.contains('hidden');
     panel?.toggleAttribute('open', isOpen);
-    toggle.setAttribute('aria-expanded', isOpen);
+    toggle.setAttribute('aria-expanded', String(isOpen));
     toggle.querySelector('i').classList.toggle('fa-bars');
     toggle.querySelector('i').classList.toggle('fa-xmark');
     updateMobileMenuToggleLabels(isOpen);
