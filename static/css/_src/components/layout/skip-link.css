@@ -7,7 +7,7 @@
 
   .skip-link:focus,
   .skip-link:focus-visible {
-    @apply fixed top-3 left-3 z-50 m-0 inline-flex h-auto w-auto items-center overflow-visible rounded-card px-4 py-2 text-sm font-medium whitespace-normal text-text backdrop-blur-lg backdrop-saturate-125;
+    @apply fixed top-3 left-3 z-100 m-0 inline-flex h-auto w-auto items-center overflow-visible rounded-card px-4 py-2 text-sm font-medium whitespace-normal text-text backdrop-blur-lg backdrop-saturate-125;
     clip: auto;
     background: var(--surface-glass-panel);
     border: 1px solid var(--surface-glass-border);
