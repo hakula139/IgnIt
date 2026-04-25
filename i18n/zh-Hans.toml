@@ -20,6 +20,7 @@ jump_to_page = "跳转至页码"
 more = "更多"
 all_sections = "所有栏目"
 all_tags = "所有标签"
+pinned = "置顶"
 
 # 内容
 table_of_contents = "目录"

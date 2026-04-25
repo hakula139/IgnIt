@@ -20,6 +20,7 @@ jump_to_page = "Jump to page"
 more = "More"
 all_sections = "All Sections"
 all_tags = "All Tags"
+pinned = "Pinned"
 
 # Content
 table_of_contents = "Table of Contents"
