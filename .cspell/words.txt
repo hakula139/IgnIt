@@ -31,7 +31,6 @@ shortcode
 songid
 songtype
 startingwith
-strftime
 syntect
 tabular
 tailwindcss
