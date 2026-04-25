@@ -3,6 +3,9 @@
 # 扁平的 key = value TOML。模板通过 {{ t("key") }} 引用，可选的
 # Python 风格 {name} 占位符由 t() 的关键字参数填充。
 # 缺失的键会回退至 en.toml。
+#
+# 菜单项的名称通过 t(item.name) 翻译；请为 config.menu.main 中的每一项添加键
+# （否则 t() 会回退到字面键名）。
 
 # 页首 / 导航
 search = "搜索"
@@ -12,10 +15,10 @@ switch_to_dark = "切换至暗色主题"
 switch_to_light = "切换至亮色主题"
 
 # 列表
-pagination = "分页"
-jump_to_page = "跳转至指定页"
+pagination = "分页导航"
+jump_to_page = "跳转至页码"
 more = "更多"
-all_sections = "所有分类"
+all_sections = "所有栏目"
 all_tags = "所有标签"
 
 # 内容
