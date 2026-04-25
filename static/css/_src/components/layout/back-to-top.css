@@ -14,10 +14,4 @@
   .back-to-top.visible {
     @apply pointer-events-auto opacity-100;
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    .back-to-top {
-      @apply transition-none;
-    }
-  }
 }

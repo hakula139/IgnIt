@@ -20,7 +20,8 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   │       │   ├── back-to-top.css     # .back-to-top fixed button with glass styling
 │   │   │       │   ├── glass-panel.css     # .glass-panel, .glass-glow, [data-glow-target], .header-nav, .site-footer
 │   │   │       │   ├── header.css          # .header-logo, .header-link, .header-icon, .header-mobile-*, menu animations
-│   │   │       │   └── print.css           # @media print overrides (hide chrome, clean typography)
+│   │   │       │   ├── print.css           # @media print overrides (hide chrome, clean typography)
+│   │   │       │   └── skip-link.css       # .skip-link visually hidden, focus-promoted accessibility anchor
 │   │   │       ├── content/
 │   │   │       │   ├── article.css         # .article-title, .post-banner-*
 │   │   │       │   ├── callout.css         # .callout variants, icons, collapse animation

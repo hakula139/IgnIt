@@ -1,15 +1,29 @@
 /* Temporarily enable color transitions during theme toggle (added / removed by JS). */
-html.theme-transition,
-html.theme-transition *,
-html.theme-transition *::before,
-html.theme-transition *::after {
-  @apply transition-[background-color,border-color]! duration-300!;
+@media (prefers-reduced-motion: no-preference) {
+  html.theme-transition,
+  html.theme-transition *,
+  html.theme-transition *::before,
+  html.theme-transition *::after {
+    @apply transition-[background-color,border-color]! duration-300!;
+  }
 }
 
 @layer base {
   @media (prefers-reduced-motion: no-preference) {
     html {
       @apply scroll-smooth;
+    }
+  }
+
+  /* Honor prefers-reduced-motion globally. 0.01ms (not 0) preserves
+     transitionend / animationend event firing for JS listeners. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
     }
   }
 

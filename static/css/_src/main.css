@@ -105,6 +105,7 @@
 @import './components/layout/glass-panel.css';
 @import './components/layout/back-to-top.css';
 @import './components/layout/header.css';
+@import './components/layout/skip-link.css';
 @import './components/layout/print.css';
 
 /* Content */

@@ -4,6 +4,7 @@ open_menu = "Open menu"
 close_menu = "Close menu"
 switch_to_dark = "Switch to dark mode"
 switch_to_light = "Switch to light mode"
+skip_to_content = "Skip to content"
 
 # Listing
 pagination = "Pagination"

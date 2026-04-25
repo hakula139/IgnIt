@@ -4,6 +4,7 @@ open_menu = "打开菜单"
 close_menu = "关闭菜单"
 switch_to_dark = "切换至暗色主题"
 switch_to_light = "切换至亮色主题"
+skip_to_content = "跳至正文"
 
 # 列表
 pagination = "分页导航"
