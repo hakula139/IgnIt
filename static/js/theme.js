@@ -14,7 +14,9 @@
   const updateThemeToggleLabels = (theme) => {
     for (const btn of document.querySelectorAll('[data-i18n-dark]')) {
       const label = theme === DARK ? btn.dataset.i18nLight : btn.dataset.i18nDark;
-      if (!label) continue;
+      if (!label) {
+        continue;
+      }
       btn.setAttribute('title', label);
       btn.setAttribute('aria-label', label);
     }
@@ -41,6 +43,17 @@
 
   // ── Mobile Menu ──
 
+  const updateMobileMenuToggleLabels = (isOpen) => {
+    for (const btn of document.querySelectorAll('[data-i18n-open]')) {
+      const label = isOpen ? btn.dataset.i18nClose : btn.dataset.i18nOpen;
+      if (!label) {
+        continue;
+      }
+      btn.setAttribute('title', label);
+      btn.setAttribute('aria-label', label);
+    }
+  };
+
   const toggleMobileMenu = () => {
     const menu = document.getElementById('mobile-menu');
     const toggle = document.getElementById('mobile-menu-toggle');
@@ -51,6 +64,7 @@
     toggle.setAttribute('aria-expanded', isOpen);
     toggle.querySelector('i').classList.toggle('fa-bars');
     toggle.querySelector('i').classList.toggle('fa-xmark');
+    updateMobileMenuToggleLabels(isOpen);
   };
 
   // ── Search Modal ──

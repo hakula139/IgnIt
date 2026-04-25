@@ -6,7 +6,8 @@
 
 # 页首 / 导航
 search = "搜索"
-toggle_menu = "切换菜单"
+open_menu = "开启菜单"
+close_menu = "关闭菜单"
 switch_to_dark = "切换到暗色模式"
 switch_to_light = "切换到亮色模式"
 
