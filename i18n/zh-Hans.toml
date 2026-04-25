@@ -4,8 +4,8 @@
 # Python 风格 {name} 占位符由 t() 的关键字参数填充。
 # 缺失的键会回退至 en.toml。
 #
-# 菜单项的名称通过 t(item.name) 翻译；请为 config.menu.main 中的每一项添加键
-# （否则 t() 会回退到字面键名）。
+# 菜单项名称通过 t(item.name) 翻译，请为 config.menu.main
+# 中的每一项添加键（否则 t() 会回退至键名本身）。
 
 # 页首 / 导航
 search = "搜索"
