@@ -9,7 +9,7 @@
 
 # 页首 / 导航
 search = "搜索"
-open_menu = "开启菜单"
+open_menu = "打开菜单"
 close_menu = "关闭菜单"
 switch_to_dark = "切换至暗色主题"
 switch_to_light = "切换至亮色主题"
