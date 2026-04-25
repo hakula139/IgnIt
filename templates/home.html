@@ -40,6 +40,11 @@
                background-position: {{ page.featured_image.position | default('center', true) }}"
       ></div>
       <div class="home-card-overlay"></div>
+      {%- if page.pinned %}
+      <span class="home-card-pin glass-panel" aria-label="{{ t('pinned') }}" title="{{ t('pinned') }}">
+        <i class="fas fa-thumbtack" aria-hidden="true"></i>
+      </span>
+      {%- endif %}
       <div class="home-card-body">
         <h2 class="home-card-title">{{ page.title }}</h2>
         <div class="home-card-reveal">
@@ -76,6 +81,9 @@
     <div class="glass-glow">
       <article class="glass-panel post-entry px-5 py-4">
         <a href="{{ page.url | safe }}" class="post-entry-title font-medium">
+          {%- if page.pinned %}
+          <i class="fas fa-thumbtack post-entry-pin" aria-label="{{ t('pinned') }}" title="{{ t('pinned') }}"></i>
+          {%- endif %}
           {{ page.title }}
         </a>
         {%- if page.date %}

@@ -123,6 +123,20 @@
     }
   }
 
+  /* ── Pinned Indicator ── */
+
+  .home-card-pin {
+    @apply pointer-events-none absolute top-3 right-3 z-10 flex h-7 w-7 items-center justify-center rounded-full text-sm text-text-secondary;
+  }
+
+  .home-card-pin i {
+    @apply -rotate-45;
+  }
+
+  .post-entry-pin {
+    @apply mr-2 inline-block -rotate-45 text-text-secondary;
+  }
+
   /* ── Profile ── */
 
   .profile-avatar {

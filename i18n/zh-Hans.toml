@@ -1,12 +1,3 @@
-# IgnIt 主题翻译 —— 简体中文
-#
-# 扁平的 key = value TOML。模板通过 {{ t("key") }} 引用，可选的
-# Python 风格 {name} 占位符由 t() 的关键字参数填充。
-# 缺失的键会回退至 en.toml。
-#
-# 菜单项名称通过 t(item.name) 翻译，请为 config.menu.main
-# 中的每一项添加键（否则 t() 会回退至键名本身）。
-
 # 页首 / 导航
 search = "搜索"
 open_menu = "打开菜单"
@@ -20,6 +11,7 @@ jump_to_page = "跳转至页码"
 more = "更多"
 all_sections = "所有栏目"
 all_tags = "所有标签"
+pinned = "置顶"
 
 # 内容
 table_of_contents = "目录"
