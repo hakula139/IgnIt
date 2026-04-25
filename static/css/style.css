@@ -1025,6 +1025,16 @@
     outline-color: var(--color-link);
   }
 }
+@property --glow-x {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: -9999px;
+}
+@property --glow-y {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: -9999px;
+}
 @layer components {
   :where(.glass-glow, [data-glow-target]) {
     position: relative;
@@ -1046,6 +1056,8 @@
   :where(.glass-glow, [data-glow-target])::before {
     --tw-content: none;
     content: none;
+    --glow-x: inherit;
+    --glow-y: inherit;
   }
   &:where([data-theme="dark"], [data-theme="dark"] *) {
     :where(.glass-glow, [data-glow-target])::before {
@@ -1067,6 +1079,8 @@
   :where(.glass-glow, [data-glow-target])::after {
     --tw-content: none;
     content: none;
+    --glow-x: inherit;
+    --glow-y: inherit;
   }
   &:where([data-theme="dark"], [data-theme="dark"] *) {
     :where(.glass-glow, [data-glow-target])::after {
@@ -3097,6 +3111,8 @@
       --tw-leading: initial;
       --tw-content: "";
       --tw-outline-style: solid;
+      --glow-x: -9999px;
+      --glow-y: -9999px;
       --tw-shadow: 0 0 #0000;
       --tw-shadow-color: initial;
       --tw-shadow-alpha: 100%;
