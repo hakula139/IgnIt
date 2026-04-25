@@ -1,10 +1,7 @@
-@import 'tailwindcss';
+@import 'tailwindcss' source(none);
 @plugin '@tailwindcss/typography';
 
 @source '../../../templates/**/*.html';
-/* Exclude markdown — Tailwind's auto-detection treats prose words like
-   `shadow`, `fixed`, `block`, `flex` as class candidates. */
-@source not '../../../**/*.md';
 
 /* ── Design Tokens ── */
 
