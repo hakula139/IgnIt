@@ -1,24 +1,24 @@
 # 页首 / 导航
+skip_to_content = "跳至正文"
 search = "搜索"
 open_menu = "打开菜单"
 close_menu = "关闭菜单"
 switch_to_dark = "切换至暗色主题"
 switch_to_light = "切换至亮色主题"
-skip_to_content = "跳至正文"
 
 # 列表
-pagination = "分页导航"
-jump_to_page = "跳转至页码"
-more = "更多"
 all_sections = "所有栏目"
 all_tags = "所有标签"
+more = "更多"
+pagination = "分页导航"
+jump_to_page = "跳转至页码"
 pinned = "置顶"
 
 # 内容
 table_of_contents = "目录"
-back_to_top = "回到顶部"
 jump_to = "跳转至"
 image_credit = "图片来源"
+back_to_top = "回到顶部"
 
 # 404
 error_404_title = "404"
