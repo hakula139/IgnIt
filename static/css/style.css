@@ -239,9 +239,6 @@
   .inset-x-0 {
     inset-inline: calc(var(--spacing) * 0);
   }
-  .start {
-    inset-inline-start: var(--spacing);
-  }
   .top-0 {
     top: calc(var(--spacing) * 0);
   }
@@ -717,12 +714,6 @@
   .aspect-\[21\/9\] {
     aspect-ratio: 21/9;
   }
-  .\!w-auto {
-    width: auto !important;
-  }
-  .w-auto\! {
-    width: auto !important;
-  }
   .w-full {
     width: 100%;
   }
@@ -792,9 +783,6 @@
   }
   .overflow-hidden {
     overflow: hidden;
-  }
-  .rounded-\(--radius-card\) {
-    border-radius: var(--radius-card);
   }
   .rounded-card {
     border-radius: var(--radius-card);
@@ -891,12 +879,6 @@
   .whitespace-nowrap {
     white-space: nowrap;
   }
-  .text-\(--color-link-hover\) {
-    color: var(--color-link-hover);
-  }
-  .text-link-hover {
-    color: var(--color-link-hover);
-  }
   .text-text {
     color: var(--color-text);
   }
@@ -911,9 +893,6 @@
   }
   .blur {
     --tw-blur: blur(8px);
-    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
-  }
-  .filter {
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .backdrop-filter {
