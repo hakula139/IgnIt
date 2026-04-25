@@ -125,25 +125,16 @@
 
   /* ── Pinned Indicator ── */
 
-  /* Featured-image card: glass-chip badge over the image, top-right.
-     Sits above the link-cover (z-5) so it stays visible without
-     intercepting clicks (pointer-events: none on the wrapper). */
   .home-card-pin {
-    @apply pointer-events-none absolute top-3 right-3 z-10;
-    @apply flex h-7 w-7 items-center justify-center;
-    @apply rounded-full text-sm text-white;
-    background: var(--surface-glass-overlay);
-    border: 1px solid var(--surface-glass-border);
-    backdrop-filter: blur(8px) saturate(125%);
+    @apply pointer-events-none absolute top-3 right-3 z-10 flex h-7 w-7 items-center justify-center rounded-full text-sm text-text-secondary;
   }
 
   .home-card-pin i {
     @apply -rotate-45;
   }
 
-  /* Text-only entry (no featured image): inline pin icon before the title. */
   .post-entry-pin {
-    @apply mr-2 inline-block -rotate-45 text-link;
+    @apply mr-2 inline-block -rotate-45 text-text-secondary;
   }
 
   /* ── Profile ── */
