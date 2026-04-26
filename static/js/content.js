@@ -144,13 +144,14 @@
     const headings = document.querySelectorAll(
       '.prose h2[id], .prose h3[id], .prose h4[id], .prose h5[id], .prose h6[id]',
     );
-    const jumpToPrefix = document.documentElement.dataset.i18nJumpTo || 'Jump to';
+    const jumpToPrefix = document.documentElement.dataset.i18nJumpTo;
     for (const heading of headings) {
       const anchor = document.createElement('a');
       anchor.href = `#${heading.id}`;
       anchor.className = 'heading-anchor';
       anchor.textContent = '#';
-      anchor.setAttribute('aria-label', `${jumpToPrefix} ${heading.textContent}`);
+      const label = jumpToPrefix ? `${jumpToPrefix} ${heading.textContent}` : heading.textContent;
+      anchor.setAttribute('aria-label', label);
       heading.prepend(anchor);
     }
   };
@@ -188,7 +189,7 @@
 
   const initExternalLinks = () => {
     const { hostname } = window.location;
-    for (const link of document.querySelectorAll('.prose a[href]')) {
+    for (const link of document.querySelectorAll('a[href]')) {
       try {
         const url = new URL(link.href);
         if (url.hostname && url.hostname !== hostname) {

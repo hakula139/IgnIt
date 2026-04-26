@@ -20,6 +20,15 @@ jump_to = "跳转至"
 image_credit = "图片来源"
 back_to_top = "回到顶部"
 
+# 指令 — 音乐
+music_player_apple = "Apple Music"
+music_player_netease = "网易云音乐"
+music_player_tencent = "QQ 音乐"
+music_unknown_server = "未知音乐服务: {server}"
+
+# 页脚
+powered_by = "由 {kiln} 与 {ignit} 强力驱动"
+
 # 404
 error_404_title = "404"
 page_not_found = "您访问的页面不存在。"

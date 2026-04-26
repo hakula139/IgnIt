@@ -29,7 +29,6 @@
           class="header-link"
           title="{{ item_label }}"
           aria-label="{{ item_label }}"
-          target="_blank" rel="noopener noreferrer"
         >
           {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i>{% endif -%}
         </a>
@@ -91,7 +90,6 @@
       href="{{ item.url | safe }}"
       class="header-mobile-link"
       style="--item-index: {{ loop.index0 }}"
-      {%- if item.external %} target="_blank" rel="noopener noreferrer"{% endif %}
     >
       {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i> {% endif -%}
       {{ t(item.name) }}

@@ -18,10 +18,9 @@
       {%- endif %}
 
       {%- if footer.powered_by | default(true) %}
-      <p class="mt-1">
-        Powered by <a href="https://github.com/hakula139/kiln">kiln</a>
-        &amp; <a href="https://github.com/hakula139/IgnIt">IgnIt</a>
-      </p>
+      {%- set kiln_link %}<a href="https://github.com/hakula139/kiln">kiln</a>{% endset -%}
+      {%- set ignit_link %}<a href="https://github.com/hakula139/IgnIt">IgnIt</a>{% endset -%}
+      <p class="mt-1">{{ t("powered_by", kiln=kiln_link, ignit=ignit_link) | safe }}</p>
       {%- endif %}
     </div>
   </footer>
