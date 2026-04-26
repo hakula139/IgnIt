@@ -9,7 +9,7 @@
   --tw-prose-bold: var(--color-text);
   --tw-prose-links: var(--color-link);
   --tw-prose-code: var(--color-text);
-  --tw-prose-pre-bg: var(--color-bg-muted);
+  --tw-prose-pre-bg: color-mix(in oklab, var(--color-bg-muted) 60%, transparent);
 
   /* Lists */
   --tw-prose-counters: var(--color-text-secondary);
