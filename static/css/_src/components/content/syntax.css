@@ -4,7 +4,7 @@
 
   .highlight {
     color: #37474f;
-    @apply bg-bg-code/60;
+    @apply bg-bg-muted/60;
 
     @variant dark {
       color: #b0bec5;

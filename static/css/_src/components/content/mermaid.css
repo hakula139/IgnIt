@@ -1,6 +1,6 @@
 @layer components {
   .prose pre.mermaid {
-    @apply my-4 flex justify-center rounded-lg bg-bg-code p-6;
+    @apply my-4 flex justify-center rounded-lg bg-bg-muted p-6;
     color: inherit;
     font-family: var(--font-sans);
   }

@@ -15,7 +15,7 @@
     --pf-outline-focus: var(--color-link);
     --pf-background: var(--surface-glass-overlay);
     --pf-border: var(--surface-glass-border);
-    --pf-skeleton: var(--color-bg-secondary);
+    --pf-skeleton: var(--color-bg-muted);
     --pf-skeleton-shine: var(--color-bg);
     --pf-hover: var(--surface-glass-hover);
     --pf-scroll-shadow: var(--surface-glass-scroll-shadow);

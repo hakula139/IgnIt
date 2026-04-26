@@ -8,7 +8,7 @@
   }
 
   .tag-pill {
-    @apply inline-block rounded-full border border-border bg-bg-secondary/60 px-3 py-1.5 text-sm transition-colors;
+    @apply inline-block rounded-full border border-border bg-bg-muted/60 px-3 py-1.5 text-sm transition-colors;
   }
 
   .tag-pill:hover {
@@ -16,7 +16,7 @@
   }
 
   .category-card {
-    @apply rounded-xl border border-border bg-bg-secondary/30 p-4;
+    @apply rounded-xl border border-border bg-bg-muted/30 p-4;
   }
 
   .post-entry {

@@ -28,7 +28,7 @@
   /* ── Mobile TOC ── */
 
   .toc-collapse {
-    @apply mb-6 rounded-lg bg-bg-code/60;
+    @apply mb-6 rounded-lg bg-bg-muted/60;
   }
 
   .toc-trigger {
