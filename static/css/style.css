@@ -2057,6 +2057,20 @@
     color: var(--color-text-secondary);
   }
 }
+.prose pre.mermaid {
+  background: transparent;
+  padding: 0;
+  margin: 1.5em 0;
+  overflow-x: auto;
+  text-align: center;
+  color: inherit;
+  font-family: var(--font-sans);
+}
+.prose pre.mermaid svg {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
 .prose {
   --tw-prose-body: var(--color-text);
   --tw-prose-headings: var(--color-text);

@@ -115,6 +115,7 @@
 @import './components/content/syntax.css';
 @import './components/content/callout.css';
 @import './components/content/link-card.css';
+@import './components/content/mermaid.css';
 @import './components/content/prose.css';
 
 /* Listing */

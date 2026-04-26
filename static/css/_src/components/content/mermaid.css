@@ -1,0 +1,18 @@
+/* Mermaid diagrams render as SVG inside `<pre class="mermaid">`. Strip the
+   `prose` `<pre>` styling (dark code-block background, monospace, padding)
+   so the diagram sits on the article surface like a figure. */
+.prose pre.mermaid {
+  background: transparent;
+  padding: 0;
+  margin: 1.5em 0;
+  overflow-x: auto;
+  text-align: center;
+  color: inherit;
+  font-family: var(--font-sans);
+}
+
+.prose pre.mermaid svg {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
