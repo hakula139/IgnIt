@@ -10,7 +10,7 @@
 <div class="apple-music-wrapper"{% if name %} id="{{ name }}"{% endif %}>
   <iframe
     class="apple-music-light w-full overflow-hidden rounded-lg"
-    title="Apple Music player"
+    title="{{ t('music_player_apple') }}"
     allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
     height="{{ height }}"
     sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
@@ -18,7 +18,7 @@
   ></iframe>
   <iframe
     class="apple-music-dark w-full overflow-hidden rounded-lg"
-    title="Apple Music player"
+    title="{{ t('music_player_apple') }}"
     allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
     height="{{ height }}"
     sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
@@ -39,7 +39,7 @@
 <div class="music-player-wrapper">
   <iframe
     class="w-full border-0"
-    title="NetEase Music player"
+    title="{{ t('music_player_netease') }}"
     height="{{ height }}"
     src="https://music.163.com/outchain/player?type={{ outchain_type }}&id={{ id }}&auto=0&height={{ inner_height }}"
   ></iframe>
@@ -50,7 +50,7 @@
 <div class="music-player-wrapper">
   <iframe
     class="w-full border-0"
-    title="QQ Music player"
+    title="{{ t('music_player_tencent') }}"
     height="{{ height }}"
     src="https://i.y.qq.com/n2/m/outchain/player/index.html?songid={{ id }}&songtype=0"
   ></iframe>
@@ -58,6 +58,6 @@
 {%- else -%}
 {#- Unknown server -#}
 <div class="music-player-wrapper">
-  <p>Unknown music server: {{ server }}</p>
+  <p>{{ t("music_unknown_server", server=server) }}</p>
 </div>
 {%- endif -%}

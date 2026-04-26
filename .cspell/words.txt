@@ -9,6 +9,7 @@ glassmorphism
 hakula
 hashchange
 hiragino
+ignit
 inlines
 jetbrains
 katex

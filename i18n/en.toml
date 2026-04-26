@@ -20,6 +20,15 @@ jump_to = "Jump to"
 image_credit = "Image credit"
 back_to_top = "Back to top"
 
+# Directives — music
+music_player_apple = "Apple Music"
+music_player_netease = "NetEase Music"
+music_player_tencent = "QQ Music"
+music_unknown_server = "Unknown music server: {server}"
+
+# Footer
+powered_by = "Powered by {kiln} & {ignit}"
+
 # 404
 error_404_title = "404"
 page_not_found = "The page you requested could not be found."
