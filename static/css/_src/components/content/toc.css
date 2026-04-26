@@ -87,11 +87,15 @@
     @apply mb-2 font-semibold text-text;
   }
 
-  .toc-sidebar .toc li > ul {
-    @apply hidden;
+  .toc-sidebar .toc li {
+    @apply grid grid-rows-[auto_0fr] transition-[grid-template-rows] duration-300;
   }
 
-  .toc-sidebar .toc li.active > ul {
-    @apply block;
+  .toc-sidebar .toc li.active {
+    @apply grid-rows-[auto_1fr];
+  }
+
+  .toc-sidebar .toc li > ul {
+    @apply min-h-0 overflow-hidden;
   }
 }
