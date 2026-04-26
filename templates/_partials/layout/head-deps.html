@@ -18,7 +18,7 @@
   >
   <link rel="stylesheet" href="{{ fa | safe }}/css/all.min.css">
 {%- endif %}
-{#- KaTeX (when page has math: true) -#}
-{%- if math | default(false) %}
+{#- KaTeX (loaded only on pages where the renderer detected math) -#}
+{%- if assets is defined and "math" in assets.features %}
   <link rel="stylesheet" href="{{ cdn | safe }}/katex@0.16/dist/katex.min.css">
 {%- endif %}
