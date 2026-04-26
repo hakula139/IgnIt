@@ -14,6 +14,7 @@ IgnIt is a [kiln](https://github.com/hakula139/kiln) theme built with Tailwind C
 - Responsive layout with sticky TOC sidebar (desktop) and collapsible TOC (mobile)
 - Featured image support in Open Graph / Twitter Card meta tags (absolute and relative URLs)
 - KaTeX math support (loaded conditionally per page)
+- Mermaid diagram rendering with dark-mode re-render (loaded conditionally per page)
 - Font Awesome icons (loaded conditionally via CDN)
 - Syntax-highlighted code blocks (Material color palette)
 - Directive-based shortcode system (music embeds, link cards, etc.)
