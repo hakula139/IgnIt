@@ -1,3 +1,15 @@
+@property --glow-x {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: -9999px;
+}
+
+@property --glow-y {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: -9999px;
+}
+
 @layer components {
   :where(.glass-glow, [data-glow-target]) {
     @apply relative overflow-hidden;
@@ -23,6 +35,9 @@
 
   :where(.glass-glow, [data-glow-target])::before {
     @apply content-none;
+
+    --glow-x: inherit;
+    --glow-y: inherit;
   }
 
   @variant dark {
@@ -41,6 +56,9 @@
 
   :where(.glass-glow, [data-glow-target])::after {
     @apply content-none;
+
+    --glow-x: inherit;
+    --glow-y: inherit;
   }
 
   @variant dark {
