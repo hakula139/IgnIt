@@ -20,6 +20,7 @@ netease
 noopener
 noreferrer
 nums
+oklab
 onclick
 outchain
 palenight
