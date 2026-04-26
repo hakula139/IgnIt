@@ -2057,19 +2057,21 @@
     color: var(--color-text-secondary);
   }
 }
-.prose pre.mermaid {
-  background: transparent;
-  padding: 0;
-  margin: 1.5em 0;
-  overflow-x: auto;
-  text-align: center;
-  color: inherit;
-  font-family: var(--font-sans);
-}
-.prose pre.mermaid svg {
-  display: inline-block;
-  max-width: 100%;
-  height: auto;
+@layer components {
+  .prose pre.mermaid {
+    margin-block: calc(var(--spacing) * 4);
+    display: flex;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-bg-code);
+    padding: calc(var(--spacing) * 6);
+    color: inherit;
+    font-family: var(--font-sans);
+  }
+  .prose pre.mermaid svg {
+    max-width: 100%;
+    height: auto;
+  }
 }
 .prose {
   --tw-prose-body: var(--color-text);
