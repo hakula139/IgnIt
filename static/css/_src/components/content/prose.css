@@ -9,7 +9,7 @@
   --tw-prose-bold: var(--color-text);
   --tw-prose-links: var(--color-link);
   --tw-prose-code: var(--color-text);
-  --tw-prose-pre-bg: var(--color-bg-code);
+  --tw-prose-pre-bg: color-mix(in oklab, var(--color-bg-muted) 60%, transparent);
 
   /* Lists */
   --tw-prose-counters: var(--color-text-secondary);
@@ -151,7 +151,7 @@
   /* ── Code ── */
 
   .prose code {
-    @apply rounded bg-bg-code/60 px-1.5 py-0.5 text-[0.875em];
+    @apply rounded bg-bg-muted/60 px-1.5 py-0.5 text-[0.875em];
   }
 
   /* ── Text ── */

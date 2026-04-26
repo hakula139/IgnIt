@@ -28,7 +28,7 @@
   /* ── Mobile TOC ── */
 
   .toc-collapse {
-    @apply mb-6 rounded-lg bg-bg-code/60;
+    @apply mb-6 rounded-lg bg-bg-muted/60;
   }
 
   .toc-trigger {
@@ -87,11 +87,19 @@
     @apply mb-2 font-semibold text-text;
   }
 
+  .toc-sidebar .toc li:has(> ul) {
+    @apply grid grid-rows-[auto_0fr] transition-[grid-template-rows] duration-300;
+  }
+
+  .toc-sidebar .toc li:has(> ul).active {
+    @apply grid-rows-[auto_1fr];
+  }
+
   .toc-sidebar .toc li > ul {
-    @apply max-h-0 overflow-hidden transition-[max-height] duration-300;
+    @apply min-h-0 overflow-hidden opacity-0 transition-opacity duration-300;
   }
 
   .toc-sidebar .toc li.active > ul {
-    @apply max-h-96;
+    @apply opacity-100;
   }
 }

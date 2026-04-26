@@ -1,0 +1,12 @@
+/* Unlayered — must override @tailwindcss/typography prose-pre defaults in @layer utilities. */
+
+.prose pre.mermaid {
+  @apply my-4 flex justify-center rounded-lg p-6;
+  color: inherit;
+  font-family: var(--font-sans);
+}
+
+.prose pre.mermaid svg {
+  @apply max-w-full;
+  height: auto;
+}

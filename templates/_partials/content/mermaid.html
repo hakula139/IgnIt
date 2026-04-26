@@ -1,0 +1,24 @@
+{%- set cdn = config.params.cdn | default("https://cdn.jsdelivr.net/npm") -%}
+{%- if assets is defined and "mermaid" in assets.features %}
+  <script type="module">
+    import mermaid from '{{ cdn | safe }}/mermaid@11/dist/mermaid.esm.min.mjs';
+
+    const themeFor = () =>
+      document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default';
+
+    const render = async () => {
+      const blocks = document.querySelectorAll('pre.mermaid');
+      for (const el of blocks) {
+        if (el.dataset.source !== undefined) el.textContent = el.dataset.source;
+        el.removeAttribute('data-processed');
+      }
+      mermaid.initialize({ startOnLoad: false, theme: themeFor() });
+      await mermaid.run({ nodes: blocks });
+    };
+
+    render();
+    new MutationObserver((muts) => {
+      if (muts.some((m) => m.attributeName === 'data-theme')) render();
+    }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  </script>
+{%- endif %}
