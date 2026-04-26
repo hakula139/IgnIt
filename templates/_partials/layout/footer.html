@@ -18,8 +18,8 @@
       {%- endif %}
 
       {%- if footer.powered_by | default(true) %}
-      {%- set kiln_link %}<a href="https://github.com/hakula139/kiln" target="_blank" rel="noopener noreferrer">kiln</a>{% endset -%}
-      {%- set ignit_link %}<a href="https://github.com/hakula139/IgnIt" target="_blank" rel="noopener noreferrer">IgnIt</a>{% endset -%}
+      {%- set kiln_link %}<a href="https://github.com/hakula139/kiln">kiln</a>{% endset -%}
+      {%- set ignit_link %}<a href="https://github.com/hakula139/IgnIt">IgnIt</a>{% endset -%}
       <p class="mt-1">{{ t("powered_by", kiln=kiln_link, ignit=ignit_link) | safe }}</p>
       {%- endif %}
     </div>

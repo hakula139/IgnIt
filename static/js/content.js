@@ -189,7 +189,7 @@
 
   const initExternalLinks = () => {
     const { hostname } = window.location;
-    for (const link of document.querySelectorAll('.prose a[href]')) {
+    for (const link of document.querySelectorAll('a[href]')) {
       try {
         const url = new URL(link.href);
         if (url.hostname && url.hostname !== hostname) {
