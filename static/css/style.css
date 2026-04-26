@@ -1636,6 +1636,15 @@
   .toc-sidebar .toc li > ul {
     min-height: calc(var(--spacing) * 0);
     overflow: hidden;
+    opacity: 0%;
+    transition-property: opacity;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
+  }
+  .toc-sidebar .toc li.active > ul {
+    opacity: 100%;
   }
 }
 @layer components {

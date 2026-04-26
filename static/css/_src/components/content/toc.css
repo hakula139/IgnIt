@@ -96,6 +96,10 @@
   }
 
   .toc-sidebar .toc li > ul {
-    @apply min-h-0 overflow-hidden;
+    @apply min-h-0 overflow-hidden opacity-0 transition-opacity duration-300;
+  }
+
+  .toc-sidebar .toc li.active > ul {
+    @apply opacity-100;
   }
 }
