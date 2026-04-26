@@ -1,6 +1,7 @@
 {
   "css.lint.validProperties": ["dynamic-range-limit"],
   "files.associations": {
+    "*.css": "tailwindcss",
     "*.html": "jinja-html"
   },
   "json.schemas": [

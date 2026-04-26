@@ -10,6 +10,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 
 ```text
 .
+├── i18n/                                   # Translation tables (en, zh-Hans); site-level files override theme keys
 ├── static/                                 # single asset root (committed for submodule consumers)
 │   ├── css/
 │   │   ├── _src/                           # private: Tailwind sources (not shipped)
@@ -20,7 +21,8 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   │       │   ├── back-to-top.css     # .back-to-top fixed button with glass styling
 │   │   │       │   ├── glass-panel.css     # .glass-panel, .glass-glow, [data-glow-target], .header-nav, .site-footer
 │   │   │       │   ├── header.css          # .header-logo, .header-link, .header-icon, .header-mobile-*, menu animations
-│   │   │       │   └── print.css           # @media print overrides (hide chrome, clean typography)
+│   │   │       │   ├── print.css           # @media print overrides (hide chrome, clean typography)
+│   │   │       │   └── skip-link.css       # .skip-link visually hidden, focus-promoted accessibility anchor
 │   │   │       ├── content/
 │   │   │       │   ├── article.css         # .article-title, .post-banner-*
 │   │   │       │   ├── callout.css         # .callout variants, icons, collapse animation
@@ -110,6 +112,12 @@ Use `@apply` in the appropriate CSS partial for anything else. Use canonical Tai
 
 To rebuild: `pnpm build` for a one-shot build, or `pnpm dev` for watch mode. Both run Tailwind only; JS files have no build step.
 
+## Internationalization
+
+Translation tables live under `i18n/<lang>.toml` (`en`, `zh-Hans`). Templates and JS access them via `t('key')` (MiniJinja) or `data-i18n-*` attributes on the document root. The active language is set by `config.language` in the consuming site.
+
+Sites consuming the theme can layer overrides: a same-named TOML file at the site root's `i18n/<lang>.toml` is merged on top of the theme file, key-by-key. Missing keys fall back to the theme's translation, then to the theme's English translation.
+
 ## Coding Conventions
 
 ### HTML Templates
@@ -137,7 +145,7 @@ To rebuild: `pnpm build` for a one-shot build, or `pnpm dev` for watch mode. Bot
 ### Git Conventions
 
 - Commit messages: `type(scope): description`
-  - Types: `feat`, `fix`, `refactor`, `docs`, `ci`, `chore`, `style`
+  - Types: `feat`, `fix`, `refactor`, `docs`, `test`, `ci`, `chore`, `style`, `perf`
   - Scope: area of change (e.g., `template`, `css`, `js`)
 - Keep commits atomic — one logical change per commit.
 - PRs: assign to `hakula139`, label `enhancement` for `feat`.

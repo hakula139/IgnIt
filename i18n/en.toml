@@ -1,4 +1,5 @@
 # Header / navigation
+skip_to_content = "Skip to content"
 search = "Search"
 open_menu = "Open menu"
 close_menu = "Close menu"
@@ -6,18 +7,18 @@ switch_to_dark = "Switch to dark mode"
 switch_to_light = "Switch to light mode"
 
 # Listing
-pagination = "Pagination"
-jump_to_page = "Jump to page"
-more = "More"
 all_sections = "All Sections"
 all_tags = "All Tags"
+more = "More"
+pagination = "Pagination"
+jump_to_page = "Jump to page"
 pinned = "Pinned"
 
 # Content
 table_of_contents = "Table of Contents"
-back_to_top = "Back to top"
 jump_to = "Jump to"
 image_credit = "Image credit"
+back_to_top = "Back to top"
 
 # 404
 error_404_title = "404"
