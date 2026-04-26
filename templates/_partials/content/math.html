@@ -1,5 +1,5 @@
 {%- set cdn = config.params.cdn | default("https://cdn.jsdelivr.net/npm") -%}
-{%- if math | default(false) %}
+{%- if assets is defined and "math" in assets.features %}
   <script src="{{ cdn | safe }}/katex@0.16/dist/katex.min.js" defer></script>
   <script
     src="{{ cdn | safe }}/katex@0.16/dist/contrib/auto-render.min.js"
