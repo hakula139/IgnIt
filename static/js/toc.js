@@ -66,10 +66,14 @@
 
     const ensureLinkVisible = (link) => {
       const scroll = link.closest('.toc-sidebar-scroll');
-      if (!scroll) return;
+      if (!scroll) {
+        return;
+      }
       const cRect = scroll.getBoundingClientRect();
       const lRect = link.getBoundingClientRect();
-      if (lRect.top >= cRect.top && lRect.bottom <= cRect.bottom) return;
+      if (lRect.top >= cRect.top && lRect.bottom <= cRect.bottom) {
+        return;
+      }
       const offset = lRect.top - cRect.top - (cRect.height - lRect.height) / 2;
       scroll.scrollTo({ top: scroll.scrollTop + offset, behavior: 'smooth' });
     };
