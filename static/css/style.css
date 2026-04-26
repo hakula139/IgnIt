@@ -1622,16 +1622,10 @@
     color: var(--color-text);
   }
   .toc-sidebar .toc li > ul {
-    max-height: calc(var(--spacing) * 0);
-    overflow: hidden;
-    transition-property: max-height;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
-    --tw-duration: 300ms;
-    transition-duration: 300ms;
+    display: none;
   }
   .toc-sidebar .toc li.active > ul {
-    max-height: calc(var(--spacing) * 96);
+    display: block;
   }
 }
 @layer components {
