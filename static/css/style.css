@@ -1621,7 +1621,7 @@
     font-weight: var(--font-weight-semibold);
     color: var(--color-text);
   }
-  .toc-sidebar .toc li {
+  .toc-sidebar .toc li:has(> ul) {
     display: grid;
     grid-template-rows: auto 0fr;
     transition-property: grid-template-rows;
@@ -1630,7 +1630,7 @@
     --tw-duration: 300ms;
     transition-duration: 300ms;
   }
-  .toc-sidebar .toc li.active {
+  .toc-sidebar .toc li:has(> ul).active {
     grid-template-rows: auto 1fr;
   }
   .toc-sidebar .toc li > ul {
