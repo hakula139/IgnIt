@@ -30,10 +30,8 @@
     border-radius: 0 !important;
   }
 
-  .glass-glow::before,
-  .glass-glow::after,
-  [data-glow-target]::before,
-  [data-glow-target]::after {
+  .glow-ambient,
+  .glow-border {
     display: none !important;
   }
 
