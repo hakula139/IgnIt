@@ -21,39 +21,32 @@
 
   /* ── Glass Glow: Cursor-Tracking Layers ── */
 
-  .glow-ambient,
-  .glow-border {
-    @apply hidden;
+  .glow-ambient {
+    @apply pointer-events-none absolute z-1 rounded-full will-change-transform;
+    width: calc(var(--glow-size) * 2);
+    height: calc(var(--glow-size) * 2);
+    top: calc(var(--glow-size) * -1);
+    left: calc(var(--glow-size) * -1);
+    background: radial-gradient(closest-side circle, var(--glow-color), transparent);
+    transform: translate3d(-9999px, -9999px, 0);
   }
 
-  @variant dark {
-    .glow-ambient {
-      @apply pointer-events-none absolute z-1 block rounded-full will-change-transform;
-      width: calc(var(--glow-size) * 2);
-      height: calc(var(--glow-size) * 2);
-      top: calc(var(--glow-size) * -1);
-      left: calc(var(--glow-size) * -1);
-      background: radial-gradient(closest-side circle, var(--glow-color), transparent);
-      transform: translate3d(-9999px, -9999px, 0);
-    }
+  .glow-border {
+    @apply pointer-events-none absolute inset-0 z-2 rounded-[inherit] p-px;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+  }
 
-    .glow-border {
-      @apply pointer-events-none absolute inset-0 z-2 block rounded-[inherit] p-px;
-      mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-      mask-composite: exclude;
-    }
-
-    .glow-border-spot {
-      @apply pointer-events-none absolute rounded-full will-change-transform;
-      width: calc(var(--glow-border-size) * 2);
-      height: calc(var(--glow-border-size) * 2);
-      top: calc(var(--glow-border-size) * -1);
-      left: calc(var(--glow-border-size) * -1);
-      background: radial-gradient(closest-side circle, var(--glow-border-color), 8%, transparent);
-      transform: translate3d(-9999px, -9999px, 0);
-    }
+  .glow-border-spot {
+    @apply pointer-events-none absolute rounded-full will-change-transform;
+    width: calc(var(--glow-border-size) * 2);
+    height: calc(var(--glow-border-size) * 2);
+    top: calc(var(--glow-border-size) * -1);
+    left: calc(var(--glow-border-size) * -1);
+    background: radial-gradient(closest-side circle, var(--glow-border-color), 8%, transparent);
+    transform: translate3d(-9999px, -9999px, 0);
   }
 
   /* ── Glass Panel Base ── */

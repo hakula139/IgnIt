@@ -1041,47 +1041,40 @@
       --glow-border-color: rgba(255, 255, 255, 0.7);
     }
   }
-  .glow-ambient, .glow-border {
-    display: none;
+  .glow-ambient {
+    pointer-events: none;
+    position: absolute;
+    z-index: 1;
+    border-radius: calc(infinity * 1px);
+    will-change: transform;
+    width: calc(var(--glow-size) * 2);
+    height: calc(var(--glow-size) * 2);
+    top: calc(var(--glow-size) * -1);
+    left: calc(var(--glow-size) * -1);
+    background: radial-gradient(closest-side circle, var(--glow-color), transparent);
+    transform: translate3d(-9999px, -9999px, 0);
   }
-  &:where([data-theme="dark"], [data-theme="dark"] *) {
-    .glow-ambient {
-      pointer-events: none;
-      position: absolute;
-      z-index: 1;
-      display: block;
-      border-radius: calc(infinity * 1px);
-      will-change: transform;
-      width: calc(var(--glow-size) * 2);
-      height: calc(var(--glow-size) * 2);
-      top: calc(var(--glow-size) * -1);
-      left: calc(var(--glow-size) * -1);
-      background: radial-gradient(closest-side circle, var(--glow-color), transparent);
-      transform: translate3d(-9999px, -9999px, 0);
-    }
-    .glow-border {
-      pointer-events: none;
-      position: absolute;
-      inset: calc(var(--spacing) * 0);
-      z-index: 2;
-      display: block;
-      border-radius: inherit;
-      padding: 1px;
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      mask-composite: exclude;
-    }
-    .glow-border-spot {
-      pointer-events: none;
-      position: absolute;
-      border-radius: calc(infinity * 1px);
-      will-change: transform;
-      width: calc(var(--glow-border-size) * 2);
-      height: calc(var(--glow-border-size) * 2);
-      top: calc(var(--glow-border-size) * -1);
-      left: calc(var(--glow-border-size) * -1);
-      background: radial-gradient(closest-side circle, var(--glow-border-color), 8%, transparent);
-      transform: translate3d(-9999px, -9999px, 0);
-    }
+  .glow-border {
+    pointer-events: none;
+    position: absolute;
+    inset: calc(var(--spacing) * 0);
+    z-index: 2;
+    border-radius: inherit;
+    padding: 1px;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+  }
+  .glow-border-spot {
+    pointer-events: none;
+    position: absolute;
+    border-radius: calc(infinity * 1px);
+    will-change: transform;
+    width: calc(var(--glow-border-size) * 2);
+    height: calc(var(--glow-border-size) * 2);
+    top: calc(var(--glow-border-size) * -1);
+    left: calc(var(--glow-border-size) * -1);
+    background: radial-gradient(closest-side circle, var(--glow-border-color), 8%, transparent);
+    transform: translate3d(-9999px, -9999px, 0);
   }
   .glass-panel {
     position: relative;
