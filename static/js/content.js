@@ -2,7 +2,6 @@
 
 (() => {
   const COPIED_DURATION = 2000;
-  const IMAGE_SELECTOR = 'img';
 
   const createIcon = (classes) => {
     const icon = document.createElement('i');
@@ -154,26 +153,6 @@
     }
   };
 
-  // ── Image Fade-in ──
-
-  const initImageFadeIn = () => {
-    const markLoaded = (img) => img.classList.add('loaded');
-
-    // Use the `load` event directly (no `await img.decode()`): for AVIF and
-    // other formats with slow decoders, awaiting `decode()` stalls the
-    // visibility flip behind the decoder, leaving panel-background dark
-    // rectangles where lazy images should be.
-    for (const img of document.querySelectorAll(IMAGE_SELECTOR)) {
-      if (img.complete) {
-        markLoaded(img);
-        continue;
-      }
-
-      img.addEventListener('load', () => markLoaded(img), { once: true });
-      img.addEventListener('error', () => markLoaded(img), { once: true });
-    }
-  };
-
   // ── External Links ──
 
   const initExternalLinks = () => {
@@ -198,7 +177,6 @@
     initCallouts();
     initTocCollapse();
     initHeadingAnchors();
-    initImageFadeIn();
     initExternalLinks();
   };
 

@@ -1,11 +1,4 @@
 @layer components {
-  @keyframes image-fade-in {
-    from {
-      opacity: 0;
-      transform: scale(1.03);
-    }
-  }
-
   .home-card {
     @apply relative h-88 overflow-hidden rounded-card border border-white/8 bg-card shadow-card;
   }
