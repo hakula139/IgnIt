@@ -2,7 +2,7 @@
 
 (() => {
   const COPIED_DURATION = 2000;
-  const IMAGE_SELECTOR = '.prose img, .post-featured-image';
+  const IMAGE_SELECTOR = '.post-featured-image';
 
   document.documentElement.classList.add('image-fade-enabled');
 

@@ -2213,10 +2213,10 @@
     margin-inline: auto;
     border-radius: var(--radius-lg);
   }
-  html.image-fade-enabled :where(.prose img, .post-featured-image) {
+  html.image-fade-enabled .post-featured-image {
     visibility: hidden;
   }
-  html.image-fade-enabled :where(.prose img, .post-featured-image).loaded {
+  html.image-fade-enabled .post-featured-image.loaded {
     visibility: visible;
     animation: var(--animate-image-fade-in);
   }
