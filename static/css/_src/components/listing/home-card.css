@@ -11,7 +11,7 @@
   }
 
   .home-card-image {
-    @apply absolute inset-0 animate-image-fade-in bg-cover transition-[scale,filter] duration-1000;
+    @apply absolute inset-0 h-full w-full object-cover transition-[scale,filter] duration-1000;
   }
 
   /* Stronger bottom gradient on mobile for text readability.

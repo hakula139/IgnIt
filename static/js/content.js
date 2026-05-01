@@ -2,7 +2,7 @@
 
 (() => {
   const COPIED_DURATION = 2000;
-  const IMAGE_SELECTOR = '.post-featured-image';
+  const IMAGE_SELECTOR = 'img';
 
   document.documentElement.classList.add('image-fade-enabled');
 
@@ -160,27 +160,18 @@
 
   const initImageFadeIn = () => {
     const markLoaded = (img) => img.classList.add('loaded');
-    const revealAfterDecode = async (img) => {
-      try {
-        await img.decode();
-      } catch {
-        // `decode()` may reject for broken images or unsupported formats.
-      }
 
-      markLoaded(img);
-    };
-
+    // Use the `load` event directly (no `await img.decode()`): for AVIF and
+    // other formats with slow decoders, awaiting `decode()` stalls the
+    // visibility flip behind the decoder, leaving panel-background dark
+    // rectangles where lazy images should be.
     for (const img of document.querySelectorAll(IMAGE_SELECTOR)) {
       if (img.complete) {
-        if (img.naturalWidth > 0) {
-          void revealAfterDecode(img);
-        } else {
-          markLoaded(img);
-        }
+        markLoaded(img);
         continue;
       }
 
-      img.addEventListener('load', () => void revealAfterDecode(img), { once: true });
+      img.addEventListener('load', () => markLoaded(img), { once: true });
       img.addEventListener('error', () => markLoaded(img), { once: true });
     }
   };

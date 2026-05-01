@@ -185,18 +185,6 @@
     @apply mx-auto rounded-lg;
   }
 
-  /* Banner only — prose images render natively as the browser decodes them.
-     Hiding lazy-loaded prose images until JS flips `.loaded` after `decode()`
-     stacks an extra delay onto AVIF decoding, leaving large dark-panel
-     rectangles in image-heavy posts during fast scroll. */
-  html.image-fade-enabled .post-featured-image {
-    @apply invisible;
-  }
-
-  html.image-fade-enabled .post-featured-image.loaded {
-    @apply visible animate-image-fade-in;
-  }
-
   .prose figure {
     @apply rounded-lg text-center;
   }
