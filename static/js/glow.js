@@ -26,11 +26,17 @@
     let cursorY = -9999;
     let rafId = 0;
     let trackingEnabled = false;
-    let targets = queryActiveTargets().map((el) => ({ el, rect: null, fixed: false }));
+    let targets = queryActiveTargets().map((el) => ({
+      el,
+      rect: null,
+      fixed: false,
+      inView: true,
+    }));
     let rectsDirty = true;
     let lastScrollY = window.scrollY;
     let scrollEndTimer = 0;
     let lastScrollRender = 0;
+    let viewObserver = null;
 
     // On high-refresh-rate displays (120Hz+), each setProperty update
     // triggers backdrop-filter re-compositing. Cap scroll-triggered
@@ -99,7 +105,10 @@
       if (rectsDirty) {
         measureTargets();
       }
-      for (const { el, rect } of targets) {
+      for (const { el, rect, inView } of targets) {
+        if (!inView) {
+          continue;
+        }
         el.style.setProperty('--glow-x', `${Math.round(cursorX - rect.left)}px`);
         el.style.setProperty('--glow-y', `${Math.round(cursorY - rect.top)}px`);
       }
@@ -117,6 +126,33 @@
 
     // ── Lifecycle ──
 
+    const disconnectViewObserver = () => {
+      if (viewObserver !== null) {
+        viewObserver.disconnect();
+        viewObserver = null;
+      }
+    };
+
+    const observeViewport = () => {
+      disconnectViewObserver();
+      if (targets.length === 0) {
+        return;
+      }
+      const targetByEl = new Map(targets.map((t) => [t.el, t]));
+      viewObserver = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          const t = targetByEl.get(entry.target);
+          if (t) {
+            t.inView = entry.isIntersecting;
+          }
+        }
+        scheduleUpdate();
+      });
+      for (const t of targets) {
+        viewObserver.observe(t.el);
+      }
+    };
+
     const resetGlow = () => {
       if (rafId !== 0) {
         cancelAnimationFrame(rafId);
@@ -129,10 +165,11 @@
     };
 
     const syncTargets = () => {
-      targets = queryActiveTargets().map((el) => ({ el, rect: null, fixed: false }));
+      targets = queryActiveTargets().map((el) => ({ el, rect: null, fixed: false, inView: true }));
       rectsDirty = true;
       resetGlow();
       if (trackingEnabled) {
+        observeViewport();
         scheduleUpdate();
       }
     };
@@ -141,6 +178,7 @@
       document.addEventListener('mousemove', onMouseMove);
       window.addEventListener('scroll', onScroll, { passive: true });
       window.addEventListener('resize', invalidateRects, { passive: true });
+      observeViewport();
       trackingEnabled = true;
     };
 
@@ -150,6 +188,7 @@
         window.removeEventListener('scroll', onScroll);
         window.removeEventListener('resize', invalidateRects);
         clearTimeout(scrollEndTimer);
+        disconnectViewObserver();
         trackingEnabled = false;
       }
       resetGlow();
