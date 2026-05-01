@@ -34,11 +34,14 @@
     {%- for page in pages %}
     {%- if page.featured_image %}
     <article class="home-card">
-      <div
+      <img
         class="home-card-image"
-        style="background-image: url('{{ page.featured_image.src | safe }}');
-               background-position: {{ page.featured_image.position | default('center', true) }}"
-      ></div>
+        src="{{ page.featured_image.src | safe }}"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        style="object-position: {{ page.featured_image.position | default('center', true) }}"
+      />
       <div class="home-card-overlay"></div>
       {%- if page.pinned %}
       <span class="home-card-pin glass-panel" aria-label="{{ t('pinned') }}" title="{{ t('pinned') }}">
