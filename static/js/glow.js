@@ -9,38 +9,64 @@
       return;
     }
 
-    const GLOW_SELECTOR = '.glass-glow, [data-glow-target]';
     const MODAL_SELECTOR = '[data-glow-target][open]';
     const BG_SELECTOR = '.glass-glow, [data-glow-target]:not([open])';
+    const GLOW_LAYER_SELECTOR = '.glow-ambient, .glow-border-spot';
 
     const isDarkTheme = () => document.documentElement.getAttribute('data-theme') === 'dark';
-
-    const queryAllTargets = () => document.querySelectorAll(GLOW_SELECTOR);
 
     const queryActiveTargets = () => {
       const modal = document.querySelector(MODAL_SELECTOR);
       return modal ? [modal] : Array.from(document.querySelectorAll(BG_SELECTOR));
     };
 
+    // Inject glow layers as real children so JS can write transform on them
+    // directly, instead of invalidating the parent's style every cursor move.
+    const ensureGlowLayers = (el) => {
+      let ambient = el.querySelector(':scope > .glow-ambient');
+      if (!ambient) {
+        ambient = document.createElement('span');
+        ambient.className = 'glow-ambient';
+        ambient.setAttribute('aria-hidden', 'true');
+        el.appendChild(ambient);
+      }
+      let border = el.querySelector(':scope > .glow-border');
+      if (!border) {
+        border = document.createElement('span');
+        border.className = 'glow-border';
+        border.setAttribute('aria-hidden', 'true');
+        const spot = document.createElement('span');
+        spot.className = 'glow-border-spot';
+        border.appendChild(spot);
+        el.appendChild(border);
+      }
+      return { ambient, borderSpot: border.firstElementChild };
+    };
+
+    const buildTarget = (el) => {
+      const layers = ensureGlowLayers(el);
+      return {
+        el,
+        rect: null,
+        fixed: false,
+        inView: true,
+        ambient: layers.ambient,
+        borderSpot: layers.borderSpot,
+      };
+    };
+
     let cursorX = -9999;
     let cursorY = -9999;
     let rafId = 0;
     let trackingEnabled = false;
-    let targets = queryActiveTargets().map((el) => ({
-      el,
-      rect: null,
-      fixed: false,
-      inView: true,
-    }));
+    let targets = queryActiveTargets().map(buildTarget);
     let rectsDirty = true;
     let lastScrollY = window.scrollY;
     let scrollEndTimer = 0;
     let lastScrollRender = 0;
     let viewObserver = null;
 
-    // On high-refresh-rate displays (120Hz+), each setProperty update
-    // triggers backdrop-filter re-compositing. Cap scroll-triggered
-    // renders to ~30fps to keep compositor commits within budget.
+    // Cap scroll-triggered renders to ~30fps to coalesce compositor commits.
     const SCROLL_RENDER_MS = 32;
 
     // ── Event Handlers ──
@@ -56,10 +82,8 @@
       scheduleUpdate();
     };
 
-    // Adjust cached rects by scroll delta instead of calling
-    // getBoundingClientRect (which forces a synchronous reflow after
-    // setProperty dirtied styles). Rect adjustment runs on every scroll
-    // event (cheap math), but rendering is throttled via SCROLL_RENDER_MS.
+    // Adjust cached rects by scroll delta (cheap math) instead of calling
+    // getBoundingClientRect on every scroll event.
     const onScroll = () => {
       clearTimeout(scrollEndTimer);
       scrollEndTimer = setTimeout(invalidateRects, 150);
@@ -105,12 +129,13 @@
       if (rectsDirty) {
         measureTargets();
       }
-      for (const { el, rect, inView } of targets) {
+      for (const { ambient, borderSpot, rect, inView } of targets) {
         if (!inView) {
           continue;
         }
-        el.style.setProperty('--glow-x', `${Math.round(cursorX - rect.left)}px`);
-        el.style.setProperty('--glow-y', `${Math.round(cursorY - rect.top)}px`);
+        const transform = `translate3d(${Math.round(cursorX - rect.left)}px, ${Math.round(cursorY - rect.top)}px, 0)`;
+        ambient.style.transform = transform;
+        borderSpot.style.transform = transform;
       }
     };
 
@@ -158,14 +183,13 @@
         cancelAnimationFrame(rafId);
         rafId = 0;
       }
-      for (const el of queryAllTargets()) {
-        el.style.removeProperty('--glow-x');
-        el.style.removeProperty('--glow-y');
+      for (const el of document.querySelectorAll(GLOW_LAYER_SELECTOR)) {
+        el.style.transform = '';
       }
     };
 
     const syncTargets = () => {
-      targets = queryActiveTargets().map((el) => ({ el, rect: null, fixed: false, inView: true }));
+      targets = queryActiveTargets().map(buildTarget);
       rectsDirty = true;
       resetGlow();
       if (trackingEnabled) {

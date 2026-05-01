@@ -1,15 +1,3 @@
-@property --glow-x {
-  syntax: '<length>';
-  inherits: false;
-  initial-value: -9999px;
-}
-
-@property --glow-y {
-  syntax: '<length>';
-  inherits: false;
-  initial-value: -9999px;
-}
-
 @layer components {
   :where(.glass-glow, [data-glow-target]) {
     @apply relative overflow-hidden;
@@ -31,49 +19,40 @@
     }
   }
 
-  /* ── Glass Glow: Ambient Surface Light ── */
+  /* ── Glass Glow: Cursor-Tracking Layers ── */
 
-  :where(.glass-glow, [data-glow-target])::before {
-    @apply content-none;
-
-    --glow-x: inherit;
-    --glow-y: inherit;
+  .glow-ambient,
+  .glow-border {
+    @apply hidden;
   }
 
   @variant dark {
-    :where(.glass-glow, [data-glow-target])::before {
-      @apply pointer-events-none absolute z-1 rounded-full will-change-transform content-[''];
+    .glow-ambient {
+      @apply pointer-events-none absolute z-1 block rounded-full will-change-transform;
       width: calc(var(--glow-size) * 2);
       height: calc(var(--glow-size) * 2);
       top: calc(var(--glow-size) * -1);
       left: calc(var(--glow-size) * -1);
       background: radial-gradient(closest-side circle, var(--glow-color), transparent);
-      transform: translate3d(var(--glow-x, -9999px), var(--glow-y, -9999px), 0);
+      transform: translate3d(-9999px, -9999px, 0);
     }
-  }
 
-  /* ── Glass Glow: Border Light ── */
-
-  :where(.glass-glow, [data-glow-target])::after {
-    @apply content-none;
-
-    --glow-x: inherit;
-    --glow-y: inherit;
-  }
-
-  @variant dark {
-    :where(.glass-glow, [data-glow-target])::after {
-      @apply pointer-events-none absolute inset-0 z-2 rounded-[inherit] p-px content-[''];
-      background: radial-gradient(
-        var(--glow-border-size) circle at var(--glow-x, -9999px) var(--glow-y, -9999px),
-        var(--glow-border-color),
-        8%,
-        transparent
-      );
+    .glow-border {
+      @apply pointer-events-none absolute inset-0 z-2 block rounded-[inherit] p-px;
       mask:
         linear-gradient(#fff 0 0) content-box,
         linear-gradient(#fff 0 0);
       mask-composite: exclude;
+    }
+
+    .glow-border-spot {
+      @apply pointer-events-none absolute rounded-full will-change-transform;
+      width: calc(var(--glow-border-size) * 2);
+      height: calc(var(--glow-border-size) * 2);
+      top: calc(var(--glow-border-size) * -1);
+      left: calc(var(--glow-border-size) * -1);
+      background: radial-gradient(closest-side circle, var(--glow-border-color), 8%, transparent);
+      transform: translate3d(-9999px, -9999px, 0);
     }
   }
 
