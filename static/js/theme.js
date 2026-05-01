@@ -114,6 +114,11 @@
 
   // ── Initialization ──
 
+  // Enable the image fade-in CSS contract before any <img> paints. Must run
+  // synchronously in <head>; if deferred, the browser can paint cached
+  // images before the class is set, causing a visible flash + re-fade.
+  document.documentElement.classList.add('image-fade-enabled');
+
   // Apply initial theme (called inline in <head> to prevent flash).
   const stored = getStoredTheme();
   if (stored) {

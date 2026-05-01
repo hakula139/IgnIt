@@ -4,8 +4,6 @@
   const COPIED_DURATION = 2000;
   const IMAGE_SELECTOR = 'img';
 
-  document.documentElement.classList.add('image-fade-enabled');
-
   const createIcon = (classes) => {
     const icon = document.createElement('i');
     icon.className = classes;
