@@ -29,38 +29,69 @@
 
     let activeId = null;
 
+    const collectChain = (id) => {
+      const chain = [];
+      if (!id || !tocLinks.has(id)) {
+        return chain;
+      }
+      for (const a of tocLinks.get(id)) {
+        let li = a.closest('li');
+        while (li) {
+          chain.push(li);
+          li = li.parentElement?.closest('li');
+        }
+      }
+      return chain;
+    };
+
     const setActive = (id) => {
       if (id === activeId) {
         return;
       }
 
-      // Deactivate previous.
+      // Diff against the previous chain so we only flip .active on the
+      // divergent prefix — consecutive headings usually share most ancestors.
+      const oldChain = collectChain(activeId);
+      const newChain = collectChain(id);
+      const oldSet = new Set(oldChain);
+      const newSet = new Set(newChain);
+
+      for (const li of oldChain) {
+        if (!newSet.has(li)) {
+          li.classList.remove(ACTIVE_CLASS);
+        }
+      }
       if (activeId && tocLinks.has(activeId)) {
         for (const a of tocLinks.get(activeId)) {
           a.classList.remove(ACTIVE_CLASS);
-          // Collapse ancestor sections.
-          let li = a.closest('li');
-          while (li) {
-            li.classList.remove(ACTIVE_CLASS);
-            li = li.parentElement?.closest('li');
-          }
         }
       }
 
       activeId = id;
 
-      // Activate current.
       if (id && tocLinks.has(id)) {
         for (const a of tocLinks.get(id)) {
           a.classList.add(ACTIVE_CLASS);
-          // Expand ancestor sections.
-          let li = a.closest('li');
-          while (li) {
-            li.classList.add(ACTIVE_CLASS);
-            li = li.parentElement?.closest('li');
-          }
-          ensureLinkVisible(a);
         }
+      }
+      for (const li of newChain) {
+        if (!oldSet.has(li)) {
+          li.classList.add(ACTIVE_CLASS);
+        }
+      }
+
+      // Defer the rect read so it doesn't force a sync layout flush inside
+      // the IO callback that just dirtied styles.
+      if (id && tocLinks.has(id)) {
+        const links = tocLinks.get(id);
+        requestAnimationFrame(() => {
+          if (activeId !== id) {
+            return;
+          }
+          for (const a of links) {
+            ensureLinkVisible(a);
+          }
+        });
       }
     };
 
