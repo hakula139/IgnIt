@@ -45,7 +45,7 @@
         loading="lazy"
         decoding="async"
         style="object-position: {{ page.featured_image.position | default('center', true) }}{% if page.featured_image.lqip_uri %}; background:url('{{ page.featured_image.lqip_uri | safe }}') center/cover{% endif %}"
-      />
+      >
       <div class="home-card-overlay"></div>
       {%- if page.pinned %}
       <span class="home-card-pin glass-panel" aria-label="{{ t('pinned') }}" title="{{ t('pinned') }}">
