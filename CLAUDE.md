@@ -152,6 +152,10 @@ Disable per-site with `[image]` `lqip = false` in `config.toml`; dimensions are 
 - `'use strict'` at top of each file.
 - IIFE wrapper `(() => { ... })()` for script isolation.
 
+### Documentation
+
+- Markdown prose is **not hard-wrapped** — paragraphs are single long lines and flow with the reader's viewport. Match the surrounding style; do not introduce 80-column line breaks inside paragraphs.
+
 ### Git Conventions
 
 - Commit messages: `type(scope): description`
@@ -162,7 +166,7 @@ Disable per-site with `[image]` `lqip = false` in `config.toml`; dimensions are 
 
 ### Pre-commit
 
-The husky pre-commit hook runs `lint-staged`, which auto-formats staged files with Prettier (including Tailwind class sorting in HTML attributes and CSS `@apply` via `prettier-plugin-tailwindcss`), lints Markdown with markdownlint, and spell-checks with cspell. The pre-push hook runs `pnpm build` and verifies `static/css/style.css` is in sync with its Tailwind source.
+Pre-commit hooks are driven by [git-hooks-nix](https://github.com/cachix/git-hooks.nix), wired in `flake.nix`. Entering the dev shell (`nix develop` or via direnv) installs `.git/hooks/pre-commit` automatically. Hooks: Prettier (with `prettier-plugin-tailwindcss` for class sorting), markdownlint, cspell, nixfmt / statix / deadnix, and basic file hygiene. Node-side hooks no-op when `node_modules/` is absent (e.g., inside the Nix sandbox); CI runs the equivalent commands directly via `pnpm`.
 
 ### Spell Checking
 
