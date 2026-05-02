@@ -8,6 +8,12 @@
 # Dependencies
 node_modules/
 
+# Nix
+.direnv/
+.pre-commit-config.yaml
+result
+result-*
+
 # Claude Code
 .claude/plans/
 .claude/settings.local.json
