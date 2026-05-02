@@ -124,6 +124,7 @@ kiln stamps three fields onto every locally-resolvable image at build time: natu
 
 - **Body images**: kiln wraps every LQIP-enabled `<img>` in `<span class="lqip" style="--lqip-uri:url(...)">`. `lqip.css` fades the inner `<img>` in over the backdrop; `theme.js` flips `html.lqip-fade-enabled` in `<head>` so JS-disabled clients still see images. Templates do nothing.
 - **Featured images** (`templates/post.html` banner, `templates/home.html` cards): exposed as `featured_image.width` / `.height` / `.lqip_uri`. Templates emit the same `<span class="lqip" style="--lqip-uri:url(...)">` wrapper around the `<img>` when `lqip_uri` is present, so banner + home-card share the body-image fade-in path. Gate on `{% if featured_image.lqip_uri %}` so remote / unresolvable paths still render bare. Per-context size overrides (`.post-banner-media > .lqip`, `.home-card > .lqip`) live in `lqip.css`.
+- **Body background** (`config.params.background`): kiln only stamps `<img>`, so the CSS `background-image` on `body::before` doesn't get an automatic LQIP. Sites can pre-compute one and set `lqip_uri` (alongside `image`) under `[params.background]`; `base.html` emits it as `--bg-lqip` and `base.css` layers it under `--bg-image` so first paint shows the blurred placeholder instead of `--color-bg`.
 
 Disable per-site with `[image]` `lqip = false` in `config.toml`; dimensions are still emitted.
 

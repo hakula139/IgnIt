@@ -31,10 +31,16 @@
     @apply flex min-h-screen flex-col bg-bg leading-[1.75] text-text;
   }
 
+  /* Two-layer stack: real bg on top, optional LQIP behind so first paint
+     shows a blurred placeholder instead of `--color-bg` while the real
+     image transfers (CSS bg-image can't be progressively decoded). */
   body::before {
     @apply fixed inset-0 -z-10 content-[''];
-    background: var(--bg-image, var(--color-bg))
-      var(--bg-position-mobile, var(--bg-position, center)) / cover no-repeat;
+    background-color: var(--color-bg);
+    background-image: var(--bg-image, none), var(--bg-lqip, none);
+    background-position: var(--bg-position-mobile, var(--bg-position, center));
+    background-size: cover;
+    background-repeat: no-repeat;
   }
 
   @media (min-width: 640px) {

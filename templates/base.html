@@ -24,6 +24,7 @@
 <body
   {%- if config.params.background and config.params.background.image %}
   style="--bg-image: url('{{ config.base_url | safe }}{{ config.params.background.image | safe }}')
+    {%- if config.params.background.lqip_uri %}; --bg-lqip: url('{{ config.params.background.lqip_uri | safe }}'){% endif %}
     {%- if config.params.background.position %}; --bg-position: {{ config.params.background.position }}{% endif %}
     {%- if config.params.background.position_mobile %}; --bg-position-mobile: {{ config.params.background.position_mobile }}{% endif %}"
   {%- endif %}
