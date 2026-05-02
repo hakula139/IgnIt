@@ -1,6 +1,6 @@
 @layer components {
   /* `.lqip-fade-enabled` is set on `<html>` by `theme.js`; without it the
-     opacity gate stays off so JS-disabled clients still see images. */
+     visibility gate stays off so JS-disabled clients still see images. */
   .lqip {
     @apply inline-block overflow-hidden;
     background-image: var(--lqip-uri);
@@ -9,11 +9,17 @@
   }
 
   .lqip > img {
-    @apply block transition-[opacity,scale] duration-500;
+    @apply block;
   }
 
+  /* `animation` (not `transition`) so the keyframe runs on class change
+     even when `content.js` marks `.lqip-loaded` before first paint. */
   .lqip-fade-enabled .lqip:not(.lqip-loaded) > img {
-    @apply scale-[0.98] opacity-0;
+    @apply invisible;
+  }
+
+  .lqip-fade-enabled .lqip-loaded > img {
+    @apply visible animate-lqip-fade-in;
   }
 
   /* Take the figure's centering + rounding so the backdrop matches the
