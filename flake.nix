@@ -6,8 +6,8 @@
 # typically consumed as a git submodule of a kiln site, but ships its own dev
 # shell so contributors can iterate on templates and CSS in isolation.
 #
-#   nix develop                            # interactive shell (auto-installs hooks)
-#   nix flake check                        # Nix-side hooks (Node-side run in CI)
+#   nix develop        # interactive shell (auto-installs hooks)
+#   nix flake check    # Nix-side hooks (Node-side run in CI)
 
 {
   description = "IgnIt — kiln theme (dev environment)";
@@ -92,8 +92,6 @@
               enable = true;
               name = "prettier";
               entry = nodeHook "prettier-write" "prettier --write --ignore-unknown";
-              # Markdown is opinionated; markdownlint covers structure. CSS /
-              # JS / JSON are safe to auto-format.
               files = "\\.(css|js|json)$";
               pass_filenames = true;
             };
