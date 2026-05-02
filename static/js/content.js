@@ -156,8 +156,22 @@
   // ── LQIP Fade-In ──
 
   // Pairs with `theme.js`'s head-time `lqip-fade-enabled` flip on `<html>`.
-  // `lqip-fade-in` is opt-in per element so cached `<img>`s (img.complete sync-true)
-  // skip the keyframe — repeat visits don't re-animate the body bg / banners.
+  // Cached images skip the keyframe so repeat visits don't re-animate.
+
+  // `img.complete` lies for cached bytes under `decoding="async"`; Resource
+  // Timing's `transferSize === 0` is the reliable cache-hit signal.
+  const isCacheHit = (img) => {
+    const url = img.currentSrc || img.src;
+    if (!url) {
+      return false;
+    }
+    const entries = performance.getEntriesByName(url, 'resource');
+    if (!entries.length) {
+      return false;
+    }
+    return entries[entries.length - 1].transferSize === 0;
+  };
+
   const initLqipFadeIn = () => {
     const reveal = (wrapper, animate) => {
       if (animate) {
@@ -167,11 +181,15 @@
     };
     for (const wrapper of document.querySelectorAll('.lqip')) {
       const img = wrapper.querySelector(':scope > img');
-      if (!img || img.complete) {
+      if (!img || img.complete || isCacheHit(img)) {
         reveal(wrapper, false);
         continue;
       }
-      img.addEventListener('load', () => reveal(wrapper, true), { once: true });
+      img.addEventListener(
+        'load',
+        () => reveal(wrapper, !isCacheHit(img)),
+        { once: true },
+      );
       img.addEventListener('error', () => reveal(wrapper, false), { once: true });
     }
   };
