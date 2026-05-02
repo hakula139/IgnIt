@@ -1,0 +1,38 @@
+@layer components {
+  .lqip {
+    @apply inline-block overflow-hidden;
+    background-image: var(--lqip-uri);
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* `m-0!` beats Typography's `.prose img { my-2em }` (equal specificity,
+     loads after) — without it the wrapper inflates by 64px. */
+  .lqip > img {
+    @apply m-0! block;
+  }
+
+  /* JS-presence gate: set by `theme.js`, so no-JS clients aren't trapped
+     behind permanently invisible images. */
+  .lqip-fade-enabled .lqip:not(.lqip-loaded) > img {
+    @apply invisible;
+  }
+
+  .lqip-fade-enabled .lqip-loaded > img {
+    @apply visible animate-lqip-fade-in;
+  }
+
+  /* Centering + rounding on the wrapper so the backdrop tracks the inner
+     img's painted edge, not the figure's outer rectangle. */
+  .prose figure > .lqip {
+    @apply mx-auto block w-fit max-w-full rounded-lg;
+  }
+
+  .post-banner-media > .lqip {
+    @apply block h-full w-full;
+  }
+
+  .home-card > .lqip {
+    @apply absolute inset-0 h-full w-full;
+  }
+}

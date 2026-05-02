@@ -153,6 +153,22 @@
     }
   };
 
+  // ── LQIP Fade-In ──
+
+  // Pairs with `theme.js`'s head-time `lqip-fade-enabled` flip on `<html>`.
+  const initLqipFadeIn = () => {
+    const markLoaded = (wrapper) => wrapper.classList.add('lqip-loaded');
+    for (const wrapper of document.querySelectorAll('.lqip')) {
+      const img = wrapper.querySelector(':scope > img');
+      if (!img || img.complete) {
+        markLoaded(wrapper);
+        continue;
+      }
+      img.addEventListener('load', () => markLoaded(wrapper), { once: true });
+      img.addEventListener('error', () => markLoaded(wrapper), { once: true });
+    }
+  };
+
   // ── External Links ──
 
   const initExternalLinks = () => {
@@ -177,6 +193,7 @@
     initCallouts();
     initTocCollapse();
     initHeadingAnchors();
+    initLqipFadeIn();
     initExternalLinks();
   };
 

@@ -23,19 +23,25 @@
                 aria-label="{{ t('image_credit') }}{% if featured_image.credit.title %}: {{ featured_image.credit.title }}{% endif %}"
               >
               {%- endif %}
-                <img
-                  src="{{ featured_image.src | safe }}"
-                  alt="{{ title }}"
-                  class="post-featured-image post-banner-image"
-                  {%- if featured_image.width and featured_image.height %}
-                  width="{{ featured_image.width }}"
-                  height="{{ featured_image.height }}"
-                  {%- endif %}
-                  style="object-position: {{ featured_image.position | default('center', true) }}{% if featured_image.lqip_uri %}; background:url('{{ featured_image.lqip_uri | safe }}') center/cover{% endif %}"
-                  loading="eager"
-                  decoding="async"
-                  fetchpriority="high"
-                >
+                {%- if featured_image.lqip_uri %}
+                <span class="lqip" style="--lqip-uri:url('{{ featured_image.lqip_uri | safe }}')">
+                {%- endif %}
+                  <img
+                    src="{{ featured_image.src | safe }}"
+                    alt="{{ title }}"
+                    class="post-featured-image post-banner-image"
+                    {%- if featured_image.width and featured_image.height %}
+                    width="{{ featured_image.width }}"
+                    height="{{ featured_image.height }}"
+                    {%- endif %}
+                    style="object-position: {{ featured_image.position | default('center', true) }}"
+                    loading="eager"
+                    decoding="async"
+                    fetchpriority="high"
+                  >
+                {%- if featured_image.lqip_uri %}
+                </span>
+                {%- endif %}
               {%- if featured_image.credit and featured_image.credit.url %}
               </a>
               {%- endif %}
