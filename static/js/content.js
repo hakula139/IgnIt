@@ -157,10 +157,12 @@
 
   // Pairs with `theme.js`'s head-time `lqip-fade-enabled` flip on `<html>`.
   // `lqip-fade-in` is opt-in per element so cached `<img>`s (img.complete sync-true)
-  // skip the keyframe — repeat navigations don't re-animate the body bg / banners.
+  // skip the keyframe — repeat visits don't re-animate the body bg / banners.
   const initLqipFadeIn = () => {
     const reveal = (wrapper, animate) => {
-      if (animate) wrapper.classList.add('lqip-fade-in');
+      if (animate) {
+        wrapper.classList.add('lqip-fade-in');
+      }
       wrapper.classList.add('lqip-loaded');
     };
     for (const wrapper of document.querySelectorAll('.lqip')) {
