@@ -2067,8 +2067,8 @@
     transition-property: filter;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
-    --tw-duration: 300ms;
-    transition-duration: 300ms;
+    --tw-duration: 500ms;
+    transition-duration: 500ms;
     --tw-ease: var(--ease-out);
     transition-timing-function: var(--ease-out);
   }
