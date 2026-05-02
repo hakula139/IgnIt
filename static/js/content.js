@@ -156,16 +156,21 @@
   // ── LQIP Fade-In ──
 
   // Pairs with `theme.js`'s head-time `lqip-fade-enabled` flip on `<html>`.
+  // `lqip-fade-in` is opt-in per element so cached `<img>`s (img.complete sync-true)
+  // skip the keyframe — repeat navigations don't re-animate the body bg / banners.
   const initLqipFadeIn = () => {
-    const markLoaded = (wrapper) => wrapper.classList.add('lqip-loaded');
+    const reveal = (wrapper, animate) => {
+      if (animate) wrapper.classList.add('lqip-fade-in');
+      wrapper.classList.add('lqip-loaded');
+    };
     for (const wrapper of document.querySelectorAll('.lqip')) {
       const img = wrapper.querySelector(':scope > img');
       if (!img || img.complete) {
-        markLoaded(wrapper);
+        reveal(wrapper, false);
         continue;
       }
-      img.addEventListener('load', () => markLoaded(wrapper), { once: true });
-      img.addEventListener('error', () => markLoaded(wrapper), { once: true });
+      img.addEventListener('load', () => reveal(wrapper, true), { once: true });
+      img.addEventListener('error', () => reveal(wrapper, false), { once: true });
     }
   };
 

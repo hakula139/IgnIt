@@ -19,7 +19,14 @@
   }
 
   .lqip-fade-enabled .lqip-loaded > img {
-    @apply visible animate-lqip-fade-in;
+    @apply visible;
+  }
+
+  /* `lqip-fade-in` is opt-in: `content.js` adds it only when an `<img>` actually
+     transitioned from pending → loaded. Cached images (img.complete sync-true)
+     reveal without re-running the keyframe on every navigation. */
+  .lqip-fade-enabled .lqip-loaded.lqip-fade-in > img {
+    @apply animate-lqip-fade-in;
   }
 
   /* Centering + rounding on the wrapper so the backdrop tracks the inner
