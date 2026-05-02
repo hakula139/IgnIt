@@ -6,14 +6,11 @@
     background-position: center;
   }
 
-  /* `m-0!` beats Typography's `.prose img { my-2em }` (equal specificity,
-     loads after) — without it the wrapper inflates by 64px. */
+  /* `m-0!` beats Typography's `.prose img { my-2em }` — wrapper inflates 64px otherwise. */
   .lqip > img {
     @apply m-0! block;
   }
 
-  /* JS-presence gate: set by `theme.js`, so no-JS clients aren't trapped
-     behind permanently invisible images. */
   .lqip-fade-enabled .lqip:not(.lqip-loaded) > img {
     @apply invisible;
   }
@@ -22,8 +19,6 @@
     @apply visible animate-lqip-fade-in;
   }
 
-  /* Centering + rounding on the wrapper so the backdrop tracks the inner
-     img's painted edge, not the figure's outer rectangle. */
   .prose figure > .lqip {
     @apply mx-auto block w-fit max-w-full rounded-lg;
   }
@@ -36,9 +31,6 @@
     @apply absolute inset-0 h-full w-full;
   }
 
-  /* Body background: pinned fixed-fullscreen behind everything; the inner
-     `<img>` covers the viewport via object-fit, so the real bg piggybacks
-     on the same `.lqip` fade-in path as content / featured images. */
   body > .body-bg {
     @apply pointer-events-none fixed inset-0 -z-10;
   }
