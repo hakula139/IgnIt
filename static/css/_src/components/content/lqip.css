@@ -11,10 +11,11 @@
     @apply m-0! block;
   }
 
-  /* Stop at a sub-pixel `0.01px` (not `0`/`none`) — browsers may collapse a no-op
-     blur to the canonical raster path on the terminal frame, snapping. */
+  /* `ease-out` because blur is logarithmic in perceived sharpness — the visually-active
+     sub-pixel tail needs most of the time budget. `0.01px` (not `0`) keeps the filter
+     chain active, sidestepping the no-op raster-path optimization on the final frame. */
   .lqip-fade-enabled .lqip {
-    @apply blur-sm transition-[filter] duration-300;
+    @apply blur-sm transition-[filter] duration-300 ease-out;
   }
 
   .lqip-fade-enabled .lqip-loaded {
