@@ -156,110 +156,16 @@
   // ── LQIP Fade-In ──
 
   // Pairs with `theme.js`'s head-time `lqip-fade-enabled` flip on `<html>`.
-  // The keyframe is opt-in per element so repeat visits don't re-animate.
-  // Browser cache state alone is too leaky (304 revalidations cross the wire,
-  // dev servers skip cache, hard reload bypasses it), so we persist a bounded
-  // "seen" set in localStorage as the primary signal and fall back to
-  // Resource Timing for first-session reveals.
-
-  const LQIP_SEEN_KEY = 'lqip.seen.v1';
-  const LQIP_SEEN_MAX = 200;
-
-  const readSeen = () => {
-    try {
-      return JSON.parse(localStorage.getItem(LQIP_SEEN_KEY)) || {};
-    } catch {
-      return {};
-    }
-  };
-
-  const writeSeen = (seen) => {
-    try {
-      const trimmed = Object.fromEntries(
-        Object.entries(seen)
-          .sort((a, b) => b[1] - a[1])
-          .slice(0, LQIP_SEEN_MAX),
-      );
-      localStorage.setItem(LQIP_SEEN_KEY, JSON.stringify(trimmed));
-    } catch {
-      // Quota / private mode — animation still runs, just no persistence.
-    }
-  };
-
-  // Key by URL + LQIP URI: the LQIP is a build-time content fingerprint, so
-  // reusing a URL with new bytes also rotates the LQIP and misses the cache.
-  const lqipKey = (wrapper, img) => {
-    const url = img.currentSrc || img.src;
-    if (!url) {
-      return null;
-    }
-    const lqip = wrapper.style.getPropertyValue('--lqip-uri') || '';
-    return `${new URL(url, location.href).href} ${lqip}`;
-  };
-
-  // `transferSize === 0 && encodedBodySize > 0` — pairing with the body size
-  // rules out cross-origin entries that strip Timing-Allow-Origin (those also
-  // report transferSize 0 and would be false positives).
-  const isCacheHit = (img) => {
-    const url = img.currentSrc || img.src;
-    if (!url) {
-      return false;
-    }
-    const entries = performance.getEntriesByName(url, 'resource');
-    if (!entries.length) {
-      return false;
-    }
-    const last = entries[entries.length - 1];
-    return last.transferSize === 0 && last.encodedBodySize > 0;
-  };
-
-  const prefersReducedMotion = () =>
-    window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
-
   const initLqipFadeIn = () => {
-    const seen = readSeen();
-    const reduced = prefersReducedMotion();
-    let dirty = false;
-
-    const reveal = (wrapper, key, animate) => {
-      if (animate) {
-        wrapper.classList.add('lqip-fade-in');
-      }
-      wrapper.classList.add('lqip-loaded');
-      if (key && !seen[key]) {
-        seen[key] = Date.now();
-        dirty = true;
-      }
-    };
-
+    const markLoaded = (wrapper) => wrapper.classList.add('lqip-loaded');
     for (const wrapper of document.querySelectorAll('.lqip')) {
       const img = wrapper.querySelector(':scope > img');
-      if (!img) {
+      if (!img || img.complete) {
+        markLoaded(wrapper);
         continue;
       }
-      const key = lqipKey(wrapper, img);
-      if (img.complete || (key && seen[key]) || isCacheHit(img)) {
-        reveal(wrapper, key, false);
-        continue;
-      }
-      img.addEventListener(
-        'load',
-        () => {
-          const animate = !reduced && !(key && seen[key]) && !isCacheHit(img);
-          reveal(wrapper, key, animate);
-          if (dirty) {
-            writeSeen(seen);
-            dirty = false;
-          }
-        },
-        { once: true },
-      );
-      img.addEventListener('error', () => reveal(wrapper, key, false), { once: true });
-    }
-
-    if (dirty) {
-      writeSeen(seen);
-      dirty = false;
+      img.addEventListener('load', () => markLoaded(wrapper), { once: true });
+      img.addEventListener('error', () => markLoaded(wrapper), { once: true });
     }
   };
 

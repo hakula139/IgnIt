@@ -40,18 +40,15 @@
 
   /* Motion */
   --scale-card-hover: 135%;
-  --animate-lqip-fade-in: lqip-fade-in 1s ease both;
+  --animate-lqip-fade-in: lqip-fade-in 500ms ease-out both;
   --animate-menu-fade-in: menu-fade-in 200ms ease both;
   --animate-menu-slide-down: menu-slide-down 250ms ease-out both;
   --animate-menu-item-fade-in: menu-item-fade-in 200ms ease both;
   --default-transition-timing-function: ease;
 
-  /* `transform: scale()` (not the `scale` property) so this doesn't fight
-     `.home-card-image`'s `scale-card-hover` on hover. */
   @keyframes lqip-fade-in {
     from {
-      opacity: 0;
-      transform: scale(1.02);
+      filter: blur(8px);
     }
   }
 
