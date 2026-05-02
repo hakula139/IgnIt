@@ -11,15 +11,12 @@
     @apply m-0! block;
   }
 
-  /* `ease-out` because blur is logarithmic in perceived sharpness — the visually-active
-     sub-pixel tail needs most of the time budget. `0.01px` (not `0`) keeps the filter
-     chain active, sidestepping the no-op raster-path optimization on the final frame. */
   .lqip-fade-enabled .lqip {
     @apply blur-sm transition-[filter] duration-300 ease-out;
   }
 
   .lqip-fade-enabled .lqip-loaded {
-    @apply blur-[0.01px];
+    @apply blur-none;
   }
 
   .prose figure > .lqip {
