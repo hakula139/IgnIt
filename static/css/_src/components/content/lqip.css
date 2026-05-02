@@ -6,20 +6,24 @@
     background-position: center;
   }
 
-  /* `m-0!` beats Typography's `.prose img { my-2em }` — wrapper inflates 64px otherwise.
-     `filter: blur(0)` pins the identity filter so the compositing layer survives the
-     unblur keyframe end and hover transitions, avoiding a layer-drop snap to `none`. */
+  /* `m-0!` beats Typography's `.prose img { my-2em }` — wrapper inflates 64px otherwise. */
   .lqip > img {
     @apply m-0! block;
+  }
+
+  /* Reverse-blur reveal on the wrapper — same shape as `.home-card:hover`'s
+     filter transition, just on the parent so it doesn't conflict with the
+     img's own hover filter. Scoped to `lqip-fade-enabled` (set by `theme.js`)
+     so no-JS clients don't see permanently blurred wrappers. `blur(0)` keeps
+     the compositing layer alive so the end of the unblur lands on the same
+     layer as the start. */
+  .lqip-fade-enabled .lqip {
+    filter: blur(8px);
+    transition: filter 300ms ease;
+  }
+
+  .lqip-fade-enabled .lqip-loaded {
     filter: blur(0);
-  }
-
-  .lqip-fade-enabled .lqip:not(.lqip-loaded) > img {
-    @apply invisible;
-  }
-
-  .lqip-fade-enabled .lqip-loaded > img {
-    @apply visible animate-lqip-fade-in;
   }
 
   .prose figure > .lqip {
