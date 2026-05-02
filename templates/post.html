@@ -27,7 +27,11 @@
                   src="{{ featured_image.src | safe }}"
                   alt="{{ title }}"
                   class="post-featured-image post-banner-image"
-                  style="object-position: {{ featured_image.position | default('center', true) }}"
+                  {%- if featured_image.width and featured_image.height %}
+                  width="{{ featured_image.width }}"
+                  height="{{ featured_image.height }}"
+                  {%- endif %}
+                  style="object-position: {{ featured_image.position | default('center', true) }}{% if featured_image.lqip_uri %}; background:url('{{ featured_image.lqip_uri | safe }}') center/cover{% endif %}"
                   loading="eager"
                   decoding="async"
                   fetchpriority="high"

@@ -63,15 +63,4 @@
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-link;
   }
-
-  /* Universal image fade-in. Hidden until JS marks `.loaded` on the `load`
-     event (or `complete` at init). Avoids the `pop` of unloaded images
-     appearing instantly when they finally decode. */
-  html.image-fade-enabled img:not(.loaded) {
-    @apply invisible;
-  }
-
-  html.image-fade-enabled img.loaded {
-    @apply visible animate-image-fade-in;
-  }
 }

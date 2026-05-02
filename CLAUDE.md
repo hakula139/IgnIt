@@ -118,6 +118,16 @@ Translation tables live under `i18n/<lang>.toml` (`en`, `zh-Hans`). Templates an
 
 Sites consuming the theme can layer overrides: a same-named TOML file at the site root's `i18n/<lang>.toml` is merged on top of the theme file, key-by-key. Missing keys fall back to the theme's translation, then to the theme's English translation.
 
+## Image Pipeline
+
+kiln stamps three fields onto every locally-resolvable image at build time: natural pixel `width`, `height`, and a base64 WebP `lqip_uri` (low-quality image placeholder). The theme threads these through banner and home-card templates so the browser reserves the exact box shape (no CLS) and paints the LQIP backdrop while the source decodes.
+
+- **Body images**: kiln writes `width`, `height`, and `style="background:url(...)"` directly onto each `<img>`. Templates do nothing.
+- **Featured images** (`templates/post.html` banner, `templates/home.html` cards): exposed as `featured_image.width` / `.height` / `.lqip_uri`. Gate on `{% if featured_image.width and featured_image.height %}` so remote / unresolvable paths still render.
+- **`lqip_uri`** is concatenated into the existing `object-position` `style` attribute, e.g. `style="object-position: ...; background:url(...) center/cover"`.
+
+Disable per-site with `[image]` `lqip = false` in `config.toml`; dimensions are still emitted.
+
 ## Coding Conventions
 
 ### HTML Templates
@@ -142,6 +152,10 @@ Sites consuming the theme can layer overrides: a same-named TOML file at the sit
 - `'use strict'` at top of each file.
 - IIFE wrapper `(() => { ... })()` for script isolation.
 
+### Documentation
+
+- Markdown prose is **not hard-wrapped** — paragraphs are single long lines and flow with the reader's viewport. Match the surrounding style; do not introduce 80-column line breaks inside paragraphs.
+
 ### Git Conventions
 
 - Commit messages: `type(scope): description`
@@ -152,7 +166,7 @@ Sites consuming the theme can layer overrides: a same-named TOML file at the sit
 
 ### Pre-commit
 
-The husky pre-commit hook runs `lint-staged`, which auto-formats staged files with Prettier (including Tailwind class sorting in HTML attributes and CSS `@apply` via `prettier-plugin-tailwindcss`), lints Markdown with markdownlint, and spell-checks with cspell. The pre-push hook runs `pnpm build` and verifies `static/css/style.css` is in sync with its Tailwind source.
+Pre-commit hooks are driven by [git-hooks-nix](https://github.com/cachix/git-hooks.nix), wired in `flake.nix`. Entering the dev shell (`nix develop` or via direnv) installs `.git/hooks/pre-commit` automatically. Hooks: Prettier (with `prettier-plugin-tailwindcss` for class sorting), markdownlint, cspell, nixfmt / statix / deadnix, and basic file hygiene. Node-side hooks no-op when `node_modules/` is absent (e.g., inside the Nix sandbox); CI runs the equivalent commands directly via `pnpm`.
 
 ### Spell Checking
 
