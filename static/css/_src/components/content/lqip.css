@@ -12,7 +12,7 @@
   }
 
   .lqip-fade-enabled .lqip {
-    @apply blur-sm transition-[filter] duration-500 ease-out;
+    @apply blur-md transition-[filter] duration-500;
   }
 
   .lqip-fade-enabled .lqip-loaded {
