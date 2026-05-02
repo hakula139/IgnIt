@@ -2071,7 +2071,7 @@
     background-position: center;
   }
   .lqip > img {
-    margin: calc(var(--spacing) * 0);
+    margin: calc(var(--spacing) * 0) !important;
     display: block;
   }
   .lqip-fade-enabled .lqip:not(.lqip-loaded) > img {

@@ -8,11 +8,12 @@
     background-position: center;
   }
 
-  /* Reset margins / display so the wrapper alone owns spacing. Without
-     this, Typography's `.prose img { my-2em }` inflates the wrapper
-     height (the `figure > img` reset doesn't match through the wrapper). */
+  /* Reset margins / display so the wrapper alone owns spacing. The bang
+     on `m-0!` is needed because Typography's `.prose img { my-2em }` has
+     equal specificity and loads after; without it the wrapper inflates
+     by 64px (the `figure > img` reset doesn't match through `.lqip`). */
   .lqip > img {
-    @apply m-0 block;
+    @apply m-0! block;
   }
 
   /* `animation` (not `transition`) so the keyframe runs on class change
