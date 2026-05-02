@@ -78,7 +78,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 Source CSS lives in `static/css/_src/` using Tailwind CSS v4 conventions:
 
 - **`main.css`** — Entry point: `@import 'tailwindcss'`, `@theme` tokens, `@variant dark`, dark-mode token overrides, then `@import` for each partial. The Tailwind CLI inlines all imports before compilation, so tokens and utilities are available in every partial.
-- **`base.css`** — `@layer base` styles: `html`, `body`, `body::before` (background image), `::selection`, `a`, scroll offset.
+- **`base.css`** — `@layer base` styles: `html`, `body`, `::selection`, `a`, scroll offset.
 - **`components/*.css`** — `@layer components` partials, one per concern. Each file wraps all rules in `@layer components { ... }`.
 
 #### Design Tokens
@@ -101,16 +101,7 @@ Use `@apply` in the appropriate CSS partial for anything else. Use canonical Tai
 
 #### Build Output
 
-`static/` holds the shipped bundle, committed so submodule consumers get a working theme without needing Node.js:
-
-- `static/css/style.css` — compiled Tailwind CSS (not minified; kiln `--minify` compresses at deploy time)
-- `static/js/*.js` — JS sources, shipped as-is (no build step; kiln `--minify` compresses at deploy time)
-
-`static/css/_src/` holds Tailwind partials and the entry file — build-only, never shipped (skipped by kiln's `_*` convention).
-
-**Always run `pnpm build` before committing CSS changes** to keep the compiled stylesheet in sync with `_src/`.
-
-To rebuild: `pnpm build` for a one-shot build, or `pnpm dev` for watch mode. Both run Tailwind only; JS files have no build step.
+`static/` is committed so submodule consumers get a working theme without Node.js. **Always run `pnpm build` before committing CSS changes** so `static/css/style.css` stays in sync with `_src/`. JS ships as-is (no build step); kiln `--minify` compresses both at deploy time. `pnpm dev` runs Tailwind in watch mode.
 
 ## Internationalization
 
@@ -120,13 +111,11 @@ Sites consuming the theme can layer overrides: a same-named TOML file at the sit
 
 ## Image Pipeline
 
-kiln stamps three fields onto every locally-resolvable image at build time: natural pixel `width`, `height`, and a base64 WebP `lqip_uri` (low-quality image placeholder). The theme threads these through banner and home-card templates so the browser reserves the exact box shape (no CLS) and paints the LQIP backdrop while the source decodes.
+The theme paints kiln's `lqip_uri` via the `<span class="lqip">` wrapper kiln emits around content `<img>` (and that templates emit around featured / bg images — see `kiln/docs/themes.md` for the upstream contract). `lqip.css` shows the backdrop, hides the inner `<img>` until load, then fades it in; `theme.js` flips `html.lqip-fade-enabled` in `<head>` so JS-disabled clients still see images.
 
-- **Body images**: kiln wraps every LQIP-enabled `<img>` in `<span class="lqip" style="--lqip-uri:url(...)">`. `lqip.css` fades the inner `<img>` in over the backdrop; `theme.js` flips `html.lqip-fade-enabled` in `<head>` so JS-disabled clients still see images. Templates do nothing.
-- **Featured images** (`templates/post.html` banner, `templates/home.html` cards): exposed as `featured_image.width` / `.height` / `.lqip_uri`. Templates emit the same `<span class="lqip" style="--lqip-uri:url(...)">` wrapper around the `<img>` when `lqip_uri` is present, so banner + home-card share the body-image fade-in path. Gate on `{% if featured_image.lqip_uri %}` so remote / unresolvable paths still render bare. Per-context size overrides (`.post-banner-media > .lqip`, `.home-card > .lqip`) live in `lqip.css`.
-- **Body background** (`config.params.background`): kiln only stamps `<img>`, so the CSS `background-image` on `body::before` doesn't get an automatic LQIP. Sites can pre-compute one and set `lqip_uri` (alongside `image`) under `[params.background]`; `base.html` emits it as `--bg-lqip` and `base.css` layers it under `--bg-image` so first paint shows the blurred placeholder instead of `--color-bg`.
-
-Disable per-site with `[image]` `lqip = false` in `config.toml`; dimensions are still emitted.
+- **Body images**: auto-wrapped by kiln. No template work.
+- **Featured images** (`templates/post.html` banner, `templates/home.html` cards): templates emit the wrapper themselves, gated on `{% if featured_image.lqip_uri %}`. Per-context size overrides (`.post-banner-media > .lqip`, `.home-card > .lqip`) live in `lqip.css`.
+- **Body background** (`config.params.background`): hand-rolled in `base.html`. Sites supply `image` + `lqip_uri` (a pre-computed data URI); the wrapper pins fixed-fullscreen with `object-fit: cover`, and `position` / `position_mobile` drive `object-position` via `--bg-position*` CSS vars.
 
 ## Coding Conventions
 
@@ -139,18 +128,9 @@ Disable per-site with `[image]` `lqip = false` in `config.toml`; dimensions are 
 
 ### CSS
 
-- **Design tokens** in `@theme { ... }` block — colors, fonts, radii, shadows.
-- **Custom properties** prefixed with `--color-`, `--radius-`, `--shadow-`.
-- **Component classes** for multi-property patterns that repeat. CSS partials are grouped by concern under `components/` (`layout/`, `content/`, `listing/`, `search/`, `embed/`).
 - Prefer Tailwind utilities over custom CSS.
-- In `@apply`, use Tailwind v4 trailing-important syntax (`w-auto!`) rather than leading-important syntax (`!w-auto`).
+- In `@apply`, use Tailwind v4 trailing-important syntax (`w-auto!`) rather than leading-important (`!w-auto`).
 - `@import` order in `main.css` determines cascade order within the same `@layer`.
-
-### JavaScript
-
-- ES6: `const` / `let`, arrow functions, template literals, `for...of`.
-- `'use strict'` at top of each file.
-- IIFE wrapper `(() => { ... })()` for script isolation.
 
 ### Documentation
 

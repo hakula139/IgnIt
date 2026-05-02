@@ -21,14 +21,16 @@
   {%- block head %}{% endblock %}
 </head>
 
-<body
+<body>
   {%- if config.params.background and config.params.background.image %}
-  style="--bg-image: url('{{ config.base_url | safe }}{{ config.params.background.image | safe }}')
-    {%- if config.params.background.lqip_uri %}; --bg-lqip: url('{{ config.params.background.lqip_uri | safe }}'){% endif %}
-    {%- if config.params.background.position %}; --bg-position: {{ config.params.background.position }}{% endif %}
-    {%- if config.params.background.position_mobile %}; --bg-position-mobile: {{ config.params.background.position_mobile }}{% endif %}"
+  {%- set bg = config.params.background %}
+  <span class="lqip body-bg" style="
+    {%- if bg.lqip_uri %}--lqip-uri: url('{{ bg.lqip_uri | safe }}');{% endif %}
+    {%- if bg.position %} --bg-position: {{ bg.position }};{% endif %}
+    {%- if bg.position_mobile %} --bg-position-mobile: {{ bg.position_mobile }};{% endif %}">
+    <img src="{{ config.base_url | safe }}{{ bg.image | safe }}" alt="" decoding="async">
+  </span>
   {%- endif %}
->
   <a href="#main" class="skip-link">{{ t('skip_to_content') }}</a>
   {% include "_partials/layout/header.html" %}
   <main id="main" class="flex-1 pt-16">

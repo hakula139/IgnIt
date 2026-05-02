@@ -35,4 +35,22 @@
   .home-card > .lqip {
     @apply absolute inset-0 h-full w-full;
   }
+
+  /* Body background: pinned fixed-fullscreen behind everything; the inner
+     `<img>` covers the viewport via object-fit, so the real bg piggybacks
+     on the same `.lqip` fade-in path as content / featured images. */
+  body > .body-bg {
+    @apply pointer-events-none fixed inset-0 -z-10;
+  }
+
+  .body-bg > img {
+    @apply h-full w-full object-cover;
+    object-position: var(--bg-position-mobile, var(--bg-position, center));
+  }
+
+  @media (min-width: 640px) {
+    .body-bg > img {
+      object-position: var(--bg-position, center);
+    }
+  }
 }
