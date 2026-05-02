@@ -1,6 +1,4 @@
 @layer components {
-  /* `.lqip-fade-enabled` is set on `<html>` by `theme.js`; without it the
-     visibility gate stays off so JS-disabled clients still see images. */
   .lqip {
     @apply inline-block overflow-hidden;
     background-image: var(--lqip-uri);
@@ -8,18 +6,14 @@
     background-position: center;
   }
 
-  /* Reset margins / display so the wrapper alone owns spacing. The bang
-     on `m-0!` is needed because Typography's `.prose img { my-2em }` has
-     equal specificity and loads after; without it the wrapper inflates
-     by 64px (the `figure > img` reset doesn't match through `.lqip`). */
+  /* `m-0!` beats Typography's `.prose img { my-2em }` (equal specificity,
+     loads after) — without it the wrapper inflates by 64px. */
   .lqip > img {
     @apply m-0! block;
   }
 
-  /* `animation` (not `transition`) so the keyframe runs on class change
-     even when `content.js` marks `.lqip-loaded` before first paint.
-     The keyframe scales DOWN from 1.02 (img larger than wrapper, clipped
-     by overflow:hidden) so there's no backdrop gap around the image. */
+  /* JS-presence gate: set by `theme.js`, so no-JS clients aren't trapped
+     behind permanently invisible images. */
   .lqip-fade-enabled .lqip:not(.lqip-loaded) > img {
     @apply invisible;
   }
@@ -28,20 +22,16 @@
     @apply visible animate-lqip-fade-in;
   }
 
-  /* Take the figure's centering + rounding so the backdrop matches the
-     inner img's painted edge instead of the figure's outer rectangle. */
+  /* Centering + rounding on the wrapper so the backdrop tracks the inner
+     img's painted edge, not the figure's outer rectangle. */
   .prose figure > .lqip {
     @apply mx-auto block w-fit max-w-full rounded-lg;
   }
 
-  /* Featured-image banner: wrapper fills `.post-banner-media` (h-full
-     w-full), the inner img keeps its existing object-cover positioning. */
   .post-banner-media > .lqip {
     @apply block h-full w-full;
   }
 
-  /* Home-card cover: wrapper takes the absolute positioning so the inner
-     img keeps its hover scale + blur path on `.home-card-image`. */
   .home-card > .lqip {
     @apply absolute inset-0 h-full w-full;
   }
