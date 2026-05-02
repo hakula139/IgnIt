@@ -2061,6 +2061,33 @@
   max-width: 100%;
   height: auto;
 }
+@layer components {
+  .lqip {
+    display: inline-block;
+    overflow: hidden;
+    background-image: var(--lqip-uri);
+    background-size: cover;
+    background-position: center;
+  }
+  .lqip > img {
+    display: block;
+    transition-property: opacity,scale;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    --tw-duration: 500ms;
+    transition-duration: 500ms;
+  }
+  .lqip-fade-enabled .lqip:not(.lqip-loaded) > img {
+    scale: 0.98;
+    opacity: 0%;
+  }
+  .prose figure > .lqip {
+    margin-inline: auto;
+    display: block;
+    width: fit-content;
+    border-radius: var(--radius-lg);
+  }
+}
 .prose {
   --tw-prose-body: var(--color-text);
   --tw-prose-headings: var(--color-text);

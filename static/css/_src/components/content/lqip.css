@@ -1,0 +1,24 @@
+@layer components {
+  /* `.lqip-fade-enabled` is set on `<html>` by `theme.js`; without it the
+     opacity gate stays off so JS-disabled clients still see images. */
+  .lqip {
+    @apply inline-block overflow-hidden;
+    background-image: var(--lqip-uri);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .lqip > img {
+    @apply block transition-[opacity,scale] duration-500;
+  }
+
+  .lqip-fade-enabled .lqip:not(.lqip-loaded) > img {
+    @apply scale-[0.98] opacity-0;
+  }
+
+  /* Take the figure's centering + rounding so the backdrop matches the
+     inner img's painted edge instead of the figure's outer rectangle. */
+  .prose figure > .lqip {
+    @apply mx-auto block w-fit rounded-lg;
+  }
+}

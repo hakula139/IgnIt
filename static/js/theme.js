@@ -1,6 +1,12 @@
 'use strict';
 
 (() => {
+  // ── LQIP Fade-In ──
+
+  // Synchronous flip in <head> so the CSS gate lands before first paint;
+  // `content.js` then marks each `.lqip` `.lqip-loaded` per `<img>` load.
+  document.documentElement.classList.add('lqip-fade-enabled');
+
   // ── Theme ──
 
   const STORAGE_KEY = 'theme';

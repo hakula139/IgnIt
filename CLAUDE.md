@@ -122,9 +122,8 @@ Sites consuming the theme can layer overrides: a same-named TOML file at the sit
 
 kiln stamps three fields onto every locally-resolvable image at build time: natural pixel `width`, `height`, and a base64 WebP `lqip_uri` (low-quality image placeholder). The theme threads these through banner and home-card templates so the browser reserves the exact box shape (no CLS) and paints the LQIP backdrop while the source decodes.
 
-- **Body images**: kiln writes `width`, `height`, and `style="background:url(...)"` directly onto each `<img>`. Templates do nothing.
-- **Featured images** (`templates/post.html` banner, `templates/home.html` cards): exposed as `featured_image.width` / `.height` / `.lqip_uri`. Gate on `{% if featured_image.width and featured_image.height %}` so remote / unresolvable paths still render.
-- **`lqip_uri`** is concatenated into the existing `object-position` `style` attribute, e.g. `style="object-position: ...; background:url(...) center/cover"`.
+- **Body images**: kiln wraps every LQIP-enabled `<img>` in `<span class="lqip" style="--lqip-uri:url(...)">`. `lqip.css` fades the inner `<img>` in over the backdrop; `theme.js` flips `html.lqip-fade-enabled` in `<head>` so JS-disabled clients still see images. Templates do nothing.
+- **Featured images** (`templates/post.html` banner, `templates/home.html` cards): exposed as `featured_image.width` / `.height` / `.lqip_uri`. Gate on `{% if featured_image.width and featured_image.height %}` so remote / unresolvable paths still render. `lqip_uri` is concatenated into the existing `object-position` `style` attribute, e.g. `style="object-position: ...; background:url(...) center/cover"` — featured images bypass the `<span class="lqip">` wrapper since the `<img>` is template-emitted, not markdown-rendered.
 
 Disable per-site with `[image]` `lqip = false` in `config.toml`; dimensions are still emitted.
 
