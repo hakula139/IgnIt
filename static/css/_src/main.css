@@ -46,10 +46,12 @@
   --animate-menu-item-fade-in: menu-item-fade-in 200ms ease both;
   --default-transition-timing-function: ease;
 
+  /* `transform: scale()` (not the `scale` property) so the fade animation
+     doesn't fight `.home-card-image`'s `scale-card-hover` on hover. */
   @keyframes lqip-fade-in {
     from {
       opacity: 0;
-      scale: 0.98;
+      transform: scale(1.02);
     }
   }
 

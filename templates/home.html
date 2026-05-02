@@ -34,18 +34,24 @@
     {%- for page in pages %}
     {%- if page.featured_image %}
     <article class="home-card">
-      <img
-        class="home-card-image"
-        src="{{ page.featured_image.src | safe }}"
-        alt=""
-        {%- if page.featured_image.width and page.featured_image.height %}
-        width="{{ page.featured_image.width }}"
-        height="{{ page.featured_image.height }}"
-        {%- endif %}
-        loading="lazy"
-        decoding="async"
-        style="object-position: {{ page.featured_image.position | default('center', true) }}{% if page.featured_image.lqip_uri %}; background:url('{{ page.featured_image.lqip_uri | safe }}') center/cover{% endif %}"
-      >
+      {%- if page.featured_image.lqip_uri %}
+      <span class="lqip" style="--lqip-uri:url('{{ page.featured_image.lqip_uri | safe }}')">
+      {%- endif %}
+        <img
+          class="home-card-image"
+          src="{{ page.featured_image.src | safe }}"
+          alt=""
+          {%- if page.featured_image.width and page.featured_image.height %}
+          width="{{ page.featured_image.width }}"
+          height="{{ page.featured_image.height }}"
+          {%- endif %}
+          loading="lazy"
+          decoding="async"
+          style="object-position: {{ page.featured_image.position | default('center', true) }}"
+        >
+      {%- if page.featured_image.lqip_uri %}
+      </span>
+      {%- endif %}
       <div class="home-card-overlay"></div>
       {%- if page.pinned %}
       <span class="home-card-pin glass-panel" aria-label="{{ t('pinned') }}" title="{{ t('pinned') }}">

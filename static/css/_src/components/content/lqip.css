@@ -8,12 +8,17 @@
     background-position: center;
   }
 
+  /* Reset margins / display so the wrapper alone owns spacing. Without
+     this, Typography's `.prose img { my-2em }` inflates the wrapper
+     height (the `figure > img` reset doesn't match through the wrapper). */
   .lqip > img {
-    @apply block;
+    @apply m-0 block;
   }
 
   /* `animation` (not `transition`) so the keyframe runs on class change
-     even when `content.js` marks `.lqip-loaded` before first paint. */
+     even when `content.js` marks `.lqip-loaded` before first paint.
+     The keyframe scales DOWN from 1.02 (img larger than wrapper, clipped
+     by overflow:hidden) so there's no backdrop gap around the image. */
   .lqip-fade-enabled .lqip:not(.lqip-loaded) > img {
     @apply invisible;
   }
@@ -25,6 +30,18 @@
   /* Take the figure's centering + rounding so the backdrop matches the
      inner img's painted edge instead of the figure's outer rectangle. */
   .prose figure > .lqip {
-    @apply mx-auto block w-fit rounded-lg;
+    @apply mx-auto block w-fit max-w-full rounded-lg;
+  }
+
+  /* Featured-image banner: wrapper fills `.post-banner-media` (h-full
+     w-full), the inner img keeps its existing object-cover positioning. */
+  .post-banner-media > .lqip {
+    @apply block h-full w-full;
+  }
+
+  /* Home-card cover: wrapper takes the absolute positioning so the inner
+     img keeps its hover scale + blur path on `.home-card-image`. */
+  .home-card > .lqip {
+    @apply absolute inset-0 h-full w-full;
   }
 }

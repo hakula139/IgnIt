@@ -2071,6 +2071,7 @@
     background-position: center;
   }
   .lqip > img {
+    margin: calc(var(--spacing) * 0);
     display: block;
   }
   .lqip-fade-enabled .lqip:not(.lqip-loaded) > img {
@@ -2084,7 +2085,19 @@
     margin-inline: auto;
     display: block;
     width: fit-content;
+    max-width: 100%;
     border-radius: var(--radius-lg);
+  }
+  .post-banner-media > .lqip {
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+  .home-card > .lqip {
+    position: absolute;
+    inset: calc(var(--spacing) * 0);
+    height: 100%;
+    width: 100%;
   }
 }
 .prose {
@@ -3108,7 +3121,7 @@
 @keyframes lqip-fade-in {
   from {
     opacity: 0;
-    scale: 0.98;
+    transform: scale(1.02);
   }
 }
 @keyframes menu-fade-in {
