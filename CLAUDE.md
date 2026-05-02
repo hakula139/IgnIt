@@ -118,6 +118,16 @@ Translation tables live under `i18n/<lang>.toml` (`en`, `zh-Hans`). Templates an
 
 Sites consuming the theme can layer overrides: a same-named TOML file at the site root's `i18n/<lang>.toml` is merged on top of the theme file, key-by-key. Missing keys fall back to the theme's translation, then to the theme's English translation.
 
+## Image Pipeline
+
+kiln stamps three fields onto every locally-resolvable image at build time: natural pixel `width`, `height`, and a base64 WebP `lqip_uri` (low-quality image placeholder). The theme threads these through banner and home-card templates so the browser reserves the exact box shape (no CLS) and paints the LQIP backdrop while the source decodes.
+
+- **Body images**: kiln writes `width`, `height`, and `style="background:url(...)"` directly onto each `<img>`. Templates do nothing.
+- **Featured images** (`templates/post.html` banner, `templates/home.html` cards): the fields appear on `featured_image` as `width` / `height` / `lqip_uri`. Gate on presence — `{% if featured_image.width and featured_image.height %}` — so remote URLs and unresolvable paths still render correctly with no dims.
+- **`lqip_uri`** is concatenated into the existing `object-position` `style` attribute (`style="object-position: ...; background:url(...) center/cover"`). Single attribute, `;` separator.
+
+Disable LQIP per-site with `[image]` `lqip = false` in `config.toml`; dimensions are still emitted.
+
 ## Coding Conventions
 
 ### HTML Templates
