@@ -24,7 +24,7 @@
 <body>
   {%- if config.params.background and config.params.background.image %}
   {%- set bg = config.params.background %}
-  <span class="lqip body-bg" style="
+  <span class="{% if bg.lqip_uri %}lqip {% endif %}body-bg" style="
     {%- if bg.lqip_uri %}--lqip-uri: url('{{ bg.lqip_uri | safe }}');{% endif %}
     {%- if bg.position %} --bg-position: {{ bg.position }};{% endif %}
     {%- if bg.position_mobile %} --bg-position-mobile: {{ bg.position_mobile }};{% endif %}">
@@ -43,6 +43,7 @@
   {%- if config.search.enabled %}
   <pagefind-modal></pagefind-modal>
   {%- endif %}
+  <script src="{{ config.base_url | safe }}/js/lqip.js" defer></script>
   <script src="{{ config.base_url | safe }}/js/content.js" defer></script>
   <script src="{{ config.base_url | safe }}/js/toc.js" defer></script>
   <script src="{{ config.base_url | safe }}/js/glow.js" defer></script>
