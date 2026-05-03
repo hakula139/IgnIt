@@ -112,10 +112,10 @@ Sites consuming the theme can layer overrides: a same-named TOML file at the sit
 
 ## Image Pipeline
 
-The theme paints kiln's `lqip_uri` via the `<span class="lqip">` wrapper kiln emits around content `<img>` (and that templates emit around featured / bg images — see `kiln/docs/themes.md` for the upstream contract). `lqip.css` shows the backdrop, hides the inner `<img>` until load, then fades it in; `theme.js` flips `html.lqip-fade-enabled` in `<head>` so JS-disabled clients still see images.
+The theme paints kiln's `lqip_uri` via the `<span class="lqip">` wrapper kiln emits around content `<img>` (and that templates emit around featured / bg images — see `kiln/docs/themes.md` for the upstream contract). `lqip.css` shows the backdrop; `lqip.js` reveals each image and applies fade-in only to home cards, post banners, and block figures. `theme.js` flips `html.lqip-fade-enabled` in `<head>` so JS-disabled clients still see images.
 
 - **Body images**: auto-wrapped by kiln. No template work.
-- **Featured images** (`templates/post.html` banner, `templates/home.html` cards): templates emit the wrapper themselves, gated on `{% if featured_image.lqip_uri %}`. Per-context size overrides (`.post-banner-media > .lqip`, `.home-card > .lqip`) live in `lqip.css`.
+- **Featured images** (`templates/post.html` banner, `templates/home.html` cards): templates emit the wrapper themselves, gated on `{% if featured_image.lqip_uri %}`. Per-context size overrides (`.post-banner-media .lqip`, `.home-card > .lqip`) live in `lqip.css`.
 - **Body background** (`config.params.background`): hand-rolled in `base.html`. Sites supply `image` + `lqip_uri` (a pre-computed data URI); the wrapper pins fixed-fullscreen with `object-fit: cover`, and `position` / `position_mobile` drive `object-position` via `--bg-position*` CSS vars.
 
 ## Coding Conventions

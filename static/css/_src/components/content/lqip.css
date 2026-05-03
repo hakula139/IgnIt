@@ -11,7 +11,6 @@
     @apply m-0! block;
   }
 
-  /* `lqip.js` opts in `.lqip-fade-in` for home cards, banners, and figures only. */
   .lqip-fade-enabled .lqip-fade-in:not(.lqip-loaded) > img {
     @apply invisible;
   }
@@ -24,7 +23,7 @@
     @apply mx-auto block w-fit max-w-full rounded-lg;
   }
 
-  .post-banner-media > .lqip {
+  .post-banner-media .lqip {
     @apply block h-full w-full;
   }
 

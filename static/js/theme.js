@@ -3,8 +3,7 @@
 (() => {
   // ── LQIP Fade-In ──
 
-  // Synchronous flip in <head> so the CSS gate lands before first paint;
-  // `content.js` then marks each `.lqip` `.lqip-loaded` per `<img>` load.
+  // Enable LQIP CSS before first paint; `lqip.js` reveals each image.
   document.documentElement.classList.add('lqip-fade-enabled');
 
   // ── Theme ──
