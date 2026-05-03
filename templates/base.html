@@ -47,6 +47,13 @@
   <script src="{{ config.base_url | safe }}/js/toc.js" defer></script>
   <script src="{{ config.base_url | safe }}/js/glow.js" defer></script>
   <script src="{{ config.base_url | safe }}/js/back-to-top.js" defer></script>
+  {%- if assets is defined %}
+  {%- for script in assets.scripts %}
+  <script src="{{ script.url | safe }}"
+    {%- if script.load == "defer" %} defer{% elif script.load == "async" %} async{% endif %}
+    {%- if script.module %} type="module"{% endif %}></script>
+  {%- endfor %}
+  {%- endif %}
   {%- block scripts %}{% endblock %}
 </body>
 </html>
