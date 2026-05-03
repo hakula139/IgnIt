@@ -11,12 +11,13 @@
     @apply m-0! block;
   }
 
-  .lqip-fade-enabled .lqip {
-    @apply blur-md transition-[filter] duration-500;
+  /* `lqip.js` opts in `.lqip-fade-in` for home cards, banners, and figures only. */
+  .lqip-fade-enabled .lqip-fade-in:not(.lqip-loaded) > img {
+    @apply invisible;
   }
 
-  .lqip-fade-enabled .lqip-loaded {
-    @apply blur-none;
+  .lqip-fade-enabled .lqip-fade-in.lqip-loaded > img {
+    animation: var(--animate-lqip-fade-in);
   }
 
   .prose figure > .lqip {

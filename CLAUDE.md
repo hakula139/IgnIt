@@ -44,6 +44,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │       ├── back-to-top.js                  # Scroll-triggered back-to-top button
 │       ├── content.js                      # Code block, callout, heading anchor, and external link enhancements
 │       ├── glow.js                         # Glass panel cursor glow effect
+│       ├── lqip.js                         # LQIP fade-in: cache-aware reveal + lazy-fetch fallback
 │       ├── pagination.js                   # Page-jump controls for pagination
 │       ├── theme.js                        # Dark mode toggle + system preference
 │       └── toc.js                          # TOC active heading tracking + section collapse
