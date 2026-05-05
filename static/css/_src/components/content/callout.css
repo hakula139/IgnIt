@@ -9,7 +9,7 @@
   }
 
   .callout-title {
-    @apply flex cursor-pointer list-none items-center gap-2 px-4 py-2 text-sm font-semibold select-none;
+    @apply list-none py-2 font-semibold;
     color: var(--callout-color);
   }
 
@@ -17,7 +17,7 @@
     @apply hidden;
   }
 
-  /* Variant icon (left) */
+  /* Variant icon (left); chevron (right) lives in collapse.css. */
   .callout-title::before {
     @apply shrink-0;
     font-family: 'Font Awesome 6 Free';
@@ -25,29 +25,7 @@
     content: var(--callout-icon, '\f05a');
   }
 
-  /* Chevron (right) */
-  .callout-title::after {
-    @apply ml-auto shrink-0 text-[0.625rem] transition-transform duration-200;
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
-    content: '\f078';
-  }
-
-  /* ── Collapse Animation ── */
-
-  .callout-body {
-    @apply grid grid-rows-[1fr] transition-[grid-template-rows] duration-300;
-  }
-
-  .callout.collapsed .callout-title::after {
-    @apply -rotate-90;
-  }
-
-  .callout.collapsed .callout-body {
-    @apply grid-rows-[0fr];
-  }
-
-  /* ── Body Inner (injected by JS for CSS grid animation) ── */
+  /* ── Body Inner ── */
 
   .callout-body-inner {
     @apply min-h-0 overflow-hidden px-4;
