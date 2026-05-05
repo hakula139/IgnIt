@@ -111,23 +111,23 @@
 @import './base.css';
 
 /* Layout */
-@import './components/layout/glass-panel.css';
 @import './components/layout/back-to-top.css';
+@import './components/layout/glass-panel.css';
 @import './components/layout/header.css';
-@import './components/layout/skip-link.css';
 @import './components/layout/print.css';
+@import './components/layout/skip-link.css';
 
 /* Content */
 @import './components/content/article.css';
-@import './components/content/toc.css';
-@import './components/content/code-block.css';
-@import './components/content/syntax.css';
 @import './components/content/callout.css';
+@import './components/content/code-block.css';
 @import './components/content/collapse.css';
 @import './components/content/link-card.css';
-@import './components/content/mermaid.css';
 @import './components/content/lqip.css';
+@import './components/content/mermaid.css';
 @import './components/content/prose.css';
+@import './components/content/syntax.css';
+@import './components/content/toc.css';
 
 /* Listing */
 @import './components/listing/home-card.css';
