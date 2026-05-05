@@ -6,8 +6,12 @@
     const themeFor = () =>
       document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default';
 
-    const render = async () => {
-      const blocks = document.querySelectorAll('pre.mermaid');
+    // Exposed for late binders (e.g. comment widgets that inject mermaid
+    // fences post-load). Optional `nodes` argument; defaults to all on page.
+    window.kilnRenderMermaid = async (nodes) => {
+      const blocks = nodes && nodes.length !== undefined
+        ? nodes
+        : document.querySelectorAll('pre.mermaid');
       for (const el of blocks) {
         if (el.dataset.source !== undefined) el.textContent = el.dataset.source;
         el.removeAttribute('data-processed');
@@ -16,9 +20,11 @@
       await mermaid.run({ nodes: blocks });
     };
 
-    render();
+    window.kilnRenderMermaid(document.querySelectorAll('pre.mermaid'));
     new MutationObserver((muts) => {
-      if (muts.some((m) => m.attributeName === 'data-theme')) render();
+      if (muts.some((m) => m.attributeName === 'data-theme')) {
+        window.kilnRenderMermaid(document.querySelectorAll('pre.mermaid'));
+      }
     }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   </script>
 {%- endif %}
