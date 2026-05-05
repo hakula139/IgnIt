@@ -1,0 +1,30 @@
+{#- Renders a site-wide recent-comments list. Mounted on the page whose URL
+    matches config.params.comments.recent_url (kiln template vars don't expose
+    frontmatter, so URL match is the opt-in). -#}
+{%- if config.params.comments and config.params.comments.enabled
+       and config.params.comments.provider == "twikoo"
+       and config.params.comments.recent_url
+       and url == config.params.comments.recent_url -%}
+{%- set tw = config.params.comments.twikoo -%}
+{%- set features = config.params.comments.features | default(value={}) -%}
+
+<section class="mt-8" aria-labelledby="recent-comments-heading">
+  <h2 id="recent-comments-heading" class="article-title mb-4">{{ t('comments_recent_heading') }}</h2>
+  <ul
+    class="space-y-4"
+    data-recent-comments
+    data-twikoo-env-id="{{ tw.env_id }}"
+    data-loading-text="{{ t('comments_loading') }}"
+    data-error-text="{{ t('comments_error') }}"
+    data-empty-text="{{ t('comments_empty') }}"
+    {% if features.math %}data-feature-math="1"{% endif %}
+    {% if features.mermaid %}data-feature-mermaid="1"{% endif %}
+  >
+    <li class="text-text-secondary" data-recent-status>{{ t('comments_loading') }}</li>
+  </ul>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/twikoo@{{ tw.version }}/dist/twikoo.min.js"
+        integrity="{{ tw.sri }}" crossorigin="anonymous" defer></script>
+<script src="{{ config.base_url | safe }}/js/comments-recent.js" defer></script>
+{%- endif -%}
