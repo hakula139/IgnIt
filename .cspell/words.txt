@@ -53,5 +53,6 @@ statix
 syntect
 tabular
 tailwindcss
+twikoo
 unlayered
 xmark
