@@ -33,3 +33,10 @@ powered_by = "由 {kiln} 与 {ignit} 强力驱动"
 error_404_title = "404"
 page_not_found = "您访问的页面不存在。"
 back_to_home = "返回首页"
+
+# 评论
+comments_heading = "评论"
+comments_recent_heading = "最新评论"
+comments_loading = "加载中..."
+comments_error = "评论加载失败。"
+comments_empty = "暂无评论。"

@@ -33,3 +33,10 @@ powered_by = "Powered by {kiln} & {ignit}"
 error_404_title = "404"
 page_not_found = "The page you requested could not be found."
 back_to_home = "Back to home"
+
+# Comments
+comments_heading = "Comments"
+comments_recent_heading = "Recent Comments"
+comments_loading = "Loading..."
+comments_error = "Failed to load comments."
+comments_empty = "No comments yet."
