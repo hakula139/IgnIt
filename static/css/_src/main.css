@@ -26,6 +26,8 @@
   --color-border: #e8e8ed;
   --color-card: #2a2a2e;
   --color-selection: rgba(53, 166, 247, 0.25);
+  --color-line-highlight-bg: rgba(255, 235, 59, 0.1);
+  --color-line-highlight-border: rgba(255, 193, 7, 0.5);
 
   /* Surfaces */
   --radius-card: 1.25rem;
@@ -37,10 +39,6 @@
   --surface-glass-hover: rgba(255, 255, 255, 0.72);
   --surface-glass-scroll-shadow: rgba(0, 0, 0, 0.06);
   --surface-overlay-backdrop: rgba(0, 0, 0, 0.35);
-
-  /* Per-line highlight (selected lines inside a code block) */
-  --color-line-highlight-bg: rgba(255, 235, 59, 0.1);
-  --color-line-highlight-border: rgba(255, 193, 7, 0.5);
 
   /* Motion */
   --scale-card-hover: 135%;
@@ -95,6 +93,8 @@
     --color-border: #3a3a42;
     --color-card: #1a1a1e;
     --color-selection: rgba(50, 112, 194, 0.4);
+    --color-line-highlight-bg: rgba(255, 235, 59, 0.15);
+    --color-line-highlight-border: rgba(255, 193, 7, 0.6);
 
     /* Surfaces */
     --surface-glass-panel: rgba(41, 42, 45, 0.7);
@@ -103,10 +103,6 @@
     --surface-glass-hover: rgba(255, 255, 255, 0.08);
     --surface-glass-scroll-shadow: rgba(255, 255, 255, 0.06);
     --surface-overlay-backdrop: rgba(0, 0, 0, 0.55);
-
-    /* Per-line highlight (selected lines inside a code block) */
-    --color-line-highlight-bg: rgba(255, 235, 59, 0.15);
-    --color-line-highlight-border: rgba(255, 193, 7, 0.6);
   }
 }
 
