@@ -19,6 +19,10 @@
     @apply font-medium tracking-wider text-text-tertiary uppercase;
   }
 
+  .code-title {
+    @apply flex-1 truncate font-mono text-text-secondary;
+  }
+
   .copy-btn {
     @apply ml-auto cursor-pointer rounded p-1 text-text-tertiary transition-colors;
   }
@@ -27,7 +31,7 @@
     @apply text-link-hover;
   }
 
-  /* ── Collapsed State ── */
+  /* ── Collapsed / Expanded State ── */
 
   .code-block.collapsed .code-header .chevron {
     @apply -rotate-90;
@@ -35,6 +39,10 @@
 
   .code-block.collapsed .code-body {
     @apply grid-rows-[0fr];
+  }
+
+  .code-block.expanded .code-body[data-max-lines] > .highlight {
+    max-height: none;
   }
 
   /* ── Code Body (animated via CSS grid) ── */
@@ -90,5 +98,19 @@
 
   .highlight .code pre {
     @apply pr-4 pl-3;
+  }
+
+  /* ── Per-Line Highlight ── */
+
+  .highlight .line.hl,
+  .highlight .line-number.hl {
+    display: inline-block;
+    width: 100%;
+    background: var(--color-syntax-highlight-bg);
+  }
+
+  .highlight .line.hl {
+    border-left: 2px solid var(--color-syntax-highlight-border);
+    padding-left: calc(0.75rem - 2px);
   }
 }

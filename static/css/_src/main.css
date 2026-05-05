@@ -38,6 +38,10 @@
   --surface-glass-scroll-shadow: rgba(0, 0, 0, 0.06);
   --surface-overlay-backdrop: rgba(0, 0, 0, 0.35);
 
+  /* Syntax Highlighting */
+  --color-syntax-highlight-bg: rgba(255, 235, 59, 0.1);
+  --color-syntax-highlight-border: rgba(255, 193, 7, 0.5);
+
   /* Motion */
   --scale-card-hover: 135%;
   --animate-lqip-fade-in: lqip-fade-in 1s ease both;
@@ -99,6 +103,10 @@
     --surface-glass-hover: rgba(255, 255, 255, 0.08);
     --surface-glass-scroll-shadow: rgba(255, 255, 255, 0.06);
     --surface-overlay-backdrop: rgba(0, 0, 0, 0.55);
+
+    /* Syntax Highlighting */
+    --color-syntax-highlight-bg: rgba(255, 235, 59, 0.15);
+    --color-syntax-highlight-border: rgba(255, 193, 7, 0.6);
   }
 }
 
