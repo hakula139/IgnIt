@@ -9,7 +9,7 @@
   }
 
   .callout-title {
-    @apply flex cursor-pointer list-none items-center gap-2 px-4 py-2 text-sm font-semibold select-none;
+    @apply list-none py-2 font-semibold;
     color: var(--callout-color);
   }
 

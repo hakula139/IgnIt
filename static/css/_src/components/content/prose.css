@@ -90,13 +90,9 @@
 
 /* ── Borders ── */
 
-/* Override Typography's opaque borders with semi-transparent glass style. */
+/* Override Typography's opaque borders with the soft overlay border. */
 .prose :where(hr, blockquote, th, td, thead, tr) {
-  border-color: rgb(255 255 255 / 0.2);
-
-  @variant dark {
-    border-color: rgb(255 255 255 / 0.08);
-  }
+  border-color: var(--color-border-overlay);
 }
 
 /* ── Lists ── */
@@ -202,11 +198,7 @@
   /* ── Footnotes ── */
 
   .prose .footnote-definition {
-    @apply mt-4 flex gap-2 border-t border-white/20 pt-4 text-sm text-text-tertiary;
-
-    @variant dark {
-      @apply border-white/8;
-    }
+    @apply mt-4 flex gap-2 border-t border-border-overlay pt-4 text-sm text-text-tertiary;
   }
 
   .prose .footnote-definition-label {

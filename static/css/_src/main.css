@@ -24,6 +24,7 @@
   --color-link: #1d84a8;
   --color-link-hover: #14607d;
   --color-border: #e8e8ed;
+  --color-border-overlay: rgba(255, 255, 255, 0.2);
   --color-card: #2a2a2e;
   --color-selection: rgba(53, 166, 247, 0.25);
   --color-line-highlight-bg: rgba(255, 235, 59, 0.1);
@@ -91,6 +92,7 @@
     --color-link: #55bde2;
     --color-link-hover: #bdebfc;
     --color-border: #3a3a42;
+    --color-border-overlay: rgba(255, 255, 255, 0.08);
     --color-card: #1a1a1e;
     --color-selection: rgba(50, 112, 194, 0.4);
     --color-line-highlight-bg: rgba(255, 235, 59, 0.15);

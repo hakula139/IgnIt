@@ -1,10 +1,6 @@
 @layer components {
   .year-heading {
-    @apply mt-6 mb-3 border-b border-white/20 pb-1 text-lg font-medium text-text-secondary;
-
-    @variant dark {
-      @apply border-white/8;
-    }
+    @apply mt-6 mb-3 border-b border-border-overlay pb-1 text-lg font-medium text-text-secondary;
   }
 
   .tag-pill {
