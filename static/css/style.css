@@ -1528,25 +1528,10 @@
   .toc-trigger::after {
     margin-left: auto;
     flex-shrink: 0;
-    font-size: 0.625rem;
     color: var(--color-text-tertiary);
-    transition-property: transform, translate, scale, rotate;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
-    --tw-duration: 200ms;
-    transition-duration: 200ms;
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
     content: '\f078';
-  }
-  .toc-body-wrapper {
-    display: grid;
-    grid-template-rows: 1fr;
-    transition-property: grid-template-rows;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
-    --tw-duration: 300ms;
-    transition-duration: 300ms;
   }
   .toc-body {
     min-height: calc(var(--spacing) * 0);
@@ -1557,12 +1542,6 @@
   }
   .toc-body > :last-child {
     margin-bottom: calc(var(--spacing) * 3);
-  }
-  .toc-collapse.collapsed .toc-trigger::after {
-    rotate: calc(90deg * -1);
-  }
-  .toc-collapse.collapsed .toc-body-wrapper {
-    grid-template-rows: 0fr;
   }
   .toc-sidebar-wrapper {
     display: none;
@@ -1666,18 +1645,6 @@
   }
   .copy-btn:hover {
     color: var(--color-link-hover);
-  }
-  .code-block.collapsed .code-body {
-    grid-template-rows: 0fr;
-  }
-  .code-body {
-    display: grid;
-    grid-template-rows: 1fr;
-    transition-property: grid-template-rows;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
-    --tw-duration: 300ms;
-    transition-duration: 300ms;
   }
   .code-body > .highlight {
     min-height: calc(var(--spacing) * 0);
@@ -1873,18 +1840,6 @@
     font-weight: 900;
     content: '\f078';
   }
-  .callout-body {
-    display: grid;
-    grid-template-rows: 1fr;
-    transition-property: grid-template-rows;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
-    --tw-duration: 300ms;
-    transition-duration: 300ms;
-  }
-  .callout.collapsed .callout-body {
-    grid-template-rows: 0fr;
-  }
   .callout-body-inner {
     min-height: calc(var(--spacing) * 0);
     overflow: hidden;
@@ -1951,7 +1906,7 @@
   }
 }
 @layer components {
-  .code-header .chevron, .callout-title::after {
+  .code-header .chevron, .callout-title::after, .toc-trigger::after {
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
     transition-property: transform, translate, scale, rotate;
@@ -1960,8 +1915,20 @@
     --tw-duration: 200ms;
     transition-duration: 200ms;
   }
-  .code-block.collapsed .code-header .chevron, .callout.collapsed .callout-title::after {
+  .code-block.collapsed .code-header .chevron, .callout.collapsed .callout-title::after, .toc-collapse.collapsed .toc-trigger::after {
     rotate: calc(90deg * -1);
+  }
+  .code-body, .callout-body, .toc-body-wrapper {
+    display: grid;
+    grid-template-rows: 1fr;
+    transition-property: grid-template-rows;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
+  }
+  .code-block.collapsed .code-body, .callout.collapsed .callout-body, .toc-collapse.collapsed .toc-body-wrapper {
+    grid-template-rows: 0fr;
   }
 }
 @layer components {

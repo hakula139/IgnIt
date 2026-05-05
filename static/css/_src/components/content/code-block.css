@@ -1,11 +1,11 @@
 @layer components {
-  /* ── Code Block Container ── */
+  /* ── Container ── */
 
   .code-block {
     @apply my-4 overflow-hidden rounded-lg text-sm leading-normal;
   }
 
-  /* ── Header (collapsible trigger) ── */
+  /* ── Header ── */
 
   .code-header {
     @apply flex cursor-pointer items-center gap-2 bg-bg-muted/60 px-4 py-2 text-sm select-none;
@@ -15,7 +15,6 @@
     @apply text-text-secondary;
   }
 
-  /* Lang pill and optional title share the role of identifying the block. */
   .code-lang,
   .code-title {
     @apply flex-1 truncate font-semibold text-text-secondary;
@@ -29,17 +28,7 @@
     @apply text-link-hover;
   }
 
-  /* ── Collapsed State ── */
-
-  .code-block.collapsed .code-body {
-    @apply grid-rows-[0fr];
-  }
-
-  /* ── Code Body (animated via CSS grid) ── */
-
-  .code-body {
-    @apply grid grid-rows-[1fr] transition-[grid-template-rows] duration-300;
-  }
+  /* ── Body ── */
 
   .code-body > .highlight {
     @apply min-h-0 overflow-x-auto overflow-y-hidden;

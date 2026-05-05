@@ -123,7 +123,7 @@
 @import './components/content/code-block.css';
 @import './components/content/syntax.css';
 @import './components/content/callout.css';
-@import './components/content/chevron.css';
+@import './components/content/collapse.css';
 @import './components/content/link-card.css';
 @import './components/content/mermaid.css';
 @import './components/content/lqip.css';

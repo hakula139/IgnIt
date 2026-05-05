@@ -25,7 +25,7 @@
     content: var(--callout-icon, '\f05a');
   }
 
-  /* Chevron (right) — shared size / rotation live in chevron.css. */
+  /* Chevron (right) — shared size / rotation live in collapse.css. */
   .callout-title::after {
     @apply ml-auto shrink-0;
     font-family: 'Font Awesome 6 Free';
@@ -33,17 +33,7 @@
     content: '\f078';
   }
 
-  /* ── Collapse Animation ── */
-
-  .callout-body {
-    @apply grid grid-rows-[1fr] transition-[grid-template-rows] duration-300;
-  }
-
-  .callout.collapsed .callout-body {
-    @apply grid-rows-[0fr];
-  }
-
-  /* ── Body Inner (injected by JS for CSS grid animation) ── */
+  /* ── Body Inner ── */
 
   .callout-body-inner {
     @apply min-h-0 overflow-hidden px-4;
