@@ -8,7 +8,7 @@
   /* ── Header (collapsible trigger) ── */
 
   .code-header {
-    @apply flex cursor-pointer items-center gap-2 bg-bg-muted/70 px-4 py-2 text-xs select-none;
+    @apply flex cursor-pointer items-center gap-2 bg-bg-muted/60 px-4 py-2 text-sm select-none;
   }
 
   .code-header .chevron {
@@ -16,11 +16,11 @@
   }
 
   .code-lang {
-    @apply font-medium tracking-wider text-text-tertiary uppercase;
+    @apply text-xs font-medium tracking-wider text-text-tertiary uppercase;
   }
 
   .code-title {
-    @apply flex-1 truncate text-sm text-text-secondary;
+    @apply flex-1 truncate font-semibold text-text-secondary;
   }
 
   .copy-btn {
