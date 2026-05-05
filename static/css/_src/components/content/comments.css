@@ -1,0 +1,111 @@
+/* Twikoo chrome overrides. Every selector is scoped through `.prose` so
+   default Twikoo CSS still applies on contexts that don't wrap in `.prose`.
+   Prose elements (`p`, `blockquote`, `code`, `a`) inherit Tailwind Typography
+   from `prose.css` — only chrome (form, avatar, buttons, picker, pagination)
+   needs explicit rules here. */
+
+@layer components {
+  /* ── Form chrome ── */
+
+  .prose .tk-input,
+  .prose .tk-content,
+  .prose .tk-comments-container .el-input__inner,
+  .prose .tk-comments-container .el-textarea__inner {
+    @apply rounded-md border border-border bg-bg-muted/60 px-3 py-2 text-text;
+  }
+
+  .prose .tk-input:focus,
+  .prose .tk-content:focus,
+  .prose .tk-comments-container .el-input__inner:focus,
+  .prose .tk-comments-container .el-textarea__inner:focus {
+    @apply border-link ring-1 ring-link outline-none;
+  }
+
+  .prose .tk-submit,
+  .prose .tk-action-link {
+    @apply inline-flex items-center gap-1 rounded-md bg-link px-4 py-2 text-bg no-underline transition-colors;
+  }
+
+  .prose .tk-submit:hover,
+  .prose .tk-action-link:hover {
+    @apply bg-link-hover text-bg;
+  }
+
+  .prose .tk-cancel {
+    @apply text-text-secondary;
+  }
+
+  /* ── Avatar ── */
+
+  .prose .tk-avatar,
+  .prose .tk-avatar-img {
+    @apply h-10 w-10 rounded-full ring-1 ring-border;
+  }
+
+  /* ── Comment item ── */
+
+  .prose .tk-comment {
+    @apply my-4 flex gap-3 rounded-lg border border-border-overlay bg-bg-muted/30 p-4;
+  }
+
+  .prose .tk-main {
+    @apply min-w-0 flex-1;
+  }
+
+  .prose .tk-meta {
+    @apply text-sm text-text-secondary;
+  }
+
+  .prose .tk-nick {
+    @apply font-semibold text-text;
+  }
+
+  /* ── Action buttons (reply, like, edit) ── */
+
+  .prose .tk-actions a,
+  .prose .tk-action {
+    @apply border-b-0 text-text-secondary no-underline transition-colors;
+  }
+
+  .prose .tk-actions a:hover,
+  .prose .tk-action:hover {
+    @apply text-link;
+  }
+
+  /* ── Emoji / OwO picker ── */
+
+  .prose .OwO,
+  .prose .OwO-body {
+    @apply rounded-md border border-border bg-bg shadow-card;
+  }
+
+  .prose .OwO-bar {
+    @apply border-b border-border text-text-secondary;
+  }
+
+  .prose .OwO-items {
+    @apply bg-bg-muted/40;
+  }
+
+  /* ── Pagination ── */
+
+  .prose .tk-pagination {
+    @apply mt-4 flex flex-wrap gap-2 text-sm;
+  }
+
+  .prose .tk-pagination-item {
+    @apply rounded-md border border-border bg-bg-muted/40 px-3 py-1 text-text-secondary no-underline;
+  }
+
+  .prose .tk-pagination-item.active,
+  .prose .tk-pagination-item:hover {
+    @apply border-link bg-link/10 text-link;
+  }
+
+  /* ── Loading and empty states ── */
+
+  .prose .tk-loading,
+  .prose .tk-empty {
+    @apply py-6 text-center text-text-secondary;
+  }
+}
