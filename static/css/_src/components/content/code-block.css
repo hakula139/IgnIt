@@ -12,20 +12,14 @@
   }
 
   .code-header .chevron {
-    @apply text-[0.625rem] text-text-tertiary transition-transform duration-200;
+    @apply text-[0.625rem] text-text-secondary transition-transform duration-200;
   }
 
-  .code-lang {
-    @apply text-xs font-medium tracking-wider text-text-tertiary uppercase;
-  }
-
+  /* The lang pill and the optional title fill the same role — they identify the block.
+   * Same typography keeps the header consistent regardless of which one is shown. */
+  .code-lang,
   .code-title {
     @apply flex-1 truncate font-semibold text-text-secondary;
-  }
-
-  /* When a title is present, lift the chevron to match — chevron and label form one unit. */
-  .code-header:has(.code-title) .chevron {
-    @apply text-text-secondary;
   }
 
   .copy-btn {
