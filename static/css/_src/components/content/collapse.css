@@ -3,22 +3,22 @@
 @layer components {
   /* ── Chevron ── */
 
-  .code-header .chevron,
+  .code-header::before,
   .callout-title::after,
   .toc-trigger::after {
-    @apply text-xs transition-transform duration-200;
-  }
-
-  /* FA glyph rendered via ::after; code-block injects a real <i> instead. */
-  .callout-title::after,
-  .toc-trigger::after {
-    @apply ml-auto shrink-0;
+    @apply shrink-0 text-xs transition-transform duration-200;
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
     content: '\f078';
   }
 
-  .code-block.collapsed .code-header .chevron,
+  /* Right-anchored on callout / toc — the leading slot belongs to the variant / list icon. */
+  .callout-title::after,
+  .toc-trigger::after {
+    @apply ml-auto;
+  }
+
+  .code-block.collapsed .code-header::before,
   .callout.collapsed .callout-title::after,
   .toc-collapse.collapsed .toc-trigger::after {
     @apply -rotate-90;

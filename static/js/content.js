@@ -72,8 +72,6 @@
         continue;
       }
 
-      header.prepend(createIcon('fas fa-chevron-down chevron'));
-
       const copyBtn = header.querySelector('.copy-btn');
       if (copyBtn) {
         copyBtn.replaceChildren(createIcon('far fa-copy'));
