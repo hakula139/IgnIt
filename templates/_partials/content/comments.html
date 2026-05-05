@@ -1,8 +1,9 @@
 {#- Provider switch. Add parallel partials per provider; the dispatcher stays thin.
     Skips the per-post mount on the recent-comments page (which renders its own
-    site-wide list partial instead). -#}
+    site-wide list partial instead). recent_url is a base-relative path so the
+    match survives base_url overrides like `kiln serve --base-url ...`. -#}
 {%- set is_recent = config.params.comments and config.params.comments.recent_url
-                    and url == config.params.comments.recent_url -%}
+                    and url == config.base_url ~ config.params.comments.recent_url -%}
 {%- if config.params.comments and config.params.comments.enabled and not is_recent %}
   {%- if config.params.comments.provider == "twikoo" %}
     {%- include "_partials/content/comments-twikoo.html" %}

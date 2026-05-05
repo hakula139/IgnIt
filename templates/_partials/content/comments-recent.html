@@ -1,10 +1,11 @@
 {#- Renders a site-wide recent-comments list. Mounted on the page whose URL
-    matches config.params.comments.recent_url (kiln template vars don't expose
-    frontmatter, so URL match is the opt-in). -#}
+    path matches config.params.comments.recent_url (kiln template vars don't
+    expose frontmatter, so URL match is the opt-in). recent_url is base-
+    relative so the match survives base_url overrides. -#}
 {%- if config.params.comments and config.params.comments.enabled
        and config.params.comments.provider == "twikoo"
        and config.params.comments.recent_url
-       and url == config.params.comments.recent_url -%}
+       and url == config.base_url ~ config.params.comments.recent_url -%}
 {%- set tw = config.params.comments.twikoo -%}
 {%- set features = config.params.comments.features | default(value={}) -%}
 
