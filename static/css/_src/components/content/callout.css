@@ -25,9 +25,9 @@
     content: var(--callout-icon, '\f05a');
   }
 
-  /* Chevron (right) */
+  /* Chevron (right) — typography & rotate live in code-block.css. */
   .callout-title::after {
-    @apply ml-auto shrink-0 text-[0.625rem] transition-transform duration-200;
+    @apply ml-auto shrink-0;
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
     content: '\f078';
@@ -37,10 +37,6 @@
 
   .callout-body {
     @apply grid grid-rows-[1fr] transition-[grid-template-rows] duration-300;
-  }
-
-  .callout.collapsed .callout-title::after {
-    @apply -rotate-90;
   }
 
   .callout.collapsed .callout-body {
