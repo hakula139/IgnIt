@@ -23,6 +23,11 @@
     @apply flex-1 truncate font-semibold text-text-secondary;
   }
 
+  /* When a title is present, lift the chevron to match — chevron and label form one unit. */
+  .code-header:has(.code-title) .chevron {
+    @apply text-text-secondary;
+  }
+
   .copy-btn {
     @apply ml-auto cursor-pointer rounded p-1 text-text-tertiary transition-colors;
   }
