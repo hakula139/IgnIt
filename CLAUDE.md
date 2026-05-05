@@ -16,6 +16,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   ├── _src/                           # private: Tailwind sources (not shipped)
 │   │   │   ├── main.css                    # Entry: tokens, dark mode, partial imports
 │   │   │   ├── base.css                    # @layer base (html, body, a, selection)
+│   │   │   ├── fonts.css                   # @font-face for Inter Variable + Maple Mono
 │   │   │   └── components/
 │   │   │       ├── layout/
 │   │   │       │   ├── back-to-top.css     # .back-to-top fixed button with glass styling
@@ -41,6 +42,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   │       └── embed/
 │   │   │           └── apple-music.css     # Apple Music embed light / dark toggle
 │   │   └── style.css                       # Compiled Tailwind output (shipped)
+│   ├── fonts/                              # Self-hosted webfonts (Inter Variable + Maple Mono, latin)
 │   └── js/
 │       ├── back-to-top.js                  # Scroll-triggered back-to-top button
 │       ├── content.js                      # Code block, callout, heading anchor, and external link enhancements
@@ -110,6 +112,12 @@ Use `@apply` in the appropriate CSS partial for anything else. Use canonical Tai
 Translation tables live under `i18n/<lang>.toml` (`en`, `zh-Hans`). Templates and JS access them via `t('key')` (MiniJinja) or `data-i18n-*` attributes on the document root. The active language is set by `config.language` in the consuming site.
 
 Sites consuming the theme can layer overrides: a same-named TOML file at the site root's `i18n/<lang>.toml` is merged on top of the theme file, key-by-key. Missing keys fall back to the theme's translation, then to the theme's English translation.
+
+## Webfonts
+
+Self-hosted under `static/fonts/` and registered in `static/css/_src/fonts.css`. Inter Variable covers body text (`--font-sans`) via a single woff2 file with the `wght` axis (100–900); Maple Mono covers code (`--font-mono`) via two static woff2 files (400 + 700) since Fontsource doesn't expose a variable build. Both shipped as the latin subset only — CJK falls through to system fonts via the cascade.
+
+`base.html` preloads Inter (used on every page); Maple Mono is fetched lazily on first `<code>` use. url() paths inside `fonts.css` are relative to the compiled `static/css/style.css`, since Tailwind v4 inlines @import contents verbatim.
 
 ## Image Pipeline
 

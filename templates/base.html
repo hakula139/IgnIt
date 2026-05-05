@@ -12,6 +12,13 @@
   <link rel="stylesheet" href="{{ config.base_url | safe }}/pagefind/pagefind-component-ui.css">
   <script src="{{ config.base_url | safe }}/pagefind/pagefind-component-ui.js" type="module"></script>
   {%- endif %}
+  <link
+    rel="preload"
+    href="{{ config.base_url | safe }}/fonts/inter-latin-variable.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  >
   <link rel="stylesheet" href="{{ config.base_url | safe }}/css/style.css">
   {%- if page_css %}
   <link rel="stylesheet" href="{{ page_css | safe }}">
