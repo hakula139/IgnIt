@@ -1,6 +1,7 @@
 autoplay
 cachix
 callout
+consolas
 direnv
 elif
 endfor
@@ -18,14 +19,17 @@ katex
 kwargs
 lqip
 materialised
+menlo
 minijinja
 ndash
 netease
+neue
 nixfmt
 nixos
 nixpkgs
 noopener
 noreferrer
+noto
 numtide
 nums
 oklab
@@ -35,8 +39,11 @@ palenight
 pingfang
 pkgs
 raquo
+rgba
+roboto
 sarasa
 scrollbar
+segoe
 sfmono
 shortcode
 songid
