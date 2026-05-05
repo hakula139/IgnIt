@@ -8,6 +8,7 @@ endfor
 endif
 ensp
 fontawesome
+fontsource
 glassmorphism
 hakula
 hashchange
@@ -18,6 +19,7 @@ jetbrains
 katex
 kwargs
 lqip
+maple
 materialised
 menlo
 minijinja
@@ -54,4 +56,5 @@ syntect
 tabular
 tailwindcss
 unlayered
+wght
 xmark

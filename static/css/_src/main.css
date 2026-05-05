@@ -3,17 +3,19 @@
 
 @source '../../../templates/**/*.html';
 
+@import './fonts.css';
+
 /* ── Design Tokens ── */
 
 @theme {
   /* Typography */
   --font-sans:
-    system-ui, -apple-system, 'Segoe UI', Roboto, 'Sarasa Gothic SC', 'Source Han Sans SC',
-    'PingFang SC', 'Hiragino Sans', 'Noto Sans CJK SC', 'Microsoft YaHei', Emoji, 'Helvetica Neue',
-    Arial, sans-serif;
+    'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, 'Sarasa Gothic SC',
+    'Source Han Sans SC', 'PingFang SC', 'Hiragino Sans', 'Noto Sans CJK SC', 'Microsoft YaHei',
+    Emoji, 'Helvetica Neue', Arial, sans-serif;
   --font-mono:
-    'JetBrains Mono', ui-monospace, 'Source Code Pro', SFMono-Regular, Menlo, Consolas,
-    'Liberation Mono', monospace;
+    'Maple Mono', ui-monospace, 'JetBrains Mono', 'Source Code Pro', SFMono-Regular, Menlo,
+    Consolas, 'Liberation Mono', monospace;
 
   /* Colors */
   --color-bg: #fff;
