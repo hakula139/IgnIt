@@ -40,7 +40,7 @@
     function init() {
       if (typeof twikoo === 'undefined') return;
       var opts = {
-        envId: {{ tw.env_id | tojson | safe }},
+        envId: '{{ tw.env_id | safe }}',
         el: '#twikoo',
         path: window.location.pathname,
         lang: lang(),
