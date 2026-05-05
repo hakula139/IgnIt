@@ -1,0 +1,6 @@
+{#- Provider switch. Add parallel partials per provider; the dispatcher stays thin. -#}
+{%- if config.params.comments and config.params.comments.enabled %}
+  {%- if config.params.comments.provider == "twikoo" %}
+    {%- include "_partials/content/comments-twikoo.html" %}
+  {%- endif %}
+{%- endif %}

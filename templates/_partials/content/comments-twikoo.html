@@ -1,0 +1,82 @@
+{#- Twikoo per-page mount. KaTeX / Mermaid loaded only when opted in via
+    config.params.comments.features.* (content-driven Feature flags miss /comments/). -#}
+{%- set cdn = config.params.cdn | default("https://cdn.jsdelivr.net/npm") -%}
+{%- set tw = config.params.comments.twikoo -%}
+{%- set features = config.params.comments.features | default(value={}) -%}
+
+<section class="mt-8" aria-labelledby="comments-heading">
+  <h2 id="comments-heading" class="article-title mb-4">{{ t('comments_heading') }}</h2>
+  <div class="glass-glow">
+    <div class="glass-panel p-6 sm:p-8">
+      <div id="twikoo" class="prose max-w-none" data-twikoo-mount></div>
+    </div>
+  </div>
+</section>
+
+{%- if features.math %}
+  <script src="{{ cdn | safe }}/katex@0.16/dist/katex.min.js" defer></script>
+  <script src="{{ cdn | safe }}/katex@0.16/dist/contrib/auto-render.min.js" defer></script>
+{%- endif %}
+
+<script src="https://cdn.jsdelivr.net/npm/twikoo@{{ tw.version }}/dist/twikoo.min.js"
+        integrity="{{ tw.sri }}" crossorigin="anonymous" defer></script>
+<script>
+  (function () {
+    function lang() {
+      var l = document.documentElement.lang || 'en';
+      return l.toLowerCase().indexOf('zh') === 0 ? 'zh-CN' : 'en';
+    }
+
+    function transformMermaid(root) {
+      root.querySelectorAll('pre code.language-mermaid').forEach(function (code) {
+        var pre = code.parentElement;
+        var next = document.createElement('pre');
+        next.className = 'mermaid';
+        next.textContent = code.textContent;
+        pre.replaceWith(next);
+      });
+    }
+
+    function init() {
+      if (typeof twikoo === 'undefined') return;
+      var opts = {
+        envId: {{ tw.env_id | tojson | safe }},
+        el: '#twikoo',
+        path: window.location.pathname,
+        lang: lang(),
+        onCommentLoaded: function () {
+          var root = document.getElementById('twikoo');
+          if (!root) return;
+          {%- if features.mermaid %}
+          transformMermaid(root);
+          if (typeof window.kilnRenderMermaid === 'function') {
+            window.kilnRenderMermaid(root.querySelectorAll('pre.mermaid'));
+          }
+          {%- endif %}
+          {%- if features.math %}
+          if (typeof window.renderMathInElement === 'function') {
+            window.renderMathInElement(root);
+          }
+          {%- endif %}
+        },
+      };
+      {%- if features.math %}
+      opts.katex = {
+        delimiters: [
+          { left: '$$', right: '$$', display: true },
+          { left: '$', right: '$', display: false },
+          { left: '\\(', right: '\\)', display: false },
+          { left: '\\[', right: '\\]', display: true },
+        ],
+      };
+      {%- endif %}
+      twikoo.init(opts);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
