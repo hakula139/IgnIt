@@ -25,7 +25,7 @@
     content: var(--callout-icon, '\f05a');
   }
 
-  /* Chevron (right) — typography & rotate live in code-block.css. */
+  /* Chevron (right) — shared size / rotation live in chevron.css. */
   .callout-title::after {
     @apply ml-auto shrink-0;
     font-family: 'Font Awesome 6 Free';

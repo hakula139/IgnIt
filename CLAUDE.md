@@ -26,6 +26,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   │       ├── content/
 │   │   │       │   ├── article.css         # .article-title, .post-banner-*
 │   │   │       │   ├── callout.css         # .callout variants, icons, collapse animation
+│   │   │       │   ├── chevron.css         # Shared collapse / expand chevron (code blocks + callouts)
 │   │   │       │   ├── code-block.css      # .code-block, .code-header, .code-body, .copy-btn
 │   │   │       │   ├── link-card.css       # .link-card, .link-avatar, .link-grid
 │   │   │       │   ├── prose.css           # .prose overrides (unlayered + @layer components)

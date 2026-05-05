@@ -101,16 +101,4 @@
   .highlight .line.hl {
     box-shadow: inset 2px 0 0 var(--color-line-highlight-border);
   }
-
-  /* ── Chevron (shared with .callout-title::after) ── */
-
-  .code-header .chevron,
-  .callout-title::after {
-    @apply text-xs transition-transform duration-200;
-  }
-
-  .code-block.collapsed .code-header .chevron,
-  .callout.collapsed .callout-title::after {
-    @apply -rotate-90;
-  }
 }

@@ -1,0 +1,14 @@
+@layer components {
+  /* Shared collapse / expand indicator for code blocks and callouts. Each component owns its
+   * own color and position; this file owns size, transition, and rotation. */
+
+  .code-header .chevron,
+  .callout-title::after {
+    @apply text-xs transition-transform duration-200;
+  }
+
+  .code-block.collapsed .code-header .chevron,
+  .callout.collapsed .callout-title::after {
+    @apply -rotate-90;
+  }
+}
