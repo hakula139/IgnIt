@@ -20,7 +20,7 @@
   }
 
   .code-title {
-    @apply flex-1 truncate text-text-secondary;
+    @apply flex-1 truncate text-sm text-text-secondary;
   }
 
   .copy-btn {
