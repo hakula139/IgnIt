@@ -9,6 +9,15 @@
     @apply text-xs transition-transform duration-200;
   }
 
+  /* FA glyph rendered via ::after; code-block injects a real <i> instead. */
+  .callout-title::after,
+  .toc-trigger::after {
+    @apply ml-auto shrink-0;
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    content: '\f078';
+  }
+
   .code-block.collapsed .code-header .chevron,
   .callout.collapsed .callout-title::after,
   .toc-collapse.collapsed .toc-trigger::after {

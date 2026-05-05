@@ -17,20 +17,12 @@
     @apply hidden;
   }
 
-  /* Variant icon (left) */
+  /* Variant icon (left); chevron (right) lives in collapse.css. */
   .callout-title::before {
     @apply shrink-0;
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
     content: var(--callout-icon, '\f05a');
-  }
-
-  /* Chevron (right) — shared size / rotation live in collapse.css. */
-  .callout-title::after {
-    @apply ml-auto shrink-0;
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
-    content: '\f078';
   }
 
   /* ── Body Inner ── */
