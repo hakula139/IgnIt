@@ -38,9 +38,9 @@
   --surface-glass-scroll-shadow: rgba(0, 0, 0, 0.06);
   --surface-overlay-backdrop: rgba(0, 0, 0, 0.35);
 
-  /* Syntax Highlighting */
-  --color-syntax-highlight-bg: rgba(255, 235, 59, 0.1);
-  --color-syntax-highlight-border: rgba(255, 193, 7, 0.5);
+  /* Per-line highlight (selected lines inside a code block) */
+  --color-line-highlight-bg: rgba(255, 235, 59, 0.1);
+  --color-line-highlight-border: rgba(255, 193, 7, 0.5);
 
   /* Motion */
   --scale-card-hover: 135%;
@@ -104,9 +104,9 @@
     --surface-glass-scroll-shadow: rgba(255, 255, 255, 0.06);
     --surface-overlay-backdrop: rgba(0, 0, 0, 0.55);
 
-    /* Syntax Highlighting */
-    --color-syntax-highlight-bg: rgba(255, 235, 59, 0.15);
-    --color-syntax-highlight-border: rgba(255, 193, 7, 0.6);
+    /* Per-line highlight (selected lines inside a code block) */
+    --color-line-highlight-bg: rgba(255, 235, 59, 0.15);
+    --color-line-highlight-border: rgba(255, 193, 7, 0.6);
   }
 }
 

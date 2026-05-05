@@ -31,7 +31,7 @@
     @apply text-link-hover;
   }
 
-  /* ── Collapsed / Expanded State ── */
+  /* ── Collapsed State ── */
 
   .code-block.collapsed .code-header .chevron {
     @apply -rotate-90;
@@ -41,9 +41,8 @@
     @apply grid-rows-[0fr];
   }
 
-  .code-block.expanded .code-body[data-max-lines] > .highlight {
-    max-height: none;
-  }
+  /* The expanded variant suppresses the `data-max-lines` clamp at the source: kiln omits the
+   * attribute entirely when the author writes `{expand}`, so no override rule is needed here. */
 
   /* ── Code Body (animated via CSS grid) ── */
 
@@ -106,11 +105,12 @@
   .highlight .line-number.hl {
     display: inline-block;
     width: 100%;
-    background: var(--color-syntax-highlight-bg);
+    background: var(--color-line-highlight-bg);
   }
 
+  /* Inset box-shadow gives a left accent without affecting layout — a real `border-left` would
+   * push highlighted line content right relative to non-highlighted lines inside the same `<pre>`. */
   .highlight .line.hl {
-    border-left: 2px solid var(--color-syntax-highlight-border);
-    padding-left: calc(0.75rem - 2px);
+    box-shadow: inset 2px 0 0 var(--color-line-highlight-border);
   }
 }
