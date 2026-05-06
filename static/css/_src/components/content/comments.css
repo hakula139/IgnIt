@@ -1,8 +1,7 @@
 @layer components {
   /* ── Form ── */
 
-  /* Twikoo reuses .tk-content for both the textarea and rendered body; scope
-     to the textarea so bodies inherit prose paragraph styling. */
+  /* Twikoo reuses .tk-content for the rendered body too — narrow to the textarea. */
   .prose .tk-input,
   .prose textarea.tk-content,
   .prose .tk-comments-container .el-input__inner,
@@ -119,9 +118,7 @@
 
   /* ── Emoticons ── */
 
-  /* Override prose's block <img> default so OwO emoticons stay in the text run. */
   .prose .tk-owo-emotion {
-    @apply m-0 inline-block align-middle;
-    height: 1.5em;
+    @apply m-0 inline-block h-6 align-middle;
   }
 }

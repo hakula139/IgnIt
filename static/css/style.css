@@ -1866,8 +1866,8 @@
   .prose .tk-owo-emotion {
     margin: calc(var(--spacing) * 0);
     display: inline-block;
+    height: calc(var(--spacing) * 6);
     vertical-align: middle;
-    height: 1.5em;
   }
 }
 @layer components {
