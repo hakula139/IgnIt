@@ -24,38 +24,37 @@
 
     const renderItem = (item) => {
       const li = document.createElement('li');
-      li.className = 'flex gap-3 border-b border-border/30 py-3 last:border-b-0';
+      li.className = 'recent-comment';
 
       const avatarLink = document.createElement('a');
       avatarLink.href = item.url || '#';
-      avatarLink.className = 'shrink-0';
 
       const avatar = document.createElement('img');
       avatar.src = item.avatar || '';
       avatar.alt = '';
       avatar.loading = 'lazy';
-      avatar.className = 'h-10 w-10 rounded-full';
+      avatar.className = 'recent-comment-avatar';
       avatarLink.appendChild(avatar);
 
       const main = document.createElement('div');
-      main.className = 'min-w-0 flex-1';
+      main.className = 'recent-comment-main';
 
       const header = document.createElement('div');
-      header.className = 'flex flex-wrap items-baseline gap-x-2 text-sm';
+      header.className = 'recent-comment-header';
 
       const nickLink = document.createElement('a');
       nickLink.href = item.url || '#';
-      nickLink.className = 'font-semibold text-text no-underline hover:text-link';
+      nickLink.className = 'recent-comment-nick';
       nickLink.textContent = item.nick || '';
 
       const time = document.createElement('time');
-      time.className = 'text-xs text-text-secondary';
+      time.className = 'recent-comment-time';
       time.textContent = item.relativeTime || '';
 
       header.append(nickLink, time);
 
       const body = document.createElement('div');
-      body.className = 'prose mt-1 line-clamp-3 max-w-none text-sm';
+      body.className = 'recent-comment-body';
 
       // item.comment is server-sanitized HTML from Twikoo's cloud function.
       const parsed = new DOMParser().parseFromString(item.comment || '', 'text/html').body;
@@ -70,7 +69,7 @@
 
     const renderEmpty = () => {
       const li = document.createElement('li');
-      li.className = 'text-text-secondary';
+      li.className = 'recent-comment-status';
       li.textContent = emptyText;
       container.appendChild(li);
     };

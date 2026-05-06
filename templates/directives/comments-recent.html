@@ -7,12 +7,13 @@
   <section class="glass-panel p-6 sm:p-8" aria-labelledby="recent-comments-heading">
     <h2 id="recent-comments-heading" class="article-title mb-4">{{ t('comments_recent_heading') }}</h2>
     <ul
+      class="recent-comments"
       data-recent-comments
       data-twikoo-api-url="{{ tw.api_url }}"
       data-error-text="{{ t('comments_error') }}"
       data-empty-text="{{ t('comments_empty') }}"
     >
-      <li class="py-3 text-text-secondary" data-recent-status>{{ t('comments_loading') }}</li>
+      <li class="recent-comment-status" data-recent-status>{{ t('comments_loading') }}</li>
     </ul>
   </section>
 </div>

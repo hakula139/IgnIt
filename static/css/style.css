@@ -819,9 +819,6 @@
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
-  .py-3 {
-    padding-block: calc(var(--spacing) * 3);
-  }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
   }
@@ -1853,6 +1850,81 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  .prose .recent-comments {
+    margin: calc(var(--spacing) * 0);
+    list-style-type: none;
+    padding: calc(var(--spacing) * 0);
+  }
+  .prose .recent-comment {
+    margin: calc(var(--spacing) * 0);
+    display: flex;
+    gap: calc(var(--spacing) * 3);
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
+    border-color: color-mix(in srgb, #e8e8ed 30%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-border) 30%, transparent);
+    }
+    padding-block: calc(var(--spacing) * 3);
+    &:last-child {
+      border-bottom-style: var(--tw-border-style);
+      border-bottom-width: 0px;
+    }
+  }
+  .prose .recent-comment-avatar {
+    height: calc(var(--spacing) * 10);
+    width: calc(var(--spacing) * 10);
+    flex-shrink: 0;
+    border-radius: calc(infinity * 1px);
+  }
+  .prose .recent-comment-main {
+    min-width: calc(var(--spacing) * 0);
+    flex: 1;
+  }
+  .prose .recent-comment-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: calc(var(--spacing) * 2);
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .prose .recent-comment-nick {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    text-decoration-line: none;
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-link);
+      }
+    }
+  }
+  .prose .recent-comment-time {
+    font-size: var(--text-xs);
+    line-height: var(--tw-leading, var(--text-xs--line-height));
+    color: var(--color-text-secondary);
+  }
+  .prose .recent-comment-body {
+    margin-top: calc(var(--spacing) * 1);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .prose .recent-comment-body p {
+    margin-block: calc(var(--spacing) * 0);
+  }
+  .prose .recent-comment-status {
+    margin: calc(var(--spacing) * 0);
+    padding-block: calc(var(--spacing) * 6);
+    text-align: center;
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+    color: var(--color-text-secondary);
   }
 }
 @layer components {
