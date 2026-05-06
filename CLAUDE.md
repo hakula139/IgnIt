@@ -16,6 +16,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   ├── _src/                           # private: Tailwind sources (not shipped)
 │   │   │   ├── main.css                    # Entry: tokens, dark mode, partial imports
 │   │   │   ├── base.css                    # @layer base (html, body, a, selection)
+│   │   │   ├── fonts.css                   # @font-face for Inter Variable + Maple Mono
 │   │   │   └── components/
 │   │   │       ├── layout/
 │   │   │       │   ├── back-to-top.css     # .back-to-top fixed button with glass styling
@@ -41,6 +42,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   │       └── embed/
 │   │   │           └── apple-music.css     # Apple Music embed light / dark toggle
 │   │   └── style.css                       # Compiled Tailwind output (shipped)
+│   ├── fonts/                              # Self-hosted webfonts (Inter Variable + Maple Mono Variable)
 │   └── js/
 │       ├── back-to-top.js                  # Scroll-triggered back-to-top button
 │       ├── content.js                      # Code block, callout, heading anchor, and external link enhancements
@@ -107,9 +109,21 @@ Use `@apply` in the appropriate CSS partial for anything else. Use canonical Tai
 
 ## Internationalization
 
-Translation tables live under `i18n/<lang>.toml` (`en`, `zh-Hans`). Templates and JS access them via `t('key')` (MiniJinja) or `data-i18n-*` attributes on the document root. The active language is set by `config.language` in the consuming site.
+Translation tables live under `i18n/<lang>.toml` (`en`, `zh-Hans`); active language is set by `config.language` in the consuming site. Access:
 
-Sites consuming the theme can layer overrides: a same-named TOML file at the site root's `i18n/<lang>.toml` is merged on top of the theme file, key-by-key. Missing keys fall back to the theme's translation, then to the theme's English translation.
+- **Templates** (MiniJinja): `t('key')`.
+- **Client JS**: `data-i18n-*` attributes on the document root.
+
+Sites can layer overrides via a same-named TOML at their root's `i18n/<lang>.toml`, merged key-by-key. Per-key lookup falls back: **site override → theme translation → theme English**.
+
+## Webfonts
+
+Self-hosted in `static/fonts/`, declared in `fonts.css`:
+
+- **Inter Variable** (`--font-sans`, Fontsource latin subset, `wght` 100–900) — preloaded in `base.html`.
+- **Maple Mono Variable** (`--font-mono`, upstream [`variable` branch](https://github.com/subframe7536/maple-font/tree/variable/woff2/var) as-is, `wght` 100–800) — fetched lazily on first `<code>` use.
+
+CJK falls through to system fonts. `url()` paths in `fonts.css` resolve against the compiled `style.css` — Tailwind v4 inlines `@import` contents verbatim.
 
 ## Image Pipeline
 
