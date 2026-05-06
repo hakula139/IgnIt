@@ -51,8 +51,9 @@
 
   /* ── Glass Panel Base ── */
 
+  /* No `position` — consumers (.post-banner, .home-card, .glass-glow) provide their own. */
   .glass-panel {
-    @apply relative rounded-card shadow-card backdrop-blur-lg backdrop-saturate-125 backface-hidden;
+    @apply rounded-card shadow-card backdrop-blur-lg backdrop-saturate-125 backface-hidden;
     background: var(--surface-glass-panel);
     border: 1px solid var(--surface-glass-border);
   }
