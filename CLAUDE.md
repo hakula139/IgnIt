@@ -115,7 +115,12 @@ Sites consuming the theme can layer overrides: a same-named TOML file at the sit
 
 ## Webfonts
 
-Self-hosted in `static/fonts/`, declared in `fonts.css`. Inter Variable (`--font-sans`, Fontsource latin subset, `wght` 100–900) is preloaded in `base.html`; Maple Mono Variable (`--font-mono`, upstream [`variable` branch](https://github.com/subframe7536/maple-font/tree/variable/woff2/var) as-is, `wght` 100–800) is fetched lazily on first `<code>` use. CJK falls through to system fonts. `url()` paths in `fonts.css` resolve against the compiled `style.css` — Tailwind v4 inlines `@import` contents verbatim.
+Self-hosted in `static/fonts/`, declared in `fonts.css`:
+
+- **Inter Variable** (`--font-sans`, Fontsource latin subset, `wght` 100–900) — preloaded in `base.html`.
+- **Maple Mono Variable** (`--font-mono`, upstream [`variable` branch](https://github.com/subframe7536/maple-font/tree/variable/woff2/var) as-is, `wght` 100–800) — fetched lazily on first `<code>` use.
+
+CJK falls through to system fonts. `url()` paths in `fonts.css` resolve against the compiled `style.css` — Tailwind v4 inlines `@import` contents verbatim.
 
 ## Image Pipeline
 
