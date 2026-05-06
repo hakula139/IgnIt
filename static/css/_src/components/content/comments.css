@@ -39,7 +39,7 @@
   /* ── Comment ── */
 
   .prose .tk-comment {
-    @apply my-4 flex gap-3 rounded-lg border border-border-overlay bg-bg-muted/30 p-4;
+    @apply my-3 flex gap-3 py-2;
   }
 
   .prose .tk-main {
