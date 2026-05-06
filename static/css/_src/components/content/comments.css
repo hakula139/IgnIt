@@ -9,3 +9,16 @@
 .prose .tk-owo-emotion {
   @apply h-[1.4em] w-auto align-[-0.3em];
 }
+
+/* Twikoo's runtime-injected `.twikoo .el-loading-mask` applies
+   `backdrop-filter: opacity(20%)`, which dims the glass panel behind the
+   spinner. Bump specificity to override (Twikoo's <style> loads after ours). */
+.twikoo .tk-comments-container .el-loading-mask {
+  backdrop-filter: none;
+}
+
+/* Preflight sets `svg { display: block }`, breaking Element UI's
+   `text-align: center` centering on the loading spinner. */
+.twikoo .el-loading-spinner .circular {
+  @apply inline-block;
+}

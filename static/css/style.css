@@ -1715,6 +1715,12 @@
   width: auto;
   vertical-align: -0.3em;
 }
+.twikoo .tk-comments-container .el-loading-mask {
+  backdrop-filter: none;
+}
+.twikoo .el-loading-spinner .circular {
+  display: inline-block;
+}
 @layer components {
   .link-grid {
     margin-block: calc(var(--spacing) * 4);
