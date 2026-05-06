@@ -17,8 +17,11 @@
 
 /* ── Avatar ── */
 
-/* Wrapper has overflow:hidden, so full radius on it clips the inner img. */
-.prose .tk-avatar {
+/* Scoped to `.tk-comments-container` so it beats Twikoo's `.tk-replies .tk-avatar`
+   (size + shape match across thread depth) without touching the smaller form-area
+   avatar (`.tk-comment .tk-submit .tk-avatar`). Wrapper's overflow:hidden clips
+   the inner img to the rounded-full shape. */
+.prose .tk-comments-container .tk-avatar {
   @apply h-10 w-10 rounded-full ring-1 ring-border;
 }
 
@@ -54,10 +57,10 @@
   @apply align-middle;
 }
 
-/* OwO emoticons are taller than the surrounding CJK text; nudge them down so
-   the visual center lines up with text mid-height, not above it. */
+/* OwO emoticons render at intrinsic image size (often 28px+), which dwarfs
+   surrounding text — cap to a near-text height so they sit inline cleanly. */
 .prose .tk-owo-emotion {
-  @apply align-[-0.25em];
+  @apply h-6 w-auto align-middle;
 }
 
 /* ── Actions ── */
