@@ -22,14 +22,11 @@
 
     // ── Rendering ──
 
-    // Twikoo's recent feed gives a page URL; the comment ID becomes the in-page anchor.
+    // Twikoo per-page threads render `<div id="${comment.id}">`, so url#id scrolls to it.
     const jumpUrl = (item) => {
-      if (item.href) {
-        return item.href;
-      }
       const url = item.url || '';
-      if (url && item._id) {
-        return `${url}#${item._id}`;
+      if (url && item.id) {
+        return `${url}#${item.id}`;
       }
       return url || '#';
     };
