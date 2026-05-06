@@ -102,4 +102,8 @@
   .prose .tk-empty {
     @apply py-6 text-center text-text-secondary;
   }
+
+  .prose .el-loading-mask {
+    @apply flex items-center justify-center;
+  }
 }

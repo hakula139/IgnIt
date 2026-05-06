@@ -819,6 +819,9 @@
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
+  }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
   }
@@ -1845,6 +1848,11 @@
     padding-block: calc(var(--spacing) * 6);
     text-align: center;
     color: var(--color-text-secondary);
+  }
+  .prose .el-loading-mask {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 @layer components {
