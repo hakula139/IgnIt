@@ -2,14 +2,12 @@
   /* ── Form ── */
 
   /* Twikoo reuses .tk-content for the rendered body too — narrow to the textarea. */
-  .prose .tk-input,
   .prose textarea.tk-content,
   .prose .tk-comments-container .el-input__inner,
   .prose .tk-comments-container .el-textarea__inner {
     @apply rounded-md border border-border bg-bg-muted/60 px-3 py-2 text-text;
   }
 
-  .prose .tk-input:focus,
   .prose textarea.tk-content:focus,
   .prose .tk-comments-container .el-input__inner:focus,
   .prose .tk-comments-container .el-textarea__inner:focus {
