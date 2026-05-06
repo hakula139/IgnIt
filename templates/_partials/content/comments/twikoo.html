@@ -1,0 +1,30 @@
+{# Per-post Twikoo mount. KaTeX / Mermaid opt in via config.params.comments.features.* #}
+{%- set cdn = config.params.cdn | default(value="https://cdn.jsdelivr.net/npm") -%}
+{%- set tw = config.params.comments.twikoo -%}
+{%- set features = config.params.comments.features | default(value={}) -%}
+<section class="mt-8" aria-labelledby="comments-heading">
+  <h2 id="comments-heading" class="article-title mb-4">{{ t('comments_heading') }}</h2>
+  <div
+    id="twikoo"
+    class="prose max-w-none"
+    data-twikoo-env-id="{{ tw.env_id }}"
+    {%- if features.math %}
+    data-feature-math="1"
+    {%- endif %}
+    {%- if features.mermaid %}
+    data-feature-mermaid="1"
+    {%- endif %}
+  ></div>
+</section>
+
+{%- if features.math %}
+<script src="{{ cdn | safe }}/katex@0.16/dist/katex.min.js" defer></script>
+<script src="{{ cdn | safe }}/katex@0.16/dist/contrib/auto-render.min.js" defer></script>
+{%- endif %}
+<script
+  src="{{ cdn | safe }}/twikoo@{{ tw.version }}/dist/twikoo.min.js"
+  integrity="{{ tw.sri }}"
+  crossorigin="anonymous"
+  defer
+></script>
+<script src="{{ config.base_url | safe }}/js/comments/twikoo.js" defer></script>

@@ -3,8 +3,8 @@
 {%- set recent_url = comments.recent_url | default(value="") -%}
 {%- set is_recent = recent_url and url == config.base_url ~ recent_url -%}
 {%- if comments.enabled and not is_recent and comments.provider == "twikoo" %}
-  {%- include "_partials/content/comments-twikoo.html" %}
+  {%- include "_partials/content/comments/twikoo.html" %}
 {%- endif %}
 {%- if comments.enabled and is_recent %}
-  {%- include "_partials/content/comments-recent.html" %}
+  {%- include "_partials/content/comments/recent.html" %}
 {%- endif %}

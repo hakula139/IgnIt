@@ -1,4 +1,4 @@
-{# Site-wide recent-comments feed. Mounted only at config.params.comments.recent_url. #}
+{# Site-wide recent-comments feed. Opt in by setting `params.comments.recent_url`. #}
 {%- set cdn = config.params.cdn | default(value="https://cdn.jsdelivr.net/npm") -%}
 {%- set tw = config.params.comments.twikoo -%}
 {%- set features = config.params.comments.features | default(value={}) -%}
@@ -27,4 +27,4 @@
   crossorigin="anonymous"
   defer
 ></script>
-<script src="{{ config.base_url | safe }}/js/comments-recent.js" defer></script>
+<script src="{{ config.base_url | safe }}/js/comments/recent.js" defer></script>
