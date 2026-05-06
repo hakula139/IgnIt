@@ -1,15 +1,17 @@
 @layer components {
   /* ── Form ── */
 
+  /* Twikoo reuses .tk-content for both the textarea and rendered body; scope
+     to the textarea so bodies inherit prose paragraph styling. */
   .prose .tk-input,
-  .prose .tk-content,
+  .prose textarea.tk-content,
   .prose .tk-comments-container .el-input__inner,
   .prose .tk-comments-container .el-textarea__inner {
     @apply rounded-md border border-border bg-bg-muted/60 px-3 py-2 text-text;
   }
 
   .prose .tk-input:focus,
-  .prose .tk-content:focus,
+  .prose textarea.tk-content:focus,
   .prose .tk-comments-container .el-input__inner:focus,
   .prose .tk-comments-container .el-textarea__inner:focus {
     @apply border-link ring-1 ring-link outline-none;
@@ -113,5 +115,13 @@
 
   .prose .el-loading-mask {
     @apply flex items-center justify-center;
+  }
+
+  /* ── Emoticons ── */
+
+  /* Override prose's block <img> default so OwO emoticons stay in the text run. */
+  .prose .tk-owo-emotion {
+    @apply m-0 inline-block align-middle;
+    height: 1.5em;
   }
 }
