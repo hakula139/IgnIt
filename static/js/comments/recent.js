@@ -24,31 +24,38 @@
 
     const renderItem = (item) => {
       const li = document.createElement('li');
-      li.className = 'glass-panel flex gap-3 p-4';
+      li.className = 'flex gap-3 border-b border-border/30 py-3 last:border-b-0';
 
-      const meta = document.createElement('a');
-      meta.href = item.url || '#';
-      meta.className = 'flex shrink-0 flex-col items-center text-sm text-text-secondary';
-      meta.rel = 'noopener noreferrer';
+      const avatarLink = document.createElement('a');
+      avatarLink.href = item.url || '#';
+      avatarLink.className = 'shrink-0';
 
       const avatar = document.createElement('img');
       avatar.src = item.avatar || '';
       avatar.alt = '';
       avatar.loading = 'lazy';
       avatar.className = 'h-10 w-10 rounded-full';
+      avatarLink.appendChild(avatar);
 
-      const nick = document.createElement('strong');
-      nick.className = 'mt-1 text-text';
-      nick.textContent = item.nick || '';
+      const main = document.createElement('div');
+      main.className = 'min-w-0 flex-1';
+
+      const header = document.createElement('div');
+      header.className = 'flex flex-wrap items-baseline gap-x-2 text-sm';
+
+      const nickLink = document.createElement('a');
+      nickLink.href = item.url || '#';
+      nickLink.className = 'font-semibold text-text no-underline hover:text-link';
+      nickLink.textContent = item.nick || '';
 
       const time = document.createElement('time');
-      time.className = 'text-xs';
+      time.className = 'text-xs text-text-secondary';
       time.textContent = item.relativeTime || '';
 
-      meta.append(avatar, nick, time);
+      header.append(nickLink, time);
 
       const body = document.createElement('div');
-      body.className = 'prose min-w-0 max-w-none flex-1';
+      body.className = 'prose mt-1 line-clamp-3 max-w-none text-sm';
 
       // item.comment is server-sanitized HTML from Twikoo's cloud function.
       const parsed = new DOMParser().parseFromString(item.comment || '', 'text/html').body;
@@ -56,7 +63,8 @@
         body.appendChild(parsed.firstChild);
       }
 
-      li.append(meta, body);
+      main.append(header, body);
+      li.append(avatarLink, main);
       return li;
     };
 
