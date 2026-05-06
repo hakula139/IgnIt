@@ -42,7 +42,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   │       └── embed/
 │   │   │           └── apple-music.css     # Apple Music embed light / dark toggle
 │   │   └── style.css                       # Compiled Tailwind output (shipped)
-│   ├── fonts/                              # Self-hosted webfonts (Inter Variable + Maple Mono, latin)
+│   ├── fonts/                              # Self-hosted webfonts (Inter Variable + Maple Mono Variable)
 │   └── js/
 │       ├── back-to-top.js                  # Scroll-triggered back-to-top button
 │       ├── content.js                      # Code block, callout, heading anchor, and external link enhancements
@@ -115,9 +115,7 @@ Sites consuming the theme can layer overrides: a same-named TOML file at the sit
 
 ## Webfonts
 
-Self-hosted under `static/fonts/` and registered in `static/css/_src/fonts.css`. Inter Variable covers body text (`--font-sans`) via a single woff2 file with the `wght` axis (100–900); Maple Mono covers code (`--font-mono`) via two static woff2 files (400 + 700) since Fontsource doesn't expose a variable build. Both shipped as the latin subset only — CJK falls through to system fonts via the cascade.
-
-`base.html` preloads Inter (used on every page); Maple Mono is fetched lazily on first `<code>` use. url() paths inside `fonts.css` are relative to the compiled `static/css/style.css`, since Tailwind v4 inlines @import contents verbatim.
+Self-hosted in `static/fonts/`, declared in `fonts.css`. Inter Variable (`--font-sans`, Fontsource latin subset, `wght` 100–900) is preloaded in `base.html`; Maple Mono Variable (`--font-mono`, upstream [`variable` branch](https://github.com/subframe7536/maple-font/tree/variable/woff2/var) as-is, `wght` 100–800) is fetched lazily on first `<code>` use. CJK falls through to system fonts. `url()` paths in `fonts.css` resolve against the compiled `style.css` — Tailwind v4 inlines `@import` contents verbatim.
 
 ## Image Pipeline
 

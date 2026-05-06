@@ -50,6 +50,7 @@
   {%- if config.search.enabled %}
   <pagefind-modal></pagefind-modal>
   {%- endif %}
+  {# Defer scripts ordered by visual urgency: paint-affecting first, interaction-only last. #}
   <script src="{{ config.base_url | safe }}/js/lqip.js" defer></script>
   <script src="{{ config.base_url | safe }}/js/content.js" defer></script>
   <script src="{{ config.base_url | safe }}/js/toc.js" defer></script>
