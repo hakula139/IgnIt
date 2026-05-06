@@ -58,6 +58,10 @@
     @apply font-semibold text-text;
   }
 
+  .prose .tk-time {
+    @apply ml-2 text-xs;
+  }
+
   /* ── Actions ── */
 
   .prose .tk-actions a,
@@ -109,9 +113,5 @@
 
   .prose .el-loading-mask {
     @apply flex items-center justify-center;
-  }
-
-  .prose .tk-time {
-    @apply ml-2 text-xs;
   }
 }

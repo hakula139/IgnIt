@@ -1785,6 +1785,11 @@
     font-weight: var(--font-weight-semibold);
     color: var(--color-text);
   }
+  .prose .tk-time {
+    margin-left: calc(var(--spacing) * 2);
+    font-size: var(--text-xs);
+    line-height: var(--tw-leading, var(--text-xs--line-height));
+  }
   .prose .tk-actions a, .prose .tk-action {
     border-bottom-style: var(--tw-border-style);
     border-bottom-width: 0px;
@@ -1857,11 +1862,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  .prose .tk-time {
-    margin-left: calc(var(--spacing) * 2);
-    font-size: var(--text-xs);
-    line-height: var(--tw-leading, var(--text-xs--line-height));
   }
 }
 @layer components {
