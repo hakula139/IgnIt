@@ -32,21 +32,18 @@
     };
 
     const renderItem = (item) => {
-      const root = document.createElement('div');
+      const root = document.createElement('a');
       root.className = 'tk-comment';
-
       const target = jumpUrl(item);
-
-      const avatarLink = document.createElement('a');
-      avatarLink.href = target;
-      avatarLink.className = 'tk-avatar';
+      if (target !== '#') {
+        root.href = target;
+      }
 
       const avatar = document.createElement('img');
       avatar.src = item.avatar || '';
       avatar.alt = '';
       avatar.loading = 'lazy';
       avatar.className = 'tk-avatar-img';
-      avatarLink.appendChild(avatar);
 
       const main = document.createElement('div');
       main.className = 'tk-main';
@@ -54,16 +51,15 @@
       const meta = document.createElement('div');
       meta.className = 'tk-meta';
 
-      const nickLink = document.createElement('a');
-      nickLink.href = target;
-      nickLink.className = 'tk-nick';
-      nickLink.textContent = item.nick || '';
+      const nick = document.createElement('span');
+      nick.className = 'tk-nick';
+      nick.textContent = item.nick || '';
 
       const time = document.createElement('span');
       time.className = 'tk-time';
       time.textContent = item.relativeTime || '';
 
-      meta.append(nickLink, time);
+      meta.append(nick, time);
       main.appendChild(meta);
 
       // item.comment is server-sanitized HTML from Twikoo's cloud function.
@@ -75,17 +71,7 @@
       }
       main.appendChild(snippet);
 
-      // Inner anchors keep their native click semantics (Cmd / middle click).
-      root.addEventListener('click', (event) => {
-        if (event.target.closest('a')) {
-          return;
-        }
-        if (target !== '#') {
-          window.location.assign(target);
-        }
-      });
-
-      root.append(avatarLink, main);
+      root.append(avatar, main);
       return root;
     };
 

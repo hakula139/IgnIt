@@ -118,7 +118,7 @@
   /* ── Recent Comments ── */
 
   .prose [data-recent-comments] .tk-comment {
-    @apply -mx-2 cursor-pointer rounded-md px-2 transition-colors hover:bg-bg-muted/40;
+    @apply -mx-2 rounded-md border-b-0 px-2 text-text no-underline transition-colors hover:bg-bg-muted/40;
   }
 
   .prose .tk-snippet {
