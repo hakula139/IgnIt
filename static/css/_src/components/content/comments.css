@@ -119,6 +119,6 @@
   /* ── Emoticons ── */
 
   .prose .tk-owo-emotion {
-    @apply m-0 inline-block h-6 align-middle;
+    @apply m-0 inline-block h-6 w-auto align-middle;
   }
 }
