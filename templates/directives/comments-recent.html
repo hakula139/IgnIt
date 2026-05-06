@@ -3,20 +3,18 @@
 {%- set tw = config.params.comments.twikoo -%}
 {%- set katex = config.params.deps.katex -%}
 {%- set tw_dep = config.params.deps.twikoo -%}
-<div class="glass-glow">
-  <section class="glass-panel p-6 sm:p-8" aria-labelledby="recent-comments-heading">
-    <h2 id="recent-comments-heading" class="article-title mb-4">{{ t('comments_recent_heading') }}</h2>
-    <ul
-      class="recent-comments"
-      data-recent-comments
-      data-twikoo-api-url="{{ tw.api_url }}"
-      data-error-text="{{ t('comments_error') }}"
-      data-empty-text="{{ t('comments_empty') }}"
-    >
-      <li class="recent-comment-status" data-recent-status>{{ t('comments_loading') }}</li>
-    </ul>
-  </section>
-</div>
+<section aria-labelledby="recent-comments-heading">
+  <h2 id="recent-comments-heading" class="article-title mb-4">{{ t('comments_recent_heading') }}</h2>
+  <div
+    class="tk-comments-container"
+    data-recent-comments
+    data-twikoo-api-url="{{ tw.api_url }}"
+    data-error-text="{{ t('comments_error') }}"
+    data-empty-text="{{ t('comments_empty') }}"
+  >
+    <div class="tk-loading" data-recent-status>{{ t('comments_loading') }}</div>
+  </div>
+</section>
 
 <script src="{{ cdn | safe }}/katex@{{ katex.version }}/dist/katex.min.js" defer></script>
 <script src="{{ cdn | safe }}/katex@{{ katex.version }}/dist/contrib/auto-render.min.js" defer></script>

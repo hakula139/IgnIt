@@ -23,55 +23,53 @@
     // ── Rendering ──
 
     const renderItem = (item) => {
-      const li = document.createElement('li');
-      li.className = 'recent-comment';
+      const root = document.createElement('div');
+      root.className = 'tk-comment';
 
       const avatarLink = document.createElement('a');
       avatarLink.href = item.url || '#';
+      avatarLink.className = 'tk-avatar';
 
       const avatar = document.createElement('img');
       avatar.src = item.avatar || '';
       avatar.alt = '';
       avatar.loading = 'lazy';
-      avatar.className = 'recent-comment-avatar';
+      avatar.className = 'tk-avatar-img';
       avatarLink.appendChild(avatar);
 
       const main = document.createElement('div');
-      main.className = 'recent-comment-main';
+      main.className = 'tk-main';
 
-      const header = document.createElement('div');
-      header.className = 'recent-comment-header';
+      const meta = document.createElement('div');
+      meta.className = 'tk-meta';
 
       const nickLink = document.createElement('a');
       nickLink.href = item.url || '#';
-      nickLink.className = 'recent-comment-nick';
+      nickLink.className = 'tk-nick';
       nickLink.textContent = item.nick || '';
 
-      const time = document.createElement('time');
-      time.className = 'recent-comment-time';
+      const time = document.createElement('span');
+      time.className = 'tk-time';
       time.textContent = item.relativeTime || '';
 
-      header.append(nickLink, time);
-
-      const body = document.createElement('div');
-      body.className = 'recent-comment-body';
+      meta.append(nickLink, time);
+      main.appendChild(meta);
 
       // item.comment is server-sanitized HTML from Twikoo's cloud function.
       const parsed = new DOMParser().parseFromString(item.comment || '', 'text/html').body;
       while (parsed.firstChild) {
-        body.appendChild(parsed.firstChild);
+        main.appendChild(parsed.firstChild);
       }
 
-      main.append(header, body);
-      li.append(avatarLink, main);
-      return li;
+      root.append(avatarLink, main);
+      return root;
     };
 
     const renderEmpty = () => {
-      const li = document.createElement('li');
-      li.className = 'recent-comment-status';
-      li.textContent = emptyText;
-      container.appendChild(li);
+      const div = document.createElement('div');
+      div.className = 'tk-empty';
+      div.textContent = emptyText;
+      container.appendChild(div);
     };
 
     // ── Load ──

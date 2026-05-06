@@ -39,7 +39,11 @@
   /* ── Comment ── */
 
   .prose .tk-comment {
-    @apply my-3 flex gap-3 py-2;
+    @apply my-6 flex gap-3 py-0;
+  }
+
+  .prose .tk-replies .tk-comment {
+    @apply my-4 text-base;
   }
 
   .prose .tk-main {
@@ -107,45 +111,7 @@
     @apply flex items-center justify-center;
   }
 
-  /* ── Recent Comments ── */
-
-  .prose .recent-comments {
-    @apply m-0 list-none p-0;
-  }
-
-  .prose .recent-comment {
-    @apply m-0 flex gap-3 border-b border-border/30 py-3 last:border-b-0;
-  }
-
-  .prose .recent-comment-avatar {
-    @apply h-10 w-10 shrink-0 rounded-full;
-  }
-
-  .prose .recent-comment-main {
-    @apply min-w-0 flex-1;
-  }
-
-  .prose .recent-comment-header {
-    @apply flex flex-wrap items-baseline gap-x-2 text-sm;
-  }
-
-  .prose .recent-comment-nick {
-    @apply font-semibold text-text no-underline hover:text-link;
-  }
-
-  .prose .recent-comment-time {
-    @apply text-xs text-text-secondary;
-  }
-
-  .prose .recent-comment-body {
-    @apply mt-1 line-clamp-3 text-sm;
-  }
-
-  .prose .recent-comment-body p {
-    @apply my-0;
-  }
-
-  .prose .recent-comment-status {
-    @apply m-0 py-6 text-center text-sm text-text-secondary;
+  .prose .tk-time {
+    @apply ml-2 text-xs;
   }
 }
