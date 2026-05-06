@@ -115,10 +115,4 @@
   .prose .el-loading-mask {
     @apply flex items-center justify-center;
   }
-
-  /* ── Emoticons ── */
-
-  .prose .tk-owo-emotion {
-    @apply m-0 inline-block h-6 w-auto align-middle;
-  }
 }
