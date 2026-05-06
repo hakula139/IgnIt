@@ -22,10 +22,6 @@ back_to_top = "回到顶部"
 
 # 评论
 comments_heading = "评论"
-comments_recent_heading = "最新评论"
-comments_loading = "加载中……"
-comments_error = "评论加载失败。"
-comments_empty = "暂无评论。"
 
 # 指令 — 音乐
 music_player_apple = "Apple Music"

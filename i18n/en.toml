@@ -22,10 +22,6 @@ back_to_top = "Back to top"
 
 # Comments
 comments_heading = "Comments"
-comments_recent_heading = "Recent Comments"
-comments_loading = "Loading..."
-comments_error = "Failed to load comments."
-comments_empty = "No comments yet."
 
 # Directives — music
 music_player_apple = "Apple Music"
