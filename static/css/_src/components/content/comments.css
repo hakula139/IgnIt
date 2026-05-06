@@ -4,8 +4,8 @@
   @apply my-0;
 }
 
-/* Twikoo's `width: 3em` makes emoticons taller than the line; cap to line-height
-   so they sit inline with text instead of stretching the line-box. */
+/* Twikoo's `width: 3em` makes emoticons taller than the line. Cap height and
+   nudge below x-height so they sit on the CJK midline, not above it. */
 .prose .tk-owo-emotion {
-  @apply h-[1.75em] w-auto;
+  @apply h-[1.4em] w-auto align-[-0.3em];
 }

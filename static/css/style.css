@@ -1711,8 +1711,9 @@
   margin-block: calc(var(--spacing) * 0);
 }
 .prose .tk-owo-emotion {
-  height: 1.75em;
+  height: 1.4em;
   width: auto;
+  vertical-align: -0.3em;
 }
 @layer components {
   .link-grid {
