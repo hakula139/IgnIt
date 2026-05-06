@@ -12,3 +12,16 @@ cdn = "https://cdn.jsdelivr.net/npm"
 code_max_lines = 40
 emojis = true
 fontawesome = true
+
+# External CDN dependencies. Pin one source of truth per package so partials
+# never drift on version. Sites can override a single package by setting
+# `[params.deps.<name>]` in their own config.toml.
+[params.deps.katex]
+version = "0.16"
+
+[params.deps.mermaid]
+version = "11"
+
+[params.deps.twikoo]
+version = "1.7.8"
+sri = "sha384-VZ66UYKKuGVWRrrlB6WTZheTKFM7VIEjlOO08gJAio/hNZ7hlSGMTihT6x0aijRp"

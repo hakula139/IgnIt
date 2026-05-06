@@ -13,8 +13,6 @@
     const envId = container.dataset.twikooEnvId;
     const errorText = container.dataset.errorText || 'Failed to load comments.';
     const emptyText = container.dataset.emptyText || 'No comments yet.';
-    const featureMath = container.dataset.featureMath === '1';
-    const featureMermaid = container.dataset.featureMermaid === '1';
 
     const setStatus = (text) => {
       if (status) {
@@ -69,29 +67,6 @@
       container.appendChild(li);
     };
 
-    // ── Late-bound Features ──
-
-    // Twikoo emits Mermaid as <pre><code class="language-mermaid">; mermaid.js
-    // expects bare <pre class="mermaid">. Swap shape, then trigger render.
-    const transformMermaid = () => {
-      for (const code of container.querySelectorAll('pre code.language-mermaid')) {
-        const next = document.createElement('pre');
-        next.className = 'mermaid';
-        next.textContent = code.textContent;
-        code.parentElement.replaceWith(next);
-      }
-    };
-
-    const rerunFeatures = () => {
-      if (featureMermaid && typeof window.kilnRenderMermaid === 'function') {
-        transformMermaid();
-        window.kilnRenderMermaid(container.querySelectorAll('pre.mermaid'));
-      }
-      if (featureMath && typeof window.renderMathInElement === 'function') {
-        window.renderMathInElement(container);
-      }
-    };
-
     // ── Load ──
 
     const load = () => {
@@ -113,7 +88,9 @@
           for (const item of items) {
             container.appendChild(renderItem(item));
           }
-          rerunFeatures();
+          if (typeof window.renderMathInElement === 'function') {
+            window.renderMathInElement(container);
+          }
         })
         .catch(() => setStatus(errorText));
     };
