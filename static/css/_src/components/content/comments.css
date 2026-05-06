@@ -14,18 +14,14 @@
     @apply border-link ring-1 ring-link outline-none;
   }
 
-  .prose .tk-submit,
+  /* .tk-action-link is the inline reply / load-more button; .tk-submit is the form
+     wrapper (not a button), so it must NOT appear here. */
   .prose .tk-action-link {
     @apply inline-flex items-center gap-1 rounded-md bg-link px-4 py-2 text-bg no-underline transition-colors;
   }
 
-  .prose .tk-submit:hover,
   .prose .tk-action-link:hover {
     @apply bg-link-hover text-bg;
-  }
-
-  .prose .tk-cancel {
-    @apply text-text-secondary;
   }
 
   /* ── Avatar ── */
