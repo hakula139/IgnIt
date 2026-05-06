@@ -1,4 +1,4 @@
-/* Self-hosted webfonts (latin). url() paths resolve against the compiled style.css, not this file. */
+/* Self-hosted webfonts (latin). url() paths resolve against the compiled style.css. */
 
 @font-face {
   font-family: 'Inter Variable';
