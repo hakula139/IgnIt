@@ -109,9 +109,12 @@ Use `@apply` in the appropriate CSS partial for anything else. Use canonical Tai
 
 ## Internationalization
 
-Translation tables live under `i18n/<lang>.toml` (`en`, `zh-Hans`). Templates and JS access them via `t('key')` (MiniJinja) or `data-i18n-*` attributes on the document root. The active language is set by `config.language` in the consuming site.
+Translation tables live under `i18n/<lang>.toml` (`en`, `zh-Hans`); active language is set by `config.language` in the consuming site. Access:
 
-Sites consuming the theme can layer overrides: a same-named TOML file at the site root's `i18n/<lang>.toml` is merged on top of the theme file, key-by-key. Missing keys fall back to the theme's translation, then to the theme's English translation.
+- **Templates** (MiniJinja): `t('key')`.
+- **Client JS**: `data-i18n-*` attributes on the document root.
+
+Sites can layer overrides via a same-named TOML at their root's `i18n/<lang>.toml`, merged key-by-key. Per-key lookup falls back: **site override → theme translation → theme English**.
 
 ## Webfonts
 
