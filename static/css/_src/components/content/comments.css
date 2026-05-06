@@ -114,4 +114,23 @@
   .prose .el-loading-mask {
     @apply flex items-center justify-center;
   }
+
+  /* ── Recent Comments ── */
+
+  .prose [data-recent-comments] .tk-comment {
+    @apply -mx-2 cursor-pointer rounded-md px-2 transition-colors hover:bg-bg-muted/40;
+  }
+
+  .prose .tk-snippet {
+    @apply line-clamp-3 text-sm leading-relaxed text-text-secondary;
+  }
+
+  .prose .tk-snippet :where(p, ul, ol, blockquote) {
+    @apply my-0;
+  }
+
+  .prose .tk-snippet img {
+    @apply m-0 inline align-middle;
+    max-height: 1.5em;
+  }
 }

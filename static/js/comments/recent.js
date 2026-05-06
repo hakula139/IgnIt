@@ -1,7 +1,7 @@
 'use strict';
 
 (() => {
-  const PAGE_SIZE = 30;
+  const PAGE_SIZE = 8;
 
   const initRecentComments = () => {
     const container = document.querySelector('[data-recent-comments]');
@@ -22,12 +22,26 @@
 
     // ── Rendering ──
 
+    // Twikoo's recent feed gives a page URL; the comment ID becomes the in-page anchor.
+    const jumpUrl = (item) => {
+      if (item.href) {
+        return item.href;
+      }
+      const url = item.url || '';
+      if (url && item._id) {
+        return `${url}#${item._id}`;
+      }
+      return url || '#';
+    };
+
     const renderItem = (item) => {
       const root = document.createElement('div');
       root.className = 'tk-comment';
 
+      const target = jumpUrl(item);
+
       const avatarLink = document.createElement('a');
-      avatarLink.href = item.url || '#';
+      avatarLink.href = target;
       avatarLink.className = 'tk-avatar';
 
       const avatar = document.createElement('img');
@@ -44,7 +58,7 @@
       meta.className = 'tk-meta';
 
       const nickLink = document.createElement('a');
-      nickLink.href = item.url || '#';
+      nickLink.href = target;
       nickLink.className = 'tk-nick';
       nickLink.textContent = item.nick || '';
 
@@ -56,10 +70,23 @@
       main.appendChild(meta);
 
       // item.comment is server-sanitized HTML from Twikoo's cloud function.
+      const snippet = document.createElement('div');
+      snippet.className = 'tk-snippet';
       const parsed = new DOMParser().parseFromString(item.comment || '', 'text/html').body;
       while (parsed.firstChild) {
-        main.appendChild(parsed.firstChild);
+        snippet.appendChild(parsed.firstChild);
       }
+      main.appendChild(snippet);
+
+      // Inner anchors keep their native click semantics (Cmd / middle click).
+      root.addEventListener('click', (event) => {
+        if (event.target.closest('a')) {
+          return;
+        }
+        if (target !== '#') {
+          window.location.assign(target);
+        }
+      });
 
       root.append(avatarLink, main);
       return root;
