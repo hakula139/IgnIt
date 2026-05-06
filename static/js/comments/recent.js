@@ -10,7 +10,7 @@
     }
 
     const status = container.querySelector('[data-recent-status]');
-    const envId = container.dataset.twikooEnvId;
+    const apiUrl = container.dataset.twikooApiUrl;
     const errorText = container.dataset.errorText || 'Failed to load comments.';
     const emptyText = container.dataset.emptyText || 'No comments yet.';
 
@@ -70,13 +70,13 @@
     // ── Load ──
 
     const load = () => {
-      if (typeof twikoo === 'undefined' || !envId) {
+      if (typeof twikoo === 'undefined' || !apiUrl) {
         setStatus(errorText);
         return;
       }
 
       twikoo
-        .getRecentComments({ envId, pageSize: PAGE_SIZE, includeReply: true })
+        .getRecentComments({ envId: apiUrl, pageSize: PAGE_SIZE, includeReply: true })
         .then((items) => {
           if (status) {
             status.remove();
