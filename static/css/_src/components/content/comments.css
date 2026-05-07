@@ -3,10 +3,9 @@
   @apply my-0;
 }
 
-/* `vertical-align: middle` aligns to Latin x-height — too low for CJK.
-   Length offset ≈ 0.5em (em-box mid) - height/2; -0.3em is empirically tuned. */
+/* `vertical-align: middle` aligns to Latin x-height — too low for CJK. */
 .prose .tk-owo-emotion {
-  @apply h-[1.4em] w-auto align-[-0.3em];
+  @apply align-[-0.3em];
 }
 
 /* Specificity bump — Twikoo's `<style>` loads after ours and sets `opacity(20%)`. */

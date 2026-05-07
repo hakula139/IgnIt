@@ -1716,8 +1716,6 @@
   margin-block: calc(var(--spacing) * 0);
 }
 .prose .tk-owo-emotion {
-  height: 1.4em;
-  width: auto;
   vertical-align: -0.3em;
 }
 .twikoo .tk-comments-container .el-loading-mask {
