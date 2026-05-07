@@ -131,6 +131,19 @@ Self-hosted in `static/fonts/`, declared in `fonts.css`:
 
 CJK falls through to system fonts. `url()` paths in `fonts.css` resolve against the compiled `style.css` — Tailwind v4 inlines `@import` contents verbatim.
 
+## Dependencies
+
+CDN deps are pinned in `theme.toml` under `[params.deps.<name>]` with exact patch versions and SRI hashes. `_partials/layout/{head-deps,body-deps}.html` resolve `need_<dep>` booleans (auto-detected for content features via `assets.features`, explicit config for `comments`) and emit `<link>` / `<script>` once per page.
+
+When bumping a version, regenerate the SRI hashes:
+
+```bash
+curl -sL "https://cdn.jsdelivr.net/npm/<pkg>@<version>/<path>" \
+  | openssl dgst -sha384 -binary | openssl base64 -A
+```
+
+Each loaded file gets its own key under `[params.deps.<name>.sri]` (e.g. `js`, `autorender`, `css`).
+
 ## Image Pipeline
 
 The theme paints kiln's `lqip_uri` via the `<span class="lqip">` wrapper kiln emits around content `<img>` (and that templates emit around featured / bg images — see `kiln/docs/themes.md` for the upstream contract). `lqip.css` shows the backdrop; `lqip.js` reveals each image with shared load handling, while content images fade in and the body background swaps without animation. `theme.js` flips `html.lqip-fade-enabled` in `<head>` so JS-disabled clients still see images.

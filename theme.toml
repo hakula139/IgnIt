@@ -13,11 +13,8 @@ code_max_lines = 40
 emojis = true
 fontawesome = true
 
-# External CDN dependencies. Pin one source of truth per package so partials
-# never drift on version. Sites can override a single package by setting
-# `[params.deps.<name>]` in their own config.toml. SRI hashes pin exact bytes;
-# regenerate when bumping `version` via:
-#   curl -sL <url> | openssl dgst -sha384 -binary | openssl base64 -A
+# CDN dependencies — pinned versions + SRI hashes. See CLAUDE.md for the
+# regeneration flow when bumping a version.
 [params.deps.katex]
 version = "0.16.45"
 
