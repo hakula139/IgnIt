@@ -155,7 +155,7 @@ Sites can layer overrides via a same-named TOML at their root's `i18n/<lang>.tom
 
 ## Webfonts
 
-Inter Variable (`--font-sans`) and Maple Mono Variable (`--font-mono`) are self-hosted under `static/fonts/`. Inter is preloaded in `base.html`; Maple Mono is fetched lazily on first `<code>` use. CJK falls through to system fonts (Sarasa Gothic SC, PingFang SC, Noto Sans CJK SC, etc.) via the `--font-sans` cascade.
+Inter Variable (`--font-sans`) and Maple Mono Variable (`--font-mono`) are self-hosted under `static/fonts/`. Both are fetched lazily on first use — Inter when any page text renders, Maple Mono when the first `<code>` appears. CJK falls through to system fonts (Sarasa Gothic SC, PingFang SC, Noto Sans CJK SC, etc.) via the `--font-sans` cascade.
 
 ## Theme Development
 

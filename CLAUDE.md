@@ -154,8 +154,8 @@ Sites can layer overrides via a same-named TOML at their root's `i18n/<lang>.tom
 
 Self-hosted in `static/fonts/`, declared in `fonts.css`:
 
-- **Inter Variable** (`--font-sans`, Fontsource latin subset, `wght` 100–900) — preloaded in `base.html`.
-- **Maple Mono Variable** (`--font-mono`, upstream [`variable` branch](https://github.com/subframe7536/maple-font/tree/variable/woff2/var) as-is, `wght` 100–800) — fetched lazily on first `<code>` use.
+- **Inter Variable** (`--font-sans`, Fontsource latin subset, `wght` 100–900) — fetched on first use (any page text).
+- **Maple Mono Variable** (`--font-mono`, upstream [`variable` branch](https://github.com/subframe7536/maple-font/tree/variable/woff2/var) as-is, `wght` 100–800) — fetched on first `<code>` use.
 
 CJK falls through to system fonts. `url()` paths in `fonts.css` resolve against the compiled `style.css` — Tailwind v4 inlines `@import` contents verbatim.
 
