@@ -4,8 +4,8 @@
   const KATEX_DELIMITERS = [
     { left: '$$', right: '$$', display: true },
     { left: '$', right: '$', display: false },
-    { left: '\\(', right: '\\)', display: false },
     { left: '\\[', right: '\\]', display: true },
+    { left: '\\(', right: '\\)', display: false },
   ];
 
   // Map BCP-47 <html lang> to Twikoo's fixed locale codes.
@@ -23,7 +23,7 @@
 
   const initTwikoo = () => {
     const root = document.getElementById('twikoo');
-    if (!root || typeof twikoo === 'undefined') {
+    if (!root || !window.twikoo) {
       return;
     }
 
@@ -32,7 +32,7 @@
       return;
     }
 
-    twikoo.init({
+    window.twikoo.init({
       envId: apiUrl,
       el: '#twikoo',
       path: window.location.pathname,
