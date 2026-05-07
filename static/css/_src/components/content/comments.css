@@ -8,19 +8,11 @@
   @apply align-[-0.3em];
 }
 
-/* Dimmed separator between top-level comments (replies stay flush). */
 .tk-comments > .tk-comment + .tk-comment {
   @apply mt-6 border-t border-border pt-6;
 }
 
-/* Glass-panel styling for the OwO emoji picker. */
-.twikoo .OwO .OwO-body {
-  @apply overflow-hidden rounded-card text-text shadow-card backdrop-blur-lg backdrop-saturate-125;
-  background: var(--surface-glass-panel);
-  border: 1px solid var(--surface-glass-border);
-}
-
-/* Specificity bump — Twikoo's `<style>` loads after ours and sets `opacity(20%)`. */
+/* Specificity bump — Twikoo sets `backdrop-filter: opacity(20%)` here. */
 .twikoo .tk-comments-container .el-loading-mask {
   backdrop-filter: none;
 }
@@ -28,4 +20,10 @@
 /* Preflight forces `svg { display: block }`, defeating spinner's `text-align: center`. */
 .twikoo .el-loading-spinner .circular {
   @apply inline-block;
+}
+
+.twikoo .OwO .OwO-body {
+  @apply overflow-hidden rounded-card text-text shadow-card backdrop-blur-lg backdrop-saturate-125;
+  background: var(--surface-glass-panel);
+  border: 1px solid var(--surface-glass-border);
 }
