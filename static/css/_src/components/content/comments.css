@@ -1,11 +1,11 @@
-.prose .tk-avatar-img,
-.prose .tk-owo-emotion {
-  @apply my-0;
+/* Override prose.css's inline default for non-figure imgs. */
+.prose .tk-avatar-img {
+  @apply my-0 block;
 }
 
 /* `vertical-align: middle` aligns to Latin x-height — too low for CJK. */
 .prose .tk-owo-emotion {
-  @apply align-[-0.3em];
+  @apply my-0 align-[-0.3em];
 }
 
 .tk-comments-container > .tk-comment + .tk-comment {
