@@ -48,20 +48,26 @@ All assets live under a single `static/` tree. Files and directories whose names
 │       ├── content.js                      # Code block, callout, heading anchor, and external link enhancements
 │       ├── glow.js                         # Glass panel cursor glow effect
 │       ├── lqip.js                         # LQIP fade-in: cache-aware reveal + lazy-fetch fallback
+│       ├── mermaid.js                      # Mermaid init + dark-mode re-render hook (uses window.mermaid UMD)
 │       ├── pagination.js                   # Page-jump controls for pagination
 │       ├── theme.js                        # Dark mode toggle + system preference
-│       └── toc.js                          # TOC active heading tracking + section collapse
+│       ├── toc.js                          # TOC active heading tracking + section collapse
+│       └── comments/
+│           └── twikoo.js                   # Twikoo widget init (KaTeX delimiters, language)
 └── templates/
     ├── _partials/                          # Shared template fragments ({% include %})
     │   ├── layout/
+    │   │   ├── body-deps.html              # End-of-body CDN deps + local init scripts (KaTeX, Mermaid, Twikoo)
     │   │   ├── footer.html                 # Glass-panel footer (copyright, license)
-    │   │   ├── head-deps.html              # Conditional CDN deps (FontAwesome, KaTeX)
+    │   │   ├── head-deps.html              # <head> CDN deps (FontAwesome, KaTeX CSS)
     │   │   └── header.html                 # Fixed nav header with menu + theme toggle
     │   ├── content/
-    │   │   ├── math.html                   # Conditional KaTeX runtime scripts
     │   │   ├── meta-og.html                # OG / Twitter Card meta tags
     │   │   ├── toc-mobile.html             # Collapsible TOC (< xl breakpoint)
     │   │   └── toc-sidebar.html            # Sticky TOC sidebar (xl+ breakpoint)
+    │   ├── comments/
+    │   │   ├── index.html                  # Per-post comments dispatcher (provider switch)
+    │   │   └── twikoo.html                 # Twikoo mount (HTML only; SDK loads via body-deps)
     │   └── listing/
     │       ├── pagination.html             # Pagination nav + page-jump input
     │       ├── post-entry.html             # Post entry (title + conditional date)

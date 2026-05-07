@@ -2,6 +2,7 @@ autoplay
 cachix
 callout
 consolas
+dgst
 direnv
 elif
 endfor

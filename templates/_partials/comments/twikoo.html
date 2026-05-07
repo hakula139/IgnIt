@@ -1,8 +1,5 @@
-{# Per-post Twikoo mount. KaTeX always-on so commenters can use math anywhere. #}
-{%- set cdn = config.params.cdn -%}
+{# Per-post Twikoo mount. Vendor SDK + init script load via `_partials/layout/body-deps.html`. #}
 {%- set tw = config.params.comments.twikoo -%}
-{%- set katex = config.params.deps.katex -%}
-{%- set tw_dep = config.params.deps.twikoo -%}
 <div class="glass-glow">
   <section class="glass-panel p-6 sm:p-8" aria-label="{{ t('comments') }}">
     {# Twikoo replaces the className on its mount node, so the prose wrapper sits one level up. #}
@@ -11,13 +8,3 @@
     </div>
   </section>
 </div>
-
-<script src="{{ cdn | safe }}/katex@{{ katex.version }}/dist/katex.min.js" defer></script>
-<script src="{{ cdn | safe }}/katex@{{ katex.version }}/dist/contrib/auto-render.min.js" defer></script>
-<script
-  src="{{ cdn | safe }}/twikoo@{{ tw_dep.version }}/dist/twikoo.min.js"
-  integrity="{{ tw_dep.sri }}"
-  crossorigin="anonymous"
-  defer
-></script>
-<script src="{{ config.base_url | safe }}/js/comments/twikoo.js" defer></script>

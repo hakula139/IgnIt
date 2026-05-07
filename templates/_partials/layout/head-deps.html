@@ -1,6 +1,11 @@
 {%- set cdn = config.params.cdn | default("https://cdn.jsdelivr.net/npm") -%}
-{#- FontAwesome (when enabled in config) -#}
-{%- if config.params.fontawesome | default(false) %}
+{%- set deps = config.params.deps -%}
+{%- set comments = config.params.comments | default(value={}) -%}
+{%- set need_fontawesome = config.params.fontawesome | default(false) -%}
+{%- set need_math = (assets is defined and "math" in assets.features)
+  or (comments.enabled and comments.provider == "twikoo") -%}
+
+{%- if need_fontawesome %}
   {%- set fa = cdn ~ "/@fortawesome/fontawesome-free@6" -%}
   <link
     rel="preload"
@@ -18,7 +23,12 @@
   >
   <link rel="stylesheet" href="{{ fa | safe }}/css/all.min.css">
 {%- endif %}
-{#- KaTeX (loaded only on pages where the renderer detected math) -#}
-{%- if assets is defined and "math" in assets.features %}
-  <link rel="stylesheet" href="{{ cdn | safe }}/katex@0.16/dist/katex.min.css">
+
+{%- if need_math %}
+  <link
+    rel="stylesheet"
+    href="{{ cdn | safe }}/katex@{{ deps.katex.version }}/dist/katex.min.css"
+    integrity="{{ deps.katex.sri.css }}"
+    crossorigin="anonymous"
+  >
 {%- endif %}

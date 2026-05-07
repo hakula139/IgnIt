@@ -15,13 +15,25 @@ fontawesome = true
 
 # External CDN dependencies. Pin one source of truth per package so partials
 # never drift on version. Sites can override a single package by setting
-# `[params.deps.<name>]` in their own config.toml.
+# `[params.deps.<name>]` in their own config.toml. SRI hashes pin exact bytes;
+# regenerate when bumping `version` via:
+#   curl -sL <url> | openssl dgst -sha384 -binary | openssl base64 -A
 [params.deps.katex]
-version = "0.16"
+version = "0.16.45"
+
+[params.deps.katex.sri]
+js = "sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI"
+autorender = "sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz"
+css = "sha384-UA8juhPf75SzzAMA/4fo3yOU7sBJ0om7SCD2GHq0fZqZco6tr1UCV7nUbk9J90JM"
 
 [params.deps.mermaid]
-version = "11"
+version = "11.14.0"
+
+[params.deps.mermaid.sri]
+js = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk"
 
 [params.deps.twikoo]
 version = "1.7.8"
-sri = "sha384-VZ66UYKKuGVWRrrlB6WTZheTKFM7VIEjlOO08gJAio/hNZ7hlSGMTihT6x0aijRp"
+
+[params.deps.twikoo.sri]
+js = "sha384-VZ66UYKKuGVWRrrlB6WTZheTKFM7VIEjlOO08gJAio/hNZ7hlSGMTihT6x0aijRp"
