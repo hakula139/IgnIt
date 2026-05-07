@@ -993,7 +993,7 @@
 }
 @layer base {
   @media (prefers-reduced-motion: no-preference) {
-    html {
+    html, .toc-sidebar-scroll {
       scroll-behavior: smooth;
     }
   }
@@ -2244,11 +2244,6 @@
   .toc-sidebar-scroll {
     max-height: calc(100vh - 10rem);
     overflow-y: auto;
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .toc-sidebar-scroll {
-      scroll-behavior: smooth;
-    }
   }
   .toc-sidebar-title {
     margin-bottom: calc(var(--spacing) * 2);
