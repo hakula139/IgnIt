@@ -32,6 +32,17 @@
   --color-line-highlight-bg: rgba(255, 235, 59, 0.1);
   --color-line-highlight-border: rgba(255, 193, 7, 0.5);
 
+  /* Syntax Highlighting (Material Light) */
+  --syntax-default: #37474f;
+  --syntax-keyword: #7c4dff;
+  --syntax-entity: #6182b8;
+  --syntax-string: #7cb342;
+  --syntax-constant: #f76d47;
+  --syntax-variable: #e2931d;
+  --syntax-punctuation: #00897b;
+  --syntax-comment: #78909c;
+  --syntax-invalid: #e53935;
+
   /* Surfaces */
   --radius-card: 1.25rem;
   --shadow-card: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
@@ -99,6 +110,17 @@
     --color-selection: rgba(50, 112, 194, 0.4);
     --color-line-highlight-bg: rgba(255, 235, 59, 0.15);
     --color-line-highlight-border: rgba(255, 193, 7, 0.6);
+
+    /* Syntax Highlighting (Material Palenight) */
+    --syntax-default: #b0bec5;
+    --syntax-keyword: #c792ea;
+    --syntax-entity: #82aaff;
+    --syntax-string: #c3e88d;
+    --syntax-constant: #f78c6c;
+    --syntax-variable: #ffcb6b;
+    --syntax-punctuation: #89ddff;
+    --syntax-comment: #546e7a;
+    --syntax-invalid: #f07178;
 
     /* Surfaces */
     --surface-glass-panel: rgba(41, 42, 45, 0.7);
