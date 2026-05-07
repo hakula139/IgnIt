@@ -1,24 +1,19 @@
-/* Cancel prose's inline-image margin on Twikoo widget images. */
 .prose .tk-avatar-img,
 .prose .tk-owo-emotion {
   @apply my-0;
 }
 
-/* Twikoo's `width: 3em` makes emoticons taller than the line. Cap height and
-   nudge below x-height so they sit on the CJK midline, not above it. */
+/* Cap to line-height and nudge below x-height to sit on the CJK midline. */
 .prose .tk-owo-emotion {
   @apply h-[1.4em] w-auto align-[-0.3em];
 }
 
-/* Twikoo's runtime-injected `.twikoo .el-loading-mask` applies
-   `backdrop-filter: opacity(20%)`, which dims the glass panel behind the
-   spinner. Bump specificity to override (Twikoo's <style> loads after ours). */
+/* Specificity bump — Twikoo's `<style>` loads after ours and sets `opacity(20%)`. */
 .twikoo .tk-comments-container .el-loading-mask {
   backdrop-filter: none;
 }
 
-/* Preflight sets `svg { display: block }`, breaking Element UI's
-   `text-align: center` centering on the loading spinner. */
+/* Preflight forces `svg { display: block }`, defeating spinner's `text-align: center`. */
 .twikoo .el-loading-spinner .circular {
   @apply inline-block;
 }
