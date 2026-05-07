@@ -13,6 +13,11 @@ code_max_lines = 40
 emojis = true
 fontawesome = true
 
+[params.effects]
+# Cursor-tracking glow on glass panels. Off by default — see README
+# (Visual Effects) for the rendering caveats before enabling.
+cursor_glow = false
+
 # CDN dependencies — pinned versions + SRI hashes.
 # See CLAUDE.md for the regeneration flow when bumping a version.
 [params.deps.fontawesome]

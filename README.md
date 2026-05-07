@@ -12,7 +12,7 @@ IgnIt is a [kiln](https://github.com/hakula139/kiln) theme built with Tailwind C
 
 ### Visual Design
 
-- Glassmorphism panels with configurable background image and cursor-tracking border glow
+- Glassmorphism panels with configurable background image; optional cursor-tracking glow (off by default)
 - Dark / light mode with system preference detection and flash-free manual toggle
 - Self-hosted Inter Variable + Maple Mono webfonts; CJK falls through to system fonts
 - Print-optimized styles — clean typography, exposed link URLs, hidden chrome
@@ -135,6 +135,18 @@ icon = "fab fa-github"
 weight = 10
 external = true                       # Opens in new tab
 ```
+
+### Visual Effects (experimental)
+
+```toml
+[params.effects]
+cursor_glow = false                   # Cursor-tracking glow on glass panels
+```
+
+Off by default. The `will-change` layers it injects clash with `backdrop-filter` compositing on Chromium / WebKit:
+
+- **Panel flicker during scroll** (frequent) — panels briefly show stale content while scrolling.
+- **Phantom gap near `#comments`** (rare) — an in-page anchor jump close to the comments section can leave the article card with a much larger apparent gap than its real 32 px margin; the next manual scroll repaints.
 
 ## Image Pipeline
 

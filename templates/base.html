@@ -48,7 +48,9 @@
   <script src="{{ config.base_url | safe }}/js/content/lqip.js" defer></script>
   <script src="{{ config.base_url | safe }}/js/content/content.js" defer></script>
   <script src="{{ config.base_url | safe }}/js/content/toc.js" defer></script>
+  {%- if config.params.effects and config.params.effects.cursor_glow %}
   <script src="{{ config.base_url | safe }}/js/layout/glow.js" defer></script>
+  {%- endif %}
   <script src="{{ config.base_url | safe }}/js/layout/float-buttons.js" defer></script>
   {%- if assets is defined %}
   {%- for script in assets.scripts %}

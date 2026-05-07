@@ -43,6 +43,7 @@ palenight
 pingfang
 pkgs
 raquo
+rects
 rgba
 roboto
 sarasa
