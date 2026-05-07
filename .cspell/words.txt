@@ -10,6 +10,7 @@ endif
 ensp
 fontawesome
 fontsource
+giscus
 glassmorphism
 hakula
 hashchange
@@ -59,5 +60,6 @@ tabular
 tailwindcss
 twikoo
 unlayered
+waline
 wght
 xmark

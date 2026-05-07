@@ -6,24 +6,42 @@ A clean, feature-rich theme for [kiln](https://github.com/hakula139/kiln) — in
 
 ## Overview
 
-IgnIt is a [kiln](https://github.com/hakula139/kiln) theme built with Tailwind CSS v4 and MiniJinja templates. It features:
+IgnIt is a [kiln](https://github.com/hakula139/kiln) theme built with Tailwind CSS v4 and MiniJinja templates. The visual design centers on glassmorphism over a configurable background image; the implementation keeps a single Tailwind source pipeline with conventions documented in [CLAUDE.md](./CLAUDE.md).
+
+## Highlights
+
+### Visual Design
 
 - Glassmorphism panels with configurable background image and cursor-tracking border glow
 - Dark / light mode with system preference detection and flash-free manual toggle
-- Home page image cards with gradient overlays and desktop hover reveal (description + tags)
-- Responsive layout with sticky TOC sidebar (desktop) and collapsible TOC (mobile)
-- Featured image support in Open Graph / Twitter Card meta tags (absolute and relative URLs)
-- KaTeX math support (loaded conditionally per page)
-- Mermaid diagram rendering with dark-mode re-render (loaded conditionally per page)
-- Font Awesome icons (loaded conditionally via CDN)
-- Syntax-highlighted code blocks (Material color palette)
-- Directive-based shortcode system (music embeds, link cards, etc.)
-- Tag cloud, year-grouped post lists, numbered pagination with page-jump
-- Back-to-top button with smooth scrolling
-- Mobile menu animations with staggered item fade-in
-- Print-optimized styles (hides chrome, shows link URLs, clean typography)
-- Keyboard-accessible focus states (`:focus-visible`)
-- `prefers-reduced-motion` support across all animations
+- Self-hosted Inter Variable + Maple Mono webfonts; CJK falls through to system fonts
+- Print-optimized styles — clean typography, exposed link URLs, hidden chrome
+
+### Content
+
+- KaTeX math, Mermaid diagrams, Material-palette syntax highlighting
+- Per-post comments via a thin provider dispatcher (Twikoo today; Giscus / Waline drop-in)
+- Directive-based shortcodes (music embeds, link cards, etc.)
+- Featured image surfaces — post banner, home / listing cards, OG / Twitter Card meta
+
+### Layout & Navigation
+
+- Sticky TOC sidebar (desktop) and collapsible TOC (mobile)
+- Home page image cards with gradient overlays and desktop hover reveal
+- Tag cloud, year-grouped archive, numbered pagination with page-jump
+- Back-to-top + jump-to-comments float buttons (scroll-position-aware)
+- Mobile menu with staggered item fade-in
+
+### Performance & Dependencies
+
+- All CDN deps exact-pinned with SRI hashes (FontAwesome, KaTeX, Mermaid, Twikoo)
+- Phase-scoped dep loading — each dep emitted once per page, gated on actual content needs
+- LQIP wrappers paint kiln's base64 backdrop while sources decode
+
+### Accessibility
+
+- Keyboard-accessible focus states (`:focus-visible`), skip-to-content link, semantic landmark regions
+- `prefers-reduced-motion` honored across animations and smooth-scroll
 
 ## Installation
 
@@ -39,19 +57,20 @@ Then set it in your `config.toml`:
 theme = "IgnIt"
 ```
 
+`static/css/style.css` ships pre-built, so consuming sites don't need Node.js.
+
 ## Configuration
 
-### Theme Parameters
+IgnIt provides default parameters that can be overridden in your site's `config.toml`.
 
-IgnIt provides default parameters that can be overridden in your site's `config.toml`:
+### Theme Parameters
 
 ```toml
 [params]
 cdn = "https://cdn.jsdelivr.net/npm"  # CDN base URL for dependencies
-code_max_lines = 40                   # Max visible lines before scrolling
+code_max_lines = 40                   # Max visible lines before code blocks scroll
 emojis = true                         # Enable emoji replacement
 fontawesome = true                    # Enable Font Awesome icon loading
-paginate = 10                         # Items per page on listing pages
 ```
 
 ### Background Image
@@ -61,28 +80,25 @@ Set a fixed background image with glassmorphism content panels:
 ```toml
 [params.background]
 image = "/images/bg.webp"             # Path to background image
+lqip_uri = "data:image/webp;base64,…" # Pre-computed LQIP data URI (optional)
 position = "right center"             # CSS background-position (default: center)
 position_mobile = "60% center"        # Mobile background-position (default: position)
 ```
 
-When unset, panels use solid backgrounds (theme works without a background image).
+When unset, panels use solid backgrounds (the theme works without a background image).
 
-### Navigation Menu
+### Comments
 
 ```toml
-[[menu.main]]
-name = "Posts"
-url = "/posts/"
-icon = "fas fa-archive"               # Font Awesome class (optional)
-weight = 1                            # Sort order (ascending)
+[params.comments]
+enabled = true
+provider = "twikoo"                   # Currently the only built-in provider
 
-[[menu.main]]
-name = "GitHub"
-url = "https://github.com/user"
-icon = "fab fa-github"
-weight = 10
-external = true                       # Opens in new tab
+[params.comments.twikoo]
+api_url = "https://twikoo.example.com"
 ```
+
+The dispatcher is provider-agnostic — additional providers (Giscus, Waline, etc.) drop in via a sibling partial under `templates/_partials/comments/`. The provider's CDN dep loads only when comments are enabled.
 
 ### Footer
 
@@ -103,14 +119,43 @@ title = "Site Title"
 subtitle = "A short tagline"
 ```
 
-## Setup
+### Navigation Menu
 
-Build the Tailwind stylesheet (required before first use):
+```toml
+[[menu.main]]
+name = "Posts"
+url = "/posts/"
+icon = "fas fa-archive"               # Font Awesome class (optional)
+weight = 1                            # Sort order (ascending)
 
-```bash
-pnpm install     # Install dependencies
-pnpm build       # Build static/css/style.css
+[[menu.main]]
+name = "GitHub"
+url = "https://github.com/user"
+icon = "fab fa-github"
+weight = 10
+external = true                       # Opens in new tab
 ```
+
+## Image Pipeline
+
+IgnIt paints kiln's `lqip_uri` (low-quality image placeholder, a base64-encoded WebP data URI) via the `<span class="lqip">` wrapper kiln emits around content images. The backdrop shows immediately on first paint; the inner image fades in once it decodes.
+
+- **Body images**: auto-wrapped by kiln. No site-level work.
+- **Featured images** (post banner, home cards): templates emit the wrapper themselves, gated on `featured_image.lqip_uri`.
+- **Body background** (`[params.background]`): supply a pre-computed `lqip_uri` alongside `image`. The wrapper pins fixed-fullscreen with `object-fit: cover`; `position` / `position_mobile` drive `object-position` via CSS variables.
+
+## Internationalization
+
+Translation tables live under `i18n/<lang>.toml` (`en`, `zh-Hans`); the active language follows `config.language` in the consuming site. Access:
+
+- **Templates** (MiniJinja): `t('key')`.
+- **Client JS**: `data-i18n-*` attributes on the document root.
+
+Sites can layer overrides via a same-named TOML at their root's `i18n/<lang>.toml`, merged key-by-key. Per-key lookup falls back: **site override → theme translation → theme English**.
+
+## Webfonts
+
+Inter Variable (`--font-sans`) and Maple Mono Variable (`--font-mono`) are self-hosted under `static/fonts/`. Inter is preloaded in `base.html`; Maple Mono is fetched lazily on first `<code>` use. CJK falls through to system fonts (Sarasa Gothic SC, PingFang SC, Noto Sans CJK SC, etc.) via the `--font-sans` cascade.
 
 ## Theme Development
 
@@ -118,14 +163,17 @@ All assets live under `static/`:
 
 - `static/css/_src/` — Tailwind sources (entry, partials); private build input, skipped by kiln
 - `static/css/style.css` — compiled Tailwind output, shipped
-- `static/js/*.js` — JS sources, shipped as-is (no build step)
+- `static/js/{comments,content,layout,listing}/*.js` — JS sources, shipped as-is (no build step)
 
 ```bash
+pnpm install     # Install dev dependencies (Tailwind CLI, ESLint, Prettier)
 pnpm dev         # Watch mode — rebuilds static/css/style.css on changes
 pnpm build       # One-shot CSS build
 ```
 
 Compression for both CSS and JS is handled at deploy time by `kiln build --minify`, so sources stay readable in the dev server for debugging.
+
+For deeper architectural notes (CSS layering, dependency registry, build pipeline, coding conventions), see [`CLAUDE.md`](./CLAUDE.md).
 
 ## License
 
