@@ -2,8 +2,7 @@
 {%- set base = config.base_url -%}
 {%- set deps = config.params.deps -%}
 {%- set comments = config.params.comments | default(value={}) -%}
-{%- set need_math = (assets is defined and "math" in assets.features)
-  or (comments.enabled and comments.provider == "twikoo") -%}
+{%- set need_math = assets is defined and "math" in assets.features -%}
 {%- set need_mermaid = assets is defined and "mermaid" in assets.features -%}
 {%- set need_twikoo = comments.enabled and comments.provider == "twikoo" -%}
 
