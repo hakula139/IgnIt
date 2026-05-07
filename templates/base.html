@@ -40,6 +40,7 @@
   <button id="back-to-top" class="float-btn back-to-top glass-panel" data-glow-target aria-label="{{ t('back_to_top') }}" title="{{ t('back_to_top') }}">
     <i class="fas fa-arrow-up" aria-hidden="true"></i>
   </button>
+  {%- block float_buttons %}{% endblock %}
   {%- if config.search.enabled %}
   <pagefind-modal></pagefind-modal>
   {%- endif %}
