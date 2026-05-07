@@ -1,0 +1,10 @@
+{# Glass-card wrapper: <div class="glass-glow"><TAG class="glass-panel ...">...</TAG></div>. #}
+{# Import as `{% from "_partials/layout/glass-card.html" import glass_card %}` and use with #}
+{# `{% call glass_card(...) %}content{% endcall %}`. #}
+{%- macro glass_card(panel_class="", glow_class="", tag="div", attrs="") -%}
+<div class="glass-glow{% if glow_class %} {{ glow_class }}{% endif %}">
+  <{{ tag }} class="glass-panel{% if panel_class %} {{ panel_class }}{% endif %}"{% if attrs %} {{ attrs | safe }}{% endif %}>
+    {{ caller() }}
+  </{{ tag }}>
+</div>
+{%- endmacro -%}

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{%- from "_partials/layout/glass-card.html" import glass_card %}
 
 {% block head %}
 {%- set og_type = "website" -%}
@@ -9,8 +10,7 @@
 {%- set profile = config.params.home.profile %}
 {%- if profile %}
   <div class="max-w-4xl mx-auto px-4 pt-6">
-    <div class="glass-glow">
-      <div class="glass-panel p-6 sm:p-8 text-center">
+    {% call glass_card(panel_class="p-6 sm:p-8 text-center") %}
         {%- if profile.avatar %}
         <img
           class="profile-avatar"
@@ -24,8 +24,7 @@
         {%- if profile.subtitle %}
         <p class="mt-2 text-sm text-text-secondary">{{ profile.subtitle }}</p>
         {%- endif %}
-      </div>
-    </div>
+    {% endcall %}
   </div>
 {%- endif %}
 
@@ -91,8 +90,7 @@
       <a href="{{ page.url | safe }}" class="home-card-link-cover" aria-label="{{ page.title }}"></a>
     </article>
     {%- else %}
-    <div class="glass-glow">
-      <article class="glass-panel post-entry px-5 py-4">
+    {% call glass_card(tag="article", panel_class="post-entry px-5 py-4") %}
         <a href="{{ page.url | safe }}" class="post-entry-title font-medium">
           {%- if page.pinned %}
           <i class="fas fa-thumbtack post-entry-pin" aria-label="{{ t('pinned') }}" title="{{ t('pinned') }}"></i>
@@ -104,8 +102,7 @@
           {{ page.date[:10] }}
         </time>
         {%- endif %}
-      </article>
-    </div>
+    {% endcall %}
     {%- endif %}
     {%- endfor %}
 

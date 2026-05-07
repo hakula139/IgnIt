@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{%- from "_partials/layout/glass-card.html" import glass_card %}
 
 {%- if kind == "sections" -%}
   {%- set heading = t('all_sections') -%}
@@ -10,8 +11,7 @@
 
 {% block body %}
   <div class="max-w-4xl mx-auto px-4 py-6">
-    <div class="glass-glow">
-      <div class="glass-panel p-6 sm:p-8">
+    {% call glass_card(panel_class="p-6 sm:p-8") %}
         <h2 class="mb-6 text-xl font-semibold">
           {{- heading -}}
         </h2>
@@ -55,7 +55,6 @@
           {%- endfor %}
         </div>
         {%- endif %}
-      </div>
-    </div>
+    {% endcall %}
   </div>
 {%- endblock %}

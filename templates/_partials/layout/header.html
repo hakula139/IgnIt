@@ -1,6 +1,6 @@
+{%- from "_partials/layout/glass-card.html" import glass_card %}
 {%- set menu_items = config.menu.main | default([]) -%}
-<div class="glass-glow fixed inset-x-0 top-0 z-50 rounded-none">
-  <header class="glass-panel header-nav">
+{% call glass_card(tag="header", glow_class="fixed inset-x-0 top-0 z-50 rounded-none", panel_class="header-nav") %}
     <div class="flex items-center justify-between w-full max-w-6xl mx-auto">
       <a href="{{ config.base_url | safe }}/" class="header-logo shrink-0">
         {{ config.title }}
@@ -74,8 +74,7 @@
         <i class="fas fa-bars fa-fw" aria-hidden="true"></i>
       </button>
     </div>
-  </header>
-</div>
+{% endcall %}
 
 {# Mobile menu backdrop + dropdown #}
 <div id="mobile-menu" class="hidden">

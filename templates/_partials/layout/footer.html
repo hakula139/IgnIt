@@ -1,7 +1,7 @@
+{%- from "_partials/layout/glass-card.html" import glass_card %}
 {%- set footer = config.params.footer | default({}) -%}
 {%- set current_year = now()[0:4] -%}
-<div class="glass-glow mx-4 mt-2 mb-4">
-  <footer class="glass-panel site-footer">
+{% call glass_card(tag="footer", glow_class="mx-4 mt-2 mb-4", panel_class="site-footer") %}
     <div class="max-w-6xl mx-auto">
       {%- if footer.since %}
       <p>
@@ -23,5 +23,4 @@
       <p class="mt-1">{{ t("powered_by", kiln=kiln_link, ignit=ignit_link) | safe }}</p>
       {%- endif %}
     </div>
-  </footer>
-</div>
+{% endcall %}

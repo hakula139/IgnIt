@@ -1,13 +1,12 @@
 {# Desktop TOC sidebar (sticky, xl only) #}
+{%- from "_partials/layout/glass-card.html" import glass_card %}
 {%- if toc %}
 <aside class="toc-sidebar-wrapper">
-  <div class="glass-glow sticky top-22">
-    <div class="glass-panel toc-sidebar">
+  {% call glass_card(glow_class="sticky top-22", panel_class="toc-sidebar") %}
       <h2 class="toc-sidebar-title">{{ t('table_of_contents') }}</h2>
       <div class="toc-sidebar-scroll">
         {{ toc | safe }}
       </div>
-    </div>
-  </div>
+  {% endcall %}
 </aside>
 {%- endif %}

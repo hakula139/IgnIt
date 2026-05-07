@@ -1,11 +1,11 @@
 {% extends "base.html" %}
+{%- from "_partials/layout/glass-card.html" import glass_card %}
 
 {% block title %}<title>{{ name }} - {{ config.title }}</title>{% endblock %}
 
 {% block body %}
   <div class="max-w-4xl mx-auto px-4 py-6">
-    <div class="glass-glow">
-      <div class="glass-panel p-6 sm:p-8">
+    {% call glass_card(panel_class="p-6 sm:p-8") %}
         <h2 class="mb-6 text-xl font-semibold">
           {%- if singular == "section" -%}
             <i class="far fa-folder-open fa-fw" aria-hidden="true"></i> {{ name }}
@@ -17,7 +17,6 @@
         </h2>
 
         {%- include "_partials/listing/year-grouped-listing.html" %}
-      </div>
-    </div>
+    {% endcall %}
   </div>
 {%- endblock %}

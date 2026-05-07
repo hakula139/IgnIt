@@ -1,10 +1,12 @@
+{%- from "_partials/layout/glass-card.html" import glass_card %}
 {%- if pagination.total_pages > 1 %}
     <nav class="flex justify-center mt-8" aria-label="{{ t('pagination') }}">
-      <div class="glass-glow inline-flex">
-        <ul
-          class="glass-panel pagination inline-flex items-center gap-1 px-3 py-2"
-          data-base-url="{{ pagination.base_url | safe }}"
-        >
+      {% call glass_card(
+        tag="ul",
+        glow_class="inline-flex",
+        panel_class="pagination inline-flex items-center gap-1 px-3 py-2",
+        attrs='data-base-url="' ~ pagination.base_url ~ '"'
+      ) %}
         {%- for item in pagination.items %}
           {%- if item.number %}
           <li>
@@ -33,8 +35,7 @@
           </li>
           {%- endif %}
         {%- endfor %}
-        </ul>
-      </div>
+      {% endcall %}
     </nav>
 
     <script src="{{ config.base_url | safe }}/js/listing/pagination.js" defer></script>

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{%- from "_partials/layout/glass-card.html" import glass_card %}
 
 {% block title %}<title>{{ title }} - {{ config.title }}</title>{% endblock %}
 
@@ -12,8 +13,7 @@
     <div class="xl:flex xl:gap-8">
       {# Article column #}
       <div class="flex-1 min-w-0 space-y-8">
-        <div class="glass-glow">
-          <article class="glass-panel">
+        {% call glass_card(tag="article") %}
             {%- include "_partials/content/post-banner.html" %}
 
             <div class="p-6 sm:p-8">
@@ -43,8 +43,7 @@
 
               <div class="max-w-none prose" data-pagefind-body>{{ content | safe }}</div>
             </div>
-          </article>
-        </div>
+        {% endcall %}
 
         {%- include "_partials/comments/index.html" %}
       </div>
