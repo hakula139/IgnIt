@@ -8,9 +8,20 @@
     { left: '\\[', right: '\\]', display: true },
   ];
 
+  // Twikoo's i18n table uses fixed locale codes (zh-CN, zh-TW, en, ...). Map
+  // the BCP-47 forms a site might declare in <html lang> — script-based
+  // (zh-Hans / zh-Hant) and region-based (zh-CN / zh-TW) — to what Twikoo
+  // recognizes. Anything else falls through to English.
+  const TWIKOO_LANG_MAP = {
+    'zh-hans': 'zh-CN',
+    'zh-hant': 'zh-TW',
+    'zh-cn': 'zh-CN',
+    'zh-tw': 'zh-TW',
+  };
+
   const langOf = () => {
     const l = (document.documentElement.lang || 'en').toLowerCase();
-    return l.startsWith('zh') ? 'zh-CN' : 'en';
+    return TWIKOO_LANG_MAP[l] || (l.startsWith('zh') ? 'zh-CN' : 'en');
   };
 
   const initTwikoo = () => {
