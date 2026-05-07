@@ -30,7 +30,7 @@ version = "11.14.0"
 js = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk"
 
 [params.deps.twikoo]
-version = "1.7.8"
+version = "1.7.9"
 
 [params.deps.twikoo.sri]
-js = "sha384-VZ66UYKKuGVWRrrlB6WTZheTKFM7VIEjlOO08gJAio/hNZ7hlSGMTihT6x0aijRp"
+js = "sha384-uS5XTM0hprJZj0R184twNRV12L55VagOlT/XQaj1uAebA0RtO7diEr+dE9TBn5N2"
