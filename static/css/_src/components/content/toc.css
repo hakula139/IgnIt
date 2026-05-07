@@ -69,6 +69,14 @@
     @apply max-h-[calc(100vh-10rem)] overflow-y-auto;
   }
 
+  /* Defer smooth-scroll to CSS (mirrors `html { scroll-smooth }`) so the JS
+     auto-centering call honors `prefers-reduced-motion`. */
+  @media (prefers-reduced-motion: no-preference) {
+    .toc-sidebar-scroll {
+      @apply scroll-smooth;
+    }
+  }
+
   .toc-sidebar-title {
     @apply mb-2 font-semibold text-text;
   }

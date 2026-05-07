@@ -34,7 +34,7 @@
       () =>
         window.scrollY > SCROLL_THRESHOLD &&
         comments.getBoundingClientRect().top > window.innerHeight,
-      () => comments.scrollIntoView({ behavior: 'smooth' }),
+      () => comments.scrollIntoView(),
     );
   };
 
