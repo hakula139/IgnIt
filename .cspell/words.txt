@@ -53,6 +53,7 @@ songid
 songtype
 startingwith
 statix
+subdirs
 syntect
 tabular
 tailwindcss

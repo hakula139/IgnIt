@@ -22,6 +22,7 @@ back_to_top = "回到顶部"
 
 # 评论
 comments = "评论"
+jump_to_comments = "跳转至评论区"
 
 # 指令 — 音乐
 music_player_apple = "Apple Music"

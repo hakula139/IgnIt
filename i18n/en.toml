@@ -22,6 +22,7 @@ back_to_top = "Back to top"
 
 # Comments
 comments = "Comments"
+jump_to_comments = "Jump to comments"
 
 # Directives — music
 music_player_apple = "Apple Music"

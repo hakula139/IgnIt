@@ -31,7 +31,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   │   │   ├── embed/
 │   │   │   │   │   └── apple-music.css     # Apple Music embed light / dark toggle
 │   │   │   │   ├── layout/
-│   │   │   │   │   ├── back-to-top.css     # .back-to-top fixed button with glass styling
+│   │   │   │   │   ├── float-buttons.css   # .float-btn shared base + .back-to-top, .jump-to-comments stack
 │   │   │   │   │   ├── glass-panel.css     # .glass-panel, .glass-glow, [data-glow-target], .header-nav, .site-footer
 │   │   │   │   │   ├── header.css          # .header-logo, .header-link, .header-icon, .header-mobile-*, menu animations
 │   │   │   │   │   ├── print.css           # @media print overrides (hide chrome, clean typography)
@@ -46,17 +46,20 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   │   └── main.css                    # Entry: tokens, dark mode, partial imports
 │   │   └── style.css                       # Compiled Tailwind output (shipped)
 │   ├── fonts/                              # Self-hosted webfonts (Inter Variable + Maple Mono Variable)
-│   └── js/
-│       ├── back-to-top.js                  # Scroll-triggered back-to-top button
+│   └── js/                                 # Mirrors css/_src/components/ subdirs
 │       ├── comments/
 │       │   └── twikoo.js                   # Twikoo widget init (KaTeX delimiters, language)
-│       ├── content.js                      # Code block, callout, heading anchor, and external link enhancements
-│       ├── glow.js                         # Glass panel cursor glow effect
-│       ├── lqip.js                         # LQIP fade-in: cache-aware reveal + lazy-fetch fallback
-│       ├── mermaid.js                      # Mermaid init + dark-mode re-render hook (uses window.mermaid UMD)
-│       ├── pagination.js                   # Page-jump controls for pagination
-│       ├── theme.js                        # Dark mode toggle + system preference
-│       └── toc.js                          # TOC active heading tracking + section collapse
+│       ├── content/
+│       │   ├── content.js                  # Code block, callout, heading anchor, and external link enhancements
+│       │   ├── lqip.js                     # LQIP fade-in: cache-aware reveal + lazy-fetch fallback
+│       │   ├── mermaid.js                  # Mermaid init + dark-mode re-render hook (uses window.mermaid UMD)
+│       │   └── toc.js                      # TOC active heading tracking + section collapse
+│       ├── layout/
+│       │   ├── float-buttons.js            # Back-to-top + jump-to-comments scroll-triggered FABs
+│       │   ├── glow.js                     # Glass panel cursor glow effect
+│       │   └── theme.js                    # Dark mode toggle + system preference
+│       └── listing/
+│           └── pagination.js               # Page-jump controls for pagination
 └── templates/
     ├── _partials/                          # Shared template fragments ({% include %})
     │   ├── comments/

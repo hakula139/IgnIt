@@ -50,7 +50,7 @@
   .pagination-ellipsis,
   .pagination-input,
   /* Interactive */
-  .back-to-top,
+  .float-btn,
   pagefind-modal {
     display: none !important;
   }
