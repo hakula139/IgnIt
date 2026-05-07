@@ -4,7 +4,7 @@
 {%- set need_math = assets is defined and "math" in assets.features -%}
 
 {%- if need_fontawesome %}
-  {%- set fa = cdn ~ "/@fortawesome/fontawesome-free@6" -%}
+  {%- set fa = cdn ~ "/@fortawesome/fontawesome-free@" ~ deps.fontawesome.version -%}
   <link
     rel="preload"
     href="{{ fa | safe }}/webfonts/fa-solid-900.woff2"
@@ -19,7 +19,12 @@
     type="font/woff2"
     crossorigin
   >
-  <link rel="stylesheet" href="{{ fa | safe }}/css/all.min.css">
+  <link
+    rel="stylesheet"
+    href="{{ fa | safe }}/css/all.min.css"
+    integrity="{{ deps.fontawesome.sri.css }}"
+    crossorigin="anonymous"
+  >
 {%- endif %}
 
 {%- if need_math %}

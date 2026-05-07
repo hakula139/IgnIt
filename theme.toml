@@ -15,6 +15,12 @@ fontawesome = true
 
 # CDN dependencies — pinned versions + SRI hashes. See CLAUDE.md for the
 # regeneration flow when bumping a version.
+[params.deps.fontawesome]
+version = "6.7.2"
+
+[params.deps.fontawesome.sri]
+css = "sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+
 [params.deps.katex]
 version = "0.16.45"
 
