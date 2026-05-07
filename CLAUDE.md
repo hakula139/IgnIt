@@ -56,7 +56,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │       │   └── toc.js                      # TOC active heading tracking + section collapse
 │       ├── layout/
 │       │   ├── float-buttons.js            # Back-to-top + jump-to-comments scroll-triggered FABs
-│       │   ├── glow.js                     # Glass panel cursor glow effect
+│       │   ├── glow.js                     # Glass panel cursor glow effect (opt-in via [params.effects].cursor_glow)
 │       │   └── theme.js                    # Dark mode toggle + system preference
 │       └── listing/
 │           └── pagination.js               # Page-jump controls for pagination
