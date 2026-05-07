@@ -3,7 +3,8 @@
   @apply my-0;
 }
 
-/* Cap to line-height and nudge below x-height to sit on the CJK midline. */
+/* `vertical-align: middle` aligns to Latin x-height — too low for CJK.
+   Length offset ≈ 0.5em (em-box mid) - height/2; -0.3em is empirically tuned. */
 .prose .tk-owo-emotion {
   @apply h-[1.4em] w-auto align-[-0.3em];
 }
