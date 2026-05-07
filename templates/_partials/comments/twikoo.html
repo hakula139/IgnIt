@@ -4,7 +4,7 @@
 {%- set katex = config.params.deps.katex -%}
 {%- set tw_dep = config.params.deps.twikoo -%}
 <div class="glass-glow">
-  <section class="glass-panel p-6 sm:p-8" aria-label="{{ t('comments_heading') }}">
+  <section class="glass-panel p-6 sm:p-8" aria-label="{{ t('comments') }}">
     {# Twikoo replaces the className on its mount node, so the prose wrapper sits one level up. #}
     <div class="prose max-w-none">
       <div id="twikoo" data-twikoo-api-url="{{ tw.api_url }}"></div>

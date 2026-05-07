@@ -21,7 +21,7 @@ image_credit = "图片来源"
 back_to_top = "回到顶部"
 
 # 评论
-comments_heading = "评论"
+comments = "评论"
 
 # 指令 — 音乐
 music_player_apple = "Apple Music"
