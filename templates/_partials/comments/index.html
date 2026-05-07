@@ -1,7 +1,11 @@
-{# Per-post comments dispatcher. Add sibling partials per provider; this stays thin. #}
 {%- set comments = config.params.comments | default(value={}) -%}
-{%- if comments.enabled and comments.provider == "twikoo" %}
-  {%- include "_partials/comments/twikoo.html" %}
+{%- if comments.enabled %}
+  <section id="comments" aria-label="{{ t('comments') }}">
+    {%- if comments.provider == "twikoo" %}
+      {%- include "_partials/comments/twikoo.html" %}
+    {%- endif %}
+  </section>
+
   <button
     id="jump-to-comments"
     class="float-btn jump-to-comments glass-panel"
