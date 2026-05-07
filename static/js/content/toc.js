@@ -106,7 +106,7 @@
         return;
       }
       const offset = lRect.top - cRect.top - (cRect.height - lRect.height) / 2;
-      scroll.scrollTo({ top: scroll.scrollTop + offset, behavior: 'smooth' });
+      scroll.scrollTo({ top: scroll.scrollTop + offset });
     };
 
     // Track which headings are visible — pick the topmost one.

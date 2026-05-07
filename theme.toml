@@ -12,3 +12,31 @@ cdn = "https://cdn.jsdelivr.net/npm"
 code_max_lines = 40
 emojis = true
 fontawesome = true
+
+# CDN dependencies — pinned versions + SRI hashes.
+# See CLAUDE.md for the regeneration flow when bumping a version.
+[params.deps.fontawesome]
+version = "6.7.2"
+
+[params.deps.fontawesome.sri]
+css = "sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+
+[params.deps.katex]
+version = "0.16.45"
+
+[params.deps.katex.sri]
+autorender = "sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz"
+css = "sha384-UA8juhPf75SzzAMA/4fo3yOU7sBJ0om7SCD2GHq0fZqZco6tr1UCV7nUbk9J90JM"
+js = "sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI"
+
+[params.deps.mermaid]
+version = "11.14.0"
+
+[params.deps.mermaid.sri]
+js = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk"
+
+[params.deps.twikoo]
+version = "1.7.9"
+
+[params.deps.twikoo.sri]
+js = "sha384-uS5XTM0hprJZj0R184twNRV12L55VagOlT/XQaj1uAebA0RtO7diEr+dE9TBn5N2"

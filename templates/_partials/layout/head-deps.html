@@ -1,7 +1,10 @@
 {%- set cdn = config.params.cdn | default("https://cdn.jsdelivr.net/npm") -%}
-{#- FontAwesome (when enabled in config) -#}
-{%- if config.params.fontawesome | default(false) %}
-  {%- set fa = cdn ~ "/@fortawesome/fontawesome-free@6" -%}
+{%- set deps = config.params.deps -%}
+{%- set need_fontawesome = config.params.fontawesome | default(false) -%}
+{%- set need_math = assets is defined and "math" in assets.features -%}
+
+{%- if need_fontawesome %}
+  {%- set fa = cdn ~ "/@fortawesome/fontawesome-free@" ~ deps.fontawesome.version -%}
   <link
     rel="preload"
     href="{{ fa | safe }}/webfonts/fa-solid-900.woff2"
@@ -16,9 +19,20 @@
     type="font/woff2"
     crossorigin
   >
-  <link rel="stylesheet" href="{{ fa | safe }}/css/all.min.css">
+  <link
+    rel="stylesheet"
+    href="{{ fa | safe }}/css/all.min.css"
+    integrity="{{ deps.fontawesome.sri.css }}"
+    crossorigin="anonymous"
+  >
 {%- endif %}
-{#- KaTeX (loaded only on pages where the renderer detected math) -#}
-{%- if assets is defined and "math" in assets.features %}
-  <link rel="stylesheet" href="{{ cdn | safe }}/katex@0.16/dist/katex.min.css">
+
+{%- if need_math %}
+  {%- set katex = cdn ~ "/katex@" ~ deps.katex.version -%}
+  <link
+    rel="stylesheet"
+    href="{{ katex | safe }}/dist/katex.min.css"
+    integrity="{{ deps.katex.sri.css }}"
+    crossorigin="anonymous"
+  >
 {%- endif %}

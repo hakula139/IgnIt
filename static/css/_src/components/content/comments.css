@@ -1,0 +1,29 @@
+/* Override prose.css's inline default for non-figure imgs. */
+.prose .tk-avatar-img {
+  @apply my-0 block;
+}
+
+/* `vertical-align: middle` aligns to Latin x-height — too low for CJK. */
+.prose .tk-owo-emotion {
+  @apply my-0 align-[-0.3em];
+}
+
+.tk-comments-container > .tk-comment + .tk-comment {
+  @apply mt-6 border-t border-border pt-6;
+}
+
+/* Specificity bump — Twikoo sets `backdrop-filter: opacity(20%)` here. */
+.twikoo .tk-comments-container .el-loading-mask {
+  backdrop-filter: none;
+}
+
+/* Preflight forces `svg { display: block }`, defeating spinner's `text-align: center`. */
+.twikoo .el-loading-spinner .circular {
+  @apply inline-block;
+}
+
+.twikoo .OwO .OwO-body {
+  @apply overflow-hidden rounded-card text-text shadow-card backdrop-blur-lg backdrop-saturate-125;
+  background: var(--surface-glass-panel);
+  border: 1px solid var(--surface-glass-border);
+}

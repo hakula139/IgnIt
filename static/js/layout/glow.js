@@ -61,19 +61,15 @@
     let trackingEnabled = false;
     let targets = queryActiveTargets().map(buildTarget);
     let rectsDirty = true;
-    let lastScrollY = window.scrollY;
-    let scrollEndTimer = 0;
-    let lastScrollRender = 0;
+    let scrolling = false;
     let viewObserver = null;
-
-    // Cap scroll-triggered renders to ~30fps to coalesce compositor commits.
-    const SCROLL_RENDER_MS = 32;
 
     // ── Event Handlers ──
 
     const onMouseMove = (e) => {
       cursorX = e.clientX;
       cursorY = e.clientY;
+      scrolling = false;
       scheduleUpdate();
     };
 
@@ -82,35 +78,10 @@
       scheduleUpdate();
     };
 
-    // Adjust cached rects by scroll delta (cheap math) instead of calling
-    // getBoundingClientRect on every scroll event.
     const onScroll = () => {
-      clearTimeout(scrollEndTimer);
-      scrollEndTimer = setTimeout(invalidateRects, 150);
-
-      if (rectsDirty) {
-        return;
-      }
-
-      const scrollY = window.scrollY;
-      const dy = scrollY - lastScrollY;
-      lastScrollY = scrollY;
-      if (dy === 0) {
-        return;
-      }
-
-      for (const t of targets) {
-        if (!t.fixed) {
-          t.rect = { left: t.rect.left, top: t.rect.top - dy };
-        }
-      }
-
-      const now = performance.now();
-      if (now - lastScrollRender < SCROLL_RENDER_MS) {
-        return;
-      }
-      lastScrollRender = now;
-      scheduleUpdate();
+      scrolling = true;
+      rectsDirty = true;
+      resetGlow();
     };
 
     // ── Rendering ──
@@ -126,11 +97,22 @@
       if (targets.length === 0) {
         return;
       }
+      if (scrolling) {
+        return;
+      }
       if (rectsDirty) {
         measureTargets();
       }
       for (const { ambient, borderSpot, rect, inView } of targets) {
-        if (!inView) {
+        if (
+          !inView ||
+          cursorX < rect.left ||
+          cursorX > rect.right ||
+          cursorY < rect.top ||
+          cursorY > rect.bottom
+        ) {
+          ambient.style.transform = '';
+          borderSpot.style.transform = '';
           continue;
         }
         const transform = `translate3d(${Math.round(cursorX - rect.left)}px, ${Math.round(cursorY - rect.top)}px, 0)`;
@@ -145,7 +127,6 @@
         const pos = getComputedStyle(t.el).position;
         t.fixed = pos === 'fixed' || pos === 'sticky';
       }
-      lastScrollY = window.scrollY;
       rectsDirty = false;
     };
 
@@ -211,7 +192,6 @@
         document.removeEventListener('mousemove', onMouseMove);
         window.removeEventListener('scroll', onScroll);
         window.removeEventListener('resize', invalidateRects);
-        clearTimeout(scrollEndTimer);
         disconnectViewObserver();
         trackingEnabled = false;
       }

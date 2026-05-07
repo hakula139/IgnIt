@@ -97,10 +97,18 @@
               pass_filenames = true;
             };
 
+            eslint = {
+              enable = true;
+              name = "eslint";
+              entry = nodeHook "eslint" "eslint --fix";
+              files = "\\.js$";
+              pass_filenames = true;
+            };
+
             markdownlint = {
               enable = true;
               name = "markdownlint-cli2";
-              entry = nodeHook "markdownlint" "markdownlint-cli2";
+              entry = nodeHook "markdownlint" "markdownlint-cli2 --fix";
               files = "\\.md$";
               pass_filenames = true;
             };

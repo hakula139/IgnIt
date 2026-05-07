@@ -1,0 +1,11 @@
+{%- if config.params.comments and config.params.comments.enabled %}
+<button
+  id="jump-to-comments"
+  class="float-btn jump-to-comments glass-panel"
+  data-glow-target
+  aria-label="{{ t('jump_to_comments') }}"
+  title="{{ t('jump_to_comments') }}"
+>
+  <i class="far fa-comment" aria-hidden="true"></i>
+</button>
+{%- endif %}

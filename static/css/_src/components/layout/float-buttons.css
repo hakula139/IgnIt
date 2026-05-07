@@ -1,0 +1,27 @@
+@layer components {
+  .float-btn {
+    @apply pointer-events-none fixed right-6 z-40 flex h-11 w-11 cursor-pointer items-center justify-center rounded-full text-text-secondary opacity-0 transition-[opacity,color,background-color,border-color] duration-300;
+
+    --glow-size: 80px;
+    --glow-border-size: 60px;
+  }
+
+  .float-btn:hover {
+    @apply text-link-hover;
+    background: var(--surface-glass-hover);
+  }
+
+  .float-btn.visible {
+    @apply pointer-events-auto opacity-100;
+  }
+
+  /* Stack: jump-to-comments sits below back-to-top with a small visual gap.
+     `bottom-28` clears the footer panel by ~16px when scrolled to bottom. */
+  .back-to-top {
+    @apply bottom-44;
+  }
+
+  .jump-to-comments {
+    @apply bottom-28;
+  }
+}

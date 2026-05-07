@@ -11,79 +11,42 @@
   <div class="max-w-6xl mx-auto px-4 py-6">
     <div class="xl:flex xl:gap-8">
       {# Article column #}
-      <div class="glass-glow flex-1 min-w-0">
-        <article class="glass-panel">
-          {%- if featured_image %}
-          <div class="post-banner aspect-[21/9]">
-            <div class="post-banner-media">
-              {%- if featured_image.credit and featured_image.credit.url %}
-              <a
-                href="{{ featured_image.credit.url | safe }}"
-                class="post-banner-link"
-                aria-label="{{ t('image_credit') }}{% if featured_image.credit.title %}: {{ featured_image.credit.title }}{% endif %}"
-              >
-              {%- endif %}
-                {%- if featured_image.lqip_uri %}
-                <span class="lqip" style="--lqip-uri:url('{{ featured_image.lqip_uri | safe }}')">
+      <div class="flex-1 min-w-0 space-y-8">
+        <div class="glass-glow">
+          <article class="glass-panel">
+            {%- include "_partials/content/post-banner.html" %}
+
+            <div class="p-6 sm:p-8">
+              <header class="mb-6">
+                <h1 class="article-title" data-pagefind-meta="title">{{ title }}</h1>
+                {%- if date or section %}
+                <div class="mt-2 text-sm text-text-secondary">
+                  {%- if date %}
+                  <time datetime="{{ date }}">{{ date[:10] }}</time>
+                  {%- endif %}
+                  {%- if section %}
+                  <span>
+                    {%- if date %}&ensp;·&ensp;{% endif -%}
+                    <a
+                      href="{{ section.url | safe }}"
+                      class="text-text-secondary border-b-0 transition-colors hover:text-link-hover"
+                    >
+                      <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ section.name }}
+                    </a>
+                  </span>
+                  {%- endif %}
+                </div>
                 {%- endif %}
-                  <img
-                    src="{{ featured_image.src | safe }}"
-                    alt="{{ title }}"
-                    class="post-featured-image post-banner-image"
-                    {%- if featured_image.width and featured_image.height %}
-                    width="{{ featured_image.width }}"
-                    height="{{ featured_image.height }}"
-                    {%- endif %}
-                    style="object-position: {{ featured_image.position | default('center', true) }}"
-                    loading="eager"
-                    decoding="async"
-                    fetchpriority="high"
-                  >
-                {%- if featured_image.lqip_uri %}
-                </span>
-                {%- endif %}
-              {%- if featured_image.credit and featured_image.credit.url %}
-              </a>
-              {%- endif %}
+              </header>
+
+              {%- include "_partials/content/toc-mobile.html" %}
+
+              <div class="max-w-none prose" data-pagefind-body>{{ content | safe }}</div>
             </div>
-            {%- if featured_image.credit and (featured_image.credit.title or featured_image.credit.author) %}
-            <div class="post-banner-credit">
-              {%- if featured_image.credit.title %}{{ featured_image.credit.title }}{% endif -%}
-              {%- if featured_image.credit.title and featured_image.credit.author %} – {% endif -%}
-              {%- if featured_image.credit.author %}{{ featured_image.credit.author }}{% endif -%}
-            </div>
-            {%- endif %}
-          </div>
-          {%- endif %}
+          </article>
+        </div>
 
-          <div class="p-6 sm:p-8">
-            <header class="mb-6">
-              <h1 class="article-title" data-pagefind-meta="title">{{ title }}</h1>
-              {%- if date or section %}
-              <div class="mt-2 text-sm text-text-secondary">
-                {%- if date %}
-                <time datetime="{{ date }}">{{ date[:10] }}</time>
-                {%- endif %}
-                {%- if section %}
-                <span>
-                  {%- if date %}&ensp;·&ensp;{% endif -%}
-                  <a
-                    href="{{ section.url | safe }}"
-                    class="text-text-secondary border-b-0 transition-colors hover:text-link-hover"
-                  >
-                    <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ section.name }}
-                  </a>
-                </span>
-                {%- endif %}
-              </div>
-              {%- endif %}
-            </header>
-
-            {%- include "_partials/content/toc-mobile.html" %}
-
-            <div class="max-w-none prose" data-pagefind-body>{{ content | safe }}</div>
-          </div>
-        </article>
+        {%- include "_partials/comments/index.html" %}
       </div>
 
       {%- include "_partials/content/toc-sidebar.html" %}
@@ -91,7 +54,10 @@
   </div>
 {%- endblock %}
 
+{% block float_buttons %}
+{%- include "_partials/comments/jump-button.html" %}
+{%- endblock %}
+
 {% block scripts %}
-{%- include "_partials/content/math.html" %}
-{%- include "_partials/content/mermaid.html" %}
+{%- include "_partials/layout/body-deps.html" %}
 {%- endblock %}

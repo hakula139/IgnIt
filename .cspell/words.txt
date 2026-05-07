@@ -2,6 +2,7 @@ autoplay
 cachix
 callout
 consolas
+dgst
 direnv
 elif
 endfor
@@ -9,6 +10,7 @@ endif
 ensp
 fontawesome
 fontsource
+giscus
 glassmorphism
 hakula
 hashchange
@@ -52,9 +54,12 @@ songid
 songtype
 startingwith
 statix
+subdirs
 syntect
 tabular
 tailwindcss
+twikoo
 unlayered
+waline
 wght
 xmark

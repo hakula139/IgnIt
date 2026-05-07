@@ -14,54 +14,67 @@ All assets live under a single `static/` tree. Files and directories whose names
 ├── static/                                 # single asset root (committed for submodule consumers)
 │   ├── css/
 │   │   ├── _src/                           # private: Tailwind sources (not shipped)
-│   │   │   ├── main.css                    # Entry: tokens, dark mode, partial imports
 │   │   │   ├── base.css                    # @layer base (html, body, a, selection)
+│   │   │   ├── components/
+│   │   │   │   ├── content/
+│   │   │   │   │   ├── article.css         # .article-title, .post-banner-*
+│   │   │   │   │   ├── callout.css         # .callout variants, icons, collapse animation
+│   │   │   │   │   ├── code-block.css      # .code-block, .code-header, .code-body, .copy-btn
+│   │   │   │   │   ├── collapse.css        # Shared collapse / expand (chevron + grid animation)
+│   │   │   │   │   ├── comments.css        # Twikoo overrides (avatar / OwO margins, alignment, loading mask)
+│   │   │   │   │   ├── link-card.css       # .link-card, .link-avatar, .link-grid
+│   │   │   │   │   ├── lqip.css            # .lqip wrapper, fade-in animation, prose / body-bg overrides
+│   │   │   │   │   ├── mermaid.css         # .prose pre.mermaid container + SVG sizing
+│   │   │   │   │   ├── prose.css           # .prose overrides (unlayered + @layer components)
+│   │   │   │   │   ├── syntax.css          # Syntax highlighting (Material Light / Palenight)
+│   │   │   │   │   └── toc.css             # .toc, .toc-collapse, .toc-trigger, .toc-sidebar-*
+│   │   │   │   ├── embed/
+│   │   │   │   │   └── apple-music.css     # Apple Music embed light / dark toggle
+│   │   │   │   ├── layout/
+│   │   │   │   │   ├── float-buttons.css   # .float-btn shared base + .back-to-top, .jump-to-comments stack
+│   │   │   │   │   ├── glass-panel.css     # .glass-panel, .glass-glow, [data-glow-target], .header-nav, .site-footer
+│   │   │   │   │   ├── header.css          # .header-logo, .header-link, .header-icon, .header-mobile-*, menu animations
+│   │   │   │   │   ├── print.css           # @media print overrides (hide chrome, clean typography)
+│   │   │   │   │   └── skip-link.css       # .skip-link visually hidden, focus-promoted accessibility anchor
+│   │   │   │   ├── listing/
+│   │   │   │   │   ├── home-card.css       # .home-card-*, .profile-avatar, .text-card-*
+│   │   │   │   │   ├── listing.css         # .year-heading, .tag-pill, .category-card, .post-entry-*
+│   │   │   │   │   └── pagination.css      # .pagination-link, .pagination-ellipsis, .pagination-input
+│   │   │   │   └── search/
+│   │   │   │       └── search.css          # Pagefind trigger, modal, and result theming
 │   │   │   ├── fonts.css                   # @font-face for Inter Variable + Maple Mono
-│   │   │   └── components/
-│   │   │       ├── layout/
-│   │   │       │   ├── back-to-top.css     # .back-to-top fixed button with glass styling
-│   │   │       │   ├── glass-panel.css     # .glass-panel, .glass-glow, [data-glow-target], .header-nav, .site-footer
-│   │   │       │   ├── header.css          # .header-logo, .header-link, .header-icon, .header-mobile-*, menu animations
-│   │   │       │   ├── print.css           # @media print overrides (hide chrome, clean typography)
-│   │   │       │   └── skip-link.css       # .skip-link visually hidden, focus-promoted accessibility anchor
-│   │   │       ├── content/
-│   │   │       │   ├── article.css         # .article-title, .post-banner-*
-│   │   │       │   ├── callout.css         # .callout variants, icons, collapse animation
-│   │   │       │   ├── collapse.css        # Shared collapse / expand (chevron + grid animation)
-│   │   │       │   ├── code-block.css      # .code-block, .code-header, .code-body, .copy-btn
-│   │   │       │   ├── link-card.css       # .link-card, .link-avatar, .link-grid
-│   │   │       │   ├── prose.css           # .prose overrides (unlayered + @layer components)
-│   │   │       │   ├── syntax.css          # Syntax highlighting (Material Light / Palenight)
-│   │   │       │   └── toc.css             # .toc, .toc-collapse, .toc-trigger, .toc-sidebar-*
-│   │   │       ├── listing/
-│   │   │       │   ├── home-card.css       # .home-card-*, .profile-avatar, .text-card-*
-│   │   │       │   ├── listing.css         # .year-heading, .tag-pill, .category-card, .post-entry-*
-│   │   │       │   └── pagination.css      # .pagination-link, .pagination-ellipsis, .pagination-input
-│   │   │       ├── search/
-│   │   │       │   └── search.css          # Pagefind trigger, modal, and result theming
-│   │   │       └── embed/
-│   │   │           └── apple-music.css     # Apple Music embed light / dark toggle
+│   │   │   └── main.css                    # Entry: tokens, dark mode, partial imports
 │   │   └── style.css                       # Compiled Tailwind output (shipped)
 │   ├── fonts/                              # Self-hosted webfonts (Inter Variable + Maple Mono Variable)
-│   └── js/
-│       ├── back-to-top.js                  # Scroll-triggered back-to-top button
-│       ├── content.js                      # Code block, callout, heading anchor, and external link enhancements
-│       ├── glow.js                         # Glass panel cursor glow effect
-│       ├── lqip.js                         # LQIP fade-in: cache-aware reveal + lazy-fetch fallback
-│       ├── pagination.js                   # Page-jump controls for pagination
-│       ├── theme.js                        # Dark mode toggle + system preference
-│       └── toc.js                          # TOC active heading tracking + section collapse
+│   └── js/                                 # Mirrors css/_src/components/ subdirs
+│       ├── comments/
+│       │   └── twikoo.js                   # Twikoo widget init (KaTeX delimiters, language)
+│       ├── content/
+│       │   ├── content.js                  # Code block, callout, heading anchor, and external link enhancements
+│       │   ├── lqip.js                     # LQIP fade-in: cache-aware reveal + lazy-fetch fallback
+│       │   ├── mermaid.js                  # Mermaid init + dark-mode re-render hook (uses window.mermaid UMD)
+│       │   └── toc.js                      # TOC active heading tracking + section collapse
+│       ├── layout/
+│       │   ├── float-buttons.js            # Back-to-top + jump-to-comments scroll-triggered FABs
+│       │   ├── glow.js                     # Glass panel cursor glow effect
+│       │   └── theme.js                    # Dark mode toggle + system preference
+│       └── listing/
+│           └── pagination.js               # Page-jump controls for pagination
 └── templates/
     ├── _partials/                          # Shared template fragments ({% include %})
-    │   ├── layout/
-    │   │   ├── footer.html                 # Glass-panel footer (copyright, license)
-    │   │   ├── head-deps.html              # Conditional CDN deps (FontAwesome, KaTeX)
-    │   │   └── header.html                 # Fixed nav header with menu + theme toggle
+    │   ├── comments/
+    │   │   ├── index.html                  # Per-post comments dispatcher (provider switch)
+    │   │   └── twikoo.html                 # Twikoo mount (HTML only; SDK loads via body-deps)
     │   ├── content/
-    │   │   ├── math.html                   # Conditional KaTeX runtime scripts
     │   │   ├── meta-og.html                # OG / Twitter Card meta tags
+    │   │   ├── post-banner.html            # Post header featured image (banner + credit)
     │   │   ├── toc-mobile.html             # Collapsible TOC (< xl breakpoint)
     │   │   └── toc-sidebar.html            # Sticky TOC sidebar (xl+ breakpoint)
+    │   ├── layout/
+    │   │   ├── body-deps.html              # End-of-body CDN deps + local init scripts (KaTeX, Mermaid, Twikoo)
+    │   │   ├── footer.html                 # Glass-panel footer (copyright, license)
+    │   │   ├── head-deps.html              # <head> CDN deps (FontAwesome, KaTeX CSS)
+    │   │   └── header.html                 # Fixed nav header with menu + theme toggle
     │   └── listing/
     │       ├── pagination.html             # Pagination nav + page-jump input
     │       ├── post-entry.html             # Post entry (title + conditional date)
@@ -69,15 +82,15 @@ All assets live under a single `static/` tree. Files and directories whose names
     ├── 404.html                            # Error page (centered glass card, home link)
     ├── archive.html                        # Archive listing (year-grouped, pagination, glass card)
     ├── base.html                           # Base layout (glass panels, background image)
+    ├── directives/
+    │   ├── link.html                       # Link card directive
+    │   └── music.html                      # Music embed directive
     ├── home.html                           # Home page (profile + image cards with hover reveal)
     ├── overview.html                       # Bucket overview (tag cloud / section grid)
-    ├── post.html                           # Article page (glass card, banner, TOC sidebar)
-    └── directives/
-        ├── link.html                       # Link card directive
-        └── music.html                      # Music embed directive
+    └── post.html                           # Article page (glass card, banner, TOC sidebar)
 ```
 
-### CSS Architecture
+## CSS Architecture
 
 Source CSS lives in `static/css/_src/` using Tailwind CSS v4 conventions:
 
@@ -85,7 +98,7 @@ Source CSS lives in `static/css/_src/` using Tailwind CSS v4 conventions:
 - **`base.css`** — `@layer base` styles: `html`, `body`, `::selection`, `a`, scroll offset.
 - **`components/*.css`** — `@layer components` partials, one per concern. Each file wraps all rules in `@layer components { ... }`.
 
-#### Design Tokens
+### Design Tokens
 
 Defined in `@theme { ... }` in `main.css`. Custom properties follow these prefixes:
 
@@ -94,7 +107,7 @@ Defined in `@theme { ... }` in `main.css`. Custom properties follow these prefix
 - `--shadow-*` — box shadows
 - `--surface-*` — glass surface fills, borders, and overlays
 
-#### Component Classes vs. Inline Utilities
+### Component Classes vs. Inline Utilities
 
 Templates use semantic component class names for repeated multi-property patterns. Inline Tailwind utilities are acceptable for:
 
@@ -103,9 +116,30 @@ Templates use semantic component class names for repeated multi-property pattern
 
 Use `@apply` in the appropriate CSS partial for anything else. Use canonical Tailwind v4 class names (e.g., `text-link-hover` not `text-(--color-link-hover)`, `rounded-card` not `rounded-(--radius-card)`).
 
-#### Build Output
+### Build Output
 
 `static/` is committed so submodule consumers get a working theme without Node.js. **Always run `pnpm build` before committing CSS changes** so `static/css/style.css` stays in sync with `_src/`. JS ships as-is (no build step); kiln `--minify` compresses both at deploy time. `pnpm dev` runs Tailwind in watch mode.
+
+## Dependencies
+
+CDN deps are pinned in `theme.toml` under `[params.deps.<name>]` with exact patch versions and SRI hashes. `_partials/layout/{head-deps,body-deps}.html` resolve `need_<dep>` booleans (auto-detected for content features via `assets.features`, explicit config for `comments`) and emit `<link>` / `<script>` once per page.
+
+When bumping a version, regenerate the SRI hashes:
+
+```bash
+curl -sL "https://cdn.jsdelivr.net/npm/<pkg>@<version>/<path>" \
+  | openssl dgst -sha384 -binary | openssl base64 -A
+```
+
+Each loaded file gets its own key under `[params.deps.<name>.sri]` (e.g. `js`, `autorender`, `css`).
+
+## Image Pipeline
+
+The theme paints kiln's `lqip_uri` via the `<span class="lqip">` wrapper kiln emits around content `<img>` (and that templates emit around featured / bg images — see `kiln/docs/themes.md` for the upstream contract). `lqip.css` shows the backdrop; `lqip.js` reveals each image with shared load handling, while content images fade in and the body background swaps without animation. `theme.js` flips `html.lqip-fade-enabled` in `<head>` so JS-disabled clients still see images.
+
+- **Body images**: auto-wrapped by kiln. No template work.
+- **Featured images** (`templates/post.html` banner, `templates/home.html` cards): templates emit the wrapper themselves, gated on `{% if featured_image.lqip_uri %}`. Per-context size overrides (`.post-banner-media .lqip`, `.home-card > .lqip`) live in `lqip.css`.
+- **Body background** (`config.params.background`): hand-rolled in `base.html`. Sites supply `image` + `lqip_uri` (a pre-computed data URI); the wrapper pins fixed-fullscreen with `object-fit: cover`, and `position` / `position_mobile` drive `object-position` via `--bg-position*` CSS vars.
 
 ## Internationalization
 
@@ -120,18 +154,10 @@ Sites can layer overrides via a same-named TOML at their root's `i18n/<lang>.tom
 
 Self-hosted in `static/fonts/`, declared in `fonts.css`:
 
-- **Inter Variable** (`--font-sans`, Fontsource latin subset, `wght` 100–900) — preloaded in `base.html`.
-- **Maple Mono Variable** (`--font-mono`, upstream [`variable` branch](https://github.com/subframe7536/maple-font/tree/variable/woff2/var) as-is, `wght` 100–800) — fetched lazily on first `<code>` use.
+- **Inter Variable** (`--font-sans`, Fontsource latin subset, `wght` 100–900) — fetched on first use (any page text).
+- **Maple Mono Variable** (`--font-mono`, upstream [`variable` branch](https://github.com/subframe7536/maple-font/tree/variable/woff2/var) as-is, `wght` 100–800) — fetched on first `<code>` use.
 
 CJK falls through to system fonts. `url()` paths in `fonts.css` resolve against the compiled `style.css` — Tailwind v4 inlines `@import` contents verbatim.
-
-## Image Pipeline
-
-The theme paints kiln's `lqip_uri` via the `<span class="lqip">` wrapper kiln emits around content `<img>` (and that templates emit around featured / bg images — see `kiln/docs/themes.md` for the upstream contract). `lqip.css` shows the backdrop; `lqip.js` reveals each image with shared load handling, while content images fade in and the body background swaps without animation. `theme.js` flips `html.lqip-fade-enabled` in `<head>` so JS-disabled clients still see images.
-
-- **Body images**: auto-wrapped by kiln. No template work.
-- **Featured images** (`templates/post.html` banner, `templates/home.html` cards): templates emit the wrapper themselves, gated on `{% if featured_image.lqip_uri %}`. Per-context size overrides (`.post-banner-media .lqip`, `.home-card > .lqip`) live in `lqip.css`.
-- **Body background** (`config.params.background`): hand-rolled in `base.html`. Sites supply `image` + `lqip_uri` (a pre-computed data URI); the wrapper pins fixed-fullscreen with `object-fit: cover`, and `position` / `position_mobile` drive `object-position` via `--bg-position*` CSS vars.
 
 ## Coding Conventions
 
