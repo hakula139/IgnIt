@@ -63,6 +63,7 @@ All assets live under a single `static/` tree. Files and directories whose names
     │   │   └── header.html                 # Fixed nav header with menu + theme toggle
     │   ├── content/
     │   │   ├── meta-og.html                # OG / Twitter Card meta tags
+    │   │   ├── post-banner.html            # Post header featured image (banner + credit)
     │   │   ├── toc-mobile.html             # Collapsible TOC (< xl breakpoint)
     │   │   └── toc-sidebar.html            # Sticky TOC sidebar (xl+ breakpoint)
     │   ├── comments/

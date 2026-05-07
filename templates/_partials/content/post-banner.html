@@ -1,0 +1,42 @@
+{%- if featured_image %}
+<div class="post-banner aspect-[21/9]">
+  <div class="post-banner-media">
+    {%- if featured_image.credit and featured_image.credit.url %}
+    <a
+      href="{{ featured_image.credit.url | safe }}"
+      class="post-banner-link"
+      aria-label="{{ t('image_credit') }}{% if featured_image.credit.title %}: {{ featured_image.credit.title }}{% endif %}"
+    >
+    {%- endif %}
+      {%- if featured_image.lqip_uri %}
+      <span class="lqip" style="--lqip-uri:url('{{ featured_image.lqip_uri | safe }}')">
+      {%- endif %}
+        <img
+          src="{{ featured_image.src | safe }}"
+          alt="{{ title }}"
+          class="post-featured-image post-banner-image"
+          {%- if featured_image.width and featured_image.height %}
+          width="{{ featured_image.width }}"
+          height="{{ featured_image.height }}"
+          {%- endif %}
+          style="object-position: {{ featured_image.position | default('center', true) }}"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        >
+      {%- if featured_image.lqip_uri %}
+      </span>
+      {%- endif %}
+    {%- if featured_image.credit and featured_image.credit.url %}
+    </a>
+    {%- endif %}
+  </div>
+  {%- if featured_image.credit and (featured_image.credit.title or featured_image.credit.author) %}
+  <div class="post-banner-credit">
+    {%- if featured_image.credit.title %}{{ featured_image.credit.title }}{% endif -%}
+    {%- if featured_image.credit.title and featured_image.credit.author %} – {% endif -%}
+    {%- if featured_image.credit.author %}{{ featured_image.credit.author }}{% endif -%}
+  </div>
+  {%- endif %}
+</div>
+{%- endif %}
