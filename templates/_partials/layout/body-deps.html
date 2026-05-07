@@ -7,14 +7,15 @@
 {%- set need_twikoo = comments.enabled and comments.provider == "twikoo" -%}
 
 {%- if need_math %}
+  {%- set katex = cdn ~ "/katex@" ~ deps.katex.version -%}
   <script
-    src="{{ cdn | safe }}/katex@{{ deps.katex.version }}/dist/katex.min.js"
+    src="{{ katex | safe }}/dist/katex.min.js"
     integrity="{{ deps.katex.sri.js }}"
     crossorigin="anonymous"
     defer
   ></script>
   <script
-    src="{{ cdn | safe }}/katex@{{ deps.katex.version }}/dist/contrib/auto-render.min.js"
+    src="{{ katex | safe }}/dist/contrib/auto-render.min.js"
     integrity="{{ deps.katex.sri.autorender }}"
     crossorigin="anonymous"
     defer
@@ -23,8 +24,9 @@
 {%- endif %}
 
 {%- if need_mermaid %}
+  {%- set mermaid = cdn ~ "/mermaid@" ~ deps.mermaid.version -%}
   <script
-    src="{{ cdn | safe }}/mermaid@{{ deps.mermaid.version }}/dist/mermaid.min.js"
+    src="{{ mermaid | safe }}/dist/mermaid.min.js"
     integrity="{{ deps.mermaid.sri.js }}"
     crossorigin="anonymous"
     defer
@@ -33,8 +35,9 @@
 {%- endif %}
 
 {%- if need_twikoo %}
+  {%- set twikoo = cdn ~ "/twikoo@" ~ deps.twikoo.version -%}
   <script
-    src="{{ cdn | safe }}/twikoo@{{ deps.twikoo.version }}/dist/twikoo.min.js"
+    src="{{ twikoo | safe }}/dist/twikoo.min.js"
     integrity="{{ deps.twikoo.sri.js }}"
     crossorigin="anonymous"
     defer

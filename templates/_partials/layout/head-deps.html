@@ -28,9 +28,10 @@
 {%- endif %}
 
 {%- if need_math %}
+  {%- set katex = cdn ~ "/katex@" ~ deps.katex.version -%}
   <link
     rel="stylesheet"
-    href="{{ cdn | safe }}/katex@{{ deps.katex.version }}/dist/katex.min.css"
+    href="{{ katex | safe }}/dist/katex.min.css"
     integrity="{{ deps.katex.sri.css }}"
     crossorigin="anonymous"
   >
