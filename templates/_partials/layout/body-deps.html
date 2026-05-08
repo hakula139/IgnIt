@@ -20,8 +20,8 @@
     integrity="{{ deps.katex.sri.autorender }}"
     crossorigin="anonymous"
     defer
-    onload="renderMathInElement(document.body)"
   ></script>
+  <script src="{{ base | safe }}/js/content/math.js" defer></script>
 {%- endif %}
 
 {%- if need_mermaid %}
