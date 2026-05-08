@@ -27,12 +27,10 @@
                   {%- if section %}
                   <span>
                     {%- if date %}&ensp;·&ensp;{% endif -%}
-                    <a
-                      href="{{ section.url | safe }}"
-                      class="text-text-secondary border-b-0 transition-colors hover:text-link-hover"
-                    >
-                      <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ section.name }}
-                    </a>
+                    {%- set link_url = section.url -%}
+                    {%- set link_name = section.name -%}
+                    {%- set link_class = "text-text-secondary border-b-0 transition-colors hover:text-link-hover" -%}
+                    {%- include "_partials/content/section-link.html" %}
                   </span>
                   {%- endif %}
                 </div>

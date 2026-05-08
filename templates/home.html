@@ -79,9 +79,10 @@
             {%- if page.section %}
             <span>
               {%- if page.date %}&ensp;·&ensp;{% endif -%}
-              <a href="{{ page.section.url | safe }}" class="home-card-link">
-                <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ page.section.name }}
-              </a>
+              {%- set link_url = page.section.url -%}
+              {%- set link_name = page.section.name -%}
+              {%- set link_class = "home-card-link" -%}
+              {%- include "_partials/content/section-link.html" %}
             </span>
             {%- endif %}
           </div>
