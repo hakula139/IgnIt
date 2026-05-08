@@ -1,6 +1,8 @@
 # IgnIt
 
+[![CI](https://github.com/hakula139/IgnIt/actions/workflows/ci.yml/badge.svg)](https://github.com/hakula139/IgnIt/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/hakula139/IgnIt)
 
 A clean, feature-rich theme for [kiln](https://github.com/hakula139/kiln) — inspired by Hugo [LoveIt](https://github.com/dillonzq/LoveIt).
 
@@ -145,7 +147,7 @@ cursor_glow = false                      # Cursor-tracking glow on glass panels
 
 Off by default. The `will-change` layers it injects clash with `backdrop-filter` compositing on Chromium / WebKit:
 
-- **Panel flicker during scroll** (frequent) — panels briefly show stale content while scrolling.
+- **Panel dropout during scroll** (frequent) — the glass panel may briefly vanish for a moment while scrolling.
 - **Phantom gap near `#comments`** (rare) — an in-page anchor jump close to the comments section can leave the article card with a much larger apparent gap than its real 32 px margin; the next manual scroll repaints.
 
 ## Image Pipeline
