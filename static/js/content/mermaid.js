@@ -1,5 +1,8 @@
 'use strict';
 
+// Feature-gated companion to mermaid.js (UMD) — emitted by body-deps.html
+// only when the page's assets.features registry includes "mermaid".
+
 (() => {
   const themeFor = () =>
     document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default';
