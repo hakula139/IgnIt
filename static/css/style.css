@@ -1357,11 +1357,44 @@
   }
 }
 @media print {
+  :root, :root[data-theme='dark'] {
+    --color-bg: #fff !important;
+    --color-bg-muted: #f5f5f7 !important;
+    --color-text: #161209 !important;
+    --color-text-secondary: #6a6a75 !important;
+    --color-text-tertiary: #8b8b96 !important;
+    --color-link: #1d84a8 !important;
+    --color-link-hover: #14607d !important;
+    --color-border: #e8e8ed !important;
+    --color-line-highlight-bg: rgba(255, 235, 59, 0.1) !important;
+    --color-line-highlight-border: rgba(255, 193, 7, 0.5) !important;
+    --callout-abstract-fg: #00b0ff !important;
+    --callout-bug-fg: #f50057 !important;
+    --callout-danger-fg: #ff1744 !important;
+    --callout-example-fg: #651fff !important;
+    --callout-failure-fg: #ff5252 !important;
+    --callout-info-fg: #00b8d4 !important;
+    --callout-note-fg: #448aff !important;
+    --callout-question-fg: #64dd17 !important;
+    --callout-quote-fg: #757575 !important;
+    --callout-success-fg: #00c853 !important;
+    --callout-tip-fg: #00bfa5 !important;
+    --callout-warning-fg: #ff9100 !important;
+    --syntax-default: #37474f !important;
+    --syntax-keyword: #7c4dff !important;
+    --syntax-entity: #6182b8 !important;
+    --syntax-string: #7cb342 !important;
+    --syntax-constant: #f76d47 !important;
+    --syntax-variable: #e2931d !important;
+    --syntax-punctuation: #00897b !important;
+    --syntax-comment: #78909c !important;
+    --syntax-invalid: #e53935 !important;
+  }
   body {
     color: #000 !important;
     background: #fff !important;
   }
-  body::before {
+  body > .body-bg {
     display: none !important;
   }
   main {
@@ -1378,7 +1411,10 @@
   .glow-ambient, .glow-border {
     display: none !important;
   }
-  .glass-glow:has(.header-nav), #mobile-menu, .site-footer,  .toc-sidebar-wrapper, .toc-collapse, .post-banner-credit,  .pagination-link, .pagination-ellipsis, .pagination-input,  .float-btn, pagefind-modal {
+  .highlight, .code-header {
+    background: transparent !important;
+  }
+  .glass-glow:has(.header-nav), #mobile-menu, .site-footer,  .toc-sidebar-wrapper, .toc-collapse, .post-banner,  .home-card-image, .home-card-overlay, .home-card-pin,  #comments,  .pagination-link, .pagination-ellipsis, .pagination-input,  .float-btn, pagefind-modal {
     display: none !important;
   }
   .prose a[href^='http']::after {
