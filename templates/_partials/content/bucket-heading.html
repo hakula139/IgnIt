@@ -1,0 +1,9 @@
+<h2 class="mb-6 text-xl font-semibold">
+  {%- if singular == "section" -%}
+    <i class="far fa-folder-open fa-fw" aria-hidden="true"></i> {{ name }}
+  {%- elif singular == "tag" -%}
+    <i class="fas fa-tag fa-fw" aria-hidden="true"></i> {{ name }}
+  {%- else -%}
+    {{ name }}
+  {%- endif -%}
+</h2>
