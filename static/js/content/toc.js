@@ -149,9 +149,5 @@
     setActive(headingIds[0]);
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initToc);
-  } else {
-    initToc();
-  }
+  window.__onReady(initToc);
 })();

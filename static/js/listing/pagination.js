@@ -53,9 +53,5 @@
     }
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPagination);
-  } else {
-    initPagination();
-  }
+  window.__onReady(initPagination);
 })();

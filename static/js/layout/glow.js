@@ -250,9 +250,5 @@
     syncGlowTracking();
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initGlassGlow);
-  } else {
-    initGlassGlow();
-  }
+  window.__onReady(initGlassGlow);
 })();
