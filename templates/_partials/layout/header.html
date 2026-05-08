@@ -39,9 +39,11 @@
         {%- if config.search.enabled %}
         <button
           onclick="window.__openSearchModal()"
-          class="header-icon"
+          class="header-icon search-trigger"
           title="{{ t('search') }}"
           aria-label="{{ t('search') }}"
+          aria-haspopup="dialog"
+          aria-expanded="false"
         >
           <i class="fas fa-search fa-fw" aria-hidden="true"></i>
         </button>
@@ -99,9 +101,11 @@
     {%- if config.search.enabled %}
     <button
       onclick="window.__openSearchModal()"
-      class="w-full header-mobile-link"
+      class="w-full header-mobile-link search-trigger"
       style="--item-index: {{ extra_index }}"
       aria-label="{{ t('search') }}"
+      aria-haspopup="dialog"
+      aria-expanded="false"
     >
       <i class="fas fa-search fa-fw" aria-hidden="true"></i>
       {{ t('search') }}

@@ -119,6 +119,20 @@
 
   const SEARCH_MODAL_DIALOG_SELECTOR = 'dialog.pf-modal';
 
+  const setSearchTriggerExpanded = (expanded) => {
+    for (const btn of document.querySelectorAll('.search-trigger')) {
+      btn.setAttribute('aria-expanded', String(expanded));
+    }
+  };
+
+  const observeSearchDialogOpenState = (dialog) => {
+    setSearchTriggerExpanded(dialog.hasAttribute('open'));
+    const observer = new MutationObserver(() => {
+      setSearchTriggerExpanded(dialog.hasAttribute('open'));
+    });
+    observer.observe(dialog, { attributes: true, attributeFilter: ['open'] });
+  };
+
   const syncSearchModalGlowTarget = () => {
     const dialog = document.querySelector(SEARCH_MODAL_DIALOG_SELECTOR);
     if (!dialog) {
@@ -126,6 +140,10 @@
     }
 
     dialog.toggleAttribute('data-glow-target', true);
+    if (!dialog.dataset.searchTriggerWired) {
+      dialog.dataset.searchTriggerWired = 'true';
+      observeSearchDialogOpenState(dialog);
+    }
     return true;
   };
 
