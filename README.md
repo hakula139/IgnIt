@@ -80,7 +80,7 @@ Set a fixed background image with glassmorphism content panels:
 ```toml
 [params.background]
 image = "/images/bg.webp"             # Path to background image
-lqip_uri = "data:image/webp;base64,…" # Pre-computed LQIP data URI (optional)
+lqip_uri = "data:image/webp;base64,..." # Pre-computed LQIP data URI (optional)
 position = "right center"             # CSS background-position (default: center)
 position_mobile = "60% center"        # Mobile background-position (default: position)
 ```
