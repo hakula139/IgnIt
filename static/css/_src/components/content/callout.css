@@ -11,6 +11,8 @@
   .callout-title {
     @apply list-none py-2 font-semibold;
     color: var(--callout-color);
+    /* Firefox renders the marker via list-style on the summary; Safari needs ::-webkit-details-marker. */
+    list-style: none;
   }
 
   .callout-title::-webkit-details-marker {

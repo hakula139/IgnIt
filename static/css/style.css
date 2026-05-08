@@ -1534,6 +1534,7 @@
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
     color: var(--callout-color);
+    list-style: none;
   }
   .callout-title::-webkit-details-marker {
     display: none;
