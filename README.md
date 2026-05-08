@@ -67,10 +67,10 @@ IgnIt provides default parameters that can be overridden in your site's `config.
 
 ```toml
 [params]
-cdn = "https://cdn.jsdelivr.net/npm"  # CDN base URL for dependencies
-code_max_lines = 40                   # Max visible lines before code blocks scroll
-emojis = true                         # Enable emoji replacement
-fontawesome = true                    # Enable Font Awesome icon loading
+cdn = "https://cdn.jsdelivr.net/npm"     # CDN base URL for dependencies
+code_max_lines = 40                      # Max visible lines before code blocks scroll
+emojis = true                            # Enable emoji replacement
+fontawesome = true                       # Enable Font Awesome icon loading
 ```
 
 ### Background Image
@@ -79,10 +79,10 @@ Set a fixed background image with glassmorphism content panels:
 
 ```toml
 [params.background]
-image = "/images/bg.webp"             # Path to background image
-lqip_uri = "data:image/webp;base64,..." # Pre-computed LQIP data URI (optional)
-position = "right center"             # CSS background-position (default: center)
-position_mobile = "60% center"        # Mobile background-position (default: position)
+image = "/images/bg.webp"                # Path to background image
+lqip_uri = "data:image/webp;base64,..."  # Pre-computed LQIP data URI (optional)
+position = "right center"                # CSS background-position (default: center)
+position_mobile = "60% center"           # Mobile background-position (default: position)
 ```
 
 When unset, panels use solid backgrounds (the theme works without a background image).
@@ -92,7 +92,7 @@ When unset, panels use solid backgrounds (the theme works without a background i
 ```toml
 [params.comments]
 enabled = true
-provider = "twikoo"                   # Currently the only built-in provider
+provider = "twikoo"                      # Currently the only built-in provider
 
 [params.comments.twikoo]
 api_url = "https://twikoo.example.com"
@@ -104,10 +104,10 @@ The dispatcher is provider-agnostic — additional providers (Giscus, Waline, et
 
 ```toml
 [params.footer]
-since = 2018                          # Copyright start year
-license = "CC BY-NC-SA 4.0"           # License name
+since = 2018                             # Copyright start year
+license = "CC BY-NC-SA 4.0"              # License name
 license_url = "https://creativecommons.org/licenses/by-nc-sa/4.0/"
-powered_by = true                     # Show "Powered by kiln & IgnIt"
+powered_by = true                        # Show "Powered by kiln & IgnIt"
 ```
 
 ### Home Profile
@@ -125,22 +125,22 @@ subtitle = "A short tagline"
 [[menu.main]]
 name = "Posts"
 url = "/posts/"
-icon = "fas fa-archive"               # Font Awesome class (optional)
-weight = 1                            # Sort order (ascending)
+icon = "fas fa-archive"                  # Font Awesome class (optional)
+weight = 1                               # Sort order (ascending)
 
 [[menu.main]]
 name = "GitHub"
 url = "https://github.com/user"
 icon = "fab fa-github"
 weight = 10
-external = true                       # Opens in new tab
+external = true                          # Opens in new tab
 ```
 
 ### Visual Effects (experimental)
 
 ```toml
 [params.effects]
-cursor_glow = false                   # Cursor-tracking glow on glass panels
+cursor_glow = false                      # Cursor-tracking glow on glass panels
 ```
 
 Off by default. The `will-change` layers it injects clash with `backdrop-filter` compositing on Chromium / WebKit:
