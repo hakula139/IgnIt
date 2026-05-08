@@ -3,116 +3,60 @@
   /* Material Light (light) / Material Palenight (dark) */
 
   .highlight {
-    color: #37474f;
+    color: var(--syntax-default);
     @apply bg-bg-muted/60;
-
-    @variant dark {
-      color: #b0bec5;
-    }
   }
 
   .highlight .source {
-    color: #37474f;
-
-    @variant dark {
-      color: #b0bec5;
-    }
+    color: var(--syntax-default);
   }
 
   .highlight .keyword {
-    color: #7c4dff;
-
-    @variant dark {
-      color: #c792ea;
-    }
+    color: var(--syntax-keyword);
   }
 
   .highlight .storage {
-    color: #7c4dff;
-
-    @variant dark {
-      color: #c792ea;
-    }
+    color: var(--syntax-keyword);
   }
 
   .highlight .entity {
-    color: #6182b8;
-
-    @variant dark {
-      color: #82aaff;
-    }
+    color: var(--syntax-entity);
   }
 
   .highlight .support {
-    color: #6182b8;
-
-    @variant dark {
-      color: #82aaff;
-    }
+    color: var(--syntax-entity);
   }
 
   .highlight .string {
-    color: #7cb342;
-
-    @variant dark {
-      color: #c3e88d;
-    }
+    color: var(--syntax-string);
   }
 
   .highlight .constant {
-    color: #f76d47;
-
-    @variant dark {
-      color: #f78c6c;
-    }
+    color: var(--syntax-constant);
   }
 
   .highlight .constant.numeric {
-    color: #f76d47;
-
-    @variant dark {
-      color: #f78c6c;
-    }
+    color: var(--syntax-constant);
   }
 
   .highlight .variable {
-    color: #e2931d;
-
-    @variant dark {
-      color: #ffcb6b;
-    }
+    color: var(--syntax-variable);
   }
 
   .highlight .punctuation {
-    color: #00897b;
-
-    @variant dark {
-      color: #89ddff;
-    }
+    color: var(--syntax-punctuation);
   }
 
   .highlight .comment {
-    color: #78909c;
+    color: var(--syntax-comment);
     @apply italic;
-
-    @variant dark {
-      color: #546e7a;
-    }
   }
 
   .highlight .invalid {
-    color: #e53935;
-
-    @variant dark {
-      color: #f07178;
-    }
+    color: var(--syntax-invalid);
   }
 
   .highlight .meta.tag {
-    color: #e53935;
-
-    @variant dark {
-      color: #f07178;
-    }
+    color: var(--syntax-invalid);
   }
 }

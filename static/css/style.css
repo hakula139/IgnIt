@@ -57,6 +57,15 @@
     --color-selection: rgba(53, 166, 247, 0.25);
     --color-line-highlight-bg: rgba(255, 235, 59, 0.1);
     --color-line-highlight-border: rgba(255, 193, 7, 0.5);
+    --syntax-default: #37474f;
+    --syntax-keyword: #7c4dff;
+    --syntax-entity: #6182b8;
+    --syntax-string: #7cb342;
+    --syntax-constant: #f76d47;
+    --syntax-variable: #e2931d;
+    --syntax-punctuation: #00897b;
+    --syntax-comment: #78909c;
+    --syntax-invalid: #e53935;
     --radius-card: 1.25rem;
     --shadow-card: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
     --drop-shadow-text: 0 1px 2px rgba(0, 0, 0, 0.3);
@@ -973,6 +982,15 @@
     --color-selection: rgba(50, 112, 194, 0.4);
     --color-line-highlight-bg: rgba(255, 235, 59, 0.15);
     --color-line-highlight-border: rgba(255, 193, 7, 0.6);
+    --syntax-default: #b0bec5;
+    --syntax-keyword: #c792ea;
+    --syntax-entity: #82aaff;
+    --syntax-string: #c3e88d;
+    --syntax-constant: #f78c6c;
+    --syntax-variable: #ffcb6b;
+    --syntax-punctuation: #89ddff;
+    --syntax-comment: #546e7a;
+    --syntax-invalid: #f07178;
     --surface-glass-panel: rgba(41, 42, 45, 0.7);
     --surface-glass-overlay: rgba(41, 42, 45, 0.55);
     --surface-glass-border: rgba(255, 255, 255, 0.08);
@@ -2083,93 +2101,51 @@
 }
 @layer components {
   .highlight {
-    color: #37474f;
+    color: var(--syntax-default);
     background-color: color-mix(in srgb, #f5f5f7 60%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-bg-muted) 60%, transparent);
     }
-    &:where([data-theme="dark"], [data-theme="dark"] *) {
-      color: #b0bec5;
-    }
   }
   .highlight .source {
-    color: #37474f;
-    &:where([data-theme="dark"], [data-theme="dark"] *) {
-      color: #b0bec5;
-    }
+    color: var(--syntax-default);
   }
   .highlight .keyword {
-    color: #7c4dff;
-    &:where([data-theme="dark"], [data-theme="dark"] *) {
-      color: #c792ea;
-    }
+    color: var(--syntax-keyword);
   }
   .highlight .storage {
-    color: #7c4dff;
-    &:where([data-theme="dark"], [data-theme="dark"] *) {
-      color: #c792ea;
-    }
+    color: var(--syntax-keyword);
   }
   .highlight .entity {
-    color: #6182b8;
-    &:where([data-theme="dark"], [data-theme="dark"] *) {
-      color: #82aaff;
-    }
+    color: var(--syntax-entity);
   }
   .highlight .support {
-    color: #6182b8;
-    &:where([data-theme="dark"], [data-theme="dark"] *) {
-      color: #82aaff;
-    }
+    color: var(--syntax-entity);
   }
   .highlight .string {
-    color: #7cb342;
-    &:where([data-theme="dark"], [data-theme="dark"] *) {
-      color: #c3e88d;
-    }
+    color: var(--syntax-string);
   }
   .highlight .constant {
-    color: #f76d47;
-    &:where([data-theme="dark"], [data-theme="dark"] *) {
-      color: #f78c6c;
-    }
+    color: var(--syntax-constant);
   }
   .highlight .constant.numeric {
-    color: #f76d47;
-    &:where([data-theme="dark"], [data-theme="dark"] *) {
-      color: #f78c6c;
-    }
+    color: var(--syntax-constant);
   }
   .highlight .variable {
-    color: #e2931d;
-    &:where([data-theme="dark"], [data-theme="dark"] *) {
-      color: #ffcb6b;
-    }
+    color: var(--syntax-variable);
   }
   .highlight .punctuation {
-    color: #00897b;
-    &:where([data-theme="dark"], [data-theme="dark"] *) {
-      color: #89ddff;
-    }
+    color: var(--syntax-punctuation);
   }
   .highlight .comment {
-    color: #78909c;
+    color: var(--syntax-comment);
     font-style: italic;
-    &:where([data-theme="dark"], [data-theme="dark"] *) {
-      color: #546e7a;
-    }
   }
   .highlight .invalid {
-    color: #e53935;
-    &:where([data-theme="dark"], [data-theme="dark"] *) {
-      color: #f07178;
-    }
+    color: var(--syntax-invalid);
   }
   .highlight .meta.tag {
-    color: #e53935;
-    &:where([data-theme="dark"], [data-theme="dark"] *) {
-      color: #f07178;
-    }
+    color: var(--syntax-invalid);
   }
 }
 @layer components {
