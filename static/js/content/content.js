@@ -154,16 +154,15 @@
   // ── External Links ──
 
   const initExternalLinks = () => {
-    const { hostname } = window.location;
+    const { origin } = window.location;
     for (const link of document.querySelectorAll('a[href]')) {
-      try {
-        const url = new URL(link.href);
-        if (url.hostname && url.hostname !== hostname) {
-          link.target = '_blank';
-          link.rel = 'noopener noreferrer';
-        }
-      } catch {
-        // Skip relative or malformed URLs.
+      // Skip non-http(s) schemes (mailto, tel) where Anchor.origin is empty.
+      if (link.protocol !== 'http:' && link.protocol !== 'https:') {
+        continue;
+      }
+      if (link.origin && link.origin !== origin) {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
       }
     }
   };

@@ -64,6 +64,7 @@
       if (activeId && tocLinks.has(activeId)) {
         for (const a of tocLinks.get(activeId)) {
           a.classList.remove(ACTIVE_CLASS);
+          a.removeAttribute('aria-current');
         }
       }
 
@@ -72,6 +73,7 @@
       if (id && tocLinks.has(id)) {
         for (const a of tocLinks.get(id)) {
           a.classList.add(ACTIVE_CLASS);
+          a.setAttribute('aria-current', 'page');
         }
       }
       for (const li of newChain) {

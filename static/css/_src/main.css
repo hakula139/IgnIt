@@ -32,6 +32,20 @@
   --color-line-highlight-bg: rgba(255, 235, 59, 0.1);
   --color-line-highlight-border: rgba(255, 193, 7, 0.5);
 
+  /* Callouts (Material A200) */
+  --callout-abstract-fg: #00b0ff;
+  --callout-bug-fg: #f50057;
+  --callout-danger-fg: #ff1744;
+  --callout-example-fg: #651fff;
+  --callout-failure-fg: #ff5252;
+  --callout-info-fg: #00b8d4;
+  --callout-note-fg: #448aff;
+  --callout-question-fg: #64dd17;
+  --callout-quote-fg: #757575;
+  --callout-success-fg: #00c853;
+  --callout-tip-fg: #00bfa5;
+  --callout-warning-fg: #ff9100;
+
   /* Syntax Highlighting (Material Light) */
   --syntax-default: #37474f;
   --syntax-keyword: #7c4dff;
@@ -44,7 +58,14 @@
   --syntax-invalid: #e53935;
 
   /* Surfaces */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
   --radius-card: 1.25rem;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.06), 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 15px rgba(0, 0, 0, 0.1);
   --shadow-card: 0 0.25rem 1rem rgba(0, 0, 0, 0.2);
   --drop-shadow-text: 0 1px 2px rgba(0, 0, 0, 0.3);
   --surface-glass-panel: rgba(255, 255, 255, 0.75);
@@ -110,6 +131,20 @@
     --color-selection: rgba(50, 112, 194, 0.4);
     --color-line-highlight-bg: rgba(255, 235, 59, 0.15);
     --color-line-highlight-border: rgba(255, 193, 7, 0.6);
+
+    /* Callouts (lighter Material variants for dark glass) */
+    --callout-abstract-fg: #80d8ff;
+    --callout-bug-fg: #ff80ab;
+    --callout-danger-fg: #ff8a80;
+    --callout-example-fg: #b388ff;
+    --callout-failure-fg: #ff8a80;
+    --callout-info-fg: #84ffff;
+    --callout-note-fg: #82b1ff;
+    --callout-question-fg: #b2ff59;
+    --callout-quote-fg: #bdbdc0;
+    --callout-success-fg: #69f0ae;
+    --callout-tip-fg: #64ffda;
+    --callout-warning-fg: #ffd180;
 
     /* Syntax Highlighting (Material Palenight) */
     --syntax-default: #b0bec5;

@@ -1,6 +1,5 @@
 @layer components {
-  /* ── Syntax Highlighting ── */
-  /* Material Light (light) / Material Palenight (dark) */
+  /* ── Syntax Highlighting (Material Light / Palenight) ── */
 
   .highlight {
     color: var(--syntax-default);

@@ -21,8 +21,9 @@
     @apply border-link text-link;
   }
 
-  .toc a.active {
-    @apply border-link font-medium text-link;
+  .toc a.active,
+  .toc a[aria-current] {
+    @apply border-link font-semibold text-link;
   }
 
   /* ── Mobile TOC ── */

@@ -39,9 +39,11 @@
         {%- if config.search.enabled %}
         <button
           onclick="window.__openSearchModal()"
-          class="header-icon"
+          class="header-icon search-trigger"
           title="{{ t('search') }}"
           aria-label="{{ t('search') }}"
+          aria-haspopup="dialog"
+          aria-expanded="false"
         >
           <i class="fas fa-search fa-fw" aria-hidden="true"></i>
         </button>
@@ -59,7 +61,6 @@
         </button>
       </nav>
 
-      {# Mobile menu toggle #}
       <button
         id="mobile-menu-toggle"
         class="md:hidden header-icon"
@@ -77,7 +78,6 @@
   </header>
 </div>
 
-{# Mobile menu backdrop + dropdown #}
 <div id="mobile-menu" class="hidden">
   <div
     class="header-mobile-backdrop"
@@ -99,9 +99,11 @@
     {%- if config.search.enabled %}
     <button
       onclick="window.__openSearchModal()"
-      class="w-full header-mobile-link"
+      class="w-full header-mobile-link search-trigger"
       style="--item-index: {{ extra_index }}"
       aria-label="{{ t('search') }}"
+      aria-haspopup="dialog"
+      aria-expanded="false"
     >
       <i class="fas fa-search fa-fw" aria-hidden="true"></i>
       {{ t('search') }}
