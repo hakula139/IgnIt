@@ -59,6 +59,23 @@
     }
   };
 
+  const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+  let mobileMenuLastFocus = null;
+
+  const setRestAriaHidden = (hidden, except) => {
+    for (const el of document.body.children) {
+      if (el === except || el.contains(except)) {
+        continue;
+      }
+      if (hidden) {
+        el.setAttribute('aria-hidden', 'true');
+      } else {
+        el.removeAttribute('aria-hidden');
+      }
+    }
+  };
+
   const toggleMobileMenu = () => {
     const menu = document.getElementById('mobile-menu');
     const toggle = document.getElementById('mobile-menu-toggle');
@@ -67,10 +84,36 @@
     const isOpen = !menu.classList.contains('hidden');
     panel?.toggleAttribute('open', isOpen);
     toggle.setAttribute('aria-expanded', String(isOpen));
-    toggle.querySelector('i').classList.toggle('fa-bars');
-    toggle.querySelector('i').classList.toggle('fa-xmark');
+    const icon = toggle.querySelector('i');
+    if (isOpen) {
+      icon.classList.replace('fa-bars', 'fa-xmark');
+    } else {
+      icon.classList.replace('fa-xmark', 'fa-bars');
+    }
     updateMobileMenuToggleLabels(isOpen);
+
+    setRestAriaHidden(isOpen, menu);
+
+    if (isOpen) {
+      mobileMenuLastFocus = document.activeElement;
+      const first = menu.querySelector(FOCUSABLE_SELECTOR);
+      first?.focus();
+    } else {
+      const target = mobileMenuLastFocus instanceof HTMLElement ? mobileMenuLastFocus : toggle;
+      target.focus();
+      mobileMenuLastFocus = null;
+    }
   };
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') {
+      return;
+    }
+    const menu = document.getElementById('mobile-menu');
+    if (menu && !menu.classList.contains('hidden')) {
+      toggleMobileMenu();
+    }
+  });
 
   // ── Search Modal ──
 
