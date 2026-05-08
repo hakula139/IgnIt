@@ -41,9 +41,5 @@
     });
   };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTwikoo);
-  } else {
-    initTwikoo();
-  }
+  window.__onReady(initTwikoo);
 })();

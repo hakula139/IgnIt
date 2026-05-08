@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="{{ page_css | safe }}">
   {%- endif %}
   <script src="{{ config.base_url | safe }}/js/layout/theme.js"></script>
+  <script src="{{ config.base_url | safe }}/js/util/dom-ready.js" defer></script>
   {% include "_partials/layout/head-deps.html" %}
   {%- block head %}{% endblock %}
 </head>
