@@ -15,3 +15,11 @@
   font-weight: 100 800;
   src: url('../fonts/maple-mono-variable.woff2') format('woff2-variations');
 }
+
+@font-face {
+  font-family: 'Maple Mono';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100 800;
+  src: url('../fonts/maple-mono-italic-variable.woff2') format('woff2-variations');
+}
