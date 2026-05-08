@@ -1,6 +1,7 @@
 autoplay
 cachix
 callout
+calt
 consolas
 dgst
 direnv

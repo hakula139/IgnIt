@@ -16,6 +16,8 @@
   --font-mono:
     'Maple Mono', ui-monospace, 'JetBrains Mono', 'Source Code Pro', SFMono-Regular, Menlo,
     Consolas, 'Liberation Mono', monospace;
+  /* Maple Mono variable needs explicit `calt` to enable its ligatures. */
+  --default-mono-font-feature-settings: 'calt';
 
   /* Colors */
   --color-bg: #fff;
