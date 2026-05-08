@@ -2207,10 +2207,10 @@
     border-color: var(--color-link);
     color: var(--color-link);
   }
-  .toc a.active {
+  .toc a.active, .toc a[aria-current] {
     border-color: var(--color-link);
-    --tw-font-weight: var(--font-weight-medium);
-    font-weight: var(--font-weight-medium);
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
     color: var(--color-link);
   }
   .toc-collapse {
