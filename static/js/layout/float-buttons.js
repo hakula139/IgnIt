@@ -9,7 +9,12 @@
       return;
     }
 
-    const update = () => btn.classList.toggle('visible', predicate());
+    const update = () => {
+      const visible = predicate();
+      btn.classList.toggle('visible', visible);
+      // Mirror the CSS hide so screen readers don't announce the offscreen control.
+      btn.toggleAttribute('aria-hidden', !visible);
+    };
     window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update, { passive: true });
     btn.addEventListener('click', onClick);
