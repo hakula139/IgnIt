@@ -45,5 +45,5 @@
     "MD050": { "style": "asterisk" },
   },
 
-  "ignores": ["node_modules/"],
+  "ignores": [".direnv/", "node_modules/"],
 }
