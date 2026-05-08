@@ -1,6 +1,5 @@
 {%- set server = named_args.server | default("") -%}
 {%- set id = named_args.id | default("") -%}
-{%- set type = named_args.type | default("song") -%}
 {%- if server == "apple" -%}
 {#- Apple Music: dual light/dark iframes -#}
 {%- set type = named_args.type | default("playlist") -%}
@@ -28,6 +27,7 @@
 {%- elif server == "netease" -%}
 {#- NetEase Cloud Music: official outchain player
     outchain type: 0 = playlist, 2 = single song -#}
+{%- set type = named_args.type | default("song") -%}
 {%- set height = named_args.height | default("86") -%}
 {%- if type == "playlist" -%}
   {%- set outchain_type = 0 -%}
