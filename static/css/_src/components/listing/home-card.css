@@ -1,6 +1,6 @@
 @layer components {
   .home-card {
-    @apply relative h-88 overflow-hidden rounded-card border border-white/8 bg-card shadow-card;
+    @apply relative h-88 overflow-hidden rounded-card border border-border-overlay bg-card shadow-card;
   }
 
   .home-card-image {

@@ -2307,10 +2307,7 @@
     border-radius: var(--radius-card);
     border-style: var(--tw-border-style);
     border-width: 1px;
-    border-color: color-mix(in srgb, #fff 8%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      border-color: color-mix(in oklab, var(--color-white) 8%, transparent);
-    }
+    border-color: var(--color-border-overlay);
     background-color: var(--color-card);
     --tw-shadow: 0 0.25rem 1rem var(--tw-shadow-color, rgba(0, 0, 0, 0.2));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
