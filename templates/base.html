@@ -60,6 +60,6 @@
     {%- if script.module %} type="module"{% endif %}></script>
   {%- endfor %}
   {%- endif %}
-  {%- block scripts %}{% endblock %}
+  {% include "_partials/layout/body-deps.html" %}
 </body>
 </html>

@@ -4,7 +4,8 @@
 {%- set comments = config.params.comments | default(value={}) -%}
 {%- set need_math = assets is defined and "math" in assets.features -%}
 {%- set need_mermaid = assets is defined and "mermaid" in assets.features -%}
-{%- set need_twikoo = comments.enabled and comments.provider == "twikoo" -%}
+{%- set need_twikoo = assets is defined and comments.enabled and comments.provider == "twikoo" -%}
+{%- set need_pagination = pagination is defined and pagination.total_pages > 1 -%}
 
 {%- if need_math %}
   {%- set katex = cdn ~ "/katex@" ~ deps.katex.version -%}
@@ -43,4 +44,8 @@
     defer
   ></script>
   <script src="{{ base | safe }}/js/comments/twikoo.js" defer></script>
+{%- endif %}
+
+{%- if need_pagination %}
+  <script src="{{ base | safe }}/js/listing/pagination.js" defer></script>
 {%- endif %}
