@@ -34,6 +34,7 @@
     {%- for page in pages %}
     {%- if page.featured_image %}
     <article class="home-card">
+      <a href="{{ page.url | safe }}" class="home-card-link-cover" aria-label="{{ page.title }}"></a>
       {%- if page.featured_image.lqip_uri %}
       <span class="lqip" style="--lqip-uri:url('{{ page.featured_image.lqip_uri | safe }}')">
       {%- endif %}
@@ -88,7 +89,6 @@
           {%- endif %}
         </div>
       </div>
-      <a href="{{ page.url | safe }}" class="home-card-link-cover" aria-label="{{ page.title }}"></a>
     </article>
     {%- else %}
     <div class="glass-glow">

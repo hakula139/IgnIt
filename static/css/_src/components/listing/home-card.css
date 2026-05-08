@@ -53,8 +53,7 @@
     @apply text-white;
   }
 
-  /* Invisible anchor covering the entire card; sits between the
-     overlay and .home-card-body (z-10) so interactive links work. */
+  /* First child of .home-card so keyboard tab lands here before body links. */
   .home-card-link-cover {
     @apply absolute inset-0 z-5 border-0;
   }
@@ -92,24 +91,30 @@
       @apply text-white/80;
     }
 
+    /* Asymmetric visibility delay drops the contents out of tab order after
+       the fade-out, but lets them in immediately on show (paired delay-0). */
     .home-card-reveal {
-      @apply translate-y-3 px-6 pb-6 opacity-0 transition-[opacity,translate] duration-500;
+      @apply invisible translate-y-3 px-6 pb-6 opacity-0 transition-[opacity,translate,visibility] delay-[0s,0s,500ms] duration-[500ms,500ms,0s];
     }
 
-    .home-card:hover .home-card-image {
+    .home-card:hover .home-card-image,
+    .home-card:focus-within .home-card-image {
       @apply scale-card-hover blur-sm;
     }
 
-    .home-card:hover .home-card-overlay::after {
+    .home-card:hover .home-card-overlay::after,
+    .home-card:focus-within .home-card-overlay::after {
       @apply opacity-100;
     }
 
-    .home-card:hover .home-card-title {
+    .home-card:hover .home-card-title,
+    .home-card:focus-within .home-card-title {
       @apply -translate-y-14;
     }
 
-    .home-card:hover .home-card-reveal {
-      @apply translate-y-0 opacity-100;
+    .home-card:hover .home-card-reveal,
+    .home-card:focus-within .home-card-reveal {
+      @apply visible translate-y-0 opacity-100 delay-0;
     }
   }
 
