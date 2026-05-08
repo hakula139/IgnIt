@@ -1,3 +1,8 @@
+@utility glass-surface {
+  @apply backdrop-blur-lg backdrop-saturate-125;
+  background: var(--surface-glass-panel);
+}
+
 @layer components {
   :where(.glass-glow, [data-glow-target]) {
     @apply relative overflow-hidden;
@@ -53,17 +58,13 @@
 
   /* No `position` — consumers (.post-banner, .home-card, .glass-glow) provide their own. */
   .glass-panel {
-    @apply rounded-card shadow-card backdrop-blur-lg backdrop-saturate-125 backface-hidden;
-    background: var(--surface-glass-panel);
+    @apply rounded-card shadow-card glass-surface backface-hidden;
     border: 1px solid var(--surface-glass-border);
   }
 
-  /* ── Header Nav Bar ── */
-
+  /* Always chained with `.glass-panel` in markup, so glass tokens come from there. */
   .header-nav {
     @apply flex h-14 items-center rounded-none border-0 border-b px-6 shadow-none;
-    background: var(--surface-glass-panel);
-    border-color: var(--surface-glass-border);
   }
 
   /* ── Footer ── */

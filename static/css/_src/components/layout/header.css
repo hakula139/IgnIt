@@ -53,8 +53,7 @@
   /* ── Mobile Dropdown ── */
 
   .header-mobile {
-    @apply fixed inset-x-0 top-14 z-40 max-h-[calc(100dvh-3.5rem)] overflow-y-auto border-b py-2 backdrop-blur-lg backdrop-saturate-125 md:hidden;
-    background: var(--surface-glass-panel);
+    @apply fixed inset-x-0 top-14 z-40 max-h-[calc(100dvh-3.5rem)] overflow-y-auto border-b py-2 glass-surface md:hidden;
     border-color: var(--surface-glass-border);
   }
 
