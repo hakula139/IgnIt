@@ -52,6 +52,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │       ├── content/
 │       │   ├── content.js                  # Code block, callout, heading anchor, and external link enhancements
 │       │   ├── lqip.js                     # LQIP fade-in: cache-aware reveal + lazy-fetch fallback
+│       │   ├── math.js                     # KaTeX auto-render trigger for `.prose` content (feature-gated)
 │       │   ├── mermaid.js                  # Mermaid init + dark-mode re-render hook (uses window.mermaid UMD)
 │       │   └── toc.js                      # TOC active heading tracking + section collapse
 │       ├── layout/
