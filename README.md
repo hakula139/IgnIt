@@ -121,6 +121,25 @@ title = "Site Title"
 subtitle = "A short tagline"
 ```
 
+The profile panel renders an optional row of social icons under the subtitle, populated from `[[menu.social]]`. Omit the section to hide the row.
+
+```toml
+[[menu.social]]
+name = "GitHub"                          # i18n key or literal label
+url = "https://github.com/user"
+icon = "fab fa-github"                   # Font Awesome class
+weight = 1
+external = true                          # rel="me noopener noreferrer", target="_blank"
+
+[[menu.social]]
+name = "Email"
+url = "mailto:hi@example.com"
+icon = "fas fa-envelope"
+weight = 100
+```
+
+`name` is rendered through kiln's `t()` helper, so it accepts either an i18n key (resolved against `i18n/<lang>.toml`) or a plain string. Lower `weight` floats to the front; negatives are allowed.
+
 ### Navigation Menu
 
 ```toml

@@ -37,7 +37,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   │   │   │   ├── print.css           # @media print overrides (hide chrome, clean typography)
 │   │   │   │   │   └── skip-link.css       # .skip-link visually hidden, focus-promoted accessibility anchor
 │   │   │   │   ├── listing/
-│   │   │   │   │   ├── home-card.css       # .home-card-*, .profile-avatar, .text-card-*
+│   │   │   │   │   ├── home-card.css       # .home-card-*, .profile-*, .text-card-*
 │   │   │   │   │   ├── listing.css         # .year-heading, .tag-pill, .category-card, .post-entry-*
 │   │   │   │   │   └── pagination.css      # .pagination-link, .pagination-ellipsis, .pagination-input
 │   │   │   │   └── search/
