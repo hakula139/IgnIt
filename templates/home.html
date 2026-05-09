@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{%- import "_partials/macros/icon.html" as icons -%}
 
 {% block head %}
 {%- set og_type = "website" -%}
@@ -36,7 +37,7 @@
             aria-label="{{ item_label }}"
             {%- if item.external %} rel="me noopener noreferrer" target="_blank"{% endif %}
           >
-            {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i>{% endif -%}
+            {{- icons.render(item.icon) -}}
           </a>
           {%- endfor %}
         </div>

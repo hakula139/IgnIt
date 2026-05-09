@@ -716,6 +716,9 @@
   .hidden\! {
     display: none !important;
   }
+  .inline {
+    display: inline;
+  }
   .inline-block {
     display: inline-block;
   }

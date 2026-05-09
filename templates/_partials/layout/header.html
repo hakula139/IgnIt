@@ -1,3 +1,4 @@
+{%- import "_partials/macros/icon.html" as icons -%}
 {%- set menu_items = config.menu.main | default([]) -%}
 <div class="glass-glow fixed inset-x-0 top-0 z-50 rounded-none">
   <header class="glass-panel header-nav">
@@ -16,7 +17,7 @@
           title="{{ item_label }}"
           aria-label="{{ item_label }}"
         >
-          {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i>{% endif -%}
+          {{- icons.render(item.icon) -}}
         </a>
         {%- endfor %}
 
@@ -30,7 +31,7 @@
           title="{{ item_label }}"
           aria-label="{{ item_label }}"
         >
-          {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i>{% endif -%}
+          {{- icons.render(item.icon) -}}
         </a>
         {%- endfor %}
 
@@ -91,8 +92,7 @@
       class="header-mobile-link"
       style="--item-index: {{ loop.index0 }}"
     >
-      {%- if item.icon %}<i class="{{ item.icon }} fa-fw" aria-hidden="true"></i> {% endif -%}
-      {{ t(item.name) }}
+      {{- icons.render(item.icon) }} {{ t(item.name) }}
     </a>
     {%- endfor %}
     {%- set extra_index = menu_items | length -%}

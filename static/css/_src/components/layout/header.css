@@ -23,6 +23,20 @@
     }
   }
 
+  /* fa-fw equivalent: consistent 1.25em footprint for every glyph (FA <i>
+     or inline Simple Icons <svg>) so menu rows align across icon sources. */
+  .header-link i,
+  .header-link svg,
+  .header-mobile-link i,
+  .header-mobile-link svg {
+    @apply inline-block w-[1.25em] text-center;
+  }
+
+  .header-link svg,
+  .header-mobile-link svg {
+    @apply h-[1em] fill-current align-[-0.125em];
+  }
+
   /* ── Group Dividers ── */
 
   .header-divider {

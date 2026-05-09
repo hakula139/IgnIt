@@ -1,0 +1,10 @@
+{# Two forms: "fab fa-github" → <i class>, "svg:<slug>" → inline _partials/icons/<slug>.svg. #}
+{%- macro render(spec) %}
+  {%- if spec %}
+    {%- if spec[:4] == "svg:" -%}
+      {%- include "_partials/icons/" ~ spec[4:] ~ ".svg" -%}
+    {%- else -%}
+      <i class="{{ spec }}" aria-hidden="true"></i>
+    {%- endif %}
+  {%- endif %}
+{%- endmacro %}
