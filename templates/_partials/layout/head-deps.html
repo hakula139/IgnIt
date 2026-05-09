@@ -20,6 +20,13 @@
     crossorigin
   >
   <link
+    rel="preload"
+    href="{{ fa | safe }}/webfonts/fa-brands-400.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  >
+  <link
     rel="stylesheet"
     href="{{ fa | safe }}/css/all.min.css"
     integrity="{{ deps.fontawesome.sri.css }}"
