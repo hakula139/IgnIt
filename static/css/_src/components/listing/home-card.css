@@ -139,11 +139,11 @@
   }
 
   .profile-socials {
-    @apply mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-2;
+    @apply mt-4 flex flex-wrap items-center justify-center gap-x-1 gap-y-1;
   }
 
   .profile-social {
-    @apply inline-flex h-9 w-9 items-center justify-center rounded-full border-b-0 text-lg text-text-secondary no-underline transition-colors;
+    @apply inline-flex h-8 w-8 items-center justify-center rounded-full border-b-0 text-2xl text-text-secondary no-underline transition-colors;
   }
 
   /* Inline Simple Icons SVGs scale to the parent text size and inherit
