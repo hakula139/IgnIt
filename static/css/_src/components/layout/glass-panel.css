@@ -11,17 +11,15 @@
     --glow-color: transparent;
     --glow-border-size: 400px;
     --glow-border-color: transparent;
+
+    @variant dark {
+      --glow-color: rgba(255, 255, 255, 0.05);
+      --glow-border-color: rgba(255, 255, 255, 0.7);
+    }
   }
 
   .glass-glow {
     @apply rounded-card;
-  }
-
-  @variant dark {
-    :where(.glass-glow, [data-glow-target]) {
-      --glow-color: rgba(255, 255, 255, 0.05);
-      --glow-border-color: rgba(255, 255, 255, 0.7);
-    }
   }
 
   /* ── Glass Glow: Cursor-Tracking Layers ── */
