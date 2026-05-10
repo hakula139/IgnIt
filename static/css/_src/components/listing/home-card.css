@@ -151,6 +151,6 @@
   }
 
   .profile-social:hover {
-    @apply text-link-hover;
+    @apply icon-tap-hover;
   }
 }

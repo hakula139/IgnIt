@@ -173,6 +173,9 @@
 
 @import './base.css';
 
+/* Shared */
+@import './components/shared/icon-button.css';
+
 /* Layout */
 @import './components/layout/float-buttons.css';
 @import './components/layout/glass-panel.css';
