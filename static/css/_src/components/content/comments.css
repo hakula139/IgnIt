@@ -1,3 +1,5 @@
+/* Unlayered — must override Twikoo's injected styles and prose.css defaults at full specificity. */
+
 /* Override prose.css's inline default for non-figure imgs. */
 .prose .tk-avatar-img {
   @apply my-0 block;
