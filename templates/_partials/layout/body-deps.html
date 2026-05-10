@@ -11,10 +11,6 @@
 
 {%- if need_lightgallery %}
   {%- set lg = cdn ~ "/lightgallery@" ~ deps.lightgallery.version -%}
-  {%- if lightgallery.license_key %}
-    {#- Inline so __lgLicenseKey is defined before the deferred init script runs. -#}
-    <script>window.__lgLicenseKey={{ lightgallery.license_key | tojson | safe }};</script>
-  {%- endif %}
   <script
     src="{{ lg | safe }}/lightgallery.min.js"
     integrity="{{ deps.lightgallery.sri.js }}"

@@ -59,6 +59,8 @@
     }
   };
 
+  const licenseKey = document.querySelector('meta[name="lg-license-key"]')?.content;
+
   const initOn = (scope) => {
     if (!scope || typeof window.lightGallery !== 'function') {
       return;
@@ -70,7 +72,7 @@
     scope.lgInstance = window.lightGallery(scope, {
       selector: 'a.lightgallery',
       plugins: [window.lgThumbnail, window.lgZoom].filter(Boolean),
-      licenseKey: window.__lgLicenseKey,
+      licenseKey,
       speed: 400,
       hideBarsDelay: 2000,
       allowMediaOverlap: true,

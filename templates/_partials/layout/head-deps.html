@@ -38,6 +38,9 @@
 
 {%- if need_lightgallery %}
   {%- set lg = cdn ~ "/lightgallery@" ~ deps.lightgallery.version -%}
+  {%- if lightgallery.license_key %}
+  <meta name="lg-license-key" content="{{ lightgallery.license_key }}">
+  {%- endif %}
   <link
     rel="stylesheet"
     href="{{ lg | safe }}/css/lightgallery-bundle.min.css"
