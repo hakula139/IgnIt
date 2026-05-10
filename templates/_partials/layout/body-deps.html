@@ -2,10 +2,39 @@
 {%- set base = config.base_url -%}
 {%- set deps = config.params.deps -%}
 {%- set comments = config.params.comments | default(value={}) -%}
+{%- set lightgallery = config.params.lightgallery | default(value={}) -%}
+{%- set need_lightgallery = lightgallery.enabled | default(false) -%}
 {%- set need_math = assets is defined and "math" in assets.features -%}
 {%- set need_mermaid = assets is defined and "mermaid" in assets.features -%}
 {%- set need_twikoo = assets is defined and comments.enabled and comments.provider == "twikoo" -%}
 {%- set need_pagination = pagination is defined and pagination.total_pages > 1 -%}
+
+{%- if need_lightgallery %}
+  {%- set lg = cdn ~ "/lightgallery@" ~ deps.lightgallery.version -%}
+  {%- if lightgallery.license_key %}
+    {#- Inline so __lgLicenseKey is defined before the deferred init script runs. -#}
+    <script>window.__lgLicenseKey={{ lightgallery.license_key | tojson | safe }};</script>
+  {%- endif %}
+  <script
+    src="{{ lg | safe }}/lightgallery.min.js"
+    integrity="{{ deps.lightgallery.sri.js }}"
+    crossorigin="anonymous"
+    defer
+  ></script>
+  <script
+    src="{{ lg | safe }}/plugins/thumbnail/lg-thumbnail.min.js"
+    integrity="{{ deps.lightgallery.sri.thumbnail }}"
+    crossorigin="anonymous"
+    defer
+  ></script>
+  <script
+    src="{{ lg | safe }}/plugins/zoom/lg-zoom.min.js"
+    integrity="{{ deps.lightgallery.sri.zoom }}"
+    crossorigin="anonymous"
+    defer
+  ></script>
+  <script src="{{ base | safe }}/js/content/lightgallery.js" defer></script>
+{%- endif %}
 
 {%- if need_math %}
   {%- set katex = cdn ~ "/katex@" ~ deps.katex.version -%}

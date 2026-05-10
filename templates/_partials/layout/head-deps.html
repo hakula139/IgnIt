@@ -1,6 +1,8 @@
 {%- set cdn = config.params.cdn | default("https://cdn.jsdelivr.net/npm") -%}
 {%- set deps = config.params.deps -%}
 {%- set need_fontawesome = config.params.fontawesome | default(false) -%}
+{%- set lightgallery = config.params.lightgallery | default(value={}) -%}
+{%- set need_lightgallery = lightgallery.enabled | default(false) -%}
 {%- set need_math = assets is defined and "math" in assets.features -%}
 
 {%- if need_fontawesome %}
@@ -30,6 +32,16 @@
     rel="stylesheet"
     href="{{ fa | safe }}/css/all.min.css"
     integrity="{{ deps.fontawesome.sri.css }}"
+    crossorigin="anonymous"
+  >
+{%- endif %}
+
+{%- if need_lightgallery %}
+  {%- set lg = cdn ~ "/lightgallery@" ~ deps.lightgallery.version -%}
+  <link
+    rel="stylesheet"
+    href="{{ lg | safe }}/css/lightgallery-bundle.min.css"
+    integrity="{{ deps.lightgallery.sri.css }}"
     crossorigin="anonymous"
   >
 {%- endif %}
