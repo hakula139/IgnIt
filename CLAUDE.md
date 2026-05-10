@@ -4,6 +4,8 @@
 
 IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It provides MiniJinja templates, compiled CSS, and JS assets for [kiln](https://github.com/hakula139/kiln) sites.
 
+User-facing reference lives in [`README.md`](./README.md) and [`docs/`](./docs/). This file is contributor-only context for working on the theme itself: file-tree navigation, build pipeline, conventions, and decisions that don't fit in commit history.
+
 ### Theme Structure
 
 All assets live under a single `static/` tree. Files and directories whose names start with `_` are private build inputs — kiln's `copy_static` skips them when publishing the site.
@@ -101,12 +103,7 @@ Source CSS lives in `static/css/_src/` using Tailwind CSS v4 conventions:
 
 ### Design Tokens
 
-Defined in `@theme { ... }` in `main.css`. Custom properties follow these prefixes:
-
-- `--color-*` — colors (bg, text, link, border, card, selection)
-- `--radius-*` — border radii
-- `--shadow-*` — box shadows
-- `--surface-*` — glass surface fills, borders, and overlays
+Defined in `@theme { ... }` in `main.css`, with parallel dark-mode overrides under `[data-theme='dark']`. The public namespaces and override pattern are documented in [`docs/customization.md`](./docs/customization.md#visual-tokens).
 
 ### Component Classes vs. Inline Utilities
 
@@ -140,16 +137,13 @@ The theme paints kiln's `lqip_uri` via the `<span class="lqip">` wrapper kiln em
 
 - **Body images**: auto-wrapped by kiln. No template work.
 - **Featured images** (`templates/post.html` banner, `templates/home.html` cards): templates emit the wrapper themselves, gated on `{% if featured_image.lqip_uri %}`. Per-context size overrides (`.post-banner-media .lqip`, `.home-card > .lqip`) live in `lqip.css`.
-- **Body background** (`config.params.background`): hand-rolled in `base.html`. Sites supply `image` + `lqip_uri` (a pre-computed data URI); the wrapper pins fixed-fullscreen with `object-fit: cover`, and `position` / `position_mobile` drive `object-position` via `--bg-position*` CSS vars.
+- **Body background** (`config.params.background`): hand-rolled in `base.html`. The wrapper pins fixed-fullscreen with `object-fit: cover`, and `position` / `position_mobile` drive `object-position` via `--bg-position*` CSS vars. The user-facing config schema is in [`docs/parameters.md`](./docs/parameters.md#paramsbackground).
 
 ## Internationalization
 
-Translation tables live under `i18n/<lang>.toml` (`en`, `zh-Hans`); active language is set by `config.language` in the consuming site. Access:
+Translation tables live under `i18n/<lang>.toml` (`en`, `zh-Hans`); active language is set by `config.language` in the consuming site. Templates read keys via MiniJinja's `t('key')`; client JS reads `data-i18n-*` attributes on the document root and on per-element carriers.
 
-- **Templates** (MiniJinja): `t('key')`.
-- **Client JS**: `data-i18n-*` attributes on the document root.
-
-Sites can layer overrides via a same-named TOML at their root's `i18n/<lang>.toml`, merged key-by-key. Per-key lookup falls back: **site override → theme translation → theme English**.
+The site / theme / English fallback chain and the full key reference are in [`docs/i18n.md`](./docs/i18n.md). When adding a new template string, register the key in **both** `i18n/en.toml` and `i18n/zh-Hans.toml`, then add a row to the `docs/i18n.md` reference table so site authors can discover it.
 
 ## Webfonts
 
