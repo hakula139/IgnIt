@@ -1,4 +1,5 @@
-{%- set cdn = config.params.cdn | default("https://cdn.jsdelivr.net/npm") -%}
+{%- import "_partials/macros/cdn.html" as cdn -%}
+{%- set cdn_base = config.params.cdn | default("https://cdn.jsdelivr.net/npm") -%}
 {%- set deps = config.params.deps -%}
 {%- set need_fontawesome = config.params.fontawesome | default(false) -%}
 {%- set lightgallery = config.params.lightgallery | default(value={}) -%}
@@ -6,55 +7,28 @@
 {%- set need_math = assets is defined and "math" in assets.features -%}
 
 {%- if need_fontawesome %}
-  {%- set fa = cdn ~ "/@fortawesome/fontawesome-free@" ~ deps.fontawesome.version -%}
+  {%- set fa = cdn_base ~ "/@fortawesome/fontawesome-free@" ~ deps.fontawesome.version -%}
+  {%- for font in ["fa-solid-900", "fa-regular-400", "fa-brands-400"] %}
   <link
     rel="preload"
-    href="{{ fa | safe }}/webfonts/fa-solid-900.woff2"
+    href="{{ fa | safe }}/webfonts/{{ font }}.woff2"
     as="font"
     type="font/woff2"
     crossorigin
   >
-  <link
-    rel="preload"
-    href="{{ fa | safe }}/webfonts/fa-regular-400.woff2"
-    as="font"
-    type="font/woff2"
-    crossorigin
-  >
-  <link
-    rel="preload"
-    href="{{ fa | safe }}/webfonts/fa-brands-400.woff2"
-    as="font"
-    type="font/woff2"
-    crossorigin
-  >
-  <link
-    rel="stylesheet"
-    href="{{ fa | safe }}/css/all.min.css"
-    integrity="{{ deps.fontawesome.sri.css }}"
-    crossorigin="anonymous"
-  >
+  {%- endfor %}
+  {{ cdn.stylesheet(fa ~ "/css/all.min.css", deps.fontawesome.sri.css) }}
 {%- endif %}
 
 {%- if need_lightgallery %}
-  {%- set lg = cdn ~ "/lightgallery@" ~ deps.lightgallery.version -%}
+  {%- set lg = cdn_base ~ "/lightgallery@" ~ deps.lightgallery.version -%}
   {%- if lightgallery.license_key %}
   <meta name="lg-license-key" content="{{ lightgallery.license_key }}">
   {%- endif %}
-  <link
-    rel="stylesheet"
-    href="{{ lg | safe }}/css/lightgallery-bundle.min.css"
-    integrity="{{ deps.lightgallery.sri.css }}"
-    crossorigin="anonymous"
-  >
+  {{ cdn.stylesheet(lg ~ "/css/lightgallery-bundle.min.css", deps.lightgallery.sri.css) }}
 {%- endif %}
 
 {%- if need_math %}
-  {%- set katex = cdn ~ "/katex@" ~ deps.katex.version -%}
-  <link
-    rel="stylesheet"
-    href="{{ katex | safe }}/dist/katex.min.css"
-    integrity="{{ deps.katex.sri.css }}"
-    crossorigin="anonymous"
-  >
+  {%- set katex = cdn_base ~ "/katex@" ~ deps.katex.version -%}
+  {{ cdn.stylesheet(katex ~ "/dist/katex.min.css", deps.katex.sri.css) }}
 {%- endif %}
