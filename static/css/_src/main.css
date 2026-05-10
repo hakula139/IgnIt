@@ -171,6 +171,7 @@
 @import './base.css';
 
 /* Shared */
+@import './components/shared/fa-icon.css';
 @import './components/shared/icon-button.css';
 
 /* Layout */

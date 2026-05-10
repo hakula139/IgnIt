@@ -21,9 +21,7 @@
 
   /* Variant icon (left); chevron (right) lives in collapse.css. */
   .callout-title::before {
-    @apply shrink-0;
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
+    @apply fa-icon;
     content: var(--callout-icon, '\f05a');
   }
 
