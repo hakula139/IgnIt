@@ -1257,7 +1257,7 @@
       }
     }
   }
-  .header-link i, .header-link svg, .header-mobile-link i, .header-mobile-link svg {
+  .header-link :is(i, svg), .header-mobile-link :is(i, svg) {
     display: inline-block;
     width: 1.25em;
     text-align: center;
@@ -1265,7 +1265,7 @@
   .header-link svg, .header-mobile-link svg {
     height: 1em;
     fill: currentcolor;
-    vertical-align: -0.125em;
+    vertical-align: middle;
   }
   .header-divider {
     margin-inline: calc(var(--spacing) * 1);
@@ -2673,8 +2673,8 @@
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
   .profile-social svg {
-    height: 1em;
     width: 1em;
+    height: 1em;
     fill: currentcolor;
   }
   .profile-social:hover {

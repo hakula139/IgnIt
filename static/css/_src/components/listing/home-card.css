@@ -146,10 +146,8 @@
     @apply inline-flex h-8 w-8 items-center justify-center rounded-full border-b-0 text-2xl text-text-secondary no-underline transition-colors;
   }
 
-  /* Inline Simple Icons SVGs scale to the parent text size and inherit
-     color via fill=currentColor so they sit cleanly next to FA glyphs. */
   .profile-social svg {
-    @apply h-[1em] w-[1em] fill-current;
+    @apply size-[1em] fill-current;
   }
 
   .profile-social:hover {
