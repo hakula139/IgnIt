@@ -175,6 +175,7 @@
 @import './components/shared/icon-button.css';
 
 /* Layout */
+@import './components/layout/error-page.css';
 @import './components/layout/float-buttons.css';
 @import './components/layout/glass-panel.css';
 @import './components/layout/header.css';

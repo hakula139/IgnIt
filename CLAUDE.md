@@ -33,6 +33,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   │   │   ├── embed/
 │   │   │   │   │   └── apple-music.css     # Apple Music embed light / dark toggle
 │   │   │   │   ├── layout/
+│   │   │   │   │   ├── error-page.css      # .back-home-link (404 page back-to-home pill)
 │   │   │   │   │   ├── float-buttons.css   # .float-btn shared base + .back-to-top, .jump-to-comments stack
 │   │   │   │   │   ├── glass-panel.css     # .glass-panel, .glass-glow, [data-glow-target], .header-nav, .site-footer
 │   │   │   │   │   ├── header.css          # .header-logo, .header-link, .header-icon, .header-mobile-*, menu animations

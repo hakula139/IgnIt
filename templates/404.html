@@ -10,10 +10,7 @@
         <p class="mb-6 text-lg text-text-secondary">
           {{ t('page_not_found') }}
         </p>
-        <a
-          href="{{ config.base_url | safe }}/"
-          class="inline-flex items-center gap-2 rounded-md border-b-0 px-3 py-2 text-sm text-text-secondary no-underline transition-colors hover:icon-tap-hover"
-        >
+        <a class="back-home-link" href="{{ config.base_url | safe }}/">
           <i class="fas fa-home fa-fw" aria-hidden="true"></i> {{ t('back_to_home') }}
         </a>
       </div>
