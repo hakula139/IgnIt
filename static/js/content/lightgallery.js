@@ -25,7 +25,8 @@
     if (img.closest('a.lightgallery')) {
       return;
     }
-    // Wrap the lqip span when present so its fade-in stays on the inner element.
+    // Wrap the .lqip parent rather than the inner img: lqip.css uses .lqip > img
+    // direct-child selectors, so an anchor between them would break those rules.
     const parent = img.parentElement;
     const wrapTarget = parent && parent.classList.contains('lqip') ? parent : img;
     if (!wrapTarget.parentNode) {
@@ -94,7 +95,8 @@
     initOn(scope);
   };
 
-  // Called by twikoo.js after each comment render.
+  // Twikoo re-renders comment DOM on pagination and reply submit, so we re-scan
+  // after each render rather than initializing once at page load.
   window.__rewrapLightGallery = (scope) => wrapAndInit(scope, COMMENTS_IMG_SELECTOR);
 
   window.__onReady(() => wrapAndInit(document.querySelector(ARTICLE_SCOPE), ARTICLE_IMG_SELECTOR));

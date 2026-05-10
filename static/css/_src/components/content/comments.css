@@ -5,7 +5,7 @@
   @apply my-0 block;
 }
 
-/* `vertical-align: middle` aligns to Latin x-height, which is too low for CJK. */
+/* OwO emote sits too low at vertical-align: middle (Latin x-height); nudge up for CJK line metrics. */
 .prose .tk-owo-emotion {
   @apply my-0 align-[-0.3em];
 }

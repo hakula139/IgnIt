@@ -111,7 +111,7 @@
       scroll.scrollTo({ top: scroll.scrollTop + offset });
     };
 
-    // Track which headings are visible, then pick the topmost one.
+    // Set of currently-visible headings; pickActive() picks the topmost.
     const visibleHeadings = new Set();
 
     const pickActive = () => {

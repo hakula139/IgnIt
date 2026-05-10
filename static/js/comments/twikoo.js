@@ -38,6 +38,8 @@
       path: window.location.pathname,
       lang: langOf(),
       katex: { delimiters: KATEX_DELIMITERS, throwOnError: false },
+      // Re-scan after every comment paint, since lightgallery.js can't wrap DOM
+      // that doesn't exist at boot. Optional chaining: no-op when lg is disabled.
       onCommentLoaded: () => window.__rewrapLightGallery?.(root),
     });
   };
