@@ -25,6 +25,5 @@
 }
 
 .twikoo .OwO .OwO-body {
-  @apply overflow-hidden rounded-card text-text shadow-card glass-surface;
-  border: 1px solid var(--surface-glass-border);
+  @apply overflow-hidden rounded-card glass-surface text-text shadow-card;
 }

@@ -55,8 +55,7 @@
   /* ── Mobile Dropdown ── */
 
   .header-mobile {
-    @apply fixed inset-x-0 top-14 z-40 max-h-[calc(100dvh-3.5rem)] overflow-y-auto border-b py-2 glass-surface md:hidden;
-    border-color: var(--surface-glass-border);
+    @apply fixed inset-x-0 top-14 z-40 max-h-[calc(100dvh-3.5rem)] overflow-y-auto glass-surface border-x-0 border-t-0 py-2 md:hidden;
   }
 
   .header-mobile-link {

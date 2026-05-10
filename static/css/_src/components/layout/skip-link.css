@@ -7,8 +7,7 @@
 
   .skip-link:focus,
   .skip-link:focus-visible {
-    @apply fixed top-3 left-3 z-100 m-0 inline-flex h-auto w-auto items-center overflow-visible rounded-card px-4 py-2 text-sm leading-none font-medium whitespace-normal text-text glass-surface;
+    @apply fixed top-3 left-3 z-100 m-0 inline-flex h-auto w-auto items-center overflow-visible rounded-card glass-surface px-4 py-2 text-sm leading-none font-medium whitespace-normal text-text;
     clip: auto;
-    border: 1px solid var(--surface-glass-border);
   }
 }
