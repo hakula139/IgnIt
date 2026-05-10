@@ -9,38 +9,40 @@
     @apply text-link-hover;
   }
 
-  /* ── Desktop Nav Links (icon-only) ── */
+  /* ── Desktop Nav (icon-only anchors and buttons) ── */
 
-  .header-link {
-    @apply inline-flex aspect-square items-center justify-center rounded-md border-b-0 p-2 text-text-secondary transition-colors;
+  .header-link,
+  .header-icon {
+    @apply inline-flex aspect-square items-center justify-center rounded-md p-2 text-text-secondary transition-colors;
   }
 
-  .header-link:hover {
-    @apply bg-bg/50 text-link-hover;
+  .header-link:hover,
+  .header-icon:hover {
+    @apply icon-tap-hover;
+  }
 
-    @variant dark {
-      @apply bg-white/10;
-    }
+  .header-link {
+    @apply border-b-0;
+  }
+
+  .header-icon {
+    @apply cursor-pointer;
+  }
+
+  .header-link :is(i, svg),
+  .header-mobile-link :is(i, svg) {
+    @apply inline-block w-[1.25em] text-center;
+  }
+
+  .header-link svg,
+  .header-mobile-link svg {
+    @apply h-[1em] fill-current align-middle;
   }
 
   /* ── Group Dividers ── */
 
   .header-divider {
     @apply mx-1 h-5 w-px bg-border-overlay;
-  }
-
-  /* ── Icon Buttons ── */
-
-  .header-icon {
-    @apply inline-flex aspect-square cursor-pointer items-center justify-center rounded-md p-2 text-text-secondary transition-colors;
-  }
-
-  .header-icon:hover {
-    @apply bg-bg/50 text-link-hover;
-
-    @variant dark {
-      @apply bg-white/10;
-    }
   }
 
   /* ── Mobile Backdrop ── */
@@ -53,8 +55,7 @@
   /* ── Mobile Dropdown ── */
 
   .header-mobile {
-    @apply fixed inset-x-0 top-14 z-40 max-h-[calc(100dvh-3.5rem)] overflow-y-auto border-b py-2 glass-surface md:hidden;
-    border-color: var(--surface-glass-border);
+    @apply fixed inset-x-0 top-14 z-40 max-h-[calc(100dvh-3.5rem)] overflow-y-auto glass-surface border-x-0 border-t-0 py-2 md:hidden;
   }
 
   .header-mobile-link {

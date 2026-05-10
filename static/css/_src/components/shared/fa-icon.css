@@ -1,0 +1,6 @@
+/* Font Awesome glyph setup for ::before / ::after pseudo-elements (callout, collapse, toc). */
+@utility fa-icon {
+  @apply shrink-0;
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+}

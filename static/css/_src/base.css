@@ -1,18 +1,16 @@
-/* Temporarily enable color transitions during theme toggle (added / removed by JS). */
-@media (prefers-reduced-motion: no-preference) {
-  html.theme-transition,
-  html.theme-transition *,
-  html.theme-transition *::before,
-  html.theme-transition *::after {
-    @apply transition-[background-color,border-color]! duration-300!;
-  }
-}
-
 @layer base {
   @media (prefers-reduced-motion: no-preference) {
     html,
     .toc-sidebar-scroll {
       @apply scroll-smooth;
+    }
+
+    /* Temporarily enable color transitions during theme toggle (added / removed by JS). */
+    html.theme-transition,
+    html.theme-transition *,
+    html.theme-transition *::before,
+    html.theme-transition *::after {
+      @apply transition-[background-color,border-color]! duration-300!;
     }
   }
 

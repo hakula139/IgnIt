@@ -137,4 +137,20 @@
   .profile-avatar {
     @apply mx-auto mb-4 h-24 w-24 rounded-full shadow-md;
   }
+
+  .profile-socials {
+    @apply mt-4 flex flex-wrap items-center justify-center gap-2;
+  }
+
+  .profile-social {
+    @apply inline-flex aspect-square items-center justify-center rounded-full border-b-0 p-2 text-2xl text-text-secondary no-underline transition-colors;
+  }
+
+  .profile-social svg {
+    @apply size-[1em] fill-current;
+  }
+
+  .profile-social:hover {
+    @apply icon-tap-hover;
+  }
 }

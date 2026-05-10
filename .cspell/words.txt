@@ -1,4 +1,6 @@
 autoplay
+bangumi
+bilibili
 cachix
 callout
 calt
@@ -9,6 +11,7 @@ elif
 endfor
 endif
 ensp
+fediverse
 fontawesome
 fontsource
 giscus
@@ -21,12 +24,15 @@ inlines
 jetbrains
 katex
 kwargs
+listenbrainz
 lqip
 maple
 materialised
 menlo
+metabrainz
 minijinja
 ndash
+neodb
 netease
 neue
 nixfmt

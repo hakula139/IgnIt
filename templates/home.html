@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{%- import "_partials/macros/icon.html" as icons -%}
 
 {% block head %}
 {%- set og_type = "website" -%}
@@ -7,6 +8,7 @@
 
 {% block body %}
 {%- set profile = config.params.home.profile %}
+{%- set socials = config.menu.social | default([]) %}
 {%- if profile %}
   <div class="max-w-4xl mx-auto px-4 pt-6">
     <div class="glass-glow">
@@ -23,6 +25,22 @@
         {%- endif %}
         {%- if profile.subtitle %}
         <p class="mt-2 text-sm text-text-secondary">{{ profile.subtitle }}</p>
+        {%- endif %}
+        {%- if socials %}
+        <div class="profile-socials">
+          {%- for item in socials %}
+          {%- set item_label = t(item.name) %}
+          <a
+            href="{{ item.url | safe }}"
+            class="profile-social"
+            title="{{ item_label }}"
+            aria-label="{{ item_label }}"
+            {%- if item.external %} rel="me noopener noreferrer" target="_blank"{% endif %}
+          >
+            {{- icons.render(item.icon) -}}
+          </a>
+          {%- endfor %}
+        </div>
         {%- endif %}
       </div>
     </div>

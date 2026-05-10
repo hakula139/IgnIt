@@ -28,8 +28,7 @@
   /* ── Modal Surface ── */
 
   pagefind-modal > dialog.pf-modal {
-    @apply rounded-card! border! glass-surface!;
-    border-color: var(--surface-glass-border) !important;
+    @apply rounded-card! glass-surface!;
   }
 
   pagefind-modal > dialog.pf-modal::backdrop {

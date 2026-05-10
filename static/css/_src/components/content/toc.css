@@ -38,9 +38,7 @@
 
   /* List-ul icon (left); chevron (right) lives in collapse.css. */
   .toc-trigger::before {
-    @apply shrink-0 text-text-tertiary;
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
+    @apply fa-icon text-text-tertiary;
     content: '\f0ca';
   }
 

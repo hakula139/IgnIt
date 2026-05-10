@@ -1,7 +1,7 @@
 name = "IgnIt"
 description = "A clean, feature-rich theme for kiln — inspired by Hugo LoveIt"
 license = "MIT"
-min_kiln_version = "0.1.0"
+min_kiln_version = "0.3.0-rc.1"
 
 [author]
 name = "Hakula"

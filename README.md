@@ -45,6 +45,14 @@ IgnIt is a [kiln](https://github.com/hakula139/kiln) theme built with Tailwind C
 - Keyboard-accessible focus states (`:focus-visible`), skip-to-content link, semantic landmark regions
 - `prefers-reduced-motion` honored across animations and smooth-scroll
 
+## Documentation
+
+| Document                               | Description                                                                         |
+| -------------------------------------- | ----------------------------------------------------------------------------------- |
+| [Customization](docs/customization.md) | Override visual tokens, templates, social icons, comments, fonts, and static assets |
+| [Parameters](docs/parameters.md)       | `[params]` schema reference — defaults, types, where each value is rendered         |
+| [i18n](docs/i18n.md)                   | Translatable string reference — keys, English defaults, override pattern            |
+
 ## Installation
 
 Add IgnIt to your kiln site as a Git submodule:
@@ -61,115 +69,38 @@ theme = "IgnIt"
 
 `static/css/style.css` ships pre-built, so consuming sites don't need Node.js.
 
-## Configuration
+## Quick Start
 
-IgnIt provides default parameters that can be overridden in your site's `config.toml`.
-
-### Theme Parameters
+A minimal `config.toml` to get IgnIt running:
 
 ```toml
+theme = "IgnIt"
+title = "My Site"
+language = "en"
+
 [params]
-cdn = "https://cdn.jsdelivr.net/npm"     # CDN base URL for dependencies
-code_max_lines = 40                      # Max visible lines before code blocks scroll
-emojis = true                            # Enable emoji replacement
-fontawesome = true                       # Enable Font Awesome icon loading
-```
+fontawesome = true
 
-### Background Image
-
-Set a fixed background image with glassmorphism content panels:
-
-```toml
-[params.background]
-image = "/images/bg.webp"                # Path to background image
-lqip_uri = "data:image/webp;base64,..."  # Pre-computed LQIP data URI (optional)
-position = "right center"                # CSS background-position (default: center)
-position_mobile = "60% center"           # Mobile background-position (default: position)
-```
-
-When unset, panels use solid backgrounds (the theme works without a background image).
-
-### Comments
-
-```toml
-[params.comments]
-enabled = true
-provider = "twikoo"                      # Currently the only built-in provider
-
-[params.comments.twikoo]
-api_url = "https://twikoo.example.com"
-```
-
-The dispatcher is provider-agnostic — additional providers (Giscus, Waline, etc.) drop in via a sibling partial under `templates/_partials/comments/`. The provider's CDN dep loads only when comments are enabled.
-
-### Footer
-
-```toml
-[params.footer]
-since = 2018                             # Copyright start year
-license = "CC BY-NC-SA 4.0"              # License name
-license_url = "https://creativecommons.org/licenses/by-nc-sa/4.0/"
-powered_by = true                        # Show "Powered by kiln & IgnIt"
-```
-
-### Home Profile
-
-```toml
 [params.home.profile]
 avatar = "/images/avatar.webp"
 title = "Site Title"
-subtitle = "A short tagline"
-```
+subtitle = "An optional tagline"
 
-### Navigation Menu
-
-```toml
 [[menu.main]]
 name = "Posts"
 url = "/posts/"
-icon = "fas fa-archive"                  # Font Awesome class (optional)
-weight = 1                               # Sort order (ascending)
+icon = "fas fa-archive"
+weight = 1
 
-[[menu.main]]
+[[menu.social]]
 name = "GitHub"
-url = "https://github.com/user"
-icon = "fab fa-github"
-weight = 10
-external = true                          # Opens in new tab
+url = "https://github.com/example"
+icon = "svg:github"
+weight = 1
+external = true
 ```
 
-### Visual Effects (experimental)
-
-```toml
-[params.effects]
-cursor_glow = false                      # Cursor-tracking glow on glass panels
-```
-
-Off by default. The `will-change` layers it injects clash with `backdrop-filter` compositing on Chromium / WebKit:
-
-- **Panel dropout during scroll** (frequent) — the glass panel may briefly vanish for a moment while scrolling.
-- **Phantom gap near `#comments`** (rare) — an in-page anchor jump close to the comments section can leave the article card with a much larger apparent gap than its real 32 px margin; the next manual scroll repaints.
-
-## Image Pipeline
-
-IgnIt paints kiln's `lqip_uri` (low-quality image placeholder, a base64-encoded WebP data URI) via the `<span class="lqip">` wrapper kiln emits around content images. The backdrop shows immediately on first paint; the inner image fades in once it decodes.
-
-- **Body images**: auto-wrapped by kiln. No site-level work.
-- **Featured images** (post banner, home cards): templates emit the wrapper themselves, gated on `featured_image.lqip_uri`.
-- **Body background** (`[params.background]`): supply a pre-computed `lqip_uri` alongside `image`. The wrapper pins fixed-fullscreen with `object-fit: cover`; `position` / `position_mobile` drive `object-position` via CSS variables.
-
-## Internationalization
-
-Translation tables live under `i18n/<lang>.toml` (`en`, `zh-Hans`); the active language follows `config.language` in the consuming site. Access:
-
-- **Templates** (MiniJinja): `t('key')`.
-- **Client JS**: `data-i18n-*` attributes on the document root.
-
-Sites can layer overrides via a same-named TOML at their root's `i18n/<lang>.toml`, merged key-by-key. Per-key lookup falls back: **site override → theme translation → theme English**.
-
-## Webfonts
-
-Inter Variable (`--font-sans`) and Maple Mono Variable (`--font-mono`, with separate regular and italic faces) are self-hosted under `static/fonts/`. Both are fetched lazily on first use — Inter when any page text renders, Maple Mono when the first `<code>` appears. CJK falls through to system fonts (Sarasa Gothic SC, PingFang SC, Noto Sans CJK SC, etc.) via the `--font-sans` cascade.
+For the complete schema (`[params.background]`, `[params.comments]`, `[params.footer]`, `[params.section]`, `[params.effects]`) and the full menu field list, see [Parameters](docs/parameters.md). For visual customization, social icon overrides, comment provider wiring, and other extension patterns, see [Customization](docs/customization.md).
 
 ## Theme Development
 

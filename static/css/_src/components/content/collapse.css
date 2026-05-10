@@ -14,9 +14,7 @@
   .code-header::before,
   .callout-title::after,
   .toc-trigger::after {
-    @apply shrink-0 text-xs transition-transform duration-200;
-    font-family: 'Font Awesome 6 Free';
-    font-weight: 900;
+    @apply fa-icon text-xs transition-transform duration-200;
     content: '\f078';
   }
 
