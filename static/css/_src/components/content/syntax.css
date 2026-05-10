@@ -2,8 +2,8 @@
   /* ── Syntax Highlighting (Material Light / Palenight) ── */
 
   .highlight {
-    color: var(--syntax-default);
     @apply bg-bg-muted/60;
+    color: var(--syntax-default);
   }
 
   .highlight .source {
