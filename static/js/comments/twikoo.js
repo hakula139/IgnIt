@@ -38,6 +38,7 @@
       path: window.location.pathname,
       lang: langOf(),
       katex: { delimiters: KATEX_DELIMITERS, throwOnError: false },
+      onCommentLoaded: () => window.__rewrapLightGallery?.(root),
     });
   };
 
