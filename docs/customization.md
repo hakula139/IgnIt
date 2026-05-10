@@ -6,14 +6,14 @@ IgnIt is built to be bent. Most surfaces — colors, typography, navigation, ico
 
 IgnIt's design tokens live in `@theme { ... }` inside [`static/css/_src/main.css`](../static/css/_src/main.css), with a parallel set of dark-mode overrides under `[data-theme='dark']`. The token namespaces are:
 
-| Prefix        | Purpose                                                                   |
-| ------------- | ------------------------------------------------------------------------- |
-| `--color-*`   | Page surfaces, text, links, borders, selection highlight, syntax theme    |
-| `--radius-*`  | Border radii (`sm`, `md`, `lg`, `xl`, `card`)                             |
-| `--shadow-*`  | Box shadows + a `--drop-shadow-text` for over-image legibility            |
-| `--surface-*` | Glass panel fills, borders, hover states, scroll shadow, overlay backdrop |
-| `--callout-*` | Per-callout-kind accent colors (12 variants)                              |
-| `--syntax-*`  | Code-block token colors                                                   |
+| Prefix        | Purpose                                                                       |
+| ------------- | ----------------------------------------------------------------------------- |
+| `--color-*`   | Page surfaces, text, links, borders, selection highlight, syntax theme        |
+| `--radius-*`  | Border radii (`md`, `lg`, `xl`, `card`)                                       |
+| `--shadow-*`  | Box shadows (`md`, `card`) + a `--drop-shadow-text` for over-image legibility |
+| `--surface-*` | Glass panel fills, borders, hover states, scroll shadow, overlay backdrop     |
+| `--callout-*` | Per-callout-kind accent colors (12 variants)                                  |
+| `--syntax-*`  | Code-block token colors                                                       |
 
 Sites override individual tokens by emitting their own CSS that re-declares the variable inside the appropriate scope. The declaration must hit the correct level: site-wide tokens go on `:root` or `[data-theme]`, dark-mode-only overrides go on `[data-theme='dark']`. The value is consumed everywhere the theme's compiled CSS reads it, so a single override propagates through every component that uses the token.
 

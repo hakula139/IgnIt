@@ -42,8 +42,11 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   │   │   │   ├── home-card.css       # .home-card-*, .profile-*, .text-card-*
 │   │   │   │   │   ├── listing.css         # .year-heading, .tag-pill, .category-card, .post-entry-*
 │   │   │   │   │   └── pagination.css      # .pagination-link, .pagination-ellipsis, .pagination-input
-│   │   │   │   └── search/
-│   │   │   │       └── search.css          # Pagefind trigger, modal, and result theming
+│   │   │   │   ├── search/
+│   │   │   │   │   └── search.css          # Pagefind trigger, modal, and result theming
+│   │   │   │   └── shared/
+│   │   │   │       ├── fa-icon.css         # @utility fa-icon — Font Awesome glyph setup for ::before / ::after
+│   │   │   │       └── icon-button.css     # @utility icon-tap-hover — circular tinted hover for icon surfaces
 │   │   │   ├── fonts.css                   # @font-face for Inter Variable + Maple Mono
 │   │   │   └── main.css                    # Entry: tokens, dark mode, partial imports
 │   │   └── style.css                       # Compiled Tailwind output (shipped)
