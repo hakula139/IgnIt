@@ -139,11 +139,11 @@
   }
 
   .profile-socials {
-    @apply mt-4 flex flex-wrap items-center justify-center gap-x-1 gap-y-1;
+    @apply mt-4 flex flex-wrap items-center justify-center gap-2;
   }
 
   .profile-social {
-    @apply inline-flex h-8 w-8 items-center justify-center rounded-full border-b-0 text-2xl text-text-secondary no-underline transition-colors;
+    @apply inline-flex aspect-square items-center justify-center rounded-full border-b-0 p-2 text-2xl text-text-secondary no-underline transition-colors;
   }
 
   .profile-social svg {
