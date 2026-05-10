@@ -6,7 +6,7 @@
 (() => {
   const ARTICLE_SCOPE = '.prose';
   const ARTICLE_IMG_SELECTOR = 'figure img';
-  const COMMENTS_IMG_SELECTOR = 'img:not(.tk-owo-emotion)';
+  const COMMENTS_IMG_SELECTOR = 'img:not(.tk-owo-emotion):not(.tk-avatar-img)';
 
   const escapeHtml = (s) =>
     s.replace(
@@ -62,7 +62,11 @@
   const licenseKey = document.querySelector('meta[name="lg-license-key"]')?.content;
 
   const initOn = (scope) => {
-    if (!scope || typeof window.lightGallery !== 'function') {
+    if (!scope) {
+      return;
+    }
+    if (typeof window.lightGallery !== 'function') {
+      console.warn('[lightgallery] window.lightGallery missing; CDN load likely failed');
       return;
     }
     if (scope.lgInstance) {
