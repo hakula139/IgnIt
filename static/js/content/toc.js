@@ -50,7 +50,7 @@
       }
 
       // Diff against the previous chain so we only flip .active on the
-      // divergent prefix — consecutive headings usually share most ancestors.
+      // divergent prefix, since consecutive headings usually share most ancestors.
       const oldChain = collectChain(activeId);
       const newChain = collectChain(id);
       const oldSet = new Set(oldChain);
@@ -111,7 +111,7 @@
       scroll.scrollTo({ top: scroll.scrollTop + offset });
     };
 
-    // Track which headings are visible — pick the topmost one.
+    // Track which headings are visible, then pick the topmost one.
     const visibleHeadings = new Set();
 
     const pickActive = () => {

@@ -8,7 +8,7 @@
   }
 
   /* Stronger bottom gradient on mobile for text readability.
-     No backdrop-filter — avoids the inherent blur-edge seam. */
+     No backdrop-filter, since it would introduce a blur-edge seam. */
   .home-card-overlay {
     @apply absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black/5;
   }

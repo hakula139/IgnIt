@@ -7,7 +7,7 @@
 
   .post-banner {
     @apply relative overflow-hidden rounded-t-card;
-    /* clip-path instead of overflow + border-radius alone — Chromium doesn't
+    /* clip-path instead of overflow + border-radius alone, since Chromium doesn't
        reliably clip transformed children with overflow:hidden + border-radius. */
     clip-path: inset(0 round var(--radius-card) var(--radius-card) 0 0);
   }

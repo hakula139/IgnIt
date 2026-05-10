@@ -1,4 +1,4 @@
-/* Unlayered — must override @tailwindcss/typography defaults in @layer utilities. */
+/* Unlayered, since it must override @tailwindcss/typography defaults in @layer utilities. */
 
 /* ── Typography Tokens ── */
 

@@ -1,6 +1,6 @@
 'use strict';
 
-// Feature-gated companion to mermaid.js (UMD) — emitted by body-deps.html
+// Feature-gated companion to mermaid.js (UMD), emitted by body-deps.html
 // only when the page's assets.features registry includes "mermaid".
 
 (() => {
