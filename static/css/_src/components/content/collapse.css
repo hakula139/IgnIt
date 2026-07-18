@@ -18,7 +18,6 @@
     content: '\f078';
   }
 
-  /* Right-anchored on callout / toc, since the leading slot belongs to the variant / list icon. */
   .callout-title::after,
   .toc-trigger::after {
     @apply ml-auto;

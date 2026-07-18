@@ -55,7 +55,6 @@
 
   /* ── Glass Panel Base ── */
 
-  /* No `position` set, since consumers (.post-banner, .home-card, .glass-glow) provide their own. */
   .glass-panel {
     @apply rounded-card glass-surface shadow-card backface-hidden;
   }

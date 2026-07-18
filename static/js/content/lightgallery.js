@@ -1,8 +1,5 @@
 'use strict';
 
-// Feature-gated companion to lightgallery, emitted by body-deps.html only
-// when [params.lightgallery] enabled = true.
-
 (() => {
   const ARTICLE_SCOPE = '.prose';
   const ARTICLE_IMG_SELECTOR = 'figure img';
@@ -22,11 +19,10 @@
     );
 
   const wrapImage = (img) => {
-    if (img.closest('a.lightgallery')) {
+    if (img.closest('a')) {
       return;
     }
-    // Wrap the .lqip parent rather than the inner img: lqip.css uses .lqip > img
-    // direct-child selectors, so an anchor between them would break those rules.
+    // Keep the image as .lqip's direct child because lqip.css depends on that structure.
     const parent = img.parentElement;
     const wrapTarget = parent && parent.classList.contains('lqip') ? parent : img;
     if (!wrapTarget.parentNode) {
@@ -66,18 +62,21 @@
     if (!scope) {
       return;
     }
-    if (typeof window.lightGallery !== 'function') {
-      console.warn('[lightgallery] window.lightGallery missing; CDN load likely failed');
-      return;
-    }
     if (scope.lgInstance) {
       scope.lgInstance.refresh();
+      return;
+    }
+    if (!scope.querySelector('a.lightgallery')) {
+      return;
+    }
+    if (typeof window.lightGallery !== 'function') {
+      console.warn('[lightgallery] window.lightGallery missing; CDN load likely failed');
       return;
     }
     scope.lgInstance = window.lightGallery(scope, {
       selector: 'a.lightgallery',
       plugins: [window.lgThumbnail, window.lgZoom].filter(Boolean),
-      licenseKey,
+      ...(licenseKey ? { licenseKey } : {}),
       speed: 400,
       hideBarsDelay: 2000,
       allowMediaOverlap: true,
@@ -95,8 +94,6 @@
     initOn(scope);
   };
 
-  // Twikoo re-renders comment DOM on pagination and reply submit, so we re-scan
-  // after each render rather than initializing once at page load.
   window.__rewrapLightGallery = (scope) => wrapAndInit(scope, COMMENTS_IMG_SELECTOR);
 
   window.__onReady(() => wrapAndInit(document.querySelector(ARTICLE_SCOPE), ARTICLE_IMG_SELECTOR));

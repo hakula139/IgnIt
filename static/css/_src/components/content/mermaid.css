@@ -1,4 +1,4 @@
-/* Unlayered, since it must override @tailwindcss/typography prose-pre defaults in @layer utilities. */
+/* Must remain unlayered to override @tailwindcss/typography prose-pre defaults. */
 
 .prose pre.mermaid {
   @apply my-4 flex justify-center rounded-lg p-6;

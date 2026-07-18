@@ -6,7 +6,7 @@
     background-position: center;
   }
 
-  /* `m-0!` beats Typography's `.prose img { my-2em }`, since the wrapper inflates 64px otherwise. */
+  /* Typography's `.prose img` margins would inflate the wrapper. */
   .lqip > img {
     @apply m-0! block;
   }

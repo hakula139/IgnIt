@@ -1,4 +1,4 @@
-/* Unlayered, since it must override @tailwindcss/typography defaults in @layer utilities. */
+/* Must remain unlayered to override @tailwindcss/typography defaults. */
 
 /* ── Typography Tokens ── */
 
@@ -129,8 +129,6 @@
   @apply my-1 inline;
 }
 
-/* Remove link border for image-only links (icon rows, lqip-wrapped images such as the
-   lightgallery click target inserted around .lqip > img). */
 .prose a:has(> img:only-child),
 .prose a:has(> .lqip:only-child) {
   @apply border-b-0 pb-0;

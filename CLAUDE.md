@@ -54,7 +54,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   ├── fonts/                              # Self-hosted webfonts (Inter Variable + Maple Mono Variable)
 │   └── js/                                 # Mirrors css/_src/components/ subdirs
 │       ├── comments/
-│       │   └── twikoo.js                   # Twikoo widget init (KaTeX delimiters, language, lightgallery rewrap on comment load)
+│       │   └── twikoo.js                   # Twikoo widget init (KaTeX delimiters, language, lightGallery rewrap on comment load)
 │       ├── content/
 │       │   ├── content.js                  # Code block, callout, heading anchor, and external link enhancements
 │       │   ├── lightgallery.js             # Wraps `.prose figure img` and Twikoo comment images for lightGallery, feeds figcaption to data-sub-html

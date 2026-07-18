@@ -6,12 +6,12 @@ IgnIt reads its configuration from the `[params]` table in your site's `config.t
 
 Top-level theme switches.
 
-| Field            | Type     | Default                          | Description                                                                                                                  |
-| ---------------- | -------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| `cdn`            | `string` | `"https://cdn.jsdelivr.net/npm"` | CDN base URL for vendor dependencies (Font Awesome, KaTeX, Mermaid, Twikoo). Swap to a mirror or self-hosted base if needed. |
-| `code_max_lines` | `int`    | `40`                             | Maximum visible lines before fenced code blocks gain a vertical scrollbar. `0` disables the limit.                           |
-| `emojis`         | `bool`   | `true`                           | Replace `:shortcode:` with the corresponding Unicode emoji during rendering.                                                 |
-| `fontawesome`    | `bool`   | `true`                           | Load the Font Awesome stylesheet. Disable when no `fa-*` classes are referenced anywhere in templates or content.            |
+| Field            | Type     | Default                          | Description                                                                                                                                |
+| ---------------- | -------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `cdn`            | `string` | `"https://cdn.jsdelivr.net/npm"` | CDN base URL for vendor dependencies (Font Awesome, KaTeX, lightGallery, Mermaid, Twikoo). Swap to a mirror or self-hosted base if needed. |
+| `code_max_lines` | `int`    | `40`                             | Maximum visible lines before fenced code blocks gain a vertical scrollbar. `0` disables the limit.                                         |
+| `emojis`         | `bool`   | `true`                           | Replace `:shortcode:` with the corresponding Unicode emoji during rendering.                                                               |
+| `fontawesome`    | `bool`   | `true`                           | Load the Font Awesome stylesheet. Disable when no `fa-*` classes are referenced anywhere in templates or content.                          |
 
 ## `[params.background]`
 
@@ -36,8 +36,8 @@ Home-page profile panel and pagination.
 
 ```toml
 [params.home.profile]
-avatar = "/images/avatar.webp"           # Site-relative or absolute URL
-title = "Site Title"                     # Falls back to config.title when unset
+avatar = "/images/avatar.webp" # Site-relative or absolute URL
+title = "Site Title" # Falls back to config.title when unset
 subtitle = "An optional tagline"
 ```
 
@@ -74,6 +74,21 @@ api_url = "https://twikoo.example.com"
 ```
 
 Adding a provider is a [Customization](customization.md#comments-providers) topic.
+
+## `[params.lightgallery]`
+
+Fullscreen gallery for article figures and Twikoo content images. Enabling it loads lightGallery's core, thumbnail, and zoom assets.
+
+```toml
+[params.lightgallery]
+enabled = true
+license_key = "your-license-key"
+```
+
+| Field         | Type     | Default | Description                                                                                                                                             |
+| ------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `enabled`     | `bool`   | `false` | Enable gallery wrapping and load the lightGallery assets.                                                                                               |
+| `license_key` | `string` | none    | License key passed to lightGallery. Omit it to use the temporary evaluation key. See [lightGallery licensing](https://www.lightgalleryjs.com/license/). |
 
 ## `[params.footer]`
 

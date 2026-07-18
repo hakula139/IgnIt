@@ -22,6 +22,7 @@ IgnIt is a [kiln](https://github.com/hakula139/kiln) theme built with Tailwind C
 ### Content
 
 - KaTeX math, Mermaid diagrams, Material-palette syntax highlighting
+- Optional lightGallery overlay for article figures and Twikoo content images
 - Per-post comments via a thin provider dispatcher (Twikoo today; Giscus / Waline drop-in)
 - Directive-based shortcodes (music embeds, link cards, etc.)
 - Featured image surfaces — post banner, home / listing cards, OG / Twitter Card meta
@@ -36,7 +37,7 @@ IgnIt is a [kiln](https://github.com/hakula139/kiln) theme built with Tailwind C
 
 ### Performance & Dependencies
 
-- All CDN deps exact-pinned with SRI hashes (FontAwesome, KaTeX, Mermaid, Twikoo)
+- All CDN deps exact-pinned with SRI hashes (FontAwesome, KaTeX, lightGallery, Mermaid, Twikoo)
 - Phase-scoped dep loading — each dep emitted once per page, gated on actual content needs
 - LQIP wrappers paint kiln's base64 backdrop while sources decode
 
@@ -100,7 +101,7 @@ weight = 1
 external = true
 ```
 
-For the complete schema (`[params.background]`, `[params.comments]`, `[params.footer]`, `[params.section]`, `[params.effects]`) and the full menu field list, see [Parameters](docs/parameters.md). For visual customization, social icon overrides, comment provider wiring, and other extension patterns, see [Customization](docs/customization.md).
+For the complete schema (`[params.background]`, `[params.comments]`, `[params.lightgallery]`, `[params.footer]`, `[params.section]`, `[params.effects]`) and the full menu field list, see [Parameters](docs/parameters.md). For visual customization, social icon overrides, comment provider wiring, and other extension patterns, see [Customization](docs/customization.md).
 
 ## Theme Development
 

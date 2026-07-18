@@ -33,8 +33,6 @@
       return;
     }
 
-    // Manual rect.top check: IntersectionObserver only fires on state change, and a
-    // thread taller than the viewport never exits the root, so the flip never arrives.
     bind(
       'jump-to-comments',
       () =>

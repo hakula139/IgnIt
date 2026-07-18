@@ -1,11 +1,10 @@
-/* Unlayered, since it must override Twikoo's injected styles and prose.css defaults at full specificity. */
+/* Must remain unlayered to override Twikoo's injected styles and prose.css defaults. */
 
-/* Override prose.css's inline default for non-figure imgs. */
 .prose .tk-avatar-img {
   @apply my-0 block;
 }
 
-/* OwO emote sits too low at vertical-align: middle (Latin x-height); nudge up for CJK line metrics. */
+/* Offset the OwO emote from Latin x-height to match CJK line metrics. */
 .prose .tk-owo-emotion {
   @apply my-0 align-[-0.3em];
 }
@@ -14,7 +13,7 @@
   @apply mt-6 border-t border-border pt-6;
 }
 
-/* Specificity bump because Twikoo sets `backdrop-filter: opacity(20%)` here. */
+/* Twikoo sets `backdrop-filter: opacity(20%)` at this specificity. */
 .twikoo .tk-comments-container .el-loading-mask {
   backdrop-filter: none;
 }
