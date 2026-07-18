@@ -8,7 +8,6 @@
     { left: '\\(', right: '\\)', display: false },
   ];
 
-  // Map BCP-47 <html lang> to Twikoo's fixed locale codes.
   const TWIKOO_LANG_MAP = {
     'zh-hans': 'zh-CN',
     'zh-hant': 'zh-TW',
