@@ -39,6 +39,7 @@ IgnIt is a [kiln](https://github.com/hakula139/kiln) theme built with Tailwind C
 
 - All CDN deps exact-pinned with SRI hashes (FontAwesome, KaTeX, lightGallery, Mermaid, Twikoo)
 - Phase-scoped dep loading — each dep emitted once per page, gated on actual content needs
+- Content-hashed URLs for local CSS and JavaScript entry assets
 - LQIP wrappers paint kiln's base64 backdrop while sources decode
 
 ### Accessibility

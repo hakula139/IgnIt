@@ -12,12 +12,20 @@
   <link rel="stylesheet" href="{{ config.base_url | safe }}/pagefind/pagefind-component-ui.css">
   <script src="{{ config.base_url | safe }}/pagefind/pagefind-component-ui.js" type="module"></script>
   {%- endif %}
-  <link rel="stylesheet" href="{{ config.base_url | safe }}/css/style.css">
+  <link
+    rel="stylesheet"
+    href="{{ config.base_url | safe }}{{ asset_url('/css/style.css') | safe }}"
+  >
   {%- if page_css %}
   <link rel="stylesheet" href="{{ page_css | safe }}">
   {%- endif %}
-  <script src="{{ config.base_url | safe }}/js/layout/theme.js"></script>
-  <script src="{{ config.base_url | safe }}/js/util/dom-ready.js" defer></script>
+  <script
+    src="{{ config.base_url | safe }}{{ asset_url('/js/layout/theme.js') | safe }}"
+  ></script>
+  <script
+    src="{{ config.base_url | safe }}{{ asset_url('/js/util/dom-ready.js') | safe }}"
+    defer
+  ></script>
   {% include "_partials/layout/head-deps.html" %}
   {%- block head %}{% endblock %}
 </head>
@@ -46,13 +54,28 @@
   <pagefind-modal></pagefind-modal>
   {%- endif %}
   {# Defer scripts ordered by visual urgency: paint-affecting first, interaction-only last. #}
-  <script src="{{ config.base_url | safe }}/js/content/lqip.js" defer></script>
-  <script src="{{ config.base_url | safe }}/js/content/content.js" defer></script>
-  <script src="{{ config.base_url | safe }}/js/content/toc.js" defer></script>
+  <script
+    src="{{ config.base_url | safe }}{{ asset_url('/js/content/lqip.js') | safe }}"
+    defer
+  ></script>
+  <script
+    src="{{ config.base_url | safe }}{{ asset_url('/js/content/content.js') | safe }}"
+    defer
+  ></script>
+  <script
+    src="{{ config.base_url | safe }}{{ asset_url('/js/content/toc.js') | safe }}"
+    defer
+  ></script>
   {%- if config.params.effects and config.params.effects.cursor_glow %}
-  <script src="{{ config.base_url | safe }}/js/layout/glow.js" defer></script>
+  <script
+    src="{{ config.base_url | safe }}{{ asset_url('/js/layout/glow.js') | safe }}"
+    defer
+  ></script>
   {%- endif %}
-  <script src="{{ config.base_url | safe }}/js/layout/float-buttons.js" defer></script>
+  <script
+    src="{{ config.base_url | safe }}{{ asset_url('/js/layout/float-buttons.js') | safe }}"
+    defer
+  ></script>
   {%- if assets is defined %}
   {%- for script in assets.scripts %}
   <script src="{{ script.url | safe }}"

@@ -15,28 +15,43 @@
   {{ cdn.script(lg ~ "/lightgallery.min.js", deps.lightgallery.sri.js) }}
   {{ cdn.script(lg ~ "/plugins/thumbnail/lg-thumbnail.min.js", deps.lightgallery.sri.thumbnail) }}
   {{ cdn.script(lg ~ "/plugins/zoom/lg-zoom.min.js", deps.lightgallery.sri.zoom) }}
-  <script src="{{ base | safe }}/js/content/lightgallery.js" defer></script>
+  <script
+    src="{{ base | safe }}{{ asset_url('/js/content/lightgallery.js') | safe }}"
+    defer
+  ></script>
 {%- endif %}
 
 {%- if need_math %}
   {%- set katex = cdn_base ~ "/katex@" ~ deps.katex.version -%}
   {{ cdn.script(katex ~ "/dist/katex.min.js", deps.katex.sri.js) }}
   {{ cdn.script(katex ~ "/dist/contrib/auto-render.min.js", deps.katex.sri.autorender) }}
-  <script src="{{ base | safe }}/js/content/math.js" defer></script>
+  <script
+    src="{{ base | safe }}{{ asset_url('/js/content/math.js') | safe }}"
+    defer
+  ></script>
 {%- endif %}
 
 {%- if need_mermaid %}
   {%- set mermaid = cdn_base ~ "/mermaid@" ~ deps.mermaid.version -%}
   {{ cdn.script(mermaid ~ "/dist/mermaid.min.js", deps.mermaid.sri.js) }}
-  <script src="{{ base | safe }}/js/content/mermaid.js" defer></script>
+  <script
+    src="{{ base | safe }}{{ asset_url('/js/content/mermaid.js') | safe }}"
+    defer
+  ></script>
 {%- endif %}
 
 {%- if need_twikoo %}
   {%- set twikoo = cdn_base ~ "/twikoo@" ~ deps.twikoo.version -%}
   {{ cdn.script(twikoo ~ "/dist/twikoo.min.js", deps.twikoo.sri.js) }}
-  <script src="{{ base | safe }}/js/comments/twikoo.js" defer></script>
+  <script
+    src="{{ base | safe }}{{ asset_url('/js/comments/twikoo.js') | safe }}"
+    defer
+  ></script>
 {%- endif %}
 
 {%- if need_pagination %}
-  <script src="{{ base | safe }}/js/listing/pagination.js" defer></script>
+  <script
+    src="{{ base | safe }}{{ asset_url('/js/listing/pagination.js') | safe }}"
+    defer
+  ></script>
 {%- endif %}
