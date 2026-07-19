@@ -1,4 +1,4 @@
-/* Unlayered — must override @tailwindcss/typography defaults in @layer utilities. */
+/* Must remain unlayered to override @tailwindcss/typography defaults. */
 
 /* ── Typography Tokens ── */
 
@@ -37,7 +37,6 @@
   @apply inline;
 }
 
-/* Reset Typography plugin styles inside structured code blocks. */
 .prose .code-block {
   @apply my-[1.5em];
 }
@@ -70,7 +69,7 @@
   @apply py-0 pr-4 pl-3;
 }
 
-/* Remove Typography bold and backtick styles on inline code. */
+/* Counteract Typography's bold weight and generated backticks. */
 .prose code {
   @apply font-normal;
 }
@@ -90,7 +89,6 @@
 
 /* ── Borders ── */
 
-/* Override Typography's opaque borders with the soft overlay border. */
 .prose :where(hr, blockquote, th, td, thead, tr) {
   border-color: var(--color-border-overlay);
 }
@@ -103,8 +101,7 @@
 
 /* ── Links ── */
 
-/* Override Typography's text-decoration: use a bottom-border underline instead.
-   Guard mirrors Typography's own not-prose exclusion to avoid leaking into directives. */
+/* Use bottom-border underlines while matching Typography's `.not-prose` exclusion. */
 .prose :where(a:not(.not-prose, .not-prose *)) {
   @apply pb-0.5 no-underline;
 
@@ -113,7 +110,6 @@
   }
 }
 
-/* Heading anchors and footnote refs: no hover border. */
 .prose .heading-anchor,
 .prose .heading-anchor:hover,
 .prose .footnote-reference a,
@@ -129,12 +125,11 @@
   @apply my-1 inline;
 }
 
-/* Remove link border for image-only links (e.g. icon rows). */
-.prose a:has(> img:only-child) {
+.prose a:has(> img:only-child),
+.prose a:has(> .lqip:only-child) {
   @apply border-b-0 pb-0;
 }
 
-/* Allow full HDR luminance on capable displays. */
 @media (dynamic-range: high) {
   .prose figure,
   .prose img,

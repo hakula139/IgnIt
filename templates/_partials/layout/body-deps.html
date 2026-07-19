@@ -1,48 +1,39 @@
-{%- set cdn = config.params.cdn -%}
+{%- import "_partials/macros/cdn.html" as cdn -%}
+{%- set cdn_base = config.params.cdn -%}
 {%- set base = config.base_url -%}
 {%- set deps = config.params.deps -%}
 {%- set comments = config.params.comments | default(value={}) -%}
+{%- set lightgallery = config.params.lightgallery | default(value={}) -%}
+{%- set need_lightgallery = lightgallery.enabled | default(false) -%}
 {%- set need_math = assets is defined and "math" in assets.features -%}
 {%- set need_mermaid = assets is defined and "mermaid" in assets.features -%}
 {%- set need_twikoo = assets is defined and comments.enabled and comments.provider == "twikoo" -%}
 {%- set need_pagination = pagination is defined and pagination.total_pages > 1 -%}
 
+{%- if need_lightgallery %}
+  {%- set lg = cdn_base ~ "/lightgallery@" ~ deps.lightgallery.version -%}
+  {{ cdn.script(lg ~ "/lightgallery.min.js", deps.lightgallery.sri.js) }}
+  {{ cdn.script(lg ~ "/plugins/thumbnail/lg-thumbnail.min.js", deps.lightgallery.sri.thumbnail) }}
+  {{ cdn.script(lg ~ "/plugins/zoom/lg-zoom.min.js", deps.lightgallery.sri.zoom) }}
+  <script src="{{ base | safe }}/js/content/lightgallery.js" defer></script>
+{%- endif %}
+
 {%- if need_math %}
-  {%- set katex = cdn ~ "/katex@" ~ deps.katex.version -%}
-  <script
-    src="{{ katex | safe }}/dist/katex.min.js"
-    integrity="{{ deps.katex.sri.js }}"
-    crossorigin="anonymous"
-    defer
-  ></script>
-  <script
-    src="{{ katex | safe }}/dist/contrib/auto-render.min.js"
-    integrity="{{ deps.katex.sri.autorender }}"
-    crossorigin="anonymous"
-    defer
-  ></script>
+  {%- set katex = cdn_base ~ "/katex@" ~ deps.katex.version -%}
+  {{ cdn.script(katex ~ "/dist/katex.min.js", deps.katex.sri.js) }}
+  {{ cdn.script(katex ~ "/dist/contrib/auto-render.min.js", deps.katex.sri.autorender) }}
   <script src="{{ base | safe }}/js/content/math.js" defer></script>
 {%- endif %}
 
 {%- if need_mermaid %}
-  {%- set mermaid = cdn ~ "/mermaid@" ~ deps.mermaid.version -%}
-  <script
-    src="{{ mermaid | safe }}/dist/mermaid.min.js"
-    integrity="{{ deps.mermaid.sri.js }}"
-    crossorigin="anonymous"
-    defer
-  ></script>
+  {%- set mermaid = cdn_base ~ "/mermaid@" ~ deps.mermaid.version -%}
+  {{ cdn.script(mermaid ~ "/dist/mermaid.min.js", deps.mermaid.sri.js) }}
   <script src="{{ base | safe }}/js/content/mermaid.js" defer></script>
 {%- endif %}
 
 {%- if need_twikoo %}
-  {%- set twikoo = cdn ~ "/twikoo@" ~ deps.twikoo.version -%}
-  <script
-    src="{{ twikoo | safe }}/dist/twikoo.min.js"
-    integrity="{{ deps.twikoo.sri.js }}"
-    crossorigin="anonymous"
-    defer
-  ></script>
+  {%- set twikoo = cdn_base ~ "/twikoo@" ~ deps.twikoo.version -%}
+  {{ cdn.script(twikoo ~ "/dist/twikoo.min.js", deps.twikoo.sri.js) }}
   <script src="{{ base | safe }}/js/comments/twikoo.js" defer></script>
 {%- endif %}
 

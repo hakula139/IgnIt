@@ -1,0 +1,17 @@
+{%- macro script(src, integrity) -%}
+  <script
+    src="{{ src | safe }}"
+    integrity="{{ integrity }}"
+    crossorigin="anonymous"
+    defer
+  ></script>
+{%- endmacro %}
+
+{%- macro stylesheet(href, integrity) -%}
+  <link
+    rel="stylesheet"
+    href="{{ href | safe }}"
+    integrity="{{ integrity }}"
+    crossorigin="anonymous"
+  >
+{%- endmacro %}

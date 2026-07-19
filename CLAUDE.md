@@ -54,9 +54,10 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   ├── fonts/                              # Self-hosted webfonts (Inter Variable + Maple Mono Variable)
 │   └── js/                                 # Mirrors css/_src/components/ subdirs
 │       ├── comments/
-│       │   └── twikoo.js                   # Twikoo widget init (KaTeX delimiters, language)
+│       │   └── twikoo.js                   # Twikoo widget init (KaTeX delimiters, language, lightGallery rewrap on comment load)
 │       ├── content/
 │       │   ├── content.js                  # Code block, callout, heading anchor, and external link enhancements
+│       │   ├── lightgallery.js             # Wraps `.prose figure img` and Twikoo comment images for lightGallery, feeds figcaption to data-sub-html
 │       │   ├── lqip.js                     # LQIP fade-in: cache-aware reveal + lazy-fetch fallback
 │       │   ├── math.js                     # KaTeX auto-render trigger for `.prose` content (feature-gated)
 │       │   ├── mermaid.js                  # Mermaid init + dark-mode re-render hook (uses window.mermaid UMD)
@@ -187,7 +188,7 @@ CJK falls through to system fonts. `url()` paths in `fonts.css` resolve against 
 
 ### Pre-commit
 
-Pre-commit hooks are driven by [git-hooks-nix](https://github.com/cachix/git-hooks.nix), wired in `flake.nix`. Entering the dev shell (`nix develop` or via direnv) installs `.git/hooks/pre-commit` automatically. Hooks: Prettier (with `prettier-plugin-tailwindcss` for class sorting), markdownlint, cspell, nixfmt / statix / deadnix, and basic file hygiene. Node-side hooks no-op when `node_modules/` is absent (e.g., inside the Nix sandbox); CI runs the equivalent commands directly via `pnpm`.
+Pre-commit hooks are driven by [git-hooks-nix](https://github.com/cachix/git-hooks.nix), wired in `flake.nix`. Entering the dev shell (`nix develop` or via direnv) installs `.git/hooks/pre-commit` automatically. Prettier formats CSS / JS / JSON and sorts Tailwind classes, dprint formats Markdown and its fenced code, and Taplo formats standalone TOML. The remaining hooks run markdownlint, cspell, nixfmt / statix / deadnix, and basic file hygiene. Node-side hooks no-op when `node_modules/` is absent (e.g., inside the Nix sandbox); CI runs the equivalent commands directly via `pnpm`.
 
 ### Spell Checking
 

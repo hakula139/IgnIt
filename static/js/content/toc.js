@@ -9,7 +9,6 @@
       return;
     }
 
-    // Build a map from heading ID → TOC link(s).
     const headingIds = [];
     const tocLinks = new Map();
     for (const nav of tocElements) {
@@ -49,8 +48,6 @@
         return;
       }
 
-      // Diff against the previous chain so we only flip .active on the
-      // divergent prefix — consecutive headings usually share most ancestors.
       const oldChain = collectChain(activeId);
       const newChain = collectChain(id);
       const oldSet = new Set(oldChain);
@@ -111,18 +108,16 @@
       scroll.scrollTo({ top: scroll.scrollTop + offset });
     };
 
-    // Track which headings are visible — pick the topmost one.
     const visibleHeadings = new Set();
 
     const pickActive = () => {
-      // Find the first heading in document order that is visible.
       for (const id of headingIds) {
         if (visibleHeadings.has(id)) {
           setActive(id);
           return;
         }
       }
-      // If none visible, keep current active.
+      // Preserve the current item when no headings are visible.
     };
 
     const observer = new IntersectionObserver(
@@ -139,7 +134,6 @@
       { rootMargin: '-80px 0px -60% 0px' },
     );
 
-    // Observe all headings referenced in the TOC.
     for (const id of headingIds) {
       const el = document.getElementById(id);
       if (el) {
@@ -147,7 +141,6 @@
       }
     }
 
-    // Activate the first heading initially.
     setActive(headingIds[0]);
   };
 

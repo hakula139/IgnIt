@@ -55,12 +55,11 @@
 
   /* ── Glass Panel Base ── */
 
-  /* No `position` — consumers (.post-banner, .home-card, .glass-glow) provide their own. */
   .glass-panel {
     @apply rounded-card glass-surface shadow-card backface-hidden;
   }
 
-  /* Always chained with `.glass-panel` in markup, so glass tokens come from there. */
+  /* Markup pairs this with `.glass-panel`, which provides the glass tokens. */
   .header-nav {
     @apply flex h-14 items-center rounded-none border-0 border-b px-6 shadow-none;
   }

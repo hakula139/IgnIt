@@ -33,7 +33,6 @@
       return;
     }
 
-    // rect.top, not IntersectionObserver — tall threads stay intersecting past the header.
     bind(
       'jump-to-comments',
       () =>

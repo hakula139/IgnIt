@@ -34,6 +34,15 @@ autorender = "sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmR
 css = "sha384-UA8juhPf75SzzAMA/4fo3yOU7sBJ0om7SCD2GHq0fZqZco6tr1UCV7nUbk9J90JM"
 js = "sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI"
 
+[params.deps.lightgallery]
+version = "2.9.0"
+
+[params.deps.lightgallery.sri]
+css = "sha384-AUmhf+zg8vrhkZH0O111/sCNYxErcXd/kwycW8/P2Zpo7IGF1+DGfcW/ioM8FEUz"
+js = "sha384-yshhQEAY0bBxbxfLyRlLQ7v1z45XofL6adlFh192s2NpDzXS+HPKjXoloaHiNcYO"
+thumbnail = "sha384-fEQyvUf8v0k02dj9sonsVtih9HbRQlP/1fcd+BAQFXWYgN1po6o1hmmPUSBcpye6"
+zoom = "sha384-QJ6ydDqrwbSI8c6yhk6YNei27dcWq2ztdzEAvhRXR7sqgagOaBk2jLqDwi8R7S8R"
+
 [params.deps.mermaid]
 version = "11.14.0"
 

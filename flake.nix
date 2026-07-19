@@ -71,7 +71,7 @@
         # Pre-commit Hooks
         # ----------------------------------------------------------------------
         # Single source of truth for commit-time checks. Node-side tools run
-        # via `pnpm exec` so prettier picks up `prettier-plugin-tailwindcss`
+        # via `pnpm exec` so prettier picks up its Tailwind plugin
         # and cspell finds the project's `node_modules/@cspell/dict-*`.
         preCommitCheck = git-hooks-nix.lib.${system}.run {
           src = ./.;
@@ -94,6 +94,22 @@
               name = "prettier";
               entry = nodeHook "prettier-write" "prettier --write --ignore-unknown";
               files = "\\.(css|js|json)$";
+              pass_filenames = true;
+            };
+
+            dprint-write = {
+              enable = true;
+              name = "dprint";
+              entry = nodeHook "dprint-write" "dprint fmt";
+              files = "\\.md$";
+              pass_filenames = true;
+            };
+
+            taplo-write = {
+              enable = true;
+              name = "taplo";
+              entry = nodeHook "taplo-write" "taplo format";
+              files = "\\.toml$";
               pass_filenames = true;
             };
 

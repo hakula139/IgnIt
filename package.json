@@ -4,7 +4,10 @@
   "scripts": {
     "build": "tailwindcss -i static/css/_src/main.css -o static/css/style.css",
     "dev": "tailwindcss -i static/css/_src/main.css -o static/css/style.css --watch",
-    "format": "prettier --check .",
+    "format": "pnpm format:prettier && pnpm format:markdown && pnpm format:toml",
+    "format:prettier": "prettier --check \"**/*.{css,js,json}\"",
+    "format:markdown": "dprint check",
+    "format:toml": "taplo format --check",
     "lint": "pnpm lint:md && pnpm lint:js",
     "lint:js": "eslint .",
     "lint:md": "markdownlint-cli2 \"**/*.md\"",
@@ -13,12 +16,14 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@tailwindcss/cli": "^4.2.4",
+    "@taplo/cli": "^0.7.0",
     "@tailwindcss/typography": "^0.5.19",
     "cspell": "^10.0.0",
     "eslint": "^10.3.0",
     "globals": "^17.6.0",
     "markdownlint-cli2": "^0.22.1",
     "prettier": "^3.8.3",
+    "dprint": "^0.55.2",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "tailwindcss": "^4.2.4"
   }
