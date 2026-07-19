@@ -110,7 +110,7 @@ To translate the theme into a language IgnIt doesn't ship, place a complete `i18
 
 ```toml
 # my-site/i18n/en.toml
-back_to_top = "Top"          # tighter than IgnIt's default "Back to top"
+back_to_top = "Top" # tighter than IgnIt's default "Back to top"
 ```
 
 ## Comments Providers
