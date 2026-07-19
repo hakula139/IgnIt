@@ -3,6 +3,8 @@
     @apply text-xl leading-tight font-semibold sm:text-2xl;
   }
 
+  /* ── Post Banner ── */
+
   .post-banner {
     @apply relative overflow-hidden rounded-t-card;
     /* Chromium does not reliably clip transformed children with overflow and border-radius alone. */

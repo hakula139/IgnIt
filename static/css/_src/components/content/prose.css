@@ -1,6 +1,9 @@
 /* Must remain unlayered to override @tailwindcss/typography defaults. */
 
+/* ── Typography Tokens ── */
+
 .prose {
+  /* Text */
   --tw-prose-body: var(--color-text);
   --tw-prose-headings: var(--color-text);
   --tw-prose-bold: var(--color-text);
@@ -8,12 +11,16 @@
   --tw-prose-code: var(--color-text);
   --tw-prose-pre-bg: color-mix(in oklab, var(--color-bg-muted) 60%, transparent);
 
+  /* Lists */
   --tw-prose-counters: var(--color-text-secondary);
   --tw-prose-bullets: var(--color-text-secondary);
 
+  /* Decorations */
   --tw-prose-quotes: var(--color-text-secondary);
   --tw-prose-captions: var(--color-text-secondary);
 }
+
+/* ── Headings ── */
 
 .prose :where(h2) {
   @apply mt-[1.5em] text-[1.25em];
@@ -22,6 +29,8 @@
 .prose :where(h3) {
   @apply text-[1.1em];
 }
+
+/* ── Code Blocks ── */
 
 /* Prevent Tailwind utility collision with syntect class names (e.g. "block"). */
 .prose .highlight span {
@@ -70,19 +79,27 @@
   @apply content-none;
 }
 
+/* ── Blockquotes ── */
+
 /* Remove Typography's auto-inserted quotation marks. */
 .prose :where(blockquote p:first-of-type)::before,
 .prose :where(blockquote p:last-of-type)::after {
   @apply content-none;
 }
 
+/* ── Borders ── */
+
 .prose :where(hr, blockquote, th, td, thead, tr) {
   border-color: var(--color-border-overlay);
 }
 
+/* ── Lists ── */
+
 .prose :where(li) {
   @apply my-0.5;
 }
+
+/* ── Links ── */
 
 /* Use bottom-border underlines while matching Typography's `.not-prose` exclusion. */
 .prose :where(a:not(.not-prose, .not-prose *)) {
@@ -99,6 +116,8 @@
 .prose .footnote-reference a:hover {
   @apply border-b-0;
 }
+
+/* ── Images ── */
 
 /* Override Tailwind reset (display: block) and Typography margins for non-figure
    images so inline icons flow naturally. Block images use <figure>. */
@@ -120,13 +139,19 @@
 }
 
 @layer components {
+  /* ── Code ── */
+
   .prose code {
     @apply rounded bg-bg-muted/60 px-1.5 py-0.5 text-[0.875em];
   }
 
+  /* ── Text ── */
+
   .prose :where(p, li) {
     @apply wrap-break-word;
   }
+
+  /* ── Heading Anchors ── */
 
   .prose :where(h1, h2, h3, h4, h5, h6) {
     @apply relative -ml-5 pl-5;
@@ -145,6 +170,8 @@
     @apply hidden;
   }
 
+  /* ── Images ── */
+
   .prose figure img {
     @apply mx-auto rounded-lg;
   }
@@ -153,6 +180,8 @@
     @apply rounded-lg text-center;
   }
 
+  /* ── Tables ── */
+
   .prose table {
     @apply block w-auto overflow-x-auto;
   }
@@ -160,6 +189,8 @@
   .prose :where(th, td) {
     @apply whitespace-nowrap;
   }
+
+  /* ── Footnotes ── */
 
   .prose .footnote-definition {
     @apply mt-4 flex gap-2 border-t border-border-overlay pt-4 text-sm text-text-tertiary;

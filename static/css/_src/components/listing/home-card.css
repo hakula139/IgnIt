@@ -56,6 +56,8 @@
     @apply absolute inset-0 z-5 border-0;
   }
 
+  /* ── Desktop: Title Centered by Default, Reveal on Hover ── */
+
   @media (min-width: 1280px) {
     .home-card-overlay {
       @apply from-black/65 via-black/30 to-black/10;
@@ -114,6 +116,8 @@
     }
   }
 
+  /* ── Pinned Indicator ── */
+
   .home-card-pin {
     @apply pointer-events-none absolute top-3 right-3 z-10 flex h-7 w-7 items-center justify-center rounded-full text-sm text-text-secondary;
   }
@@ -125,6 +129,8 @@
   .post-entry-pin {
     @apply mr-2 inline-block -rotate-45 text-text-secondary;
   }
+
+  /* ── Profile ── */
 
   .profile-avatar {
     @apply mx-auto mb-4 h-24 w-24 rounded-full shadow-md;

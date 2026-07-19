@@ -1,9 +1,13 @@
 @layer components {
+  /* ── Trigger ── */
+
   .code-header,
   .callout-title,
   .toc-trigger {
     @apply flex cursor-pointer items-center gap-2 px-4 text-sm select-none;
   }
+
+  /* ── Chevron ── */
 
   .code-header::before,
   .callout-title::after,
@@ -22,6 +26,8 @@
   .toc-collapse.collapsed .toc-trigger::after {
     @apply -rotate-90;
   }
+
+  /* ── Body (CSS grid row animation) ── */
 
   .code-body,
   .callout-body,
