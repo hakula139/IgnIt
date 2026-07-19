@@ -188,7 +188,7 @@ CJK falls through to system fonts. `url()` paths in `fonts.css` resolve against 
 
 ### Pre-commit
 
-Pre-commit hooks are driven by [git-hooks-nix](https://github.com/cachix/git-hooks.nix), wired in `flake.nix`. Entering the dev shell (`nix develop` or via direnv) installs `.git/hooks/pre-commit` automatically. Hooks: Prettier (with `prettier-plugin-tailwindcss` for class sorting and `prettier-plugin-toml` for TOML formatting), markdownlint, cspell, nixfmt / statix / deadnix, and basic file hygiene. Node-side hooks no-op when `node_modules/` is absent (e.g., inside the Nix sandbox); CI runs the equivalent commands directly via `pnpm`.
+Pre-commit hooks are driven by [git-hooks-nix](https://github.com/cachix/git-hooks.nix), wired in `flake.nix`. Entering the dev shell (`nix develop` or via direnv) installs `.git/hooks/pre-commit` automatically. Prettier formats CSS / JS / JSON and sorts Tailwind classes, dprint formats Markdown and its fenced code, and Taplo formats standalone TOML. The remaining hooks run markdownlint, cspell, nixfmt / statix / deadnix, and basic file hygiene. Node-side hooks no-op when `node_modules/` is absent (e.g., inside the Nix sandbox); CI runs the equivalent commands directly via `pnpm`.
 
 ### Spell Checking
 

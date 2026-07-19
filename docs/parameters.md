@@ -36,8 +36,8 @@ Home-page profile panel and pagination.
 
 ```toml
 [params.home.profile]
-avatar = "/images/avatar.webp"   # Site-relative or absolute URL
-title = "Site Title"             # Falls back to config.title when unset
+avatar = "/images/avatar.webp" # Site-relative or absolute URL
+title = "Site Title" # Falls back to config.title when unset
 subtitle = "An optional tagline"
 ```
 

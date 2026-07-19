@@ -3,7 +3,6 @@
   "quoteProps": "consistent",
   "singleQuote": true,
   "trailingComma": "all",
-  "plugins": ["prettier-plugin-toml", "prettier-plugin-tailwindcss"],
-  "alignComments": true,
+  "plugins": ["prettier-plugin-tailwindcss"],
   "tailwindStylesheet": "./static/css/_src/main.css"
 }

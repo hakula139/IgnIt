@@ -1,0 +1,5 @@
+include = ["**/*.toml"]
+exclude = [".direnv/**", "node_modules/**"]
+
+[formatting]
+align_comments = true
