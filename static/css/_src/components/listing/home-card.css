@@ -20,7 +20,7 @@
   }
 
   .home-card-meta {
-    @apply mt-3 text-sm text-white/80;
+    @apply mt-3 flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 text-sm text-white/80;
   }
 
   .home-card-desc {
@@ -44,7 +44,7 @@
   }
 
   .home-card-link {
-    @apply pointer-events-auto border-b-0 text-white/80 no-underline transition-colors;
+    @apply pointer-events-auto inline-flex items-center gap-1 border-b-0 text-white/80 no-underline transition-colors;
   }
 
   .home-card-link:hover {
