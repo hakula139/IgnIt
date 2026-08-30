@@ -19,6 +19,7 @@ table_of_contents = "Table of Contents"
 jump_to = "Jump to"
 image_credit = "Image credit"
 back_to_top = "Back to top"
+views = "views"
 
 # Comments
 comments = "Comments"

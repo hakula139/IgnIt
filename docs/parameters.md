@@ -69,9 +69,21 @@ Per-post comment system.
 Provider-specific configuration lives under `[params.comments.<provider>]`:
 
 ```toml
+[params.comments]
+enabled = true
+provider = "twikoo"
+
 [params.comments.twikoo]
 api_url = "https://twikoo.example.com"
+visitor = true
 ```
+
+| Field     | Type     | Default | Description                                                                |
+| --------- | -------- | ------- | -------------------------------------------------------------------------- |
+| `api_url` | `string` | —       | Twikoo API endpoint.                                                       |
+| `visitor` | `bool`   | `false` | Show and increment the Twikoo view count on each post and standalone page. |
+
+The visitor counter requires comments to be enabled with the Twikoo provider; a counter-only mode is not supported. It records raw page hits rather than unique visitors, so each successful Twikoo initialization increments the count, including reloads and repeat visits.
 
 Adding a provider is a [Customization](customization.md#comments-providers) topic.
 

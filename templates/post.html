@@ -8,6 +8,9 @@
 {%- endblock %}
 
 {% block body %}
+{%- set comments = config.params.comments | default(value={}) -%}
+{%- set twikoo = comments.twikoo | default(value={}) -%}
+{%- set show_page_views = comments.enabled and comments.provider == "twikoo" and twikoo.visitor -%}
   <div class="max-w-6xl mx-auto px-4 py-6">
     <div class="xl:flex xl:gap-8">
       <div class="flex-1 min-w-0 space-y-8">
@@ -18,20 +21,31 @@
             <div class="p-6 sm:p-8">
               <header class="mb-6">
                 <h1 class="article-title" data-pagefind-meta="title">{{ title }}</h1>
-                {%- if date or section %}
-                <div class="mt-2 text-sm text-text-secondary">
+                {%- if date or section or show_page_views %}
+                <div class="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-text-secondary">
                   {%- if date %}
                   <time datetime="{{ date }}">{{ date[:10] }}</time>
                   {%- endif %}
                   {%- if section %}
-                  <span>
-                    {%- if date %}&ensp;·&ensp;{% endif -%}
+                  <span class="inline-flex items-center gap-1.5">
+                    {%- if date %}<span aria-hidden="true">·</span>{% endif -%}
                     <a
                       href="{{ section.url | safe }}"
-                      class="text-text-secondary border-b-0 transition-colors hover:text-link-hover"
+                      class="inline-flex items-center gap-1 text-text-secondary border-b-0 transition-colors hover:text-link-hover"
                     >
-                      <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ section.name }}
+                      <i class="far fa-folder fa-fw" aria-hidden="true"></i>
+                      <span>{{ section.name }}</span>
                     </a>
+                  </span>
+                  {%- endif %}
+                  {%- if show_page_views %}
+                  <span class="inline-flex items-center gap-1.5">
+                    {%- if date or section %}<span aria-hidden="true">·</span>{% endif -%}
+                    <span class="inline-flex items-center gap-1" aria-live="polite" aria-atomic="true">
+                      <i class="far fa-eye fa-fw" aria-hidden="true"></i>
+                      <span id="twikoo_visitors">—</span>
+                      <span>{{ t('views') }}</span>
+                    </span>
                   </span>
                   {%- endif %}
                 </div>

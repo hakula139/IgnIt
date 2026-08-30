@@ -24,6 +24,7 @@ IgnIt is a [kiln](https://github.com/hakula139/kiln) theme built with Tailwind C
 - KaTeX math, Mermaid diagrams, Material-palette syntax highlighting
 - Optional lightGallery overlay for article figures and Twikoo content images
 - Per-post comments via a thin provider dispatcher (Twikoo today; Giscus / Waline drop-in)
+- Optional Twikoo view counts for posts and standalone pages
 - Directive-based shortcodes (music embeds, link cards, etc.)
 - Featured image surfaces — post banner, home / listing cards, OG / Twitter Card meta
 

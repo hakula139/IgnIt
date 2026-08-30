@@ -96,10 +96,11 @@
             <time datetime="{{ page.date }}">{{ page.date[:10] }}</time>
             {%- endif %}
             {%- if page.section %}
-            <span>
-              {%- if page.date %}&ensp;·&ensp;{% endif -%}
+            <span class="inline-flex items-center gap-1.5">
+              {%- if page.date %}<span aria-hidden="true">·</span>{% endif -%}
               <a href="{{ page.section.url | safe }}" class="home-card-link">
-                <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ page.section.name }}
+                <i class="far fa-folder fa-fw" aria-hidden="true"></i>
+                <span>{{ page.section.name }}</span>
               </a>
             </span>
             {%- endif %}
