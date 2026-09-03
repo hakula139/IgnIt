@@ -21,18 +21,18 @@ cursor_glow = false
 # CDN dependencies — pinned versions + SRI hashes.
 # See CLAUDE.md for the regeneration flow when bumping a version.
 [params.deps.fontawesome]
-version = "6.7.2"
+version = "7.3.1"
 
 [params.deps.fontawesome.sri]
-css = "sha384-nRgPTkuX86pH8yjPJUAFuASXQSSl2/bBUiNV47vSYpKFxHJhbcrGnmlYpYJMeD7a"
+css = "sha384-qrALq7+6jBOZIQsNnT6xGkMDru64qD6uTlDra39xrt2SoXl4pO3FX6Roz/RpR/BS"
 
 [params.deps.katex]
-version = "0.16.45"
+version = "0.18.4"
 
 [params.deps.katex.sri]
 autorender = "sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz"
-css = "sha384-UA8juhPf75SzzAMA/4fo3yOU7sBJ0om7SCD2GHq0fZqZco6tr1UCV7nUbk9J90JM"
-js = "sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI"
+css = "sha384-u1zONI5gPXUx0UKI62c75/zww972y0v2rSK5ZYlVdS6xEuWDeZWUI66v6t1gvlXJ"
+js = "sha384-ykMNcWQhhTUb0YV9SPpPUFURHZ+tWmubkakGBP+OgNK/UXdO2gtzglWx0Rj9hnO3"
 
 [params.deps.lightgallery]
 version = "2.9.0"
@@ -44,13 +44,13 @@ thumbnail = "sha384-fEQyvUf8v0k02dj9sonsVtih9HbRQlP/1fcd+BAQFXWYgN1po6o1hmmPUSBc
 zoom = "sha384-QJ6ydDqrwbSI8c6yhk6YNei27dcWq2ztdzEAvhRXR7sqgagOaBk2jLqDwi8R7S8R"
 
 [params.deps.mermaid]
-version = "11.14.0"
+version = "11.17.2"
 
 [params.deps.mermaid.sri]
-js = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk"
+js = "sha384-EOXBFmc3gx5mb+vn0vPvvGqACToJD24hhacX5Yx+8NUUQrHIle/Qi5Bg9o3zKwW2"
 
 [params.deps.twikoo]
-version = "1.7.9"
+version = "1.7.20"
 
 [params.deps.twikoo.sri]
-js = "sha384-uS5XTM0hprJZj0R184twNRV12L55VagOlT/XQaj1uAebA0RtO7diEr+dE9TBn5N2"
+js = "sha384-yoiW6B9POkG8YiZgmBFK1Q3jJhKNqcdMOJGKRUDAno6UZBq8XHCDyx10i1INEjbz"
