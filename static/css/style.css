@@ -1579,7 +1579,7 @@
   }
   .callout-title::before {
     flex-shrink: 0;
-    font-family: 'Font Awesome 6 Free';
+    font-family: var(--fa-family-classic);
     font-weight: 900;
     content: var(--callout-icon, '\f05a');
   }
@@ -1758,7 +1758,7 @@
   }
   .code-header::before, .callout-title::after, .toc-trigger::after {
     flex-shrink: 0;
-    font-family: 'Font Awesome 6 Free';
+    font-family: var(--fa-family-classic);
     font-weight: 900;
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
@@ -2259,7 +2259,7 @@
   }
   .toc-trigger::before {
     flex-shrink: 0;
-    font-family: 'Font Awesome 6 Free';
+    font-family: var(--fa-family-classic);
     font-weight: 900;
     color: var(--color-text-tertiary);
     content: '\f0ca';
