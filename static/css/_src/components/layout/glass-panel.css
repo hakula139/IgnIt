@@ -1,6 +1,10 @@
-@utility glass-surface {
-  @apply border backdrop-blur-lg backdrop-saturate-125;
+@utility glass-backdrop {
+  @apply backdrop-blur-lg backdrop-saturate-125;
   background: var(--surface-glass-panel);
+}
+
+@utility glass-surface {
+  @apply border glass-backdrop;
   border-color: var(--surface-glass-border);
 }
 
