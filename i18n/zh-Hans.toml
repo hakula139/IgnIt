@@ -25,11 +25,13 @@ views = "次阅读"
 comments = "评论"
 jump_to_comments = "跳转至评论区"
 
-# 指令 — 音乐
+# 指令
+directive_missing_args = "缺少 {directive} 参数：{args}"
 music_player_apple = "Apple Music"
 music_player_netease = "网易云音乐"
 music_player_tencent = "QQ 音乐"
-music_unknown_server = "未知音乐服务: {server}"
+music_unknown_server = "未知音乐服务：{server}"
+video_player_bilibili = "哔哩哔哩"
 
 # 页脚
 powered_by = "由 {kiln} 与 {ignit} 强力驱动"

@@ -1,0 +1,15 @@
+{%- set id = named_args.id | default("") -%}
+
+<div class="player-wrapper">
+{%- if id %}
+  <iframe
+    class="aspect-video"
+    title="{{ t('video_player_bilibili') }}"
+    loading="lazy"
+    allowfullscreen
+    src="https://player.bilibili.com/player.html?bvid={{ id }}&autoplay=0&danmaku=0&poster=1"
+  ></iframe>
+{%- else %}
+  <p>{{ t("directive_missing_args", directive="bilibili", args="id") }}</p>
+{%- endif %}
+</div>

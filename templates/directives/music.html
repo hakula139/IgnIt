@@ -1,7 +1,12 @@
 {%- set server = named_args.server | default("") -%}
 {%- set id = named_args.id | default("") -%}
 
-{%- if server == "apple" -%}
+{%- if not server or not id -%}
+<div class="player-wrapper">
+  <p>{{ t("directive_missing_args", directive="music", args="server, id") }}</p>
+</div>
+
+{%- elif server == "apple" -%}
 {#- Apple Music: dual light/dark iframes -#}
 {%- set type = named_args.type | default("playlist") -%}
 {%- set name = named_args.name | default("") -%}
@@ -38,9 +43,8 @@
   {%- set outchain_type = 2 -%}
   {%- set inner_height = 66 -%}
 {%- endif -%}
-<div class="music-player-wrapper">
+<div class="player-wrapper">
   <iframe
-    class="w-full border-0"
     title="{{ t('music_player_netease') }}"
     height="{{ height }}"
     src="https://music.163.com/outchain/player?type={{ outchain_type }}&id={{ id }}&auto=0&height={{ inner_height }}"
@@ -50,9 +54,8 @@
 {%- elif server == "tencent" -%}
 {#- QQ Music: official outchain player (requires numeric songid) -#}
 {%- set height = named_args.height | default("66") -%}
-<div class="music-player-wrapper">
+<div class="player-wrapper">
   <iframe
-    class="w-full border-0"
     title="{{ t('music_player_tencent') }}"
     height="{{ height }}"
     src="https://i.y.qq.com/n2/m/outchain/player/index.html?songid={{ id }}&songtype=0"
@@ -61,7 +64,7 @@
 
 {%- else -%}
 {#- Unknown server -#}
-<div class="music-player-wrapper">
+<div class="player-wrapper">
   <p>{{ t("music_unknown_server", server=server) }}</p>
 </div>
 {%- endif -%}
