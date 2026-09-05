@@ -11,9 +11,8 @@
 
     /* WebKit caps total backdrop area, so only blur the visible article surface. */
     article.glass-panel::before {
-      @apply pointer-events-none sticky top-0 -z-1 -mb-[100vh] block h-screen backdrop-blur-lg backdrop-saturate-125;
+      @apply pointer-events-none sticky top-0 -z-1 -mb-[100vh] block h-screen glass-backdrop;
       content: '';
-      background: var(--surface-glass-panel);
     }
   }
 
