@@ -26,6 +26,7 @@ comments = "Comments"
 jump_to_comments = "Jump to comments"
 
 # Directives
+directive_missing_args = "Missing {directive} arguments: {args}"
 music_player_apple = "Apple Music"
 music_player_netease = "NetEase Music"
 music_player_tencent = "QQ Music"
