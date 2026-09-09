@@ -17,13 +17,18 @@
 
     article.article-background-cached::before {
       @apply bg-transparent backdrop-filter-none;
-      background-image:
-        linear-gradient(var(--surface-glass-panel), var(--surface-glass-panel)),
-        var(--article-background-image);
+      background-image: var(--article-background-image);
       background-attachment: fixed;
-      background-size: auto, cover;
-      background-position: center, var(--article-background-position);
+      background-size: cover;
+      background-position: var(--article-background-position);
       background-repeat: no-repeat;
+    }
+
+    /* Keep the tint animatable during theme changes, above the cached image. */
+    article.article-background-cached::after {
+      @apply pointer-events-none absolute inset-0 -z-1;
+      background-color: var(--surface-glass-panel);
+      content: '';
     }
   }
 
