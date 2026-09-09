@@ -1501,6 +1501,16 @@
       background: var(--surface-glass-panel);
       content: '';
     }
+    article.article-background-cached::before {
+      background-color: transparent;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+      background-image: linear-gradient(var(--surface-glass-panel), var(--surface-glass-panel)), var(--article-background-image);
+      background-attachment: fixed;
+      background-size: auto, cover;
+      background-position: center, var(--article-background-position);
+      background-repeat: no-repeat;
+    }
   }
   .article-title {
     font-size: var(--text-xl);

@@ -56,6 +56,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │       ├── comments/
 │       │   └── twikoo.js                   # Twikoo widget init (KaTeX delimiters, language, lightGallery rewrap on comment load)
 │       ├── content/
+│       │   ├── article-background.js       # Cached article blur with resize handling and live-filter fallback
 │       │   ├── content.js                  # Code block, callout, heading anchor, and external link enhancements
 │       │   ├── lightgallery.js             # Wraps `.prose figure img` and Twikoo comment images for lightGallery, feeds figcaption to data-sub-html
 │       │   ├── lqip.js                     # LQIP fade-in: cache-aware reveal + lazy-fetch fallback

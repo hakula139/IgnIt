@@ -14,6 +14,17 @@
       @apply pointer-events-none sticky top-0 -z-1 -mb-[100vh] block h-screen glass-backdrop;
       content: '';
     }
+
+    article.article-background-cached::before {
+      @apply bg-transparent backdrop-filter-none;
+      background-image:
+        linear-gradient(var(--surface-glass-panel), var(--surface-glass-panel)),
+        var(--article-background-image);
+      background-attachment: fixed;
+      background-size: auto, cover;
+      background-position: center, var(--article-background-position);
+      background-repeat: no-repeat;
+    }
   }
 
   .article-title {

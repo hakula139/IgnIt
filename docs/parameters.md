@@ -26,6 +26,8 @@ Site-wide background image with optional LQIP backdrop. Omit the table to use so
 
 `lqip_uri` is a hand-rolled placeholder — kiln auto-generates LQIPs only for content `<img>` tags, not CSS-background equivalents. See [kiln's image pipeline docs](https://github.com/hakula139/kiln/blob/main/docs/themes.md#image-rendering) for the data-URI format.
 
+Article pages cache a blurred copy of this static background when canvas filters are available, preserving its crop and the glass tint while reducing scrolling work. The cache is rebuilt after resizing. Other glass panels keep live backdrop blur, and articles retain it when caching is unavailable.
+
 ## `[params.home]` / `[params.home.profile]`
 
 Home-page profile panel and pagination.

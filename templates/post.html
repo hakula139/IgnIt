@@ -5,6 +5,10 @@
 {% block head %}
 {%- set og_type = "article" -%}
 {%- include "_partials/content/meta-og.html" %}
+  <script
+    src="{{ config.base_url | safe }}{{ asset_url('/js/content/article-background.js') | safe }}"
+    defer
+  ></script>
 {%- endblock %}
 
 {% block body %}
