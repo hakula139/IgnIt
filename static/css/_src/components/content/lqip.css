@@ -22,7 +22,8 @@
   }
 
   .prose figure > .lqip,
-  .prose figure > .lightgallery {
+  .prose figure > .lightgallery,
+  .prose figure > .lightgallery > .lqip {
     @apply mx-auto block w-fit max-w-full rounded-lg;
   }
 
