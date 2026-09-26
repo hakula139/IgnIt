@@ -12,12 +12,7 @@
       }
       el.removeAttribute('data-processed');
     }
-    window.mermaid.initialize({
-      startOnLoad: false,
-      theme: themeFor(),
-      layout: 'dagre',
-      look: 'classic',
-    });
+    window.mermaid.initialize({ startOnLoad: false, theme: themeFor() });
     await window.mermaid.run({ nodes: blocks });
   };
 
