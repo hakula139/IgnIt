@@ -27,12 +27,12 @@ version = "7.3.1"
 css = "sha384-qrALq7+6jBOZIQsNnT6xGkMDru64qD6uTlDra39xrt2SoXl4pO3FX6Roz/RpR/BS"
 
 [params.deps.katex]
-version = "0.18.4"
+version = "0.18.9"
 
 [params.deps.katex.sri]
 autorender = "sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz"
-css = "sha384-u1zONI5gPXUx0UKI62c75/zww972y0v2rSK5ZYlVdS6xEuWDeZWUI66v6t1gvlXJ"
-js = "sha384-ykMNcWQhhTUb0YV9SPpPUFURHZ+tWmubkakGBP+OgNK/UXdO2gtzglWx0Rj9hnO3"
+css = "sha384-lPx0C4zIUZLpveABMwOFcFeGZwsvKBJfhJ85FN1PYOV7xApBcFMhcAEMVKF8loOI"
+js = "sha384-19KE2cFb3U+RUWmyhBz7aLOGDG8WrRC6hE3oY/HTZZlAAVWYTdmvLC//+TIV3zUx"
 
 [params.deps.lightgallery]
 version = "2.9.0"
@@ -44,10 +44,10 @@ thumbnail = "sha384-fEQyvUf8v0k02dj9sonsVtih9HbRQlP/1fcd+BAQFXWYgN1po6o1hmmPUSBc
 zoom = "sha384-QJ6ydDqrwbSI8c6yhk6YNei27dcWq2ztdzEAvhRXR7sqgagOaBk2jLqDwi8R7S8R"
 
 [params.deps.mermaid]
-version = "11.17.2"
+version = "12.0.0"
 
 [params.deps.mermaid.sri]
-js = "sha384-EOXBFmc3gx5mb+vn0vPvvGqACToJD24hhacX5Yx+8NUUQrHIle/Qi5Bg9o3zKwW2"
+js = "sha384-xzghz1GQ5u9HCpVskeDPqMsdogD1yvuMQbEK53+wi+G70+6J1AG0L2cfi9PHjDWI"
 
 [params.deps.twikoo]
 version = "1.7.20"
