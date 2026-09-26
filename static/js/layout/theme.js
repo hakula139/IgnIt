@@ -3,7 +3,7 @@
 (() => {
   // ── LQIP Fade-In ──
 
-  // Enable LQIP CSS before first paint; `lqip.js` reveals each image.
+  // Enable LQIP CSS before first paint. `lqip.js` then reveals each image.
   document.documentElement.classList.add('lqip-fade-enabled');
 
   // ── Theme ──
@@ -188,7 +188,6 @@
     setTheme(DARK);
   }
 
-  // Listen for system preference changes (when no explicit choice stored).
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     if (!getStoredTheme()) {
       enableTransition();

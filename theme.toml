@@ -1,5 +1,5 @@
 name = "IgnIt"
-description = "A clean, feature-rich theme for kiln — inspired by Hugo LoveIt"
+description = "A clean, feature-rich theme for kiln, inspired by Hugo LoveIt"
 license = "MIT"
 min_kiln_version = "0.3.0-rc.3"
 
@@ -14,11 +14,11 @@ emojis = true
 fontawesome = true
 
 [params.effects]
-# Cursor-tracking glow on glass panels. Off by default — see README
-# (Visual Effects) for the rendering caveats before enabling.
+# Cursor-tracking glow on glass panels. See docs/parameters.md for the
+# rendering caveats before enabling.
 cursor_glow = false
 
-# CDN dependencies — pinned versions + SRI hashes.
+# CDN dependencies, pinned to exact versions with SRI hashes.
 # See CLAUDE.md for the regeneration flow when bumping a version.
 [params.deps.fontawesome]
 version = "7.3.1"
