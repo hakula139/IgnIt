@@ -1,5 +1,3 @@
-/* Chromium ignores ::-webkit-scrollbar once scrollbar-width / scrollbar-color are set, which
-   leaves auto-hiding overlay scrollbars on macOS, so only Firefox gets the standard pair. */
 @utility styled-scrollbar {
   &::-webkit-scrollbar {
     @apply h-2 w-2;
@@ -17,6 +15,7 @@
     @apply bg-text-tertiary;
   }
 
+  /* Standard scrollbar properties override Chromium's pseudo-element styles. */
   @supports not selector(::-webkit-scrollbar) {
     scrollbar-width: thin;
     scrollbar-color: var(--color-text-tertiary) transparent;

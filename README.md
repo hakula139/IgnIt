@@ -5,49 +5,29 @@
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/hakula139/IgnIt)
 ![WakaTime coding time for IgnIt](https://wakatime.com/badge/user/f4a35a1f-0e29-4093-a647-e66aad164737/project/662307e9-d5bf-4e61-adc7-f900b9a95543.svg)
 
-A clean, feature-rich theme for [kiln](https://github.com/hakula139/kiln), inspired by Hugo [LoveIt](https://github.com/dillonzq/LoveIt).
-
-## Overview
-
-IgnIt is a [kiln](https://github.com/hakula139/kiln) theme built with Tailwind CSS v4 and MiniJinja templates. The visual design centers on glassmorphism over a configurable background image, and the implementation keeps a single Tailwind source pipeline with conventions documented in [CLAUDE.md](./CLAUDE.md).
+A theme for [kiln](https://github.com/hakula139/kiln) built with Tailwind CSS and MiniJinja, inspired by Hugo [LoveIt](https://github.com/dillonzq/LoveIt).
 
 ## Highlights
 
-### Visual Design
+### Design & Navigation
 
-- Glassmorphism panels with configurable background image and optional cursor-tracking glow (off by default)
-- Dark / light mode with system preference detection and flash-free manual toggle
-- Self-hosted Inter Variable + Maple Mono webfonts, with CJK falling through to system fonts
-- Print-optimized styles with clean typography, exposed link URLs, and hidden chrome
+- Glassmorphism panels over a configurable background, with light and dark modes
+- Responsive layouts with image cards, archives, and a table of contents
+- Full-text search with Pagefind
+- Keyboard navigation, reduced-motion support, and print styles
 
 ### Content
 
-- KaTeX math, Mermaid diagrams, Material-palette syntax highlighting
-- Optional lightGallery overlay for article figures and Twikoo content images
-- Per-post comments via a thin provider dispatcher (Twikoo built in, other providers via a site partial)
-- Optional Twikoo view counts for posts and standalone pages
-- Directive-based shortcodes (music and Bilibili embeds, link cards)
-- Featured images on the post banner, home cards, and OG / Twitter Card meta
+- KaTeX math, Mermaid diagrams, and syntax highlighting
+- Image galleries with lightGallery
+- Twikoo comments and page views
+- Music and Bilibili embeds, link cards, and featured images
 
-### Layout & Navigation
+### Customization & Performance
 
-- Sticky TOC sidebar (desktop) and collapsible TOC (mobile)
-- Home page image cards with gradient overlays and desktop hover reveal
-- Tag cloud, year-grouped archive, numbered pagination with page-jump
-- Back-to-top + jump-to-comments float buttons (scroll-position-aware)
-- Mobile menu with staggered item fade-in
-
-### Performance & Dependencies
-
-- All CDN deps exact-pinned with SRI hashes (FontAwesome, KaTeX, lightGallery, Mermaid, Twikoo)
-- Phase-scoped dep loading, with each dep emitted once per page and gated on actual content needs
-- Content-hashed URLs for local CSS and JavaScript entry assets
-- LQIP wrappers paint kiln's base64 backdrop while sources decode
-
-### Accessibility
-
-- Keyboard-accessible focus states (`:focus-visible`), skip-to-content link, semantic landmark regions
-- `prefers-reduced-motion` honored across animations and smooth-scroll
+- Site overrides for templates, design tokens, and translated strings
+- Self-hosted fonts and content-dependent script loading
+- Blurred image placeholders and fingerprinted CSS / JS assets
 
 ## Documentation
 
