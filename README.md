@@ -4,29 +4,29 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/hakula139/IgnIt)
 
-A clean, feature-rich theme for [kiln](https://github.com/hakula139/kiln) — inspired by Hugo [LoveIt](https://github.com/dillonzq/LoveIt).
+A clean, feature-rich theme for [kiln](https://github.com/hakula139/kiln), inspired by Hugo [LoveIt](https://github.com/dillonzq/LoveIt).
 
 ## Overview
 
-IgnIt is a [kiln](https://github.com/hakula139/kiln) theme built with Tailwind CSS v4 and MiniJinja templates. The visual design centers on glassmorphism over a configurable background image; the implementation keeps a single Tailwind source pipeline with conventions documented in [CLAUDE.md](./CLAUDE.md).
+IgnIt is a [kiln](https://github.com/hakula139/kiln) theme built with Tailwind CSS v4 and MiniJinja templates. The visual design centers on glassmorphism over a configurable background image, and the implementation keeps a single Tailwind source pipeline with conventions documented in [CLAUDE.md](./CLAUDE.md).
 
 ## Highlights
 
 ### Visual Design
 
-- Glassmorphism panels with configurable background image; optional cursor-tracking glow (off by default)
+- Glassmorphism panels with configurable background image and optional cursor-tracking glow (off by default)
 - Dark / light mode with system preference detection and flash-free manual toggle
-- Self-hosted Inter Variable + Maple Mono webfonts; CJK falls through to system fonts
-- Print-optimized styles — clean typography, exposed link URLs, hidden chrome
+- Self-hosted Inter Variable + Maple Mono webfonts, with CJK falling through to system fonts
+- Print-optimized styles with clean typography, exposed link URLs, and hidden chrome
 
 ### Content
 
 - KaTeX math, Mermaid diagrams, Material-palette syntax highlighting
 - Optional lightGallery overlay for article figures and Twikoo content images
-- Per-post comments via a thin provider dispatcher (Twikoo today; Giscus / Waline drop-in)
+- Per-post comments via a thin provider dispatcher (Twikoo built in, other providers via a site partial)
 - Optional Twikoo view counts for posts and standalone pages
-- Directive-based shortcodes (music embeds, link cards, etc.)
-- Featured image surfaces — post banner, home / listing cards, OG / Twitter Card meta
+- Directive-based shortcodes (music and Bilibili embeds, link cards)
+- Featured images on the post banner, home cards, and OG / Twitter Card meta
 
 ### Layout & Navigation
 
@@ -39,7 +39,7 @@ IgnIt is a [kiln](https://github.com/hakula139/kiln) theme built with Tailwind C
 ### Performance & Dependencies
 
 - All CDN deps exact-pinned with SRI hashes (FontAwesome, KaTeX, lightGallery, Mermaid, Twikoo)
-- Phase-scoped dep loading — each dep emitted once per page, gated on actual content needs
+- Phase-scoped dep loading, with each dep emitted once per page and gated on actual content needs
 - Content-hashed URLs for local CSS and JavaScript entry assets
 - LQIP wrappers paint kiln's base64 backdrop while sources decode
 
@@ -53,8 +53,8 @@ IgnIt is a [kiln](https://github.com/hakula139/kiln) theme built with Tailwind C
 | Document                               | Description                                                                         |
 | -------------------------------------- | ----------------------------------------------------------------------------------- |
 | [Customization](docs/customization.md) | Override visual tokens, templates, social icons, comments, fonts, and static assets |
-| [Parameters](docs/parameters.md)       | `[params]` schema reference — defaults, types, where each value is rendered         |
-| [i18n](docs/i18n.md)                   | Translatable string reference — keys, English defaults, override pattern            |
+| [Parameters](docs/parameters.md)       | `[params]` schema reference: defaults, types, where each value is rendered          |
+| [i18n](docs/i18n.md)                   | Translatable string reference: keys, English defaults, override pattern             |
 
 ## Installation
 
@@ -109,13 +109,13 @@ For the complete schema (`[params.background]`, `[params.comments]`, `[params.li
 
 All assets live under `static/`:
 
-- `static/css/_src/` — Tailwind sources (entry, partials); private build input, skipped by kiln
-- `static/css/style.css` — compiled Tailwind output, shipped
-- `static/js/{comments,content,layout,listing}/*.js` — JS sources, shipped as-is (no build step)
+- `static/css/_src/`: Tailwind sources (entry, partials), a private build input that kiln skips
+- `static/css/style.css`: compiled Tailwind output, shipped
+- `static/js/{comments,content,layout,listing,util}/*.js`: JS sources, shipped as-is with no build step
 
 ```bash
 pnpm install     # Install dev dependencies (Tailwind CLI, ESLint, Prettier)
-pnpm dev         # Watch mode — rebuilds static/css/style.css on changes
+pnpm dev         # Watch mode, rebuilds static/css/style.css on changes
 pnpm build       # One-shot CSS build
 ```
 
