@@ -197,11 +197,17 @@
   /* ── Tables ── */
 
   .prose table {
-    @apply block w-auto overflow-x-auto;
+    @apply block styled-scrollbar w-auto overflow-x-auto;
   }
 
-  .prose :where(th, td) {
+  /* kiln marks cells of columns within `table_nowrap_width` terminal columns (about 0.5em
+     each). Other columns wrap but keep that width as a floor. */
+  .prose :where(th, td).nowrap {
     @apply whitespace-nowrap;
+  }
+
+  .prose :where(th, td):not(.nowrap, .not-prose *) {
+    min-width: calc(var(--table-nowrap-width, 0) * 0.5em);
   }
 
   /* ── Footnotes ── */

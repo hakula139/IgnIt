@@ -54,7 +54,13 @@
 
               {%- include "_partials/content/toc-mobile.html" %}
 
-              <div class="max-w-none prose" data-pagefind-body>{{ content | safe }}</div>
+              <div
+                class="max-w-none prose"
+                {%- if config.params.table_nowrap_width %}
+                style="--table-nowrap-width: {{ config.params.table_nowrap_width }}"
+                {%- endif %}
+                data-pagefind-body
+              >{{ content | safe }}</div>
             </div>
           </article>
         </div>

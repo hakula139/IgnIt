@@ -173,6 +173,7 @@
 /* Shared */
 @import './components/shared/fa-icon.css';
 @import './components/shared/icon-button.css';
+@import './components/shared/scrollbar.css';
 
 /* Layout */
 @import './components/layout/error-page.css';
