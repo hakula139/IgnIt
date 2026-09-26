@@ -5,6 +5,7 @@ cachix
 callout
 calt
 consolas
+dagre
 dgst
 direnv
 elif
