@@ -37,7 +37,8 @@
       path: window.location.pathname,
       lang: langOf(),
       katex: { delimiters: KATEX_DELIMITERS, throwOnError: false },
-      onCommentLoaded: () => window.__rewrapLightGallery?.(root),
+      // Twikoo's mount replaces `root`, so resolve the live element on each load.
+      onCommentLoaded: () => window.__rewrapLightGallery?.(document.getElementById('twikoo')),
     });
   };
 

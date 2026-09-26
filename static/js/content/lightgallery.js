@@ -3,7 +3,7 @@
 (() => {
   const ARTICLE_SCOPE = '.prose';
   const ARTICLE_IMG_SELECTOR = 'figure img';
-  const COMMENTS_IMG_SELECTOR = 'img:not(.tk-owo-emotion):not(.tk-avatar-img)';
+  const COMMENTS_IMG_SELECTOR = '.tk-content img:not(.tk-owo-emotion)';
 
   const escapeHtml = (s) =>
     s.replace(
