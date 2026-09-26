@@ -12,8 +12,19 @@
       }
       el.removeAttribute('data-processed');
     }
-    window.mermaid.initialize({ startOnLoad: false, theme: themeFor() });
+    window.mermaid.initialize({
+      startOnLoad: false,
+      theme: themeFor(),
+      layout: 'dagre',
+      flowchart: { minNodeWidth: 40, nodeSpacing: 32, padding: 8, rankSpacing: 40 },
+    });
     await window.mermaid.run({ nodes: blocks });
+    for (const el of blocks) {
+      const svg = el.querySelector('svg');
+      if (svg) {
+        svg.style.minWidth = `${svg.viewBox.baseVal.width * 0.75}px`;
+      }
+    }
   };
 
   render();
