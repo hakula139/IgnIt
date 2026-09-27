@@ -80,7 +80,6 @@
       makeCollapsible(block, header, { skipSelector: '.copy-btn' });
     }
 
-    // Delegated copy handler.
     document.addEventListener('click', (e) => {
       const btn = e.target.closest('.copy-btn');
       if (btn) {

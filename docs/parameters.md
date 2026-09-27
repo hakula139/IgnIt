@@ -1,6 +1,6 @@
 # Parameter Reference
 
-IgnIt reads its configuration from the `[params]` table in your site's `config.toml`. Theme defaults come from `theme.toml`; site values override theme values per [kiln's parameter merging rules](https://github.com/hakula139/kiln/blob/main/docs/themes.md#parameter-merging).
+IgnIt reads its configuration from the `[params]` table in your site's `config.toml`. Theme defaults come from `theme.toml`, and site values override theme values per [kiln's parameter merging rules](https://github.com/hakula139/kiln/blob/main/docs/themes.md#parameter-merging).
 
 ## `[params]`
 
@@ -24,7 +24,7 @@ Site-wide background image with optional LQIP backdrop. Omit the table to use so
 | `position`        | `string` | `"center"`               | Desktop CSS `object-position` value (e.g., `"top"`, `"70% 50%"`).                                                                    |
 | `position_mobile` | `string` | falls back to `position` | Mobile-only CSS `object-position`. Useful for crops that frame poorly on portrait viewports.                                         |
 
-`lqip_uri` is a hand-rolled placeholder — kiln auto-generates LQIPs only for content `<img>` tags, not CSS-background equivalents. See [kiln's image pipeline docs](https://github.com/hakula139/kiln/blob/main/docs/themes.md#image-rendering) for the data-URI format.
+`lqip_uri` is a hand-rolled placeholder because kiln auto-generates LQIPs only for content `<img>` tags. See [kiln's image pipeline docs](https://github.com/hakula139/kiln/blob/main/docs/themes.md#image-rendering) for the data-URI format.
 
 ## `[params.home]` / `[params.home.profile]`
 
@@ -61,10 +61,10 @@ Section-archive pagination.
 
 Per-post comment system.
 
-| Field      | Type     | Default    | Description                                                                                                                     |
-| ---------- | -------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------- |
-| `enabled`  | `bool`   | `false`    | Master switch. The comments partial and its CDN dep load only when enabled.                                                     |
-| `provider` | `string` | `"twikoo"` | Provider key matching a partial under `templates/_partials/comments/<provider>.html`. Currently only `"twikoo"` ships built in. |
+| Field      | Type     | Default    | Description                                                                                 |
+| ---------- | -------- | ---------- | ------------------------------------------------------------------------------------------- |
+| `enabled`  | `bool`   | `false`    | Master switch. The comments partial and its CDN dep load only when enabled.                 |
+| `provider` | `string` | `"twikoo"` | Provider key selected by the comments dispatcher. `"twikoo"` is the only built-in provider. |
 
 Provider-specific configuration lives under `[params.comments.<provider>]`:
 
@@ -83,7 +83,7 @@ visitor = true
 | `api_url` | `string` | —       | Twikoo API endpoint.                                                       |
 | `visitor` | `bool`   | `false` | Show and increment the Twikoo view count on each post and standalone page. |
 
-The visitor counter requires comments to be enabled with the Twikoo provider; a counter-only mode is not supported. It records raw page hits rather than unique visitors, so each successful Twikoo initialization increments the count, including reloads and repeat visits.
+The visitor counter requires comments to be enabled with the Twikoo provider. It records raw page hits, so each successful Twikoo initialization increments the count, including reloads and repeat visits.
 
 Adding a provider is a [Customization](customization.md#comments-providers) topic.
 
@@ -125,14 +125,19 @@ powered_by = true
 
 Optional visual effects. Off by default.
 
-| Field         | Type   | Default | Description                                                                                                                                                                                               |
-| ------------- | ------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cursor_glow` | `bool` | `false` | Cursor-tracking glow on glass panels. Enabling injects `will-change` layers that interact poorly with `backdrop-filter` on Chromium / WebKit — see the rendering caveats in the README before turning on. |
+| Field         | Type   | Default | Description                                                                                                                                                  |
+| ------------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `cursor_glow` | `bool` | `false` | Cursor-tracking glow on glass panels. The `will-change` layers it injects clash with `backdrop-filter` compositing on Chromium / WebKit, as described below. |
+
+The known rendering caveats with `cursor_glow` enabled:
+
+- **Panel dropout during scroll** (frequent): a glass panel may briefly vanish while scrolling.
+- **Phantom gap near `#comments`** (rare): an in-page anchor jump close to the comments section can leave the article card with a much larger apparent gap than its real margin until the next manual scroll repaints.
 
 ## `[params.deps.<name>]`
 
-Pinned versions and SRI hashes for vendor CDN dependencies. Theme-internal — rebuild only when bumping a dep version. The schema is documented in [`CLAUDE.md`](../CLAUDE.md#dependencies); sites consuming defaults don't need to touch this table.
+Pinned versions and SRI hashes for vendor CDN dependencies. The table is theme-internal and changes only when a dep version is bumped. The schema is documented in [`CLAUDE.md`](../CLAUDE.md#dependencies), and sites consuming defaults don't need to touch this table.
 
 ## Menu groups
 
-`[[menu.main]]` populates the header navigation; `[[menu.social]]` populates the home profile social row. Both follow [kiln's menu schema](https://github.com/hakula139/kiln/blob/main/docs/themes.md#navigation-menus). IgnIt extends the `icon` field to accept either a Font Awesome class string (`"fab fa-github"`) or a `svg:<slug>` reference resolved against `templates/_partials/icons/<slug>.svg` — see [Customization → Social icons](customization.md#social-icons) for the bundled registry and the override pattern.
+`[[menu.main]]` populates the header navigation, and `[[menu.social]]` populates the home profile social row. Both follow [kiln's menu schema](https://github.com/hakula139/kiln/blob/main/docs/themes.md#navigation-menus). IgnIt extends the `icon` field to accept either a Font Awesome class string (`"fab fa-github"`) or a `svg:<slug>` reference resolved against `templates/_partials/icons/<slug>.svg`. See [Customization → Social icons](customization.md#social-icons) for the bundled registry and the override pattern.

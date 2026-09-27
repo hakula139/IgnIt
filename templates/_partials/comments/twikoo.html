@@ -1,6 +1,6 @@
 {%- set tw = config.params.comments.twikoo -%}
 <div class="glass-glow">
-  {# Twikoo overwrites #twikoo's className on init; keep `prose` on the parent. #}
+  {# Twikoo overwrites #twikoo's className on init, so `prose` stays on the parent. #}
   <div class="prose glass-panel max-w-none p-6 sm:p-8">
     <div id="twikoo" data-twikoo-api-url="{{ tw.api_url }}"></div>
   </div>

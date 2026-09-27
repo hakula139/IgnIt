@@ -1,6 +1,6 @@
 # Customization
 
-IgnIt is built to be bent. Most surfaces — colors, typography, navigation, icons, copy, comment provider — can be customized from your site without forking the theme. This document is the how-to guide; for the schema reference behind the knobs, see [Parameters](parameters.md). For translatable strings, see [i18n](i18n.md).
+Most surfaces, including colors, typography, navigation, icons, copy, and the comment provider, can be customized from your site without forking the theme. This document is the how-to guide. For the schema reference behind the knobs, see [Parameters](parameters.md). For translatable strings, see [i18n](i18n.md).
 
 ## Visual Tokens
 
@@ -27,13 +27,13 @@ Sites override individual tokens by emitting their own CSS that re-declares the 
 }
 ```
 
-To get a site stylesheet onto every page, override `base.html` (see [Template overrides](#template-overrides)) and add a `<link>` after the theme's `<link href=".../css/style.css">`. Anything you ship as a fork of the theme's `style.css` replaces it entirely and loses every token; cascade your file on top instead.
+To get a site stylesheet onto every page, override `base.html` (see [Template overrides](#template-overrides)) and add a `<link>` after the theme's `<link href=".../css/style.css">`. A forked copy of the theme's `style.css` replaces it entirely and loses every token, so cascade your file on top.
 
 For changes scoped to one post, kiln's [per-page CSS](https://github.com/hakula139/kiln/blob/main/docs/content.md) picks up a co-located `style.css` next to the post's `index.md`. Use it for one-off styling without touching site-wide files.
 
 ## Template Overrides
 
-kiln's [override model](https://github.com/hakula139/kiln/blob/main/docs/themes.md#override-model) resolves templates from your site's `templates/` directory before falling back to the theme's. Drop a same-named file into your site to replace any IgnIt template — `base.html`, a partial under `_partials/`, a directive under `directives/`.
+kiln's [override model](https://github.com/hakula139/kiln/blob/main/docs/themes.md#override-model) resolves templates from your site's `templates/` directory before falling back to the theme's. Drop a same-named file into your site to replace any IgnIt template, such as `base.html`, a partial under `_partials/`, or a directive under `directives/`.
 
 ```text
 my-site/templates/
@@ -45,11 +45,11 @@ my-site/templates/
 
 Common reasons to override:
 
-- **`base.html`** — add an analytics snippet, a custom stylesheet `<link>`, or extra `<meta>` tags before `</head>`.
-- **`_partials/layout/footer.html`** — replace the default attribution with your own copyright text.
-- **`_partials/comments/<provider>.html`** — wire a comments provider IgnIt doesn't bundle (see [Comments providers](#comments-providers)).
+- **`base.html`**: add an analytics snippet, a custom stylesheet `<link>`, or extra `<meta>` tags before `</head>`.
+- **`_partials/layout/footer.html`**: replace the default attribution with your own copyright text.
+- **`_partials/comments/index.html`** and **`_partials/comments/<provider>.html`**: wire a comments provider IgnIt doesn't bundle (see [Comments providers](#comments-providers)).
 
-Overriding wholesale loses future theme updates for that file. Prefer surgical overrides: copy the partial that contains the bit you need to change, edit just that, leave everything else inherited.
+Overriding wholesale loses future theme updates for that file. Prefer surgical overrides: copy only the partial that contains the bit you need to change and leave everything else inherited.
 
 ## Social Icons
 
@@ -60,25 +60,25 @@ Menu items configured under `[[menu.main]]` or `[[menu.social]]` carry an `icon`
 | `"fab fa-github"` | `<i class="fab fa-github">`                      | Font Awesome glyph (any FA class, including `fas`, `far`, `fal`, custom).                       |
 | `"svg:github"`    | Inline `<svg>` from `_partials/icons/github.svg` | Theme-bundled SVG, or a same-name file in your site's `templates/_partials/icons/` (site wins). |
 
-The dispatcher picks based on the `svg:` prefix; everything else falls through to the Font Awesome path.
+Specs with the `svg:` prefix take the SVG path, and everything else falls through to the Font Awesome path.
 
 ### Bundled Registry
 
 The theme ships these `svg:<slug>` entries out of the box:
 
-| Slug           | Source                                                                                       |
-| -------------- | -------------------------------------------------------------------------------------------- |
-| `bilibili`     | [Simple Icons](https://simpleicons.org/?q=bilibili)                                          |
-| `douban`       | [Simple Icons](https://simpleicons.org/?q=douban)                                            |
-| `fediverse`    | [neodb-social/neodb](https://github.com/neodb-social/neodb) — used for NeoDB, Mastodon, etc. |
-| `github`       | [Simple Icons](https://simpleicons.org/?q=github)                                            |
-| `linkedin`     | [Simple Icons](https://simpleicons.org/?q=linkedin)                                          |
-| `listenbrainz` | [metabrainz/design-system](https://github.com/metabrainz/design-system)                      |
-| `mastodon`     | [Simple Icons](https://simpleicons.org/?q=mastodon)                                          |
-| `qq`           | [Simple Icons](https://simpleicons.org/?q=qq)                                                |
-| `steam`        | [Simple Icons](https://simpleicons.org/?q=steam)                                             |
-| `telegram`     | [Simple Icons](https://simpleicons.org/?q=telegram)                                          |
-| `zhihu`        | [Simple Icons](https://simpleicons.org/?q=zhihu)                                             |
+| Slug           | Source                                                                                      |
+| -------------- | ------------------------------------------------------------------------------------------- |
+| `bilibili`     | [Simple Icons](https://simpleicons.org/?q=bilibili)                                         |
+| `douban`       | [Simple Icons](https://simpleicons.org/?q=douban)                                           |
+| `fediverse`    | [neodb-social/neodb](https://github.com/neodb-social/neodb), used for NeoDB, Mastodon, etc. |
+| `github`       | [Simple Icons](https://simpleicons.org/?q=github)                                           |
+| `linkedin`     | [Simple Icons](https://simpleicons.org/?q=linkedin)                                         |
+| `listenbrainz` | [metabrainz/design-system](https://github.com/metabrainz/design-system)                     |
+| `mastodon`     | [Simple Icons](https://simpleicons.org/?q=mastodon)                                         |
+| `qq`           | [Simple Icons](https://simpleicons.org/?q=qq)                                               |
+| `steam`        | [Simple Icons](https://simpleicons.org/?q=steam)                                            |
+| `telegram`     | [Simple Icons](https://simpleicons.org/?q=telegram)                                         |
+| `zhihu`        | [Simple Icons](https://simpleicons.org/?q=zhihu)                                            |
 
 Bundled SVGs are stripped of `<title>` and `role="img"` markers (the parent anchor carries `aria-label`, so the SVG itself is `aria-hidden`). Fill is unset so the path inherits `currentColor`, which lets a single icon scale across light / dark themes and adopt hover colors via the surrounding `<a>`.
 
@@ -86,7 +86,7 @@ Bundled SVGs are stripped of `<title>` and `role="img"` markers (the parent anch
 
 The dispatcher resolves SVG slugs through kiln's path loader, which checks the site's templates directory before the theme's. To add or replace an icon:
 
-1. Save your SVG at `<your-site>/templates/_partials/icons/<slug>.svg`. The viewBox should be square (e.g. `0 0 24 24`); the path should have no explicit `fill`, so it picks up `currentColor` from the surrounding link.
+1. Save your SVG at `<your-site>/templates/_partials/icons/<slug>.svg`. The viewBox should be square (e.g. `0 0 24 24`), and the path should have no explicit `fill` so it picks up `currentColor` from the surrounding link.
 2. Reference it from your menu config:
 
    ```toml
@@ -100,7 +100,7 @@ The dispatcher resolves SVG slugs through kiln's path loader, which checks the s
 
 A site icon at the same slug as a theme-bundled one transparently overrides the theme version, which is useful when you prefer a different visual style for, say, your `github` glyph.
 
-When mixing FA and SVG icons in the same menu group, the theme's CSS aligns both to the same horizontal slot (1.25em, the FA `fa-fw` value) so labels line up across rows regardless of icon source.
+In the header menus, the theme's CSS aligns FA and SVG icons to the same horizontal slot (1.25em, the FA `fa-fw` value) so labels line up across rows regardless of icon source.
 
 ## i18n Overrides
 
@@ -115,15 +115,17 @@ back_to_top = "Top"
 
 ## Comments Providers
 
-`[params.comments]` enables comments and selects a provider; provider-specific keys live under `[params.comments.<provider>]` (see [Parameters](parameters.md#paramscomments)). The provider name maps directly to a partial: `provider = "twikoo"` includes `_partials/comments/twikoo.html`.
+`[params.comments]` enables comments and selects a provider, and provider-specific keys live under `[params.comments.<provider>]` (see [Parameters](parameters.md#paramscomments)). The dispatcher at `_partials/comments/index.html` selects the provider partial, so `provider = "twikoo"` includes `_partials/comments/twikoo.html`.
 
-To wire a provider IgnIt doesn't ship, add the partial in your site:
+To wire a provider IgnIt doesn't ship, add its partial in your site and override the dispatcher with a branch that includes it:
 
 ```text
-my-site/templates/_partials/comments/giscus.html
+my-site/templates/_partials/comments/
+├── giscus.html
+└── index.html
 ```
 
-The partial is responsible for emitting the provider's mount markup and CDN scripts. Theme defaults register CDN deps with SRI under `[params.deps.<provider>]` in `theme.toml`; new providers follow the same pattern (see [`CLAUDE.md`](../CLAUDE.md#dependencies) for the SRI regeneration flow).
+The partial is responsible for emitting the provider's mount markup and CDN scripts. Theme defaults register CDN deps with SRI under `[params.deps.<provider>]` in `theme.toml`, and new providers follow the same pattern (see [`CLAUDE.md`](../CLAUDE.md#dependencies) for the SRI regeneration flow).
 
 Once the partial is in place, set the provider in your site config:
 
@@ -137,7 +139,7 @@ repo = "owner/repo"
 # ...remaining provider-specific keys
 ```
 
-The dispatcher emits the partial only when `enabled = true`, so disabling comments site-wide also drops the provider's CDN dep entirely.
+The dispatcher emits the partial only when `enabled = true`, so disabling comments site-wide also drops the provider's CDN dep.
 
 ## Webfonts
 

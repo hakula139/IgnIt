@@ -11,7 +11,7 @@
   .callout-title {
     @apply list-none py-2 font-semibold;
     color: var(--callout-color);
-    /* Firefox renders the marker via list-style on the summary; Safari needs ::-webkit-details-marker. */
+    /* Firefox renders the marker via list-style on the summary, while Safari needs ::-webkit-details-marker. */
     list-style: none;
   }
 
@@ -19,7 +19,7 @@
     @apply hidden;
   }
 
-  /* Variant icon (left); chevron (right) lives in collapse.css. */
+  /* Variant icon on the left. The chevron on the right lives in collapse.css. */
   .callout-title::before {
     @apply fa-icon;
     content: var(--callout-icon, '\f05a');

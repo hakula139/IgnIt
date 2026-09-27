@@ -20,8 +20,8 @@
       return modal ? [modal] : Array.from(document.querySelectorAll(BG_SELECTOR));
     };
 
-    // Inject glow layers as real children so JS can write transform on them
-    // directly, instead of invalidating the parent's style every cursor move.
+    // Inject glow layers as real children so cursor moves write transforms on
+    // them directly and never invalidate the parent's style.
     const ensureGlowLayers = (el) => {
       let ambient = el.querySelector(':scope > .glow-ambient');
       if (!ambient) {
@@ -82,8 +82,8 @@
       scheduleUpdate();
     };
 
-    // Adjust cached rects by scroll delta (cheap math) instead of calling
-    // getBoundingClientRect on every scroll event.
+    // Shift cached rects by the scroll delta so scroll events never call
+    // getBoundingClientRect.
     const onScroll = () => {
       clearTimeout(scrollEndTimer);
       scrollEndTimer = setTimeout(invalidateRects, 150);

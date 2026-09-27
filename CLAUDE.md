@@ -1,18 +1,18 @@
-# CLAUDE.md — IgnIt
+# CLAUDE.md: IgnIt
 
 ## Project Overview
 
 IgnIt is a kiln theme built with Tailwind CSS v4, inspired by Hugo LoveIt. It provides MiniJinja templates, compiled CSS, and JS assets for [kiln](https://github.com/hakula139/kiln) sites.
 
-User-facing reference lives in [`README.md`](./README.md) and [`docs/`](./docs/). This file is contributor-only context for working on the theme itself: file-tree navigation, build pipeline, conventions, and decisions that don't fit in commit history.
+User-facing reference lives in [`README.md`](./README.md) and [`docs/`](./docs/). This file holds contributor context for working on the theme itself: file-tree navigation, build pipeline, and conventions.
 
 ### Theme Structure
 
-All assets live under a single `static/` tree. Files and directories whose names start with `_` are private build inputs — kiln's `copy_static` skips them when publishing the site.
+All assets live under a single `static/` tree. Files and directories whose names start with `_` are private build inputs, which kiln's `copy_static` skips when publishing the site.
 
 ```text
 .
-├── i18n/                                   # Translation tables (en, zh-Hans); site-level files override theme keys
+├── i18n/                                   # Translation tables (en, zh-Hans), overridden per key by site-level files
 ├── static/                                 # single asset root (committed for submodule consumers)
 │   ├── css/
 │   │   ├── _src/                           # private: Tailwind sources (not shipped)
@@ -31,7 +31,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   │   │   │   ├── syntax.css          # Syntax highlighting (Material Light / Palenight)
 │   │   │   │   │   └── toc.css             # .toc, .toc-collapse, .toc-trigger, .toc-sidebar-*
 │   │   │   │   ├── embed/
-│   │   │   │   │   └── apple-music.css     # Apple Music embed light / dark toggle
+│   │   │   │   │   └── player.css          # .player-wrapper iframe embeds, Apple Music light / dark toggle
 │   │   │   │   ├── layout/
 │   │   │   │   │   ├── error-page.css      # .back-home-link (404 page back-to-home pill)
 │   │   │   │   │   ├── float-buttons.css   # .float-btn shared base + .back-to-top, .jump-to-comments stack
@@ -46,8 +46,8 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   │   │   ├── search/
 │   │   │   │   │   └── search.css          # Pagefind trigger, modal, and result theming
 │   │   │   │   └── shared/
-│   │   │   │       ├── fa-icon.css         # @utility fa-icon — Font Awesome glyph setup for ::before / ::after
-│   │   │   │       └── icon-button.css     # @utility icon-tap-hover — circular tinted hover for icon surfaces
+│   │   │   │       ├── fa-icon.css         # @utility fa-icon: Font Awesome glyph setup for ::before / ::after
+│   │   │   │       └── icon-button.css     # @utility icon-tap-hover: circular tinted hover for icon surfaces
 │   │   │   ├── fonts.css                   # @font-face for Inter Variable + Maple Mono
 │   │   │   └── main.css                    # Entry: tokens, dark mode, partial imports
 │   │   └── style.css                       # Compiled Tailwind output (shipped)
@@ -66,31 +66,39 @@ All assets live under a single `static/` tree. Files and directories whose names
 │       │   ├── float-buttons.js            # Back-to-top + jump-to-comments scroll-triggered FABs
 │       │   ├── glow.js                     # Glass panel cursor glow effect (opt-in via [params.effects].cursor_glow)
 │       │   └── theme.js                    # Dark mode toggle + system preference
-│       └── listing/
-│           └── pagination.js               # Page-jump controls for pagination
+│       ├── listing/
+│       │   └── pagination.js               # Page-jump controls for pagination
+│       └── util/
+│           └── dom-ready.js                # window.__onReady DOM-ready helper
 └── templates/
     ├── _partials/                          # Shared template fragments ({% include %})
     │   ├── comments/
     │   │   ├── index.html                  # Per-post comments dispatcher (provider switch)
-    │   │   └── twikoo.html                 # Twikoo mount (HTML only; SDK loads via body-deps)
+    │   │   ├── jump-button.html            # Jump-to-comments float button
+    │   │   └── twikoo.html                 # Twikoo mount (HTML only, SDK loads via body-deps)
     │   ├── content/
     │   │   ├── meta-og.html                # OG / Twitter Card meta tags
     │   │   ├── post-banner.html            # Post header featured image (banner + credit)
     │   │   ├── toc-mobile.html             # Collapsible TOC (< xl breakpoint)
     │   │   └── toc-sidebar.html            # Sticky TOC sidebar (xl+ breakpoint)
+    │   ├── icons/                          # Inline SVGs for `svg:<slug>` icon specs
     │   ├── layout/
     │   │   ├── body-deps.html              # End-of-body CDN deps + local init scripts (KaTeX, Mermaid, Twikoo)
     │   │   ├── footer.html                 # Glass-panel footer (copyright, license)
     │   │   ├── head-deps.html              # <head> CDN deps (FontAwesome, KaTeX CSS)
     │   │   └── header.html                 # Fixed nav header with menu + theme toggle
-    │   └── listing/
-    │       ├── pagination.html             # Pagination nav + page-jump input
-    │       ├── post-entry.html             # Post entry (title + conditional date)
-    │       └── year-grouped-listing.html   # Year-grouped post list with pagination
+    │   ├── listing/
+    │   │   ├── pagination.html             # Pagination nav + page-jump input
+    │   │   ├── post-entry.html             # Post entry (title + conditional date)
+    │   │   └── year-grouped-listing.html   # Year-grouped post list with pagination
+    │   └── macros/
+    │       ├── cdn.html                    # SRI <script> / <link> emitters for CDN deps
+    │       └── icon.html                   # Icon dispatcher (Font Awesome class or `svg:<slug>`)
     ├── 404.html                            # Error page (centered glass card, home link)
     ├── archive.html                        # Archive listing (year-grouped, pagination, glass card)
     ├── base.html                           # Base layout (glass panels, background image)
     ├── directives/
+    │   ├── bilibili.html                   # Bilibili video embed directive
     │   ├── link.html                       # Link card directive
     │   └── music.html                      # Music embed directive
     ├── home.html                           # Home page (profile + image cards with hover reveal)
@@ -102,9 +110,9 @@ All assets live under a single `static/` tree. Files and directories whose names
 
 Source CSS lives in `static/css/_src/` using Tailwind CSS v4 conventions:
 
-- **`main.css`** — Entry point: `@import 'tailwindcss'`, `@theme` tokens, `@variant dark`, dark-mode token overrides, then `@import` for each partial. The Tailwind CLI inlines all imports before compilation, so tokens and utilities are available in every partial.
-- **`base.css`** — `@layer base` styles: `html`, `body`, `::selection`, `a`, scroll offset.
-- **`components/*.css`** — `@layer components` partials, one per concern. Each file wraps all rules in `@layer components { ... }`.
+- **`main.css`**: entry point with `@import 'tailwindcss'`, `@theme` tokens, `@variant dark`, dark-mode token overrides, then `@import` for each partial. The Tailwind CLI inlines all imports before compilation, so tokens and utilities are available in every partial.
+- **`base.css`**: `@layer base` styles for `html`, `body`, `::selection`, `a`, scroll offset.
+- **`components/*.css`**: partials, one per concern. Most wrap their rules in `@layer components { ... }`. `prose.css`, `mermaid.css`, and `comments.css` stay unlayered to override `@tailwindcss/typography` and Twikoo defaults, `print.css` stays unlayered to win over every layer, and the `shared/` partials plus `glass-panel.css` declare `@utility` helpers.
 
 ### Design Tokens
 
@@ -121,11 +129,11 @@ Use `@apply` in the appropriate CSS partial for anything else. Use canonical Tai
 
 ### Build Output
 
-`static/` is committed so submodule consumers get a working theme without Node.js. **Always run `pnpm build` before committing CSS changes** so `static/css/style.css` stays in sync with `_src/`. JS ships as-is (no build step); kiln `--minify` compresses both at deploy time. `pnpm dev` runs Tailwind in watch mode.
+`static/` is committed so submodule consumers get a working theme without Node.js. **Always run `pnpm build` before committing CSS changes** so `static/css/style.css` stays in sync with `_src/`. JS ships as-is with no build step, and kiln `--minify` compresses both at deploy time. `pnpm dev` runs Tailwind in watch mode.
 
 ## Dependencies
 
-CDN deps are pinned in `theme.toml` under `[params.deps.<name>]` with exact patch versions and SRI hashes. `_partials/layout/{head-deps,body-deps}.html` resolve `need_<dep>` booleans (auto-detected for content features via `assets.features`, explicit config for `comments`) and emit `<link>` / `<script>` once per page.
+CDN deps are pinned in `theme.toml` under `[params.deps.<name>]` with exact patch versions and SRI hashes. `_partials/layout/{head-deps,body-deps}.html` resolve `need_<dep>` booleans (auto-detected for content features via `assets.features`, explicit config for `fontawesome`, `lightgallery`, and `comments`) and emit `<link>` / `<script>` once per page.
 
 When bumping a version, regenerate the SRI hashes:
 
@@ -138,7 +146,7 @@ Each loaded file gets its own key under `[params.deps.<name>.sri]` (e.g. `js`, `
 
 ## Image Pipeline
 
-The theme paints kiln's `lqip_uri` via the `<span class="lqip">` wrapper kiln emits around content `<img>` (and that templates emit around featured / bg images — see `kiln/docs/themes.md` for the upstream contract). `lqip.css` shows the backdrop; `lqip.js` reveals each image with shared load handling, while content images fade in and the body background swaps without animation. `theme.js` flips `html.lqip-fade-enabled` in `<head>` so JS-disabled clients still see images.
+The theme paints kiln's `lqip_uri` via the `<span class="lqip">` wrapper kiln emits around content `<img>` (and that templates emit around featured / bg images, per the upstream contract in `kiln/docs/themes.md`). `lqip.css` shows the backdrop, and `lqip.js` reveals each image with shared load handling, while content images fade in and the body background swaps without animation. `theme.js` flips `html.lqip-fade-enabled` in `<head>` so JS-disabled clients still see images.
 
 - **Body images**: auto-wrapped by kiln. No template work.
 - **Featured images** (`templates/post.html` banner, `templates/home.html` cards): templates emit the wrapper themselves, gated on `{% if featured_image.lqip_uri %}`. Per-context size overrides (`.post-banner-media .lqip`, `.home-card > .lqip`) live in `lqip.css`.
@@ -146,7 +154,7 @@ The theme paints kiln's `lqip_uri` via the `<span class="lqip">` wrapper kiln em
 
 ## Internationalization
 
-Translation tables live under `i18n/<lang>.toml` (`en`, `zh-Hans`); active language is set by `config.language` in the consuming site. Templates read keys via MiniJinja's `t('key')`; client JS reads `data-i18n-*` attributes on the document root and on per-element carriers.
+Translation tables live under `i18n/<lang>.toml` (`en`, `zh-Hans`), and the active language is set by `config.language` in the consuming site. Templates read keys via MiniJinja's `t('key')`, while client JS reads `data-i18n-*` attributes on the document root and on per-element carriers.
 
 The site / theme / English fallback chain and the full key reference are in [`docs/i18n.md`](./docs/i18n.md). When adding a new template string, register the key in **both** `i18n/en.toml` and `i18n/zh-Hans.toml`, then add a row to the `docs/i18n.md` reference table so site authors can discover it.
 
@@ -154,10 +162,10 @@ The site / theme / English fallback chain and the full key reference are in [`do
 
 Self-hosted in `static/fonts/`, declared in `fonts.css`:
 
-- **Inter Variable** (`--font-sans`, Fontsource latin subset, `wght` 100–900) — fetched on first use (any page text).
-- **Maple Mono Variable** (`--font-mono`, upstream [v7.9 release](https://github.com/subframe7536/maple-font/releases/tag/v7.9) repacked to woff2, `wght` 100–800) — regular + italic faces, fetched on first `<code>` use. `'calt'` is set on `--default-mono-font-feature-settings` in `@theme`; the variable build needs it to emit ligatures and stylistic alternates.
+- **Inter Variable** (`--font-sans`, Fontsource latin subset, `wght` 100–900), fetched on first use (any page text).
+- **Maple Mono Variable** (`--font-mono`, upstream [v7.9 release](https://github.com/subframe7536/maple-font/releases/tag/v7.9) repacked to woff2, `wght` 100–800), with regular + italic faces fetched on first `<code>` use. `'calt'` is set on `--default-mono-font-feature-settings` in `@theme` because the variable build needs it to emit ligatures and stylistic alternates.
 
-CJK falls through to system fonts. `url()` paths in `fonts.css` resolve against the compiled `style.css` — Tailwind v4 inlines `@import` contents verbatim.
+CJK falls through to system fonts. `url()` paths in `fonts.css` resolve against the compiled `style.css` because Tailwind v4 inlines `@import` contents verbatim.
 
 ## Coding Conventions
 
@@ -171,24 +179,24 @@ CJK falls through to system fonts. `url()` paths in `fonts.css` resolve against 
 ### CSS
 
 - Prefer Tailwind utilities over custom CSS.
-- In `@apply`, use Tailwind v4 trailing-important syntax (`w-auto!`) rather than leading-important (`!w-auto`).
+- In `@apply`, use Tailwind v4 trailing-important syntax (`w-auto!`). Leading-important (`!w-auto`) is the deprecated v3 form.
 - `@import` order in `main.css` determines cascade order within the same `@layer`.
 
 ### Documentation
 
-- Markdown prose is **not hard-wrapped** — paragraphs are single long lines and flow with the reader's viewport. Match the surrounding style; do not introduce 80-column line breaks inside paragraphs.
+- Put each Markdown paragraph on a single line, without hard-wrapping at a column limit.
 
 ### Git Conventions
 
 - Commit messages: `type(scope): description`
   - Types: `feat`, `fix`, `refactor`, `docs`, `test`, `ci`, `chore`, `style`, `perf`
   - Scope: area of change (e.g., `template`, `css`, `js`)
-- Keep commits atomic — one logical change per commit.
+- Keep commits atomic, with one logical change per commit.
 - PRs: assign to `hakula139`, label `enhancement` for `feat`.
 
 ### Pre-commit
 
-Pre-commit hooks are driven by [git-hooks-nix](https://github.com/cachix/git-hooks.nix), wired in `flake.nix`. Entering the dev shell (`nix develop` or via direnv) installs `.git/hooks/pre-commit` automatically. Prettier formats CSS / JS / JSON and sorts Tailwind classes, dprint formats Markdown and its fenced code, and Taplo formats standalone TOML. The remaining hooks run markdownlint, cspell, nixfmt / statix / deadnix, and basic file hygiene. Node-side hooks no-op when `node_modules/` is absent (e.g., inside the Nix sandbox); CI runs the equivalent commands directly via `pnpm`.
+Pre-commit hooks are driven by [git-hooks-nix](https://github.com/cachix/git-hooks.nix), wired in `flake.nix`. Entering the dev shell (`nix develop` or via direnv) installs `.git/hooks/pre-commit` automatically. Prettier formats CSS / JS / JSON and sorts Tailwind classes, dprint formats Markdown and its fenced code, and Taplo formats standalone TOML. The remaining hooks run markdownlint, cspell, nixfmt / statix / deadnix, and basic file hygiene. Node-side hooks no-op when `node_modules/` is absent (e.g., inside the Nix sandbox), so CI runs the equivalent commands directly via `pnpm`.
 
 ### Spell Checking
 

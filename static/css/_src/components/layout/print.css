@@ -1,5 +1,5 @@
 /* Print styles: outside @layer for maximum override specificity.
-   Uses plain CSS (not @apply) because most properties here have no Tailwind
+   Uses plain CSS because most properties here have no Tailwind @apply
    equivalents (backdrop-filter: none, break-after, orphans / widows). */
 
 @media print {
