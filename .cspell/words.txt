@@ -70,6 +70,7 @@ tailwindcss
 taplo
 twikoo
 unlayered
+wakatime
 waline
 wght
 xmark
