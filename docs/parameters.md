@@ -6,12 +6,13 @@ IgnIt reads its configuration from the `[params]` table in your site's `config.t
 
 Top-level theme switches.
 
-| Field            | Type     | Default                          | Description                                                                                                                                |
-| ---------------- | -------- | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `cdn`            | `string` | `"https://cdn.jsdelivr.net/npm"` | CDN base URL for vendor dependencies (Font Awesome, KaTeX, lightGallery, Mermaid, Twikoo). Swap to a mirror or self-hosted base if needed. |
-| `code_max_lines` | `int`    | `40`                             | Maximum visible lines before fenced code blocks gain a vertical scrollbar. `0` disables the limit.                                         |
-| `emojis`         | `bool`   | `true`                           | Replace `:shortcode:` with the corresponding Unicode emoji during rendering.                                                               |
-| `fontawesome`    | `bool`   | `true`                           | Load the Font Awesome stylesheet. Disable when no `fa-*` classes are referenced anywhere in templates or content.                          |
+| Field                | Type     | Default                          | Description                                                                                                                                                                  |
+| -------------------- | -------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cdn`                | `string` | `"https://cdn.jsdelivr.net/npm"` | CDN base URL for vendor dependencies (Font Awesome, KaTeX, lightGallery, Mermaid, Twikoo). Swap to a mirror or self-hosted base if needed.                                   |
+| `code_max_lines`     | `int`    | `40`                             | Maximum visible lines before fenced code blocks gain a vertical scrollbar. `0` disables the limit.                                                                           |
+| `emojis`             | `bool`   | `true`                           | Replace `:shortcode:` with the corresponding Unicode emoji during rendering.                                                                                                 |
+| `fontawesome`        | `bool`   | `true`                           | Load the Font Awesome stylesheet. Disable when no `fa-*` classes are referenced anywhere in templates or content.                                                            |
+| `table_nowrap_width` | `int`    | `30`                             | No-wrap threshold in terminal columns (CJK and emoji count as 2). Wrapping cells have a minimum width of half this value in em. `0` allows non-empty columns to wrap freely. |
 
 ## `[params.background]`
 

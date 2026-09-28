@@ -31,25 +31,7 @@
   /* ── Body ── */
 
   .code-body > .highlight {
-    @apply min-h-0 overflow-x-auto overflow-y-hidden;
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-text-tertiary) transparent;
-  }
-
-  .code-body > .highlight::-webkit-scrollbar {
-    @apply h-2 w-2;
-  }
-
-  .code-body > .highlight::-webkit-scrollbar-track {
-    @apply bg-transparent;
-  }
-
-  .code-body > .highlight::-webkit-scrollbar-thumb {
-    @apply rounded-full bg-border;
-  }
-
-  .code-body > .highlight::-webkit-scrollbar-thumb:hover {
-    @apply bg-text-tertiary;
+    @apply styled-scrollbar min-h-0 overflow-x-auto overflow-y-hidden;
   }
 
   .code-body[data-max-lines] > .highlight {

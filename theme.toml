@@ -12,6 +12,7 @@ cdn = "https://cdn.jsdelivr.net/npm"
 code_max_lines = 40
 emojis = true
 fontawesome = true
+table_nowrap_width = 30
 
 [params.effects]
 # Cursor-tracking glow on glass panels. See docs/parameters.md for the
