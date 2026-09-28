@@ -2180,6 +2180,37 @@
 .prose :where(hr, blockquote, th, td, thead, tr) {
   border-color: var(--color-border-overlay);
 }
+.prose :where(thead):not(.code-block *, .not-prose *) {
+  border-bottom-style: var(--tw-border-style);
+  border-bottom-width: 0px;
+  background-color: color-mix(in srgb, #f5f5f7 50%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    background-color: color-mix(in oklab, var(--color-bg-muted) 50%, transparent);
+  }
+}
+.prose :where(th, td):not(.code-block *, .not-prose *) {
+  padding-inline: calc(var(--spacing) * 3);
+  padding-block: calc(var(--spacing) * 2.5);
+}
+.prose :where(thead th):not(.code-block *, .not-prose *) {
+  --tw-font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  &:first-child {
+    border-top-left-radius: var(--radius-md);
+    border-bottom-left-radius: var(--radius-md);
+  }
+  &:last-child {
+    border-top-right-radius: var(--radius-md);
+    border-bottom-right-radius: var(--radius-md);
+  }
+}
+.prose :where(tbody tr):not(.code-block *, .not-prose *) {
+  border-color: color-mix(in srgb, rgba(255, 255, 255, 0.2) 50%, transparent);
+  @supports (color: color-mix(in lab, red, red)) {
+    border-color: color-mix(in oklab, var(--color-border-overlay) 50%, transparent);
+  }
+}
 .prose :where(li) {
   margin-block: calc(var(--spacing) * 0.5);
 }

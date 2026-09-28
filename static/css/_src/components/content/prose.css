@@ -111,6 +111,24 @@
   border-color: var(--color-border-overlay);
 }
 
+/* ── Tables ── */
+
+.prose :where(thead):not(.code-block *, .not-prose *) {
+  @apply border-b-0 bg-bg-muted/50;
+}
+
+.prose :where(th, td):not(.code-block *, .not-prose *) {
+  @apply px-3 py-2.5;
+}
+
+.prose :where(thead th):not(.code-block *, .not-prose *) {
+  @apply font-semibold text-text-secondary first:rounded-l-md last:rounded-r-md;
+}
+
+.prose :where(tbody tr):not(.code-block *, .not-prose *) {
+  @apply border-border-overlay/50;
+}
+
 /* ── Lists ── */
 
 .prose :where(li) {
