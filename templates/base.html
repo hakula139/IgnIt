@@ -40,9 +40,9 @@
     <img src="{{ config.base_url | safe }}{{ bg.image | safe }}" alt="" decoding="async">
   </span>
   {%- endif %}
-  <a href="#main" class="skip-link">{{ t('skip_to_content') }}</a>
+  <a href="#site:main" class="skip-link">{{ t('skip_to_content') }}</a>
   {% include "_partials/layout/header.html" %}
-  <main id="main" class="flex-1 pt-16">
+  <main id="site:main" class="flex-1 pt-16">
     {%- block body %}{% endblock %}
   </main>
   {% include "_partials/layout/footer.html" %}
