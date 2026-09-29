@@ -43,7 +43,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   │   │   ├── listing/
 │   │   │   │   │   ├── home-card.css       # .home-card-*, .profile-*, .text-card-*
 │   │   │   │   │   ├── listing.css         # .year-heading, .tag-pill, .category-card, .post-entry-*
-│   │   │   │   │   └── pagination.css      # .pagination-link, .pagination-ellipsis, .pagination-input
+│   │   │   │   │   └── pagination.css      # .pagination-link, .pagination-jump, .pagination-input
 │   │   │   │   ├── search/
 │   │   │   │   │   └── search.css          # Pagefind trigger, modal, and result theming
 │   │   │   │   └── shared/

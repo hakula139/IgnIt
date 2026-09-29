@@ -1449,7 +1449,7 @@
   .highlight, .code-header {
     background: transparent !important;
   }
-  .glass-glow:has(.header-nav), #mobile-menu, .site-footer,  .toc-sidebar-wrapper, .toc-collapse, .post-banner,  .home-card-image, .home-card-overlay, .home-card-pin,  #comments,  .pagination-link, .pagination-ellipsis, .pagination-input,  .float-btn, pagefind-modal {
+  .glass-glow:has(.header-nav), #mobile-menu, .site-footer,  .toc-sidebar-wrapper, .toc-collapse, .post-banner,  .home-card-image, .home-card-overlay, .home-card-pin,  #comments,  .pagination-link, .pagination-input,  .float-btn, pagefind-modal {
     display: none !important;
   }
   .prose a[href^='http']::after {
@@ -3080,12 +3080,9 @@
       background-color: color-mix(in srgb, var(--color-link-hover) 15%, transparent);
     }
   }
-  .pagination-ellipsis {
-    cursor: pointer;
-    color: var(--color-text-tertiary);
-  }
   .pagination-jump {
     cursor: pointer;
+    color: var(--color-text-tertiary);
   }
   .pagination-jump[hidden], .pagination-input[hidden] {
     display: none;

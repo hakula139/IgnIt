@@ -26,12 +26,8 @@
     background-color: color-mix(in srgb, var(--color-link-hover) 15%, transparent);
   }
 
-  .pagination-ellipsis {
-    @apply cursor-pointer text-text-tertiary;
-  }
-
   .pagination-jump {
-    @apply cursor-pointer;
+    @apply cursor-pointer text-text-tertiary;
   }
 
   .pagination-jump[hidden],

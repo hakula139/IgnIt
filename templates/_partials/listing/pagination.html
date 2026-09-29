@@ -27,7 +27,6 @@
                 class="pagination-link pagination-jump"
                 type="button"
                 aria-label="{{ t('jump_to_page') }} {{ pagination.current_page }} / {{ pagination.total_pages }}"
-                aria-current="page"
               >{{ pagination.current_page }} / {{ pagination.total_pages }}</button>
               <input
                 class="pagination-input"
@@ -70,7 +69,7 @@
             {%- else %}
             <li>
               <button
-                class="pagination-link pagination-ellipsis pagination-jump"
+                class="pagination-link pagination-jump"
                 type="button"
                 aria-label="{{ t('jump_to_page') }}"
               >&hellip;</button>
