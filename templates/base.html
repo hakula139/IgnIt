@@ -42,14 +42,11 @@
   {%- endif %}
   <a href="#site:main" class="skip-link">{{ t('skip_to_content') }}</a>
   {% include "_partials/layout/header.html" %}
-  <main id="site:main" class="flex-1 pt-16">
+  <main id="site:main" class="relative flex-1 pt-16">
+    {%- include "_partials/layout/float-controls.html" %}
     {%- block body %}{% endblock %}
   </main>
   {% include "_partials/layout/footer.html" %}
-  <button id="back-to-top" class="float-btn back-to-top glass-panel" data-glow-target aria-label="{{ t('back_to_top') }}" title="{{ t('back_to_top') }}">
-    <i class="fas fa-arrow-up" aria-hidden="true"></i>
-  </button>
-  {%- block float_buttons %}{% endblock %}
   {%- if config.search.enabled %}
   <pagefind-modal></pagefind-modal>
   {%- endif %}

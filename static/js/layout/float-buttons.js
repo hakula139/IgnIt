@@ -1,45 +1,45 @@
 'use strict';
 
 (() => {
-  const SCROLL_THRESHOLD = 300;
-
-  const bind = (id, predicate, onClick) => {
-    const btn = document.getElementById(id);
-    if (!btn) {
-      return;
-    }
-
-    const update = () => {
-      const visible = predicate();
-      btn.classList.toggle('visible', visible);
-      // Mirror the CSS hide so screen readers don't announce the offscreen control.
-      btn.toggleAttribute('aria-hidden', !visible);
-    };
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update, { passive: true });
-    btn.addEventListener('click', onClick);
-    update();
-  };
+  const SCROLL_THRESHOLD = 100;
+  const DIRECTION_THRESHOLD = 20;
 
   const init = () => {
-    bind(
-      'back-to-top',
-      () => window.scrollY > SCROLL_THRESHOLD,
-      () => window.scrollTo({ top: 0 }),
-    );
-
+    const backToTop = document.getElementById('back-to-top');
+    const jumpToComments = document.getElementById('jump-to-comments');
     const comments = document.getElementById('comments');
-    if (!comments) {
-      return;
-    }
+    const mobile = window.matchMedia('(max-width: 639px)');
+    let lastScrollY = window.scrollY;
+    let direction = 0;
+    let distance = 0;
+    let showBackToTop = false;
 
-    bind(
-      'jump-to-comments',
-      () =>
-        window.scrollY > SCROLL_THRESHOLD &&
-        comments.getBoundingClientRect().top > window.innerHeight,
-      () => comments.scrollIntoView(),
-    );
+    const update = () => {
+      const scrollY = window.scrollY;
+      const delta = scrollY - lastScrollY;
+      const nextDirection = Math.sign(delta);
+
+      if (nextDirection) {
+        distance = nextDirection === direction ? distance + Math.abs(delta) : Math.abs(delta);
+        direction = nextDirection;
+        if (distance >= DIRECTION_THRESHOLD) {
+          showBackToTop = direction < 0;
+        }
+      }
+
+      backToTop.hidden = scrollY <= SCROLL_THRESHOLD || (mobile.matches && !showBackToTop);
+      if (jumpToComments) {
+        jumpToComments.hidden =
+          !comments || comments.getBoundingClientRect().top <= window.innerHeight;
+      }
+      lastScrollY = scrollY;
+    };
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0 }));
+
+    update();
   };
 
   window.__onReady(init);
