@@ -16,7 +16,7 @@
   }
 
   .home-card-title {
-    @apply text-xl leading-snug font-bold text-white drop-shadow-text;
+    @apply text-xl leading-snug font-bold text-white drop-shadow-text max-sm:line-clamp-2;
   }
 
   .home-card-meta {
