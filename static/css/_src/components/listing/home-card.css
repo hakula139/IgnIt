@@ -12,7 +12,7 @@
   }
 
   .home-card-body {
-    @apply pointer-events-none relative z-10 flex min-h-72 flex-col items-center justify-center p-4 text-center sm:min-h-88 sm:p-5;
+    @apply pointer-events-none relative z-10 flex min-h-72 flex-col items-center justify-center px-4 py-6 text-center sm:min-h-88 sm:p-5;
   }
 
   .home-card-title {
@@ -24,7 +24,7 @@
   }
 
   .home-card-desc {
-    @apply mt-3 line-clamp-3 text-sm leading-relaxed whitespace-pre-line text-white/80;
+    @apply mt-3 line-clamp-2 text-sm leading-relaxed whitespace-pre-line text-white/80 sm:line-clamp-3;
   }
 
   .home-card-reveal {
@@ -32,11 +32,35 @@
   }
 
   .home-card-tags {
-    @apply mt-3 flex flex-wrap justify-center gap-1.5;
+    @apply relative mt-3 flex justify-center gap-1.5 sm:flex-wrap;
   }
 
   .home-card-tag {
-    @apply pointer-events-auto rounded-full border-b-0 bg-white/15 px-2 py-0.5 text-xs text-white/85 no-underline transition-colors;
+    @apply pointer-events-auto min-w-0 rounded-full border-b-0 bg-white/15 px-2 py-0.5 text-xs text-white/85 no-underline transition-colors max-sm:truncate;
+  }
+
+  .home-card-tag-extra {
+    @apply hidden sm:block;
+  }
+
+  .home-card-tag-overflow {
+    @apply pointer-events-auto shrink-0 sm:hidden;
+  }
+
+  .home-card-tag-overflow summary {
+    @apply cursor-pointer list-none;
+  }
+
+  .home-card-tag-overflow summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .home-card-tag-menu {
+    @apply absolute inset-x-0 bottom-full z-20 mb-2 flex max-h-40 flex-wrap justify-center gap-1.5 overflow-y-auto rounded-lg bg-bg p-3 shadow-card;
+  }
+
+  .home-card-tag-menu .home-card-tag {
+    @apply bg-bg-muted text-text hover:bg-border hover:text-text;
   }
 
   .home-card-tag:hover {

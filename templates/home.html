@@ -86,8 +86,18 @@
           {%- if page.tags %}
           <div class="home-card-tags">
             {%- for tag in page.tags %}
-            <a href="{{ tag.url | safe }}" class="home-card-tag">{{ tag.name }}</a>
+            <a href="{{ tag.url | safe }}" class="home-card-tag{% if loop.index > 2 %} home-card-tag-extra{% endif %}">{{ tag.name }}</a>
             {%- endfor %}
+            {%- if page.tags | length > 2 %}
+            <details class="home-card-tag-overflow">
+              <summary class="home-card-tag" aria-label="{{ t('all_tags') }}">+{{ page.tags | length - 2 }}</summary>
+              <div class="home-card-tag-menu">
+                {%- for tag in page.tags[2:] %}
+                <a href="{{ tag.url | safe }}" class="home-card-tag">{{ tag.name }}</a>
+                {%- endfor %}
+              </div>
+            </details>
+            {%- endif %}
           </div>
           {%- endif %}
           {%- if page.date or page.section %}
