@@ -18,7 +18,7 @@
   }
 
   .home-card-body {
-    @apply pointer-events-none relative z-10 flex min-h-72 flex-col items-center justify-center px-4 py-6 text-center sm:min-h-88 sm:p-5;
+    @apply pointer-events-none relative z-10 flex min-h-72 flex-col items-center justify-center px-4 pt-8 pb-4 text-center sm:min-h-88 sm:p-5;
   }
 
   .home-card-title {
