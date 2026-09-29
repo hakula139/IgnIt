@@ -1,6 +1,6 @@
 @layer components {
   .home-container {
-    @apply mx-auto max-w-4xl px-2 sm:px-4 sm:max-xl:w-[90%] sm:max-xl:max-w-3xl;
+    @apply mx-auto max-w-4xl px-2 sm:px-4 sm:max-xl:w-[90%] sm:max-xl:max-w-[52rem];
   }
 
   .home-card {
@@ -20,7 +20,7 @@
   }
 
   .home-card-body {
-    @apply pointer-events-none relative z-10 flex min-h-72 flex-col items-center justify-center px-4 pt-8 pb-4 text-center sm:px-5 sm:max-xl:mx-auto sm:max-xl:max-w-2xl;
+    @apply pointer-events-none relative z-10 flex min-h-72 flex-col items-center justify-center px-4 pt-8 pb-4 text-center sm:px-5;
   }
 
   .home-card-title {
@@ -32,7 +32,7 @@
   }
 
   .home-card-desc {
-    @apply mt-5 line-clamp-2 text-sm leading-relaxed text-white/80 xl:mt-3 xl:line-clamp-3;
+    @apply mt-5 line-clamp-2 text-sm leading-relaxed text-white/80 sm:max-xl:mx-auto sm:max-xl:max-w-2xl xl:mt-3 xl:line-clamp-3;
   }
 
   .home-card-reveal {
