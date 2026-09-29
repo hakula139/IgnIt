@@ -18,11 +18,11 @@
   }
 
   .home-card-body {
-    @apply pointer-events-none relative z-10 flex min-h-72 flex-col items-center justify-center px-4 pt-8 pb-4 text-center sm:min-h-88 sm:p-5;
+    @apply pointer-events-none relative z-10 flex min-h-72 flex-col items-center justify-center px-4 pt-8 pb-4 text-center sm:p-5 sm:max-xl:mx-auto sm:max-xl:max-w-2xl;
   }
 
   .home-card-title {
-    @apply text-xl leading-snug font-bold text-white drop-shadow-text max-sm:line-clamp-2;
+    @apply text-xl leading-snug font-bold text-white drop-shadow-text max-sm:line-clamp-2 sm:max-xl:text-2xl;
   }
 
   .home-card-meta {
@@ -30,7 +30,7 @@
   }
 
   .home-card-desc {
-    @apply mt-3 line-clamp-2 text-sm leading-relaxed whitespace-pre-line text-white/80 sm:line-clamp-3;
+    @apply mt-3 line-clamp-2 text-sm leading-relaxed text-white/80 sm:line-clamp-3;
   }
 
   .home-card-reveal {
@@ -38,7 +38,7 @@
   }
 
   .home-card-tags {
-    @apply relative mt-3 flex justify-center gap-1.5 sm:flex-wrap;
+    @apply mt-3 flex justify-center gap-1.5 sm:flex-wrap;
   }
 
   .home-card-tag {
@@ -49,27 +49,11 @@
     @apply hidden sm:block;
   }
 
-  .home-card-tag-overflow {
-    @apply pointer-events-auto shrink-0 sm:hidden;
+  .home-card-tag-count {
+    @apply pointer-events-none shrink-0 sm:hidden;
   }
 
-  .home-card-tag-overflow summary {
-    @apply cursor-pointer list-none;
-  }
-
-  .home-card-tag-overflow summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .home-card-tag-menu {
-    @apply absolute inset-x-0 bottom-full z-20 mb-2 flex max-h-40 flex-wrap justify-center gap-1.5 overflow-y-auto rounded-lg bg-bg p-3 shadow-card;
-  }
-
-  .home-card-tag-menu .home-card-tag {
-    @apply bg-bg-muted text-text hover:bg-border hover:text-text;
-  }
-
-  .home-card-tag:hover {
+  a.home-card-tag:hover {
     @apply bg-white/30 text-white;
   }
 
