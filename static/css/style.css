@@ -2546,10 +2546,6 @@
     inset: 0px;
     height: 100%;
     width: 100%;
-    --tw-scale-x: var(--scale-card-hover);
-    --tw-scale-y: var(--scale-card-hover);
-    --tw-scale-z: var(--scale-card-hover);
-    scale: var(--tw-scale-x) var(--tw-scale-y);
     object-fit: cover;
     --tw-blur: blur(var(--blur-sm));
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
@@ -2845,12 +2841,14 @@
       transition-duration: 500ms,500ms,0s;
     }
     .home-card:not(:hover):not(:focus-within) .home-card-image {
-      --tw-scale-x: 100%;
-      --tw-scale-y: 100%;
-      --tw-scale-z: 100%;
-      scale: var(--tw-scale-x) var(--tw-scale-y);
       --tw-blur:  ;
       filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+    }
+    .home-card:hover .home-card-image, .home-card:focus-within .home-card-image {
+      --tw-scale-x: var(--scale-card-hover);
+      --tw-scale-y: var(--scale-card-hover);
+      --tw-scale-z: var(--scale-card-hover);
+      scale: var(--tw-scale-x) var(--tw-scale-y);
     }
     .home-card:not(:hover):not(:focus-within) .home-card-overlay::after {
       opacity: 0%;
@@ -3309,21 +3307,6 @@
   initial-value: "";
   inherits: false;
 }
-@property --tw-scale-x {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
-@property --tw-scale-y {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
-@property --tw-scale-z {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
 @property --tw-blur {
   syntax: "*";
   inherits: false;
@@ -3434,6 +3417,21 @@
   inherits: false;
   initial-value: 0;
 }
+@property --tw-scale-x {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-y {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
+@property --tw-scale-z {
+  syntax: "*";
+  inherits: false;
+  initial-value: 1;
+}
 @property --tw-ordinal {
   syntax: "*";
   inherits: false;
@@ -3510,9 +3508,6 @@
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
       --tw-content: "";
-      --tw-scale-x: 1;
-      --tw-scale-y: 1;
-      --tw-scale-z: 1;
       --tw-blur: initial;
       --tw-brightness: initial;
       --tw-contrast: initial;
@@ -3538,6 +3533,9 @@
       --tw-translate-x: 0;
       --tw-translate-y: 0;
       --tw-translate-z: 0;
+      --tw-scale-x: 1;
+      --tw-scale-y: 1;
+      --tw-scale-z: 1;
       --tw-ordinal: initial;
       --tw-slashed-zero: initial;
       --tw-numeric-figure: initial;

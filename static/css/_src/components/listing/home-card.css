@@ -8,7 +8,7 @@
   }
 
   .home-card-image {
-    @apply absolute inset-0 h-full w-full scale-card-hover object-cover blur-sm transition-[scale,filter] duration-1000;
+    @apply absolute inset-0 h-full w-full object-cover blur-sm transition-[scale,filter] duration-1000;
   }
 
   .home-card-overlay {
@@ -106,7 +106,12 @@
     }
 
     .home-card:not(:hover):not(:focus-within) .home-card-image {
-      @apply scale-100 blur-none;
+      @apply blur-none;
+    }
+
+    .home-card:hover .home-card-image,
+    .home-card:focus-within .home-card-image {
+      @apply scale-card-hover;
     }
 
     .home-card:not(:hover):not(:focus-within) .home-card-overlay::after {
