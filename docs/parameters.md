@@ -42,11 +42,13 @@ title = "Site Title" # Falls back to config.title when unset
 subtitle = "An optional tagline"
 ```
 
-| Field      | Type     | Default        | Description                                                             |
-| ---------- | -------- | -------------- | ----------------------------------------------------------------------- |
-| `avatar`   | `string` | none           | Profile avatar image. Site-relative path or absolute URL. Omit to hide. |
-| `title`    | `string` | `config.title` | Heading shown above the subtitle. Override to display a different name. |
-| `subtitle` | `string` | none           | Tagline rendered below the title. Omit to hide.                         |
+| Field      | Type     | Default        | Description                                                                |
+| ---------- | -------- | -------------- | -------------------------------------------------------------------------- |
+| `avatar`   | `string` | none           | Profile avatar image. Site-relative path or absolute URL. Omit to hide.    |
+| `title`    | `string` | `config.title` | Heading shown above the subtitle. Override to display a different name.    |
+| `subtitle` | `string` | none           | Tagline below the title. `\n` adds a mobile-only line break. Omit to hide. |
+
+In a double-quoted subtitle, `\n` places a line break below 640px. At larger widths the two parts join directly, so put a space before `\n` when the words need one.
 
 The optional social row under the profile is populated from `[[menu.social]]` and rendered in `weight` order. See [Customization → Social icons](customization.md#social-icons) for the icon spec format.
 

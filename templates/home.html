@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {%- import "_partials/macros/icon.html" as icons -%}
+{%- import "_partials/macros/text.html" as text -%}
 
 {% block head %}
 {%- set og_type = "website" -%}
@@ -24,7 +25,7 @@
         <h1 class="text-xl font-semibold">{{ profile.title }}</h1>
         {%- endif %}
         {%- if profile.subtitle %}
-        <p class="mt-2 text-sm text-text-secondary">{{ profile.subtitle }}</p>
+        <p class="mt-2 text-sm text-text-secondary">{{ text.render_lines(profile.subtitle, mobile_only=true) }}</p>
         {%- endif %}
         {%- if socials %}
         <div class="profile-socials">
@@ -81,11 +82,7 @@
         <h2 class="home-card-title">{{ page.title }}</h2>
         <div class="home-card-reveal">
           {%- if page.description %}
-          <p class="home-card-desc">
-            {%- for line in page.description | split("\n") -%}
-              {{ line }}{% if not loop.last %}<br>{% endif %}
-            {%- endfor -%}
-          </p>
+          <p class="home-card-desc">{{ text.render_lines(page.description) }}</p>
           {%- endif %}
           {%- if page.tags %}
           <div class="home-card-tags">

@@ -96,7 +96,8 @@ All assets live under a single `static/` tree. Files and directories whose names
     │   │   └── year-grouped-listing.html   # Year-grouped post list with pagination
     │   └── macros/
     │       ├── cdn.html                    # SRI <script> / <link> emitters for CDN deps
-    │       └── icon.html                   # Icon dispatcher (Font Awesome class or `svg:<slug>`)
+    │       ├── icon.html                   # Icon dispatcher (Font Awesome class or `svg:<slug>`)
+    │       └── text.html                   # Escaped text with explicit line breaks
     ├── 404.html                            # Error page (centered glass card, home link)
     ├── archive.html                        # Archive listing (year-grouped, pagination, glass card)
     ├── base.html                           # Base layout (glass panels, background image)
