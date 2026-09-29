@@ -922,13 +922,15 @@
       color: var(--color-link-hover);
     }
   }
-  @media (width >= 40rem) {
-    .sm\:block {
+  @media (width >= 480px) {
+    .min-\[480px\]\:block {
       display: block;
     }
-    .sm\:inline {
+    .min-\[480px\]\:inline {
       display: inline;
     }
+  }
+  @media (width >= 40rem) {
     .sm\:p-8 {
       padding: calc(var(--spacing) * 8);
     }
