@@ -102,7 +102,7 @@ pnpm build       # One-shot CSS build
 
 Compression for both CSS and JS is handled at deploy time by `kiln build --minify`, so sources stay readable in the dev server for debugging.
 
-For deeper architectural notes (CSS layering, dependency registry, build pipeline, coding conventions), see [`CLAUDE.md`](./CLAUDE.md).
+For theme contributor constraints, including CSS layering and dependency updates, see [`AGENTS.md`](./AGENTS.md).
 
 ## License
 
