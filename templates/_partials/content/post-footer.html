@@ -1,10 +1,7 @@
 {%- if tags or updated %}
-<footer
-  class="mt-8 flex flex-wrap items-center justify-between gap-x-6 gap-y-4 border-t border-border-overlay pt-5 text-sm"
-  data-pagefind-ignore
->
+<footer class="post-footer" data-pagefind-ignore>
   {%- if tags %}
-  <ul class="flex min-w-0 flex-wrap gap-2" aria-label="{{ t('tags') }}">
+  <ul class="post-footer-tags" aria-label="{{ t('tags') }}">
     {%- for tag in tags %}
     <li class="min-w-0 max-w-full">
       <a href="{{ tag.url | safe }}" class="tag-pill break-words">{{ tag.name }}</a>
@@ -13,9 +10,9 @@
   </ul>
   {%- endif %}
   {%- if updated %}
-  <p class="inline-flex flex-wrap items-baseline gap-x-1.5 text-text-secondary">
+  <p class="post-footer-updated">
     <span>{{ t('last_updated') }}</span>
-    <time datetime="{{ updated }}" class="whitespace-nowrap tabular-nums">{{ updated[:10] }}</time>
+    <time datetime="{{ updated }}" class="whitespace-nowrap">{{ updated[:10] }}</time>
   </p>
   {%- endif %}
 </footer>

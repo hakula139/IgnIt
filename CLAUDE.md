@@ -27,6 +27,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   │   │   │   ├── link-card.css       # .link-card, .link-avatar, .link-grid
 │   │   │   │   │   ├── lqip.css            # .lqip wrapper, fade-in animation, prose / body-bg overrides
 │   │   │   │   │   ├── mermaid.css         # .prose pre.mermaid container + SVG sizing
+│   │   │   │   │   ├── post-footer.css     # Article footer layout, tag list, and update metadata
 │   │   │   │   │   ├── prose.css           # .prose overrides (unlayered + @layer components)
 │   │   │   │   │   ├── syntax.css          # Syntax highlighting (Material Light / Palenight)
 │   │   │   │   │   └── toc.css             # .toc, .toc-collapse, .toc-trigger, .toc-sidebar-*

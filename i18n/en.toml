@@ -15,13 +15,13 @@ jump_to_page = "Jump to page"
 pinned = "Pinned"
 
 # Content
-tags = "Tags"
-last_updated = "Last updated"
+image_credit = "Image credit"
+views = "views"
 table_of_contents = "Table of Contents"
 jump_to = "Jump to"
-image_credit = "Image credit"
+tags = "Tags"
+last_updated = "Last updated"
 back_to_top = "Back to top"
-views = "views"
 
 # Comments
 comments = "Comments"
