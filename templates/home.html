@@ -90,7 +90,10 @@
           {%- if page.tags %}
           <div class="home-card-tags">
             {%- for tag in page.tags %}
-            <a href="{{ tag.url | safe }}" class="home-card-tag{% if loop.index > 2 %} home-card-tag-extra{% endif %}">{{ tag.name }}</a>
+            <a
+              href="{{ tag.url | safe }}"
+              class="home-card-tag{% if loop.index > 2 %} home-card-tag-extra{% endif %}"
+            >{{ tag.name }}</a>
             {%- endfor %}
             {%- if page.tags | length > 2 %}
             <span class="home-card-tag home-card-tag-count">+{{ page.tags | length - 2 }}</span>
