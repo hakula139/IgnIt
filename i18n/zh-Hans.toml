@@ -12,6 +12,8 @@ all_tags = "所有标签"
 more = "更多"
 pagination = "分页导航"
 jump_to_page = "跳转至页码"
+previous_page = "上一页"
+next_page = "下一页"
 pinned = "置顶"
 
 # 内容

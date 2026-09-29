@@ -1,39 +1,83 @@
 {%- if pagination.total_pages > 1 %}
     <nav class="flex justify-center mt-8" aria-label="{{ t('pagination') }}">
-      <div class="glass-glow inline-flex">
-        <ul
-          class="glass-panel pagination inline-flex items-center gap-1 px-3 py-2"
+      <div class="glass-glow max-w-full">
+        <div
+          class="glass-panel pagination max-w-full px-3 py-2"
           data-base-url="{{ pagination.base_url | safe }}"
         >
-        {%- for item in pagination.items %}
-          {%- if item.number %}
-          <li>
-            <a
-              href="{{ item.url | safe }}"
-              class="pagination-link"
-              {%- if item.is_current %} aria-current="page"{%- endif %}
-            >{{ item.number }}</a>
-          </li>
-          {%- else %}
-          <li>
-            <span
-              class="pagination-link pagination-ellipsis pagination-jump"
-              role="button"
-              tabindex="0"
-              title="{{ t('jump_to_page') }}"
-            >&hellip;</span>
-            <input
-              class="pagination-input"
-              style="display: none"
-              type="number"
-              min="1"
-              max="{{ pagination.total_pages }}"
-              aria-label="{{ t('jump_to_page') }}"
-            >
-          </li>
-          {%- endif %}
-        {%- endfor %}
-        </ul>
+          <ul class="pagination-mobile flex items-center gap-2 sm:hidden">
+            <li>
+              {%- if pagination.prev_url %}
+              <a
+                class="pagination-link"
+                href="{{ pagination.prev_url | safe }}"
+                aria-label="{{ t('previous_page') }}"
+              >&larr;</a>
+              {%- else %}
+              <button class="pagination-link" type="button" disabled aria-label="{{ t('previous_page') }}">&larr;</button>
+              {%- endif %}
+            </li>
+            <li class="pagination-current">
+              <button
+                class="pagination-link pagination-jump"
+                type="button"
+                aria-label="{{ t('jump_to_page') }}: {{ pagination.current_page }} / {{ pagination.total_pages }}"
+                aria-current="page"
+              >{{ pagination.current_page }} / {{ pagination.total_pages }}</button>
+              <input
+                class="pagination-input"
+                hidden
+                type="number"
+                min="1"
+                max="{{ pagination.total_pages }}"
+                value="{{ pagination.current_page }}"
+                required
+                aria-label="{{ t('jump_to_page') }}"
+              >
+            </li>
+            <li>
+              {%- if pagination.next_url %}
+              <a
+                class="pagination-link"
+                href="{{ pagination.next_url | safe }}"
+                aria-label="{{ t('next_page') }}"
+              >&rarr;</a>
+              {%- else %}
+              <button class="pagination-link" type="button" disabled aria-label="{{ t('next_page') }}">&rarr;</button>
+              {%- endif %}
+            </li>
+          </ul>
+          <ul class="pagination-desktop hidden flex-wrap items-center justify-center gap-1 sm:flex">
+          {%- for item in pagination.items %}
+            {%- if item.number %}
+            <li>
+              <a
+                href="{{ item.url | safe }}"
+                class="pagination-link"
+                {%- if item.is_current %} aria-current="page"{%- endif %}
+              >{{ item.number }}</a>
+            </li>
+            {%- else %}
+            <li>
+              <button
+                class="pagination-link pagination-ellipsis pagination-jump"
+                type="button"
+                aria-label="{{ t('jump_to_page') }}"
+              >&hellip;</button>
+              <input
+                class="pagination-input"
+                hidden
+                type="number"
+                min="1"
+                max="{{ pagination.total_pages }}"
+                required
+                aria-label="{{ t('jump_to_page') }}"
+              >
+            </li>
+            {%- endif %}
+          {%- endfor %}
+          </ul>
+        </div>
       </div>
     </nav>
 {%- endif %}

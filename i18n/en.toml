@@ -12,6 +12,8 @@ all_tags = "All Tags"
 more = "More"
 pagination = "Pagination"
 jump_to_page = "Jump to page"
+previous_page = "Previous page"
+next_page = "Next page"
 pinned = "Pinned"
 
 # Content
