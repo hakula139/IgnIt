@@ -1,0 +1,5 @@
+{%- macro render_lines(value, mobile_only=false) -%}
+  {%- for line in value | split("\n") -%}
+    {{ line }}{% if not loop.last %}<br{% if mobile_only %} class="sm:hidden"{% endif %}>{% endif %}
+  {%- endfor -%}
+{%- endmacro %}
