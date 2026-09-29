@@ -19,6 +19,26 @@
     @apply hidden;
   }
 
+  .callout::details-content {
+    @apply grid grid-rows-[0fr];
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .callout::details-content {
+      transition:
+        grid-template-rows 300ms,
+        content-visibility 300ms allow-discrete;
+    }
+  }
+
+  .callout[open]::details-content {
+    @apply grid-rows-[1fr];
+  }
+
+  .callout-body {
+    @apply min-h-0 overflow-hidden;
+  }
+
   /* Variant icon on the left. The chevron on the right lives in collapse.css. */
   .callout-title::before {
     @apply fa-icon;

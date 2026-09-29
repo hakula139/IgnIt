@@ -11,7 +11,7 @@
 
   // ── Collapsible Panels ──
 
-  const makeCollapsible = (container, trigger, { skipSelector, preventDefault } = {}) => {
+  const makeCollapsible = (container, trigger, { skipSelector } = {}) => {
     const toggle = () => {
       container.classList.toggle('collapsed');
       if (trigger.hasAttribute('aria-expanded')) {
@@ -23,9 +23,6 @@
     trigger.addEventListener('click', (e) => {
       if (skipSelector && e.target.closest(skipSelector)) {
         return;
-      }
-      if (preventDefault) {
-        e.preventDefault();
       }
       toggle();
     });
@@ -88,34 +85,6 @@
     });
   };
 
-  // ── Callouts ──
-
-  const initCallouts = () => {
-    for (const callout of document.querySelectorAll('details.callout')) {
-      const summary = callout.querySelector('.callout-title');
-      const body = callout.querySelector('.callout-body');
-      if (!summary || !body) {
-        continue;
-      }
-
-      // Wrap body children in a single element for CSS grid animation.
-      const inner = document.createElement('div');
-      inner.className = 'callout-body-inner';
-      while (body.firstChild) {
-        inner.appendChild(body.firstChild);
-      }
-      body.appendChild(inner);
-
-      // If initially closed, keep open in DOM but visually collapse via CSS.
-      if (!callout.open) {
-        callout.open = true;
-        callout.classList.add('collapsed');
-      }
-
-      makeCollapsible(callout, summary, { preventDefault: true });
-    }
-  };
-
   // ── Table of Contents ──
 
   const initTocCollapse = () => {
@@ -170,7 +139,6 @@
 
   const init = () => {
     initCodeBlocks();
-    initCallouts();
     initTocCollapse();
     initHeadingAnchors();
     initExternalLinks();

@@ -22,7 +22,7 @@
   }
 
   .code-block.collapsed .code-header::before,
-  .callout.collapsed .callout-title::after,
+  .callout:not([open]) .callout-title::after,
   .toc-collapse.collapsed .toc-trigger::after {
     @apply -rotate-90;
   }
@@ -30,13 +30,11 @@
   /* ── Body (CSS grid row animation) ── */
 
   .code-body,
-  .callout-body,
   .toc-body-wrapper {
     @apply grid grid-rows-[1fr] transition-[grid-template-rows] duration-300;
   }
 
   .code-block.collapsed .code-body,
-  .callout.collapsed .callout-body,
   .toc-collapse.collapsed .toc-body-wrapper {
     @apply grid-rows-[0fr];
   }
