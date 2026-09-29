@@ -139,7 +139,7 @@ The known rendering caveats with `cursor_glow` enabled:
 
 ## `[params.deps.<name>]`
 
-Pinned versions and SRI hashes for vendor CDN dependencies. The table is theme-internal and changes only when a dep version is bumped. The schema is documented in [`CLAUDE.md`](../CLAUDE.md#dependencies), and sites consuming defaults don't need to touch this table.
+Pinned versions and SRI hashes for vendor CDN dependencies. The table is theme-internal and changes only when a dep version is bumped. Contributor steps for changing a dependency are in [`AGENTS.md`](../AGENTS.md#dependencies). Sites consuming defaults do not need to touch this table.
 
 ## Menu groups
 

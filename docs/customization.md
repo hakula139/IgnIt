@@ -125,7 +125,7 @@ my-site/templates/_partials/comments/
 └── index.html
 ```
 
-The partial is responsible for emitting the provider's mount markup and CDN scripts. Theme defaults register CDN deps with SRI under `[params.deps.<provider>]` in `theme.toml`, and new providers follow the same pattern (see [`CLAUDE.md`](../CLAUDE.md#dependencies) for the SRI regeneration flow).
+The partial is responsible for emitting the provider's mount markup and CDN scripts. Theme defaults register CDN deps with SRI under `[params.deps.<provider>]` in `theme.toml`, and new providers follow the same pattern (see [`AGENTS.md`](../AGENTS.md#dependencies) for the SRI regeneration flow).
 
 Once the partial is in place, set the provider in your site config:
 
