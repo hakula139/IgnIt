@@ -10,7 +10,7 @@
 {%- set profile = config.params.home.profile %}
 {%- set socials = config.menu.social | default([]) %}
 {%- if profile %}
-  <div class="max-w-4xl mx-auto px-2 sm:px-4 pt-6">
+  <div class="max-w-4xl sm:max-xl:w-[90%] sm:max-xl:max-w-3xl mx-auto px-2 sm:px-4 pt-6">
     <div class="glass-glow">
       <div class="glass-panel p-4 sm:p-8 text-center">
         {%- if profile.avatar %}
@@ -48,7 +48,7 @@
 {%- endif %}
 
 {%- if pages %}
-  <div class="max-w-4xl mx-auto space-y-4 px-2 sm:px-4 py-6">
+  <div class="max-w-4xl sm:max-xl:w-[90%] sm:max-xl:max-w-3xl mx-auto space-y-4 px-2 sm:px-4 py-6">
     {%- for page in pages %}
     {%- if page.featured_image %}
     <article class="home-card">
