@@ -15,6 +15,8 @@ jump_to_page = "跳转至页码"
 pinned = "置顶"
 
 # 内容
+tags = "标签"
+last_updated = "更新于"
 table_of_contents = "目录"
 jump_to = "跳转至"
 image_credit = "图片来源"
