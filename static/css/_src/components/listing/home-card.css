@@ -1,22 +1,30 @@
 @layer components {
+  .home-container {
+    @apply mx-auto max-w-4xl px-2 sm:px-4 sm:max-xl:w-[90%] sm:max-xl:max-w-[52rem];
+  }
+
   .home-card {
-    @apply relative h-88 overflow-hidden rounded-card border border-border-overlay bg-card shadow-card;
+    @apply relative overflow-hidden rounded-card border border-border-overlay bg-card shadow-card;
   }
 
   .home-card-image {
-    @apply absolute inset-0 h-full w-full object-cover transition-[scale,filter] duration-1000;
+    @apply absolute inset-0 h-full w-full object-cover blur-sm transition-[scale,filter] duration-1000;
   }
 
   .home-card-overlay {
-    @apply absolute inset-0 bg-linear-to-t from-black/80 via-black/40 to-black/5;
+    @apply absolute inset-0 bg-linear-to-t from-black/65 via-black/30 to-black/10;
+  }
+
+  .home-card-overlay::after {
+    @apply absolute inset-0 bg-linear-to-t from-black/70 via-black/35 to-black/15 opacity-100 transition-opacity duration-700 content-[''];
   }
 
   .home-card-body {
-    @apply pointer-events-none absolute inset-0 z-10 flex flex-col items-center justify-center p-5 text-center;
+    @apply pointer-events-none relative z-10 flex min-h-72 flex-col items-center justify-center px-4 pt-8 pb-4 text-center sm:px-5;
   }
 
   .home-card-title {
-    @apply -translate-y-14 text-xl leading-snug font-bold text-white drop-shadow-text;
+    @apply text-xl leading-snug font-bold text-white drop-shadow-text max-sm:line-clamp-2 sm:max-xl:text-2xl;
   }
 
   .home-card-meta {
@@ -24,22 +32,30 @@
   }
 
   .home-card-desc {
-    @apply mt-3 line-clamp-3 text-sm leading-relaxed whitespace-pre-line text-white/80;
+    @apply mt-5 line-clamp-2 text-sm leading-relaxed text-white/80 sm:max-xl:mx-auto sm:max-xl:max-w-2xl xl:mt-3 xl:line-clamp-3;
   }
 
   .home-card-reveal {
-    @apply absolute inset-x-0 bottom-0 px-5 pb-5;
+    @apply w-full;
   }
 
   .home-card-tags {
-    @apply mt-3 flex flex-wrap justify-center gap-1.5;
+    @apply mt-3 flex justify-center gap-1.5 sm:flex-wrap;
   }
 
   .home-card-tag {
-    @apply pointer-events-auto rounded-full border-b-0 bg-white/15 px-2 py-0.5 text-xs text-white/85 no-underline transition-colors;
+    @apply pointer-events-auto min-w-0 rounded-full border-b-0 bg-white/15 px-2 py-0.5 text-xs text-white/85 no-underline transition-colors max-sm:truncate;
   }
 
-  .home-card-tag:hover {
+  .home-card-tag-extra {
+    @apply hidden sm:block;
+  }
+
+  .home-card-tag-count {
+    @apply pointer-events-none shrink-0 sm:hidden;
+  }
+
+  a.home-card-tag:hover {
     @apply bg-white/30 text-white;
   }
 
@@ -59,18 +75,12 @@
   /* ── Desktop: Title Centered by Default, Reveal on Hover ── */
 
   @media (min-width: 1280px) {
-    .home-card-overlay {
-      @apply from-black/65 via-black/30 to-black/10;
-    }
-
-    /* CSS gradients aren't animatable, so the darker hover gradient
-       lives on ::after and fades in via opacity transition. */
-    .home-card-overlay::after {
-      @apply absolute inset-0 bg-linear-to-t from-black/70 via-black/35 to-black/15 opacity-0 transition-opacity duration-700 content-[''];
+    .home-card {
+      @apply h-88;
     }
 
     .home-card-body {
-      @apply p-6;
+      @apply absolute inset-0 min-h-0 p-6;
     }
 
     .home-card-title {
@@ -92,17 +102,20 @@
     /* Asymmetric visibility delay drops the contents out of tab order after
        the fade-out, but lets them in immediately on show (paired delay-0). */
     .home-card-reveal {
-      @apply invisible translate-y-3 px-6 pb-6 opacity-0 transition-[opacity,translate,visibility] delay-[0s,0s,500ms] duration-[500ms,500ms,0s];
+      @apply invisible absolute inset-x-0 bottom-0 translate-y-3 px-6 pb-6 opacity-0 transition-[opacity,translate,visibility] delay-[0s,0s,500ms] duration-[500ms,500ms,0s];
+    }
+
+    .home-card:not(:hover):not(:focus-within) .home-card-image {
+      @apply blur-none;
     }
 
     .home-card:hover .home-card-image,
     .home-card:focus-within .home-card-image {
-      @apply scale-card-hover blur-sm;
+      @apply scale-card-hover;
     }
 
-    .home-card:hover .home-card-overlay::after,
-    .home-card:focus-within .home-card-overlay::after {
-      @apply opacity-100;
+    .home-card:not(:hover):not(:focus-within) .home-card-overlay::after {
+      @apply opacity-0;
     }
 
     .home-card:hover .home-card-title,
@@ -141,7 +154,7 @@
   }
 
   .profile-social {
-    @apply inline-flex aspect-square items-center justify-center rounded-full border-b-0 p-2 text-2xl text-text-secondary no-underline transition-colors;
+    @apply inline-flex size-10 shrink-0 items-center justify-center rounded-full border-b-0 p-2 text-2xl text-text-secondary no-underline transition-colors;
   }
 
   .profile-social svg {

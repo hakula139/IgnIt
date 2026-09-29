@@ -10,9 +10,9 @@
 {%- set profile = config.params.home.profile %}
 {%- set socials = config.menu.social | default([]) %}
 {%- if profile %}
-  <div class="max-w-4xl mx-auto px-4 pt-6">
+  <div class="home-container pt-6">
     <div class="glass-glow">
-      <div class="glass-panel p-6 sm:p-8 text-center">
+      <div class="glass-panel p-4 sm:p-8 text-center">
         {%- if profile.avatar %}
         <img
           class="profile-avatar"
@@ -48,7 +48,7 @@
 {%- endif %}
 
 {%- if pages %}
-  <div class="max-w-4xl mx-auto space-y-4 px-4 py-6">
+  <div class="home-container space-y-4 py-6">
     {%- for page in pages %}
     {%- if page.featured_image %}
     <article class="home-card">
@@ -81,13 +81,23 @@
         <h2 class="home-card-title">{{ page.title }}</h2>
         <div class="home-card-reveal">
           {%- if page.description %}
-          <p class="home-card-desc">{{ page.description }}</p>
+          <p class="home-card-desc">
+            {%- for line in page.description | split("\n") -%}
+              {{ line }}{% if not loop.last %}<br>{% endif %}
+            {%- endfor -%}
+          </p>
           {%- endif %}
           {%- if page.tags %}
           <div class="home-card-tags">
             {%- for tag in page.tags %}
-            <a href="{{ tag.url | safe }}" class="home-card-tag">{{ tag.name }}</a>
+            <a
+              href="{{ tag.url | safe }}"
+              class="home-card-tag{% if loop.index > 2 %} home-card-tag-extra{% endif %}"
+            >{{ tag.name }}</a>
             {%- endfor %}
+            {%- if page.tags | length > 2 %}
+            <span class="home-card-tag home-card-tag-count">+{{ page.tags | length - 2 }}</span>
+            {%- endif %}
           </div>
           {%- endif %}
           {%- if page.date or page.section %}
@@ -111,7 +121,7 @@
     </article>
     {%- else %}
     <div class="glass-glow">
-      <article class="glass-panel post-entry px-5 py-4">
+      <article class="glass-panel post-entry px-4 sm:px-5 py-4">
         <a href="{{ page.url | safe }}" class="post-entry-title font-medium">
           {%- if page.pinned %}
           <i class="fas fa-thumbtack post-entry-pin" aria-label="{{ t('pinned') }}" title="{{ t('pinned') }}"></i>
