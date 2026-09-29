@@ -14,14 +14,19 @@
                 aria-label="{{ t('previous_page') }}"
               >&larr;</a>
               {%- else %}
-              <button class="pagination-link" type="button" disabled aria-label="{{ t('previous_page') }}">&larr;</button>
+              <button
+                class="pagination-link"
+                type="button"
+                disabled
+                aria-label="{{ t('previous_page') }}"
+              >&larr;</button>
               {%- endif %}
             </li>
             <li class="pagination-current">
               <button
                 class="pagination-link pagination-jump"
                 type="button"
-                aria-label="{{ t('jump_to_page') }}: {{ pagination.current_page }} / {{ pagination.total_pages }}"
+                aria-label="{{ t('jump_to_page') }} {{ pagination.current_page }} / {{ pagination.total_pages }}"
                 aria-current="page"
               >{{ pagination.current_page }} / {{ pagination.total_pages }}</button>
               <input
@@ -43,7 +48,12 @@
                 aria-label="{{ t('next_page') }}"
               >&rarr;</a>
               {%- else %}
-              <button class="pagination-link" type="button" disabled aria-label="{{ t('next_page') }}">&rarr;</button>
+              <button
+                class="pagination-link"
+                type="button"
+                disabled
+                aria-label="{{ t('next_page') }}"
+              >&rarr;</button>
               {%- endif %}
             </li>
           </ul>
