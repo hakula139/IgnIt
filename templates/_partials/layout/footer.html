@@ -4,13 +4,15 @@
   <footer class="glass-panel site-footer">
     <div class="max-w-6xl mx-auto">
       {%- if footer.since %}
-      <p>
-        &copy; {{ footer.since }}&ndash;{{ current_year }} {{ config.author.name }}
+      <p class="flex flex-col items-center gap-1 sm:block">
+        <span>&copy; {{ footer.since }}&ndash;{{ current_year }} {{ config.author.name }}</span>
         {%- if footer.license %}
-        &middot;
-        <a href="{{ footer.license_url | default('#') | safe }}">
-          {{ footer.license }}
-        </a>
+        <span>
+          <span class="hidden sm:inline" aria-hidden="true">&middot;</span>
+          <a class="whitespace-nowrap" href="{{ footer.license_url | default('#') | safe }}">
+            {{ footer.license }}
+          </a>
+        </span>
         {%- endif %}
       </p>
       {%- else %}
