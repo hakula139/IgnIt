@@ -3,7 +3,20 @@
     @apply inline-flex h-9 min-w-9 items-center justify-center rounded-lg border-b-0 px-2.5 text-sm font-medium text-text-secondary transition-colors duration-200;
   }
 
-  .pagination-link:hover {
+  .pagination-mobile .pagination-link {
+    @apply h-10 min-w-10;
+  }
+
+  .pagination-current .pagination-link {
+    @apply min-w-20;
+  }
+
+  .pagination-link:disabled {
+    @apply opacity-40;
+  }
+
+  .pagination-link:not(:disabled):hover,
+  .pagination-link:focus-visible {
     @apply text-link-hover;
     background-color: color-mix(in srgb, var(--color-link-hover) 8%, transparent);
   }
@@ -13,8 +26,13 @@
     background-color: color-mix(in srgb, var(--color-link-hover) 15%, transparent);
   }
 
-  .pagination-ellipsis {
+  .pagination-jump {
     @apply cursor-pointer text-text-tertiary;
+  }
+
+  .pagination-jump[hidden],
+  .pagination-input[hidden] {
+    display: none;
   }
 
   .pagination-input {
@@ -22,6 +40,10 @@
     background: color-mix(in srgb, var(--color-bg) 60%, transparent);
     appearance: textfield;
     -moz-appearance: textfield;
+  }
+
+  .pagination-current .pagination-input {
+    @apply h-10 w-20;
   }
 
   .pagination-input:focus {

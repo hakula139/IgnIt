@@ -2,54 +2,42 @@
 
 (() => {
   const initPagination = () => {
-    const pagination = document.querySelector('.pagination');
-    if (!pagination) {
-      return;
-    }
+    for (const pagination of document.querySelectorAll('.pagination')) {
+      const base = pagination.dataset.baseUrl;
 
-    const base = pagination.dataset.baseUrl;
+      for (const button of pagination.querySelectorAll('.pagination-jump')) {
+        const input = button.nextElementSibling;
 
-    const showInput = (li) => {
-      li.querySelector('.pagination-jump').style.display = 'none';
-      const input = li.querySelector('.pagination-input');
-      input.style.display = '';
-      input.focus();
-    };
+        const hideInput = (restoreFocus = false) => {
+          input.hidden = true;
+          button.hidden = false;
+          if (restoreFocus) {
+            button.focus();
+          }
+        };
 
-    const hideInput = (li) => {
-      li.querySelector('.pagination-jump').style.display = '';
-      li.querySelector('.pagination-input').style.display = 'none';
-    };
+        button.addEventListener('click', () => {
+          button.hidden = true;
+          input.hidden = false;
+          input.focus();
+          input.select();
+        });
 
-    for (const el of document.querySelectorAll('.pagination-jump')) {
-      const activate = () => showInput(el.closest('li'));
-      el.addEventListener('click', activate);
-      el.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          activate();
-        }
-      });
-    }
+        input.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            hideInput(true);
+          } else if (event.key === 'Enter') {
+            const number = Number(input.value);
+            if (Number.isInteger(number) && input.checkValidity()) {
+              location.href = number === 1 ? `${base}/` : `${base}/page/${number}/`;
+            } else {
+              input.reportValidity();
+            }
+          }
+        });
 
-    for (const input of document.querySelectorAll('.pagination-input')) {
-      const go = () => {
-        const n = parseInt(input.value, 10);
-        if (n >= 1 && n <= parseInt(input.max, 10)) {
-          location.href = n === 1 ? `${base}/` : `${base}/page/${n}/`;
-        }
-        hideInput(input.closest('li'));
-      };
-
-      input.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          go();
-        } else if (e.key === 'Escape') {
-          hideInput(input.closest('li'));
-        }
-      });
-
-      input.addEventListener('blur', () => hideInput(input.closest('li')));
+        input.addEventListener('blur', () => hideInput());
+      }
     }
   };
 
