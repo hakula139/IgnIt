@@ -1,4 +1,8 @@
 @layer components {
+  .home-container {
+    @apply mx-auto max-w-4xl px-2 sm:px-4 sm:max-xl:w-[90%] sm:max-xl:max-w-3xl;
+  }
+
   .home-card {
     @apply relative overflow-hidden rounded-card border border-border-overlay bg-card shadow-card;
   }

@@ -947,14 +947,6 @@
     .sm\:px-5 {
       padding-inline: calc(var(--spacing) * 5);
     }
-    @media (width < 80rem) {
-      .sm\:max-xl\:w-\[90\%\] {
-        width: 90%;
-      }
-      .sm\:max-xl\:max-w-3xl {
-        max-width: var(--container-3xl);
-      }
-    }
   }
   @media (width >= 48rem) {
     .md\:flex {
@@ -2519,6 +2511,24 @@
   }
   .toc-sidebar .toc li.active > ul {
     opacity: 100%;
+  }
+  .home-container {
+    margin-inline: auto;
+    max-width: var(--container-4xl);
+    padding-inline: calc(var(--spacing) * 2);
+    @media (width >= 40rem) {
+      padding-inline: calc(var(--spacing) * 4);
+    }
+    @media (width >= 40rem) {
+      @media (width < 80rem) {
+        width: 90%;
+      }
+    }
+    @media (width >= 40rem) {
+      @media (width < 80rem) {
+        max-width: var(--container-3xl);
+      }
+    }
   }
   .home-card {
     position: relative;
