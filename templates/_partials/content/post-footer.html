@@ -1,0 +1,19 @@
+{%- if tags or updated %}
+<footer class="post-footer" data-pagefind-ignore>
+  {%- if tags %}
+  <ul class="post-footer-tags" aria-label="{{ t('tags') }}">
+    {%- for tag in tags %}
+    <li class="min-w-0 max-w-full">
+      <a href="{{ tag.url | safe }}" class="tag-pill break-words">{{ tag.name }}</a>
+    </li>
+    {%- endfor %}
+  </ul>
+  {%- endif %}
+  {%- if updated %}
+  <p class="post-footer-updated">
+    <span>{{ t('last_updated') }}</span>
+    <time datetime="{{ updated }}" class="whitespace-nowrap">{{ updated[:10] }}</time>
+  </p>
+  {%- endif %}
+</footer>
+{%- endif %}

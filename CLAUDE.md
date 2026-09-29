@@ -27,6 +27,7 @@ All assets live under a single `static/` tree. Files and directories whose names
 │   │   │   │   │   ├── link-card.css       # .link-card, .link-avatar, .link-grid
 │   │   │   │   │   ├── lqip.css            # .lqip wrapper, fade-in animation, prose / body-bg overrides
 │   │   │   │   │   ├── mermaid.css         # .prose pre.mermaid container + SVG sizing
+│   │   │   │   │   ├── post-footer.css     # Article footer layout, tag list, and update metadata
 │   │   │   │   │   ├── prose.css           # .prose overrides (unlayered + @layer components)
 │   │   │   │   │   ├── syntax.css          # Syntax highlighting (Material Light / Palenight)
 │   │   │   │   │   └── toc.css             # .toc, .toc-collapse, .toc-trigger, .toc-sidebar-*
@@ -80,6 +81,7 @@ All assets live under a single `static/` tree. Files and directories whose names
     │   ├── content/
     │   │   ├── meta-og.html                # OG / Twitter Card meta tags
     │   │   ├── post-banner.html            # Post header featured image (banner + credit)
+    │   │   ├── post-footer.html            # Article tags and update date
     │   │   ├── toc-mobile.html             # Collapsible TOC (< xl breakpoint)
     │   │   └── toc-sidebar.html            # Sticky TOC sidebar (xl+ breakpoint)
     │   ├── icons/                          # Inline SVGs for `svg:<slug>` icon specs

@@ -15,11 +15,13 @@ jump_to_page = "跳转至页码"
 pinned = "置顶"
 
 # 内容
+image_credit = "图片来源"
+views = "次阅读"
 table_of_contents = "目录"
 jump_to = "跳转至"
-image_credit = "图片来源"
+tags = "标签"
+last_updated = "更新于"
 back_to_top = "回到顶部"
-views = "次阅读"
 
 # 评论
 comments = "评论"
