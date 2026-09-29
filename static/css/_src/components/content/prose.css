@@ -198,7 +198,7 @@
 
   /* ── Tables ── */
 
-  .prose table {
+  .prose table:not(.code-block table) {
     @apply block styled-scrollbar w-auto overflow-x-auto;
   }
 
@@ -206,7 +206,7 @@
     @apply whitespace-nowrap;
   }
 
-  .prose :where(th, td):not(.nowrap, .not-prose *) {
+  .prose :where(th, td):not(.nowrap, .not-prose *, .code-block *) {
     min-width: calc(var(--table-nowrap-width, 0) * 0.5em);
   }
 
