@@ -8,6 +8,6 @@
   }
 
   .post-footer-updated {
-    @apply inline-flex flex-wrap items-baseline gap-x-1.5 text-text-secondary;
+    @apply ml-auto inline-flex flex-wrap items-baseline gap-x-1.5 text-text-secondary;
   }
 }
