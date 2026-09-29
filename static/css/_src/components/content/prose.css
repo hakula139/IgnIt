@@ -23,7 +23,7 @@
 /* ── Headings ── */
 
 .prose :where(h2, h3, h4, h5, h6) {
-  @apply mb-6 leading-normal font-semibold text-text;
+  @apply mb-6 leading-normal font-semibold wrap-break-word text-text;
 }
 
 .prose :where(h2, h3, h4, h5, h6) + * {
@@ -31,7 +31,7 @@
 }
 
 .prose :where(h2) {
-  @apply mt-[2.25em] pb-[0.4em] text-[1.4em] font-bold after:absolute after:right-0 after:bottom-0 after:left-5 after:border-b after:border-border-overlay;
+  @apply mt-[2.25em] pb-[0.4em] text-[1.4em] font-bold after:absolute after:right-0 after:bottom-0 after:left-4 after:border-b after:border-border-overlay sm:after:left-5;
 }
 
 .prose :where(h3) {
@@ -189,7 +189,7 @@
   /* ── Heading Anchors ── */
 
   .prose :where(h1, h2, h3, h4, h5, h6) {
-    @apply relative -ml-5 pl-5;
+    @apply relative -ml-3 pl-4 sm:-ml-5 sm:pl-5;
   }
 
   .prose .heading-anchor {
@@ -198,6 +198,10 @@
 
   .prose :where(h2, h3, h4, h5, h6):hover .heading-anchor {
     @apply opacity-60;
+  }
+
+  .prose .heading-anchor:focus-visible {
+    @apply opacity-100;
   }
 
   .prose :where(.callout, blockquote) .heading-anchor {
