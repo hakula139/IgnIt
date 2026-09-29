@@ -264,8 +264,8 @@
   .z-50 {
     z-index: 50;
   }
-  .mx-4 {
-    margin-inline: calc(var(--spacing) * 4);
+  .mx-2 {
+    margin-inline: calc(var(--spacing) * 2);
   }
   .mx-auto {
     margin-inline: auto;
@@ -931,6 +931,9 @@
     }
   }
   @media (width >= 40rem) {
+    .sm\:mx-4 {
+      margin-inline: calc(var(--spacing) * 4);
+    }
     .sm\:p-8 {
       padding: calc(var(--spacing) * 8);
     }
