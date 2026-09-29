@@ -81,6 +81,7 @@ All assets live under a single `static/` tree. Files and directories whose names
     │   ├── content/
     │   │   ├── meta-og.html                # OG / Twitter Card meta tags
     │   │   ├── post-banner.html            # Post header featured image (banner + credit)
+    │   │   ├── post-footer.html            # Article tags and update date
     │   │   ├── toc-mobile.html             # Collapsible TOC (< xl breakpoint)
     │   │   └── toc-sidebar.html            # Sticky TOC sidebar (xl+ breakpoint)
     │   ├── icons/                          # Inline SVGs for `svg:<slug>` icon specs
