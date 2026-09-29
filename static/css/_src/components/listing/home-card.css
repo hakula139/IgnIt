@@ -32,7 +32,7 @@
   }
 
   .home-card-desc {
-    @apply mt-3 line-clamp-2 text-sm leading-relaxed text-white/80 xl:line-clamp-3;
+    @apply mt-5 line-clamp-2 text-sm leading-relaxed text-white/80 xl:mt-3 xl:line-clamp-3;
   }
 
   .home-card-reveal {
