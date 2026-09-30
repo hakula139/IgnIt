@@ -1,7 +1,8 @@
 <div class="float-rail">
   <div class="float-controls">
-    <button
+    <a
       id="back-to-top"
+      href="#"
       class="float-btn glass-panel"
       data-glow-target
       aria-label="{{ t('back_to_top') }}"
@@ -9,7 +10,8 @@
       hidden
     >
       <i class="fas fa-arrow-up" aria-hidden="true"></i>
-    </button>
+    </a>
+
     {%- if content is defined and config.params.comments and config.params.comments.enabled %}
     <a
       id="jump-to-comments"
