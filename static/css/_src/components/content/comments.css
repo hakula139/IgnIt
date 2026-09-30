@@ -6,6 +6,7 @@
 .twikoo .el-textarea__inner::placeholder,
 .twikoo .tk-avatar .tk-avatar-img,
 .twikoo .tk-extras,
+.twikoo .tk-footer,
 .twikoo .tk-sort-item,
 .twikoo .tk-submit-action-icon.__markdown {
   @apply text-text-secondary;
@@ -35,6 +36,11 @@
 .twikoo .tk-icon.__comments.__active {
   @apply bg-link text-bg;
   box-shadow: 0 0 0 0.2rem var(--color-link);
+}
+
+.twikoo .tk-comments-error,
+.twikoo .tk-error-message {
+  color: var(--callout-danger-fg);
 }
 
 /* ── Badges ── */
@@ -68,6 +74,10 @@
 .twikoo input.el-input__inner:focus,
 .twikoo textarea.el-textarea__inner:focus {
   @apply border-link;
+}
+
+.twikoo .tk-meta-input .el-input input:invalid {
+  border-color: var(--callout-danger-fg);
 }
 
 .twikoo
