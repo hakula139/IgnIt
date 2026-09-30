@@ -1186,6 +1186,10 @@
       opacity: 0%;
     }
   }
+  .float-btn:hover {
+    color: var(--color-link-hover);
+    background: var(--surface-glass-hover);
+  }
   .float-btn[hidden] {
     pointer-events: none;
     display: none;
@@ -1196,10 +1200,6 @@
       display: none;
       transition-property: none;
     }
-  }
-  .float-btn:hover {
-    color: var(--color-link-hover);
-    background: var(--surface-glass-hover);
   }
   :where(.glass-glow, [data-glow-target]) {
     position: relative;
@@ -2050,7 +2050,7 @@
     object-fit: cover;
     object-position: var(--bg-position-mobile, var(--bg-position, center));
   }
-  @media (min-width: 640px) {
+  @media (width >= 40rem) {
     .body-bg > img {
       object-position: var(--bg-position, center);
     }
@@ -2826,7 +2826,7 @@
     border-style: var(--tw-border-style);
     border-width: 0px;
   }
-  @media (min-width: 1280px) {
+  @media (width >= 80rem) {
     .home-card {
       height: calc(var(--spacing) * 88);
     }

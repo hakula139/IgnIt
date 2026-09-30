@@ -20,18 +20,18 @@
     }
   }
 
+  .float-btn:hover {
+    @apply text-link-hover;
+    background: var(--surface-glass-hover);
+  }
+
   .float-btn[hidden] {
     @apply pointer-events-none hidden opacity-0;
   }
 
-  @media (width < 40rem) {
+  @variant max-sm {
     #back-to-top {
       @apply hidden transition-none;
     }
-  }
-
-  .float-btn:hover {
-    @apply text-link-hover;
-    background: var(--surface-glass-hover);
   }
 }
