@@ -36,10 +36,9 @@
     @apply py-2.5 font-medium text-text-secondary;
   }
 
-  /* List-ul icon on the left. The chevron on the right lives in collapse.css. */
   .toc-trigger::before {
     @apply fa-icon text-text-tertiary;
-    content: '\f0ca';
+    content: '\f0ca'; /* list-ul */
   }
 
   .toc-trigger::after {

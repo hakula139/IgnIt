@@ -1,5 +1,3 @@
-/* Must remain unlayered to override component styles when printing. */
-
 @media print {
   /* ── Light Tokens (override dark theme) ── */
 

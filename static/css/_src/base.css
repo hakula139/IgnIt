@@ -5,7 +5,6 @@
       @apply scroll-smooth;
     }
 
-    /* Temporarily enable color transitions during theme toggle (added / removed by JS). */
     html.theme-transition,
     html.theme-transition *,
     html.theme-transition *::before,
@@ -14,8 +13,7 @@
     }
   }
 
-  /* Honor prefers-reduced-motion globally. 0.01ms (not 0) preserves
-     transitionend / animationend event firing for JS listeners. */
+  /* 0.01ms preserves transitionend / animationend events for JS listeners. */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

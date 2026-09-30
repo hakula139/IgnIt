@@ -16,7 +16,6 @@
   --font-mono:
     'Maple Mono', ui-monospace, 'JetBrains Mono', 'Source Code Pro', SFMono-Regular, Menlo,
     Consolas, 'Liberation Mono', monospace;
-  /* Maple Mono variable needs explicit `calt` to enable its ligatures. */
   --default-mono-font-feature-settings: 'calt';
 
   /* Colors */
@@ -131,7 +130,7 @@
     --color-line-highlight-bg: rgba(255, 235, 59, 0.15);
     --color-line-highlight-border: rgba(255, 193, 7, 0.6);
 
-    /* Callouts (lighter Material variants for dark glass) */
+    /* Callouts */
     --callout-abstract-fg: #80d8ff;
     --callout-bug-fg: #ff80ab;
     --callout-danger-fg: #ff8a80;

@@ -1,5 +1,3 @@
-/* Must remain unlayered to override Twikoo's injected styles and prose.css defaults. */
-
 /* ── Text and Actions ── */
 
 .twikoo .el-input__inner::placeholder,
