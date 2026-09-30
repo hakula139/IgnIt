@@ -20,18 +20,18 @@
     --color-line-highlight-bg: rgba(255, 235, 59, 0.1) !important;
     --color-line-highlight-border: rgba(255, 193, 7, 0.5) !important;
 
-    --callout-abstract-fg: #00b0ff !important;
-    --callout-bug-fg: #f50057 !important;
-    --callout-danger-fg: #ff1744 !important;
-    --callout-example-fg: #651fff !important;
-    --callout-failure-fg: #ff5252 !important;
-    --callout-info-fg: #00b8d4 !important;
-    --callout-note-fg: #448aff !important;
-    --callout-question-fg: #64dd17 !important;
-    --callout-quote-fg: #757575 !important;
-    --callout-success-fg: #00c853 !important;
-    --callout-tip-fg: #00bfa5 !important;
-    --callout-warning-fg: #ff9100 !important;
+    --callout-abstract-fg: #006080 !important;
+    --callout-bug-fg: #a6003b !important;
+    --callout-danger-fg: #b31412 !important;
+    --callout-example-fg: #512da8 !important;
+    --callout-failure-fg: #b31412 !important;
+    --callout-info-fg: #00636f !important;
+    --callout-note-fg: #234fa2 !important;
+    --callout-question-fg: #365e0a !important;
+    --callout-quote-fg: #626262 !important;
+    --callout-success-fg: #006a2c !important;
+    --callout-tip-fg: #00695c !important;
+    --callout-warning-fg: #874b00 !important;
 
     --syntax-default: #37474f !important;
     --syntax-keyword: #7c4dff !important;

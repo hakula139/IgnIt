@@ -1,5 +1,59 @@
 /* Must remain unlayered to override Twikoo's injected styles and prose.css defaults. */
 
+.twikoo .el-input__inner::placeholder,
+.twikoo .el-textarea__inner::placeholder,
+.twikoo .tk-extras,
+.twikoo .tk-avatar .tk-avatar-img,
+.twikoo .tk-submit-action-icon.__markdown,
+.twikoo .tk-sort-item {
+  @apply text-text-secondary;
+}
+
+.twikoo .tk-actions button,
+.twikoo .tk-action-link,
+.twikoo .tk-sort-item:is(.__active, :focus),
+.twikoo .tk-icon.__comments,
+.twikoo .el-button--text {
+  @apply text-link;
+}
+
+.twikoo .tk-actions button:hover,
+.twikoo .tk-action-link:hover,
+.twikoo .tk-sort-item:hover,
+.twikoo .tk-icon.__comments:hover,
+.twikoo .tk-nick-link:hover,
+.twikoo .el-button--text:is(:hover, :focus) {
+  @apply text-link-hover;
+}
+
+.twikoo input.el-input__inner:focus,
+.twikoo textarea.el-textarea__inner:focus {
+  @apply border-link;
+}
+
+.twikoo
+  button.el-button:not(.el-button--primary):not(.el-button--text):is(:active, :focus, :hover) {
+  @apply border-link/50 bg-link/10 text-link;
+}
+
+.twikoo .el-button--primary,
+.twikoo .tk-icon.__comments.__active {
+  @apply border-link bg-link text-bg;
+}
+
+.twikoo .el-button--primary:is(:active, :focus, :hover) {
+  @apply border-link-hover bg-link-hover text-bg;
+}
+
+.twikoo button.el-button--primary.is-disabled,
+.twikoo button.el-button--primary.is-disabled:is(:active, :focus, :hover) {
+  @apply border-border bg-bg-muted text-text-secondary;
+}
+
+.twikoo .tk-icon.__comments.__active {
+  box-shadow: 0 0 0 0.2rem var(--color-link);
+}
+
 .prose .tk-avatar-img {
   @apply my-0 block;
 }
