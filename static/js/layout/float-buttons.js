@@ -1,45 +1,25 @@
 'use strict';
 
 (() => {
-  const SCROLL_THRESHOLD = 300;
-
-  const bind = (id, predicate, onClick) => {
-    const btn = document.getElementById(id);
-    if (!btn) {
-      return;
-    }
-
-    const update = () => {
-      const visible = predicate();
-      btn.classList.toggle('visible', visible);
-      // Mirror the CSS hide so screen readers don't announce the offscreen control.
-      btn.toggleAttribute('aria-hidden', !visible);
-    };
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update, { passive: true });
-    btn.addEventListener('click', onClick);
-    update();
-  };
+  const SCROLL_THRESHOLD = 100;
 
   const init = () => {
-    bind(
-      'back-to-top',
-      () => window.scrollY > SCROLL_THRESHOLD,
-      () => window.scrollTo({ top: 0 }),
-    );
-
+    const backToTop = document.getElementById('back-to-top');
+    const jumpToComments = document.getElementById('jump-to-comments');
     const comments = document.getElementById('comments');
-    if (!comments) {
-      return;
-    }
 
-    bind(
-      'jump-to-comments',
-      () =>
-        window.scrollY > SCROLL_THRESHOLD &&
-        comments.getBoundingClientRect().top > window.innerHeight,
-      () => comments.scrollIntoView(),
-    );
+    const update = () => {
+      backToTop.inert = window.scrollY <= SCROLL_THRESHOLD;
+      if (jumpToComments) {
+        jumpToComments.inert =
+          !comments || comments.getBoundingClientRect().top <= window.innerHeight;
+      }
+    };
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+
+    update();
   };
 
   window.__onReady(init);

@@ -74,7 +74,7 @@
 
   /* ── Desktop: Title Centered by Default, Reveal on Hover ── */
 
-  @media (min-width: 1280px) {
+  @variant xl {
     .home-card {
       @apply h-88;
     }

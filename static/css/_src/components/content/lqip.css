@@ -44,7 +44,7 @@
     object-position: var(--bg-position-mobile, var(--bg-position, center));
   }
 
-  @media (min-width: 640px) {
+  @variant sm {
     .body-bg > img {
       object-position: var(--bg-position, center);
     }
