@@ -85,22 +85,6 @@
     });
   };
 
-  // ── Table of Contents ──
-
-  const initTocCollapse = () => {
-    for (const toc of document.querySelectorAll('.toc-collapse')) {
-      const trigger = toc.querySelector('.toc-trigger');
-      if (!trigger) {
-        continue;
-      }
-
-      trigger.setAttribute('role', 'button');
-      trigger.setAttribute('tabindex', '0');
-      trigger.setAttribute('aria-expanded', String(!toc.classList.contains('collapsed')));
-      makeCollapsible(toc, trigger);
-    }
-  };
-
   // ── Heading Anchors ──
 
   const initHeadingAnchors = () => {
@@ -143,7 +127,6 @@
 
   const init = () => {
     initCodeBlocks();
-    initTocCollapse();
     initHeadingAnchors();
     initExternalLinks();
   };

@@ -11,12 +11,8 @@
   /* ── Title ── */
 
   .callout-title {
-    @apply list-none py-2 font-semibold;
+    @apply py-2 font-semibold;
     color: var(--callout-color);
-  }
-
-  .callout-title::-webkit-details-marker {
-    @apply hidden;
   }
 
   .callout-title::before {
@@ -25,18 +21,6 @@
   }
 
   /* ── Body ── */
-
-  .callout::details-content {
-    @apply grid grid-rows-[0fr];
-  }
-
-  .callout[open]::details-content {
-    @apply grid-rows-[1fr];
-  }
-
-  .callout-body {
-    @apply min-h-0 overflow-hidden;
-  }
 
   .callout-body-inner {
     @apply overflow-hidden px-4;
@@ -52,22 +36,6 @@
 
   .callout-body-inner > :last-child {
     @apply mb-2;
-  }
-
-  /* ── Motion ── */
-
-  @media (prefers-reduced-motion: no-preference) {
-    .callout::details-content {
-      transition:
-        grid-template-rows 300ms,
-        content-visibility 300ms allow-discrete;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .callout .callout-title::after {
-      @apply transition-none;
-    }
   }
 
   /* ── Variant Colors and Icons ── */
