@@ -19,8 +19,8 @@
     background: var(--surface-glass-hover);
   }
 
-  .float-btn[hidden] {
-    @apply pointer-events-none invisible opacity-0;
+  .float-btn[inert] {
+    @apply invisible opacity-0;
   }
 
   @variant max-sm {

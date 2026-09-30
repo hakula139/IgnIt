@@ -9,12 +9,10 @@
     const comments = document.getElementById('comments');
 
     const update = () => {
-      backToTop.hidden = window.scrollY <= SCROLL_THRESHOLD;
-      backToTop.inert = backToTop.hidden;
+      backToTop.inert = window.scrollY <= SCROLL_THRESHOLD;
       if (jumpToComments) {
-        jumpToComments.hidden =
+        jumpToComments.inert =
           !comments || comments.getBoundingClientRect().top <= window.innerHeight;
-        jumpToComments.inert = jumpToComments.hidden;
       }
     };
 

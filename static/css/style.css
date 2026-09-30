@@ -1186,8 +1186,7 @@
     color: var(--color-link-hover);
     background: var(--surface-glass-hover);
   }
-  .float-btn[hidden] {
-    pointer-events: none;
+  .float-btn[inert] {
     visibility: hidden;
     opacity: 0%;
   }
