@@ -23,7 +23,7 @@
 /* ── Headings ── */
 
 .prose :where(h2, h3, h4, h5, h6) {
-  @apply mb-6 leading-normal font-semibold wrap-break-word text-text;
+  @apply relative mb-6 leading-normal font-semibold wrap-break-word text-text;
 }
 
 .prose :where(h2, h3, h4, h5, h6) + * {
@@ -31,7 +31,7 @@
 }
 
 .prose :where(h2) {
-  @apply relative mt-[2.25em] pb-[0.4em] text-[1.4em] font-bold after:absolute after:right-0 after:bottom-0 after:left-0 after:border-b after:border-border-overlay;
+  @apply mt-[2.25em] pb-[0.4em] text-[1.4em] font-bold after:absolute after:right-0 after:bottom-0 after:left-0 after:border-b after:border-border-overlay;
 }
 
 .prose :where(h3) {
@@ -147,8 +147,28 @@
 }
 
 .prose :where(.heading-anchor) {
-  @apply p-0 text-inherit;
+  @apply border-b-0 p-0 text-inherit;
   font-weight: inherit;
+
+  @variant xl {
+    &:hover,
+    &:focus-visible {
+      @apply text-inherit;
+    }
+
+    &::before {
+      @apply absolute -left-5 text-link opacity-0 transition-opacity;
+      content: '#';
+    }
+
+    &:hover::before {
+      @apply opacity-60;
+    }
+
+    &:focus-visible::before {
+      @apply opacity-100;
+    }
+  }
 }
 
 .prose .footnote-reference a,
