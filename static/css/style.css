@@ -1909,6 +1909,9 @@
 .twikoo .tk-actions button:hover, .twikoo .tk-action-link:hover, .twikoo .tk-sort-item:hover, .twikoo .tk-icon.__comments:hover, .twikoo .tk-nick-link:hover, .twikoo .el-button--text:is(:hover, :focus) {
   color: var(--color-link-hover);
 }
+.twikoo .tk-action-icon {
+  color: inherit;
+}
 .twikoo input.el-input__inner:focus, .twikoo textarea.el-textarea__inner:focus {
   border-color: var(--color-link);
 }

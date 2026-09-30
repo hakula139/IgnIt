@@ -26,6 +26,10 @@
   @apply text-link-hover;
 }
 
+.twikoo .tk-action-icon {
+  @apply text-inherit;
+}
+
 .twikoo input.el-input__inner:focus,
 .twikoo textarea.el-textarea__inner:focus {
   @apply border-link;
