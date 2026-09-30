@@ -8,16 +8,10 @@
   }
 
   .float-btn {
-    @apply pointer-events-auto flex size-10 cursor-pointer items-center justify-center rounded-full text-text-secondary transition-[opacity,display,color,background-color,border-color] duration-300 sm:size-11;
-
-    transition-behavior: allow-discrete;
+    @apply pointer-events-auto flex size-10 cursor-pointer items-center justify-center rounded-full text-text-secondary transition-[opacity,visibility,color,background-color,border-color] duration-300 sm:size-11;
 
     --glow-size: 80px;
     --glow-border-size: 60px;
-
-    @starting-style {
-      @apply opacity-0;
-    }
   }
 
   .float-btn:hover {
@@ -26,7 +20,7 @@
   }
 
   .float-btn[hidden] {
-    @apply pointer-events-none hidden opacity-0;
+    @apply pointer-events-none invisible opacity-0;
   }
 
   @variant max-sm {

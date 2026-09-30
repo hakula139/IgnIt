@@ -1170,7 +1170,7 @@
     justify-content: center;
     border-radius: calc(infinity * 1px);
     color: var(--color-text-secondary);
-    transition-property: opacity,display,color,background-color,border-color;
+    transition-property: opacity,visibility,color,background-color,border-color;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
     --tw-duration: 300ms;
@@ -1179,12 +1179,8 @@
       width: calc(var(--spacing) * 11);
       height: calc(var(--spacing) * 11);
     }
-    transition-behavior: allow-discrete;
     --glow-size: 80px;
     --glow-border-size: 60px;
-    @starting-style {
-      opacity: 0%;
-    }
   }
   .float-btn:hover {
     color: var(--color-link-hover);
@@ -1192,7 +1188,7 @@
   }
   .float-btn[hidden] {
     pointer-events: none;
-    display: none;
+    visibility: hidden;
     opacity: 0%;
   }
   @media (width < 40rem) {
