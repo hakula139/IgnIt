@@ -1,14 +1,9 @@
-/* Print styles: outside @layer for maximum override specificity.
-   Uses plain CSS because most properties here have no Tailwind @apply
-   equivalents (backdrop-filter: none, break-after, orphans / widows). */
+/* Must remain unlayered to override component styles when printing. */
 
 @media print {
   /* ── Light Tokens (override dark theme) ── */
 
-  /* Forces light values regardless of the live `data-theme`, so descendants that
-     resolve `var(--color-text)` etc. don't render dark-mode hex on white paper. */
-  :root,
-  :root[data-theme='dark'] {
+  :root {
     --color-bg: #fff !important;
     --color-bg-muted: #f5f5f7 !important;
     --color-text: #161209 !important;
