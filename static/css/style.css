@@ -1191,6 +1191,12 @@
     display: none;
     opacity: 0%;
   }
+  @media (width < 40rem) {
+    #back-to-top {
+      display: none;
+      transition-property: none;
+    }
+  }
   .float-btn:hover {
     color: var(--color-link-hover);
     background: var(--surface-glass-hover);
