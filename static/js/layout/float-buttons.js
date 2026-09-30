@@ -28,9 +28,11 @@
       }
 
       backToTop.hidden = scrollY <= SCROLL_THRESHOLD || (mobile.matches && !showBackToTop);
+      backToTop.inert = backToTop.hidden;
       if (jumpToComments) {
         jumpToComments.hidden =
           !comments || comments.getBoundingClientRect().top <= window.innerHeight;
+        jumpToComments.inert = jumpToComments.hidden;
       }
       lastScrollY = scrollY;
     };
