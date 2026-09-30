@@ -8,27 +8,38 @@
     border-left-color: var(--callout-color);
   }
 
+  /* ── Title ── */
+
   .callout-title {
     @apply list-none py-2 font-semibold;
     color: var(--callout-color);
-    /* Firefox renders the marker via list-style on the summary, while Safari needs ::-webkit-details-marker. */
-    list-style: none;
   }
 
   .callout-title::-webkit-details-marker {
     @apply hidden;
   }
 
-  /* Variant icon on the left. The chevron on the right lives in collapse.css. */
   .callout-title::before {
     @apply fa-icon;
     content: var(--callout-icon, '\f05a');
   }
 
-  /* ── Body Inner ── */
+  /* ── Body ── */
+
+  .callout::details-content {
+    @apply grid grid-rows-[0fr];
+  }
+
+  .callout[open]::details-content {
+    @apply grid-rows-[1fr];
+  }
+
+  .callout-body {
+    @apply min-h-0 overflow-hidden;
+  }
 
   .callout-body-inner {
-    @apply min-h-0 overflow-hidden px-4;
+    @apply overflow-hidden px-4;
   }
 
   .callout-body-inner p {
@@ -41,6 +52,22 @@
 
   .callout-body-inner > :last-child {
     @apply mb-2;
+  }
+
+  /* ── Motion ── */
+
+  @media (prefers-reduced-motion: no-preference) {
+    .callout::details-content {
+      transition:
+        grid-template-rows 300ms,
+        content-visibility 300ms allow-discrete;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .callout .callout-title::after {
+      @apply transition-none;
+    }
   }
 
   /* ── Variant Colors and Icons ── */
