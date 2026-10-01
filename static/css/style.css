@@ -2363,43 +2363,24 @@
 .prose :where(li) {
   margin-block: calc(var(--spacing) * 0.5);
 }
-.prose :where(li):has( > input[type='checkbox'], > p:first-child > input[type='checkbox']:first-child ):not(.not-prose *) {
+.prose :where(ul > li):has(> input[type='checkbox'], > p > input[type='checkbox']):not(.not-prose *) {
   position: relative;
-  padding-inline-start: 0px;
-}
-.prose :where(ul > li):has( > input[type='checkbox'], > p:first-child > input[type='checkbox']:first-child ):not(.not-prose *) {
   list-style-type: none;
-}
-.prose :where(ol > li):has( > input[type='checkbox'], > p:first-child > input[type='checkbox']:first-child ):not(.not-prose *) {
-  padding-inline-start: 1.5em;
-}
-.prose :where(li > input[type='checkbox'], li > p:first-child > input[type='checkbox']:first-child):not( .not-prose * ) {
-  position: absolute;
-  margin: 0px;
-  width: 1em;
-  height: 1em;
-  appearance: none;
-  border-radius: 0.2em;
-  border-style: var(--tw-border-style);
-  border-width: 1px;
-  border-color: var(--color-text-secondary);
-  background-color: color-mix(in srgb, #f5f5f7 60%, transparent);
-  @supports (color: color-mix(in lab, red, red)) {
-    background-color: color-mix(in oklab, var(--color-bg-muted) 60%, transparent);
+  padding-inline-start: 0px;
+  > input[type='checkbox'], > p > input[type='checkbox'] {
+    position: absolute;
+    margin: 0px;
+    width: 1em;
+    height: 1em;
+    accent-color: var(--color-link);
+    inset-inline-start: -1.625em;
+    top: calc((1lh - 1em) / 2);
+    font: inherit;
+    color-scheme: light;
+    &:where([data-theme="dark"], [data-theme="dark"] *) {
+      color-scheme: dark;
+    }
   }
-  inset-inline-start: -1.625em;
-  top: calc((1lh - 1em) / 2);
-  font: inherit;
-  opacity: 1;
-  print-color-adjust: exact;
-  &:checked {
-    border-color: var(--color-link);
-    background-color: var(--color-link);
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m3.5 8 3 3 6-6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  }
-}
-.prose :where( ol > li > input[type='checkbox'], ol > li > p:first-child > input[type='checkbox']:first-child ):not(.not-prose *) {
-  inset-inline-start: 0;
 }
 .prose :where(a:not(.not-prose, .not-prose *)) {
   padding-bottom: calc(var(--spacing) * 0.5);

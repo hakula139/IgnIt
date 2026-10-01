@@ -134,52 +134,21 @@
 }
 
 .prose
-  :where(li):has(
-    > input[type='checkbox'],
-    > p:first-child > input[type='checkbox']:first-child
-  ):not(.not-prose *) {
-  @apply relative ps-0;
-}
+  :where(ul > li):has(> input[type='checkbox'], > p > input[type='checkbox']):not(.not-prose *) {
+  @apply relative list-none ps-0;
 
-.prose
-  :where(ul > li):has(
-    > input[type='checkbox'],
-    > p:first-child > input[type='checkbox']:first-child
-  ):not(.not-prose *) {
-  @apply list-none;
-}
+  > input[type='checkbox'],
+  > p > input[type='checkbox'] {
+    @apply absolute m-0 size-[1em] accent-link;
+    inset-inline-start: -1.625em;
+    top: calc((1lh - 1em) / 2);
+    font: inherit;
+    color-scheme: light;
 
-.prose
-  :where(ol > li):has(
-    > input[type='checkbox'],
-    > p:first-child > input[type='checkbox']:first-child
-  ):not(.not-prose *) {
-  padding-inline-start: 1.5em;
-}
-
-.prose
-  :where(li > input[type='checkbox'], li > p:first-child > input[type='checkbox']:first-child):not(
-    .not-prose *
-  ) {
-  @apply absolute m-0 size-[1em] appearance-none rounded-[0.2em] border border-text-secondary bg-bg-muted/60;
-  inset-inline-start: -1.625em;
-  top: calc((1lh - 1em) / 2);
-  font: inherit;
-  opacity: 1;
-  print-color-adjust: exact;
-
-  &:checked {
-    @apply border-link bg-link;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='m3.5 8 3 3 6-6' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    @variant dark {
+      color-scheme: dark;
+    }
   }
-}
-
-.prose
-  :where(
-    ol > li > input[type='checkbox'],
-    ol > li > p:first-child > input[type='checkbox']:first-child
-  ):not(.not-prose *) {
-  inset-inline-start: 0;
 }
 
 /* ── Links ── */
