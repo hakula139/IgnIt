@@ -46,7 +46,7 @@
   }
 
   .toc-body {
-    @apply min-h-0 overflow-hidden px-4 text-sm;
+    @apply px-4 text-sm;
   }
 
   .toc-body > :last-child {

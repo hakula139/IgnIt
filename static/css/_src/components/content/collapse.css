@@ -7,6 +7,16 @@
     @apply flex cursor-pointer items-center gap-2 px-4 text-sm select-none;
   }
 
+  .callout-title,
+  .toc-trigger {
+    @apply list-none;
+  }
+
+  .callout-title::-webkit-details-marker,
+  .toc-trigger::-webkit-details-marker {
+    @apply hidden;
+  }
+
   /* ── Chevron ── */
 
   .code-header::before,
@@ -23,19 +33,52 @@
 
   .code-block.collapsed .code-header::before,
   .callout:not([open]) .callout-title::after,
-  .toc-collapse.collapsed .toc-trigger::after {
+  .toc-collapse:not([open]) .toc-trigger::after {
     @apply -rotate-90;
   }
 
-  /* ── Body (CSS grid row animation) ── */
+  /* ── Native Disclosures ── */
 
-  .code-body,
-  .toc-body-wrapper {
+  .callout::details-content,
+  .toc-collapse::details-content {
+    @apply grid grid-rows-[0fr];
+  }
+
+  .callout[open]::details-content,
+  .toc-collapse[open]::details-content {
+    @apply grid-rows-[1fr];
+  }
+
+  .callout-body,
+  .toc-body {
+    @apply min-h-0 overflow-hidden;
+  }
+
+  /* ── Code Body ── */
+
+  .code-body {
     @apply grid grid-rows-[1fr] transition-[grid-template-rows] duration-300;
   }
 
-  .code-block.collapsed .code-body,
-  .toc-collapse.collapsed .toc-body-wrapper {
+  .code-block.collapsed .code-body {
     @apply grid-rows-[0fr];
+  }
+
+  /* ── Motion ── */
+
+  @media (prefers-reduced-motion: no-preference) {
+    .callout::details-content,
+    .toc-collapse::details-content {
+      transition:
+        grid-template-rows 300ms,
+        content-visibility 300ms allow-discrete;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .callout .callout-title::after,
+    .toc-collapse .toc-trigger::after {
+      @apply transition-none;
+    }
   }
 }

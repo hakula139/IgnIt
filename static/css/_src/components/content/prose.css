@@ -21,7 +21,7 @@
 /* ── Headings ── */
 
 .prose :where(h2, h3, h4, h5, h6) {
-  @apply mb-6 leading-normal font-semibold text-text;
+  @apply relative mb-6 leading-normal font-semibold wrap-break-word text-text;
 }
 
 .prose :where(h2, h3, h4, h5, h6) + * {
@@ -29,7 +29,7 @@
 }
 
 .prose :where(h2) {
-  @apply mt-[2.25em] pb-[0.4em] text-[1.4em] font-bold after:absolute after:right-0 after:bottom-0 after:left-5 after:border-b after:border-border-overlay;
+  @apply mt-[2.25em] pb-[0.4em] text-[1.4em] font-bold after:absolute after:right-0 after:bottom-0 after:left-0 after:border-b after:border-border-overlay;
 }
 
 .prose :where(h3) {
@@ -138,13 +138,37 @@
 .prose :where(a:not(.not-prose, .not-prose *)) {
   @apply pb-0.5 no-underline;
 
-  &:hover {
+  &:hover,
+  &:focus-visible {
     @apply text-link-hover;
   }
 }
 
-.prose .heading-anchor,
-.prose .heading-anchor:hover,
+.prose :where(.heading-anchor) {
+  @apply border-b-0 p-0 text-inherit;
+  font-weight: inherit;
+
+  @variant xl {
+    &:hover,
+    &:focus-visible {
+      @apply text-inherit;
+    }
+
+    &::before {
+      @apply absolute -left-5 text-link opacity-0 transition-opacity;
+      content: '#';
+    }
+
+    &:hover::before {
+      @apply opacity-60;
+    }
+
+    &:focus-visible::before {
+      @apply opacity-100;
+    }
+  }
+}
+
 .prose .footnote-reference a,
 .prose .footnote-reference a:hover,
 .prose .footnote-backref,
@@ -182,24 +206,6 @@
 
   .prose :where(p, li) {
     @apply wrap-break-word;
-  }
-
-  /* ── Heading Anchors ── */
-
-  .prose :where(h1, h2, h3, h4, h5, h6) {
-    @apply relative -ml-5 pl-5;
-  }
-
-  .prose .heading-anchor {
-    @apply absolute left-0 text-link no-underline opacity-0 transition-opacity;
-  }
-
-  .prose :where(h2, h3, h4, h5, h6):hover .heading-anchor {
-    @apply opacity-60;
-  }
-
-  .prose :where(.callout, blockquote) .heading-anchor {
-    @apply hidden;
   }
 
   /* ── Images ── */

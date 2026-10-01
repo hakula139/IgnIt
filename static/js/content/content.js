@@ -85,22 +85,6 @@
     });
   };
 
-  // ── Table of Contents ──
-
-  const initTocCollapse = () => {
-    for (const toc of document.querySelectorAll('.toc-collapse')) {
-      const trigger = toc.querySelector('.toc-trigger');
-      if (!trigger) {
-        continue;
-      }
-
-      trigger.setAttribute('role', 'button');
-      trigger.setAttribute('tabindex', '0');
-      trigger.setAttribute('aria-expanded', String(!toc.classList.contains('collapsed')));
-      makeCollapsible(toc, trigger);
-    }
-  };
-
   // ── Heading Anchors ──
 
   const initHeadingAnchors = () => {
@@ -109,13 +93,17 @@
     );
     const jumpToPrefix = document.documentElement.dataset.i18nJumpTo;
     for (const heading of headings) {
+      if (heading.closest('.callout, blockquote') || heading.querySelector('a')) {
+        continue;
+      }
+
       const anchor = document.createElement('a');
       anchor.href = `#${heading.id}`;
       anchor.className = 'heading-anchor';
-      anchor.textContent = '#';
       const label = jumpToPrefix ? `${jumpToPrefix} ${heading.textContent}` : heading.textContent;
       anchor.setAttribute('aria-label', label);
-      heading.prepend(anchor);
+      anchor.append(...heading.childNodes);
+      heading.append(anchor);
     }
   };
 
@@ -139,7 +127,6 @@
 
   const init = () => {
     initCodeBlocks();
-    initTocCollapse();
     initHeadingAnchors();
     initExternalLinks();
   };

@@ -1,8 +1,6 @@
 {%- if toc %}
-<div class="toc-collapse collapsed xl:hidden">
-  <div class="toc-trigger">{{ t('table_of_contents') }}</div>
-  <div class="toc-body-wrapper">
-    <div class="toc-body">{{ toc | safe }}</div>
-  </div>
-</div>
+<details class="toc-collapse xl:hidden">
+  <summary class="toc-trigger">{{ t('table_of_contents') }}</summary>
+  <div class="toc-body">{{ toc | safe }}</div>
+</details>
 {%- endif %}
