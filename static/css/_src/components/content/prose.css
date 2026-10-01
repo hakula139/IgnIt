@@ -1,5 +1,3 @@
-/* Must remain unlayered to override @tailwindcss/typography defaults. */
-
 /* ── Typography Tokens ── */
 
 .prose {

@@ -1,5 +1,3 @@
-/* Self-hosted webfonts. url() paths resolve against the compiled style.css. */
-
 @font-face {
   font-family: 'Inter Variable';
   font-style: normal;

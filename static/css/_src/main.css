@@ -16,7 +16,6 @@
   --font-mono:
     'Maple Mono', ui-monospace, 'JetBrains Mono', 'Source Code Pro', SFMono-Regular, Menlo,
     Consolas, 'Liberation Mono', monospace;
-  /* Maple Mono variable needs explicit `calt` to enable its ligatures. */
   --default-mono-font-feature-settings: 'calt';
 
   /* Colors */
@@ -34,19 +33,19 @@
   --color-line-highlight-bg: rgba(255, 235, 59, 0.1);
   --color-line-highlight-border: rgba(255, 193, 7, 0.5);
 
-  /* Callouts (Material A200) */
-  --callout-abstract-fg: #00b0ff;
-  --callout-bug-fg: #f50057;
-  --callout-danger-fg: #ff1744;
-  --callout-example-fg: #651fff;
-  --callout-failure-fg: #ff5252;
-  --callout-info-fg: #00b8d4;
-  --callout-note-fg: #448aff;
-  --callout-question-fg: #64dd17;
-  --callout-quote-fg: #757575;
-  --callout-success-fg: #00c853;
-  --callout-tip-fg: #00bfa5;
-  --callout-warning-fg: #ff9100;
+  /* Callouts */
+  --callout-abstract-fg: #006080;
+  --callout-bug-fg: #a6003b;
+  --callout-danger-fg: #b31412;
+  --callout-example-fg: #512da8;
+  --callout-failure-fg: #b31412;
+  --callout-info-fg: #00636f;
+  --callout-note-fg: #234fa2;
+  --callout-question-fg: #365e0a;
+  --callout-quote-fg: #626262;
+  --callout-success-fg: #006a2c;
+  --callout-tip-fg: #00695c;
+  --callout-warning-fg: #874b00;
 
   /* Syntax Highlighting (Material Light) */
   --syntax-default: #37474f;
@@ -131,7 +130,7 @@
     --color-line-highlight-bg: rgba(255, 235, 59, 0.15);
     --color-line-highlight-border: rgba(255, 193, 7, 0.6);
 
-    /* Callouts (lighter Material variants for dark glass) */
+    /* Callouts */
     --callout-abstract-fg: #80d8ff;
     --callout-bug-fg: #ff80ab;
     --callout-danger-fg: #ff8a80;

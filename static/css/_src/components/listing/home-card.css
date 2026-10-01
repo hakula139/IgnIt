@@ -67,12 +67,11 @@
     @apply text-white;
   }
 
-  /* This remains the first child so keyboard focus reaches it before body links. */
   .home-card-link-cover {
     @apply absolute inset-0 z-5 border-0;
   }
 
-  /* ── Desktop: Title Centered by Default, Reveal on Hover ── */
+  /* ── Desktop ── */
 
   @variant xl {
     .home-card {

@@ -1,5 +1,4 @@
 @layer components {
-  /* Visually hidden but reachable via Tab, and promoted into the viewport on focus. */
   .skip-link {
     @apply absolute -m-px h-px w-px overflow-hidden border-b-0 p-0 whitespace-nowrap;
     clip: rect(0, 0, 0, 0);
