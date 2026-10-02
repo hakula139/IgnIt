@@ -2367,7 +2367,7 @@
   position: relative;
   list-style-type: none;
   padding-inline-start: 0px;
-  > input[type='checkbox'], > p > input[type='checkbox'] {
+  input[type='checkbox'] {
     position: absolute;
     margin: 0px;
     width: 1em;

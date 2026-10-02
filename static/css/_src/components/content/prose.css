@@ -136,8 +136,7 @@
 .prose :where(li):has(> input[type='checkbox'], > p > input[type='checkbox']) {
   @apply relative list-none ps-0;
 
-  > input[type='checkbox'],
-  > p > input[type='checkbox'] {
+  input[type='checkbox'] {
     @apply absolute m-0 size-[1em] accent-link;
     inset-inline-start: -1.625em;
     top: calc((1lh - 1em) / 2);
