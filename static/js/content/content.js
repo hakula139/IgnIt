@@ -9,32 +9,6 @@
     return icon;
   };
 
-  // ── Collapsible Panels ──
-
-  const makeCollapsible = (container, trigger, { skipSelector } = {}) => {
-    const toggle = () => {
-      container.classList.toggle('collapsed');
-      if (trigger.hasAttribute('aria-expanded')) {
-        const expanded = !container.classList.contains('collapsed');
-        trigger.setAttribute('aria-expanded', String(expanded));
-      }
-    };
-
-    trigger.addEventListener('click', (e) => {
-      if (skipSelector && e.target.closest(skipSelector)) {
-        return;
-      }
-      toggle();
-    });
-
-    trigger.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggle();
-      }
-    });
-  };
-
   // ── Code Blocks ──
 
   const handleCopy = async (btn) => {
@@ -63,23 +37,14 @@
   };
 
   const initCodeBlocks = () => {
-    for (const block of document.querySelectorAll('.code-block')) {
-      const header = block.querySelector('.code-header');
-      if (!header) {
-        continue;
-      }
-
-      const copyBtn = header.querySelector('.copy-btn');
-      if (copyBtn) {
-        copyBtn.replaceChildren(createIcon('far fa-copy'));
-      }
-
-      makeCollapsible(block, header, { skipSelector: '.copy-btn' });
+    for (const btn of document.querySelectorAll('.code-block > .code-header > .copy-btn')) {
+      btn.replaceChildren(createIcon('far fa-copy'));
     }
 
     document.addEventListener('click', (e) => {
       const btn = e.target.closest('.copy-btn');
       if (btn) {
+        e.preventDefault();
         handleCopy(btn);
       }
     });
