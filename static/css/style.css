@@ -2270,6 +2270,10 @@
 .prose :where(h6) {
   color: var(--color-text-secondary);
 }
+.heading-number {
+  margin-inline-end: 0.5em;
+  white-space: nowrap;
+}
 .prose .highlight span {
   display: inline;
 }

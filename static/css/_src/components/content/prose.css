@@ -48,6 +48,11 @@
   @apply text-text-secondary;
 }
 
+.heading-number {
+  margin-inline-end: 0.5em;
+  white-space: nowrap;
+}
+
 /* ── Code Blocks ── */
 
 /* Prevent Tailwind utility collision with syntect class names (e.g. "block"). */
