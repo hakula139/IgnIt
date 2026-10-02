@@ -133,8 +133,7 @@
   @apply my-0.5;
 }
 
-.prose
-  :where(ul > li):has(> input[type='checkbox'], > p > input[type='checkbox']):not(.not-prose *) {
+.prose :where(li):has(> input[type='checkbox'], > p > input[type='checkbox']) {
   @apply relative list-none ps-0;
 
   > input[type='checkbox'],
