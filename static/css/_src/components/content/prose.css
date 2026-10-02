@@ -133,6 +133,22 @@
   @apply my-0.5;
 }
 
+.prose :where(li):has(> input[type='checkbox'], > p > input[type='checkbox']) {
+  @apply relative list-none ps-0;
+
+  input[type='checkbox'] {
+    @apply absolute m-0 size-[1em] accent-link;
+    inset-inline-start: -1.625em;
+    top: calc((1lh - 1em) / 2);
+    font: inherit;
+    color-scheme: light;
+
+    @variant dark {
+      color-scheme: dark;
+    }
+  }
+}
+
 /* ── Links ── */
 
 .prose :where(a:not(.not-prose, .not-prose *)) {
