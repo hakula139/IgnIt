@@ -1,11 +1,11 @@
-.prose pre.mermaid {
-  @apply my-4 flex overflow-x-auto rounded-lg p-6;
+pre.mermaid {
+  @apply my-4 flex styled-scrollbar overflow-x-auto rounded-lg p-6;
   color: inherit;
   font-family: var(--font-sans);
   justify-content: safe center;
 }
 
-.prose pre.mermaid svg {
+pre.mermaid svg {
   @apply max-w-none;
   height: auto;
 }

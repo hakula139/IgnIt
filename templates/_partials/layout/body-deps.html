@@ -21,10 +21,13 @@
   ></script>
 {%- endif %}
 
-{%- if need_math %}
+{%- if need_math or need_twikoo %}
   {%- set katex = cdn_base ~ "/katex@" ~ deps.katex.version -%}
   {{ cdn.script(katex ~ "/dist/katex.min.js", deps.katex.sri.js) }}
   {{ cdn.script(katex ~ "/dist/contrib/auto-render.min.js", deps.katex.sri.autorender) }}
+{%- endif %}
+
+{%- if need_math %}
   <script
     src="{{ base | safe }}{{ asset_url('/js/content/math.js') | safe }}"
     defer

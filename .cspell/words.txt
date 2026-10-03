@@ -25,6 +25,7 @@ inlines
 jetbrains
 katex
 kwargs
+leqno
 listenbrainz
 lqip
 maple
