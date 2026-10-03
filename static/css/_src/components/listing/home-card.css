@@ -5,10 +5,10 @@
 
   .home-card {
     @apply relative overflow-hidden rounded-card border border-border-overlay bg-card shadow-card;
-  }
 
-  .home-card > .lqip {
-    @apply absolute inset-0 h-full w-full;
+    > .lqip {
+      @apply absolute inset-0 h-full w-full;
+    }
   }
 
   .home-card-image {
@@ -17,10 +17,10 @@
 
   .home-card-overlay {
     @apply absolute inset-0 bg-linear-to-t from-black/65 via-black/30 to-black/10;
-  }
 
-  .home-card-overlay::after {
-    @apply absolute inset-0 bg-linear-to-t from-black/70 via-black/35 to-black/15 opacity-100 transition-opacity duration-700 content-[''];
+    &::after {
+      @apply absolute inset-0 bg-linear-to-t from-black/70 via-black/35 to-black/15 opacity-100 transition-opacity duration-700 content-[''];
+    }
   }
 
   .home-card-body {
@@ -49,6 +49,10 @@
 
   .home-card-tag {
     @apply pointer-events-auto min-w-0 rounded-full border-b-0 bg-white/15 px-2 py-0.5 text-xs text-white/85 no-underline transition-colors max-sm:truncate;
+
+    &:is(a):hover {
+      @apply bg-white/30 text-white;
+    }
   }
 
   .home-card-tag-extra {
@@ -59,16 +63,12 @@
     @apply pointer-events-none shrink-0 sm:hidden;
   }
 
-  a.home-card-tag:hover {
-    @apply bg-white/30 text-white;
-  }
-
   .home-card-link {
     @apply pointer-events-auto inline-flex items-center gap-1 border-b-0 text-white/80 no-underline transition-colors;
-  }
 
-  .home-card-link:hover {
-    @apply text-white;
+    &:hover {
+      @apply text-white;
+    }
   }
 
   .home-card-link-cover {
@@ -108,27 +108,31 @@
       @apply invisible absolute inset-x-0 bottom-0 translate-y-3 px-6 pb-6 opacity-0 transition-[opacity,translate,visibility] delay-[0s,0s,500ms] duration-[500ms,500ms,0s];
     }
 
-    .home-card:not(:hover):not(:focus-within) .home-card-image {
-      @apply blur-none;
-    }
+    .home-card {
+      &:not(:hover):not(:focus-within) {
+        .home-card-image {
+          @apply blur-none;
+        }
 
-    .home-card:hover .home-card-image,
-    .home-card:focus-within .home-card-image {
-      @apply scale-card-hover;
-    }
+        .home-card-overlay::after {
+          @apply opacity-0;
+        }
+      }
 
-    .home-card:not(:hover):not(:focus-within) .home-card-overlay::after {
-      @apply opacity-0;
-    }
+      &:hover,
+      &:focus-within {
+        .home-card-image {
+          @apply scale-card-hover;
+        }
 
-    .home-card:hover .home-card-title,
-    .home-card:focus-within .home-card-title {
-      @apply -translate-y-14;
-    }
+        .home-card-title {
+          @apply -translate-y-14;
+        }
 
-    .home-card:hover .home-card-reveal,
-    .home-card:focus-within .home-card-reveal {
-      @apply visible translate-y-0 opacity-100 delay-0;
+        .home-card-reveal {
+          @apply visible translate-y-0 opacity-100 delay-0;
+        }
+      }
     }
   }
 
@@ -136,10 +140,10 @@
 
   .home-card-pin {
     @apply pointer-events-none absolute top-3 right-3 z-10 flex h-7 w-7 items-center justify-center rounded-full text-sm text-text-secondary;
-  }
 
-  .home-card-pin i {
-    @apply -rotate-45;
+    i {
+      @apply -rotate-45;
+    }
   }
 
   .post-entry-pin {
@@ -158,13 +162,13 @@
 
   .profile-social {
     @apply inline-flex size-10 shrink-0 items-center justify-center rounded-full border-b-0 p-2 text-2xl text-text-secondary no-underline transition-colors;
-  }
 
-  .profile-social svg {
-    @apply size-[1em] fill-current;
-  }
+    svg {
+      @apply size-[1em] fill-current;
+    }
 
-  .profile-social:hover {
-    @apply icon-tap-hover;
+    &:hover {
+      @apply icon-tap-hover;
+    }
   }
 }

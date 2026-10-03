@@ -9,15 +9,15 @@
     > img {
       @apply m-0! block;
     }
-  }
 
-  .lqip-fade-enabled .lqip:not(.lqip-loaded) > img {
-    @apply invisible;
-  }
+    .lqip-fade-enabled &:not(.lqip-loaded) > img {
+      @apply invisible;
+    }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .lqip-fade-enabled .lqip:not(.body-bg).lqip-loaded > img {
-      animation: var(--animate-lqip-fade-in);
+    @media (prefers-reduced-motion: no-preference) {
+      .lqip-fade-enabled &:not(.body-bg).lqip-loaded > img {
+        animation: var(--animate-lqip-fade-in);
+      }
     }
   }
 }

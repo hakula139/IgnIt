@@ -1,24 +1,24 @@
-/* ── Typography Tokens ── */
-
-.prose:not(:where(.not-prose, .not-prose *)) {
-  /* Text */
-  --tw-prose-body: var(--color-text);
-  --tw-prose-headings: var(--color-text);
-  --tw-prose-bold: var(--color-text);
-  --tw-prose-links: var(--color-link);
-  --tw-prose-code: var(--color-text);
-  --tw-prose-pre-bg: color-mix(in oklab, var(--color-bg-muted) 60%, transparent);
-
-  /* Lists */
-  --tw-prose-counters: var(--color-text-secondary);
-  --tw-prose-bullets: var(--color-text-secondary);
-
-  /* Decorations */
-  --tw-prose-quotes: var(--color-text-secondary);
-  --tw-prose-captions: var(--color-text-secondary);
-}
-
 .prose {
+  /* ── Typography Tokens ── */
+
+  &:not(:where(.not-prose, .not-prose *)) {
+    /* Text */
+    --tw-prose-body: var(--color-text);
+    --tw-prose-headings: var(--color-text);
+    --tw-prose-bold: var(--color-text);
+    --tw-prose-links: var(--color-link);
+    --tw-prose-code: var(--color-text);
+    --tw-prose-pre-bg: color-mix(in oklab, var(--color-bg-muted) 60%, transparent);
+
+    /* Lists */
+    --tw-prose-counters: var(--color-text-secondary);
+    --tw-prose-bullets: var(--color-text-secondary);
+
+    /* Decorations */
+    --tw-prose-quotes: var(--color-text-secondary);
+    --tw-prose-captions: var(--color-text-secondary);
+  }
+
   /* ── Text ── */
 
   @layer components {

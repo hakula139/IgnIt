@@ -63,6 +63,24 @@
 
   .toc-sidebar {
     @apply max-h-[calc(100vh-6.5rem)] p-4 text-sm;
+
+    .toc li {
+      &:has(> ul) {
+        @apply grid grid-rows-[auto_0fr] transition-[grid-template-rows] duration-300;
+
+        &.active {
+          @apply grid-rows-[auto_1fr];
+        }
+      }
+
+      > ul {
+        @apply min-h-0 overflow-hidden opacity-0 transition-opacity duration-300;
+      }
+
+      &.active > ul {
+        @apply opacity-100;
+      }
+    }
   }
 
   .toc-sidebar-scroll {
@@ -75,21 +93,5 @@
 
   .toc-sidebar-title {
     @apply mb-2 font-semibold text-text;
-  }
-
-  .toc-sidebar .toc li:has(> ul) {
-    @apply grid grid-rows-[auto_0fr] transition-[grid-template-rows] duration-300;
-  }
-
-  .toc-sidebar .toc li:has(> ul).active {
-    @apply grid-rows-[auto_1fr];
-  }
-
-  .toc-sidebar .toc li > ul {
-    @apply min-h-0 overflow-hidden opacity-0 transition-opacity duration-300;
-  }
-
-  .toc-sidebar .toc li.active > ul {
-    @apply opacity-100;
   }
 }

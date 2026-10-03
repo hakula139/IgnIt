@@ -7,12 +7,12 @@
 
     article.glass-panel {
       @apply relative z-0 bg-transparent backdrop-filter-none;
-    }
 
-    /* WebKit caps total backdrop area, so only blur the visible article surface. */
-    article.glass-panel::before {
-      @apply pointer-events-none sticky top-0 -z-1 -mb-[100vh] block h-screen glass-backdrop;
-      content: '';
+      /* WebKit caps total backdrop area, so only blur the visible article surface. */
+      &::before {
+        @apply pointer-events-none sticky top-0 -z-1 -mb-[100vh] block h-screen glass-backdrop;
+        content: '';
+      }
     }
   }
 
@@ -30,14 +30,14 @@
 
   .post-banner-media {
     @apply h-full w-full transition-transform duration-500;
-  }
 
-  .post-banner-media .lqip {
-    @apply block h-full w-full;
-  }
+    .lqip {
+      @apply block h-full w-full;
+    }
 
-  .post-banner:hover .post-banner-media {
-    @apply scale-[1.1];
+    .post-banner:hover & {
+      @apply scale-[1.1];
+    }
   }
 
   .post-banner-image {
@@ -50,10 +50,10 @@
 
   .post-banner-credit {
     @apply pointer-events-none absolute right-3 bottom-3 z-10 rounded-full border border-white/20 bg-black/30 px-3 py-1 text-xs text-white/90 backdrop-blur-md transition-opacity duration-300;
-  }
 
-  .post-banner:hover .post-banner-credit {
-    @apply opacity-0;
+    .post-banner:hover & {
+      @apply opacity-0;
+    }
   }
 }
 

@@ -5,10 +5,10 @@
 
   .link-card {
     @apply flex min-h-20 items-center gap-4 rounded-lg border-b-0 bg-bg-muted/50 px-4 py-3 text-text no-underline ring-1 ring-border transition-colors ring-inset;
-  }
 
-  .link-card:hover {
-    @apply bg-bg-muted/70 text-text ring-text-tertiary;
+    &:hover {
+      @apply bg-bg-muted/70 text-text ring-text-tertiary;
+    }
   }
 
   .link-avatar {
@@ -21,10 +21,10 @@
 
   .link-title {
     @apply truncate leading-snug font-medium text-link;
-  }
 
-  .link-card:hover .link-title {
-    @apply text-link-hover;
+    .link-card:hover & {
+      @apply text-link-hover;
+    }
   }
 
   .link-desc {

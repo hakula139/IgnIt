@@ -6,6 +6,68 @@
 
     @apply my-4 rounded-lg border-l-4 bg-bg-muted/60;
     border-left-color: var(--callout-color);
+
+    /* ── Variant Colors and Icons ── */
+
+    &.abstract {
+      --callout-color: var(--callout-abstract-fg);
+      --callout-icon: '\f46d'; /* clipboard-list */
+    }
+
+    &.bug {
+      --callout-color: var(--callout-bug-fg);
+      --callout-icon: '\f188'; /* bug */
+    }
+
+    &.danger {
+      --callout-color: var(--callout-danger-fg);
+      --callout-icon: '\f0e7'; /* bolt */
+    }
+
+    &.example {
+      --callout-color: var(--callout-example-fg);
+      --callout-icon: '\f03a'; /* list */
+    }
+
+    &.failure {
+      --callout-color: var(--callout-failure-fg);
+      --callout-icon: '\f057'; /* circle-xmark */
+    }
+
+    &.info {
+      --callout-color: var(--callout-info-fg);
+      --callout-icon: '\f05a'; /* circle-info */
+    }
+
+    &.note {
+      --callout-color: var(--callout-note-fg);
+      --callout-icon: '\f15c'; /* file-lines */
+    }
+
+    &.question {
+      --callout-color: var(--callout-question-fg);
+      --callout-icon: '\f059'; /* circle-question */
+    }
+
+    &.quote {
+      --callout-color: var(--callout-quote-fg);
+      --callout-icon: '\f10d'; /* quote-left */
+    }
+
+    &.success {
+      --callout-color: var(--callout-success-fg);
+      --callout-icon: '\f058'; /* circle-check */
+    }
+
+    &.tip {
+      --callout-color: var(--callout-tip-fg);
+      --callout-icon: '\f0eb'; /* lightbulb */
+    }
+
+    &.warning {
+      --callout-color: var(--callout-warning-fg);
+      --callout-icon: '\f071'; /* triangle-exclamation */
+    }
   }
 
   /* ── Title ── */
@@ -13,90 +75,28 @@
   .callout-title {
     @apply py-2 font-semibold;
     color: var(--callout-color);
-  }
 
-  .callout-title::before {
-    @apply fa-icon;
-    content: var(--callout-icon, '\f05a');
+    &::before {
+      @apply fa-icon;
+      content: var(--callout-icon, '\f05a');
+    }
   }
 
   /* ── Body ── */
 
   .callout-body-inner {
     @apply overflow-hidden px-4;
-  }
 
-  .callout-body-inner p {
-    @apply my-1.5 leading-relaxed;
-  }
+    p {
+      @apply my-1.5 leading-relaxed;
+    }
 
-  .callout-body-inner > :first-child {
-    @apply mt-0;
-  }
+    > :first-child {
+      @apply mt-0;
+    }
 
-  .callout-body-inner > :last-child {
-    @apply mb-2;
-  }
-
-  /* ── Variant Colors and Icons ── */
-
-  .callout.abstract {
-    --callout-color: var(--callout-abstract-fg);
-    --callout-icon: '\f46d'; /* clipboard-list */
-  }
-
-  .callout.bug {
-    --callout-color: var(--callout-bug-fg);
-    --callout-icon: '\f188'; /* bug */
-  }
-
-  .callout.danger {
-    --callout-color: var(--callout-danger-fg);
-    --callout-icon: '\f0e7'; /* bolt */
-  }
-
-  .callout.example {
-    --callout-color: var(--callout-example-fg);
-    --callout-icon: '\f03a'; /* list */
-  }
-
-  .callout.failure {
-    --callout-color: var(--callout-failure-fg);
-    --callout-icon: '\f057'; /* circle-xmark */
-  }
-
-  .callout.info {
-    --callout-color: var(--callout-info-fg);
-    --callout-icon: '\f05a'; /* circle-info */
-  }
-
-  .callout.note {
-    --callout-color: var(--callout-note-fg);
-    --callout-icon: '\f15c'; /* file-lines */
-  }
-
-  .callout.question {
-    --callout-color: var(--callout-question-fg);
-    --callout-icon: '\f059'; /* circle-question */
-  }
-
-  .callout.quote {
-    --callout-color: var(--callout-quote-fg);
-    --callout-icon: '\f10d'; /* quote-left */
-  }
-
-  .callout.success {
-    --callout-color: var(--callout-success-fg);
-    --callout-icon: '\f058'; /* circle-check */
-  }
-
-  .callout.tip {
-    --callout-color: var(--callout-tip-fg);
-    --callout-icon: '\f0eb'; /* lightbulb */
-  }
-
-  .callout.warning {
-    --callout-color: var(--callout-warning-fg);
-    --callout-icon: '\f071'; /* triangle-exclamation */
+    > :last-child {
+      @apply mb-2;
+    }
   }
 }

@@ -85,34 +85,21 @@
 
   .el-button--primary {
     @apply border-link bg-link text-bg;
+
+    &:is(:active, :focus, :hover) {
+      @apply border-link-hover bg-link-hover text-bg;
+    }
   }
 
-  .el-button--primary:is(:active, :focus, :hover) {
-    @apply border-link-hover bg-link-hover text-bg;
+  button.el-button--primary.is-disabled {
+    &,
+    &:is(:active, :focus, :hover) {
+      @apply border-border bg-bg-muted text-text-secondary;
+    }
   }
 
-  button.el-button--primary.is-disabled,
-  button.el-button--primary.is-disabled:is(:active, :focus, :hover) {
-    @apply border-border bg-bg-muted text-text-secondary;
-  }
-}
+  /* ── Content and Overlays ── */
 
-/* ── Content and Overlays ── */
-
-.prose .tk-avatar-img {
-  @apply my-0 block;
-}
-
-/* Offset the OwO emote from Latin x-height to match CJK line metrics. */
-.prose .tk-owo-emotion {
-  @apply my-0 align-[-0.3em];
-}
-
-.tk-comments-container > .tk-comment + .tk-comment {
-  @apply mt-6 border-t border-border pt-6;
-}
-
-.twikoo {
   /* Twikoo sets `backdrop-filter: opacity(20%)` at this specificity. */
   .tk-comments-container .el-loading-mask {
     backdrop-filter: none;
@@ -126,4 +113,19 @@
   .OwO .OwO-body {
     @apply overflow-hidden rounded-card glass-surface text-text shadow-card;
   }
+}
+
+.prose {
+  .tk-avatar-img {
+    @apply my-0 block;
+  }
+
+  /* Offset the OwO emote from Latin x-height to match CJK line metrics. */
+  .tk-owo-emotion {
+    @apply my-0 align-[-0.3em];
+  }
+}
+
+.tk-comments-container > .tk-comment + .tk-comment {
+  @apply mt-6 border-t border-border pt-6;
 }

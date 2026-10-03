@@ -1,14 +1,16 @@
 @layer components {
-  body > .body-bg {
-    @apply pointer-events-none fixed inset-0 -z-10;
-  }
+  .body-bg {
+    body > & {
+      @apply pointer-events-none fixed inset-0 -z-10;
+    }
 
-  .body-bg > img {
-    @apply h-full w-full object-cover;
-    object-position: var(--bg-position-mobile, var(--bg-position, center));
+    > img {
+      @apply h-full w-full object-cover;
+      object-position: var(--bg-position-mobile, var(--bg-position, center));
 
-    @variant sm {
-      object-position: var(--bg-position, center);
+      @variant sm {
+        object-position: var(--bg-position, center);
+      }
     }
   }
 }

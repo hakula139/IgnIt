@@ -10,10 +10,10 @@
 
   .header-logo {
     @apply border-b-0 text-lg font-semibold text-text transition-colors;
-  }
 
-  .header-logo:hover {
-    @apply text-link-hover;
+    &:hover {
+      @apply text-link-hover;
+    }
   }
 
   /* ── Desktop Nav (icon-only anchors and buttons) ── */
@@ -21,11 +21,10 @@
   .header-link,
   .header-icon {
     @apply inline-flex aspect-square items-center justify-center rounded-md p-2 text-text-secondary transition-colors;
-  }
 
-  .header-link:hover,
-  .header-icon:hover {
-    @apply icon-tap-hover;
+    &:hover {
+      @apply icon-tap-hover;
+    }
   }
 
   .header-link {
@@ -36,14 +35,15 @@
     @apply cursor-pointer;
   }
 
-  .header-link :is(i, svg),
-  .header-mobile-link :is(i, svg) {
-    @apply inline-block w-[1.25em] text-center;
-  }
+  .header-link,
+  .header-mobile-link {
+    :is(i, svg) {
+      @apply inline-block w-[1.25em] text-center;
+    }
 
-  .header-link svg,
-  .header-mobile-link svg {
-    @apply h-[1em] fill-current align-middle;
+    svg {
+      @apply h-[1em] fill-current align-middle;
+    }
   }
 
   /* ── Group Dividers ── */
@@ -57,34 +57,30 @@
   .header-mobile-backdrop {
     @apply fixed inset-0 top-14 z-30 backdrop-blur-sm md:hidden;
     background: var(--surface-overlay-backdrop);
+
+    @media (prefers-reduced-motion: no-preference) {
+      @apply animate-menu-fade-in;
+    }
   }
 
   /* ── Mobile Dropdown ── */
 
   .header-mobile {
     @apply fixed inset-x-0 top-14 z-40 max-h-[calc(100dvh-3.5rem)] overflow-y-auto glass-surface border-x-0 border-t-0 py-2 md:hidden;
+
+    @media (prefers-reduced-motion: no-preference) {
+      @apply animate-menu-slide-down;
+    }
   }
 
   .header-mobile-link {
     @apply block cursor-pointer border-b-0 px-6 py-2 text-left text-sm text-text-secondary transition-colors;
-  }
 
-  .header-mobile-link:hover {
-    @apply bg-bg/30 text-link-hover;
-  }
-
-  /* ── Mobile Menu Animations ── */
-
-  @media (prefers-reduced-motion: no-preference) {
-    .header-mobile-backdrop {
-      @apply animate-menu-fade-in;
+    &:hover {
+      @apply bg-bg/30 text-link-hover;
     }
 
-    .header-mobile {
-      @apply animate-menu-slide-down;
-    }
-
-    .header-mobile-link {
+    @media (prefers-reduced-motion: no-preference) {
       @apply animate-menu-item-fade-in;
       animation-delay: calc(80ms + var(--item-index, 0) * 40ms);
     }

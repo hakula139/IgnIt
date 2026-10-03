@@ -20,24 +20,24 @@
     --pf-shadow-md: none;
     --pf-shadow-lg: var(--shadow-card);
     --pf-modal-backdrop: var(--surface-overlay-backdrop);
-  }
 
-  /* ── Modal Surface ── */
+    /* ── Modal Surface ── */
 
-  pagefind-modal > dialog.pf-modal {
-    @apply rounded-card! glass-surface!;
-  }
+    > dialog.pf-modal {
+      @apply rounded-card! glass-surface!;
 
-  pagefind-modal > dialog.pf-modal::backdrop {
-    @apply backdrop-blur-sm;
-  }
+      &::backdrop {
+        @apply backdrop-blur-sm;
+      }
+    }
 
-  /* ── Search Input Surface ── */
+    /* ── Search Input Surface ── */
 
-  pagefind-modal .pf-input-wrapper {
-    @apply border;
-    background: var(--pf-background);
-    border-color: var(--pf-border);
-    border-radius: var(--pf-border-radius);
+    .pf-input-wrapper {
+      @apply border;
+      background: var(--pf-background);
+      border-color: var(--pf-border);
+      border-radius: var(--pf-border-radius);
+    }
   }
 }

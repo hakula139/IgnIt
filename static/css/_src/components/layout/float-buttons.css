@@ -12,15 +12,15 @@
 
     --glow-size: 80px;
     --glow-border-size: 60px;
-  }
 
-  .float-btn:hover {
-    @apply text-link-hover;
-    background: var(--surface-glass-hover);
-  }
+    &:hover {
+      @apply text-link-hover;
+      background: var(--surface-glass-hover);
+    }
 
-  .float-btn[inert] {
-    @apply invisible opacity-0;
+    &[inert] {
+      @apply invisible opacity-0;
+    }
   }
 
   @variant max-sm {
