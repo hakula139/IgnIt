@@ -1,0 +1,4 @@
+@utility bounded-scroll {
+  @apply styled-scrollbar overflow-y-auto;
+  max-height: min(var(--scroll-max-height, 32rem), 50svh);
+}

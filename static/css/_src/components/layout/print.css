@@ -76,6 +76,12 @@
     background: transparent !important;
   }
 
+  .callout-body-inner,
+  .code-body[data-max-lines] > .highlight {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
   /* ── Hide Chrome ── */
 
   /* Layout */

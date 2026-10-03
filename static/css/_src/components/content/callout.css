@@ -85,7 +85,7 @@
   /* ── Body ── */
 
   .callout-body-inner {
-    @apply overflow-hidden px-4;
+    @apply bounded-scroll overflow-x-hidden px-4;
 
     p {
       @apply my-1.5 leading-relaxed;
