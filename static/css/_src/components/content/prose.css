@@ -54,11 +54,6 @@
 
 /* ── Code Blocks ── */
 
-/* Prevent Tailwind utility collision with syntect class names (e.g. "block"). */
-.prose .highlight span {
-  @apply inline;
-}
-
 .prose .code-block {
   @apply my-[1.5em];
 }
@@ -109,7 +104,7 @@
 
 /* ── Borders ── */
 
-.prose :where(hr, blockquote, th, td, thead, tr) {
+.prose :where(hr, blockquote, th, td, thead, tr):not(:where(.not-prose, .not-prose *)) {
   border-color: var(--color-border-overlay);
 }
 
@@ -198,7 +193,7 @@
 
 /* ── Images ── */
 
-.prose :where(img:not(figure img)) {
+.prose :where(img:not(figure img)):not(:where(.not-prose, .not-prose *)) {
   @apply my-1 inline;
 }
 
@@ -240,7 +235,7 @@
 
   /* ── Tables ── */
 
-  .prose table:not(.code-block table) {
+  .prose table:not(.code-block table, .not-prose, .not-prose *) {
     @apply block styled-scrollbar w-auto overflow-x-auto;
   }
 
@@ -261,35 +256,5 @@
 
   .prose .footnote-backref {
     @apply ml-1;
-  }
-}
-
-/* ── Math ── */
-
-.prose .katex-display {
-  @apply styled-scrollbar overflow-x-auto overflow-y-hidden;
-}
-
-.prose .katex-display > .katex > .katex-html {
-  @apply w-max min-w-full;
-}
-
-.prose .katex-display:not(.leqno) > .katex > .katex-html:has(> .katex-tag) {
-  @apply flex items-baseline;
-
-  > .katex-base {
-    @apply shrink-0;
-  }
-
-  > .katex-base:first-child {
-    @apply ml-auto;
-  }
-
-  > .katex-base:nth-last-child(2) {
-    @apply mr-auto;
-  }
-
-  > .katex-tag {
-    @apply static ml-[1em] shrink-0;
   }
 }

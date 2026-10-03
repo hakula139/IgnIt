@@ -1,3 +1,8 @@
+/* Prevent Tailwind utility collision with syntect class names (e.g. "block"). */
+.highlight span:not(.line.hl, .line-number.hl) {
+  @apply inline;
+}
+
 @layer components {
   /* ── Syntax Highlighting (Material Light / Palenight) ── */
 
