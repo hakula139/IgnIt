@@ -150,25 +150,18 @@
     }
   }
 
-  :where(a[href], u, ins, .underline):not(
+  :where(a[href]):not(
     :where(
       .heading-anchor,
       .footnote-reference a,
       .footnote-backref,
-      .underline *,
-      u *,
-      ins *,
-      a:not(.underline):has(u, ins, .underline),
       :has(> img:only-child, > .lqip:only-child),
       .not-prose,
       .not-prose *
     )
   ) {
     background-image:
-      linear-gradient(
-        var(--underline-accent-color, currentColor),
-        var(--underline-accent-color, currentColor)
-      ),
+      linear-gradient(var(--color-link-hover), var(--color-link-hover)),
       linear-gradient(
         var(--underline-base-color, transparent),
         var(--underline-base-color, transparent)
@@ -184,16 +177,8 @@
     box-decoration-break: slice;
     transition: background-size 300ms ease;
 
-    &:where(u, ins, .underline) {
-      @apply pb-0.5 no-underline;
-      --underline-accent-color: var(--color-link-hover);
-      --underline-base-color: currentColor;
-    }
-
     &:hover,
-    &:focus-visible,
-    &:has(a:focus-visible),
-    &:where(a:focus-visible u, a:focus-visible ins, a:focus-visible .underline) {
+    &:focus-visible {
       background-position:
         left bottom,
         left bottom;
@@ -210,8 +195,33 @@
     }
   }
 
-  :where(a.underline, a u, a ins, a .underline):not(:where(.not-prose, .not-prose *)) {
+  :where(a.underline, u > a:only-child, ins > a:only-child, .underline > a:only-child):not(
+    :where(.not-prose, .not-prose *)
+  ) {
     --underline-base-color: var(--color-link);
+  }
+
+  :where(u, ins, .underline):has(> a[href]:only-child):not(:where(.not-prose, .not-prose *)) {
+    @apply no-underline;
+  }
+
+  :where(a[href] u, a[href] ins, a[href] .underline):not(
+    :where(.underline *, u *, ins *, .not-prose, .not-prose *)
+  ) {
+    @apply pb-1 no-underline;
+    background-image: linear-gradient(var(--color-link), var(--color-link));
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: 100% 2px;
+    -webkit-box-decoration-break: slice;
+    box-decoration-break: slice;
+
+    @media print, (forced-colors: active) {
+      background-image: none;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 0.2em;
+    }
   }
 
   :where(.heading-anchor):not(:where(.not-prose, .not-prose *)) {
