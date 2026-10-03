@@ -1,10 +1,4 @@
 @layer components {
-  @media (prefers-reduced-motion: no-preference) {
-    .toc-sidebar-scroll {
-      @apply scroll-smooth;
-    }
-  }
-
   /* ── TOC Navigation ── */
 
   .toc ul {
@@ -71,6 +65,12 @@
 
   .toc-sidebar-scroll {
     @apply max-h-[calc(100vh-10rem)] overflow-y-auto;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .toc-sidebar-scroll {
+      @apply scroll-smooth;
+    }
   }
 
   .toc-sidebar-title {

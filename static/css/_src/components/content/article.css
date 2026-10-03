@@ -32,6 +32,10 @@
     @apply h-full w-full transition-transform duration-500;
   }
 
+  .post-banner-media .lqip {
+    @apply block h-full w-full;
+  }
+
   .post-banner:hover .post-banner-media {
     @apply scale-[1.1];
   }
@@ -50,9 +54,6 @@
 
   .post-banner:hover .post-banner-credit {
     @apply opacity-0;
-  }
-  .post-banner-media .lqip {
-    @apply block h-full w-full;
   }
 }
 

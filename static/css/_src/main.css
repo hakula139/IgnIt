@@ -26,8 +26,10 @@
 @import './components/layout/header.css';
 @import './components/layout/skip-link.css';
 
-/* Content */
+/* Typography */
 @import './components/content/prose.css';
+
+/* Content */
 @import './components/content/article.css';
 @import './components/content/callout.css';
 @import './components/content/code-block.css';

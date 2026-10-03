@@ -18,6 +18,14 @@
   --tw-prose-captions: var(--color-text-secondary);
 }
 
+/* ── Text ── */
+
+@layer components {
+  .prose :where(p, li):not(:where(.not-prose, .not-prose *)) {
+    @apply wrap-break-word;
+  }
+}
+
 /* ── Headings ── */
 
 .prose :where(h2, h3, h4, h5, h6):not(:where(.not-prose, .not-prose *)) {
@@ -52,6 +60,12 @@
 
 /* ── Inline Code ── */
 
+@layer components {
+  .prose code:not(:where(.not-prose, .not-prose *)) {
+    @apply rounded bg-bg-muted/60 px-1.5 py-0.5 text-[0.875em];
+  }
+}
+
 .prose code:not(:where(.not-prose, .not-prose *)) {
   @apply font-normal;
 }
@@ -75,6 +89,20 @@
 }
 
 /* ── Tables ── */
+
+@layer components {
+  .prose table:not(.code-block table):not(:where(.not-prose, .not-prose *)) {
+    @apply block styled-scrollbar w-auto overflow-x-auto;
+  }
+
+  .prose :where(th, td).nowrap:not(:where(.not-prose, .not-prose *)) {
+    @apply whitespace-nowrap;
+  }
+
+  .prose :where(th, td):not(.nowrap, .code-block *):not(:where(.not-prose, .not-prose *)) {
+    min-width: calc(var(--table-nowrap-width, 0) * 0.5em);
+  }
+}
 
 .prose :where(thead):not(.code-block *):not(:where(.not-prose, .not-prose *)) {
   @apply border-b-0 bg-bg-muted/50;
@@ -153,14 +181,23 @@
   }
 }
 
-.prose .footnote-reference a:not(:where(.not-prose, .not-prose *)),
-.prose .footnote-reference a:hover:not(:where(.not-prose, .not-prose *)),
-.prose .footnote-backref:not(:where(.not-prose, .not-prose *)),
-.prose .footnote-backref:hover:not(:where(.not-prose, .not-prose *)) {
-  @apply border-b-0;
-}
-
 /* ── Images ── */
+
+@layer components {
+  .prose figure:not(:where(.not-prose, .not-prose *)) {
+    @apply rounded-lg text-center;
+  }
+
+  .prose figure > .lqip:not(:where(.not-prose, .not-prose *)),
+  .prose figure > .lightgallery:not(:where(.not-prose, .not-prose *)),
+  .prose figure > .lightgallery > .lqip:not(:where(.not-prose, .not-prose *)) {
+    @apply mx-auto block w-fit max-w-full rounded-lg;
+  }
+
+  .prose figure img:not(:where(.not-prose, .not-prose *)) {
+    @apply mx-auto rounded-lg;
+  }
+}
 
 .prose :where(img:not(figure img)):not(:where(.not-prose, .not-prose *)) {
   @apply my-1 inline;
@@ -178,51 +215,9 @@
   }
 }
 
+/* ── Footnotes ── */
+
 @layer components {
-  /* ── Code ── */
-
-  .prose code:not(:where(.not-prose, .not-prose *)) {
-    @apply rounded bg-bg-muted/60 px-1.5 py-0.5 text-[0.875em];
-  }
-
-  /* ── Text ── */
-
-  .prose :where(p, li):not(:where(.not-prose, .not-prose *)) {
-    @apply wrap-break-word;
-  }
-
-  /* ── Images ── */
-
-  .prose figure img:not(:where(.not-prose, .not-prose *)) {
-    @apply mx-auto rounded-lg;
-  }
-
-  .prose figure:not(:where(.not-prose, .not-prose *)) {
-    @apply rounded-lg text-center;
-  }
-
-  .prose figure > .lqip:not(:where(.not-prose, .not-prose *)),
-  .prose figure > .lightgallery:not(:where(.not-prose, .not-prose *)),
-  .prose figure > .lightgallery > .lqip:not(:where(.not-prose, .not-prose *)) {
-    @apply mx-auto block w-fit max-w-full rounded-lg;
-  }
-
-  /* ── Tables ── */
-
-  .prose table:not(.code-block table):not(:where(.not-prose, .not-prose *)) {
-    @apply block styled-scrollbar w-auto overflow-x-auto;
-  }
-
-  .prose :where(th, td).nowrap:not(:where(.not-prose, .not-prose *)) {
-    @apply whitespace-nowrap;
-  }
-
-  .prose :where(th, td):not(.nowrap, .code-block *):not(:where(.not-prose, .not-prose *)) {
-    min-width: calc(var(--table-nowrap-width, 0) * 0.5em);
-  }
-
-  /* ── Footnotes ── */
-
   .prose .footnotes:not(:where(.not-prose, .not-prose *)) {
     --tw-prose-counters: var(--color-link);
     @apply mt-12 border-t border-border-overlay pt-4 text-sm text-text-tertiary;
@@ -231,4 +226,11 @@
   .prose .footnote-backref:not(:where(.not-prose, .not-prose *)) {
     @apply ml-1;
   }
+}
+
+.prose .footnote-reference a:not(:where(.not-prose, .not-prose *)),
+.prose .footnote-reference a:hover:not(:where(.not-prose, .not-prose *)),
+.prose .footnote-backref:not(:where(.not-prose, .not-prose *)),
+.prose .footnote-backref:hover:not(:where(.not-prose, .not-prose *)) {
+  @apply border-b-0;
 }

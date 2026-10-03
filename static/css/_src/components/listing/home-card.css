@@ -7,6 +7,10 @@
     @apply relative overflow-hidden rounded-card border border-border-overlay bg-card shadow-card;
   }
 
+  .home-card > .lqip {
+    @apply absolute inset-0 h-full w-full;
+  }
+
   .home-card-image {
     @apply absolute inset-0 h-full w-full object-cover blur-sm transition-[scale,filter] duration-1000;
   }
@@ -162,8 +166,5 @@
 
   .profile-social:hover {
     @apply icon-tap-hover;
-  }
-  .home-card > .lqip {
-    @apply absolute inset-0 h-full w-full;
   }
 }
