@@ -1,29 +1,31 @@
 @layer components {
   /* ── TOC Navigation ── */
 
-  .toc ul {
-    @apply m-0 list-none p-0;
-  }
+  .toc {
+    ul {
+      @apply m-0 list-none p-0;
 
-  .toc ul ul {
-    @apply pl-4;
-  }
+      ul {
+        @apply pl-4;
+      }
+    }
 
-  .toc li {
-    @apply my-0.5;
-  }
+    li {
+      @apply my-0.5;
+    }
 
-  .toc a {
-    @apply block border-b-0 border-l-2 border-border py-0.5 pl-3 text-text/70 no-underline transition-colors;
-  }
+    a {
+      @apply block border-b-0 border-l-2 border-border py-0.5 pl-3 text-text/70 no-underline transition-colors;
 
-  .toc a:hover {
-    @apply border-link text-link;
-  }
+      &:hover {
+        @apply border-link text-link;
+      }
 
-  .toc a.active,
-  .toc a[aria-current] {
-    @apply border-link font-semibold text-link;
+      &.active,
+      &[aria-current] {
+        @apply border-link font-semibold text-link;
+      }
+    }
   }
 
   /* ── Mobile TOC ── */
@@ -34,23 +36,23 @@
 
   .toc-trigger {
     @apply py-2.5 font-medium text-text-secondary;
-  }
 
-  .toc-trigger::before {
-    @apply fa-icon text-text-tertiary;
-    content: '\f0ca'; /* list-ul */
-  }
+    &::before {
+      @apply fa-icon text-text-tertiary;
+      content: '\f0ca'; /* list-ul */
+    }
 
-  .toc-trigger::after {
-    @apply text-text-tertiary;
+    &::after {
+      @apply text-text-tertiary;
+    }
   }
 
   .toc-body {
     @apply px-4 text-sm;
-  }
 
-  .toc-body > :last-child {
-    @apply mb-3;
+    > :last-child {
+      @apply mb-3;
+    }
   }
 
   /* ── Desktop TOC Sidebar ── */
@@ -65,10 +67,8 @@
 
   .toc-sidebar-scroll {
     @apply max-h-[calc(100vh-10rem)] overflow-y-auto;
-  }
 
-  @media (prefers-reduced-motion: no-preference) {
-    .toc-sidebar-scroll {
+    @media (prefers-reduced-motion: no-preference) {
       @apply scroll-smooth;
     }
   }

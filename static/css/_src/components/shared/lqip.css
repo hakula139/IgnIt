@@ -4,11 +4,11 @@
     background-image: var(--lqip-uri);
     background-size: cover;
     background-position: center;
-  }
 
-  /* Typography's `.prose img` margins would inflate the wrapper. */
-  .lqip > img {
-    @apply m-0! block;
+    /* Typography's `.prose img` margins would inflate the wrapper. */
+    > img {
+      @apply m-0! block;
+    }
   }
 
   .lqip-fade-enabled .lqip:not(.lqip-loaded) > img {

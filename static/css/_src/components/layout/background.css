@@ -6,10 +6,8 @@
   .body-bg > img {
     @apply h-full w-full object-cover;
     object-position: var(--bg-position-mobile, var(--bg-position, center));
-  }
 
-  @variant sm {
-    .body-bg > img {
+    @variant sm {
       object-position: var(--bg-position, center);
     }
   }

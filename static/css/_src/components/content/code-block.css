@@ -9,10 +9,10 @@
 
   .code-header {
     @apply bg-bg-muted/60 py-2;
-  }
 
-  .code-header::before {
-    @apply text-text-secondary;
+    &::before {
+      @apply text-text-secondary;
+    }
   }
 
   .code-lang,
@@ -22,10 +22,10 @@
 
   .copy-btn {
     @apply ml-auto cursor-pointer rounded p-1 text-text-tertiary transition-colors;
-  }
 
-  .copy-btn:hover {
-    @apply text-link-hover;
+    &:hover {
+      @apply text-link-hover;
+    }
   }
 
   /* ── Body ── */
@@ -41,36 +41,38 @@
 
   /* ── Highlight Table Layout ── */
 
-  .highlight table {
-    @apply w-max min-w-full border-collapse;
-  }
+  .highlight {
+    table {
+      @apply w-max min-w-full border-collapse;
+    }
 
-  .highlight .line-numbers {
-    @apply w-px py-3 text-right select-none;
-  }
+    .line-numbers {
+      @apply w-px py-3 text-right select-none;
 
-  .highlight .line-numbers pre {
-    @apply pr-2 pl-4 text-text-tertiary;
-  }
+      pre {
+        @apply pr-2 pl-4 text-text-tertiary;
+      }
+    }
 
-  .highlight .code {
-    @apply py-3;
-  }
+    .code {
+      @apply py-3;
 
-  .highlight .code pre {
-    @apply pr-4 pl-3;
-  }
+      pre {
+        @apply pr-4 pl-3;
+      }
+    }
 
-  /* ── Per-Line Highlight ── */
+    /* ── Per-Line Highlight ── */
 
-  .highlight .line.hl,
-  .highlight .line-number.hl {
-    @apply inline-block w-full bg-line-highlight-bg;
-  }
+    .line.hl,
+    .line-number.hl {
+      @apply inline-block w-full bg-line-highlight-bg;
+    }
 
-  /* Inset shadow avoids the layout shift a real border-left would cause. */
-  .highlight .line.hl {
-    box-shadow: inset 2px 0 0 var(--color-line-highlight-border);
+    /* Inset shadow avoids the layout shift a real border-left would cause. */
+    .line.hl {
+      box-shadow: inset 2px 0 0 var(--color-line-highlight-border);
+    }
   }
 }
 
@@ -78,32 +80,32 @@
 
 .prose .code-block {
   @apply my-[1.5em];
-}
 
-.prose .code-block pre {
-  @apply m-0 overflow-visible rounded-none bg-transparent p-0 text-[length:inherit] whitespace-pre text-inherit;
-}
+  pre {
+    @apply m-0 overflow-visible rounded-none bg-transparent p-0 text-[length:inherit] whitespace-pre text-inherit;
+  }
 
-.prose .code-block code {
-  @apply text-inherit;
-}
+  code {
+    @apply text-inherit;
+  }
 
-.prose .code-block table {
-  @apply m-0 w-max min-w-full text-[length:inherit] leading-[inherit];
-}
+  table {
+    @apply m-0 w-max min-w-full text-[length:inherit] leading-[inherit];
+  }
 
-.prose .code-block td {
-  @apply px-0 py-3;
-}
+  td {
+    @apply px-0 py-3;
+  }
 
-.prose .code-block .line-numbers {
-  @apply text-right;
-}
+  .line-numbers {
+    @apply text-right;
 
-.prose .code-block .line-numbers pre {
-  @apply py-0 pr-2 pl-4;
-}
+    pre {
+      @apply py-0 pr-2 pl-4;
+    }
+  }
 
-.prose .code-block .code pre {
-  @apply py-0 pr-4 pl-3;
+  .code pre {
+    @apply py-0 pr-4 pl-3;
+  }
 }
