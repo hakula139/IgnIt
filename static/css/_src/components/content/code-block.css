@@ -9,10 +9,10 @@
 
   .code-header {
     @apply bg-bg-muted/60 py-2;
-  }
 
-  .code-header::before {
-    @apply text-text-secondary;
+    &::before {
+      @apply text-text-secondary;
+    }
   }
 
   .code-lang,
@@ -22,54 +22,92 @@
 
   .copy-btn {
     @apply ml-auto cursor-pointer rounded p-1 text-text-tertiary transition-colors;
-  }
 
-  .copy-btn:hover {
-    @apply text-link-hover;
+    &:hover {
+      @apply text-link-hover;
+    }
   }
 
   /* ── Body ── */
 
-  .code-body > .highlight {
-    @apply styled-scrollbar min-h-0 overflow-x-auto overflow-y-hidden;
-  }
+  .code-body {
+    > .highlight {
+      @apply styled-scrollbar min-h-0 overflow-x-auto overflow-y-hidden;
+    }
 
-  .code-body[data-max-lines] > .highlight {
-    @apply overflow-y-auto;
-    max-height: calc(var(--max-lines, 40) * 1.5em + 1rem);
+    &[data-max-lines] > .highlight {
+      @apply overflow-y-auto;
+      max-height: calc(var(--max-lines, 40) * 1.5em + 1rem);
+    }
   }
 
   /* ── Highlight Table Layout ── */
 
-  .highlight table {
-    @apply w-max min-w-full border-collapse;
+  .highlight {
+    table {
+      @apply w-max min-w-full border-collapse;
+    }
+
+    .line-numbers {
+      @apply w-px py-3 text-right select-none;
+
+      pre {
+        @apply pr-2 pl-4 text-text-tertiary;
+      }
+    }
+
+    .code {
+      @apply py-3;
+
+      pre {
+        @apply pr-4 pl-3;
+      }
+    }
+
+    /* ── Per-Line Highlight ── */
+
+    .line.hl,
+    .line-number.hl {
+      @apply inline-block w-full bg-line-highlight-bg;
+    }
+
+    /* Inset shadow avoids the layout shift a real border-left would cause. */
+    .line.hl {
+      box-shadow: inset 2px 0 0 var(--color-line-highlight-border);
+    }
+  }
+}
+
+/* ── Typography Integration ── */
+
+.prose .code-block {
+  @apply my-[1.5em];
+
+  pre {
+    @apply m-0 overflow-visible rounded-none bg-transparent p-0 text-[length:inherit] whitespace-pre text-inherit;
   }
 
-  .highlight .line-numbers {
-    @apply w-px py-3 text-right select-none;
+  code {
+    @apply text-inherit;
   }
 
-  .highlight .line-numbers pre {
-    @apply pr-2 pl-4 text-text-tertiary;
+  table {
+    @apply m-0 w-max min-w-full text-[length:inherit] leading-[inherit];
   }
 
-  .highlight .code {
-    @apply py-3;
+  td {
+    @apply px-0 py-3;
   }
 
-  .highlight .code pre {
-    @apply pr-4 pl-3;
+  .line-numbers {
+    @apply text-right;
+
+    pre {
+      @apply py-0 pr-2 pl-4;
+    }
   }
 
-  /* ── Per-Line Highlight ── */
-
-  .highlight .line.hl,
-  .highlight .line-number.hl {
-    @apply inline-block w-full bg-line-highlight-bg;
-  }
-
-  /* Inset shadow avoids the layout shift a real border-left would cause. */
-  .highlight .line.hl {
-    box-shadow: inset 2px 0 0 var(--color-line-highlight-border);
+  .code pre {
+    @apply py-0 pr-4 pl-3;
   }
 }

@@ -1,0 +1,3 @@
+.heading-number {
+  @apply me-[0.5em] whitespace-nowrap;
+}

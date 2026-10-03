@@ -9,58 +9,46 @@
   .highlight {
     @apply bg-bg-muted/60;
     color: var(--syntax-default);
-  }
 
-  .highlight .source {
-    color: var(--syntax-default);
-  }
+    .source {
+      color: var(--syntax-default);
+    }
 
-  .highlight .keyword {
-    color: var(--syntax-keyword);
-  }
+    .keyword,
+    .storage {
+      color: var(--syntax-keyword);
+    }
 
-  .highlight .storage {
-    color: var(--syntax-keyword);
-  }
+    .entity,
+    .support {
+      color: var(--syntax-entity);
+    }
 
-  .highlight .entity {
-    color: var(--syntax-entity);
-  }
+    .string {
+      color: var(--syntax-string);
+    }
 
-  .highlight .support {
-    color: var(--syntax-entity);
-  }
+    .constant,
+    .constant.numeric {
+      color: var(--syntax-constant);
+    }
 
-  .highlight .string {
-    color: var(--syntax-string);
-  }
+    .variable {
+      color: var(--syntax-variable);
+    }
 
-  .highlight .constant {
-    color: var(--syntax-constant);
-  }
+    .punctuation {
+      color: var(--syntax-punctuation);
+    }
 
-  .highlight .constant.numeric {
-    color: var(--syntax-constant);
-  }
+    .comment {
+      color: var(--syntax-comment);
+      @apply italic;
+    }
 
-  .highlight .variable {
-    color: var(--syntax-variable);
-  }
-
-  .highlight .punctuation {
-    color: var(--syntax-punctuation);
-  }
-
-  .highlight .comment {
-    color: var(--syntax-comment);
-    @apply italic;
-  }
-
-  .highlight .invalid {
-    color: var(--syntax-invalid);
-  }
-
-  .highlight .meta.tag {
-    color: var(--syntax-invalid);
+    .invalid,
+    .meta.tag {
+      color: var(--syntax-invalid);
+    }
   }
 }

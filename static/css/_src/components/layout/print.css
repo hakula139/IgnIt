@@ -103,7 +103,7 @@
 
   /* ── Content: Link URLs ── */
 
-  .prose a[href^='http']::after {
+  .prose a[href^='http']:not(:where(.not-prose, .not-prose *))::after {
     content: ' (' attr(href) ')';
     font-size: 0.8em;
     color: #666;

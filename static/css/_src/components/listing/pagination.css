@@ -1,38 +1,40 @@
 @layer components {
   .pagination-link {
     @apply inline-flex h-9 min-w-9 items-center justify-center rounded-lg border-b-0 px-2.5 text-sm font-medium text-text-secondary transition-colors duration-200;
-  }
 
-  .pagination-mobile .pagination-link {
-    @apply h-10 min-w-10;
-  }
+    .pagination-mobile & {
+      @apply h-10 min-w-10;
+    }
 
-  .pagination-current .pagination-link {
-    @apply min-w-20;
-  }
+    .pagination-current & {
+      @apply min-w-20;
+    }
 
-  .pagination-link:disabled {
-    @apply opacity-40;
-  }
+    &:disabled {
+      @apply opacity-40;
+    }
 
-  .pagination-link:not(:disabled):hover,
-  .pagination-link:focus-visible {
-    @apply text-link-hover;
-    background-color: color-mix(in srgb, var(--color-link-hover) 8%, transparent);
-  }
+    &:not(:disabled):hover,
+    &:focus-visible {
+      @apply text-link-hover;
+      background-color: color-mix(in srgb, var(--color-link-hover) 8%, transparent);
+    }
 
-  .pagination-link[aria-current='page'] {
-    @apply text-link-hover;
-    background-color: color-mix(in srgb, var(--color-link-hover) 15%, transparent);
+    &[aria-current='page'] {
+      @apply text-link-hover;
+      background-color: color-mix(in srgb, var(--color-link-hover) 15%, transparent);
+    }
   }
 
   .pagination-jump {
     @apply cursor-pointer text-text-tertiary;
   }
 
-  .pagination-jump[hidden],
-  .pagination-input[hidden] {
-    display: none;
+  .pagination-jump,
+  .pagination-input {
+    &[hidden] {
+      display: none;
+    }
   }
 
   .pagination-input {
@@ -40,18 +42,18 @@
     background: color-mix(in srgb, var(--color-bg) 60%, transparent);
     appearance: textfield;
     -moz-appearance: textfield;
-  }
 
-  .pagination-current .pagination-input {
-    @apply h-10 w-20;
-  }
+    .pagination-current & {
+      @apply h-10 w-20;
+    }
 
-  .pagination-input:focus {
-    @apply border-link-hover;
-  }
+    &:focus {
+      @apply border-link-hover;
+    }
 
-  .pagination-input::-webkit-inner-spin-button,
-  .pagination-input::-webkit-outer-spin-button {
-    @apply m-0 appearance-none;
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+      @apply m-0 appearance-none;
+    }
   }
 }

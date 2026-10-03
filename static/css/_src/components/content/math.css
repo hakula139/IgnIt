@@ -1,27 +1,27 @@
 .katex-display {
   @apply styled-scrollbar overflow-x-auto overflow-y-hidden;
-}
 
-.katex-display > .katex > .katex-html {
-  @apply w-max min-w-full;
-}
-
-.katex-display:not(.leqno) > .katex > .katex-html:has(> .katex-tag) {
-  @apply flex items-baseline;
-
-  > .katex-base {
-    @apply shrink-0;
+  > .katex > .katex-html {
+    @apply w-max min-w-full;
   }
 
-  > .katex-base:first-child {
-    @apply ml-auto;
-  }
+  &:not(.leqno) > .katex > .katex-html:has(> .katex-tag) {
+    @apply flex items-baseline;
 
-  > .katex-base:nth-last-child(2) {
-    @apply mr-auto;
-  }
+    > .katex-base {
+      @apply shrink-0;
 
-  > .katex-tag {
-    @apply static ml-[1em] shrink-0;
+      &:first-child {
+        @apply ml-auto;
+      }
+
+      &:nth-last-child(2) {
+        @apply mr-auto;
+      }
+    }
+
+    > .katex-tag {
+      @apply static ml-[1em] shrink-0;
+    }
   }
 }

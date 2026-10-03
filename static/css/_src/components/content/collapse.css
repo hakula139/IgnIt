@@ -5,12 +5,10 @@
   .callout-title,
   .toc-trigger {
     @apply flex cursor-pointer list-none items-center gap-2 px-4 text-sm select-none;
-  }
 
-  .code-header::-webkit-details-marker,
-  .callout-title::-webkit-details-marker,
-  .toc-trigger::-webkit-details-marker {
-    @apply hidden;
+    &::-webkit-details-marker {
+      @apply hidden;
+    }
   }
 
   /* ── Chevron ── */
@@ -20,6 +18,10 @@
   .toc-trigger::after {
     @apply fa-icon text-xs transition-transform duration-200;
     content: '\f078';
+
+    @media (prefers-reduced-motion: reduce) {
+      @apply transition-none;
+    }
   }
 
   .callout-title::after,
@@ -35,41 +37,27 @@
 
   /* ── Native Disclosures ── */
 
-  .code-block::details-content,
-  .callout::details-content,
-  .toc-collapse::details-content {
-    @apply grid grid-rows-[0fr];
-  }
+  .code-block,
+  .callout,
+  .toc-collapse {
+    &::details-content {
+      @apply grid grid-rows-[0fr];
 
-  .code-block[open]::details-content,
-  .callout[open]::details-content,
-  .toc-collapse[open]::details-content {
-    @apply grid-rows-[1fr];
+      @media (prefers-reduced-motion: no-preference) {
+        transition:
+          grid-template-rows 300ms,
+          content-visibility 300ms allow-discrete;
+      }
+    }
+
+    &[open]::details-content {
+      @apply grid-rows-[1fr];
+    }
   }
 
   .code-body,
   .callout-body,
   .toc-body {
     @apply min-h-0 overflow-hidden;
-  }
-
-  /* ── Motion ── */
-
-  @media (prefers-reduced-motion: no-preference) {
-    .code-block::details-content,
-    .callout::details-content,
-    .toc-collapse::details-content {
-      transition:
-        grid-template-rows 300ms,
-        content-visibility 300ms allow-discrete;
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .code-header::before,
-    .callout-title::after,
-    .toc-trigger::after {
-      @apply transition-none;
-    }
   }
 }

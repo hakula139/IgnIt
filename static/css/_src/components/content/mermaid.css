@@ -3,9 +3,9 @@ pre.mermaid {
   color: inherit;
   font-family: var(--font-sans);
   justify-content: safe center;
-}
 
-pre.mermaid svg {
-  @apply max-w-none;
-  height: auto;
+  svg {
+    @apply max-w-none;
+    height: auto;
+  }
 }

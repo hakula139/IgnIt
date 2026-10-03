@@ -1,0 +1,7 @@
+@layer components {
+  /* ── Footer ── */
+
+  .site-footer {
+    @apply px-6 py-4 text-center text-sm text-text-tertiary;
+  }
+}

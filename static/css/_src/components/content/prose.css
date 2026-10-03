@@ -1,260 +1,231 @@
-/* ── Typography Tokens ── */
-
 .prose {
-  /* Text */
-  --tw-prose-body: var(--color-text);
-  --tw-prose-headings: var(--color-text);
-  --tw-prose-bold: var(--color-text);
-  --tw-prose-links: var(--color-link);
-  --tw-prose-code: var(--color-text);
-  --tw-prose-pre-bg: color-mix(in oklab, var(--color-bg-muted) 60%, transparent);
+  /* ── Typography Tokens ── */
 
-  /* Lists */
-  --tw-prose-counters: var(--color-text-secondary);
-  --tw-prose-bullets: var(--color-text-secondary);
+  &:not(:where(.not-prose, .not-prose *)) {
+    /* Text */
+    --tw-prose-body: var(--color-text);
+    --tw-prose-headings: var(--color-text);
+    --tw-prose-bold: var(--color-text);
+    --tw-prose-links: var(--color-link);
+    --tw-prose-code: var(--color-text);
+    --tw-prose-pre-bg: color-mix(in oklab, var(--color-bg-muted) 60%, transparent);
 
-  /* Decorations */
-  --tw-prose-quotes: var(--color-text-secondary);
-  --tw-prose-captions: var(--color-text-secondary);
-}
+    /* Lists */
+    --tw-prose-counters: var(--color-text-secondary);
+    --tw-prose-bullets: var(--color-text-secondary);
 
-/* ── Headings ── */
-
-.prose :where(h2, h3, h4, h5, h6) {
-  @apply relative mb-6 leading-normal font-semibold wrap-break-word text-text;
-}
-
-.prose :where(h2, h3, h4, h5, h6) + * {
-  @apply mt-0;
-}
-
-.prose :where(h2) {
-  @apply mt-[2.25em] pb-[0.4em] text-[1.4em] font-bold after:absolute after:right-0 after:bottom-0 after:left-0 after:border-b after:border-border-overlay;
-}
-
-.prose :where(h3) {
-  @apply mt-[2em] text-[1.25em] font-bold;
-}
-
-.prose :where(h4) {
-  @apply mt-[1.9em] text-[1.125em];
-}
-
-.prose :where(h5, h6) {
-  @apply mt-[1.75em] text-[1em];
-}
-
-.prose :where(h6) {
-  @apply text-text-secondary;
-}
-
-.heading-number {
-  @apply me-[0.5em] whitespace-nowrap;
-}
-
-/* ── Code Blocks ── */
-
-.prose .code-block {
-  @apply my-[1.5em];
-}
-
-.prose .code-block pre {
-  @apply m-0 overflow-visible rounded-none bg-transparent p-0 text-[length:inherit] whitespace-pre text-inherit;
-}
-
-.prose .code-block code {
-  @apply text-inherit;
-}
-
-.prose .code-block table {
-  @apply m-0 w-max min-w-full text-[length:inherit] leading-[inherit];
-}
-
-.prose .code-block td {
-  @apply px-0 py-3;
-}
-
-.prose .code-block .line-numbers {
-  @apply text-right;
-}
-
-.prose .code-block .line-numbers pre {
-  @apply py-0 pr-2 pl-4;
-}
-
-.prose .code-block .code pre {
-  @apply py-0 pr-4 pl-3;
-}
-
-.prose code {
-  @apply font-normal;
-}
-
-.prose code::before,
-.prose code::after {
-  @apply content-none;
-}
-
-/* ── Blockquotes ── */
-
-.prose :where(blockquote p:first-of-type)::before,
-.prose :where(blockquote p:last-of-type)::after {
-  @apply content-none;
-}
-
-/* ── Borders ── */
-
-.prose :where(hr, blockquote, th, td, thead, tr):not(:where(.not-prose, .not-prose *)) {
-  border-color: var(--color-border-overlay);
-}
-
-/* ── Tables ── */
-
-.prose :where(thead):not(.code-block *, .not-prose *) {
-  @apply border-b-0 bg-bg-muted/50;
-}
-
-.prose :where(th, td):not(.code-block *, .not-prose *) {
-  @apply px-3 py-2.5;
-}
-
-.prose :where(thead th):not(.code-block *, .not-prose *) {
-  @apply font-semibold text-text-secondary first:rounded-l-md last:rounded-r-md;
-}
-
-.prose :where(tbody tr):not(.code-block *, .not-prose *) {
-  @apply border-border-overlay/50;
-}
-
-/* ── Lists ── */
-
-.prose :where(li) {
-  @apply my-0.5;
-}
-
-.prose :where(li):has(> input[type='checkbox'], > p > input[type='checkbox']) {
-  @apply relative list-none ps-0;
-
-  input[type='checkbox'] {
-    @apply absolute m-0 size-[1em] accent-link;
-    inset-inline-start: -1.625em;
-    top: calc((1lh - 1em) / 2);
-    font: inherit;
-    color-scheme: light;
-
-    @variant dark {
-      color-scheme: dark;
-    }
-  }
-}
-
-/* ── Links ── */
-
-.prose :where(a:not(.not-prose, .not-prose *)) {
-  @apply pb-0.5 no-underline;
-
-  &:hover,
-  &:focus-visible {
-    @apply text-link-hover;
-  }
-}
-
-.prose :where(.heading-anchor) {
-  @apply border-b-0 p-0 text-inherit;
-  font-weight: inherit;
-
-  @variant xl {
-    &:hover,
-    &:focus-visible {
-      @apply text-inherit;
-    }
-
-    &::before {
-      @apply absolute -left-5 text-link opacity-0 transition-opacity;
-      content: '#';
-    }
-
-    &:hover::before {
-      @apply opacity-60;
-    }
-
-    &:focus-visible::before {
-      @apply opacity-100;
-    }
-  }
-}
-
-.prose .footnote-reference a,
-.prose .footnote-reference a:hover,
-.prose .footnote-backref,
-.prose .footnote-backref:hover {
-  @apply border-b-0;
-}
-
-/* ── Images ── */
-
-.prose :where(img:not(figure img)):not(:where(.not-prose, .not-prose *)) {
-  @apply my-1 inline;
-}
-
-.prose a:has(> img:only-child),
-.prose a:has(> .lqip:only-child) {
-  @apply border-b-0 pb-0;
-}
-
-@media (dynamic-range: high) {
-  .prose figure,
-  .prose img,
-  .post-featured-image {
-    dynamic-range-limit: no-limit;
-  }
-}
-
-@layer components {
-  /* ── Code ── */
-
-  .prose code {
-    @apply rounded bg-bg-muted/60 px-1.5 py-0.5 text-[0.875em];
+    /* Decorations */
+    --tw-prose-quotes: var(--color-text-secondary);
+    --tw-prose-captions: var(--color-text-secondary);
   }
 
   /* ── Text ── */
 
-  .prose :where(p, li) {
-    @apply wrap-break-word;
+  @layer components {
+    :where(p, li):not(:where(.not-prose, .not-prose *)) {
+      @apply wrap-break-word;
+    }
   }
 
-  /* ── Images ── */
+  /* ── Headings ── */
 
-  .prose figure img {
-    @apply mx-auto rounded-lg;
+  :where(h2, h3, h4, h5, h6):not(:where(.not-prose, .not-prose *)) {
+    @apply relative mb-6 leading-normal font-semibold wrap-break-word text-text;
+
+    & + *:not(:where(.not-prose, .not-prose *)) {
+      @apply mt-0;
+    }
+
+    &:where(h2) {
+      @apply mt-[2.25em] pb-[0.4em] text-[1.4em] font-bold after:absolute after:right-0 after:bottom-0 after:left-0 after:border-b after:border-border-overlay;
+    }
+
+    &:where(h3) {
+      @apply mt-[2em] text-[1.25em] font-bold;
+    }
+
+    &:where(h4) {
+      @apply mt-[1.9em] text-[1.125em];
+    }
+
+    &:where(h5, h6) {
+      @apply mt-[1.75em] text-[1em];
+    }
+
+    &:where(h6) {
+      @apply text-text-secondary;
+    }
   }
 
-  .prose figure {
-    @apply rounded-lg text-center;
+  /* ── Inline Code ── */
+
+  code:not(:where(.not-prose, .not-prose *)) {
+    @layer components {
+      @apply rounded bg-bg-muted/60 px-1.5 py-0.5 text-[0.875em];
+    }
+
+    @apply font-normal;
+
+    &::before,
+    &::after {
+      @apply content-none;
+    }
+  }
+
+  /* ── Blockquotes ── */
+
+  :where(blockquote p:first-of-type):not(:where(.not-prose, .not-prose *))::before,
+  :where(blockquote p:last-of-type):not(:where(.not-prose, .not-prose *))::after {
+    @apply content-none;
+  }
+
+  /* ── Borders ── */
+
+  :where(hr, blockquote, th, td, thead, tr):not(:where(.not-prose, .not-prose *)) {
+    border-color: var(--color-border-overlay);
   }
 
   /* ── Tables ── */
 
-  .prose table:not(.code-block table, .not-prose, .not-prose *) {
-    @apply block styled-scrollbar w-auto overflow-x-auto;
+  @layer components {
+    table:not(.code-block table):not(:where(.not-prose, .not-prose *)) {
+      @apply block styled-scrollbar w-auto overflow-x-auto;
+    }
+
+    :where(th, td).nowrap:not(:where(.not-prose, .not-prose *)) {
+      @apply whitespace-nowrap;
+    }
+
+    :where(th, td):not(.nowrap, .code-block *):not(:where(.not-prose, .not-prose *)) {
+      min-width: calc(var(--table-nowrap-width, 0) * 0.5em);
+    }
   }
 
-  .prose :where(th, td).nowrap {
-    @apply whitespace-nowrap;
+  :where(thead):not(.code-block *):not(:where(.not-prose, .not-prose *)) {
+    @apply border-b-0 bg-bg-muted/50;
   }
 
-  .prose :where(th, td):not(.nowrap, .not-prose *, .code-block *) {
-    min-width: calc(var(--table-nowrap-width, 0) * 0.5em);
+  :where(th, td):not(.code-block *):not(:where(.not-prose, .not-prose *)) {
+    @apply px-3 py-2.5;
+  }
+
+  :where(thead th):not(.code-block *):not(:where(.not-prose, .not-prose *)) {
+    @apply font-semibold text-text-secondary first:rounded-l-md last:rounded-r-md;
+  }
+
+  :where(tbody tr):not(.code-block *):not(:where(.not-prose, .not-prose *)) {
+    @apply border-border-overlay/50;
+  }
+
+  /* ── Lists ── */
+
+  :where(li):not(:where(.not-prose, .not-prose *)) {
+    @apply my-0.5;
+
+    &:has(> input[type='checkbox'], > p > input[type='checkbox']) {
+      @apply relative list-none ps-0;
+
+      input[type='checkbox'] {
+        @apply absolute m-0 size-[1em] accent-link;
+        inset-inline-start: -1.625em;
+        top: calc((1lh - 1em) / 2);
+        font: inherit;
+        color-scheme: light;
+
+        @variant dark {
+          color-scheme: dark;
+        }
+      }
+    }
+  }
+
+  /* ── Links ── */
+
+  :where(a):not(:where(.not-prose, .not-prose *)) {
+    @apply pb-0.5 no-underline;
+
+    &:hover,
+    &:focus-visible {
+      @apply text-link-hover;
+    }
+  }
+
+  :where(.heading-anchor):not(:where(.not-prose, .not-prose *)) {
+    @apply border-b-0 p-0 text-inherit;
+    font-weight: inherit;
+
+    @variant xl {
+      &:hover,
+      &:focus-visible {
+        @apply text-inherit;
+      }
+
+      &::before {
+        @apply absolute -left-5 text-link opacity-0 transition-opacity;
+        content: '#';
+      }
+
+      &:hover::before {
+        @apply opacity-60;
+      }
+
+      &:focus-visible::before {
+        @apply opacity-100;
+      }
+    }
+  }
+
+  /* ── Images ── */
+
+  @layer components {
+    figure:not(:where(.not-prose, .not-prose *)) {
+      @apply rounded-lg text-center;
+    }
+
+    figure > .lqip:not(:where(.not-prose, .not-prose *)),
+    figure > .lightgallery:not(:where(.not-prose, .not-prose *)),
+    figure > .lightgallery > .lqip:not(:where(.not-prose, .not-prose *)) {
+      @apply mx-auto block w-fit max-w-full rounded-lg;
+    }
+
+    figure img:not(:where(.not-prose, .not-prose *)) {
+      @apply mx-auto rounded-lg;
+    }
+  }
+
+  :where(img:not(figure img)):not(:where(.not-prose, .not-prose *)) {
+    @apply my-1 inline;
+  }
+
+  a:has(> img:only-child):not(:where(.not-prose, .not-prose *)),
+  a:has(> .lqip:only-child):not(:where(.not-prose, .not-prose *)) {
+    @apply border-b-0 pb-0;
+  }
+
+  @media (dynamic-range: high) {
+    figure:not(:where(.not-prose, .not-prose *)),
+    img:not(:where(.not-prose, .not-prose *)) {
+      dynamic-range-limit: no-limit;
+    }
   }
 
   /* ── Footnotes ── */
 
-  .prose .footnotes {
-    --tw-prose-counters: var(--color-link);
-    @apply mt-12 border-t border-border-overlay pt-4 text-sm text-text-tertiary;
+  @layer components {
+    .footnotes:not(:where(.not-prose, .not-prose *)) {
+      --tw-prose-counters: var(--color-link);
+      @apply mt-12 border-t border-border-overlay pt-4 text-sm text-text-tertiary;
+    }
+
+    .footnote-backref:not(:where(.not-prose, .not-prose *)) {
+      @apply ml-1;
+    }
   }
 
-  .prose .footnote-backref {
-    @apply ml-1;
+  .footnote-reference a:not(:where(.not-prose, .not-prose *)),
+  .footnote-reference a:hover:not(:where(.not-prose, .not-prose *)),
+  .footnote-backref:not(:where(.not-prose, .not-prose *)),
+  .footnote-backref:hover:not(:where(.not-prose, .not-prose *)) {
+    @apply border-b-0;
   }
 }

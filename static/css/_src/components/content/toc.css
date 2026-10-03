@@ -1,29 +1,31 @@
 @layer components {
   /* ── TOC Navigation ── */
 
-  .toc ul {
-    @apply m-0 list-none p-0;
-  }
+  .toc {
+    ul {
+      @apply m-0 list-none p-0;
 
-  .toc ul ul {
-    @apply pl-4;
-  }
+      ul {
+        @apply pl-4;
+      }
+    }
 
-  .toc li {
-    @apply my-0.5;
-  }
+    li {
+      @apply my-0.5;
+    }
 
-  .toc a {
-    @apply block border-b-0 border-l-2 border-border py-0.5 pl-3 text-text/70 no-underline transition-colors;
-  }
+    a {
+      @apply block border-b-0 border-l-2 border-border py-0.5 pl-3 text-text/70 no-underline transition-colors;
 
-  .toc a:hover {
-    @apply border-link text-link;
-  }
+      &:hover {
+        @apply border-link text-link;
+      }
 
-  .toc a.active,
-  .toc a[aria-current] {
-    @apply border-link font-semibold text-link;
+      &.active,
+      &[aria-current] {
+        @apply border-link font-semibold text-link;
+      }
+    }
   }
 
   /* ── Mobile TOC ── */
@@ -34,23 +36,23 @@
 
   .toc-trigger {
     @apply py-2.5 font-medium text-text-secondary;
-  }
 
-  .toc-trigger::before {
-    @apply fa-icon text-text-tertiary;
-    content: '\f0ca'; /* list-ul */
-  }
+    &::before {
+      @apply fa-icon text-text-tertiary;
+      content: '\f0ca'; /* list-ul */
+    }
 
-  .toc-trigger::after {
-    @apply text-text-tertiary;
+    &::after {
+      @apply text-text-tertiary;
+    }
   }
 
   .toc-body {
     @apply px-4 text-sm;
-  }
 
-  .toc-body > :last-child {
-    @apply mb-3;
+    > :last-child {
+      @apply mb-3;
+    }
   }
 
   /* ── Desktop TOC Sidebar ── */
@@ -61,29 +63,35 @@
 
   .toc-sidebar {
     @apply max-h-[calc(100vh-6.5rem)] p-4 text-sm;
+
+    .toc li {
+      &:has(> ul) {
+        @apply grid grid-rows-[auto_0fr] transition-[grid-template-rows] duration-300;
+
+        &.active {
+          @apply grid-rows-[auto_1fr];
+        }
+      }
+
+      > ul {
+        @apply min-h-0 overflow-hidden opacity-0 transition-opacity duration-300;
+      }
+
+      &.active > ul {
+        @apply opacity-100;
+      }
+    }
   }
 
   .toc-sidebar-scroll {
     @apply max-h-[calc(100vh-10rem)] overflow-y-auto;
+
+    @media (prefers-reduced-motion: no-preference) {
+      @apply scroll-smooth;
+    }
   }
 
   .toc-sidebar-title {
     @apply mb-2 font-semibold text-text;
-  }
-
-  .toc-sidebar .toc li:has(> ul) {
-    @apply grid grid-rows-[auto_0fr] transition-[grid-template-rows] duration-300;
-  }
-
-  .toc-sidebar .toc li:has(> ul).active {
-    @apply grid-rows-[auto_1fr];
-  }
-
-  .toc-sidebar .toc li > ul {
-    @apply min-h-0 overflow-hidden opacity-0 transition-opacity duration-300;
-  }
-
-  .toc-sidebar .toc li.active > ul {
-    @apply opacity-100;
   }
 }

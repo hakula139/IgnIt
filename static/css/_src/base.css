@@ -1,15 +1,16 @@
 @layer base {
   @media (prefers-reduced-motion: no-preference) {
-    html,
-    .toc-sidebar-scroll {
+    html {
       @apply scroll-smooth;
-    }
 
-    html.theme-transition,
-    html.theme-transition *,
-    html.theme-transition *::before,
-    html.theme-transition *::after {
-      @apply transition-[background-color,border-color]! duration-300!;
+      &.theme-transition {
+        &,
+        *,
+        *::before,
+        *::after {
+          @apply transition-[background-color,border-color]! duration-300!;
+        }
+      }
     }
   }
 
@@ -34,10 +35,10 @@
 
   a {
     @apply border-b-2 border-transparent text-link no-underline;
-  }
 
-  a:hover {
-    @apply border-current text-link-hover;
+    &:hover {
+      @apply border-current text-link-hover;
+    }
   }
 
   /* Scroll offset: main padding (pt-16 = 4rem) + container padding (py-6 = 1.5rem). */

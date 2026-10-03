@@ -3,20 +3,20 @@
 
   .player-wrapper {
     @apply my-4 overflow-hidden rounded-lg;
-  }
 
-  .player-wrapper iframe {
-    @apply block w-full border-0;
+    iframe {
+      @apply block w-full border-0;
+    }
   }
 
   /* ── Apple Music Embed ── */
 
   .apple-music-wrapper {
     @apply my-4;
-  }
 
-  .apple-music-wrapper iframe {
-    @apply border-0;
+    iframe {
+      @apply border-0;
+    }
   }
 
   /* ── Dark Mode ── */

@@ -1,0 +1,23 @@
+@layer components {
+  .lqip {
+    @apply inline-block overflow-hidden;
+    background-image: var(--lqip-uri);
+    background-size: cover;
+    background-position: center;
+
+    /* Typography's `.prose img` margins would inflate the wrapper. */
+    > img {
+      @apply m-0! block;
+    }
+
+    .lqip-fade-enabled &:not(.lqip-loaded) > img {
+      @apply invisible;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .lqip-fade-enabled &:not(.body-bg).lqip-loaded > img {
+        animation: var(--animate-lqip-fade-in);
+      }
+    }
+  }
+}
