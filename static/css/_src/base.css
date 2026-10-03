@@ -1,7 +1,6 @@
 @layer base {
   @media (prefers-reduced-motion: no-preference) {
-    html,
-    .toc-sidebar-scroll {
+    html {
       @apply scroll-smooth;
     }
 

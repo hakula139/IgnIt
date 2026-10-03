@@ -163,4 +163,7 @@
   .profile-social:hover {
     @apply icon-tap-hover;
   }
+  .home-card > .lqip {
+    @apply absolute inset-0 h-full w-full;
+  }
 }

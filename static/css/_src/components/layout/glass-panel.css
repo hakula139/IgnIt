@@ -62,15 +62,4 @@
   .glass-panel {
     @apply rounded-card glass-surface shadow-card backface-hidden;
   }
-
-  /* Markup pairs this with `.glass-panel`, which provides the glass tokens. */
-  .header-nav {
-    @apply flex h-14 items-center rounded-none border-0 border-b px-6 shadow-none;
-  }
-
-  /* ── Footer ── */
-
-  .site-footer {
-    @apply px-6 py-4 text-center text-sm text-text-tertiary;
-  }
 }

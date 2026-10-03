@@ -4,7 +4,7 @@ Most surfaces, including colors, typography, navigation, icons, copy, and the co
 
 ## Visual Tokens
 
-IgnIt's design tokens live in `@theme { ... }` inside [`static/css/_src/main.css`](../static/css/_src/main.css), with a parallel set of dark-mode overrides under `[data-theme='dark']`. The token namespaces are:
+IgnIt's design tokens live in `@theme { ... }` inside [`static/css/_src/tokens.css`](../static/css/_src/tokens.css), with a parallel set of dark-mode overrides under `[data-theme='dark']`. The token namespaces are:
 
 | Prefix        | Purpose                                                                       |
 | ------------- | ----------------------------------------------------------------------------- |

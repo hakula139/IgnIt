@@ -1,4 +1,10 @@
 @layer components {
+  @media (prefers-reduced-motion: no-preference) {
+    .toc-sidebar-scroll {
+      @apply scroll-smooth;
+    }
+  }
+
   /* ── TOC Navigation ── */
 
   .toc ul {

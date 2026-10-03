@@ -1,4 +1,11 @@
 @layer components {
+  /* ── Navigation ── */
+
+  /* Markup pairs this with `.glass-panel`, which provides the glass tokens. */
+  .header-nav {
+    @apply flex h-14 items-center rounded-none border-0 border-b px-6 shadow-none;
+  }
+
   /* ── Logo ── */
 
   .header-logo {

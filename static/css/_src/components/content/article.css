@@ -51,4 +51,13 @@
   .post-banner:hover .post-banner-credit {
     @apply opacity-0;
   }
+  .post-banner-media .lqip {
+    @apply block h-full w-full;
+  }
+}
+
+@media (dynamic-range: high) {
+  .post-featured-image {
+    dynamic-range-limit: no-limit;
+  }
 }

@@ -73,3 +73,37 @@
     box-shadow: inset 2px 0 0 var(--color-line-highlight-border);
   }
 }
+
+/* ── Typography Integration ── */
+
+.prose .code-block {
+  @apply my-[1.5em];
+}
+
+.prose .code-block pre {
+  @apply m-0 overflow-visible rounded-none bg-transparent p-0 text-[length:inherit] whitespace-pre text-inherit;
+}
+
+.prose .code-block code {
+  @apply text-inherit;
+}
+
+.prose .code-block table {
+  @apply m-0 w-max min-w-full text-[length:inherit] leading-[inherit];
+}
+
+.prose .code-block td {
+  @apply px-0 py-3;
+}
+
+.prose .code-block .line-numbers {
+  @apply text-right;
+}
+
+.prose .code-block .line-numbers pre {
+  @apply py-0 pr-2 pl-4;
+}
+
+.prose .code-block .code pre {
+  @apply py-0 pr-4 pl-3;
+}
