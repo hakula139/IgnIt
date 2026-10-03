@@ -48,6 +48,10 @@
   @apply text-text-secondary;
 }
 
+.heading-number {
+  @apply me-[0.5em] whitespace-nowrap;
+}
+
 /* ── Code Blocks ── */
 
 /* Prevent Tailwind utility collision with syntect class names (e.g. "block"). */
