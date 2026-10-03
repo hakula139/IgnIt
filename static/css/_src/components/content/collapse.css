@@ -4,14 +4,10 @@
   .code-header,
   .callout-title,
   .toc-trigger {
-    @apply flex cursor-pointer items-center gap-2 px-4 text-sm select-none;
+    @apply flex cursor-pointer list-none items-center gap-2 px-4 text-sm select-none;
   }
 
-  .callout-title,
-  .toc-trigger {
-    @apply list-none;
-  }
-
+  .code-header::-webkit-details-marker,
   .callout-title::-webkit-details-marker,
   .toc-trigger::-webkit-details-marker {
     @apply hidden;
@@ -31,42 +27,36 @@
     @apply ml-auto;
   }
 
-  .code-block.collapsed .code-header::before,
-  .callout:not([open]) .callout-title::after,
-  .toc-collapse:not([open]) .toc-trigger::after {
+  .code-block:not([open]) > .code-header::before,
+  .callout:not([open]) > .callout-title::after,
+  .toc-collapse:not([open]) > .toc-trigger::after {
     @apply -rotate-90;
   }
 
   /* ── Native Disclosures ── */
 
+  .code-block::details-content,
   .callout::details-content,
   .toc-collapse::details-content {
     @apply grid grid-rows-[0fr];
   }
 
+  .code-block[open]::details-content,
   .callout[open]::details-content,
   .toc-collapse[open]::details-content {
     @apply grid-rows-[1fr];
   }
 
+  .code-body,
   .callout-body,
   .toc-body {
     @apply min-h-0 overflow-hidden;
   }
 
-  /* ── Code Body ── */
-
-  .code-body {
-    @apply grid grid-rows-[1fr] transition-[grid-template-rows] duration-300;
-  }
-
-  .code-block.collapsed .code-body {
-    @apply grid-rows-[0fr];
-  }
-
   /* ── Motion ── */
 
   @media (prefers-reduced-motion: no-preference) {
+    .code-block::details-content,
     .callout::details-content,
     .toc-collapse::details-content {
       transition:
@@ -76,8 +66,9 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .callout .callout-title::after,
-    .toc-collapse .toc-trigger::after {
+    .code-header::before,
+    .callout-title::after,
+    .toc-trigger::after {
       @apply transition-none;
     }
   }
