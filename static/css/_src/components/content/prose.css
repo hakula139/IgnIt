@@ -49,8 +49,7 @@
 }
 
 .heading-number {
-  margin-inline-end: 0.5em;
-  white-space: nowrap;
+  @apply me-[0.5em] whitespace-nowrap;
 }
 
 /* ── Code Blocks ── */
