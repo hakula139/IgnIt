@@ -1,6 +1,6 @@
 @layer components {
   .pagination-link {
-    @apply inline-flex h-9 min-w-9 items-center justify-center rounded-lg border-b-0 px-2.5 text-sm font-medium text-text-secondary transition-colors duration-200;
+    @apply inline-flex h-9 min-w-9 items-center justify-center rounded-lg border-b-0 bg-none px-2.5 text-sm font-medium text-text-secondary no-underline transition-colors duration-200;
 
     .pagination-mobile & {
       @apply h-10 min-w-10;

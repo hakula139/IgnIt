@@ -9,7 +9,7 @@
   /* ── Logo ── */
 
   .header-logo {
-    @apply border-b-0 text-lg font-semibold text-text transition-colors;
+    @apply border-b-0 text-lg font-semibold text-text transition-[color,background-size];
 
     &:hover {
       @apply text-link-hover;
@@ -28,7 +28,7 @@
   }
 
   .header-link {
-    @apply border-b-0;
+    @apply border-b-0 bg-none no-underline;
   }
 
   .header-icon {
@@ -74,7 +74,7 @@
   }
 
   .header-mobile-link {
-    @apply block cursor-pointer border-b-0 px-6 py-2 text-left text-sm text-text-secondary transition-colors;
+    @apply block cursor-pointer border-b-0 bg-none px-6 py-2 text-left text-sm text-text-secondary no-underline transition-colors;
 
     &:hover {
       @apply bg-bg/30 text-link-hover;

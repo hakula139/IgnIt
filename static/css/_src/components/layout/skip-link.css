@@ -1,6 +1,6 @@
 @layer components {
   .skip-link {
-    @apply absolute -m-px h-px w-px overflow-hidden border-b-0 p-0 whitespace-nowrap;
+    @apply absolute -m-px h-px w-px overflow-hidden border-b-0 bg-none p-0 whitespace-nowrap no-underline;
     clip: rect(0, 0, 0, 0);
 
     &:focus,

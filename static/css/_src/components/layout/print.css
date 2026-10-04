@@ -2,8 +2,8 @@
   /* ── Page Layout ── */
 
   body {
-    color: #000 !important;
     background: #fff !important;
+    color: #000 !important;
   }
 
   main {
@@ -43,12 +43,12 @@
 
   .glass-glow,
   .glass-panel {
-    background: transparent !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
     border: none !important;
     border-radius: 0 !important;
+    background: transparent !important;
     box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
   }
 
   .code-header,
@@ -67,10 +67,10 @@
   /* ── Content: Link URLs ── */
 
   .prose a[href^='http']:not(:where(.not-prose, .not-prose *))::after {
-    content: ' (' attr(href) ')';
     font-size: 0.8em;
-    color: #666;
     word-break: break-all;
+    color: #666;
+    content: ' (' attr(href) ')';
   }
 
   /* ── Content: Page Breaks ── */

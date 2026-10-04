@@ -4,7 +4,7 @@
   }
 
   .tag-pill {
-    @apply inline-block rounded-full border border-border bg-bg-muted/60 px-3 py-1.5 text-sm transition-colors;
+    @apply inline-block rounded-full border border-border bg-bg-muted/60 bg-none px-3 py-1.5 text-sm no-underline transition-colors;
 
     &:hover {
       @apply border-link-hover/30 text-link-hover;
@@ -20,9 +20,10 @@
   }
 
   .post-entry-title {
-    @apply min-w-0 flex-1 truncate border-b-0 text-text transition-colors;
+    @apply min-w-0 truncate border-b-0 text-text transition-[color,background-size];
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       @apply text-link-hover;
     }
   }

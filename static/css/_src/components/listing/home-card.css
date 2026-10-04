@@ -48,7 +48,7 @@
   }
 
   .home-card-tag {
-    @apply pointer-events-auto min-w-0 rounded-full border-b-0 bg-white/15 px-2 py-0.5 text-xs text-white/85 no-underline transition-colors max-sm:truncate;
+    @apply pointer-events-auto min-w-0 rounded-full border-b-0 bg-white/15 bg-none px-2 py-0.5 text-xs text-white/85 no-underline transition-colors max-sm:truncate;
 
     &:is(a):hover {
       @apply bg-white/30 text-white;
@@ -64,7 +64,8 @@
   }
 
   .home-card-link {
-    @apply pointer-events-auto inline-flex items-center gap-1 border-b-0 text-white/80 no-underline transition-colors;
+    --underline-highlight: var(--color-white);
+    @apply pointer-events-auto inline-flex items-center gap-1 border-b-0 text-white/80 no-underline transition-[color,background-size];
 
     &:hover {
       @apply text-white;
@@ -72,7 +73,7 @@
   }
 
   .home-card-link-cover {
-    @apply absolute inset-0 z-5 border-0;
+    @apply absolute inset-0 z-5 border-0 bg-none p-0 no-underline;
   }
 
   /* ── Desktop ── */
@@ -161,7 +162,7 @@
   }
 
   .profile-social {
-    @apply inline-flex size-10 shrink-0 items-center justify-center rounded-full border-b-0 p-2 text-2xl text-text-secondary no-underline transition-colors;
+    @apply inline-flex size-10 shrink-0 items-center justify-center rounded-full border-b-0 bg-none p-2 text-2xl text-text-secondary no-underline transition-colors;
 
     svg {
       @apply size-[1em] fill-current;

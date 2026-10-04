@@ -34,11 +34,21 @@
   }
 
   a {
-    @apply border-b-2 border-transparent text-link no-underline;
+    @apply text-link;
 
-    &:hover {
-      @apply border-current text-link-hover;
+    &:hover,
+    &:focus-visible {
+      @apply text-link-hover;
     }
+  }
+
+  a[href] {
+    @apply animated-underline;
+  }
+
+  a:has(> img:only-child, > .lqip:only-child),
+  a[role='button'] {
+    @apply bg-none pb-0 no-underline;
   }
 
   /* Scroll offset: main padding (pt-16 = 4rem) + container padding (py-6 = 1.5rem). */
