@@ -1,6 +1,6 @@
 @layer components {
   .back-home-link {
-    @apply inline-flex items-center gap-2 rounded-md border-b-0 px-3 py-2 text-sm text-text-secondary no-underline transition-colors;
+    @apply inline-flex items-center gap-2 rounded-md border-b-0 px-3 py-2 text-sm text-text-secondary transition-colors;
 
     &:hover {
       @apply icon-tap-hover;

@@ -142,12 +142,7 @@
   /* ── Links ── */
 
   :where(a):not(:where(.not-prose, .not-prose *)) {
-    @apply pb-0.5 no-underline;
-
-    &:hover,
-    &:focus-visible {
-      @apply text-link-hover;
-    }
+    @apply no-underline;
   }
 
   :where(.heading-anchor):not(:where(.not-prose, .not-prose *)) {
@@ -199,7 +194,7 @@
 
   a:has(> img:only-child):not(:where(.not-prose, .not-prose *)),
   a:has(> .lqip:only-child):not(:where(.not-prose, .not-prose *)) {
-    @apply border-b-0 pb-0;
+    @apply border-b-0;
   }
 
   @media (dynamic-range: high) {
@@ -223,9 +218,7 @@
   }
 
   .footnote-reference a:not(:where(.not-prose, .not-prose *)),
-  .footnote-reference a:hover:not(:where(.not-prose, .not-prose *)),
-  .footnote-backref:not(:where(.not-prose, .not-prose *)),
-  .footnote-backref:hover:not(:where(.not-prose, .not-prose *)) {
+  .footnote-backref:not(:where(.not-prose, .not-prose *)) {
     @apply border-b-0;
   }
 }

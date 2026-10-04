@@ -34,10 +34,11 @@
   }
 
   a {
-    @apply border-b-2 border-transparent text-link no-underline;
+    @apply text-link;
 
-    &:hover {
-      @apply border-current text-link-hover;
+    &:hover,
+    &:focus-visible {
+      @apply text-link-hover;
     }
   }
 

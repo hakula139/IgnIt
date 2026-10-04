@@ -20,11 +20,7 @@
   }
 
   .post-entry-title {
-    @apply min-w-0 flex-1 truncate border-b-0 text-text transition-colors;
-
-    &:hover {
-      @apply text-link-hover;
-    }
+    @apply min-w-0 truncate border-b-0 text-text;
   }
 
   .post-entry-date {
