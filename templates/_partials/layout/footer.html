@@ -1,29 +1,27 @@
 {%- set footer = config.params.footer | default({}) -%}
 {%- set current_year = now()[0:4] -%}
-<div class="glass-glow mx-2 mt-2 mb-4 sm:mx-4">
-  <footer class="glass-panel site-footer">
-    <div class="max-w-6xl mx-auto">
-      {%- if footer.since %}
-      <p class="flex flex-col items-center gap-1 min-[480px]:block">
-        <span>&copy; {{ footer.since }}&ndash;{{ current_year }} {{ config.author.name }}</span>
-        {%- if footer.license %}
-        <span>
-          <span class="hidden min-[480px]:inline" aria-hidden="true">&middot;</span>
-          <a class="animated-underline whitespace-nowrap" href="{{ footer.license_url | default('#') | safe }}">
-            {{ footer.license }}
-          </a>
-        </span>
-        {%- endif %}
-      </p>
-      {%- else %}
-      <p>&copy; {{ current_year }} {{ config.author.name }}</p>
+<footer class="glass-panel glass-control chrome-frame site-footer">
+  <div class="max-w-6xl mx-auto">
+    {%- if footer.since %}
+    <p class="flex flex-col items-center gap-1 min-[480px]:block">
+      <span>&copy; {{ footer.since }}&ndash;{{ current_year }} {{ config.author.name }}</span>
+      {%- if footer.license %}
+      <span>
+        <span class="hidden min-[480px]:inline" aria-hidden="true">&middot;</span>
+        <a class="animated-underline whitespace-nowrap" href="{{ footer.license_url | default('#') | safe }}">
+          {{ footer.license }}
+        </a>
+      </span>
       {%- endif %}
+    </p>
+    {%- else %}
+    <p>&copy; {{ current_year }} {{ config.author.name }}</p>
+    {%- endif %}
 
-      {%- if footer.powered_by | default(true) %}
-      {%- set kiln_link %}<a class="animated-underline" href="https://github.com/hakula139/kiln">kiln</a>{% endset -%}
-      {%- set ignit_link %}<a class="animated-underline" href="https://github.com/hakula139/IgnIt">IgnIt</a>{% endset -%}
-      <p class="mt-1">{{ t("powered_by", kiln=kiln_link, ignit=ignit_link) | safe }}</p>
-      {%- endif %}
-    </div>
-  </footer>
-</div>
+    {%- if footer.powered_by | default(true) %}
+    {%- set kiln_link %}<a class="animated-underline" href="https://github.com/hakula139/kiln">kiln</a>{% endset -%}
+    {%- set ignit_link %}<a class="animated-underline" href="https://github.com/hakula139/IgnIt">IgnIt</a>{% endset -%}
+    <p class="mt-1">{{ t("powered_by", kiln=kiln_link, ignit=ignit_link) | safe }}</p>
+    {%- endif %}
+  </div>
+</footer>

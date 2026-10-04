@@ -62,7 +62,7 @@
   }
 
   .toc-sidebar {
-    @apply max-h-[calc(100vh-6.5rem)] p-4 text-sm;
+    @apply flex max-h-[calc(100vh-var(--spacing-header-clearance)-1rem)] flex-col p-4 text-sm;
 
     .toc li {
       &:has(> ul) {
@@ -84,7 +84,7 @@
   }
 
   .toc-sidebar-scroll {
-    @apply max-h-[calc(100vh-10rem)] overflow-y-auto;
+    @apply min-h-0 overflow-y-auto;
 
     @media (prefers-reduced-motion: no-preference) {
       @apply scroll-smooth;
@@ -92,6 +92,6 @@
   }
 
   .toc-sidebar-title {
-    @apply mb-2 font-semibold text-text;
+    @apply mb-2 shrink-0 font-semibold text-text;
   }
 }

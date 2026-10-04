@@ -1,9 +1,8 @@
 @layer components {
   /* ── Navigation ── */
 
-  /* Markup pairs this with `.glass-panel`, which provides the glass tokens. */
   .header-nav {
-    @apply flex h-14 items-center rounded-none border-0 border-b px-6 shadow-none;
+    @apply fixed inset-x-0 top-0 z-50 flex h-header-height items-center px-4 sm:px-6;
   }
 
   /* ── Logo ── */
@@ -20,9 +19,10 @@
 
   .header-link,
   .header-icon {
-    @apply inline-flex aspect-square items-center justify-center rounded-md p-2 text-text-secondary transition-colors;
+    @apply inline-flex aspect-square items-center justify-center rounded-md p-2 text-text transition-colors;
 
-    &:hover {
+    &:hover,
+    &:focus-visible {
       @apply icon-tap-hover;
     }
   }
@@ -55,7 +55,7 @@
   /* ── Mobile Backdrop ── */
 
   .header-mobile-backdrop {
-    @apply fixed inset-0 top-14 z-30 backdrop-blur-sm md:hidden;
+    @apply fixed inset-0 top-header-menu z-30 backdrop-blur-sm md:hidden;
     background: var(--surface-overlay-backdrop);
 
     @media (prefers-reduced-motion: no-preference) {
@@ -66,7 +66,7 @@
   /* ── Mobile Dropdown ── */
 
   .header-mobile {
-    @apply fixed inset-x-0 top-14 z-40 max-h-[calc(100dvh-3.5rem)] overflow-y-auto glass-surface border-x-0 border-t-0 py-2 md:hidden;
+    @apply fixed inset-x-2 top-header-menu z-40 max-h-[calc(100dvh-var(--spacing-header-menu)-1rem)] overflow-y-auto rounded-card glass-surface py-2 glass-reading md:hidden;
 
     @media (prefers-reduced-motion: no-preference) {
       @apply animate-menu-slide-down;
@@ -74,10 +74,11 @@
   }
 
   .header-mobile-link {
-    @apply block cursor-pointer border-b-0 px-6 py-2 text-left text-sm text-text-secondary transition-colors;
+    @apply block cursor-pointer border-b-0 px-6 py-2 text-left text-sm text-text transition-colors;
 
-    &:hover {
-      @apply bg-bg/30 text-link-hover;
+    &:hover,
+    &:focus-visible {
+      @apply icon-tap-hover;
     }
 
     @media (prefers-reduced-motion: no-preference) {

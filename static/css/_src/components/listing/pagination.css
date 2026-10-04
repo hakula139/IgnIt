@@ -1,6 +1,6 @@
 @layer components {
   .pagination-link {
-    @apply inline-flex h-9 min-w-9 items-center justify-center rounded-lg border-b-0 px-2.5 text-sm font-medium text-text-secondary transition-colors duration-200;
+    @apply inline-flex h-9 min-w-9 items-center justify-center rounded-md border-b-0 px-2.5 text-sm font-medium text-text transition-colors duration-200;
 
     .pagination-mobile & {
       @apply h-10 min-w-10;
@@ -16,8 +16,7 @@
 
     &:not(:disabled):hover,
     &:focus-visible {
-      @apply text-link-hover;
-      background-color: color-mix(in srgb, var(--color-link-hover) 8%, transparent);
+      @apply icon-tap-hover;
     }
 
     &[aria-current='page'] {
@@ -27,7 +26,7 @@
   }
 
   .pagination-jump {
-    @apply cursor-pointer text-text-tertiary;
+    @apply cursor-pointer;
   }
 
   .pagination-jump,
@@ -38,7 +37,7 @@
   }
 
   .pagination-input {
-    @apply h-9 w-9 min-w-9 rounded-lg border border-border bg-transparent text-center text-sm text-text backdrop-blur-xs transition-colors duration-200 outline-none;
+    @apply h-9 w-9 min-w-9 rounded-md border border-border bg-transparent text-center text-sm text-text backdrop-blur-xs transition-colors duration-200 outline-none;
     background: color-mix(in srgb, var(--color-bg) 60%, transparent);
     appearance: textfield;
     -moz-appearance: textfield;

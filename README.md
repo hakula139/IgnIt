@@ -83,7 +83,7 @@ weight = 1
 external = true
 ```
 
-For the complete schema (`[params.background]`, `[params.comments]`, `[params.lightgallery]`, `[params.footer]`, `[params.section]`, `[params.effects]`) and the full menu field list, see [Parameters](docs/parameters.md). For visual customization, social icon overrides, comment provider wiring, and other extension patterns, see [Customization](docs/customization.md).
+For the complete schema (`[params.background]`, `[params.comments]`, `[params.lightgallery]`, `[params.footer]`, `[params.section]`) and the full menu field list, see [Parameters](docs/parameters.md). For visual customization, social icon overrides, comment provider wiring, and other extension patterns, see [Customization](docs/customization.md).
 
 ## Theme Development
 

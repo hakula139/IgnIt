@@ -12,38 +12,36 @@
 {%- set socials = config.menu.social | default([]) %}
 {%- if profile %}
   <div class="home-container pt-6">
-    <div class="glass-glow">
-      <div class="glass-panel p-4 sm:p-8 text-center">
-        {%- if profile.avatar %}
-        <img
-          class="profile-avatar"
-          src="{{ profile.avatar | safe }}"
-          alt="{{ config.author.name }}"
+    <div class="glass-panel glass-control p-4 sm:p-8 text-center">
+      {%- if profile.avatar %}
+      <img
+        class="profile-avatar"
+        src="{{ profile.avatar | safe }}"
+        alt="{{ config.author.name }}"
+      >
+      {%- endif %}
+      {%- if profile.title %}
+      <h1 class="text-xl font-semibold">{{ profile.title }}</h1>
+      {%- endif %}
+      {%- if profile.subtitle %}
+      <p class="mt-2 text-sm text-text">{{ text.render_lines(profile.subtitle, mobile_only=true) }}</p>
+      {%- endif %}
+      {%- if socials %}
+      <div class="profile-socials">
+        {%- for item in socials %}
+        {%- set item_label = t(item.name) %}
+        <a
+          href="{{ item.url | safe }}"
+          class="profile-social"
+          title="{{ item_label }}"
+          aria-label="{{ item_label }}"
+          {%- if item.external %} rel="me noopener noreferrer" target="_blank"{% endif %}
         >
-        {%- endif %}
-        {%- if profile.title %}
-        <h1 class="text-xl font-semibold">{{ profile.title }}</h1>
-        {%- endif %}
-        {%- if profile.subtitle %}
-        <p class="mt-2 text-sm text-text-secondary">{{ text.render_lines(profile.subtitle, mobile_only=true) }}</p>
-        {%- endif %}
-        {%- if socials %}
-        <div class="profile-socials">
-          {%- for item in socials %}
-          {%- set item_label = t(item.name) %}
-          <a
-            href="{{ item.url | safe }}"
-            class="profile-social"
-            title="{{ item_label }}"
-            aria-label="{{ item_label }}"
-            {%- if item.external %} rel="me noopener noreferrer" target="_blank"{% endif %}
-          >
-            {{- icons.render(item.icon) -}}
-          </a>
-          {%- endfor %}
-        </div>
-        {%- endif %}
+          {{- icons.render(item.icon) -}}
+        </a>
+        {%- endfor %}
       </div>
+      {%- endif %}
     </div>
   </div>
 {%- endif %}
@@ -74,7 +72,7 @@
       {%- endif %}
       <div class="home-card-overlay"></div>
       {%- if page.pinned %}
-      <span class="home-card-pin glass-panel" aria-label="{{ t('pinned') }}" title="{{ t('pinned') }}">
+      <span class="home-card-pin glass-panel glass-control" aria-label="{{ t('pinned') }}" title="{{ t('pinned') }}">
         <i class="fas fa-thumbtack" aria-hidden="true"></i>
       </span>
       {%- endif %}
@@ -117,21 +115,19 @@
       </div>
     </article>
     {%- else %}
-    <div class="glass-glow">
-      <article class="glass-panel post-entry px-4 sm:px-5 py-4">
-        <a href="{{ page.url | safe }}" class="animated-underline post-entry-title font-medium">
-          {%- if page.pinned %}
-          <i class="fas fa-thumbtack post-entry-pin" aria-label="{{ t('pinned') }}" title="{{ t('pinned') }}"></i>
-          {%- endif %}
-          {{ page.title }}
-        </a>
-        {%- if page.date %}
-        <time datetime="{{ page.date }}" class="post-entry-date">
-          {{ page.date[:10] }}
-        </time>
+    <article class="glass-panel glass-reading post-entry px-4 sm:px-5 py-4">
+      <a href="{{ page.url | safe }}" class="animated-underline post-entry-title font-medium">
+        {%- if page.pinned %}
+        <i class="fas fa-thumbtack post-entry-pin" aria-label="{{ t('pinned') }}" title="{{ t('pinned') }}"></i>
         {%- endif %}
-      </article>
-    </div>
+        {{ page.title }}
+      </a>
+      {%- if page.date %}
+      <time datetime="{{ page.date }}" class="post-entry-date">
+        {{ page.date[:10] }}
+      </time>
+      {%- endif %}
+    </article>
     {%- endif %}
     {%- endfor %}
 

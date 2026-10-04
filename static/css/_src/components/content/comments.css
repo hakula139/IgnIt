@@ -111,7 +111,7 @@
   }
 
   .OwO .OwO-body {
-    @apply overflow-hidden rounded-card glass-surface text-text shadow-card;
+    @apply overflow-hidden rounded-card glass-surface text-text;
   }
 }
 

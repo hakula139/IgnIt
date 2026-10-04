@@ -1,12 +1,14 @@
 @layer components {
   @media screen {
-    .glass-glow:has(> article.glass-panel) {
+    .article-surface {
       /* Clipping must preserve document scrolling for the sticky filter layer. */
-      @apply overflow-clip;
+      @apply overflow-clip rounded-card;
+      box-shadow: var(--shadow-glass);
     }
 
-    article.glass-panel {
+    .article-surface > article.glass-panel {
       @apply relative z-0 bg-transparent backdrop-filter-none;
+      box-shadow: inset 0 1px 0 var(--surface-glass-highlight);
 
       /* WebKit caps total backdrop area, so only blur the visible article surface. */
       &::before {

@@ -42,7 +42,7 @@
   {%- endif %}
   <a href="#site:main" class="skip-link">{{ t('skip_to_content') }}</a>
   {% include "_partials/layout/header.html" %}
-  <main id="site:main" class="relative flex-1 pt-16">
+  <main id="site:main" class="relative flex-1 pt-header-bottom">
     {%- include "_partials/layout/float-controls.html" %}
     {%- block body %}{% endblock %}
   </main>
@@ -63,12 +63,6 @@
     src="{{ config.base_url | safe }}{{ asset_url('/js/content/toc.js') | safe }}"
     defer
   ></script>
-  {%- if config.params.effects and config.params.effects.cursor_glow %}
-  <script
-    src="{{ config.base_url | safe }}{{ asset_url('/js/layout/glow.js') | safe }}"
-    defer
-  ></script>
-  {%- endif %}
   <script
     src="{{ config.base_url | safe }}{{ asset_url('/js/layout/float-buttons.js') | safe }}"
     defer

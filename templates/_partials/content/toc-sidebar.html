@@ -1,11 +1,9 @@
 {%- if toc %}
 <aside class="toc-sidebar-wrapper">
-  <div class="glass-glow sticky top-22">
-    <div class="glass-panel toc-sidebar">
-      <h2 class="toc-sidebar-title">{{ t('table_of_contents') }}</h2>
-      <div class="toc-sidebar-scroll">
-        {{ toc | safe }}
-      </div>
+  <div class="glass-panel toc-sidebar sticky top-header-clearance">
+    <h2 class="toc-sidebar-title">{{ t('table_of_contents') }}</h2>
+    <div class="toc-sidebar-scroll">
+      {{ toc | safe }}
     </div>
   </div>
 </aside>

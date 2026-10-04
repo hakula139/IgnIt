@@ -79,10 +79,8 @@
   const toggleMobileMenu = () => {
     const menu = document.getElementById('mobile-menu');
     const toggle = document.getElementById('mobile-menu-toggle');
-    const panel = menu.querySelector('[data-glow-target]');
     menu.classList.toggle('hidden');
     const isOpen = !menu.classList.contains('hidden');
-    panel?.toggleAttribute('open', isOpen);
     toggle.setAttribute('aria-expanded', String(isOpen));
     const icon = toggle.querySelector('i');
     if (isOpen) {
@@ -133,13 +131,12 @@
     observer.observe(dialog, { attributes: true, attributeFilter: ['open'] });
   };
 
-  const syncSearchModalGlowTarget = () => {
+  const syncSearchDialog = () => {
     const dialog = document.querySelector(SEARCH_MODAL_DIALOG_SELECTOR);
     if (!dialog) {
       return false;
     }
 
-    dialog.toggleAttribute('data-glow-target', true);
     if (!dialog.dataset.searchTriggerWired) {
       dialog.dataset.searchTriggerWired = 'true';
       observeSearchDialogOpenState(dialog);
@@ -152,12 +149,12 @@
       return;
     }
 
-    if (syncSearchModalGlowTarget()) {
+    if (syncSearchDialog()) {
       return;
     }
 
     const observer = new MutationObserver(() => {
-      if (syncSearchModalGlowTarget()) {
+      if (syncSearchDialog()) {
         observer.disconnect();
       }
     });
@@ -174,7 +171,7 @@
       toggleMobileMenu();
     }
 
-    syncSearchModalGlowTarget();
+    syncSearchDialog();
     document.querySelector('pagefind-modal')?.open?.();
   };
 
