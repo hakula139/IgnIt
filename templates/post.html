@@ -22,7 +22,9 @@
               <header class="mb-6">
                 <h1 class="article-title" data-pagefind-meta="title">{{ title }}</h1>
                 {%- if date or section or show_page_views %}
-                <div class="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-text-secondary">
+                <div
+                  class="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-text-secondary"
+                >
                   {%- if date %}
                   <time datetime="{{ date }}">{{ date[:10] }}</time>
                   {%- endif %}
@@ -41,7 +43,11 @@
                   {%- if show_page_views %}
                   <span class="inline-flex items-center gap-1.5">
                     {%- if date or section %}<span aria-hidden="true">·</span>{% endif -%}
-                    <span class="inline-flex items-center gap-1" aria-live="polite" aria-atomic="true">
+                    <span
+                      class="inline-flex items-center gap-1"
+                      aria-live="polite"
+                      aria-atomic="true"
+                    >
                       <i class="far fa-eye fa-fw" aria-hidden="true"></i>
                       <span id="twikoo_visitors">—</span>
                       <span>{{ t('views') }}</span>

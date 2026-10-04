@@ -78,10 +78,6 @@
   /* ── Desktop ── */
 
   @variant xl {
-    .home-card {
-      @apply h-88;
-    }
-
     .home-card-body {
       @apply absolute inset-0 min-h-0 p-6;
     }
@@ -109,6 +105,8 @@
     }
 
     .home-card {
+      @apply h-88;
+
       &:not(:hover):not(:focus-within) {
         .home-card-image {
           @apply blur-none;

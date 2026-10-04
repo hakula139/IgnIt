@@ -15,7 +15,7 @@
   --color-bg: #fff;
   --color-bg-muted: #f5f5f7;
   --color-text: #161209;
-  --color-text-secondary: #6a6a75;
+  --color-text-secondary: #55555f;
   --color-text-tertiary: #75757e;
   --color-link: #14799a;
   --color-link-hover: #07516b;
@@ -74,7 +74,7 @@
   --surface-overlay-backdrop: rgba(0, 0, 0, 0.35);
 
   /* Layout */
-  --spacing-chrome-inset: 0.75rem;
+  --spacing-chrome-inset: 0.5rem;
   --spacing-header-height: 3.5rem;
   --spacing-header-bottom: calc(var(--spacing-chrome-inset) + var(--spacing-header-height));
   --spacing-header-menu: calc(var(--spacing-header-bottom) + var(--spacing-chrome-inset));
@@ -116,6 +116,14 @@
   }
 }
 
+@layer base {
+  @variant sm {
+    :root {
+      --spacing-chrome-inset: 1rem;
+    }
+  }
+}
+
 /* ── Dark Mode ── */
 
 @variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
@@ -127,7 +135,7 @@
       --color-bg: #292a2d;
       --color-bg-muted: #1e1e22;
       --color-text: #c8c8d0;
-      --color-text-secondary: #97979f;
+      --color-text-secondary: #a5a5af;
       --color-text-tertiary: #909099;
       --color-link: #55bde2;
       --color-link-hover: #bdebfc;

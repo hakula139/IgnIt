@@ -15,7 +15,7 @@
     }
 
     a {
-      @apply block border-b-0 border-l-2 border-border py-0.5 pl-3 text-text/70 transition-colors;
+      @apply block border-b-0 border-l-2 border-border py-0.5 pl-3 text-text-secondary transition-colors;
 
       &:hover {
         @apply border-link text-link;

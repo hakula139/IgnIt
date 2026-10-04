@@ -1,3 +1,3 @@
 @utility chrome-frame {
-  @apply mx-2 my-chrome-inset rounded-[1.375rem] sm:mx-4;
+  @apply m-chrome-inset rounded-[1.375rem];
 }

@@ -65,7 +65,7 @@
 
   const setRestAriaHidden = (hidden, except) => {
     for (const el of document.body.children) {
-      if (el === except || el.contains(except)) {
+      if (el === except || el.contains(except) || el.matches('.header-nav')) {
         continue;
       }
       if (hidden) {

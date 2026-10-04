@@ -8,7 +8,10 @@
       {%- if footer.license %}
       <span>
         <span class="hidden min-[480px]:inline" aria-hidden="true">&middot;</span>
-        <a class="animated-underline whitespace-nowrap" href="{{ footer.license_url | default('#') | safe }}">
+        <a
+          class="animated-underline whitespace-nowrap"
+          href="{{ footer.license_url | default('#') | safe }}"
+        >
           {{ footer.license }}
         </a>
       </span>
@@ -19,8 +22,18 @@
     {%- endif %}
 
     {%- if footer.powered_by | default(true) %}
-    {%- set kiln_link %}<a class="animated-underline" href="https://github.com/hakula139/kiln">kiln</a>{% endset -%}
-    {%- set ignit_link %}<a class="animated-underline" href="https://github.com/hakula139/IgnIt">IgnIt</a>{% endset -%}
+    {%- set kiln_link -%}
+    <a
+      class="animated-underline"
+      href="https://github.com/hakula139/kiln"
+    >kiln</a>
+    {%- endset -%}
+    {%- set ignit_link -%}
+    <a
+      class="animated-underline"
+      href="https://github.com/hakula139/IgnIt"
+    >IgnIt</a>
+    {%- endset -%}
     <p class="mt-1">{{ t("powered_by", kiln=kiln_link, ignit=ignit_link) | safe }}</p>
     {%- endif %}
   </div>

@@ -4,10 +4,11 @@
   }
 
   .link-card {
-    @apply flex min-h-20 items-center gap-4 rounded-lg border-b-0 bg-bg-muted/50 px-4 py-3 text-text ring-1 ring-border transition-colors ring-inset;
+    @apply flex min-h-20 items-center gap-4 rounded-xl border-b-0 bg-bg-muted/50 px-4 py-3 text-text ring-1 ring-border transition-[background-color,box-shadow,translate] duration-200 ring-inset;
 
-    &:hover {
-      @apply bg-bg-muted/70 text-text ring-text-tertiary;
+    &:hover,
+    &:focus-visible {
+      @apply -translate-y-px icon-tap-hover shadow-md ring-text-tertiary;
     }
   }
 
@@ -20,9 +21,9 @@
   }
 
   .link-title {
-    @apply truncate leading-snug font-medium text-link;
+    @apply truncate leading-snug font-medium text-link transition-colors;
 
-    .link-card:hover & {
+    .link-card:is(:hover, :focus-visible) & {
       @apply text-link-hover;
     }
   }

@@ -55,7 +55,7 @@
   /* ── Mobile Backdrop ── */
 
   .header-mobile-backdrop {
-    @apply fixed inset-0 top-header-menu z-30 backdrop-blur-sm md:hidden;
+    @apply fixed inset-0 z-30 backdrop-blur-sm md:hidden;
     background: var(--surface-overlay-backdrop);
 
     @media (prefers-reduced-motion: no-preference) {
@@ -66,7 +66,7 @@
   /* ── Mobile Dropdown ── */
 
   .header-mobile {
-    @apply fixed inset-x-2 top-header-menu z-40 max-h-[calc(100dvh-var(--spacing-header-menu)-1rem)] overflow-y-auto rounded-card glass-surface py-2 glass-reading md:hidden;
+    @apply fixed inset-x-chrome-inset top-header-menu z-40 max-h-[calc(100dvh-var(--spacing-header-menu)-var(--spacing-chrome-inset))] overflow-y-auto rounded-card glass-surface py-2 glass-reading md:hidden;
 
     @media (prefers-reduced-motion: no-preference) {
       @apply animate-menu-slide-down;
