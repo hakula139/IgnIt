@@ -1,7 +1,3 @@
 @utility icon-tap-hover {
-  @apply bg-bg/50 text-link-hover;
-
-  @variant dark {
-    @apply bg-white/10;
-  }
+  @apply bg-control-hover text-link-hover;
 }
