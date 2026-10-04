@@ -63,9 +63,9 @@
 
   let mobileMenuLastFocus = null;
 
-  const setRestAriaHidden = (hidden, except) => {
+  const setRestAriaHidden = (hidden, ...except) => {
     for (const el of document.body.children) {
-      if (el === except || el.contains(except) || el.matches('.header-nav')) {
+      if (except.some((target) => el.contains(target))) {
         continue;
       }
       if (hidden) {
@@ -90,7 +90,7 @@
     }
     updateMobileMenuToggleLabels(isOpen);
 
-    setRestAriaHidden(isOpen, menu);
+    setRestAriaHidden(isOpen, menu, toggle);
 
     if (isOpen) {
       mobileMenuLastFocus = document.activeElement;
