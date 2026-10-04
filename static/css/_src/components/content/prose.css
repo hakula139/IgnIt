@@ -142,7 +142,7 @@
   /* ── Links ── */
 
   :where(a):not(:where(.not-prose, .not-prose *)) {
-    @apply border-transparent pb-0.5 no-underline;
+    @apply pb-0.5 no-underline;
 
     &:hover,
     &:focus-visible {
@@ -150,82 +150,50 @@
     }
   }
 
-  :where(a[href]):not(
-    :where(
-      .heading-anchor,
-      .footnote-reference a,
-      .footnote-backref,
-      :has(> img:only-child, > .lqip:only-child),
-      .not-prose,
-      .not-prose *
-    )
-  ) {
-    background-image:
-      linear-gradient(var(--color-link-hover), var(--color-link-hover)),
-      linear-gradient(
-        var(--underline-base-color, transparent),
-        var(--underline-base-color, transparent)
-      );
-    background-position:
-      right bottom,
-      left bottom;
-    background-repeat: no-repeat;
-    background-size:
-      0% 2px,
-      100% 2px;
-    -webkit-box-decoration-break: slice;
-    box-decoration-break: slice;
-    transition: background-size 300ms ease;
+  :where(u, ins, .underline, u a, ins a, .underline a):not(:where(.not-prose, .not-prose *)) {
+    @apply underline;
+  }
 
-    &:hover,
-    &:focus-visible {
-      background-position:
-        left bottom,
-        left bottom;
-      background-size:
-        100% 2px,
-        100% 2px;
+  :where(.underline-baseline):not(:where(.not-prose, .not-prose *)) {
+    @apply box-decoration-slice bg-size-[100%_2px] bg-bottom-left bg-no-repeat pb-0.5 no-underline;
+    background-image: linear-gradient(
+      var(--underline-color, currentColor),
+      var(--underline-color, currentColor)
+    );
+  }
+
+  :where(a.animated-underline) {
+    @apply isolate border-transparent;
+    --underline-color: var(--color-link);
+
+    > .underline-track {
+      @apply box-decoration-slice bg-bottom-right bg-no-repeat pb-0.5 transition-[background-size] duration-300;
+      background-image: linear-gradient(var(--color-link-hover), var(--color-link-hover));
+      background-size: 0% 2px;
     }
 
-    @media print, (forced-colors: active) {
-      background-image: none;
-      text-decoration: underline;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 0.2em;
+    :where(.underline-baseline) {
+      @apply relative -z-1;
+    }
+
+    &:hover > .underline-track,
+    &:focus-visible > .underline-track {
+      @apply bg-size-[100%_2px] bg-bottom-left;
     }
   }
 
-  :where(a.underline, u > a:only-child, ins > a:only-child, .underline > a:only-child):not(
-    :where(.not-prose, .not-prose *)
-  ) {
-    --underline-base-color: var(--color-link);
-  }
+  @media print, (forced-colors: active) {
+    :where(a[href], u, ins, .underline):not(:where(.not-prose, .not-prose *)) {
+      @apply bg-none underline decoration-2 underline-offset-[0.2em];
+    }
 
-  :where(u, ins, .underline):has(> a[href]:only-child):not(:where(.not-prose, .not-prose *)) {
-    @apply no-underline;
-  }
-
-  :where(a[href] u, a[href] ins, a[href] .underline):not(
-    :where(.underline *, u *, ins *, .not-prose, .not-prose *)
-  ) {
-    @apply pb-1 no-underline;
-    background-image: linear-gradient(var(--color-link), var(--color-link));
-    background-position: left bottom;
-    background-repeat: no-repeat;
-    background-size: 100% 2px;
-    -webkit-box-decoration-break: slice;
-    box-decoration-break: slice;
-
-    @media print, (forced-colors: active) {
-      background-image: none;
-      text-decoration: underline;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 0.2em;
+    :where(a.animated-underline) > .underline-track {
+      @apply bg-none;
     }
   }
 
   :where(.heading-anchor):not(:where(.not-prose, .not-prose *)) {
-    @apply border-b-0 p-0 text-inherit;
+    @apply border-b-0 p-0 text-inherit no-underline;
     font-weight: inherit;
 
     @variant xl {
@@ -273,7 +241,7 @@
 
   a:has(> img:only-child):not(:where(.not-prose, .not-prose *)),
   a:has(> .lqip:only-child):not(:where(.not-prose, .not-prose *)) {
-    @apply border-b-0 pb-0;
+    @apply border-b-0 pb-0 no-underline;
   }
 
   @media (dynamic-range: high) {
@@ -300,6 +268,6 @@
   .footnote-reference a:hover:not(:where(.not-prose, .not-prose *)),
   .footnote-backref:not(:where(.not-prose, .not-prose *)),
   .footnote-backref:hover:not(:where(.not-prose, .not-prose *)) {
-    @apply border-b-0;
+    @apply border-b-0 no-underline;
   }
 }

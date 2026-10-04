@@ -88,12 +88,52 @@
     }
   };
 
+  // ── Link Underlines ──
+
+  const initLinkUnderlines = () => {
+    const underlineSelector = 'u, ins, .underline';
+
+    for (const link of document.querySelectorAll('.prose a[href]')) {
+      if (
+        link.closest('.not-prose, .footnote-reference') ||
+        link.matches('.heading-anchor, .footnote-backref') ||
+        (link.children.length === 1 &&
+          link.firstElementChild.matches('img, .lqip') &&
+          !link.textContent.trim())
+      ) {
+        continue;
+      }
+
+      for (const underline of link.querySelectorAll(underlineSelector)) {
+        if (!underline.closest('.not-prose')) {
+          underline.classList.add('underline-baseline');
+        }
+      }
+
+      for (
+        let underline = link.closest(underlineSelector);
+        underline && underline.closest('.prose');
+        underline = underline.parentElement?.closest(underlineSelector)
+      ) {
+        underline.classList.add('underline-baseline');
+        link.classList.add('underline-baseline');
+      }
+
+      const track = document.createElement('span');
+      track.className = 'underline-track';
+      track.append(...link.childNodes);
+      link.append(track);
+      link.classList.add('animated-underline');
+    }
+  };
+
   // ── Init ──
 
   const init = () => {
     initCodeBlocks();
     initHeadingAnchors();
     initExternalLinks();
+    initLinkUnderlines();
   };
 
   window.__onReady(init);
