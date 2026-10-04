@@ -1,65 +1,28 @@
 @utility glass-backdrop {
-  @apply backdrop-blur-lg backdrop-saturate-125;
-  background: var(--surface-glass-panel);
+  @apply backdrop-blur-[var(--glass-blur,var(--blur-glass))] backdrop-saturate-125;
+  background: var(--glass-fill, var(--surface-glass-panel));
 }
 
 @utility glass-surface {
   @apply border glass-backdrop;
   border-color: var(--surface-glass-border);
+  box-shadow:
+    inset 0 1px 0 var(--surface-glass-highlight),
+    var(--shadow-glass);
+}
+
+@utility glass-control {
+  --glass-blur: var(--blur-glass-control);
+  --glass-fill: var(--surface-glass-control);
+}
+
+@utility glass-reading {
+  --glass-blur: var(--blur-glass-reading);
+  --glass-fill: var(--surface-glass-reading);
 }
 
 @layer components {
-  :where(.glass-glow, [data-glow-target]) {
-    @apply relative overflow-hidden;
-
-    --glow-size: 1000px;
-    --glow-color: transparent;
-    --glow-border-size: 400px;
-    --glow-border-color: transparent;
-
-    @variant dark {
-      --glow-color: rgba(255, 255, 255, 0.05);
-      --glow-border-color: rgba(255, 255, 255, 0.7);
-    }
-  }
-
-  .glass-glow {
-    @apply rounded-card;
-  }
-
-  /* ── Glass Glow: Cursor-Tracking Layers ── */
-
-  .glow-ambient {
-    @apply pointer-events-none absolute z-1 rounded-full will-change-transform;
-    width: calc(var(--glow-size) * 2);
-    height: calc(var(--glow-size) * 2);
-    top: calc(var(--glow-size) * -1);
-    left: calc(var(--glow-size) * -1);
-    background: radial-gradient(closest-side circle, var(--glow-color), transparent);
-    transform: translate3d(-9999px, -9999px, 0);
-  }
-
-  .glow-border {
-    @apply pointer-events-none absolute inset-0 z-2 rounded-[inherit] p-px;
-    mask:
-      linear-gradient(#fff 0 0) content-box,
-      linear-gradient(#fff 0 0);
-    mask-composite: exclude;
-  }
-
-  .glow-border-spot {
-    @apply pointer-events-none absolute rounded-full will-change-transform;
-    width: calc(var(--glow-border-size) * 2);
-    height: calc(var(--glow-border-size) * 2);
-    top: calc(var(--glow-border-size) * -1);
-    left: calc(var(--glow-border-size) * -1);
-    background: radial-gradient(closest-side circle, var(--glow-border-color), 8%, transparent);
-    transform: translate3d(-9999px, -9999px, 0);
-  }
-
-  /* ── Glass Panel Base ── */
-
   .glass-panel {
-    @apply rounded-card glass-surface shadow-card backface-hidden;
+    @apply rounded-card glass-surface;
   }
 }

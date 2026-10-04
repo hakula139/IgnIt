@@ -10,56 +10,54 @@
 
 {% block body %}
   <div class="max-w-4xl mx-auto px-4 py-6">
-    <div class="glass-glow">
-      <div class="glass-panel p-6 sm:p-8">
-        <h2 class="mb-6 text-xl font-semibold">
-          {{- heading -}}
-        </h2>
+    <div class="glass-panel p-6 sm:p-8">
+      <h2 class="mb-6 text-xl font-semibold">
+        {{- heading -}}
+      </h2>
 
-        {%- if kind == "sections" %}
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {%- for bucket in buckets %}
-          <div class="category-card">
-            <h3 class="mb-2 font-medium">
-              <a href="{{ bucket.url | safe }}" class="animated-underline border-b-0">
-                <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ bucket.name }}
-              </a>
-            </h3>
-            {%- for page in bucket.pages[:5] %}
-            <div class="py-0.5 truncate text-sm">
-              <a
-                href="{{ page.url | safe }}"
-                class="animated-underline text-text border-b-0"
-              >
-                {{ page.title }}
-              </a>
-            </div>
-            {%- endfor %}
-            {%- if bucket.pages | length > 5 %}
-            <div class="mt-1 text-right text-sm">
-              <a
-                href="{{ bucket.url | safe }}"
-                class="animated-underline text-text-tertiary border-b-0"
-              >
-                {{ t('more') }} &raquo;
-              </a>
-            </div>
-            {%- endif %}
+      {%- if kind == "sections" %}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {%- for bucket in buckets %}
+        <div class="category-card">
+          <h3 class="mb-2 font-medium">
+            <a href="{{ bucket.url | safe }}" class="animated-underline border-b-0">
+              <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ bucket.name }}
+            </a>
+          </h3>
+          {%- for page in bucket.pages[:5] %}
+          <div class="py-0.5 truncate text-sm">
+            <a
+              href="{{ page.url | safe }}"
+              class="animated-underline text-text border-b-0"
+            >
+              {{ page.title }}
+            </a>
           </div>
           {%- endfor %}
+          {%- if bucket.pages | length > 5 %}
+          <div class="mt-1 text-right text-sm">
+            <a
+              href="{{ bucket.url | safe }}"
+              class="animated-underline text-text-tertiary border-b-0"
+            >
+              {{ t('more') }} &raquo;
+            </a>
+          </div>
+          {%- endif %}
         </div>
-
-        {%- else %}
-        <div class="flex flex-wrap gap-3">
-          {%- for bucket in buckets %}
-          <a href="{{ bucket.url | safe }}" class="tag-pill">
-            {{ bucket.name }}
-            <sup class="text-xs text-text-tertiary">{{ bucket.pages | length }}</sup>
-          </a>
-          {%- endfor %}
-        </div>
-        {%- endif %}
+        {%- endfor %}
       </div>
+
+      {%- else %}
+      <div class="flex flex-wrap gap-3">
+        {%- for bucket in buckets %}
+        <a href="{{ bucket.url | safe }}" class="tag-pill">
+          {{ bucket.name }}
+          <sup class="text-xs text-text-tertiary">{{ bucket.pages | length }}</sup>
+        </a>
+        {%- endfor %}
+      </div>
+      {%- endif %}
     </div>
   </div>
 {%- endblock %}

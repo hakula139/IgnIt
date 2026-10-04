@@ -29,7 +29,6 @@
 
   const setTheme = (theme) => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem(STORAGE_KEY, theme);
     updateThemeToggleLabels(theme);
   };
 
@@ -43,7 +42,9 @@
   const toggleTheme = () => {
     enableTransition();
     const current = document.documentElement.getAttribute('data-theme');
-    setTheme(current === DARK ? LIGHT : DARK);
+    const theme = current === DARK ? LIGHT : DARK;
+    setTheme(theme);
+    localStorage.setItem(STORAGE_KEY, theme);
   };
 
   // ── Mobile Menu ──
@@ -61,28 +62,29 @@
 
   const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
-  let mobileMenuLastFocus = null;
+  const menuInertElements = new Set();
 
-  const setRestAriaHidden = (hidden, except) => {
-    for (const el of document.body.children) {
-      if (el === except || el.contains(except)) {
-        continue;
+  const setRestInert = (inert, ...except) => {
+    if (inert) {
+      for (const el of document.body.children) {
+        if (el.inert || except.some((target) => el.contains(target))) {
+          continue;
+        }
+        el.inert = true;
+        menuInertElements.add(el);
       }
-      if (hidden) {
-        el.setAttribute('aria-hidden', 'true');
-      } else {
-        el.removeAttribute('aria-hidden');
+    } else {
+      for (const el of menuInertElements) {
+        el.inert = false;
       }
+      menuInertElements.clear();
     }
   };
 
-  const toggleMobileMenu = () => {
+  const setMobileMenuOpen = (isOpen) => {
     const menu = document.getElementById('mobile-menu');
     const toggle = document.getElementById('mobile-menu-toggle');
-    const panel = menu.querySelector('[data-glow-target]');
-    menu.classList.toggle('hidden');
-    const isOpen = !menu.classList.contains('hidden');
-    panel?.toggleAttribute('open', isOpen);
+    menu.classList.toggle('hidden', !isOpen);
     toggle.setAttribute('aria-expanded', String(isOpen));
     const icon = toggle.querySelector('i');
     if (isOpen) {
@@ -92,17 +94,37 @@
     }
     updateMobileMenuToggleLabels(isOpen);
 
-    setRestAriaHidden(isOpen, menu);
+    setRestInert(isOpen, menu, toggle);
 
     if (isOpen) {
-      mobileMenuLastFocus = document.activeElement;
       const first = menu.querySelector(FOCUSABLE_SELECTOR);
       first?.focus();
     } else {
-      const target = mobileMenuLastFocus instanceof HTMLElement ? mobileMenuLastFocus : toggle;
+      const target = toggle.getClientRects().length
+        ? toggle
+        : document.querySelector('.header-logo');
       target.focus();
-      mobileMenuLastFocus = null;
     }
+  };
+
+  const toggleMobileMenu = () => {
+    const menu = document.getElementById('mobile-menu');
+    setMobileMenuOpen(menu.classList.contains('hidden'));
+  };
+
+  const initMobileMenu = () => {
+    const menu = document.getElementById('mobile-menu');
+    const toggle = document.getElementById('mobile-menu-toggle');
+    if (!menu || !toggle) {
+      return;
+    }
+
+    const observer = new ResizeObserver(() => {
+      if (!menu.classList.contains('hidden') && !toggle.getClientRects().length) {
+        setMobileMenuOpen(false);
+      }
+    });
+    observer.observe(toggle);
   };
 
   document.addEventListener('keydown', (e) => {
@@ -111,7 +133,7 @@
     }
     const menu = document.getElementById('mobile-menu');
     if (menu && !menu.classList.contains('hidden')) {
-      toggleMobileMenu();
+      setMobileMenuOpen(false);
     }
   });
 
@@ -133,13 +155,12 @@
     observer.observe(dialog, { attributes: true, attributeFilter: ['open'] });
   };
 
-  const syncSearchModalGlowTarget = () => {
+  const syncSearchDialog = () => {
     const dialog = document.querySelector(SEARCH_MODAL_DIALOG_SELECTOR);
     if (!dialog) {
       return false;
     }
 
-    dialog.toggleAttribute('data-glow-target', true);
     if (!dialog.dataset.searchTriggerWired) {
       dialog.dataset.searchTriggerWired = 'true';
       observeSearchDialogOpenState(dialog);
@@ -152,12 +173,12 @@
       return;
     }
 
-    if (syncSearchModalGlowTarget()) {
+    if (syncSearchDialog()) {
       return;
     }
 
     const observer = new MutationObserver(() => {
-      if (syncSearchModalGlowTarget()) {
+      if (syncSearchDialog()) {
         observer.disconnect();
       }
     });
@@ -171,22 +192,17 @@
   const openSearchModal = () => {
     const menu = document.getElementById('mobile-menu');
     if (menu && !menu.classList.contains('hidden')) {
-      toggleMobileMenu();
+      setMobileMenuOpen(false);
     }
 
-    syncSearchModalGlowTarget();
+    syncSearchDialog();
     document.querySelector('pagefind-modal')?.open?.();
   };
 
   // ── Initialization ──
 
-  // Apply initial theme (called inline in <head> to prevent flash).
   const stored = getStoredTheme();
-  if (stored) {
-    setTheme(stored);
-  } else if (prefersDark()) {
-    setTheme(DARK);
-  }
+  setTheme(stored || (prefersDark() ? DARK : LIGHT));
 
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
     if (!getStoredTheme()) {
@@ -203,6 +219,7 @@
       updateThemeToggleLabels(theme);
     }
 
+    initMobileMenu();
     initSearchModal();
   });
 

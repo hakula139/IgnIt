@@ -13,16 +13,18 @@
 {%- set show_page_views = comments.enabled and comments.provider == "twikoo" and twikoo.visitor -%}
   <div class="max-w-6xl mx-auto px-2 sm:px-4 py-6">
     <div class="xl:flex xl:gap-8">
-      <div class="flex-1 min-w-0 space-y-8">
-        <div class="glass-glow">
-          <article class="glass-panel">
+      <div class="flex-1 min-w-0 space-y-6">
+        <div class="article-surface">
+          <article class="glass-panel glass-reading">
             {%- include "_partials/content/post-banner.html" %}
 
             <div class="p-4 sm:p-8">
               <header class="mb-6">
                 <h1 class="article-title" data-pagefind-meta="title">{{ title }}</h1>
                 {%- if date or section or show_page_views %}
-                <div class="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-text-secondary">
+                <div
+                  class="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-text-secondary"
+                >
                   {%- if date %}
                   <time datetime="{{ date }}">{{ date[:10] }}</time>
                   {%- endif %}
@@ -41,7 +43,11 @@
                   {%- if show_page_views %}
                   <span class="inline-flex items-center gap-1.5">
                     {%- if date or section %}<span aria-hidden="true">·</span>{% endif -%}
-                    <span class="inline-flex items-center gap-1" aria-live="polite" aria-atomic="true">
+                    <span
+                      class="inline-flex items-center gap-1"
+                      aria-live="polite"
+                      aria-atomic="true"
+                    >
                       <i class="far fa-eye fa-fw" aria-hidden="true"></i>
                       <span id="twikoo_visitors">—</span>
                       <span>{{ t('views') }}</span>

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{# data-i18n-jump-to: JS-injected heading anchors read i18n from <html> (no per-element carrier). #}
 <html lang="{{ config.language }}" data-i18n-jump-to="{{ t('jump_to') }}">
 <head>
   <meta charset="utf-8">
@@ -10,7 +9,10 @@
   <link rel="manifest" href="{{ config.base_url | safe }}/manifest.webmanifest">
   {%- if config.search.enabled %}
   <link rel="stylesheet" href="{{ config.base_url | safe }}/pagefind/pagefind-component-ui.css">
-  <script src="{{ config.base_url | safe }}/pagefind/pagefind-component-ui.js" type="module"></script>
+  <script
+    src="{{ config.base_url | safe }}/pagefind/pagefind-component-ui.js"
+    type="module"
+  ></script>
   {%- endif %}
   <link
     rel="stylesheet"
@@ -33,16 +35,20 @@
 <body>
   {%- if config.params.background and config.params.background.image %}
   {%- set bg = config.params.background %}
-  <span class="{% if bg.lqip_uri %}lqip {% endif %}body-bg" style="
-    {%- if bg.lqip_uri %}--lqip-uri: url('{{ bg.lqip_uri | safe }}');{% endif %}
-    {%- if bg.position %} --bg-position: {{ bg.position }};{% endif %}
-    {%- if bg.position_mobile %} --bg-position-mobile: {{ bg.position_mobile }};{% endif %}">
+  <span
+    class="{% if bg.lqip_uri %}lqip {% endif %}body-bg"
+    style="
+      {%- if bg.lqip_uri %}--lqip-uri: url('{{ bg.lqip_uri | safe }}');{% endif %}
+      {%- if bg.position %} --bg-position: {{ bg.position }};{% endif %}
+      {%- if bg.position_mobile %} --bg-position-mobile: {{ bg.position_mobile }};{% endif -%}
+    "
+  >
     <img src="{{ config.base_url | safe }}{{ bg.image | safe }}" alt="" decoding="async">
   </span>
   {%- endif %}
   <a href="#site:main" class="skip-link">{{ t('skip_to_content') }}</a>
   {% include "_partials/layout/header.html" %}
-  <main id="site:main" class="relative flex-1 pt-16">
+  <main id="site:main" class="relative flex-1 pt-header-bottom">
     {%- include "_partials/layout/float-controls.html" %}
     {%- block body %}{% endblock %}
   </main>
@@ -63,21 +69,23 @@
     src="{{ config.base_url | safe }}{{ asset_url('/js/content/toc.js') | safe }}"
     defer
   ></script>
-  {%- if config.params.effects and config.params.effects.cursor_glow %}
-  <script
-    src="{{ config.base_url | safe }}{{ asset_url('/js/layout/glow.js') | safe }}"
-    defer
-  ></script>
-  {%- endif %}
   <script
     src="{{ config.base_url | safe }}{{ asset_url('/js/layout/float-buttons.js') | safe }}"
     defer
   ></script>
   {%- if assets is defined %}
   {%- for script in assets.scripts %}
-  <script src="{{ script.url | safe }}"
-    {%- if script.load == "defer" %} defer{% elif script.load == "async" %} async{% endif %}
-    {%- if script.module %} type="module"{% endif %}></script>
+  <script
+    src="{{ script.url | safe }}"
+    {%- if script.load == "defer" %}
+    defer
+    {%- elif script.load == "async" %}
+    async
+    {%- endif %}
+    {%- if script.module %}
+    type="module"
+    {%- endif %}
+  ></script>
   {%- endfor %}
   {%- endif %}
   {% include "_partials/layout/body-deps.html" %}

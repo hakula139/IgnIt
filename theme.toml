@@ -14,11 +14,6 @@ emojis = true
 fontawesome = true
 table_nowrap_width = 30
 
-[params.effects]
-# Cursor-tracking glow on glass panels. See docs/parameters.md for the
-# rendering caveats before enabling.
-cursor_glow = false
-
 # CDN dependencies, pinned to exact versions with SRI hashes.
 # See AGENTS.md for the regeneration flow when bumping a version.
 [params.deps.fontawesome]

@@ -21,6 +21,7 @@
 
 /* Layout */
 @import './components/layout/background.css';
+@import './components/layout/chrome.css';
 @import './components/layout/error-page.css';
 @import './components/layout/float-buttons.css';
 @import './components/layout/footer.css';

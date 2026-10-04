@@ -42,9 +42,8 @@
     }
   }
 
-  /* Scroll offset: main padding (pt-16 = 4rem) + container padding (py-6 = 1.5rem). */
   [id] {
-    @apply scroll-mt-22;
+    @apply scroll-mt-header-clearance;
   }
 
   :focus-visible {

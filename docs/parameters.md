@@ -124,19 +124,6 @@ powered_by = true
 | `license_url` | `string` | none    | URL the license name links to.                                                                           |
 | `powered_by`  | `bool`   | `true`  | Show the "Powered by kiln & IgnIt" attribution line.                                                     |
 
-## `[params.effects]`
-
-Optional visual effects. Off by default.
-
-| Field         | Type   | Default | Description                                                                                                                                                  |
-| ------------- | ------ | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `cursor_glow` | `bool` | `false` | Cursor-tracking glow on glass panels. The `will-change` layers it injects clash with `backdrop-filter` compositing on Chromium / WebKit, as described below. |
-
-The known rendering caveats with `cursor_glow` enabled:
-
-- **Panel dropout during scroll** (frequent): a glass panel may briefly vanish while scrolling.
-- **Phantom gap near `#comments`** (rare): an in-page anchor jump close to the comments section can leave the article card with a much larger apparent gap than its real margin until the next manual scroll repaints.
-
 ## `[params.deps.<name>]`
 
 Pinned versions and SRI hashes for vendor CDN dependencies. The table is theme-internal and changes only when a dep version is bumped. Contributor steps for changing a dependency are in [`AGENTS.md`](../AGENTS.md#dependencies). Sites consuming defaults do not need to touch this table.

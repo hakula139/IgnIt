@@ -14,12 +14,9 @@
 
   /* Layout */
   body > .body-bg,
-  .glass-glow:has(.header-nav),
+  .header-nav,
   #mobile-menu,
   .site-footer,
-  /* Effects */
-  .glow-ambient,
-  .glow-border,
   /* Content */
   .post-banner,
   .toc-collapse,
@@ -41,8 +38,9 @@
 
   /* ── Surface Effects ── */
 
-  .glass-glow,
-  .glass-panel {
+  .article-surface,
+  .glass-panel,
+  .glass-panel::before {
     border: none !important;
     border-radius: 0 !important;
     background: transparent !important;
