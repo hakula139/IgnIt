@@ -4,7 +4,7 @@
   }
 
   .link-card {
-    @apply flex min-h-20 items-center gap-4 rounded-lg border-b-0 bg-bg-muted/50 bg-none px-4 py-3 text-text no-underline ring-1 ring-border transition-colors ring-inset;
+    @apply flex min-h-20 items-center gap-4 rounded-lg border-b-0 bg-bg-muted/50 px-4 py-3 text-text ring-1 ring-border transition-colors ring-inset;
 
     &:hover {
       @apply bg-bg-muted/70 text-text ring-text-tertiary;
@@ -30,10 +30,4 @@
   .link-desc {
     @apply truncate text-sm leading-snug text-text-secondary;
   }
-}
-
-/* ── Typography Integration ── */
-
-.prose .link-card {
-  @apply no-underline;
 }

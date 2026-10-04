@@ -8,7 +8,7 @@
   }
 
   .float-btn {
-    @apply pointer-events-auto flex size-10 cursor-pointer items-center justify-center rounded-full bg-none text-text-secondary no-underline transition-[opacity,visibility,color,background-color,border-color] duration-300 sm:size-11;
+    @apply pointer-events-auto flex size-10 cursor-pointer items-center justify-center rounded-full text-text-secondary transition-[opacity,visibility,color,background-color,border-color] duration-300 sm:size-11;
 
     --glow-size: 80px;
     --glow-border-size: 60px;

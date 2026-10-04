@@ -142,22 +142,11 @@
   /* ── Links ── */
 
   :where(a):not(:where(.not-prose, .not-prose *)) {
-    @apply pb-0.5 no-underline;
-
-    &:hover,
-    &:focus-visible {
-      @apply text-link-hover;
-    }
-  }
-
-  @media print, (forced-colors: active) {
-    :where(a[href]):not(:where(.not-prose, .not-prose *, [role='button'])) {
-      @apply underline decoration-2 underline-offset-[0.2em];
-    }
+    @apply no-underline;
   }
 
   :where(.heading-anchor):not(:where(.not-prose, .not-prose *)) {
-    @apply border-b-0 bg-none p-0 text-inherit no-underline;
+    @apply border-b-0 p-0 text-inherit;
     font-weight: inherit;
 
     @variant xl {
@@ -205,7 +194,7 @@
 
   a:has(> img:only-child):not(:where(.not-prose, .not-prose *)),
   a:has(> .lqip:only-child):not(:where(.not-prose, .not-prose *)) {
-    @apply border-b-0 bg-none pb-0 no-underline;
+    @apply border-b-0;
   }
 
   @media (dynamic-range: high) {
@@ -229,9 +218,7 @@
   }
 
   .footnote-reference a:not(:where(.not-prose, .not-prose *)),
-  .footnote-reference a:hover:not(:where(.not-prose, .not-prose *)),
-  .footnote-backref:not(:where(.not-prose, .not-prose *)),
-  .footnote-backref:hover:not(:where(.not-prose, .not-prose *)) {
-    @apply border-b-0 bg-none no-underline;
+  .footnote-backref:not(:where(.not-prose, .not-prose *)) {
+    @apply border-b-0;
   }
 }

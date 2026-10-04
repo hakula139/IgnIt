@@ -42,15 +42,6 @@
     }
   }
 
-  a[href] {
-    @apply animated-underline;
-  }
-
-  a:has(> img:only-child, > .lqip:only-child),
-  a[role='button'] {
-    @apply bg-none pb-0 no-underline;
-  }
-
   /* Scroll offset: main padding (pt-16 = 4rem) + container padding (py-6 = 1.5rem). */
   [id] {
     @apply scroll-mt-22;

@@ -1,7 +1,17 @@
-@utility animated-underline {
+:is(.animated-underline, .prose a[href]):not(
+  :where(
+    .not-prose,
+    .not-prose *,
+    .heading-anchor,
+    .footnote-reference a,
+    .footnote-backref,
+    [role='button'],
+    :has(> img:only-child, > .lqip:only-child)
+  )
+) {
   --underline-color: var(--color-link);
   --underline-baseline: transparent;
-  @apply border-transparent box-decoration-slice bg-no-repeat pb-0.5 no-underline transition-[background-size] duration-300;
+  @apply border-transparent box-decoration-slice bg-no-repeat pb-0.5 no-underline transition-[color,background-size] duration-300;
   background-image:
     linear-gradient(var(--color-link-hover), var(--color-link-hover)),
     linear-gradient(var(--underline-baseline), var(--underline-baseline));
@@ -16,12 +26,26 @@
     --underline-baseline: var(--color-link);
   }
 
+  :where(u, ins, .underline):has(&),
+  & :where(u, ins, .underline) {
+    @apply box-decoration-slice bg-size-[100%_2px] bg-bottom-left bg-no-repeat pb-0.5 no-underline;
+    background-image: linear-gradient(
+      var(--underline-color, currentColor),
+      var(--underline-color, currentColor)
+    );
+
+    @media print, (forced-colors: active) {
+      @apply bg-none underline decoration-2 underline-offset-[0.2em] transition-none;
+    }
+  }
+
   :where(u, ins, .underline) {
     @apply transition-[background-size] delay-300 duration-100 motion-reduce:delay-0;
   }
 
   &:hover,
   &:focus-visible {
+    @apply text-link-hover;
     background-position:
       left bottom,
       left bottom;
@@ -29,34 +53,16 @@
       100% 2px,
       100% 2px;
 
+    :where(u, ins, .underline) {
+      @apply bg-size-[0%_2px] delay-0;
+    }
+
     &:has(u, ins, .underline) {
       @apply delay-100 motion-reduce:delay-0;
     }
   }
 
   @media print, (forced-colors: active) {
-    @apply bg-none underline decoration-2 underline-offset-[0.2em];
-  }
-}
-
-:where(u, ins, .underline):not(a[href]) {
-  @apply underline;
-}
-
-:where(u, ins, .underline):where(:has(a[href]), a[href] *) {
-  @apply box-decoration-slice bg-size-[100%_2px] bg-bottom-left bg-no-repeat pb-0.5 no-underline;
-  background-image: linear-gradient(
-    var(--underline-color, currentColor),
-    var(--underline-color, currentColor)
-  );
-}
-
-:where(a[href]:hover, a[href]:focus-visible) :where(u, ins, .underline) {
-  @apply bg-size-[0%_2px] delay-0;
-}
-
-@media print, (forced-colors: active) {
-  :where(u, ins, .underline) {
-    @apply bg-none underline decoration-2 underline-offset-[0.2em];
+    @apply bg-none underline decoration-2 underline-offset-[0.2em] transition-none;
   }
 }

@@ -21,7 +21,7 @@
           {%- for bucket in buckets %}
           <div class="category-card">
             <h3 class="mb-2 font-medium">
-              <a href="{{ bucket.url | safe }}" class="border-b-0 transition-[color,background-size] hover:text-link-hover">
+              <a href="{{ bucket.url | safe }}" class="animated-underline border-b-0">
                 <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ bucket.name }}
               </a>
             </h3>
@@ -29,7 +29,7 @@
             <div class="py-0.5 truncate text-sm">
               <a
                 href="{{ page.url | safe }}"
-                class="text-text border-b-0 transition-[color,background-size] hover:text-link-hover"
+                class="animated-underline text-text border-b-0"
               >
                 {{ page.title }}
               </a>
@@ -39,7 +39,7 @@
             <div class="mt-1 text-right text-sm">
               <a
                 href="{{ bucket.url | safe }}"
-                class="text-text-tertiary border-b-0 transition-[color,background-size] hover:text-link-hover"
+                class="animated-underline text-text-tertiary border-b-0"
               >
                 {{ t('more') }} &raquo;
               </a>
