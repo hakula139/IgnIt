@@ -64,8 +64,7 @@
   }
 
   .home-card-link {
-    --underline-highlight: var(--color-white);
-    @apply pointer-events-auto inline-flex items-center gap-1 border-b-0 text-white/80 no-underline transition-[color,background-size];
+    @apply pointer-events-auto inline-flex items-center gap-1 border-b-0 bg-none pb-0 text-white/80 no-underline transition-colors;
 
     &:hover {
       @apply text-white;

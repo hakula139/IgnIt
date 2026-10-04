@@ -9,7 +9,7 @@
   /* ── Logo ── */
 
   .header-logo {
-    @apply border-b-0 text-lg font-semibold text-text transition-[color,background-size];
+    @apply border-b-0 bg-none pb-0 text-lg font-semibold text-text no-underline transition-colors;
 
     &:hover {
       @apply text-link-hover;

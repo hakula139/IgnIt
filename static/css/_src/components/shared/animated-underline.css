@@ -3,10 +3,7 @@
   --underline-baseline: transparent;
   @apply border-transparent box-decoration-slice bg-no-repeat pb-0.5 no-underline transition-[background-size] duration-300;
   background-image:
-    linear-gradient(
-      var(--underline-highlight, var(--color-link-hover)),
-      var(--underline-highlight, var(--color-link-hover))
-    ),
+    linear-gradient(var(--color-link-hover), var(--color-link-hover)),
     linear-gradient(var(--underline-baseline), var(--underline-baseline));
   background-position:
     right bottom,
