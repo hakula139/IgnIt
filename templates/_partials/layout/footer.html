@@ -2,9 +2,10 @@
 {%- set current_year = now()[0:4] -%}
 <footer class="glass-panel glass-control chrome-frame site-footer">
   <div class="max-w-6xl mx-auto">
-    {%- if footer.since %}
     <p class="flex flex-col items-center gap-1 min-[480px]:block">
-      <span>&copy; {{ footer.since }}&ndash;{{ current_year }} {{ config.author.name }}</span>
+      <span>
+        &copy; {% if footer.since %}{{ footer.since }}&ndash;{% endif %}{{ current_year }} {{ config.author.name }}
+      </span>
       {%- if footer.license %}
       <span>
         <span class="hidden min-[480px]:inline" aria-hidden="true">&middot;</span>
@@ -17,9 +18,6 @@
       </span>
       {%- endif %}
     </p>
-    {%- else %}
-    <p>&copy; {{ current_year }} {{ config.author.name }}</p>
-    {%- endif %}
 
     {%- if footer.powered_by | default(true) %}
     {%- set kiln_link -%}

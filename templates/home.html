@@ -37,7 +37,10 @@
           class="profile-social"
           title="{{ item_label }}"
           aria-label="{{ item_label }}"
-          {%- if item.external %} rel="me noopener noreferrer" target="_blank"{% endif %}
+          {%- if item.external %}
+          rel="me noopener noreferrer"
+          target="_blank"
+          {%- endif %}
         >
           {{- icons.render(item.icon) -}}
         </a>
