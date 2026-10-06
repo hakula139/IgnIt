@@ -50,7 +50,7 @@ Then set it in your `config.toml`:
 theme = "IgnIt"
 ```
 
-`static/css/style.css` ships pre-built, so consuming sites don't need Node.js.
+`static/css/style.generated.css` ships pre-built, so consuming sites don't need Node.js.
 
 ## Quick Start
 
@@ -90,16 +90,19 @@ For the complete schema (`[params.background]`, `[params.comments]`, `[params.li
 All assets live under `static/`:
 
 - `static/css/_src/`: Tailwind sources (entry, partials), a private build input that kiln skips
-- `static/css/style.css`: compiled Tailwind output, shipped
+- `static/css/style.generated.css`: compiled Tailwind output, shipped
 - `static/js/{comments,content,layout,listing,util}/*.js`: JS sources, shipped as-is with no build step
 
 ```bash
-pnpm install     # Install dev dependencies (Tailwind CLI, ESLint, Prettier)
-pnpm dev         # Watch mode, rebuilds static/css/style.css on changes
-pnpm build       # One-shot CSS build
+pnpm install     # Install dev dependencies (Tailwind PostCSS, ESLint, Prettier)
+pnpm dev         # Watch mode, rebuilds static/css/style.generated.css on changes
+pnpm build       # Build shared and discovered page CSS
+pnpm test        # Verify compiler and watcher behavior
 ```
 
 Compression for both CSS and JS is handled at deploy time by `kiln build --minify`, so sources stay readable in the dev server for debugging.
+
+Site builds can reuse `scripts/css.mjs` from the site root. It compiles the shared `static/css/_src/style.css` entry and discovers page entries at `content/**/assets/css/_src/style.css`. Each output is named `style.generated.css` beside its `_src` directory. See [CSS customization](docs/customization.md#visual-tokens) for authoring and page delivery.
 
 For theme contributor constraints, including CSS layering and dependency updates, see [`AGENTS.md`](./AGENTS.md).
 

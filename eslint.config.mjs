@@ -21,6 +21,10 @@ export default [
     },
   },
   {
+    files: ['scripts/**/*.mjs'],
+    languageOptions: { globals: globals.node },
+  },
+  {
     ignores: ['.claude/', '.direnv/', 'node_modules/'],
   },
 ];

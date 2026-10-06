@@ -33,7 +33,12 @@ jobs:
         run: pnpm build
 
       - name: Verify compiled output is up to date
-        run: git diff --exit-code static/
+        run: |
+          git diff --exit-code
+          test -z "$(git ls-files --others --exclude-standard -- '*.generated.css')"
+
+      - name: Test
+        run: pnpm test
 
       - name: Format
         run: pnpm format

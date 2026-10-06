@@ -6,11 +6,11 @@ IgnIt supplies MiniJinja templates, Tailwind CSS, and JavaScript to [kiln](https
 
 ## Theme inputs and output
 
-Names beginning with `_` are private build inputs that kiln does not copy into the published site. `static/css/_src/main.css` imports the theme's CSS partials, and `static/css/style.css` is the committed output consumed by sites without Node.js. Run `pnpm build` after CSS changes and confirm the compiled file is in sync before committing. JavaScript in `static/js/` ships directly and has no build step.
+Names beginning with `_` are private build inputs that kiln does not copy into the published site. `static/css/_src/style.css` imports the theme's CSS partials, and `static/css/style.generated.css` is the committed output consumed by sites without Node.js. Run `pnpm build` after CSS changes and confirm the compiled file is in sync before committing. Page sources live in `content/<bundle>/assets/css/_src/style.css` and compile to the sibling `style.generated.css`. `scripts/css.mjs` discovers these entries automatically and supplies the shared entry as a Tailwind reference. Preserve source comments. JavaScript in `static/js/` ships directly and has no build step.
 
 Keep CSS rules in the partial for their concern. Use semantic component classes for repeated patterns and Tailwind utilities for small layout or responsive adjustments in templates. Define shared tokens in `tokens.css` under `@theme`, with dark values under `[data-theme='dark']`. Import order controls precedence within a layer. `prose.css`, `mermaid.css`, and `comments.css` contain unlayered overrides for typography or third-party styles. `print.css` must remain unlayered to take precedence when printing. Use Tailwind v4 utility names and trailing `!` for important utilities in `@apply`.
 
-Font URLs in `fonts.css` resolve relative to the compiled `style.css`. Maple Mono's variable font needs the `calt` feature setting in `tokens.css` for its ligatures.
+CSS asset URLs resolve relative to their handwritten source files and are rebased by the compiler. Maple Mono's variable font needs the `calt` feature setting in `tokens.css` for its ligatures.
 
 ## Templates and images
 

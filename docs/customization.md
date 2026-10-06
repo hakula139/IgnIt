@@ -27,9 +27,13 @@ Sites override individual tokens by emitting their own CSS that re-declares the 
 }
 ```
 
-To get a site stylesheet onto every page, override `base.html` (see [Template overrides](#template-overrides)) and add a `<link>` after the theme's `<link href=".../css/style.css">`. A forked copy of the theme's `style.css` replaces it entirely and loses every token, so cascade your file on top.
+A site can define its shared entry at `static/css/_src/style.css` and import IgnIt's `static/css/_src/style.css` there, followed by its own partials. Run `node themes/IgnIt/scripts/css.mjs` from the site root to compile `static/css/style.generated.css`, which overrides the theme's output. Install the compiler's dependencies in the site project as declared in IgnIt's `package.json`. Use the same command with `--watch` for development.
 
-For changes scoped to one post, kiln's [per-page CSS](https://github.com/hakula139/kiln/blob/main/docs/content.md) picks up a co-located `style.css` next to the post's `index.md`. Use it for one-off styling without touching site-wide files.
+For page-specific rules, put the handwritten entry at `content/<bundle>/assets/css/_src/style.css`, alongside the bundle's `index.md`. The compiler automatically discovers it and writes `assets/css/style.generated.css`. kiln fingerprints that output, and IgnIt loads it only on its owning page, after the shared stylesheet. Underscore-prefixed source directories stay private.
+
+Both entries support ordinary CSS, nesting, `@apply` and `@variant`. The compiler references shared theme definitions automatically for page entries, so page sources need no `@reference` path and their outputs do not duplicate shared styles. Resolve relative asset URLs from the source file that declares them. The compiler rebases them to the output location, including URLs in imported partials. Theme static assets in the shared output resolve through kiln's merged static tree. Page stylesheets keep their assets inside their bundle. Importing theme CSS that embeds static asset URLs into a page is rejected because page routes can differ from source paths.
+
+Watch mode tracks new and deleted page entries, markup and imported CSS dependencies. A deleted page entry removes its compiler-owned output. Compilation errors keep the last successful outputs intact and watch mode recovers when the source is corrected. Generated files are committed and excluded from formatting with `**/*.generated.css`. Format the handwritten sources.
 
 ## Template Overrides
 
@@ -166,4 +170,4 @@ Same precedence rule as templates: files in your site's `static/` directory shad
 | Web manifest     | `static/manifest.webmanifest` | App name, theme color, install icon set |
 | `robots.txt`     | `static/robots.txt`           | Crawler controls                        |
 
-Avoid replacing `static/css/style.css` outright, since you lose every theme component class. Cascade a site stylesheet on top instead, as described in [Visual Tokens](#visual-tokens).
+Import the theme source before your site's CSS, as described in [Visual Tokens](#visual-tokens), so theme tokens and component classes remain available.
