@@ -174,7 +174,7 @@ test('site imports theme assets through the merged static tree and excludes priv
   assert.equal(url.pathname, '/blog/fonts/example.woff2');
   assert.doesNotMatch(css, /themes\//);
   await put(pageSource, `@import '../../../../../themes/example/static/css/_src/fonts.css';`);
-  await assert.rejects(buildCss(root), /Page CSS cannot embed theme-static/);
+  await assert.rejects(buildCss(root), /Page CSS relative asset is outside its owning bundle/);
 });
 
 test('watch recovers when an external imported file is broken at startup', async (t) => {
@@ -197,4 +197,18 @@ test('watch recovers when an external imported file is broken at startup', async
       throw error;
     }
   });
+});
+
+test('page assets cannot cross bundle boundaries through relative URLs', async (t) => {
+  const { root, put } = await fixture(t);
+  await put(pageSource, `.local { background: url('../../../../../static/images/icon.svg'); }`);
+  await assert.rejects(buildCss(root), /Page CSS relative asset is outside its owning bundle/);
+  await put(
+    pageSource,
+    `.local { background: url('/images/icon.svg'); } .remote { background: url('https://example.com/icon.svg'); }`,
+  );
+  await buildCss(root);
+  const css = await readFile(path.join(root, pageOutput), 'utf8');
+  assert.match(css, /url\(['"]?\/images\/icon.svg/);
+  assert.match(css, /url\(['"]?https:\/\/example.com\/icon.svg/);
 });
