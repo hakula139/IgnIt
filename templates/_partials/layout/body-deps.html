@@ -16,7 +16,7 @@
   {{ cdn.script(lg ~ "/plugins/thumbnail/lg-thumbnail.min.js", deps.lightgallery.sri.thumbnail) }}
   {{ cdn.script(lg ~ "/plugins/zoom/lg-zoom.min.js", deps.lightgallery.sri.zoom) }}
   <script
-    src="{{ base | safe }}{{ asset_url('/js/content/lightgallery.js') | safe }}"
+    src="{{ base | safe }}{{ asset_url('/assets/js/content/lightgallery.js') | safe }}"
     defer
   ></script>
 {%- endif %}
@@ -29,7 +29,7 @@
 
 {%- if need_math %}
   <script
-    src="{{ base | safe }}{{ asset_url('/js/content/math.js') | safe }}"
+    src="{{ base | safe }}{{ asset_url('/assets/js/content/math.js') | safe }}"
     defer
   ></script>
 {%- endif %}
@@ -38,7 +38,7 @@
   {%- set mermaid = cdn_base ~ "/mermaid@" ~ deps.mermaid.version -%}
   {{ cdn.script(mermaid ~ "/dist/mermaid.min.js", deps.mermaid.sri.js) }}
   <script
-    src="{{ base | safe }}{{ asset_url('/js/content/mermaid.js') | safe }}"
+    src="{{ base | safe }}{{ asset_url('/assets/js/content/mermaid.js') | safe }}"
     defer
   ></script>
 {%- endif %}
@@ -47,14 +47,14 @@
   {%- set twikoo = cdn_base ~ "/twikoo@" ~ deps.twikoo.version -%}
   {{ cdn.script(twikoo ~ "/dist/twikoo.min.js", deps.twikoo.sri.js) }}
   <script
-    src="{{ base | safe }}{{ asset_url('/js/comments/twikoo.js') | safe }}"
+    src="{{ base | safe }}{{ asset_url('/assets/js/comments/twikoo.js') | safe }}"
     defer
   ></script>
 {%- endif %}
 
 {%- if need_pagination %}
   <script
-    src="{{ base | safe }}{{ asset_url('/js/listing/pagination.js') | safe }}"
+    src="{{ base | safe }}{{ asset_url('/assets/js/listing/pagination.js') | safe }}"
     defer
   ></script>
 {%- endif %}

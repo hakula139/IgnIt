@@ -50,7 +50,7 @@ Then set it in your `config.toml`:
 theme = "IgnIt"
 ```
 
-`static/css/style.css` ships pre-built, so consuming sites don't need Node.js.
+Run `kiln build` or `kiln serve` to build your site. See [kiln's processor setup](https://github.com/hakula139/kiln/blob/main/docs/assets.md#processor-setup) for Tailwind installation requirements.
 
 ## Quick Start
 
@@ -65,7 +65,7 @@ language = "en"
 fontawesome = true
 
 [params.home.profile]
-avatar = "/images/avatar.webp"
+avatar = "/assets/images/avatar.webp"
 title = "Site Title"
 subtitle = "An optional tagline"
 
@@ -87,19 +87,20 @@ For the complete schema (`[params.background]`, `[params.comments]`, `[params.li
 
 ## Theme Development
 
-All assets live under `static/`:
+See [kiln's assets guide](https://github.com/hakula139/kiln/blob/main/docs/assets.md) for source layout and publication rules.
 
-- `static/css/_src/`: Tailwind sources (entry, partials), a private build input that kiln skips
-- `static/css/style.css`: compiled Tailwind output, shipped
-- `static/js/{comments,content,layout,listing,util}/*.js`: JS sources, shipped as-is with no build step
+The `example/` site references this checkout and provides a local preview:
 
 ```bash
-pnpm install     # Install dev dependencies (Tailwind CLI, ESLint, Prettier)
-pnpm dev         # Watch mode, rebuilds static/css/style.css on changes
-pnpm build       # One-shot CSS build
+nix develop      # Enter the development shell with kiln and formatting tools
+pnpm install     # Install formatting, linting, and spell-check dependencies
+pnpm dev         # Serve the example site and rebuild on changes
+pnpm build       # Build the example site to example/public/
 ```
 
-Compression for both CSS and JS is handled at deploy time by `kiln build --minify`, so sources stay readable in the dev server for debugging.
+Use `kiln build --root example --minify` to check production compression.
+
+See [CSS customization](docs/customization.md#visual-tokens) for site overrides and page stylesheets.
 
 For theme contributor constraints, including CSS layering and dependency updates, see [`AGENTS.md`](./AGENTS.md).
 

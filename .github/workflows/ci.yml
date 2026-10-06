@@ -18,28 +18,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
-      - name: Set up pnpm and Node.js
-        uses: pnpm/setup@v3
+      - name: Set up Nix
+        uses: cachix/install-nix-action@v31
+
+      - name: Set up Cachix
+        uses: cachix/cachix-action@v17
         with:
-          version: latest
-          runtime: node@lts
-          cache: true
-          install: false
+          name: hakula
+          skipPush: true
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Build
-        run: pnpm build
-
-      - name: Verify compiled output is up to date
-        run: git diff --exit-code static/
+        run: nix develop -c pnpm install --frozen-lockfile
 
       - name: Format
-        run: pnpm format
+        run: nix develop -c pnpm format
 
       - name: Lint
-        run: pnpm lint
+        run: nix develop -c pnpm lint
 
       - name: Spell check
-        run: pnpm spellcheck
+        run: nix develop -c pnpm spellcheck
+
+      - name: Build preview site
+        run: nix develop -c pnpm build

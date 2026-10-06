@@ -1,10 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "build": "tailwindcss -i static/css/_src/main.css -o static/css/style.css",
-    "dev": "tailwindcss -i static/css/_src/main.css -o static/css/style.css --watch",
+    "build": "kiln build --root example",
+    "dev": "kiln serve --root example",
     "format": "pnpm format:prettier && pnpm format:markdown && pnpm format:toml",
-    "format:prettier": "prettier --check \"**/*.{css,js,json}\"",
+    "format:prettier": "prettier --check \"**/*.{css,js,mjs,json}\"",
     "format:markdown": "dprint check",
     "format:toml": "taplo format --check",
     "lint": "pnpm lint:md && pnpm lint:js",
@@ -14,7 +14,6 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@tailwindcss/cli": "^4.3.3",
     "@tailwindcss/typography": "^0.5.20",
     "@taplo/cli": "^0.7.0",
     "cspell": "^10.3.4",

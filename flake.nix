@@ -2,7 +2,7 @@
 # IgnIt Theme Development Flake
 # ==============================================================================
 #
-# Provides Tailwind toolchain and pre-commit hooks for theme work. The theme is
+# Provides kiln and pre-commit hooks for theme work. The theme is
 # typically consumed as a git submodule of a kiln site, but ships its own dev
 # shell so contributors can iterate on templates and CSS in isolation.
 #
@@ -16,13 +16,15 @@
   # Inputs
   # ----------------------------------------------------------------------------
   inputs = {
-    # Nixpkgs - NixOS 26.05 stable release
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
 
-    # Per-system flake outputs
     flake-utils.url = "github:numtide/flake-utils";
 
-    # Pre-commit hooks
+    kiln = {
+      url = "github:hakula139/kiln/62af2e6ddba87564fd4e29c897ffb886084ccd9f";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     git-hooks-nix.url = "github:cachix/git-hooks.nix";
   };
 
@@ -33,6 +35,7 @@
     {
       nixpkgs,
       flake-utils,
+      kiln,
       git-hooks-nix,
       ...
     }:
@@ -44,10 +47,8 @@
         # ----------------------------------------------------------------------
         # Node Hook Wrapper
         # ----------------------------------------------------------------------
-        # `pnpm exec` needs node + pnpm on PATH and the project's
-        # `node_modules` materialised. The Nix sandbox lacks the latter, so
-        # `nix flake check` skips these hooks, and CI runs the equivalent
-        # checks via direct `pnpm` scripts.
+        # Node hooks need the local dependencies, which the Nix sandbox excludes.
+        # CI runs the equivalent checks directly with pnpm.
         nodeHook =
           name: cmd:
           let
@@ -70,9 +71,6 @@
         # ----------------------------------------------------------------------
         # Pre-commit Hooks
         # ----------------------------------------------------------------------
-        # Single source of truth for commit-time checks. Node-side tools run
-        # via `pnpm exec` so prettier picks up its Tailwind plugin
-        # and cspell finds the project's `node_modules/@cspell/dict-*`.
         preCommitCheck = git-hooks-nix.lib.${system}.run {
           src = ./.;
           hooks = {
@@ -93,7 +91,7 @@
               enable = true;
               name = "prettier";
               entry = nodeHook "prettier-write" "prettier --write --ignore-unknown";
-              files = "\\.(css|js|json)$";
+              files = "\\.(css|js|mjs|json)$";
               pass_filenames = true;
             };
 
@@ -117,7 +115,7 @@
               enable = true;
               name = "eslint";
               entry = nodeHook "eslint" "eslint --fix";
-              files = "\\.js$";
+              files = "\\.(js|mjs)$";
               pass_filenames = true;
             };
 
@@ -147,13 +145,15 @@
 
           packages =
             preCommitCheck.enabledPackages
+            ++ [
+              kiln.packages.${system}.kiln
+              kiln.packages.${system}.pagefind
+            ]
             ++ (with pkgs; [
               nodejs_24
               pnpm
             ]);
 
-          # `pre-commit install` writes `.git/hooks/pre-commit` so direnv
-          # users get the hook automatically.
           inherit (preCommitCheck) shellHook;
         };
 
