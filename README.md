@@ -50,7 +50,7 @@ Then set it in your `config.toml`:
 theme = "IgnIt"
 ```
 
-Run `kiln build` or `kiln serve` to compile the theme's Tailwind CSS and build your site. kiln's Nix package includes its CSS processor and runtime dependencies. For other installations, follow [kiln's CSS processor setup](https://github.com/hakula139/kiln#stylesheets).
+Run `kiln build` or `kiln serve` to build your site. See [kiln's processor setup](https://github.com/hakula139/kiln/blob/main/docs/assets.md#processor-setup) for Tailwind installation requirements.
 
 ## Quick Start
 
@@ -65,7 +65,7 @@ language = "en"
 fontawesome = true
 
 [params.home.profile]
-avatar = "/images/avatar.webp"
+avatar = "/assets/images/avatar.webp"
 title = "Site Title"
 subtitle = "An optional tagline"
 
@@ -87,7 +87,7 @@ For the complete schema (`[params.background]`, `[params.comments]`, `[params.li
 
 ## Theme Development
 
-CSS sources live under `_assets/css/`, with `style.css` as the shared entry. Assets under `static/`, including `static/js/{comments,content,layout,listing,util}/*.js`, ship directly.
+See [kiln's assets guide](https://github.com/hakula139/kiln/blob/main/docs/assets.md) for source layout and publication rules.
 
 The `example/` site references this checkout and provides a local preview:
 
@@ -98,7 +98,7 @@ pnpm dev         # Serve the example site and rebuild on changes
 pnpm build       # Build the example site to example/public/
 ```
 
-The package commands alias `kiln serve --root example` and `kiln build --root example`. kiln compiles CSS, watches source changes, and handles live reload. Generated files stay in `example/public/` and are ignored by Git. Use `kiln build --root example --minify` to check production compression.
+Use `kiln build --root example --minify` to check production compression.
 
 See [CSS customization](docs/customization.md#visual-tokens) for site overrides and page stylesheets.
 

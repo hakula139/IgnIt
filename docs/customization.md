@@ -4,7 +4,7 @@ Most surfaces, including colors, typography, navigation, icons, copy, and the co
 
 ## Visual Tokens
 
-IgnIt's design tokens live in `@theme { ... }` inside [`_assets/css/tokens.css`](../_assets/css/tokens.css), with a parallel set of dark-mode overrides under `[data-theme='dark']`. The token namespaces are:
+IgnIt's design tokens live in `@theme { ... }` inside [`assets/css/_src/tokens.css`](../assets/css/_src/tokens.css), with a parallel set of dark-mode overrides under `[data-theme='dark']`. The token namespaces are:
 
 | Prefix        | Purpose                                                                       |
 | ------------- | ----------------------------------------------------------------------------- |
@@ -27,11 +27,13 @@ Sites override individual tokens by emitting their own CSS that re-declares the 
 }
 ```
 
-A site can define its shared entry at `_assets/css/style.css` and add `@import '../../themes/IgnIt/_assets/css/style.css';` before its own partials. Without a site entry, kiln compiles the theme entry. Run `kiln build` to compile styles and build the site, or `kiln serve` for live reload.
+For site-wide overrides, import IgnIt's entry before your own rules:
 
-For page-specific rules, put the handwritten entry at `content/<bundle>/_assets/css/style.css` within the page bundle. kiln discovers and compiles it, and IgnIt loads the fingerprinted result only on its owning page, after the shared stylesheet. Underscore-prefixed entries in content bundles stay private. Generated stylesheets exist only in the build output.
+```css
+@import '../../../themes/IgnIt/assets/css/_src/style.css';
+```
 
-Both entries support ordinary CSS, nesting, `@apply`, and `@variant`. kiln supplies the shared Tailwind definitions to page entries, so page sources need no `@reference` path and their outputs do not duplicate shared styles. Resolve relative asset URLs from the source file that declares them. kiln rebases them to the published asset location, including URLs in imported partials. Theme static assets resolve through kiln's merged static tree. Root-absolute and external URLs pass through unchanged.
+Put that entry at `assets/css/_src/style.css` in the site. For page-specific rules, use the same path within the page bundle. See [kiln's stylesheet guide](https://github.com/hakula139/kiln/blob/main/docs/assets.md#stylesheet-sources) for compilation, Tailwind setup, and asset URLs.
 
 ## Template Overrides
 
@@ -39,10 +41,10 @@ kiln's [override model](https://github.com/hakula139/kiln/blob/main/docs/themes.
 
 ```text
 my-site/templates/
-├── base.html                           # Replaces theme/templates/base.html entirely
+├── base.html             # Replaces theme/templates/base.html entirely
 └── _partials/
     └── layout/
-        └── footer.html                 # Replaces theme/templates/_partials/layout/footer.html
+        └── footer.html   # Replaces theme/templates/_partials/layout/footer.html
 ```
 
 Common reasons to override:
@@ -145,7 +147,7 @@ The dispatcher emits the partial only when `enabled = true`, so disabling commen
 
 ## Webfonts
 
-Inter Variable and Maple Mono Variable are self-hosted under [`static/fonts/`](../static/fonts/) and declared in [`_assets/css/fonts.css`](../_assets/css/fonts.css). They're consumed via the `--font-sans` and `--font-mono` design tokens, with CJK falling through to system fonts (Sarasa Gothic SC, PingFang SC, Noto Sans CJK SC) at the end of the cascade.
+Inter Variable and Maple Mono Variable are self-hosted under [`assets/fonts/`](../assets/fonts/) and declared in [`assets/css/_src/fonts.css`](../assets/css/_src/fonts.css). They're consumed via the `--font-sans` and `--font-mono` design tokens, with CJK falling through to system fonts (Sarasa Gothic SC, PingFang SC, Noto Sans CJK SC) at the end of the cascade.
 
 To swap the body font, override the token in your site CSS:
 
@@ -155,11 +157,11 @@ To swap the body font, override the token in your site CSS:
 }
 ```
 
-Then ensure your face is loaded, either by linking a `@font-face` declaration from your override stylesheet, or by replacing `static/fonts/` outright via the [static-asset override](#template-overrides) mechanism (kiln serves `static/` from your site ahead of the theme's).
+Load the font with `@font-face` in your stylesheet. To replace bundled fonts, put files at the same paths under your site's `assets/fonts/`.
 
-## Static Asset Overrides
+## Public File Overrides
 
-Same precedence rule as templates: files in your site's `static/` directory shadow theme files at the same path. Common cases:
+See [kiln's publication rules](https://github.com/hakula139/kiln/blob/main/docs/assets.md#public-files) for directory layout and precedence. IgnIt sites commonly override these root-level files:
 
 | Asset            | Path                          | Reason to override                      |
 | ---------------- | ----------------------------- | --------------------------------------- |

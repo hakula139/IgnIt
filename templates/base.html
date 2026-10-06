@@ -16,16 +16,16 @@
   {%- endif %}
   <link
     rel="stylesheet"
-    href="{{ config.base_url | safe }}{{ asset_url('/css/style.css') | safe }}"
+    href="{{ config.base_url | safe }}{{ asset_url('/assets/css/site.css') | safe }}"
   >
   {%- if page_css %}
   <link rel="stylesheet" href="{{ page_css | safe }}">
   {%- endif %}
   <script
-    src="{{ config.base_url | safe }}{{ asset_url('/js/layout/theme.js') | safe }}"
+    src="{{ config.base_url | safe }}{{ asset_url('/assets/js/layout/theme.js') | safe }}"
   ></script>
   <script
-    src="{{ config.base_url | safe }}{{ asset_url('/js/util/dom-ready.js') | safe }}"
+    src="{{ config.base_url | safe }}{{ asset_url('/assets/js/util/dom-ready.js') | safe }}"
     defer
   ></script>
   {% include "_partials/layout/head-deps.html" %}
@@ -58,19 +58,19 @@
   {%- endif %}
   {# Defer scripts ordered by visual urgency: paint-affecting first, interaction-only last. #}
   <script
-    src="{{ config.base_url | safe }}{{ asset_url('/js/content/lqip.js') | safe }}"
+    src="{{ config.base_url | safe }}{{ asset_url('/assets/js/content/lqip.js') | safe }}"
     defer
   ></script>
   <script
-    src="{{ config.base_url | safe }}{{ asset_url('/js/content/content.js') | safe }}"
+    src="{{ config.base_url | safe }}{{ asset_url('/assets/js/content/content.js') | safe }}"
     defer
   ></script>
   <script
-    src="{{ config.base_url | safe }}{{ asset_url('/js/content/toc.js') | safe }}"
+    src="{{ config.base_url | safe }}{{ asset_url('/assets/js/content/toc.js') | safe }}"
     defer
   ></script>
   <script
-    src="{{ config.base_url | safe }}{{ asset_url('/js/layout/float-buttons.js') | safe }}"
+    src="{{ config.base_url | safe }}{{ asset_url('/assets/js/layout/float-buttons.js') | safe }}"
     defer
   ></script>
   {%- if assets is defined %}
