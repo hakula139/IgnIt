@@ -27,9 +27,9 @@ Sites override individual tokens by emitting their own CSS that re-declares the 
 }
 ```
 
-A site can define its shared entry at `_assets/css/style.css` and import IgnIt's `themes/IgnIt/_assets/css/style.css` there, followed by its own partials. Without a site entry, kiln compiles the theme entry. Run `kiln build` to compile styles and build the site, or `kiln serve` for live reload.
+A site can define its shared entry at `_assets/css/style.css` and add `@import '../../themes/IgnIt/_assets/css/style.css';` before its own partials. Without a site entry, kiln compiles the theme entry. Run `kiln build` to compile styles and build the site, or `kiln serve` for live reload.
 
-For page-specific rules, put the handwritten entry at `content/<bundle>/_assets/css/style.css`, alongside the bundle's `index.md`. kiln discovers and compiles it, and IgnIt loads the fingerprinted result only on its owning page, after the shared stylesheet. Underscore-prefixed entries in content bundles stay private. Generated stylesheets exist only in the build output.
+For page-specific rules, put the handwritten entry at `content/<bundle>/_assets/css/style.css` within the page bundle. kiln discovers and compiles it, and IgnIt loads the fingerprinted result only on its owning page, after the shared stylesheet. Underscore-prefixed entries in content bundles stay private. Generated stylesheets exist only in the build output.
 
 Both entries support ordinary CSS, nesting, `@apply`, and `@variant`. kiln supplies the shared Tailwind definitions to page entries, so page sources need no `@reference` path and their outputs do not duplicate shared styles. Resolve relative asset URLs from the source file that declares them. kiln rebases them to the published asset location, including URLs in imported partials. Theme static assets resolve through kiln's merged static tree. Root-absolute and external URLs pass through unchanged.
 
