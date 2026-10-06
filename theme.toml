@@ -7,6 +7,9 @@ min_kiln_version = "0.4.0-rc.3"
 name = "Hakula"
 link = "https://hakula.xyz"
 
+[css]
+processor = "tailwind"
+
 [params]
 cdn = "https://cdn.jsdelivr.net/npm"
 code_max_lines = 40

@@ -1,7 +1,7 @@
 @import 'tailwindcss' source(none);
 @plugin '@tailwindcss/typography';
 
-@source '../../../templates/**/*.html';
+@source '../../templates/**/*.html';
 
 @import './fonts.css';
 @import './tokens.css';

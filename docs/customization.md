@@ -4,7 +4,7 @@ Most surfaces, including colors, typography, navigation, icons, copy, and the co
 
 ## Visual Tokens
 
-IgnIt's design tokens live in `@theme { ... }` inside [`static/css/_src/tokens.css`](../static/css/_src/tokens.css), with a parallel set of dark-mode overrides under `[data-theme='dark']`. The token namespaces are:
+IgnIt's design tokens live in `@theme { ... }` inside [`_assets/css/tokens.css`](../_assets/css/tokens.css), with a parallel set of dark-mode overrides under `[data-theme='dark']`. The token namespaces are:
 
 | Prefix        | Purpose                                                                       |
 | ------------- | ----------------------------------------------------------------------------- |
@@ -27,13 +27,11 @@ Sites override individual tokens by emitting their own CSS that re-declares the 
 }
 ```
 
-A site can define its shared entry at `static/css/_src/style.css` and import IgnIt's `static/css/_src/style.css` there, followed by its own partials. Run `node themes/IgnIt/scripts/css.mjs` from the site root to compile `static/css/style.generated.css`, which overrides the theme's output. Install the compiler's dependencies in the site project as declared in IgnIt's `package.json`. Use the same command with `--watch` for development.
+A site can define its shared entry at `_assets/css/style.css` and import IgnIt's `themes/IgnIt/_assets/css/style.css` there, followed by its own partials. Without a site entry, kiln compiles the theme entry. Run `kiln build` to compile styles and build the site, or `kiln serve` for live reload.
 
-For page-specific rules, put the handwritten entry at `content/<bundle>/assets/css/_src/style.css`, alongside the bundle's `index.md`. The compiler automatically discovers it and writes `assets/css/style.generated.css`. kiln fingerprints that output, and IgnIt loads it only on its owning page, after the shared stylesheet. Underscore-prefixed source directories stay private.
+For page-specific rules, put the handwritten entry at `content/<bundle>/_assets/css/style.css`, alongside the bundle's `index.md`. kiln discovers and compiles it, and IgnIt loads the fingerprinted result only on its owning page, after the shared stylesheet. Underscore-prefixed entries in content bundles stay private. Generated stylesheets exist only in the build output.
 
-Both entries support ordinary CSS, nesting, `@apply` and `@variant`. The compiler references shared theme definitions automatically for page entries, so page sources need no `@reference` path and their outputs do not duplicate shared styles. Resolve relative asset URLs from the source file that declares them. The compiler rebases them to the output location, including URLs in imported partials. Theme static assets in the shared output resolve through kiln's merged static tree. Relative asset URLs in page stylesheets must stay inside their owning bundle. References crossing into site or theme static trees are rejected because page routes can differ from source paths. Root-absolute and external URLs pass through unchanged.
-
-Watch mode tracks new and deleted page entries, markup and imported CSS dependencies. A deleted page entry removes its compiler-owned output. Compilation errors keep the last successful outputs intact and watch mode recovers when the source is corrected. Generated files are committed and excluded from formatting with `**/*.generated.css`. Format the handwritten sources.
+Both entries support ordinary CSS, nesting, `@apply`, and `@variant`. kiln supplies the shared Tailwind definitions to page entries, so page sources need no `@reference` path and their outputs do not duplicate shared styles. Resolve relative asset URLs from the source file that declares them. kiln rebases them to the published asset location, including URLs in imported partials. Theme static assets resolve through kiln's merged static tree. Root-absolute and external URLs pass through unchanged.
 
 ## Template Overrides
 
@@ -147,7 +145,7 @@ The dispatcher emits the partial only when `enabled = true`, so disabling commen
 
 ## Webfonts
 
-Inter Variable and Maple Mono Variable are self-hosted under [`static/fonts/`](../static/fonts/) and declared in [`static/css/_src/fonts.css`](../static/css/_src/fonts.css). They're consumed via the `--font-sans` and `--font-mono` design tokens, with CJK falling through to system fonts (Sarasa Gothic SC, PingFang SC, Noto Sans CJK SC) at the end of the cascade.
+Inter Variable and Maple Mono Variable are self-hosted under [`static/fonts/`](../static/fonts/) and declared in [`_assets/css/fonts.css`](../_assets/css/fonts.css). They're consumed via the `--font-sans` and `--font-mono` design tokens, with CJK falling through to system fonts (Sarasa Gothic SC, PingFang SC, Noto Sans CJK SC) at the end of the cascade.
 
 To swap the body font, override the token in your site CSS:
 

@@ -20,3 +20,6 @@ result-*
 .claude/plans
 .claude/settings.local.json
 .claude/worktrees
+
+# Preview output
+example/public/

@@ -29,17 +29,6 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build
-        run: pnpm build
-
-      - name: Verify compiled output is up to date
-        run: |
-          git diff --exit-code
-          test -z "$(git ls-files --others --exclude-standard -- '*.generated.css')"
-
-      - name: Test
-        run: pnpm test
-
       - name: Format
         run: pnpm format
 
@@ -48,3 +37,15 @@ jobs:
 
       - name: Spell check
         run: pnpm spellcheck
+
+      - name: Set up Nix
+        uses: cachix/install-nix-action@v31
+
+      - name: Set up Cachix
+        uses: cachix/cachix-action@v17
+        with:
+          name: hakula
+          skipPush: true
+
+      - name: Build preview site
+        run: nix develop -c pnpm build

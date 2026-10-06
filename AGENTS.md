@@ -6,7 +6,7 @@ IgnIt supplies MiniJinja templates, Tailwind CSS, and JavaScript to [kiln](https
 
 ## Theme inputs and output
 
-Names beginning with `_` are private build inputs that kiln does not copy into the published site. `static/css/_src/style.css` imports the theme's CSS partials, and `static/css/style.generated.css` is the committed output consumed by sites without Node.js. Run `pnpm build` after CSS changes and confirm the compiled file is in sync before committing. Page sources live in `content/<bundle>/assets/css/_src/style.css` and compile to the sibling `style.generated.css`. `scripts/css.mjs` discovers these entries automatically and supplies the shared entry as a Tailwind reference. Preserve source comments. JavaScript in `static/js/` ships directly and has no build step.
+`_assets/css/style.css` imports the theme's CSS partials. kiln compiles this entry during `build` and `serve` and writes generated CSS only to the site's output directory. Page sources live in `content/<bundle>/_assets/css/style.css` and load only on their owning page. Preserve source comments. Everything under `static/`, including JavaScript in `static/js/`, ships directly.
 
 Keep CSS rules in the partial for their concern. Use semantic component classes for repeated patterns and Tailwind utilities for small layout or responsive adjustments in templates. Define shared tokens in `tokens.css` under `@theme`, with dark values under `[data-theme='dark']`. Import order controls precedence within a layer. `prose.css`, `mermaid.css`, and `comments.css` contain unlayered overrides for typography or third-party styles. `print.css` must remain unlayered to take precedence when printing. Use Tailwind v4 utility names and trailing `!` for important utilities in `@apply`.
 
@@ -16,7 +16,7 @@ CSS asset URLs resolve relative to their handwritten source files and are rebase
 
 Shared fragments belong in `templates/_partials/` and are included by path. Use `{%-` to trim whitespace before template tags while preserving HTML indentation. Use `-%}` only where trailing whitespace must be removed. Wrap attributes one per line when an opening tag becomes long. MiniJinja autoescaping encodes `/` in URLs. Use `| safe` for trusted URLs supplied by kiln or site content and for renderer-produced HTML. Leave ordinary text escaped.
 
-kiln wraps Markdown images in `.lqip` when a placeholder exists. The theme wraps featured images in `templates/_partials/content/post-banner.html` and `templates/home.html` when `lqip_uri` exists. The background wrapper lives in `templates/base.html`. The CSS and JavaScript for these wrappers are in `static/css/_src/components/shared/lqip.css` and `static/js/content/lqip.js`. The upstream contract is in [kiln's theme documentation](https://github.com/hakula139/kiln/blob/main/docs/themes.md).
+kiln wraps Markdown images in `.lqip` when a placeholder exists. The theme wraps featured images in `templates/_partials/content/post-banner.html` and `templates/home.html` when `lqip_uri` exists. The background wrapper lives in `templates/base.html`. The CSS and JavaScript for these wrappers are in `_assets/css/components/shared/lqip.css` and `static/js/content/lqip.js`. The upstream contract is in [kiln's theme documentation](https://github.com/hakula139/kiln/blob/main/docs/themes.md).
 
 ## Dependencies
 

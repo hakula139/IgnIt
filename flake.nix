@@ -2,7 +2,7 @@
 # IgnIt Theme Development Flake
 # ==============================================================================
 #
-# Provides Tailwind toolchain and pre-commit hooks for theme work. The theme is
+# Provides kiln and pre-commit hooks for theme work. The theme is
 # typically consumed as a git submodule of a kiln site, but ships its own dev
 # shell so contributors can iterate on templates and CSS in isolation.
 #
@@ -22,6 +22,11 @@
     # Per-system flake outputs
     flake-utils.url = "github:numtide/flake-utils";
 
+    kiln = {
+      url = "github:hakula139/kiln/fa37153f2fc5ce6851ccf032f7f4157aa497fb32";
+      inputs.flake-utils.follows = "flake-utils";
+    };
+
     # Pre-commit hooks
     git-hooks-nix.url = "github:cachix/git-hooks.nix";
   };
@@ -33,6 +38,7 @@
     {
       nixpkgs,
       flake-utils,
+      kiln,
       git-hooks-nix,
       ...
     }:
@@ -93,7 +99,7 @@
               enable = true;
               name = "prettier";
               entry = nodeHook "prettier-write" "prettier --write --ignore-unknown";
-              files = "\\.(css|js|json)$";
+              files = "\\.(css|js|mjs|json)$";
               pass_filenames = true;
             };
 
@@ -117,7 +123,7 @@
               enable = true;
               name = "eslint";
               entry = nodeHook "eslint" "eslint --fix";
-              files = "\\.js$";
+              files = "\\.(js|mjs)$";
               pass_filenames = true;
             };
 
@@ -147,6 +153,10 @@
 
           packages =
             preCommitCheck.enabledPackages
+            ++ [
+              kiln.packages.${system}.kiln
+              kiln.packages.${system}.pagefind
+            ]
             ++ (with pkgs; [
               nodejs_24
               pnpm

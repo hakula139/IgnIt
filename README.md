@@ -50,7 +50,7 @@ Then set it in your `config.toml`:
 theme = "IgnIt"
 ```
 
-`static/css/style.generated.css` ships pre-built, so consuming sites don't need Node.js.
+Run `kiln build` or `kiln serve` to compile the theme's Tailwind CSS and build your site. kiln's Nix package includes its CSS processor and runtime dependencies. For other installations, follow [kiln's CSS processor setup](https://github.com/hakula139/kiln#stylesheets).
 
 ## Quick Start
 
@@ -87,22 +87,20 @@ For the complete schema (`[params.background]`, `[params.comments]`, `[params.li
 
 ## Theme Development
 
-All assets live under `static/`:
+CSS sources live under `_assets/css/`, with `style.css` as the shared entry. Assets under `static/`, including `static/js/{comments,content,layout,listing,util}/*.js`, ship directly.
 
-- `static/css/_src/`: Tailwind sources (entry, partials), a private build input that kiln skips
-- `static/css/style.generated.css`: compiled Tailwind output, shipped
-- `static/js/{comments,content,layout,listing,util}/*.js`: JS sources, shipped as-is with no build step
+The `example/` site references this checkout and provides a local preview:
 
 ```bash
-pnpm install     # Install dev dependencies (Tailwind PostCSS, ESLint, Prettier)
-pnpm dev         # Watch mode, rebuilds static/css/style.generated.css on changes
-pnpm build       # Build shared and discovered page CSS
-pnpm test        # Verify compiler and watcher behavior
+nix develop      # Enter the development shell with kiln and formatting tools
+pnpm install     # Install formatting, linting, and spell-check dependencies
+pnpm dev         # Serve the example site and rebuild on changes
+pnpm build       # Build the example site to example/public/
 ```
 
-Compression for both CSS and JS is handled at deploy time by `kiln build --minify`, so sources stay readable in the dev server for debugging.
+The package commands alias `kiln serve --root example` and `kiln build --root example`. kiln compiles CSS, watches source changes, and handles live reload. Generated files stay in `example/public/` and are ignored by Git. Use `kiln build --root example --minify` to check production compression.
 
-Site builds can reuse `scripts/css.mjs` from the site root. It compiles the shared `static/css/_src/style.css` entry and discovers page entries at `content/**/assets/css/_src/style.css`. Each output is named `style.generated.css` beside its `_src` directory. See [CSS customization](docs/customization.md#visual-tokens) for authoring and page delivery.
+See [CSS customization](docs/customization.md#visual-tokens) for site overrides and page stylesheets.
 
 For theme contributor constraints, including CSS layering and dependency updates, see [`AGENTS.md`](./AGENTS.md).
 

@@ -11,5 +11,5 @@
     }
   ],
   "dictionaries": ["project-words"],
-  "ignorePaths": ["pnpm-lock.yaml", "**/*.generated.css", "**/LICENSE"]
+  "ignorePaths": ["pnpm-lock.yaml", "**/LICENSE", "**/themes/**"]
 }

@@ -1,8 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "build": "node scripts/css.mjs",
-    "dev": "node scripts/css.mjs --watch",
+    "build": "kiln build --root example",
+    "dev": "kiln serve --root example",
     "format": "pnpm format:prettier && pnpm format:markdown && pnpm format:toml",
     "format:prettier": "prettier --check \"**/*.{css,js,mjs,json}\"",
     "format:markdown": "dprint check",
@@ -10,13 +10,10 @@
     "lint": "pnpm lint:md && pnpm lint:js",
     "lint:js": "eslint .",
     "lint:md": "markdownlint-cli2 \"**/*.md\"",
-    "spellcheck": "cspell --no-progress \"**/*\"",
-    "test": "node --test scripts/css.test.mjs"
+    "spellcheck": "cspell --no-progress \"**/*\""
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@parcel/watcher": "^2.6.0",
-    "@tailwindcss/postcss": "^4.3.3",
     "@tailwindcss/typography": "^0.5.20",
     "@taplo/cli": "^0.7.0",
     "cspell": "^10.3.4",
@@ -24,8 +21,6 @@
     "eslint": "^10.11.0",
     "globals": "^17.12.0",
     "markdownlint-cli2": "^0.23.3",
-    "postcss": "^8.5.28",
-    "postcss-url": "^10.1.4",
     "prettier": "^3.9.9",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.3"

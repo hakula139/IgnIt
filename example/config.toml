@@ -1,0 +1,12 @@
+theme = "IgnIt"
+title = "IgnIt"
+language = "en"
+
+[params.home.profile]
+title = "IgnIt"
+subtitle = "Theme preview"
+
+[[menu.main]]
+name = "Posts"
+url = "/posts/"
+weight = 1
