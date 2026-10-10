@@ -1,19 +1,17 @@
+{%- import "_partials/macros/directive.html" as directive -%}
 {%- set name = named_args.name | default("") -%}
 {%- set url = named_args.url | default("") -%}
 {%- set desc = named_args.desc | default(name) -%}
 {%- set logo = named_args.logo | default("") -%}
-{#- Wrapper div required because kiln re-parses directive output as Markdown. -#}
-<div>
-  <a
-    href="{{ url | safe }}"
-    class="link-card not-prose"
-  >
-  {%- if logo %}
-    <img src="{{ asset_url(logo) | safe }}" alt="{{ name }}" class="link-avatar" loading="lazy">
-  {%- endif %}
-    <div class="link-body">
-      <div class="link-title">{{ name }}</div>
-      <div class="link-desc">{{ desc }}</div>
-    </div>
-  </a>
-</div>
+<a
+  href="{{ url | safe }}"
+  {{- directive.attrs(id, classes, "link-card not-prose") }}
+>
+{%- if logo %}
+  <img src="{{ asset_url(logo) | safe }}" alt="{{ name }}" class="link-avatar" loading="lazy">
+{%- endif %}
+  <div class="link-body">
+    <div class="link-title">{{ name }}</div>
+    <div class="link-desc">{{ desc }}</div>
+  </div>
+</a>
