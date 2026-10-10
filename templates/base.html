@@ -16,16 +16,16 @@
   {%- endif %}
   <link
     rel="stylesheet"
-    href="{{ config.base_url | safe }}{{ asset_url('/assets/css/site.css') | safe }}"
+    href="{{ asset_url('/assets/css/site.css') | safe }}"
   >
   {%- if page_css %}
   <link rel="stylesheet" href="{{ page_css | safe }}">
   {%- endif %}
   <script
-    src="{{ config.base_url | safe }}{{ asset_url('/assets/js/layout/theme.js') | safe }}"
+    src="{{ asset_url('/assets/js/layout/theme.js') | safe }}"
   ></script>
   <script
-    src="{{ config.base_url | safe }}{{ asset_url('/assets/js/util/dom-ready.js') | safe }}"
+    src="{{ asset_url('/assets/js/util/dom-ready.js') | safe }}"
     defer
   ></script>
   {% include "_partials/layout/head-deps.html" %}
@@ -43,7 +43,7 @@
       {%- if bg.position_mobile %} --bg-position-mobile: {{ bg.position_mobile }};{% endif -%}
     "
   >
-    <img src="{{ config.base_url | safe }}{{ bg.image | safe }}" alt="" decoding="async">
+    <img src="{{ asset_url(bg.image) | safe }}" alt="" decoding="async">
   </span>
   {%- endif %}
   <a href="#site:main" class="skip-link">{{ t('skip_to_content') }}</a>
@@ -58,19 +58,19 @@
   {%- endif %}
   {# Defer scripts ordered by visual urgency: paint-affecting first, interaction-only last. #}
   <script
-    src="{{ config.base_url | safe }}{{ asset_url('/assets/js/content/lqip.js') | safe }}"
+    src="{{ asset_url('/assets/js/content/lqip.js') | safe }}"
     defer
   ></script>
   <script
-    src="{{ config.base_url | safe }}{{ asset_url('/assets/js/content/content.js') | safe }}"
+    src="{{ asset_url('/assets/js/content/content.js') | safe }}"
     defer
   ></script>
   <script
-    src="{{ config.base_url | safe }}{{ asset_url('/assets/js/content/toc.js') | safe }}"
+    src="{{ asset_url('/assets/js/content/toc.js') | safe }}"
     defer
   ></script>
   <script
-    src="{{ config.base_url | safe }}{{ asset_url('/assets/js/layout/float-buttons.js') | safe }}"
+    src="{{ asset_url('/assets/js/layout/float-buttons.js') | safe }}"
     defer
   ></script>
   {%- if assets is defined %}

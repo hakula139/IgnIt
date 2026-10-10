@@ -20,7 +20,7 @@ Site-wide background image with optional LQIP backdrop. Omit the table to use so
 
 | Field             | Type     | Default                  | Description                                                                                                                          |
 | ----------------- | -------- | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `image`           | `string` | none                     | Site-relative path to the background image. Required when the table is present.                                                      |
+| `image`           | `string` | none                     | Root-relative path (starting with `/`) or absolute URL to the background image. Required when the table is present.                  |
 | `lqip_uri`        | `string` | none                     | Pre-computed `data:image/webp;base64,...` URI rendered as a blurred backdrop until the full image decodes. Optional but recommended. |
 | `position`        | `string` | `"center"`               | Desktop CSS `object-position` value (e.g., `"top"`, `"70% 50%"`).                                                                    |
 | `position_mobile` | `string` | falls back to `position` | Mobile-only CSS `object-position`. Useful for crops that frame poorly on portrait viewports.                                         |
@@ -37,16 +37,16 @@ Home-page profile panel and pagination.
 
 ```toml
 [params.home.profile]
-avatar = "/assets/images/avatar.webp" # Site-relative or absolute URL
+avatar = "/assets/images/avatar.webp"
 title = "Site Title" # Falls back to config.title when unset
 subtitle = "An optional tagline"
 ```
 
-| Field      | Type     | Default        | Description                                                                |
-| ---------- | -------- | -------------- | -------------------------------------------------------------------------- |
-| `avatar`   | `string` | none           | Profile avatar image. Site-relative path or absolute URL. Omit to hide.    |
-| `title`    | `string` | `config.title` | Heading shown above the subtitle. Override to display a different name.    |
-| `subtitle` | `string` | none           | Tagline below the title. `\n` adds a mobile-only line break. Omit to hide. |
+| Field      | Type     | Default        | Description                                                                                 |
+| ---------- | -------- | -------------- | ------------------------------------------------------------------------------------------- |
+| `avatar`   | `string` | none           | Profile avatar image. Root-relative path (starting with `/`) or absolute URL. Omit to hide. |
+| `title`    | `string` | `config.title` | Heading shown above the subtitle. Override to display a different name.                     |
+| `subtitle` | `string` | none           | Tagline below the title. `\n` adds a mobile-only line break. Omit to hide.                  |
 
 In a double-quoted subtitle, `\n` places a line break below 640px. At larger widths the two parts join directly, so put a space before `\n` when the words need one.
 

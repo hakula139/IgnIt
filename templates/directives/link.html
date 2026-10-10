@@ -9,7 +9,7 @@
     class="link-card not-prose"
   >
   {%- if logo %}
-    <img src="{{ logo | safe }}" alt="{{ name }}" class="link-avatar" loading="lazy">
+    <img src="{{ asset_url(logo) | safe }}" alt="{{ name }}" class="link-avatar" loading="lazy">
   {%- endif %}
     <div class="link-body">
       <div class="link-title">{{ name }}</div>

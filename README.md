@@ -65,7 +65,6 @@ language = "en"
 fontawesome = true
 
 [params.home.profile]
-avatar = "/assets/images/avatar.webp"
 title = "Site Title"
 subtitle = "An optional tagline"
 
