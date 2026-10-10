@@ -21,7 +21,7 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     kiln = {
-      url = "github:hakula139/kiln/f1aea716cc0648ae3f5139aa7e6fea3040518a52";
+      url = "github:hakula139/kiln/429cd64ad0f56e01247859f22ae1726d8c349daf";
       inputs.flake-utils.follows = "flake-utils";
     };
 
