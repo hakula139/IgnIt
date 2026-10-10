@@ -13,7 +13,7 @@
 {%- set name = named_args.name | default("") -%}
 {%- set country = named_args.country | default("cn") -%}
 {%- set height = named_args.height | default("450") -%}
-<div{{ directive.attrs(id or name, classes, "apple-music-wrapper") }}>
+<div{{ directive.attrs(id, classes, "apple-music-wrapper") }}>
   <iframe
     class="apple-music-light w-full overflow-hidden rounded-lg"
     title="{{ t('music_player_apple') }}"
