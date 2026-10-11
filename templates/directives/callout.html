@@ -1,0 +1,5 @@
+{%- import "_partials/macros/directive.html" as directive -%}
+<details{{ directive.attrs(id, classes, "callout " ~ type) }}{% if open %} open{% endif %}>
+  <summary class="callout-title">{{ title or t("callout_" ~ type) }}</summary>
+  <div class="callout-body"><div class="callout-body-inner">{{ body_html | safe }}</div></div>
+</details>

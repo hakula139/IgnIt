@@ -1,0 +1,4 @@
+{# Root-element attributes for a directive: the authored #id, then `base` and the authored classes. #}
+{%- macro attrs(id, classes, base) -%}
+  {%- if id %} id="{{ id }}"{% endif %} class="{{ base }}{% for class in classes %} {{ class }}{% endfor %}"
+{%- endmacro %}
