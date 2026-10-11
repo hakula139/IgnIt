@@ -16,7 +16,7 @@
       {%- if profile.avatar %}
       <img
         class="profile-avatar"
-        src="{{ asset_url(profile.avatar) | safe }}"
+        src="{{ asset_url(profile.avatar) }}"
         alt="{{ config.author.name }}"
       >
       {%- endif %}

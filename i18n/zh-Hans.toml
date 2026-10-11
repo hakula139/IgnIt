@@ -7,6 +7,7 @@ switch_to_dark = "切换至暗色主题"
 switch_to_light = "切换至亮色主题"
 
 # 列表
+all_posts = "所有文章"
 all_sections = "所有栏目"
 all_tags = "所有标签"
 more = "更多"
@@ -57,6 +58,6 @@ video_player_bilibili = "哔哩哔哩"
 powered_by = "由 {kiln} 与 {ignit} 强力驱动"
 
 # 404
-error_404_title = "404"
+error_404_title = "404 页面不存在"
 page_not_found = "您访问的页面不存在。"
 back_to_home = "返回首页"

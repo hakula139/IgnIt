@@ -4,11 +4,11 @@
 {%- set desc = named_args.desc | default(name) -%}
 {%- set logo = named_args.logo | default("") -%}
 <a
-  href="{{ url | safe }}"
+  href="{{ url }}"
   {{- directive.attrs(id, classes, "link-card not-prose") }}
 >
 {%- if logo %}
-  <img src="{{ asset_url(logo) | safe }}" alt="{{ name }}" class="link-avatar" loading="lazy">
+  <img src="{{ asset_url(logo) }}" alt="{{ name }}" class="link-avatar" loading="lazy">
 {%- endif %}
   <div class="link-body">
     <div class="link-title">{{ name }}</div>

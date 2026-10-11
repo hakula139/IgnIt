@@ -1,21 +1,15 @@
 {% extends "base.html" %}
 
-{%- if kind == "sections" -%}
-  {%- set heading = t('all_sections') -%}
-{%- else -%}
-  {%- set heading = t('all_tags') -%}
-{%- endif -%}
-
-{% block title %}<title>{{ heading }} - {{ config.title }}</title>{% endblock %}
+{% block title %}<title>{{ title }} - {{ config.title }}</title>{% endblock %}
 
 {% block body %}
   <div class="max-w-4xl mx-auto px-4 py-6">
     <div class="glass-panel p-6 sm:p-8">
       <h2 class="mb-6 text-xl font-semibold">
-        {{- heading -}}
+        {{- title -}}
       </h2>
 
-      {%- if kind == "sections" %}
+      {%- if kind == "section" %}
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {%- for bucket in buckets %}
         <div class="category-card">

@@ -4,9 +4,9 @@
 {%- set comments = config.params.comments | default(value={}) -%}
 {%- set lightgallery = config.params.lightgallery | default(value={}) -%}
 {%- set need_lightgallery = lightgallery.enabled | default(false) -%}
-{%- set need_math = assets is defined and "math" in assets.features -%}
-{%- set need_mermaid = assets is defined and "mermaid" in assets.features -%}
-{%- set need_twikoo = assets is defined and comments.enabled and comments.provider == "twikoo" -%}
+{%- set need_math = "math" in assets.features -%}
+{%- set need_mermaid = "mermaid" in assets.features -%}
+{%- set need_twikoo = content is defined and comments.enabled and comments.provider == "twikoo" -%}
 {%- set need_pagination = pagination is defined and pagination.total_pages > 1 -%}
 
 {%- if need_lightgallery %}
@@ -15,7 +15,7 @@
   {{ cdn.script(lg ~ "/plugins/thumbnail/lg-thumbnail.min.js", deps.lightgallery.sri.thumbnail) }}
   {{ cdn.script(lg ~ "/plugins/zoom/lg-zoom.min.js", deps.lightgallery.sri.zoom) }}
   <script
-    src="{{ asset_url('/assets/js/content/lightgallery.js') | safe }}"
+    src="{{ asset_url('/assets/js/content/lightgallery.js') }}"
     defer
   ></script>
 {%- endif %}
@@ -28,7 +28,7 @@
 
 {%- if need_math %}
   <script
-    src="{{ asset_url('/assets/js/content/math.js') | safe }}"
+    src="{{ asset_url('/assets/js/content/math.js') }}"
     defer
   ></script>
 {%- endif %}
@@ -37,7 +37,7 @@
   {%- set mermaid = cdn_base ~ "/mermaid@" ~ deps.mermaid.version -%}
   {{ cdn.script(mermaid ~ "/dist/mermaid.min.js", deps.mermaid.sri.js) }}
   <script
-    src="{{ asset_url('/assets/js/content/mermaid.js') | safe }}"
+    src="{{ asset_url('/assets/js/content/mermaid.js') }}"
     defer
   ></script>
 {%- endif %}
@@ -46,14 +46,14 @@
   {%- set twikoo = cdn_base ~ "/twikoo@" ~ deps.twikoo.version -%}
   {{ cdn.script(twikoo ~ "/dist/twikoo.min.js", deps.twikoo.sri.js) }}
   <script
-    src="{{ asset_url('/assets/js/comments/twikoo.js') | safe }}"
+    src="{{ asset_url('/assets/js/comments/twikoo.js') }}"
     defer
   ></script>
 {%- endif %}
 
 {%- if need_pagination %}
   <script
-    src="{{ asset_url('/assets/js/listing/pagination.js') | safe }}"
+    src="{{ asset_url('/assets/js/listing/pagination.js') }}"
     defer
   ></script>
 {%- endif %}
