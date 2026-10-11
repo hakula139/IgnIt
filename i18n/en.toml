@@ -25,6 +25,10 @@ tags = "Tags"
 last_updated = "Last updated"
 back_to_top = "Back to top"
 
+# Code blocks
+copy = "Copy"
+copy_code = "Copy code"
+
 # Comments
 comments = "Comments"
 jump_to_comments = "Jump to comments"
