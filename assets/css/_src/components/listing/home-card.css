@@ -143,31 +143,4 @@
       @apply -rotate-45;
     }
   }
-
-  .post-entry-pin {
-    @apply mr-2 inline-block -rotate-45 text-text;
-  }
-
-  /* ── Profile ── */
-
-  .profile-avatar {
-    @apply mx-auto mb-4 h-24 w-24 rounded-full shadow-md;
-  }
-
-  .profile-socials {
-    @apply mt-4 flex flex-wrap items-center justify-center gap-2;
-  }
-
-  .profile-social {
-    @apply inline-flex size-10 shrink-0 items-center justify-center rounded-full border-b-0 p-2 text-2xl text-text transition-colors;
-
-    svg {
-      @apply size-[1em] fill-current;
-    }
-
-    &:hover,
-    &:focus-visible {
-      @apply icon-tap-hover;
-    }
-  }
 }

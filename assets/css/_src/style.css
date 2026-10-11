@@ -43,6 +43,7 @@
 @import './components/listing/home-card.css';
 @import './components/listing/listing.css';
 @import './components/listing/pagination.css';
+@import './components/listing/profile.css';
 
 /* Search */
 @import './components/search/search.css';

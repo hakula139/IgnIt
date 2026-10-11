@@ -39,8 +39,7 @@
   /* ── Surface Effects ── */
 
   .article-surface,
-  .glass-panel,
-  .glass-panel::before {
+  .glass-panel {
     border: none !important;
     border-radius: 0 !important;
     background: transparent !important;

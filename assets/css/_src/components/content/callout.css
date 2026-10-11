@@ -2,8 +2,6 @@
   /* ── Base ── */
 
   .callout {
-    --callout-color: var(--callout-note-fg);
-
     @apply my-4 rounded-lg border-l-4 bg-bg-muted/60;
     border-left-color: var(--callout-color);
 
@@ -78,7 +76,7 @@
 
     &::before {
       @apply fa-icon;
-      content: var(--callout-icon, '\f05a');
+      content: var(--callout-icon);
     }
   }
 

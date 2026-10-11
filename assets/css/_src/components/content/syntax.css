@@ -10,10 +10,6 @@
     @apply bg-bg-muted/60;
     color: var(--syntax-default);
 
-    .source {
-      color: var(--syntax-default);
-    }
-
     .keyword,
     .storage {
       color: var(--syntax-keyword);
@@ -28,8 +24,7 @@
       color: var(--syntax-string);
     }
 
-    .constant,
-    .constant.numeric {
+    .constant {
       color: var(--syntax-constant);
     }
 
