@@ -37,7 +37,7 @@
 
     &[data-max-lines] > .highlight {
       @apply bounded-scroll;
-      --scroll-max-height: calc(var(--max-lines, 40) * 1.5em + 1rem);
+      --scroll-max-height: calc(var(--max-lines) * 1.5em + 1rem);
     }
   }
 
@@ -45,23 +45,11 @@
 
   .highlight {
     table {
-      @apply w-max min-w-full border-collapse;
+      @apply border-collapse;
     }
 
     .line-numbers {
-      @apply w-px py-3 text-right select-none;
-
-      pre {
-        @apply pr-2 pl-4 text-text-tertiary;
-      }
-    }
-
-    .code {
-      @apply py-3;
-
-      pre {
-        @apply pr-4 pl-3;
-      }
+      @apply w-px text-text-tertiary select-none;
     }
 
     /* ── Per-Line Highlight ── */
@@ -103,11 +91,11 @@
     @apply text-right;
 
     pre {
-      @apply py-0 pr-2 pl-4;
+      @apply pr-2 pl-4;
     }
   }
 
   .code pre {
-    @apply py-0 pr-4 pl-3;
+    @apply pr-4 pl-3;
   }
 }

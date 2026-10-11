@@ -7,8 +7,5 @@
     "emphasisKind": "underscores",
     "strongKind": "asterisks"
   },
-  "toml": {
-    "lineWidth": 80
-  },
-  "plugins": ["npm:@dprint/markdown@0.24.0", "npm:@dprint/toml@0.8.0"]
+  "plugins": ["npm:@dprint/markdown@0.24.0"]
 }

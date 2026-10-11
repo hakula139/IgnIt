@@ -5,18 +5,21 @@
   const ARTICLE_IMG_SELECTOR = 'figure img';
   const COMMENTS_IMG_SELECTOR = '.tk-content img:not(.tk-owo-emotion)';
 
-  const escapeHtml = (s) =>
-    s.replace(
-      /[&<>"']/g,
-      (c) =>
-        ({
-          '&': '&amp;',
-          '<': '&lt;',
-          '>': '&gt;',
-          '"': '&quot;',
-          "'": '&#39;',
-        })[c],
-    );
+  const licenseKey = document.querySelector('meta[name="lg-license-key"]')?.content;
+
+  const wrapAndInit = (scope, selector) => {
+    wrapAll(scope, selector);
+    initOn(scope);
+  };
+
+  const wrapAll = (scope, selector) => {
+    if (!scope) {
+      return;
+    }
+    for (const img of scope.querySelectorAll(selector)) {
+      wrapImage(img);
+    }
+  };
 
   const wrapImage = (img) => {
     if (img.closest('a')) {
@@ -47,16 +50,18 @@
     anchor.appendChild(wrapTarget);
   };
 
-  const wrapAll = (scope, selector) => {
-    if (!scope) {
-      return;
-    }
-    for (const img of scope.querySelectorAll(selector)) {
-      wrapImage(img);
-    }
-  };
-
-  const licenseKey = document.querySelector('meta[name="lg-license-key"]')?.content;
+  const escapeHtml = (s) =>
+    s.replace(
+      /[&<>"']/g,
+      (c) =>
+        ({
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;',
+        })[c],
+    );
 
   const initOn = (scope) => {
     if (!scope) {
@@ -89,12 +94,7 @@
     });
   };
 
-  const wrapAndInit = (scope, selector) => {
-    wrapAll(scope, selector);
-    initOn(scope);
-  };
-
   window.__rewrapLightGallery = (scope) => wrapAndInit(scope, COMMENTS_IMG_SELECTOR);
 
-  window.__onReady(() => wrapAndInit(document.querySelector(ARTICLE_SCOPE), ARTICLE_IMG_SELECTOR));
+  wrapAndInit(document.querySelector(ARTICLE_SCOPE), ARTICLE_IMG_SELECTOR);
 })();

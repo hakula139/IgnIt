@@ -17,6 +17,9 @@ emojis = true
 fontawesome = true
 table_nowrap_width = 30
 
+[params.comments]
+provider = "twikoo"
+
 # CDN dependencies, pinned to exact versions with SRI hashes.
 # See AGENTS.md for the regeneration flow when bumping a version.
 [params.deps.fontawesome]

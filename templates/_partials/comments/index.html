@@ -1,7 +1,6 @@
-{%- set comments = config.params.comments | default(value={}) -%}
-{%- if comments.enabled %}
+{%- if need_comments %}
   <section id="comments" aria-label="{{ t('comments') }}">
-    {%- if comments.provider == "twikoo" %}
+    {%- if need_twikoo %}
       {%- include "_partials/comments/twikoo.html" %}
     {%- endif %}
   </section>

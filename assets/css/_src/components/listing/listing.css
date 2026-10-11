@@ -23,6 +23,10 @@
     @apply min-w-0 truncate border-b-0 text-text;
   }
 
+  .post-entry-pin {
+    @apply mr-2 inline-block -rotate-45 text-text;
+  }
+
   .post-entry-date {
     @apply shrink-0 text-sm text-text-tertiary tabular-nums;
   }

@@ -3,15 +3,13 @@
 (() => {
   const ACTIVE_CLASS = 'active';
 
-  const initToc = () => {
-    const tocElements = document.querySelectorAll('.toc');
-    if (!tocElements.length) {
-      return;
-    }
+  const headingIds = [];
+  const tocLinks = new Map();
+  const visibleHeadings = new Set();
+  let activeId = null;
 
-    const headingIds = [];
-    const tocLinks = new Map();
-    for (const nav of tocElements) {
+  const initToc = () => {
+    for (const nav of document.querySelectorAll('.toc')) {
       for (const a of nav.querySelectorAll('a[href^="#"]')) {
         const id = decodeURIComponent(a.getAttribute('href').slice(1));
         if (!tocLinks.has(id)) {
@@ -25,100 +23,6 @@
     if (!headingIds.length) {
       return;
     }
-
-    let activeId = null;
-
-    const collectChain = (id) => {
-      const chain = [];
-      if (!id || !tocLinks.has(id)) {
-        return chain;
-      }
-      for (const a of tocLinks.get(id)) {
-        let li = a.closest('li');
-        while (li) {
-          chain.push(li);
-          li = li.parentElement?.closest('li');
-        }
-      }
-      return chain;
-    };
-
-    const setActive = (id) => {
-      if (id === activeId) {
-        return;
-      }
-
-      const oldChain = collectChain(activeId);
-      const newChain = collectChain(id);
-      const oldSet = new Set(oldChain);
-      const newSet = new Set(newChain);
-
-      for (const li of oldChain) {
-        if (!newSet.has(li)) {
-          li.classList.remove(ACTIVE_CLASS);
-        }
-      }
-      if (activeId && tocLinks.has(activeId)) {
-        for (const a of tocLinks.get(activeId)) {
-          a.classList.remove(ACTIVE_CLASS);
-          a.removeAttribute('aria-current');
-        }
-      }
-
-      activeId = id;
-
-      if (id && tocLinks.has(id)) {
-        for (const a of tocLinks.get(id)) {
-          a.classList.add(ACTIVE_CLASS);
-          a.setAttribute('aria-current', 'page');
-        }
-      }
-      for (const li of newChain) {
-        if (!oldSet.has(li)) {
-          li.classList.add(ACTIVE_CLASS);
-        }
-      }
-
-      // Defer the rect read so it doesn't force a sync layout flush inside
-      // the IO callback that just dirtied styles.
-      if (id && tocLinks.has(id)) {
-        const links = tocLinks.get(id);
-        requestAnimationFrame(() => {
-          if (activeId !== id) {
-            return;
-          }
-          for (const a of links) {
-            ensureLinkVisible(a);
-          }
-        });
-      }
-    };
-
-    const ensureLinkVisible = (link) => {
-      const scroll = link.closest('.toc-sidebar-scroll');
-      if (!scroll) {
-        return;
-      }
-      const cRect = scroll.getBoundingClientRect();
-      const lRect = link.getBoundingClientRect();
-      if (lRect.top >= cRect.top && lRect.bottom <= cRect.bottom) {
-        return;
-      }
-      const offset = lRect.top - cRect.top - (cRect.height - lRect.height) / 2;
-      scroll.scrollTo({ top: scroll.scrollTop + offset });
-    };
-
-    const visibleHeadings = new Set();
-
-    const pickActive = () => {
-      for (const id of headingIds) {
-        if (visibleHeadings.has(id)) {
-          setActive(id);
-          return;
-        }
-      }
-      // Preserve the current item when no headings are visible.
-    };
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -144,5 +48,93 @@
     setActive(headingIds[0]);
   };
 
-  window.__onReady(initToc);
+  const pickActive = () => {
+    for (const id of headingIds) {
+      if (visibleHeadings.has(id)) {
+        setActive(id);
+        return;
+      }
+    }
+    // Preserve the current item when no headings are visible.
+  };
+
+  const setActive = (id) => {
+    if (id === activeId) {
+      return;
+    }
+
+    const oldChain = collectChain(activeId);
+    const newChain = collectChain(id);
+    const oldSet = new Set(oldChain);
+    const newSet = new Set(newChain);
+
+    for (const li of oldChain) {
+      if (!newSet.has(li)) {
+        li.classList.remove(ACTIVE_CLASS);
+      }
+    }
+    if (activeId && tocLinks.has(activeId)) {
+      for (const a of tocLinks.get(activeId)) {
+        a.removeAttribute('aria-current');
+      }
+    }
+
+    activeId = id;
+
+    if (id && tocLinks.has(id)) {
+      for (const a of tocLinks.get(id)) {
+        a.setAttribute('aria-current', 'page');
+      }
+    }
+    for (const li of newChain) {
+      if (!oldSet.has(li)) {
+        li.classList.add(ACTIVE_CLASS);
+      }
+    }
+
+    // Defer the rect read so it doesn't force a sync layout flush inside
+    // the IO callback that just dirtied styles.
+    if (id && tocLinks.has(id)) {
+      const links = tocLinks.get(id);
+      requestAnimationFrame(() => {
+        if (activeId !== id) {
+          return;
+        }
+        for (const a of links) {
+          ensureLinkVisible(a);
+        }
+      });
+    }
+  };
+
+  const collectChain = (id) => {
+    const chain = [];
+    if (!id || !tocLinks.has(id)) {
+      return chain;
+    }
+    for (const a of tocLinks.get(id)) {
+      let li = a.closest('li');
+      while (li) {
+        chain.push(li);
+        li = li.parentElement?.closest('li');
+      }
+    }
+    return chain;
+  };
+
+  const ensureLinkVisible = (link) => {
+    const scroll = link.closest('.toc-sidebar-scroll');
+    if (!scroll) {
+      return;
+    }
+    const cRect = scroll.getBoundingClientRect();
+    const lRect = link.getBoundingClientRect();
+    if (lRect.top >= cRect.top && lRect.bottom <= cRect.bottom) {
+      return;
+    }
+    const offset = lRect.top - cRect.top - (cRect.height - lRect.height) / 2;
+    scroll.scrollTo({ top: scroll.scrollTop + offset });
+  };
+
+  initToc();
 })();

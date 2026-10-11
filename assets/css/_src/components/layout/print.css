@@ -39,8 +39,7 @@
   /* ── Surface Effects ── */
 
   .article-surface,
-  .glass-panel,
-  .glass-panel::before {
+  .glass-panel {
     border: none !important;
     border-radius: 0 !important;
     background: transparent !important;
@@ -52,6 +51,19 @@
   .code-header,
   .highlight {
     background: transparent !important;
+  }
+
+  /* ── Content: Disclosures ── */
+
+  .callout::details-content,
+  .code-block::details-content {
+    grid-template-rows: 1fr !important;
+    content-visibility: visible !important;
+  }
+
+  .callout-title::after,
+  .code-header::before {
+    display: none !important;
   }
 
   /* ── Content: Scroll Limits ── */

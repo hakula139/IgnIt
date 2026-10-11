@@ -12,6 +12,7 @@ Top-level theme switches.
 | `code_max_lines`     | `int`    | `40`                             | Maximum visible lines before fenced code blocks gain a vertical scrollbar. `0` disables the limit.                                                                           |
 | `emojis`             | `bool`   | `true`                           | Replace `:shortcode:` with the corresponding Unicode emoji during rendering.                                                                                                 |
 | `fontawesome`        | `bool`   | `true`                           | Load the Font Awesome stylesheet. Disable when no `fa-*` classes are referenced anywhere in templates or content.                                                            |
+| `paginate`           | `int`    | `10`                             | Posts per listing page. `home.paginate` and `section.paginate` override it per listing, and tag archives always use it.                                                      |
 | `table_nowrap_width` | `int`    | `30`                             | No-wrap threshold in terminal columns (CJK and emoji count as 2). Wrapping cells have a minimum width of half this value in em. `0` allows non-empty columns to wrap freely. |
 
 ## `[params.background]`
@@ -31,9 +32,9 @@ Site-wide background image with optional LQIP backdrop. Omit the table to use so
 
 Home-page profile panel and pagination.
 
-| Field      | Type  | Default | Description                                                                     |
-| ---------- | ----- | ------- | ------------------------------------------------------------------------------- |
-| `paginate` | `int` | `8`     | Posts per page on the home listing. Falls back to `params.paginate` when unset. |
+| Field      | Type  | Default           | Description                         |
+| ---------- | ----- | ----------------- | ----------------------------------- |
+| `paginate` | `int` | `params.paginate` | Posts per page on the home listing. |
 
 ```toml
 [params.home.profile]
@@ -54,11 +55,11 @@ The optional social row under the profile is populated from `[[menu.social]]` an
 
 ## `[params.section]`
 
-Section-archive pagination.
+Post archive pagination.
 
-| Field      | Type  | Default | Description                                                                      |
-| ---------- | ----- | ------- | -------------------------------------------------------------------------------- |
-| `paginate` | `int` | `10`    | Posts per page on `/posts/<section>/` archives. Falls back to `params.paginate`. |
+| Field      | Type  | Default           | Description                                                               |
+| ---------- | ----- | ----------------- | ------------------------------------------------------------------------- |
+| `paginate` | `int` | `params.paginate` | Posts per page on the `/posts/` archive and `/posts/<section>/` archives. |
 
 ## `[params.comments]`
 
@@ -83,7 +84,7 @@ visitor = true
 
 | Field     | Type     | Default | Description                                                                |
 | --------- | -------- | ------- | -------------------------------------------------------------------------- |
-| `api_url` | `string` | —       | Twikoo API endpoint.                                                       |
+| `api_url` | `string` | none    | Twikoo API endpoint. Comments stay hidden until it is set.                 |
 | `visitor` | `bool`   | `false` | Show and increment the Twikoo view count on each post and standalone page. |
 
 The visitor counter requires comments to be enabled with the Twikoo provider. It records raw page hits, so each successful Twikoo initialization increments the count, including reloads and repeat visits.
@@ -128,6 +129,6 @@ powered_by = true
 
 Pinned versions and SRI hashes for vendor CDN dependencies. The table is theme-internal and changes only when a dep version is bumped. Contributor steps for changing a dependency are in [`AGENTS.md`](../AGENTS.md#dependencies). Sites consuming defaults do not need to touch this table.
 
-## Menu groups
+## Menu Groups
 
 `[[menu.main]]` populates the header navigation, and `[[menu.social]]` populates the home profile social row. Both follow [kiln's menu schema](https://github.com/hakula139/kiln/blob/main/docs/themes.md#navigation-menus). IgnIt extends the `icon` field to accept either a Font Awesome class string (`"fab fa-github"`) or a `svg:<slug>` reference resolved against `templates/_partials/icons/<slug>.svg`. See [Customization → Social icons](customization.md#social-icons) for the bundled registry and the override pattern.

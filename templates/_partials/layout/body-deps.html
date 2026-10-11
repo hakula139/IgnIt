@@ -1,12 +1,5 @@
 {%- import "_partials/macros/cdn.html" as cdn -%}
-{%- set cdn_base = config.params.cdn -%}
-{%- set deps = config.params.deps -%}
-{%- set comments = config.params.comments | default(value={}) -%}
-{%- set lightgallery = config.params.lightgallery | default(value={}) -%}
-{%- set need_lightgallery = lightgallery.enabled | default(false) -%}
-{%- set need_math = "math" in assets.features -%}
 {%- set need_mermaid = "mermaid" in assets.features -%}
-{%- set need_twikoo = content is defined and comments.enabled and comments.provider == "twikoo" -%}
 {%- set need_pagination = pagination is defined and pagination.total_pages > 1 -%}
 
 {%- if need_lightgallery %}
@@ -43,8 +36,8 @@
 {%- endif %}
 
 {%- if need_twikoo %}
-  {%- set twikoo = cdn_base ~ "/twikoo@" ~ deps.twikoo.version -%}
-  {{ cdn.script(twikoo ~ "/dist/twikoo.min.js", deps.twikoo.sri.js) }}
+  {%- set tk = cdn_base ~ "/twikoo@" ~ deps.twikoo.version -%}
+  {{ cdn.script(tk ~ "/dist/twikoo.min.js", deps.twikoo.sri.js) }}
   <script
     src="{{ asset_url('/assets/js/comments/twikoo.js') }}"
     defer

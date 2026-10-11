@@ -41,5 +41,5 @@
     }
   };
 
-  window.__onReady(initPagination);
+  initPagination();
 })();

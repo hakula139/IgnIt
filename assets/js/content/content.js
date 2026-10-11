@@ -3,13 +3,27 @@
 (() => {
   const COPIED_DURATION = 2000;
 
-  const createIcon = (classes) => {
-    const icon = document.createElement('i');
-    icon.className = classes;
-    return icon;
+  const init = () => {
+    initCodeBlocks();
+    initHeadingAnchors();
+    initExternalLinks();
   };
 
   // ── Code Blocks ──
+
+  const initCodeBlocks = () => {
+    for (const btn of document.querySelectorAll('.code-block > .code-header > .copy-btn')) {
+      btn.replaceChildren(createIcon('far fa-copy'));
+    }
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('.copy-btn');
+      if (btn) {
+        e.preventDefault();
+        handleCopy(btn);
+      }
+    });
+  };
 
   const handleCopy = async (btn) => {
     const codeBlock = btn.closest('.code-block');
@@ -36,18 +50,10 @@
     }, COPIED_DURATION);
   };
 
-  const initCodeBlocks = () => {
-    for (const btn of document.querySelectorAll('.code-block > .code-header > .copy-btn')) {
-      btn.replaceChildren(createIcon('far fa-copy'));
-    }
-
-    document.addEventListener('click', (e) => {
-      const btn = e.target.closest('.copy-btn');
-      if (btn) {
-        e.preventDefault();
-        handleCopy(btn);
-      }
-    });
+  const createIcon = (classes) => {
+    const icon = document.createElement('i');
+    icon.className = classes;
+    return icon;
   };
 
   // ── Heading Anchors ──
@@ -81,20 +87,12 @@
       if (link.protocol !== 'http:' && link.protocol !== 'https:') {
         continue;
       }
-      if (link.origin && link.origin !== origin) {
+      if (link.origin !== origin) {
         link.target = '_blank';
-        link.rel = 'noopener noreferrer';
+        link.relList.add('noopener', 'noreferrer');
       }
     }
   };
 
-  // ── Init ──
-
-  const init = () => {
-    initCodeBlocks();
-    initHeadingAnchors();
-    initExternalLinks();
-  };
-
-  window.__onReady(init);
+  init();
 })();

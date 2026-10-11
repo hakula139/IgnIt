@@ -12,9 +12,25 @@
   const DARK = 'dark';
   const LIGHT = 'light';
 
-  const prefersDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const toggleTheme = () => {
+    enableTransition();
+    const current = document.documentElement.getAttribute('data-theme');
+    const theme = current === DARK ? LIGHT : DARK;
+    setTheme(theme);
+    localStorage.setItem(STORAGE_KEY, theme);
+  };
 
-  const getStoredTheme = () => localStorage.getItem(STORAGE_KEY);
+  const enableTransition = () => {
+    document.documentElement.classList.add('theme-transition');
+    setTimeout(() => {
+      document.documentElement.classList.remove('theme-transition');
+    }, 300);
+  };
+
+  const setTheme = (theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    updateThemeToggleLabels(theme);
+  };
 
   const updateThemeToggleLabels = (theme) => {
     for (const btn of document.querySelectorAll('[data-i18n-dark]')) {
@@ -27,58 +43,34 @@
     }
   };
 
-  const setTheme = (theme) => {
-    document.documentElement.setAttribute('data-theme', theme);
-    updateThemeToggleLabels(theme);
-  };
+  const getStoredTheme = () => localStorage.getItem(STORAGE_KEY);
 
-  const enableTransition = () => {
-    document.documentElement.classList.add('theme-transition');
-    setTimeout(() => {
-      document.documentElement.classList.remove('theme-transition');
-    }, 300);
-  };
-
-  const toggleTheme = () => {
-    enableTransition();
-    const current = document.documentElement.getAttribute('data-theme');
-    const theme = current === DARK ? LIGHT : DARK;
-    setTheme(theme);
-    localStorage.setItem(STORAGE_KEY, theme);
-  };
+  const prefersDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   // ── Mobile Menu ──
-
-  const updateMobileMenuToggleLabels = (isOpen) => {
-    for (const btn of document.querySelectorAll('[data-i18n-open]')) {
-      const label = isOpen ? btn.dataset.i18nClose : btn.dataset.i18nOpen;
-      if (!label) {
-        continue;
-      }
-      btn.setAttribute('title', label);
-      btn.setAttribute('aria-label', label);
-    }
-  };
 
   const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
   const menuInertElements = new Set();
 
-  const setRestInert = (inert, ...except) => {
-    if (inert) {
-      for (const el of document.body.children) {
-        if (el.inert || except.some((target) => el.contains(target))) {
-          continue;
-        }
-        el.inert = true;
-        menuInertElements.add(el);
-      }
-    } else {
-      for (const el of menuInertElements) {
-        el.inert = false;
-      }
-      menuInertElements.clear();
+  const initMobileMenu = () => {
+    const menu = document.getElementById('mobile-menu');
+    const toggle = document.getElementById('mobile-menu-toggle');
+    if (!menu || !toggle) {
+      return;
     }
+
+    const observer = new ResizeObserver(() => {
+      if (!menu.classList.contains('hidden') && !toggle.getClientRects().length) {
+        setMobileMenuOpen(false);
+      }
+    });
+    observer.observe(toggle);
+  };
+
+  const toggleMobileMenu = () => {
+    const menu = document.getElementById('mobile-menu');
+    setMobileMenuOpen(menu.classList.contains('hidden'));
   };
 
   const setMobileMenuOpen = (isOpen) => {
@@ -107,66 +99,37 @@
     }
   };
 
-  const toggleMobileMenu = () => {
-    const menu = document.getElementById('mobile-menu');
-    setMobileMenuOpen(menu.classList.contains('hidden'));
-  };
-
-  const initMobileMenu = () => {
-    const menu = document.getElementById('mobile-menu');
-    const toggle = document.getElementById('mobile-menu-toggle');
-    if (!menu || !toggle) {
-      return;
-    }
-
-    const observer = new ResizeObserver(() => {
-      if (!menu.classList.contains('hidden') && !toggle.getClientRects().length) {
-        setMobileMenuOpen(false);
+  const updateMobileMenuToggleLabels = (isOpen) => {
+    for (const btn of document.querySelectorAll('[data-i18n-open]')) {
+      const label = isOpen ? btn.dataset.i18nClose : btn.dataset.i18nOpen;
+      if (!label) {
+        continue;
       }
-    });
-    observer.observe(toggle);
+      btn.setAttribute('title', label);
+      btn.setAttribute('aria-label', label);
+    }
   };
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key !== 'Escape') {
-      return;
+  const setRestInert = (inert, ...except) => {
+    if (inert) {
+      for (const el of document.body.children) {
+        if (el.inert || except.some((target) => el.contains(target))) {
+          continue;
+        }
+        el.inert = true;
+        menuInertElements.add(el);
+      }
+    } else {
+      for (const el of menuInertElements) {
+        el.inert = false;
+      }
+      menuInertElements.clear();
     }
-    const menu = document.getElementById('mobile-menu');
-    if (menu && !menu.classList.contains('hidden')) {
-      setMobileMenuOpen(false);
-    }
-  });
+  };
 
   // ── Search Modal ──
 
   const SEARCH_MODAL_DIALOG_SELECTOR = 'dialog.pf-modal';
-
-  const setSearchTriggerExpanded = (expanded) => {
-    for (const btn of document.querySelectorAll('.search-trigger')) {
-      btn.setAttribute('aria-expanded', String(expanded));
-    }
-  };
-
-  const observeSearchDialogOpenState = (dialog) => {
-    setSearchTriggerExpanded(dialog.hasAttribute('open'));
-    const observer = new MutationObserver(() => {
-      setSearchTriggerExpanded(dialog.hasAttribute('open'));
-    });
-    observer.observe(dialog, { attributes: true, attributeFilter: ['open'] });
-  };
-
-  const syncSearchDialog = () => {
-    const dialog = document.querySelector(SEARCH_MODAL_DIALOG_SELECTOR);
-    if (!dialog) {
-      return false;
-    }
-
-    if (!dialog.dataset.searchTriggerWired) {
-      dialog.dataset.searchTriggerWired = 'true';
-      observeSearchDialogOpenState(dialog);
-    }
-    return true;
-  };
 
   const initSearchModal = () => {
     if (!document.querySelector('pagefind-modal')) {
@@ -199,6 +162,33 @@
     document.querySelector('pagefind-modal')?.open?.();
   };
 
+  const syncSearchDialog = () => {
+    const dialog = document.querySelector(SEARCH_MODAL_DIALOG_SELECTOR);
+    if (!dialog) {
+      return false;
+    }
+
+    if (!dialog.dataset.searchTriggerWired) {
+      dialog.dataset.searchTriggerWired = 'true';
+      observeSearchDialogOpenState(dialog);
+    }
+    return true;
+  };
+
+  const observeSearchDialogOpenState = (dialog) => {
+    setSearchTriggerExpanded(dialog.hasAttribute('open'));
+    const observer = new MutationObserver(() => {
+      setSearchTriggerExpanded(dialog.hasAttribute('open'));
+    });
+    observer.observe(dialog, { attributes: true, attributeFilter: ['open'] });
+  };
+
+  const setSearchTriggerExpanded = (expanded) => {
+    for (const btn of document.querySelectorAll('.search-trigger')) {
+      btn.setAttribute('aria-expanded', String(expanded));
+    }
+  };
+
   // ── Initialization ──
 
   const stored = getStoredTheme();
@@ -208,6 +198,16 @@
     if (!getStoredTheme()) {
       enableTransition();
       setTheme(e.matches ? DARK : LIGHT);
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') {
+      return;
+    }
+    const menu = document.getElementById('mobile-menu');
+    if (menu && !menu.classList.contains('hidden')) {
+      setMobileMenuOpen(false);
     }
   });
 

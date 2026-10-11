@@ -15,24 +15,14 @@
     'zh-tw': 'zh-TW',
   };
 
-  const langOf = () => {
-    const l = (document.documentElement.lang || 'en').toLowerCase();
-    return TWIKOO_LANG_MAP[l] || 'en';
-  };
-
   const initTwikoo = () => {
     const root = document.getElementById('twikoo');
     if (!root || !window.twikoo) {
       return;
     }
 
-    const apiUrl = root.dataset.twikooApiUrl;
-    if (!apiUrl) {
-      return;
-    }
-
     window.twikoo.init({
-      envId: apiUrl,
+      envId: root.dataset.twikooApiUrl,
       el: '#twikoo',
       path: window.location.pathname,
       lang: langOf(),
@@ -42,5 +32,10 @@
     });
   };
 
-  window.__onReady(initTwikoo);
+  const langOf = () => {
+    const l = (document.documentElement.lang || 'en').toLowerCase();
+    return TWIKOO_LANG_MAP[l] || 'en';
+  };
+
+  initTwikoo();
 })();

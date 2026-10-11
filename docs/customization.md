@@ -6,14 +6,21 @@ Most surfaces, including colors, typography, navigation, icons, copy, and the co
 
 IgnIt's design tokens live in `@theme { ... }` inside [`assets/css/_src/tokens.css`](../assets/css/_src/tokens.css), with a parallel set of dark-mode overrides under `[data-theme='dark']`. The token namespaces are:
 
-| Prefix        | Purpose                                                                       |
-| ------------- | ----------------------------------------------------------------------------- |
-| `--color-*`   | Page surfaces, text, links, borders, selection highlight, syntax theme        |
-| `--radius-*`  | Border radii (`md`, `lg`, `xl`, `card`)                                       |
-| `--shadow-*`  | Box shadows (`md`, `card`) + a `--drop-shadow-text` for over-image legibility |
-| `--surface-*` | Glass panel fills, borders, hover states, scroll shadow, overlay backdrop     |
-| `--callout-*` | Per-callout-kind accent colors (12 variants)                                  |
-| `--syntax-*`  | Code-block token colors                                                       |
+| Prefix            | Purpose                                                                               |
+| ----------------- | ------------------------------------------------------------------------------------- |
+| `--font-*`        | Body and code font stacks (`sans`, `mono`)                                            |
+| `--color-*`       | Page surfaces, text, links, borders, selection, and highlighted code lines            |
+| `--callout-*`     | Per-callout-type accent colors (12 types)                                             |
+| `--syntax-*`      | Code-block token colors                                                               |
+| `--radius-*`      | Border radii (`md`, `lg`, `xl`, `card`)                                               |
+| `--shadow-*`      | Box shadows (`md`, `card`, `glass`)                                                   |
+| `--drop-shadow-*` | Text drop shadow over images (`text`)                                                 |
+| `--blur-*`        | Glass panel backdrop blur (`glass`, `glass-control`, `glass-reading`)                 |
+| `--surface-*`     | Glass panel fills, borders, highlights, hover states, scroll shadow, overlay backdrop |
+| `--spacing-*`     | Header height, chrome inset, and the offsets derived from them                        |
+| `--scale-*`       | Home-card image hover zoom (`card-hover`)                                             |
+| `--animate-*`     | Image fade-in and mobile-menu animations                                              |
+| `--default-*`     | Tailwind defaults for monospace font features and transition easing                   |
 
 Sites override individual tokens by emitting their own CSS that re-declares the variable inside the appropriate scope. The declaration must hit the correct level: site-wide tokens go on `:root` or `[data-theme]`, dark-mode-only overrides go on `[data-theme='dark']`. The value is consumed everywhere the theme's compiled CSS reads it, so a single override propagates through every component that uses the token.
 
@@ -90,7 +97,7 @@ Bundled SVGs are stripped of `<title>` and `role="img"` markers (the parent anch
 
 The dispatcher resolves SVG slugs through kiln's path loader, which checks the site's templates directory before the theme's. To add or replace an icon:
 
-1. Save your SVG at `<your-site>/templates/_partials/icons/<slug>.svg`. The viewBox should be square (e.g. `0 0 24 24`), and the path should have no explicit `fill` so it picks up `currentColor` from the surrounding link.
+1. Save your SVG at `<your-site>/templates/_partials/icons/<slug>.svg`. The icon scales to fit its 1em-high slot, so any viewBox aspect ratio works. Leave the path without an explicit `fill` so it picks up `currentColor` from the surrounding link.
 2. Reference it from your menu config:
 
    ```toml
@@ -129,7 +136,7 @@ my-site/templates/_partials/comments/
 └── index.html
 ```
 
-The partial is responsible for emitting the provider's mount markup and CDN scripts. Theme defaults register CDN deps with SRI under `[params.deps.<provider>]` in `theme.toml`, and new providers follow the same pattern (see [`AGENTS.md`](../AGENTS.md#dependencies) for the SRI regeneration flow).
+The partial emits the provider's mount markup and any scripts it needs. IgnIt loads the bundled Twikoo client from `_partials/layout/body-deps.html`, using the version and SRI hash under `[params.deps.twikoo]` in `theme.toml`. A site provider can pin its own CDN scripts the same way (see [`AGENTS.md`](../AGENTS.md#dependencies) for the SRI regeneration flow).
 
 Once the partial is in place, set the provider in your site config:
 
@@ -168,6 +175,7 @@ See [kiln's publication rules](https://github.com/hakula139/kiln/blob/main/docs/
 | Favicon (32×32)  | `static/favicon.ico`          | Per-site brand mark                     |
 | Apple touch icon | `static/apple-touch-icon.png` | Per-site brand mark                     |
 | Web manifest     | `static/manifest.webmanifest` | App name, theme color, install icon set |
-| `robots.txt`     | `static/robots.txt`           | Crawler controls                        |
+
+kiln generates `robots.txt` and `sitemap.xml` itself, so a static file at either path fails the build with a route collision.
 
 Import the theme source before your site's CSS, as described in [Visual Tokens](#visual-tokens), so theme tokens and component classes remain available.
