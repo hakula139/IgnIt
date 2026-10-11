@@ -58,6 +58,6 @@ video_player_bilibili = "Bilibili"
 powered_by = "Powered by {kiln} & {ignit}"
 
 # 404
-error_404_title = "404"
+error_404_title = "404 Not Found"
 page_not_found = "The page you requested could not be found."
 back_to_home = "Back to home"
