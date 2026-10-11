@@ -1,8 +1,11 @@
 'use strict';
 
 (() => {
-  const themeFor = () =>
-    document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default';
+  let pending = Promise.resolve();
+
+  const scheduleRender = () => {
+    pending = pending.then(render).catch((err) => console.error('[mermaid]', err));
+  };
 
   const render = async () => {
     const blocks = document.querySelectorAll('pre.mermaid');
@@ -27,10 +30,13 @@
     }
   };
 
-  render();
+  const themeFor = () =>
+    document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default';
+
+  scheduleRender();
   new MutationObserver((muts) => {
     if (muts.some((m) => m.attributeName === 'data-theme')) {
-      render();
+      scheduleRender();
     }
   }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 })();
