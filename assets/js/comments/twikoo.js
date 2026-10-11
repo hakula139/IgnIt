@@ -15,11 +15,6 @@
     'zh-tw': 'zh-TW',
   };
 
-  const langOf = () => {
-    const l = (document.documentElement.lang || 'en').toLowerCase();
-    return TWIKOO_LANG_MAP[l] || 'en';
-  };
-
   const initTwikoo = () => {
     const root = document.getElementById('twikoo');
     if (!root || !window.twikoo) {
@@ -42,5 +37,10 @@
     });
   };
 
-  window.__onReady(initTwikoo);
+  const langOf = () => {
+    const l = (document.documentElement.lang || 'en').toLowerCase();
+    return TWIKOO_LANG_MAP[l] || 'en';
+  };
+
+  initTwikoo();
 })();

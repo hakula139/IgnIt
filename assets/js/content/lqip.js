@@ -1,8 +1,6 @@
 'use strict';
 
 (() => {
-  const markLoaded = (wrapper) => wrapper.classList.add('lqip-loaded');
-
   const init = () => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -38,5 +36,7 @@
     }
   };
 
-  window.__onReady(init);
+  const markLoaded = (wrapper) => wrapper.classList.add('lqip-loaded');
+
+  init();
 })();

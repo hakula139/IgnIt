@@ -28,5 +28,5 @@
     update();
   };
 
-  window.__onReady(init);
+  init();
 })();
