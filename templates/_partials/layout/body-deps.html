@@ -36,8 +36,8 @@
 {%- endif %}
 
 {%- if need_twikoo %}
-  {%- set twikoo = cdn_base ~ "/twikoo@" ~ deps.twikoo.version -%}
-  {{ cdn.script(twikoo ~ "/dist/twikoo.min.js", deps.twikoo.sri.js) }}
+  {%- set tk = cdn_base ~ "/twikoo@" ~ deps.twikoo.version -%}
+  {{ cdn.script(tk ~ "/dist/twikoo.min.js", deps.twikoo.sri.js) }}
   <script
     src="{{ asset_url('/assets/js/comments/twikoo.js') }}"
     defer

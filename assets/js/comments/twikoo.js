@@ -21,13 +21,8 @@
       return;
     }
 
-    const apiUrl = root.dataset.twikooApiUrl;
-    if (!apiUrl) {
-      return;
-    }
-
     window.twikoo.init({
-      envId: apiUrl,
+      envId: root.dataset.twikooApiUrl,
       el: '#twikoo',
       path: window.location.pathname,
       lang: langOf(),

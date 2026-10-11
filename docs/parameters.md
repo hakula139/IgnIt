@@ -84,7 +84,7 @@ visitor = true
 
 | Field     | Type     | Default | Description                                                                |
 | --------- | -------- | ------- | -------------------------------------------------------------------------- |
-| `api_url` | `string` | —       | Twikoo API endpoint.                                                       |
+| `api_url` | `string` | none    | Twikoo API endpoint. Comments stay hidden until it is set.                 |
 | `visitor` | `bool`   | `false` | Show and increment the Twikoo view count on each post and standalone page. |
 
 The visitor counter requires comments to be enabled with the Twikoo provider. It records raw page hits, so each successful Twikoo initialization increments the count, including reloads and repeat visits.
