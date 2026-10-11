@@ -16,16 +16,16 @@
   {%- endif %}
   <link
     rel="stylesheet"
-    href="{{ asset_url('/assets/css/site.css') | safe }}"
+    href="{{ asset_url('/assets/css/site.css') }}"
   >
   {%- if page_css %}
   <link rel="stylesheet" href="{{ page_css | safe }}">
   {%- endif %}
   <script
-    src="{{ asset_url('/assets/js/layout/theme.js') | safe }}"
+    src="{{ asset_url('/assets/js/layout/theme.js') }}"
   ></script>
   <script
-    src="{{ asset_url('/assets/js/util/dom-ready.js') | safe }}"
+    src="{{ asset_url('/assets/js/util/dom-ready.js') }}"
     defer
   ></script>
   {% include "_partials/layout/head-deps.html" %}
@@ -43,7 +43,7 @@
       {%- if bg.position_mobile %} --bg-position-mobile: {{ bg.position_mobile }};{% endif -%}
     "
   >
-    <img src="{{ asset_url(bg.image) | safe }}" alt="" decoding="async">
+    <img src="{{ asset_url(bg.image) }}" alt="" decoding="async">
   </span>
   {%- endif %}
   <a href="#site:main" class="skip-link">{{ t('skip_to_content') }}</a>
@@ -58,22 +58,21 @@
   {%- endif %}
   {# Defer scripts ordered by visual urgency: paint-affecting first, interaction-only last. #}
   <script
-    src="{{ asset_url('/assets/js/content/lqip.js') | safe }}"
+    src="{{ asset_url('/assets/js/content/lqip.js') }}"
     defer
   ></script>
   <script
-    src="{{ asset_url('/assets/js/content/content.js') | safe }}"
+    src="{{ asset_url('/assets/js/content/content.js') }}"
     defer
   ></script>
   <script
-    src="{{ asset_url('/assets/js/content/toc.js') | safe }}"
+    src="{{ asset_url('/assets/js/content/toc.js') }}"
     defer
   ></script>
   <script
-    src="{{ asset_url('/assets/js/layout/float-buttons.js') | safe }}"
+    src="{{ asset_url('/assets/js/layout/float-buttons.js') }}"
     defer
   ></script>
-  {%- if assets is defined %}
   {%- for script in assets.scripts %}
   <script
     src="{{ script.url | safe }}"
@@ -87,7 +86,6 @@
     {%- endif %}
   ></script>
   {%- endfor %}
-  {%- endif %}
   {% include "_partials/layout/body-deps.html" %}
 </body>
 </html>

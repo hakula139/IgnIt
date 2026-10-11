@@ -7,6 +7,7 @@ switch_to_dark = "切换至暗色主题"
 switch_to_light = "切换至亮色主题"
 
 # 列表
+all_posts = "所有文章"
 all_sections = "所有栏目"
 all_tags = "所有标签"
 more = "更多"
