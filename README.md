@@ -61,9 +61,6 @@ theme = "IgnIt"
 title = "My Site"
 language = "en"
 
-[params]
-fontawesome = true
-
 [params.home.profile]
 title = "Site Title"
 subtitle = "An optional tagline"
