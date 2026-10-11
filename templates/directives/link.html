@@ -4,7 +4,7 @@
 {%- set desc = named_args.desc | default(name) -%}
 {%- set logo = named_args.logo | default("") -%}
 <a
-  href="{{ url | safe }}"
+  href="{{ url }}"
   {{- directive.attrs(id, classes, "link-card not-prose") }}
 >
 {%- if logo %}

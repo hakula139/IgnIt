@@ -75,7 +75,7 @@
   ></script>
   {%- for script in assets.scripts %}
   <script
-    src="{{ script.url | safe }}"
+    src="{{ script.url }}"
     {%- if script.load == "defer" %}
     defer
     {%- elif script.load == "async" %}
