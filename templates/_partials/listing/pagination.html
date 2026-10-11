@@ -2,14 +2,14 @@
     <nav class="flex justify-center mt-8" aria-label="{{ t('pagination') }}">
       <div
         class="glass-panel glass-control pagination max-w-full px-3 py-2"
-        data-base-path="{{ pagination.base_path | safe }}"
+        data-base-path="{{ pagination.base_path }}"
       >
         <ul class="pagination-mobile flex items-center gap-2 sm:hidden">
           <li>
             {%- if pagination.prev_url %}
             <a
               class="pagination-link"
-              href="{{ pagination.prev_url | safe }}"
+              href="{{ pagination.prev_url }}"
               aria-label="{{ t('previous_page') }}"
             >&larr;</a>
             {%- else %}
@@ -42,7 +42,7 @@
             {%- if pagination.next_url %}
             <a
               class="pagination-link"
-              href="{{ pagination.next_url | safe }}"
+              href="{{ pagination.next_url }}"
               aria-label="{{ t('next_page') }}"
             >&rarr;</a>
             {%- else %}
@@ -60,7 +60,7 @@
           {%- if item.number %}
           <li>
             <a
-              href="{{ item.url | safe }}"
+              href="{{ item.url }}"
               class="pagination-link"
               {%- if item.is_current %} aria-current="page"{%- endif %}
             >{{ item.number }}</a>

@@ -1,16 +1,16 @@
 {%- if description %}
   <meta name="description" content="{{ description }}">
 {%- endif %}
-  <link rel="canonical" href="{{ url | safe }}">
+  <link rel="canonical" href="{{ url }}">
   <meta property="og:title" content="{{ title }}">
 {%- if description %}
   <meta property="og:description" content="{{ description }}">
 {%- endif %}
-  <meta property="og:url" content="{{ url | safe }}">
+  <meta property="og:url" content="{{ url }}">
   <meta property="og:type" content="{{ og_type }}">
   <meta property="og:site_name" content="{{ config.title }}">
 {%- if featured_image %}
-  <meta property="og:image" content="{{ featured_image.src | safe }}">
+  <meta property="og:image" content="{{ featured_image.src }}">
 {%- endif %}
   <meta
     name="twitter:card"

@@ -15,14 +15,14 @@
         {%- for bucket in buckets %}
         <div class="category-card">
           <h2 class="mb-2 font-medium">
-            <a href="{{ bucket.url | safe }}" class="animated-underline border-b-0">
+            <a href="{{ bucket.url }}" class="animated-underline border-b-0">
               <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ bucket.name }}
             </a>
           </h2>
           {%- for page in bucket.pages[:preview_limit] %}
           <div class="py-0.5 truncate text-sm">
             <a
-              href="{{ page.url | safe }}"
+              href="{{ page.url }}"
               class="animated-underline text-text border-b-0"
             >
               {{ page.title }}
@@ -32,7 +32,7 @@
           {%- if bucket.pages | length > preview_limit %}
           <div class="mt-1 text-right text-sm">
             <a
-              href="{{ bucket.url | safe }}"
+              href="{{ bucket.url }}"
               class="animated-underline text-text-tertiary border-b-0"
             >
               {{ t('more') }} &raquo;
@@ -46,7 +46,7 @@
       {%- else %}
       <div class="flex flex-wrap gap-3">
         {%- for bucket in buckets %}
-        <a href="{{ bucket.url | safe }}" class="tag-pill">
+        <a href="{{ bucket.url }}" class="tag-pill">
           {{ bucket.name }}
           <sup class="text-xs text-text-tertiary">{{ bucket.pages | length }}</sup>
         </a>

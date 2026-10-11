@@ -4,7 +4,7 @@
 {%- set external_items = menu_items | selectattr("external") | list -%}
 <header class="glass-panel glass-control chrome-frame header-nav">
   <div class="flex items-center justify-between w-full max-w-6xl mx-auto">
-    <a href="{{ config.base_url | safe }}/" class="header-logo shrink-0">
+    <a href="{{ config.base_url }}/" class="header-logo shrink-0">
       {{ config.title }}
     </a>
 
@@ -12,7 +12,7 @@
       {%- for item in internal_items %}
       {%- set item_label = t(item.name) %}
       <a
-        href="{{ item.url | safe }}"
+        href="{{ item.url }}"
         class="header-link"
         title="{{ item_label }}"
         aria-label="{{ item_label }}"
@@ -28,7 +28,7 @@
       {%- for item in external_items %}
       {%- set item_label = t(item.name) %}
       <a
-        href="{{ item.url | safe }}"
+        href="{{ item.url }}"
         class="header-link"
         title="{{ item_label }}"
         aria-label="{{ item_label }}"
@@ -91,7 +91,7 @@
   <div class="header-mobile">
     {%- for item in menu_items %}
     <a
-      href="{{ item.url | safe }}"
+      href="{{ item.url }}"
       class="header-mobile-link"
       style="--item-index: {{ loop.index0 }}"
     >
