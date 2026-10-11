@@ -21,7 +21,7 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     kiln = {
-      url = "github:hakula139/kiln/v0.5.0-alpha.1";
+      url = "github:hakula139/kiln/b95010b4f63b307dc04b3d972019eb2162c1c025";
       inputs.flake-utils.follows = "flake-utils";
     };
 
@@ -147,7 +147,6 @@
             preCommitCheck.enabledPackages
             ++ [
               kiln.packages.${system}.kiln
-              kiln.packages.${system}.pagefind
             ]
             ++ (with pkgs; [
               nodejs_24
