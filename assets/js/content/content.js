@@ -81,9 +81,9 @@
       if (link.protocol !== 'http:' && link.protocol !== 'https:') {
         continue;
       }
-      if (link.origin && link.origin !== origin) {
+      if (link.origin !== origin) {
         link.target = '_blank';
-        link.rel = 'noopener noreferrer';
+        link.relList.add('noopener', 'noreferrer');
       }
     }
   };
