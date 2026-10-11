@@ -25,6 +25,10 @@ tags = "标签"
 last_updated = "更新于"
 back_to_top = "回到顶部"
 
+# 代码块
+copy = "复制"
+copy_code = "复制代码"
+
 # 评论
 comments = "评论"
 jump_to_comments = "跳转至评论区"
