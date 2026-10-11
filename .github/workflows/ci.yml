@@ -27,6 +27,9 @@ jobs:
           name: hakula
           skipPush: true
 
+      - name: Nix checks
+        run: nix flake check
+
       - name: Install dependencies
         run: nix develop -c pnpm install --frozen-lockfile
 
