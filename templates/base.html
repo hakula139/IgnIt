@@ -1,3 +1,12 @@
+{#- Page dependencies shared by the layout partials, post template and comments. -#}
+{%- set cdn_base = config.params.cdn -%}
+{%- set deps = config.params.deps -%}
+{%- set comments = config.params.comments | default(value={}) -%}
+{%- set lightgallery = config.params.lightgallery | default(value={}) -%}
+{%- set need_comments = content is defined and comments.enabled -%}
+{%- set need_twikoo = need_comments and comments.provider == "twikoo" -%}
+{%- set need_lightgallery = lightgallery.enabled | default(false) -%}
+{%- set need_math = "math" in assets.features -%}
 <!DOCTYPE html>
 <html lang="{{ config.language }}" data-i18n-jump-to="{{ t('jump_to') }}">
 <head>

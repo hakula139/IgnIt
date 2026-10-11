@@ -11,7 +11,7 @@
       <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </a>
 
-    {%- if content is defined and config.params.comments and config.params.comments.enabled %}
+    {%- if need_comments %}
     <a
       id="jump-to-comments"
       href="#comments"

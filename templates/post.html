@@ -8,9 +8,8 @@
 {%- endblock %}
 
 {% block body %}
-{%- set comments = config.params.comments | default(value={}) -%}
 {%- set twikoo = comments.twikoo | default(value={}) -%}
-{%- set show_page_views = comments.enabled and comments.provider == "twikoo" and twikoo.visitor -%}
+{%- set show_page_views = need_twikoo and twikoo.visitor -%}
   <div class="max-w-6xl mx-auto px-2 sm:px-4 py-6">
     <div class="xl:flex xl:gap-8">
       <div class="flex-1 min-w-0 space-y-6">
