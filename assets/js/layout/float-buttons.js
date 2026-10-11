@@ -7,8 +7,10 @@
     const backToTop = document.getElementById('back-to-top');
     const jumpToComments = document.getElementById('jump-to-comments');
     const comments = document.getElementById('comments');
+    let frame = 0;
 
     const update = () => {
+      frame = 0;
       backToTop.inert = window.scrollY <= SCROLL_THRESHOLD;
       if (jumpToComments) {
         jumpToComments.inert =
@@ -16,8 +18,12 @@
       }
     };
 
-    window.addEventListener('scroll', update, { passive: true });
-    window.addEventListener('resize', update, { passive: true });
+    const scheduleUpdate = () => {
+      frame ||= requestAnimationFrame(update);
+    };
+
+    window.addEventListener('scroll', scheduleUpdate, { passive: true });
+    window.addEventListener('resize', scheduleUpdate, { passive: true });
 
     update();
   };
