@@ -21,7 +21,6 @@
         @apply border-link text-link;
       }
 
-      &.active,
       &[aria-current] {
         @apply border-link font-semibold text-link;
       }
