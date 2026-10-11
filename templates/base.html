@@ -14,13 +14,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% block title %}<title>{{ config.title }}</title>{% endblock %}
-  <link rel="icon" href="{{ config.base_url | safe }}/favicon.ico" sizes="32x32">
-  <link rel="apple-touch-icon" href="{{ config.base_url | safe }}/apple-touch-icon.png">
-  <link rel="manifest" href="{{ config.base_url | safe }}/manifest.webmanifest">
+  <link rel="icon" href="{{ config.base_url }}/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="{{ config.base_url }}/apple-touch-icon.png">
+  <link rel="manifest" href="{{ config.base_url }}/manifest.webmanifest">
   {%- if config.search.enabled %}
-  <link rel="stylesheet" href="{{ config.base_url | safe }}/pagefind/pagefind-component-ui.css">
+  <link rel="stylesheet" href="{{ config.base_url }}/pagefind/pagefind-component-ui.css">
   <script
-    src="{{ config.base_url | safe }}/pagefind/pagefind-component-ui.js"
+    src="{{ config.base_url }}/pagefind/pagefind-component-ui.js"
     type="module"
   ></script>
   {%- endif %}
@@ -29,7 +29,7 @@
     href="{{ asset_url('/assets/css/site.css') }}"
   >
   {%- if page_css %}
-  <link rel="stylesheet" href="{{ page_css | safe }}">
+  <link rel="stylesheet" href="{{ page_css }}">
   {%- endif %}
   <script
     src="{{ asset_url('/assets/js/layout/theme.js') }}"
@@ -44,7 +44,7 @@
   <span
     class="{% if bg.lqip_uri %}lqip {% endif %}body-bg"
     style="
-      {%- if bg.lqip_uri %}--lqip-uri: url('{{ bg.lqip_uri | safe }}');{% endif %}
+      {%- if bg.lqip_uri %}--lqip-uri: url('{{ bg.lqip_uri }}');{% endif %}
       {%- if bg.position %} --bg-position: {{ bg.position }};{% endif %}
       {%- if bg.position_mobile %} --bg-position-mobile: {{ bg.position_mobile }};{% endif -%}
     "

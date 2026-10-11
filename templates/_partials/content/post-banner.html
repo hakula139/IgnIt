@@ -3,16 +3,16 @@
   <div class="post-banner-media">
     {%- if featured_image.credit and featured_image.credit.url %}
     <a
-      href="{{ featured_image.credit.url | safe }}"
+      href="{{ featured_image.credit.url }}"
       class="post-banner-link"
       aria-label="{{ t('image_credit') }}{% if featured_image.credit.title %}: {{ featured_image.credit.title }}{% endif %}"
     >
     {%- endif %}
       {%- if featured_image.lqip_uri %}
-      <span class="lqip" style="--lqip-uri:url('{{ featured_image.lqip_uri | safe }}')">
+      <span class="lqip" style="--lqip-uri:url('{{ featured_image.lqip_uri }}')">
       {%- endif %}
         <img
-          src="{{ featured_image.src | safe }}"
+          src="{{ featured_image.src }}"
           alt="{{ title }}"
           class="post-featured-image post-banner-image"
           {%- if featured_image.width and featured_image.height %}

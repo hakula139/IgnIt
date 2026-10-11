@@ -4,7 +4,7 @@
   <ul class="post-footer-tags" aria-label="{{ t('tags') }}">
     {%- for tag in tags %}
     <li class="min-w-0 max-w-full">
-      <a href="{{ tag.url | safe }}" class="tag-pill break-words">{{ tag.name }}</a>
+      <a href="{{ tag.url }}" class="tag-pill break-words">{{ tag.name }}</a>
     </li>
     {%- endfor %}
   </ul>
