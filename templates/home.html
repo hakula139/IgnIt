@@ -8,7 +8,7 @@
 {%- endblock %}
 
 {% block body %}
-{%- set profile = config.params.home.profile %}
+{%- set profile = (config.params.home | default(value={})).profile %}
 {%- set socials = config.menu.social | default([]) %}
 {%- if profile %}
   <div class="home-container pt-6">
@@ -20,9 +20,7 @@
         alt="{{ config.author.name }}"
       >
       {%- endif %}
-      {%- if profile.title %}
-      <h1 class="text-xl font-semibold">{{ profile.title }}</h1>
-      {%- endif %}
+      <h1 class="text-xl font-semibold">{{ profile.title or config.title }}</h1>
       {%- if profile.subtitle %}
       <p class="mt-2 text-sm text-text-secondary">
         {{ text.render_lines(profile.subtitle, mobile_only=true) }}

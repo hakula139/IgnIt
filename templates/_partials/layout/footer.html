@@ -9,12 +9,16 @@
       {%- if footer.license %}
       <span>
         <span class="hidden min-[480px]:inline" aria-hidden="true">&middot;</span>
+        {%- if footer.license_url %}
         <a
           class="animated-underline whitespace-nowrap"
-          href="{{ footer.license_url | default('#') | safe }}"
+          href="{{ footer.license_url | safe }}"
         >
           {{ footer.license }}
         </a>
+        {%- else %}
+        <span class="whitespace-nowrap">{{ footer.license }}</span>
+        {%- endif %}
       </span>
       {%- endif %}
     </p>

@@ -10,6 +10,7 @@
       </h2>
 
       {%- if kind == "section" %}
+      {%- set preview_limit = 5 %}
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         {%- for bucket in buckets %}
         <div class="category-card">
@@ -18,7 +19,7 @@
               <i class="far fa-folder fa-fw" aria-hidden="true"></i> {{ bucket.name }}
             </a>
           </h3>
-          {%- for page in bucket.pages[:5] %}
+          {%- for page in bucket.pages[:preview_limit] %}
           <div class="py-0.5 truncate text-sm">
             <a
               href="{{ page.url | safe }}"
@@ -28,7 +29,7 @@
             </a>
           </div>
           {%- endfor %}
-          {%- if bucket.pages | length > 5 %}
+          {%- if bucket.pages | length > preview_limit %}
           <div class="mt-1 text-right text-sm">
             <a
               href="{{ bucket.url | safe }}"
