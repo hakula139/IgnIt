@@ -49,11 +49,7 @@
     }
 
     .line-numbers {
-      @apply w-px select-none;
-
-      pre {
-        @apply text-text-tertiary;
-      }
+      @apply w-px text-text-tertiary select-none;
     }
 
     /* ── Per-Line Highlight ── */
