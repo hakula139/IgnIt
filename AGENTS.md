@@ -14,7 +14,7 @@ Maple Mono's variable font needs the `calt` feature setting in `tokens.css` for 
 
 ## Templates and images
 
-Shared fragments belong in `templates/_partials/` and are included by path. Use `{%-` to trim whitespace before template tags while preserving HTML indentation. Use `-%}` only where trailing whitespace must be removed. Wrap attributes one per line when an opening tag becomes long. MiniJinja autoescaping encodes `/` in URLs. `asset_url()` already returns an escaped safe string, so don't add `| safe` to it. Use `| safe` for renderer-produced HTML. Leave ordinary text escaped.
+Shared fragments belong in `templates/_partials/` and are included by path. Use `{%-` to trim whitespace before template tags while preserving HTML indentation. Use `-%}` only where trailing whitespace must be removed. Wrap attributes one per line when an opening tag becomes long. MiniJinja autoescaping encodes `/` in URLs. `asset_url()` already returns an escaped safe string, so don't add `| safe` to it. Use `| safe` for other trusted URLs supplied by kiln or site content and for renderer-produced HTML. Leave ordinary text escaped.
 
 Wrap featured and background images in `.lqip` when `lqip_uri` exists. Follow [kiln's image rendering contract](https://github.com/hakula139/kiln/blob/main/docs/themes.md#image-rendering) when changing loading behavior.
 

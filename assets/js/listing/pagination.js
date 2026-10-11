@@ -3,7 +3,7 @@
 (() => {
   const initPagination = () => {
     for (const pagination of document.querySelectorAll('.pagination')) {
-      const base = pagination.dataset.baseUrl;
+      const basePath = pagination.dataset.basePath;
 
       for (const button of pagination.querySelectorAll('.pagination-jump')) {
         const input = button.nextElementSibling;
@@ -29,7 +29,7 @@
           } else if (event.key === 'Enter') {
             const number = Number(input.value);
             if (Number.isInteger(number) && input.checkValidity()) {
-              location.href = number === 1 ? `${base}/` : `${base}/page/${number}/`;
+              location.href = number === 1 ? `${basePath}/` : `${basePath}/page/${number}/`;
             } else {
               input.reportValidity();
             }
