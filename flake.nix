@@ -22,7 +22,7 @@
     flake-utils.url = "github:numtide/flake-utils";
 
     kiln = {
-      url = "github:hakula139/kiln/c557ec31226246776e9ee458292c3b278b359568";
+      url = "github:hakula139/kiln/89806063529c27b39c0de2897af169fe892fc14a";
       inputs = {
         flake-utils.follows = "flake-utils";
         git-hooks-nix.follows = "git-hooks-nix";
