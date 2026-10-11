@@ -47,6 +47,8 @@
       {%- endif %}
     </div>
   </div>
+{%- else %}
+  <h1 class="sr-only">{{ config.title }}</h1>
 {%- endif %}
 
 {%- if pages %}
@@ -79,12 +81,9 @@
       {%- endif %}
       <div class="home-card-overlay"></div>
       {%- if page.pinned %}
-      <span
-        class="home-card-pin glass-panel glass-control"
-        aria-label="{{ t('pinned') }}"
-        title="{{ t('pinned') }}"
-      >
+      <span class="home-card-pin glass-panel glass-control" title="{{ t('pinned') }}">
         <i class="fas fa-thumbtack" aria-hidden="true"></i>
+        <span class="sr-only">{{ t('pinned') }}</span>
       </span>
       {%- endif %}
       <div class="home-card-body">
@@ -131,9 +130,10 @@
         {%- if page.pinned %}
         <i
           class="fas fa-thumbtack post-entry-pin"
-          aria-label="{{ t('pinned') }}"
           title="{{ t('pinned') }}"
+          aria-hidden="true"
         ></i>
+        <span class="sr-only">{{ t('pinned') }}</span>
         {%- endif %}
         {{ page.title }}
       </a>
