@@ -4,13 +4,12 @@
   <div class="max-w-4xl mx-auto px-4 py-6">
     <div class="glass-panel p-6 sm:p-8">
       <h1 class="mb-6 text-xl font-semibold">
-        {%- if kind == "section" -%}
-          <i class="far fa-folder-open fa-fw" aria-hidden="true"></i> {{ title }}
-        {%- elif kind == "tag" -%}
-          <i class="fas fa-tag fa-fw" aria-hidden="true"></i> {{ title }}
-        {%- else -%}
-          {{ title }}
-        {%- endif -%}
+        {%- if kind == "section" %}
+        <i class="far fa-folder-open fa-fw" aria-hidden="true"></i>
+        {%- elif kind == "tag" %}
+        <i class="fas fa-tag fa-fw" aria-hidden="true"></i>
+        {%- endif %}
+        {{ title }}
       </h1>
 
       {%- include "_partials/listing/year-grouped-listing.html" %}

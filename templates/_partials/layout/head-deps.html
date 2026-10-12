@@ -13,7 +13,6 @@
   {{ cdn.stylesheet(fa ~ "/css/all.min.css", deps.fontawesome.sri.css) }}
 
 {%- if need_lightgallery %}
-  {%- set lg = cdn_base ~ "/lightgallery@" ~ deps.lightgallery.version -%}
   {%- if lightgallery.license_key %}
   <meta name="lg-license-key" content="{{ lightgallery.license_key }}">
   {%- endif %}
@@ -21,6 +20,5 @@
 {%- endif %}
 
 {%- if need_math or need_twikoo %}
-  {%- set katex = cdn_base ~ "/katex@" ~ deps.katex.version -%}
   {{ cdn.stylesheet(katex ~ "/dist/katex.min.css", deps.katex.sri.css) }}
 {%- endif %}

@@ -1,0 +1,26 @@
+{%- macro featured(image, class, alt="", eager=false) %}
+  {%- if image.lqip_uri %}
+  <span class="lqip" style="--lqip-uri:url('{{ image.lqip_uri }}')">
+  {%- endif %}
+    <img
+      class="{{ class }}"
+      src="{{ image.src }}"
+      alt="{{ alt }}"
+      {%- if image.width and image.height %}
+      width="{{ image.width }}"
+      height="{{ image.height }}"
+      {%- endif %}
+      style="object-position: {{ image.position | default('center', true) }}"
+      {%- if eager %}
+      loading="eager"
+      decoding="async"
+      fetchpriority="high"
+      {%- else %}
+      loading="lazy"
+      decoding="async"
+      {%- endif %}
+    >
+  {%- if image.lqip_uri %}
+  </span>
+  {%- endif %}
+{%- endmacro %}

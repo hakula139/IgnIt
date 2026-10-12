@@ -2,13 +2,15 @@
 {%- set is_post = content is defined -%}
 {%- set cdn_base = config.params.cdn -%}
 {%- set deps = config.params.deps -%}
-{%- set comments = config.params.comments | default(value={}) -%}
-{%- set twikoo = comments.twikoo | default(value={}) -%}
-{%- set lightgallery = config.params.lightgallery | default(value={}) -%}
+{%- set comments = config.params.comments | default({}) -%}
+{%- set twikoo = comments.twikoo | default({}) -%}
+{%- set lightgallery = config.params.lightgallery | default({}) -%}
 {%- set need_comments = is_post and comments.enabled and (comments.provider != "twikoo" or twikoo.api_url) -%}
 {%- set need_twikoo = need_comments and comments.provider == "twikoo" -%}
 {%- set need_lightgallery = is_post and lightgallery.enabled -%}
 {%- set need_math = "math" in assets.features -%}
+{%- set lg = cdn_base ~ "/lightgallery@" ~ deps.lightgallery.version -%}
+{%- set katex = cdn_base ~ "/katex@" ~ deps.katex.version -%}
 <!DOCTYPE html>
 <html lang="{{ config.language }}" data-i18n-jump-to="{{ t('jump_to') }}">
 <head>
@@ -33,7 +35,7 @@
   <script
     src="{{ asset_url('/assets/js/layout/theme.js') }}"
   ></script>
-  {% include "_partials/layout/head-deps.html" %}
+  {%- include "_partials/layout/head-deps.html" %}
   {%- block meta %}
   {%- include "_partials/layout/meta-og.html" %}
   {%- endblock %}
@@ -95,6 +97,6 @@
     {%- endif %}
   ></script>
   {%- endfor %}
-  {% include "_partials/layout/body-deps.html" %}
+  {%- include "_partials/layout/body-deps.html" %}
 </body>
 </html>

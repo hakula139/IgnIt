@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{%- import "_partials/macros/post-meta.html" as post_meta -%}
 
 {% block body %}
 {%- set show_page_views = need_twikoo and twikoo.visitor -%}
@@ -16,21 +17,7 @@
                 <div
                   class="mt-2 flex flex-wrap items-center gap-x-1.5 gap-y-1 text-sm text-text-secondary"
                 >
-                  {%- if date %}
-                  <time datetime="{{ date }}">{{ date[:10] }}</time>
-                  {%- endif %}
-                  {%- if section %}
-                  <span class="inline-flex items-center gap-1.5">
-                    {%- if date %}<span aria-hidden="true">·</span>{% endif -%}
-                    <a
-                      href="{{ section.url }}"
-                      class="inline-flex items-center gap-1 text-text-secondary border-b-0 transition-colors hover:text-link-hover"
-                    >
-                      <i class="far fa-folder fa-fw" aria-hidden="true"></i>
-                      <span>{{ section.name }}</span>
-                    </a>
-                  </span>
-                  {%- endif %}
+                  {{- post_meta.date_section(date, section, "article-meta-link") | indent(16) }}
                   {%- if show_page_views %}
                   <span class="inline-flex items-center gap-1.5">
                     {%- if date or section %}<span aria-hidden="true">·</span>{% endif -%}

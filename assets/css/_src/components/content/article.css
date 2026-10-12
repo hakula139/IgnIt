@@ -22,6 +22,14 @@
     @apply text-xl leading-tight font-semibold sm:text-2xl;
   }
 
+  .article-meta-link {
+    @apply inline-flex items-center gap-1 border-b-0 text-text-secondary transition-colors;
+
+    &:hover {
+      @apply text-link-hover;
+    }
+  }
+
   /* ── Post Banner ── */
 
   .post-banner {
