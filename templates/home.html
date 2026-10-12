@@ -2,10 +2,7 @@
 {%- import "_partials/macros/icon.html" as icons -%}
 {%- import "_partials/macros/text.html" as text -%}
 
-{% block head %}
-{%- set og_type = "website" -%}
-{%- include "_partials/content/meta-og.html" %}
-{%- endblock %}
+{% block title %}<title>{{ config.title }}</title>{% endblock %}
 
 {% block body %}
 {%- set profile = (config.params.home | default(value={})).profile %}

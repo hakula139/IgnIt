@@ -1,12 +1,5 @@
 {% extends "base.html" %}
 
-{% block title %}<title>{{ title }} - {{ config.title }}</title>{% endblock %}
-
-{% block head %}
-{%- set og_type = "article" -%}
-{%- include "_partials/content/meta-og.html" %}
-{%- endblock %}
-
 {% block body %}
 {%- set show_page_views = need_twikoo and twikoo.visitor -%}
   <div class="max-w-6xl mx-auto px-2 sm:px-4 py-6">

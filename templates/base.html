@@ -14,7 +14,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% block title %}<title>{{ config.title }}</title>{% endblock %}
+  {% block title %}<title>{{ title }} - {{ config.title }}</title>{% endblock %}
   {%- include "_partials/layout/site-icons.html" %}
   {%- if config.search.enabled %}
   <link rel="stylesheet" href="{{ config.base_url }}/pagefind/pagefind-component-ui.css">
@@ -34,7 +34,9 @@
     src="{{ asset_url('/assets/js/layout/theme.js') }}"
   ></script>
   {% include "_partials/layout/head-deps.html" %}
-  {%- block head %}{% endblock %}
+  {%- block meta %}
+  {%- include "_partials/layout/meta-og.html" %}
+  {%- endblock %}
 </head>
 
 <body>
