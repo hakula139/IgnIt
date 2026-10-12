@@ -15,9 +15,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% block title %}<title>{{ config.title }}</title>{% endblock %}
-  <link rel="icon" href="{{ config.base_url }}/favicon.ico" sizes="32x32">
-  <link rel="apple-touch-icon" href="{{ config.base_url }}/apple-touch-icon.png">
-  <link rel="manifest" href="{{ config.base_url }}/manifest.webmanifest">
+  {%- include "_partials/layout/site-icons.html" %}
   {%- if config.search.enabled %}
   <link rel="stylesheet" href="{{ config.base_url }}/pagefind/pagefind-component-ui.css">
   <script
