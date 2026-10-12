@@ -1,0 +1,14 @@
+{%- macro date_section(date, section, link_class) %}
+  {%- if date %}
+  <time datetime="{{ date }}">{{ date[:10] }}</time>
+  {%- endif %}
+  {%- if section %}
+  <span class="inline-flex items-center gap-1.5">
+    {%- if date %}<span aria-hidden="true">·</span>{% endif -%}
+    <a href="{{ section.url }}" class="{{ link_class }}">
+      <i class="far fa-folder fa-fw" aria-hidden="true"></i>
+      <span>{{ section.name }}</span>
+    </a>
+  </span>
+  {%- endif %}
+{%- endmacro %}

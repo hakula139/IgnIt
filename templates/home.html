@@ -1,15 +1,14 @@
 {% extends "base.html" %}
 {%- import "_partials/macros/icon.html" as icons -%}
+{%- import "_partials/macros/image.html" as image -%}
+{%- import "_partials/macros/post-meta.html" as post_meta -%}
 {%- import "_partials/macros/text.html" as text -%}
 
-{% block head %}
-{%- set og_type = "website" -%}
-{%- include "_partials/content/meta-og.html" %}
-{%- endblock %}
+{% block title %}<title>{{ config.title }}</title>{% endblock %}
 
 {% block body %}
-{%- set profile = (config.params.home | default(value={})).profile %}
-{%- set socials = config.menu.social | default([]) %}
+{%- set profile = (config.params.home | default({})).profile %}
+{%- set socials = config.menu.social | default([]) | selectattr("icon") | list %}
 {%- if profile %}
   <div class="home-container pt-6">
     <div class="glass-panel glass-control p-4 sm:p-8 text-center">
@@ -61,24 +60,7 @@
         class="home-card-link-cover"
         aria-label="{{ page.title }}"
       ></a>
-      {%- if page.featured_image.lqip_uri %}
-      <span class="lqip" style="--lqip-uri:url('{{ page.featured_image.lqip_uri }}')">
-      {%- endif %}
-        <img
-          class="home-card-image"
-          src="{{ page.featured_image.src }}"
-          alt=""
-          {%- if page.featured_image.width and page.featured_image.height %}
-          width="{{ page.featured_image.width }}"
-          height="{{ page.featured_image.height }}"
-          {%- endif %}
-          loading="lazy"
-          decoding="async"
-          style="object-position: {{ page.featured_image.position | default('center', true) }}"
-        >
-      {%- if page.featured_image.lqip_uri %}
-      </span>
-      {%- endif %}
+      {{- image.featured(page.featured_image, "home-card-image") | indent(4) }}
       <div class="home-card-overlay"></div>
       {%- if page.pinned %}
       <span class="home-card-pin glass-panel glass-control" title="{{ t('pinned') }}">
@@ -107,42 +89,16 @@
           {%- endif %}
           {%- if page.date or page.section %}
           <div class="home-card-meta">
-            {%- if page.date %}
-            <time datetime="{{ page.date }}">{{ page.date[:10] }}</time>
-            {%- endif %}
-            {%- if page.section %}
-            <span class="inline-flex items-center gap-1.5">
-              {%- if page.date %}<span aria-hidden="true">·</span>{% endif -%}
-              <a href="{{ page.section.url }}" class="home-card-link">
-                <i class="far fa-folder fa-fw" aria-hidden="true"></i>
-                <span>{{ page.section.name }}</span>
-              </a>
-            </span>
-            {%- endif %}
+            {{- post_meta.date_section(page.date, page.section, "home-card-link") | indent(10) }}
           </div>
           {%- endif %}
         </div>
       </div>
     </article>
     {%- else %}
-    <article class="glass-panel glass-reading post-entry px-4 sm:px-5 py-4">
-      <a href="{{ page.url }}" class="animated-underline post-entry-title font-medium">
-        {%- if page.pinned %}
-        <i
-          class="fas fa-thumbtack post-entry-pin"
-          title="{{ t('pinned') }}"
-          aria-hidden="true"
-        ></i>
-        <span class="sr-only">{{ t('pinned') }}</span>
-        {%- endif %}
-        {{ page.title }}
-      </a>
-      {%- if page.date %}
-      <time datetime="{{ page.date }}" class="post-entry-date">
-        {{ page.date[:10] }}
-      </time>
-      {%- endif %}
-    </article>
+    {%- with standalone = true %}
+    {%- include "_partials/listing/post-entry.html" %}
+    {%- endwith %}
     {%- endif %}
     {%- endfor %}
 

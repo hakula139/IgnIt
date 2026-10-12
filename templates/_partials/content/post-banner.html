@@ -1,3 +1,4 @@
+{%- import "_partials/macros/image.html" as image -%}
 {%- if featured_image %}
 <div class="post-banner aspect-[21/9]">
   <div class="post-banner-media">
@@ -8,25 +9,7 @@
       aria-label="{{ t('image_credit') }}{% if featured_image.credit.title %}: {{ featured_image.credit.title }}{% endif %}"
     >
     {%- endif %}
-      {%- if featured_image.lqip_uri %}
-      <span class="lqip" style="--lqip-uri:url('{{ featured_image.lqip_uri }}')">
-      {%- endif %}
-        <img
-          src="{{ featured_image.src }}"
-          alt="{{ title }}"
-          class="post-featured-image post-banner-image"
-          {%- if featured_image.width and featured_image.height %}
-          width="{{ featured_image.width }}"
-          height="{{ featured_image.height }}"
-          {%- endif %}
-          style="object-position: {{ featured_image.position | default('center', true) }}"
-          loading="eager"
-          decoding="async"
-          fetchpriority="high"
-        >
-      {%- if featured_image.lqip_uri %}
-      </span>
-      {%- endif %}
+      {{- image.featured(featured_image, "post-featured-image post-banner-image", alt=title, eager=true) | indent(4) }}
     {%- if featured_image.credit and featured_image.credit.url %}
     </a>
     {%- endif %}

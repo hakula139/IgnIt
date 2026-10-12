@@ -59,6 +59,7 @@ Common reasons to override:
 - **`base.html`**: add an analytics snippet, a custom stylesheet `<link>`, or extra `<meta>` tags before `</head>`.
 - **`_partials/layout/footer.html`**: replace the default attribution with your own copyright text.
 - **`_partials/comments/index.html`** and **`_partials/comments/<provider>.html`**: wire a comments provider IgnIt doesn't bundle (see [Comments providers](#comments-providers)).
+- **`_partials/layout/site-icons.html`**: link your favicon, touch icon, and web manifest (see [Site Icons](#site-icons)).
 
 Overriding wholesale loses future theme updates for that file. Prefer surgical overrides: copy only the partial that contains the bit you need to change and leave everything else inherited.
 
@@ -102,7 +103,7 @@ The dispatcher resolves SVG slugs through kiln's path loader, which checks the s
 
    ```toml
    [[menu.social]]
-   name = "menu_social_bangumi"
+   name = "Bangumi"
    url = "https://bgm.tv/user/example"
    icon = "svg:bangumi"
    weight = 9
@@ -117,7 +118,7 @@ In the header menus, the theme's CSS aligns FA and SVG icons to the same horizon
 
 Site translations layer on top of theme translations per [kiln's i18n model](https://github.com/hakula139/kiln/blob/main/docs/themes.md#internationalization). The full list of keys IgnIt ships is documented in [i18n](i18n.md).
 
-To translate the theme into a language IgnIt doesn't ship, place a complete `i18n/<bcp47>.toml` in your site. To override individual strings in a language IgnIt already supports, ship just the keys you want to change. Everything else falls through to the theme's translation.
+To translate the theme into a language IgnIt doesn't ship, place a complete `i18n/<lang>.toml` in your site. To override individual strings in a language IgnIt already supports, ship just the keys you want to change. Everything else falls through to the theme's translation.
 
 ```toml
 # my-site/i18n/en.toml
@@ -166,16 +167,17 @@ To swap the body font, override the token in your site CSS:
 
 Load the font with `@font-face` in your stylesheet. To replace bundled fonts, put files at the same paths under your site's `assets/fonts/`.
 
-## Public File Overrides
+## Site Icons
 
-See [kiln's publication rules](https://github.com/hakula139/kiln/blob/main/docs/assets.md#public-files) for directory layout and precedence. IgnIt sites commonly override these root-level files:
+IgnIt ships no favicon, touch icon, or web manifest. To link your own, put the files under `static/` and override the empty `_partials/layout/site-icons.html` partial, which `base.html` includes in `<head>`:
 
-| Asset            | Path                          | Reason to override                      |
-| ---------------- | ----------------------------- | --------------------------------------- |
-| Favicon (32×32)  | `static/favicon.ico`          | Per-site brand mark                     |
-| Apple touch icon | `static/apple-touch-icon.png` | Per-site brand mark                     |
-| Web manifest     | `static/manifest.webmanifest` | App name, theme color, install icon set |
+```html
+{#- Site icons and web manifest, linked from IgnIt's base.html. #}
+  <link rel="icon" href="{{ config.base_url }}/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="{{ config.base_url }}/apple-touch-icon.png">
+  <link rel="manifest" href="{{ config.base_url }}/manifest.webmanifest">
+```
 
-kiln generates `robots.txt` and `sitemap.xml` itself, so a static file at either path fails the build with a route collision.
+The leading comment ends with `#}`, which keeps the newline after it, so the indented links start on their own line when the output is not minified.
 
-Import the theme source before your site's CSS, as described in [Visual Tokens](#visual-tokens), so theme tokens and component classes remain available.
+See [kiln's publication rules](https://github.com/hakula139/kiln/blob/main/docs/assets.md#public-files) for the `static/` layout and precedence. kiln generates `robots.txt` and `sitemap.xml` itself, so a static file at either path fails the build with a route collision.

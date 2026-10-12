@@ -1,4 +1,4 @@
-{%- if tags or updated %}
+{%- if tags or updated or license %}
 <footer class="post-footer" data-pagefind-ignore>
   {%- if tags %}
   <ul class="post-footer-tags" aria-label="{{ t('tags') }}">
@@ -9,11 +9,21 @@
     {%- endfor %}
   </ul>
   {%- endif %}
-  {%- if updated %}
-  <p class="post-footer-updated">
-    <span>{{ t('last_updated') }}</span>
-    <time datetime="{{ updated }}" class="whitespace-nowrap">{{ updated[:10] }}</time>
-  </p>
+  {%- if updated or license %}
+  <div class="post-footer-meta">
+    {%- if updated %}
+    <p>
+      <span>{{ t('last_updated') }}</span>
+      <time datetime="{{ updated }}" class="whitespace-nowrap">{{ updated[:10] }}</time>
+    </p>
+    {%- endif %}
+    {%- if license %}
+    <p>
+      <span>{{ t('license') }}</span>
+      <span>{{ license }}</span>
+    </p>
+    {%- endif %}
+  </div>
   {%- endif %}
 </footer>
 {%- endif %}

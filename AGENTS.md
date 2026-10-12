@@ -8,7 +8,7 @@ IgnIt supplies MiniJinja templates, Tailwind CSS, and JavaScript to [kiln](https
 
 Follow [kiln's asset and stylesheet contracts](https://github.com/hakula139/kiln/blob/main/docs/assets.md). Preserve handwritten source comments.
 
-Keep CSS rules in the partial for their concern. Use semantic component classes for repeated patterns and Tailwind utilities for small layout or responsive adjustments in templates. Define shared tokens in `tokens.css` under `@theme`, with dark values under `[data-theme='dark']`. Import order controls precedence within a layer. `prose.css`, `mermaid.css`, and `comments.css` contain unlayered overrides for typography or third-party styles. `print.css` must remain unlayered to take precedence when printing. Use Tailwind v4 utility names and trailing `!` for important utilities in `@apply`.
+Keep CSS rules in the partial for their concern. Use semantic component classes for repeated patterns and Tailwind utilities for small layout or responsive adjustments in templates. Define shared tokens in `tokens.css` under `@theme`, with dark values under `[data-theme='dark']`. Import order controls precedence within a layer. Rules that override `prose` typography or third-party styles stay unlayered. `print.css` must remain unlayered to take precedence when printing. Use Tailwind v4 utility names and trailing `!` for important utilities in `@apply`.
 
 Maple Mono's variable font needs the `calt` feature setting in `tokens.css` for its ligatures.
 

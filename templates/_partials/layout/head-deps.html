@@ -1,9 +1,7 @@
 {%- import "_partials/macros/cdn.html" as cdn -%}
-{%- set need_fontawesome = config.params.fontawesome | default(false) -%}
+{%- set fa = cdn_base ~ "/@fortawesome/fontawesome-free@" ~ deps.fontawesome.version -%}
 
-{%- if need_fontawesome %}
-  {%- set fa = cdn_base ~ "/@fortawesome/fontawesome-free@" ~ deps.fontawesome.version -%}
-  {%- for font in ["fa-solid-900", "fa-regular-400", "fa-brands-400"] %}
+{%- for font in ["fa-solid-900", "fa-regular-400", "fa-brands-400"] %}
   <link
     rel="preload"
     href="{{ fa }}/webfonts/{{ font }}.woff2"
@@ -11,12 +9,10 @@
     type="font/woff2"
     crossorigin
   >
-  {%- endfor %}
+{%- endfor %}
   {{ cdn.stylesheet(fa ~ "/css/all.min.css", deps.fontawesome.sri.css) }}
-{%- endif %}
 
 {%- if need_lightgallery %}
-  {%- set lg = cdn_base ~ "/lightgallery@" ~ deps.lightgallery.version -%}
   {%- if lightgallery.license_key %}
   <meta name="lg-license-key" content="{{ lightgallery.license_key }}">
   {%- endif %}
@@ -24,6 +20,5 @@
 {%- endif %}
 
 {%- if need_math or need_twikoo %}
-  {%- set katex = cdn_base ~ "/katex@" ~ deps.katex.version -%}
   {{ cdn.stylesheet(katex ~ "/dist/katex.min.css", deps.katex.sri.css) }}
 {%- endif %}

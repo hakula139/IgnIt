@@ -11,7 +11,7 @@ Top-level theme switches.
 | `cdn`                | `string` | `"https://cdn.jsdelivr.net/npm"` | CDN base URL for vendor dependencies (Font Awesome, KaTeX, lightGallery, Mermaid, Twikoo). Swap to a mirror or self-hosted base if needed.                                   |
 | `code_max_lines`     | `int`    | `40`                             | Maximum visible lines before fenced code blocks gain a vertical scrollbar. `0` disables the limit.                                                                           |
 | `emojis`             | `bool`   | `true`                           | Replace `:shortcode:` with the corresponding Unicode emoji during rendering.                                                                                                 |
-| `fontawesome`        | `bool`   | `true`                           | Load the Font Awesome stylesheet. Disable when no `fa-*` classes are referenced anywhere in templates or content.                                                            |
+| `fontawesome`        | `bool`   | `true`                           | Render `:(class):` icon shortcodes in content as Font Awesome `<i>` elements. The theme loads Font Awesome on every page regardless.                                         |
 | `paginate`           | `int`    | `10`                             | Posts per listing page. `home.paginate` and `section.paginate` override it per listing, and tag archives always use it.                                                      |
 | `table_nowrap_width` | `int`    | `30`                             | No-wrap threshold in terminal columns (CJK and emoji count as 2). Wrapping cells have a minimum width of half this value in em. `0` allows non-empty columns to wrap freely. |
 
@@ -26,7 +26,7 @@ Site-wide background image with optional LQIP backdrop. Omit the table to use so
 | `position`        | `string` | `"center"`               | Desktop CSS `object-position` value (e.g., `"top"`, `"70% 50%"`).                                                                    |
 | `position_mobile` | `string` | falls back to `position` | Mobile-only CSS `object-position`. Useful for crops that frame poorly on portrait viewports.                                         |
 
-`lqip_uri` is a hand-rolled placeholder because kiln auto-generates LQIPs only for content `<img>` tags. See [kiln's image pipeline docs](https://github.com/hakula139/kiln/blob/main/docs/themes.md#image-rendering) for the data-URI format.
+`lqip_uri` is a hand-rolled placeholder because kiln does not process image paths in `[params]`. See [kiln's image pipeline docs](https://github.com/hakula139/kiln/blob/main/docs/themes.md#image-rendering) for the data-URI format.
 
 ## `[params.home]` / `[params.home.profile]`
 
@@ -93,7 +93,7 @@ Adding a provider is a [Customization](customization.md#comments-providers) topi
 
 ## `[params.lightgallery]`
 
-Fullscreen gallery for article figures and Twikoo content images. Enabling it loads lightGallery's core, thumbnail, and zoom assets.
+Fullscreen gallery for article figures and Twikoo content images. Enabling it loads lightGallery's core, thumbnail, and zoom assets on post pages.
 
 ```toml
 [params.lightgallery]
@@ -103,7 +103,7 @@ license_key = "your-license-key"
 
 | Field         | Type     | Default | Description                                                                                                                                             |
 | ------------- | -------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `enabled`     | `bool`   | `false` | Enable gallery wrapping and load the lightGallery assets.                                                                                               |
+| `enabled`     | `bool`   | `false` | Enable gallery wrapping and load the lightGallery assets on post pages.                                                                                 |
 | `license_key` | `string` | none    | License key passed to lightGallery. Omit it to use the temporary evaluation key. See [lightGallery licensing](https://www.lightgalleryjs.com/license/). |
 
 ## `[params.footer]`
@@ -132,3 +132,5 @@ Pinned versions and SRI hashes for vendor CDN dependencies. The table is theme-i
 ## Menu Groups
 
 `[[menu.main]]` populates the header navigation, and `[[menu.social]]` populates the home profile social row. Both follow [kiln's menu schema](https://github.com/hakula139/kiln/blob/main/docs/themes.md#navigation-menus). IgnIt extends the `icon` field to accept either a Font Awesome class string (`"fab fa-github"`) or a `svg:<slug>` reference resolved against `templates/_partials/icons/<slug>.svg`. See [Customization → Social icons](customization.md#social-icons) for the bundled registry and the override pattern.
+
+In the header, `external = true` moves an item past a divider after the internal links, and an item without `icon` shows its name as text. The social row has room only for icons, so it skips items without one. There, `external = true` opens the link in a new tab and marks it `rel="me"`, so reserve it for your profile pages.

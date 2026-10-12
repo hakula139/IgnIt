@@ -30,11 +30,11 @@ A theme for [kiln](https://github.com/hakula139/kiln) built with Tailwind CSS an
 
 ## Documentation
 
-| Document                               | Description                                                                         |
-| -------------------------------------- | ----------------------------------------------------------------------------------- |
-| [Customization](docs/customization.md) | Override visual tokens, templates, social icons, comments, fonts, and static assets |
-| [Parameters](docs/parameters.md)       | `[params]` schema reference: defaults, types, where each value is rendered          |
-| [i18n](docs/i18n.md)                   | Translatable string reference: keys, English defaults, override pattern             |
+| Document                               | Description                                                                      |
+| -------------------------------------- | -------------------------------------------------------------------------------- |
+| [Customization](docs/customization.md) | Override visual tokens, templates, social icons, comments, fonts, and site icons |
+| [Parameters](docs/parameters.md)       | `[params]` schema reference: defaults, types, where each value is rendered       |
+| [i18n](docs/i18n.md)                   | Translatable string reference: keys, English defaults, override pattern          |
 
 ## Installation
 

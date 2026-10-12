@@ -1,3 +1,35 @@
+{%- macro step_link(url, label, arrow) %}
+            {%- if url %}
+            <a
+              class="pagination-link"
+              href="{{ url }}"
+              aria-label="{{ label }}"
+            >{{ arrow }}</a>
+            {%- else %}
+            <button
+              class="pagination-link"
+              type="button"
+              disabled
+              aria-label="{{ label }}"
+            >{{ arrow }}</button>
+            {%- endif %}
+{%- endmacro %}
+
+{%- macro jump_input(total_pages, value=none) %}
+            <input
+              class="pagination-input"
+              hidden
+              type="number"
+              min="1"
+              max="{{ total_pages }}"
+              {%- if value %}
+              value="{{ value }}"
+              {%- endif %}
+              required
+              aria-label="{{ t('jump_to_page') }}"
+            >
+{%- endmacro %}
+
 {%- if pagination.total_pages > 1 %}
     <nav class="flex justify-center mt-8" aria-label="{{ t('pagination') }}">
       <div
@@ -6,20 +38,7 @@
       >
         <ul class="pagination-mobile flex items-center gap-2 sm:hidden">
           <li>
-            {%- if pagination.prev_url %}
-            <a
-              class="pagination-link"
-              href="{{ pagination.prev_url }}"
-              aria-label="{{ t('previous_page') }}"
-            >&larr;</a>
-            {%- else %}
-            <button
-              class="pagination-link"
-              type="button"
-              disabled
-              aria-label="{{ t('previous_page') }}"
-            >&larr;</button>
-            {%- endif %}
+            {{- step_link(pagination.prev_url, t('previous_page'), "←") }}
           </li>
           <li class="pagination-current">
             <button
@@ -27,32 +46,10 @@
               type="button"
               aria-label="{{ t('jump_to_page') }} {{ pagination.current_page }} / {{ pagination.total_pages }}"
             >{{ pagination.current_page }} / {{ pagination.total_pages }}</button>
-            <input
-              class="pagination-input"
-              hidden
-              type="number"
-              min="1"
-              max="{{ pagination.total_pages }}"
-              value="{{ pagination.current_page }}"
-              required
-              aria-label="{{ t('jump_to_page') }}"
-            >
+            {{- jump_input(pagination.total_pages, pagination.current_page) }}
           </li>
           <li>
-            {%- if pagination.next_url %}
-            <a
-              class="pagination-link"
-              href="{{ pagination.next_url }}"
-              aria-label="{{ t('next_page') }}"
-            >&rarr;</a>
-            {%- else %}
-            <button
-              class="pagination-link"
-              type="button"
-              disabled
-              aria-label="{{ t('next_page') }}"
-            >&rarr;</button>
-            {%- endif %}
+            {{- step_link(pagination.next_url, t('next_page'), "→") }}
           </li>
         </ul>
         <ul class="pagination-desktop hidden flex-wrap items-center justify-center gap-1 sm:flex">
@@ -72,15 +69,7 @@
               type="button"
               aria-label="{{ t('jump_to_page') }}"
             >&hellip;</button>
-            <input
-              class="pagination-input"
-              hidden
-              type="number"
-              min="1"
-              max="{{ pagination.total_pages }}"
-              required
-              aria-label="{{ t('jump_to_page') }}"
-            >
+            {{- jump_input(pagination.total_pages) }}
           </li>
           {%- endif %}
         {%- endfor %}

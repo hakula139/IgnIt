@@ -7,7 +7,7 @@
     @apply flex min-w-0 flex-wrap gap-2;
   }
 
-  .post-footer-updated {
-    @apply ml-auto inline-flex flex-wrap items-baseline gap-x-1.5 text-text-secondary;
+  .post-footer-meta {
+    @apply ml-auto flex max-w-full min-w-0 flex-col items-end gap-1 text-right text-text-secondary;
   }
 }

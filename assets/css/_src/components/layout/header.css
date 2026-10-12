@@ -15,7 +15,7 @@
     }
   }
 
-  /* ── Desktop Nav (icon-only anchors and buttons) ── */
+  /* ── Desktop Nav ── */
 
   .header-link,
   .header-icon {
@@ -29,6 +29,10 @@
 
   .header-link {
     @apply border-b-0;
+  }
+
+  .header-link-text {
+    @apply aspect-auto px-3 text-sm;
   }
 
   .header-icon {

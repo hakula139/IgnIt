@@ -1,11 +1,22 @@
-    <article class="post-entry">
+{#- A `standalone` entry sits outside a year-grouped list, so it shows its full date and pin state. #}
+    <article class="post-entry{% if standalone %} glass-panel glass-reading px-4 sm:px-5 py-4{% endif %}">
       <a
         href="{{ page.url }}"
-        class="animated-underline post-entry-title"
-      >{{ page.title }}</a>
+        class="animated-underline post-entry-title{% if standalone %} font-medium{% endif %}"
+      >
+        {%- if standalone and page.pinned %}
+        <i
+          class="fas fa-thumbtack post-entry-pin"
+          title="{{ t('pinned') }}"
+          aria-hidden="true"
+        ></i>
+        <span class="sr-only">{{ t('pinned') }}</span>
+        {%- endif %}
+        {{ page.title -}}
+      </a>
       {%- if page.date %}
       <time datetime="{{ page.date }}" class="post-entry-date">
-        {{- page.date[5:10] -}}
+        {{- page.date[:10] if standalone else page.date[5:10] -}}
       </time>
       {%- endif %}
     </article>
