@@ -24,6 +24,7 @@ table_of_contents = "Table of Contents"
 jump_to = "Jump to"
 tags = "Tags"
 last_updated = "Last updated"
+license = "License"
 back_to_top = "Back to top"
 
 # Code blocks
