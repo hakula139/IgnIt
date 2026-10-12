@@ -26,7 +26,7 @@ Site-wide background image with optional LQIP backdrop. Omit the table to use so
 | `position`        | `string` | `"center"`               | Desktop CSS `object-position` value (e.g., `"top"`, `"70% 50%"`).                                                                    |
 | `position_mobile` | `string` | falls back to `position` | Mobile-only CSS `object-position`. Useful for crops that frame poorly on portrait viewports.                                         |
 
-`lqip_uri` is a hand-rolled placeholder because kiln auto-generates LQIPs only for content `<img>` tags. See [kiln's image pipeline docs](https://github.com/hakula139/kiln/blob/main/docs/themes.md#image-rendering) for the data-URI format.
+`lqip_uri` is a hand-rolled placeholder because kiln does not process image paths in `[params]`. See [kiln's image pipeline docs](https://github.com/hakula139/kiln/blob/main/docs/themes.md#image-rendering) for the data-URI format.
 
 ## `[params.home]` / `[params.home.profile]`
 

@@ -103,7 +103,7 @@ The dispatcher resolves SVG slugs through kiln's path loader, which checks the s
 
    ```toml
    [[menu.social]]
-   name = "menu_social_bangumi"
+   name = "Bangumi"
    url = "https://bgm.tv/user/example"
    icon = "svg:bangumi"
    weight = 9
@@ -118,7 +118,7 @@ In the header menus, the theme's CSS aligns FA and SVG icons to the same horizon
 
 Site translations layer on top of theme translations per [kiln's i18n model](https://github.com/hakula139/kiln/blob/main/docs/themes.md#internationalization). The full list of keys IgnIt ships is documented in [i18n](i18n.md).
 
-To translate the theme into a language IgnIt doesn't ship, place a complete `i18n/<bcp47>.toml` in your site. To override individual strings in a language IgnIt already supports, ship just the keys you want to change. Everything else falls through to the theme's translation.
+To translate the theme into a language IgnIt doesn't ship, place a complete `i18n/<lang>.toml` in your site. To override individual strings in a language IgnIt already supports, ship just the keys you want to change. Everything else falls through to the theme's translation.
 
 ```toml
 # my-site/i18n/en.toml
