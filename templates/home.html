@@ -9,7 +9,7 @@
 
 {% block body %}
 {%- set profile = (config.params.home | default(value={})).profile %}
-{%- set socials = config.menu.social | default([]) %}
+{%- set socials = config.menu.social | default([]) | selectattr("icon") | list %}
 {%- if profile %}
   <div class="home-container pt-6">
     <div class="glass-panel glass-control p-4 sm:p-8 text-center">

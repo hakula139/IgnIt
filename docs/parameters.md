@@ -132,3 +132,5 @@ Pinned versions and SRI hashes for vendor CDN dependencies. The table is theme-i
 ## Menu Groups
 
 `[[menu.main]]` populates the header navigation, and `[[menu.social]]` populates the home profile social row. Both follow [kiln's menu schema](https://github.com/hakula139/kiln/blob/main/docs/themes.md#navigation-menus). IgnIt extends the `icon` field to accept either a Font Awesome class string (`"fab fa-github"`) or a `svg:<slug>` reference resolved against `templates/_partials/icons/<slug>.svg`. See [Customization → Social icons](customization.md#social-icons) for the bundled registry and the override pattern.
+
+In the header, `external = true` moves an item past a divider after the internal links, and an item without `icon` shows its name as text. The social row has room only for icons, so it skips items without one. There, `external = true` opens the link in a new tab and marks it `rel="me"`, so reserve it for your profile pages.

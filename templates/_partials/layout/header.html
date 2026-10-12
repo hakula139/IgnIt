@@ -9,32 +9,25 @@
     </a>
 
     <nav class="hidden md:flex items-center gap-1 whitespace-nowrap">
-      {%- for item in internal_items %}
-      {%- set item_label = t(item.name) %}
-      <a
-        href="{{ item.url }}"
-        class="header-link"
-        title="{{ item_label }}"
-        aria-label="{{ item_label }}"
-      >
-        {{- icons.render(item.icon) -}}
-      </a>
-      {%- endfor %}
-
-      {%- if internal_items and external_items %}
+      {%- for group in [internal_items, external_items] if group %}
+      {%- if not loop.first %}
       <span class="header-divider" aria-hidden="true"></span>
       {%- endif %}
-
-      {%- for item in external_items %}
+      {%- for item in group %}
       {%- set item_label = t(item.name) %}
       <a
         href="{{ item.url }}"
+        {%- if item.icon %}
         class="header-link"
         title="{{ item_label }}"
         aria-label="{{ item_label }}"
+        {%- else %}
+        class="header-link header-link-text"
+        {%- endif %}
       >
-        {{- icons.render(item.icon) -}}
+        {{- icons.render(item.icon) if item.icon else item_label -}}
       </a>
+      {%- endfor %}
       {%- endfor %}
 
       {%- if menu_items %}
