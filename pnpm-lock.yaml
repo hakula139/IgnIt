@@ -10,7 +10,7 @@ importers:
     devDependencies:
       '@eslint/js':
         specifier: ^10.0.1
-        version: 10.0.1(eslint@10.12.0)
+        version: 10.0.1(eslint@10.13.0)
       '@tailwindcss/typography':
         specifier: ^0.5.20
         version: 0.5.20(tailwindcss@4.3.3)
@@ -25,7 +25,7 @@ importers:
         version: 0.63.0
       eslint:
         specifier: ^10.11.0
-        version: 10.12.0
+        version: 10.13.0
       globals:
         specifier: ^17.12.0
         version: 17.13.0
@@ -524,8 +524,8 @@ packages:
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
 
-  argparse@3.0.2:
-    resolution: {integrity: sha512-mFdDM6WqWKraGLsVb+C9CahPnzTXOefAOLq3jYcca2YZ8bEWpr++Tzj+zSaKW9+X9L5uSxcm1AZ3Y6aZJ09OhQ==}
+  argparse@3.0.3:
+    resolution: {integrity: sha512-Sn98ftV3KfsO8xfLPHG6oT8y+b0yvbrLgZjgPDXsharNY15tTAjqIsIju4S32nl6/iEUNNE4v+yL2Zhm8ooP3w==}
 
   array-timsort@1.0.3:
     resolution: {integrity: sha512-/+3GRL7dDAGEfM6TseQk/U+mi18TU2Ms9I3UlLdUMhz2hbvGNTKdj9xniwXfUqgYhHxRx0+8UnKkvlNwVU+cWQ==}
@@ -678,8 +678,8 @@ packages:
     resolution: {integrity: sha512-tD40eHxA35h0PEIZNeIjkHoDR4YjjJp34biM0mDvplBe//mB+IHCqHDGV7pxF+7MklTvighcCPPZC7ynWyjdTA==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
 
-  eslint@10.12.0:
-    resolution: {integrity: sha512-npHjrHb2o4ehH3mE+YuxABR+0gyb0aVWCIolgJDArwCiHEIsonBm3ZKjel5b0U5+a+MbEvIyRCGCzD3eKKK2NA==}
+  eslint@10.13.0:
+    resolution: {integrity: sha512-UohDjD4zSzEwhf58M3O7vc/ycc8O1I7dNlhtD0WxE8Px8EHNJKtUwzBqrzeGhisRuv2ag4sAYswszCJRgKXYUg==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
     hasBin: true
     peerDependencies:
@@ -1511,9 +1511,9 @@ snapshots:
   '@dprint/win32-x64@0.63.0':
     optional: true
 
-  '@eslint-community/eslint-utils@4.10.1(eslint@10.12.0)':
+  '@eslint-community/eslint-utils@4.10.1(eslint@10.13.0)':
     dependencies:
-      eslint: 10.12.0
+      eslint: 10.13.0
       eslint-visitor-keys: 3.4.3
 
   '@eslint-community/regexpp@4.12.2': {}
@@ -1534,9 +1534,9 @@ snapshots:
     dependencies:
       '@types/json-schema': 7.0.15
 
-  '@eslint/js@10.0.1(eslint@10.12.0)':
+  '@eslint/js@10.0.1(eslint@10.13.0)':
     optionalDependencies:
-      eslint: 10.12.0
+      eslint: 10.13.0
 
   '@eslint/object-schema@3.0.5': {}
 
@@ -1623,7 +1623,7 @@ snapshots:
 
   argparse@2.0.1: {}
 
-  argparse@3.0.2: {}
+  argparse@3.0.3: {}
 
   array-timsort@1.0.3: {}
 
@@ -1822,9 +1822,9 @@ snapshots:
 
   eslint-visitor-keys@5.0.1: {}
 
-  eslint@10.12.0:
+  eslint@10.13.0:
     dependencies:
-      '@eslint-community/eslint-utils': 4.10.1(eslint@10.12.0)
+      '@eslint-community/eslint-utils': 4.10.1(eslint@10.13.0)
       '@eslint-community/regexpp': 4.12.2
       '@eslint/config-array': 0.23.5
       '@eslint/config-helpers': 0.7.0
@@ -2030,7 +2030,7 @@ snapshots:
 
   markdown-it@15.0.1:
     dependencies:
-      argparse: 3.0.2
+      argparse: 3.0.3
       entities: 8.1.0
       linkify-it: 6.1.0
       mdurl: 2.1.0
