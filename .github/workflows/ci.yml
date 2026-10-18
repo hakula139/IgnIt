@@ -11,6 +11,9 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  CACHIX_NAME: hakula
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -24,7 +27,7 @@ jobs:
       - name: Set up Cachix
         uses: cachix/cachix-action@v17
         with:
-          name: hakula
+          name: ${{ env.CACHIX_NAME }}
           skipPush: true
 
       - name: Nix checks
