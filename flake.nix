@@ -138,6 +138,8 @@
           inherit hooks;
           src = ./.;
         };
+
+        git = pkgs.lib.getExe pkgs.git;
       in
       {
         # ----------------------------------------------------------------------
@@ -154,7 +156,14 @@
               pnpm
             ]);
 
-          inherit (preCommit) shellHook;
+          # git-hooks.nix stores a hooks path relative to the main checkout, which linked worktrees
+          # can't resolve (cachix/git-hooks.nix#688), so commits there would skip the hooks.
+          shellHook = ''
+            ${preCommit.shellHook}
+            if common=$(${git} rev-parse --path-format=absolute --git-common-dir 2>/dev/null); then
+              ${git} config --local core.hooksPath "$common/hooks"
+            fi
+          '';
         };
 
         # ----------------------------------------------------------------------
