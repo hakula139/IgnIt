@@ -4,12 +4,12 @@
     "build": "kiln build --root example",
     "dev": "kiln serve --root example",
     "format": "pnpm format:prettier && pnpm format:markdown && pnpm format:toml",
-    "format:prettier": "prettier --check $(git ls-files '*.css' '*.js' '*.mjs' '*.json')",
-    "format:markdown": "dprint check $(git ls-files '*.md')",
-    "format:toml": "taplo format --check $(git ls-files '*.toml')",
+    "format:prettier": "prettier --check \"**/*.{css,js,json,jsonc,mjs,yaml,yml}\"",
+    "format:markdown": "dprint check",
+    "format:toml": "taplo format --check",
     "lint": "pnpm lint:md && pnpm lint:js",
     "lint:js": "eslint .",
-    "lint:md": "markdownlint-cli2 $(git ls-files '*.md')",
+    "lint:md": "markdownlint-cli2 \"**/*.md\"",
     "spellcheck": "git ls-files | cspell --no-progress --file-list stdin"
   },
   "devDependencies": {

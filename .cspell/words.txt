@@ -54,6 +54,7 @@ scrollbar
 segoe
 sfmono
 shortcode
+smol
 songid
 songtype
 statix

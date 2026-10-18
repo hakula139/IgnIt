@@ -1,20 +1,13 @@
-# ==============================================================================
+# ==================================================================================================
 # IgnIt Theme Development Flake
-# ==============================================================================
-#
-# Provides kiln and pre-commit hooks for theme work. The theme is
-# typically consumed as a git submodule of a kiln site, but ships its own dev
-# shell so contributors can iterate on templates and CSS in isolation.
-#
-#   nix develop        # interactive shell (auto-installs hooks)
-#   nix flake check    # Nix-side hooks (Node-side run in CI)
+# ==================================================================================================
 
 {
-  description = "IgnIt — kiln theme (dev environment)";
+  description = "IgnIt theme development environment";
 
-  # ----------------------------------------------------------------------------
+  # ------------------------------------------------------------------------------------------------
   # Inputs
-  # ----------------------------------------------------------------------------
+  # ------------------------------------------------------------------------------------------------
   inputs = {
     # Following kiln's nixpkgs keeps the kiln package identical to its Cachix build.
     nixpkgs.follows = "kiln/nixpkgs";
@@ -36,9 +29,9 @@
     };
   };
 
-  # ----------------------------------------------------------------------------
+  # ------------------------------------------------------------------------------------------------
   # Outputs
-  # ----------------------------------------------------------------------------
+  # ------------------------------------------------------------------------------------------------
   outputs =
     {
       nixpkgs,
@@ -47,133 +40,136 @@
       git-hooks-nix,
       ...
     }:
-    flake-utils.lib.eachDefaultSystem (
+    flake-utils.lib.eachSystem [ "aarch64-darwin" "x86_64-linux" ] (
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
 
-        # ----------------------------------------------------------------------
-        # Node Hook Wrapper
-        # ----------------------------------------------------------------------
-        # Node hooks need the local dependencies, which the Nix sandbox excludes.
-        # CI runs the equivalent checks directly with pnpm.
+        # ------------------------------------------------------------------------------------------
+        # Pre-commit Hooks
+        # ------------------------------------------------------------------------------------------
+        hooks = {
+          check-added-large-files.enable = true;
+          check-yaml.enable = true;
+          end-of-file-fixer.enable = true;
+          # Preserve Markdown's two-trailing-space hard-break syntax.
+          trim-trailing-whitespace = {
+            enable = true;
+            args = [ "--markdown-linebreak-ext=md" ];
+          };
+
+          nixfmt.enable = true;
+          statix.enable = true;
+          deadnix.enable = true;
+        };
+
+        # These hooks run the tools pinned in node_modules, which the Nix sandbox lacks. The flake
+        # check leaves them to CI's pnpm checks.
         nodeHook =
           name: cmd:
-          let
-            wrapper = pkgs.writeShellApplication {
+          pkgs.lib.getExe (
+            pkgs.writeShellApplication {
               inherit name;
-              runtimeInputs = [
-                pkgs.nodejs_24
-                pkgs.pnpm
+              runtimeInputs = with pkgs; [
+                nodejs_24
+                pnpm
               ];
               text = ''
                 if [ ! -d node_modules ]; then
-                  exit 0
+                  echo "node_modules is missing. Run pnpm install, then commit again." >&2
+                  exit 1
                 fi
                 pnpm exec ${cmd} "$@"
               '';
-            };
-          in
-          "${wrapper}/bin/${name}";
+            }
+          );
 
-        # ----------------------------------------------------------------------
-        # Pre-commit Hooks
-        # ----------------------------------------------------------------------
-        preCommitCheck = git-hooks-nix.lib.${system}.run {
-          src = ./.;
-          hooks = {
-            check-added-large-files.enable = true;
-            check-yaml.enable = true;
-            end-of-file-fixer.enable = true;
-            # Preserve Markdown's two-trailing-space hard-break syntax.
-            trim-trailing-whitespace = {
-              enable = true;
-              args = [ "--markdown-linebreak-ext=md" ];
-            };
+        nodeHooks = {
+          dprint-write = {
+            enable = true;
+            name = "dprint";
+            entry = nodeHook "dprint-write" "dprint fmt";
+            files = "\\.md$";
+          };
+          prettier-write = {
+            enable = true;
+            name = "prettier";
+            entry = nodeHook "prettier-write" "prettier --write --ignore-unknown";
+            files = "\\.(css|js|json|jsonc|mjs|ya?ml)$";
+          };
+          taplo-write = {
+            enable = true;
+            name = "taplo";
+            entry = nodeHook "taplo-write" "taplo format";
+            files = "\\.toml$";
+          };
 
-            nixfmt.enable = true;
-            statix.enable = true;
-            deadnix.enable = true;
-
-            prettier-write = {
-              enable = true;
-              name = "prettier";
-              entry = nodeHook "prettier-write" "prettier --write --ignore-unknown";
-              files = "\\.(css|js|mjs|json)$";
-              pass_filenames = true;
-            };
-
-            dprint-write = {
-              enable = true;
-              name = "dprint";
-              entry = nodeHook "dprint-write" "dprint fmt";
-              files = "\\.md$";
-              pass_filenames = true;
-            };
-
-            taplo-write = {
-              enable = true;
-              name = "taplo";
-              entry = nodeHook "taplo-write" "taplo format";
-              files = "\\.toml$";
-              pass_filenames = true;
-            };
-
-            eslint = {
-              enable = true;
-              name = "eslint";
-              entry = nodeHook "eslint" "eslint --fix";
-              files = "\\.(js|mjs)$";
-              pass_filenames = true;
-            };
-
-            markdownlint = {
-              enable = true;
-              name = "markdownlint-cli2";
-              entry = nodeHook "markdownlint" "markdownlint-cli2 --fix";
-              files = "\\.md$";
-              pass_filenames = true;
-            };
-
-            cspell = {
-              enable = true;
-              entry = nodeHook "cspell" "cspell --no-must-find-files --no-progress";
-              types = [ "text" ];
-              pass_filenames = true;
-            };
+          cspell = {
+            enable = true;
+            package = null;
+            entry = nodeHook "cspell" "cspell --no-must-find-files --no-progress";
+            types = [ "text" ];
+          };
+          eslint = {
+            enable = true;
+            package = null;
+            entry = nodeHook "eslint" "eslint --fix";
+            files = "\\.(js|mjs)$";
+          };
+          markdownlint = {
+            enable = true;
+            package = null;
+            name = "markdownlint-cli2";
+            entry = nodeHook "markdownlint" "markdownlint-cli2 --fix";
+            files = "\\.md$";
           };
         };
+
+        preCommit = git-hooks-nix.lib.${system}.run {
+          src = ./.;
+          hooks = hooks // nodeHooks;
+        };
+
+        preCommitCheck = git-hooks-nix.lib.${system}.run {
+          inherit hooks;
+          src = ./.;
+        };
+
+        git = pkgs.lib.getExe pkgs.git;
       in
       {
-        # ----------------------------------------------------------------------
+        # ------------------------------------------------------------------------------------------
         # Dev Shell
-        # ----------------------------------------------------------------------
+        # ------------------------------------------------------------------------------------------
         devShells.default = pkgs.mkShell {
           name = "ignit-dev";
 
           packages =
-            preCommitCheck.enabledPackages
-            ++ [
-              kiln.packages.${system}.kiln
-            ]
+            preCommit.enabledPackages
+            ++ [ kiln.packages.${system}.kiln ]
             ++ (with pkgs; [
               nodejs_24
               pnpm
             ]);
 
-          inherit (preCommitCheck) shellHook;
+          # git-hooks.nix stores a hooks path relative to the main checkout, which linked worktrees
+          # can't resolve (cachix/git-hooks.nix#688), so commits there would skip the hooks.
+          shellHook = ''
+            ${preCommit.shellHook}
+            if common=$(${git} rev-parse --path-format=absolute --git-common-dir 2>/dev/null); then
+              ${git} config --local core.hooksPath "$common/hooks"
+            fi
+          '';
         };
 
-        # ----------------------------------------------------------------------
-        # Checks (`nix flake check`)
-        # ----------------------------------------------------------------------
-        checks = {
-          pre-commit = preCommitCheck;
-        };
+        # ------------------------------------------------------------------------------------------
+        # Checks
+        # ------------------------------------------------------------------------------------------
+        checks.pre-commit = preCommitCheck;
 
-        # ----------------------------------------------------------------------
-        # Formatter (`nix fmt`)
-        # ----------------------------------------------------------------------
+        # ------------------------------------------------------------------------------------------
+        # Formatter
+        # ------------------------------------------------------------------------------------------
         formatter = pkgs.nixfmt-tree;
       }
     );

@@ -21,6 +21,6 @@ export default [
     },
   },
   {
-    ignores: ['.claude/', '.direnv/', 'node_modules/', '**/public/**', '**/themes/**'],
+    ignores: ['.claude/', 'example/public/'],
   },
 ];
