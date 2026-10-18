@@ -45,5 +45,7 @@
     "MD050": { "style": "asterisk" },
   },
 
-  "ignores": [".direnv/", "node_modules/", "**/public/**", "**/themes/**"],
+  "gitignore": true,
+  // example/themes/IgnIt links back to the repository root.
+  "ignores": ["example/themes/**"],
 }

@@ -99,7 +99,7 @@
               enable = true;
               name = "prettier";
               entry = nodeHook "prettier-write" "prettier --write --ignore-unknown";
-              files = "\\.(css|js|mjs|json)$";
+              files = "\\.(css|js|json|jsonc|mjs|ya?ml)$";
               pass_filenames = true;
             };
 
