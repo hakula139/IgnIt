@@ -106,16 +106,19 @@
 
           cspell = {
             enable = true;
+            package = null;
             entry = nodeHook "cspell" "cspell --no-must-find-files --no-progress";
             types = [ "text" ];
           };
           eslint = {
             enable = true;
+            package = null;
             entry = nodeHook "eslint" "eslint --fix";
             files = "\\.(js|mjs)$";
           };
           markdownlint = {
             enable = true;
+            package = null;
             name = "markdownlint-cli2";
             entry = nodeHook "markdownlint" "markdownlint-cli2 --fix";
             files = "\\.md$";
