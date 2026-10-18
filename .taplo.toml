@@ -1,4 +1,4 @@
 exclude = ["example/themes/**"]
 
 [formatting]
-align_comments = true
+column_width = 100
