@@ -95,7 +95,7 @@
             enable = true;
             name = "prettier";
             entry = nodeHook "prettier-write" "prettier --write --ignore-unknown";
-            files = "\\.(css|js|json|jsonc|mjs|ya?ml)$";
+            types = [ "text" ];
           };
           taplo-write = {
             enable = true;
