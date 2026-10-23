@@ -4,7 +4,7 @@
     "build": "kiln build --root example",
     "dev": "kiln serve --root example",
     "format": "pnpm format:prettier && pnpm format:markdown && pnpm format:toml",
-    "format:prettier": "prettier --check \"**/*.{css,js,json,jsonc,mjs,yaml,yml}\"",
+    "format:prettier": "prettier --check .",
     "format:markdown": "dprint check",
     "format:toml": "taplo format --check",
     "lint": "pnpm lint:md && pnpm lint:js",
@@ -20,7 +20,7 @@
     "dprint": "^0.64.0",
     "eslint": "^10.11.0",
     "globals": "^17.12.0",
-    "markdownlint-cli2": "^0.23.3",
+    "markdownlint-cli2": "^0.24.0",
     "prettier": "^3.9.9",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.3"
