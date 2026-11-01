@@ -37,13 +37,13 @@ css = "sha384-WwGtaC6ywCHxA5cstpj/3+xIZvTez8dq2IcBQaXRkenHZ7FVVq1ZROtURwfbtTlG"
 js = "sha384-a1WQdjRj162i159OYq041X6I4K8NenkrI09LlPmiHg0YOb7CR+wJOraXwK9abpnE"
 
 [params.deps.lightgallery]
-version = "3.0.0"
+version = "2.9.0"
 
 [params.deps.lightgallery.sri]
-css = "sha384-HS8QBB3BqNdOZ0OCob7h2r3ES7jtvjozuKv+b+B6bpbZX/8AxTQJqBziQ0n8omua"
-js = "sha384-bihbP2gBgibPxg/ZQ8sjrX7TaLj2xHpSzEQc9p7iUCIfA6L4V7bPWpasE2NGO4rG"
-thumbnail = "sha384-d5D3ZflDF/6NU19sS/pGpW02WfvR5SasImgYDO2VTjhfEy/KaGVY/7l6ApRNDR+y"
-zoom = "sha384-kVW5FJR1hpa0hE83Wox0XOtIfrEPfdRTIXikACyLc4VHQUEgJ4jhg2H0GlW+Vtmz"
+css = "sha384-AUmhf+zg8vrhkZH0O111/sCNYxErcXd/kwycW8/P2Zpo7IGF1+DGfcW/ioM8FEUz"
+js = "sha384-yshhQEAY0bBxbxfLyRlLQ7v1z45XofL6adlFh192s2NpDzXS+HPKjXoloaHiNcYO"
+thumbnail = "sha384-fEQyvUf8v0k02dj9sonsVtih9HbRQlP/1fcd+BAQFXWYgN1po6o1hmmPUSBcpye6"
+zoom = "sha384-QJ6ydDqrwbSI8c6yhk6YNei27dcWq2ztdzEAvhRXR7sqgagOaBk2jLqDwi8R7S8R"
 
 [params.deps.mermaid]
 version = "12.2.0"
