@@ -19,9 +19,9 @@
   {% block title %}<title>{{ title }} - {{ config.title }}</title>{% endblock %}
   {%- include "_partials/layout/site-icons.html" %}
   {%- if config.search.enabled %}
-  <link rel="stylesheet" href="{{ config.base_url }}/pagefind/pagefind-component-ui.css">
+  <link rel="stylesheet" href="{{ config.base_path }}pagefind/pagefind-component-ui.css">
   <script
-    src="{{ config.base_url }}/pagefind/pagefind-component-ui.js"
+    src="{{ config.base_path }}pagefind/pagefind-component-ui.js"
     type="module"
   ></script>
   {%- endif %}
@@ -63,6 +63,10 @@
   </main>
   {% include "_partials/layout/footer.html" %}
   {%- if config.search.enabled %}
+  <pagefind-config
+    bundle-path="{{ config.base_path }}pagefind/"
+    base-url="{{ config.base_path }}"
+  ></pagefind-config>
   <pagefind-modal></pagefind-modal>
   {%- endif %}
   {# Defer scripts ordered by visual urgency: paint-affecting first, interaction-only last. #}
