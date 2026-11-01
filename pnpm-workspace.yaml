@@ -2,4 +2,8 @@ allowBuilds:
   dprint: true
 
 overrides:
+  '@eslint/config-array>minimatch': ^11.0.3
+  '@tailwindcss/typography>postcss-selector-parser': ^6.1.5
+  eslint>minimatch: ^11.0.3
+  markdownlint>re2js: ^2.9.1
   micromark-extension-math>katex: ^0.19.0
