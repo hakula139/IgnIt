@@ -5,6 +5,7 @@
     .heading-anchor,
     .footnote-reference a,
     .footnote-backref,
+    .tk-submit-action-icon,
     [role='button'],
     :has(> img:only-child, > .lqip:only-child)
   )
