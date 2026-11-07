@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Set up Nix
-        uses: hakula139/devkit/actions/setup-nix@v1.0.0-rc.3
+        uses: hakula139/devkit/actions/setup-nix@88f619538cc3a79bf223e538504251264e02b4e9
 
       - name: Nix checks
         run: nix flake check
@@ -48,4 +48,4 @@ jobs:
       actions: read
     timeout-minutes: 5
     steps:
-      - uses: hakula139/devkit/actions/ci-result@v1.0.0-rc.3
+      - uses: hakula139/devkit/actions/ci-result@88f619538cc3a79bf223e538504251264e02b4e9
