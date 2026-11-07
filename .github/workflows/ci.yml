@@ -11,9 +11,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  CACHIX_NAME: hakula
-
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -22,13 +19,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Set up Nix
-        uses: cachix/install-nix-action@v31
-
-      - name: Set up Cachix
-        uses: cachix/cachix-action@v17
-        with:
-          name: ${{ env.CACHIX_NAME }}
-          skipPush: true
+        uses: hakula139/devkit/actions/setup-nix@v1.0.0-rc.3
 
       - name: Nix checks
         run: nix flake check
@@ -47,3 +38,14 @@ jobs:
 
       - name: Build preview site
         run: nix develop -c pnpm build
+
+  result:
+    name: CI Result
+    if: ${{ !cancelled() }}
+    needs: [check]
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+    timeout-minutes: 5
+    steps:
+      - uses: hakula139/devkit/actions/ci-result@v1.0.0-rc.3

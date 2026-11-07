@@ -18,13 +18,13 @@
       url = "github:hakula139/kiln/v0.5.2";
       inputs = {
         flake-utils.follows = "flake-utils";
-        git-hooks-nix.follows = "git-hooks-nix";
-        kiln-tailwindcss.inputs.git-hooks-nix.follows = "git-hooks-nix";
+        git-hooks-nix.follows = "devkit/git-hooks-nix";
+        kiln-tailwindcss.inputs.git-hooks-nix.follows = "devkit/git-hooks-nix";
       };
     };
 
-    git-hooks-nix = {
-      url = "github:cachix/git-hooks.nix";
+    devkit = {
+      url = "github:hakula139/devkit/v1.0.0-rc.3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -37,32 +37,18 @@
       nixpkgs,
       flake-utils,
       kiln,
-      git-hooks-nix,
+      devkit,
       ...
     }:
     flake-utils.lib.eachSystem [ "aarch64-darwin" "x86_64-linux" ] (
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
+        dk = devkit.lib.mkLib pkgs;
 
         # ------------------------------------------------------------------------------------------
         # Pre-commit Hooks
         # ------------------------------------------------------------------------------------------
-        hooks = {
-          check-added-large-files.enable = true;
-          check-yaml.enable = true;
-          end-of-file-fixer.enable = true;
-          # Preserve Markdown's two-trailing-space hard-break syntax.
-          trim-trailing-whitespace = {
-            enable = true;
-            args = [ "--markdown-linebreak-ext=md" ];
-          };
-
-          nixfmt.enable = true;
-          statix.enable = true;
-          deadnix.enable = true;
-        };
-
         # These hooks run the tools pinned in node_modules, which the Nix sandbox lacks. The flake
         # check leaves them to CI's pnpm checks.
         nodeHook =
@@ -85,29 +71,11 @@
           );
 
         nodeHooks = {
-          dprint-write = {
-            enable = true;
-            name = "dprint";
-            entry = nodeHook "dprint-write" "dprint fmt";
-            files = "\\.md$";
-          };
-          prettier-write = {
-            enable = true;
-            name = "prettier";
-            entry = nodeHook "prettier-write" "prettier --write --ignore-unknown";
-            types = [ "text" ];
-          };
-          taplo-write = {
-            enable = true;
-            name = "taplo";
-            entry = nodeHook "taplo-write" "taplo format";
-            files = "\\.toml$";
-          };
-
-          cspell = {
+          prettier = {
             enable = true;
             package = null;
-            entry = nodeHook "cspell" "cspell --no-must-find-files --no-progress";
+            entry = nodeHook "prettier" "prettier --write --ignore-unknown";
+            files = "\\.(css|js|mjs|json|jsonc|ya?ml)$";
             types = [ "text" ];
           };
           eslint = {
@@ -116,26 +84,13 @@
             entry = nodeHook "eslint" "eslint --fix";
             files = "\\.(js|mjs)$";
           };
-          markdownlint = {
-            enable = true;
-            package = null;
-            name = "markdownlint-cli2";
-            entry = nodeHook "markdownlint" "markdownlint-cli2 --fix";
-            files = "\\.md$";
-          };
         };
 
-        preCommit = git-hooks-nix.lib.${system}.run {
+        preCommit = dk.preCommit {
           src = ./.;
-          hooks = hooks // nodeHooks;
+          devHooks = nodeHooks;
         };
 
-        preCommitCheck = git-hooks-nix.lib.${system}.run {
-          inherit hooks;
-          src = ./.;
-        };
-
-        git = pkgs.lib.getExe pkgs.git;
       in
       {
         # ------------------------------------------------------------------------------------------
@@ -144,28 +99,21 @@
         devShells.default = pkgs.mkShell {
           name = "ignit-dev";
 
-          packages =
-            preCommit.enabledPackages
-            ++ [ kiln.packages.${system}.kiln ]
-            ++ (with pkgs; [
-              nodejs_26
-              pnpm
-            ]);
+          inputsFrom = [ preCommit.shell ];
 
-          # git-hooks.nix stores a hooks path relative to the main checkout, which linked worktrees
-          # can't resolve (cachix/git-hooks.nix#688), so commits there would skip the hooks.
-          shellHook = ''
-            ${preCommit.shellHook}
-            if common=$(${git} rev-parse --path-format=absolute --git-common-dir 2>/dev/null); then
-              ${git} config --local core.hooksPath "$common/hooks"
-            fi
-          '';
+          packages = [
+            kiln.packages.${system}.kiln
+          ]
+          ++ (with pkgs; [
+            nodejs_26
+            pnpm
+          ]);
         };
 
         # ------------------------------------------------------------------------------------------
         # Checks
         # ------------------------------------------------------------------------------------------
-        checks.pre-commit = preCommitCheck;
+        checks.pre-commit = preCommit.check;
 
         # ------------------------------------------------------------------------------------------
         # Formatter

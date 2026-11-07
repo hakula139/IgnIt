@@ -6,6 +6,7 @@ callout
 calt
 consolas
 dagre
+devkit
 dgst
 direnv
 elif
