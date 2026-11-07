@@ -54,6 +54,7 @@ sarasa
 scrollbar
 segoe
 sfmono
+shfmt
 shortcode
 smol
 songid
