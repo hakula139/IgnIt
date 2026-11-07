@@ -36,7 +36,7 @@ Templates read translations through `t('key')`. Client JavaScript reads `data-i1
 In each new checkout or worktree, run `nix develop -c true` and `pnpm install` once to provide the generated config and Node tools the pre-commit hooks need. Before review, run the checks CI runs:
 
 ```bash
-nix flake check     # Run the non-Node pre-commit hooks
+nix flake check     # Run the sandboxed devkit hooks
 pnpm format         # Check CSS, JavaScript, JSON, YAML, Markdown, and TOML formatting
 pnpm lint           # Lint Markdown and JavaScript
 pnpm spellcheck     # Spell check

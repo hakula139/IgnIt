@@ -49,39 +49,18 @@
         # ------------------------------------------------------------------------------------------
         # Pre-commit Hooks
         # ------------------------------------------------------------------------------------------
-        # These hooks run the tools pinned in node_modules, which the Nix sandbox lacks. The flake
-        # check leaves them to CI's pnpm checks.
-        nodeHook =
-          name: cmd:
-          pkgs.lib.getExe (
-            pkgs.writeShellApplication {
-              inherit name;
-              runtimeInputs = with pkgs; [
-                nodejs_26
-                pnpm
-              ];
-              text = ''
-                if [ ! -d node_modules ]; then
-                  echo "node_modules is missing. Run pnpm install, then commit again." >&2
-                  exit 1
-                fi
-                pnpm exec ${cmd} "$@"
-              '';
-            }
-          );
-
         nodeHooks = {
           prettier = {
             enable = true;
             package = null;
-            entry = nodeHook "prettier" "prettier --write --ignore-unknown";
+            entry = "${pkgs.lib.getExe (dk.nodeTool "prettier")} --write --ignore-unknown";
             files = "\\.(css|js|mjs|json|jsonc|ya?ml)$";
             types = [ "text" ];
           };
           eslint = {
             enable = true;
             package = null;
-            entry = nodeHook "eslint" "eslint --fix";
+            entry = "${pkgs.lib.getExe (dk.nodeTool "eslint")} --fix";
             files = "\\.(js|mjs)$";
           };
         };
