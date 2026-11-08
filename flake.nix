@@ -46,16 +46,16 @@
         # Pre-commit Hooks
         # ------------------------------------------------------------------------------------------
         nodeHooks = {
+          eslint = {
+            enable = true;
+            package = dk.nodeTool "eslint";
+            files = "\\.(js|mjs)$";
+          };
           prettier = {
             enable = true;
             package = dk.nodeTool "prettier";
             files = "\\.(css|js|mjs|json|jsonc|ya?ml)$";
             types = [ "text" ];
-          };
-          eslint = {
-            enable = true;
-            package = dk.nodeTool "eslint";
-            files = "\\.(js|mjs)$";
           };
         };
 
