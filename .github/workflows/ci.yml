@@ -12,6 +12,11 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  flake-check:
+    uses: hakula139/devkit/.github/workflows/nix.yml@v1
+    with:
+      macos: false
+
   check:
     runs-on: ubuntu-latest
     steps:
@@ -20,9 +25,6 @@ jobs:
 
       - name: Set up Nix
         uses: hakula139/devkit/.github/actions/setup-nix@v1
-
-      - name: Nix checks
-        run: nix flake check
 
       - name: Install dependencies
         run: nix develop -c pnpm install --frozen-lockfile
@@ -33,16 +35,13 @@ jobs:
       - name: Lint
         run: nix develop -c pnpm lint
 
-      - name: Spell check
-        run: nix develop -c pnpm spellcheck
-
       - name: Build preview site
         run: nix develop -c pnpm build
 
   result:
     name: CI Result
     if: ${{ !cancelled() }}
-    needs: [check]
+    needs: [flake-check, check]
     runs-on: ubuntu-latest
     permissions:
       actions: read

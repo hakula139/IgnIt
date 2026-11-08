@@ -3,24 +3,14 @@
   "scripts": {
     "build": "kiln build --root example",
     "dev": "kiln serve --root example",
-    "format": "pnpm format:prettier && pnpm format:markdown && pnpm format:toml",
-    "format:prettier": "prettier --check .",
-    "format:markdown": "dprint check",
-    "format:toml": "taplo format --check",
-    "lint": "pnpm lint:md && pnpm lint:js",
-    "lint:js": "eslint .",
-    "lint:md": "markdownlint-cli2 \"**/*.md\"",
-    "spellcheck": "git ls-files | cspell --no-progress --file-list stdin"
+    "format": "prettier --check .",
+    "lint": "eslint ."
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@tailwindcss/typography": "^0.5.20",
-    "@taplo/cli": "^0.7.0",
-    "cspell": "^10.4.0",
-    "dprint": "^0.64.3",
     "eslint": "^10.14.0",
     "globals": "^17.13.0",
-    "markdownlint-cli2": "^0.24.0",
     "prettier": "^3.9.10",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.3"

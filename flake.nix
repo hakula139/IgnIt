@@ -12,12 +12,9 @@
     # Following kiln's nixpkgs keeps the kiln package identical to its Cachix build.
     nixpkgs.follows = "kiln/nixpkgs";
 
-    flake-utils.url = "github:numtide/flake-utils";
-
     kiln = {
       url = "github:hakula139/kiln/v0.5.2";
       inputs = {
-        flake-utils.follows = "flake-utils";
         git-hooks-nix.follows = "devkit/git-hooks-nix";
         kiln-tailwindcss.inputs.git-hooks-nix.follows = "devkit/git-hooks-nix";
       };
@@ -35,12 +32,11 @@
   outputs =
     {
       nixpkgs,
-      flake-utils,
       kiln,
       devkit,
       ...
     }:
-    flake-utils.lib.eachSystem [ "aarch64-darwin" "x86_64-linux" ] (
+    devkit.lib.eachSystem [ "aarch64-darwin" "x86_64-linux" ] (
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
@@ -52,15 +48,13 @@
         nodeHooks = {
           prettier = {
             enable = true;
-            package = null;
-            entry = "${pkgs.lib.getExe (dk.nodeTool "prettier")} --write --ignore-unknown";
+            package = dk.nodeTool "prettier";
             files = "\\.(css|js|mjs|json|jsonc|ya?ml)$";
             types = [ "text" ];
           };
           eslint = {
             enable = true;
-            package = null;
-            entry = "${pkgs.lib.getExe (dk.nodeTool "eslint")} --fix";
+            package = dk.nodeTool "eslint";
             files = "\\.(js|mjs)$";
           };
         };
@@ -99,7 +93,7 @@
           ]
           ++ (with pkgs; [
             nodejs_26
-            pnpm
+            pnpm_12
           ]);
         };
 
