@@ -88,10 +88,10 @@ See [kiln's assets guide](https://github.com/hakula139/kiln/blob/main/docs/asset
 The `example/` site references this checkout and provides a local preview:
 
 ```bash
-nix develop                    # Enter the development shell with kiln and formatting tools
+nix develop                     # Enter the development shell with kiln and formatting tools
 pnpm install --frozen-lockfile  # Install project dependencies
-pnpm dev                       # Serve the example site and rebuild on changes
-pnpm build                     # Build the example site to example/public/
+pnpm dev                        # Serve the example site and rebuild on changes
+pnpm build                      # Build the example site to example/public/
 ```
 
 Use `kiln build --root example --minify` to check production compression.
