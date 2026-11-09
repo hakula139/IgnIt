@@ -6,6 +6,7 @@ callout
 calt
 consolas
 dagre
+devkit
 dgst
 direnv
 elif
@@ -53,6 +54,7 @@ sarasa
 scrollbar
 segoe
 sfmono
+shfmt
 shortcode
 smol
 songid

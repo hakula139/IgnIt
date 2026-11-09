@@ -33,14 +33,13 @@ Templates read translations through `t('key')`. Client JavaScript reads `data-i1
 
 ## Verification and conventions
 
-In each new checkout or worktree, run `nix develop -c true` and `pnpm install` once to provide the generated config and Node tools the pre-commit hooks need. Before review, run the checks CI runs:
+In each new checkout or worktree, run `nix develop -c true` and `pnpm install --frozen-lockfile` once to provide the generated config and Node tools the pre-commit hooks need. Before review, run the checks CI runs:
 
 ```bash
-nix flake check     # Run the non-Node pre-commit hooks
-pnpm format         # Check CSS, JavaScript, JSON, YAML, Markdown, and TOML formatting
-pnpm lint           # Lint Markdown and JavaScript
-pnpm spellcheck     # Spell check
-pnpm build          # Build the example site
+nix flake check  # Check shared formatting, linting, and spelling rules
+pnpm format      # Check Tailwind-aware formatting for CSS, JavaScript, JSON, and YAML
+pnpm lint        # Lint JavaScript
+pnpm build       # Build the example site
 ```
 
 Add project-specific spellings to `.cspell/words.txt`, one per line in alphabetical order. Assign pull requests to `hakula139` and label `feat` PRs `enhancement`.

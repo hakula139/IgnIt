@@ -11,10 +11,12 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  CACHIX_NAME: hakula
-
 jobs:
+  flake-check:
+    uses: hakula139/devkit/.github/workflows/nix.yml@v2
+    with:
+      macos: false
+
   check:
     runs-on: ubuntu-latest
     steps:
@@ -22,16 +24,7 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Set up Nix
-        uses: cachix/install-nix-action@v31
-
-      - name: Set up Cachix
-        uses: cachix/cachix-action@v17
-        with:
-          name: ${{ env.CACHIX_NAME }}
-          skipPush: true
-
-      - name: Nix checks
-        run: nix flake check
+        uses: hakula139/devkit/.github/actions/setup-nix@v2
 
       - name: Install dependencies
         run: nix develop -c pnpm install --frozen-lockfile
@@ -42,8 +35,16 @@ jobs:
       - name: Lint
         run: nix develop -c pnpm lint
 
-      - name: Spell check
-        run: nix develop -c pnpm spellcheck
-
       - name: Build preview site
         run: nix develop -c pnpm build
+
+  result:
+    name: CI Result
+    if: ${{ !cancelled() }}
+    needs: [flake-check, check]
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+    timeout-minutes: 5
+    steps:
+      - uses: hakula139/devkit/.github/actions/ci-result@v2

@@ -1,4 +1,0 @@
-exclude = ["example/themes/**"]
-
-[formatting]
-column_width = 100
