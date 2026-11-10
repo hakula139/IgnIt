@@ -36,10 +36,8 @@ Templates read translations through `t('key')`. Client JavaScript reads `data-i1
 In each new checkout or worktree, run `nix develop -c true` and `pnpm install --frozen-lockfile` once to provide the generated config and Node tools the pre-commit hooks need. Before review, run the checks CI runs:
 
 ```bash
-nix flake check  # Check shared formatting, linting, and spelling rules
-pnpm format      # Check Tailwind-aware formatting for CSS, JavaScript, JSON, and YAML
-pnpm lint        # Lint JavaScript
-pnpm build       # Build the example site
+nix develop -c run-hooks  # Run the pre-commit hooks on every tracked file
+nix develop -c pnpm build # Build the example site
 ```
 
 Add project-specific spellings to `.cspell/words.txt`, one per line in alphabetical order. Assign pull requests to `hakula139` and label `feat` PRs `enhancement`.

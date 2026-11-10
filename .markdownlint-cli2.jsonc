@@ -1,9 +1,4 @@
 {
-  "config": {
-    // GitHub shows a PR's title above its body, so the PR template starts at `##`.
-    "first-line-heading": false,
-  },
-
   // example/themes/IgnIt links back to the repository root.
   "ignores": ["example/themes/**"],
 }

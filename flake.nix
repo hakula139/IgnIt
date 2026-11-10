@@ -21,7 +21,7 @@
     };
 
     devkit = {
-      url = "github:hakula139/devkit/v2";
+      url = "github:hakula139/devkit/v3";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -45,20 +45,6 @@
         # ------------------------------------------------------------------------------------------
         # Pre-commit Hooks
         # ------------------------------------------------------------------------------------------
-        nodeHooks = {
-          eslint = {
-            enable = true;
-            package = dk.nodeTool "eslint";
-            files = "\\.(js|mjs)$";
-          };
-          prettier = {
-            enable = true;
-            package = dk.nodeTool "prettier";
-            files = "\\.(css|js|mjs|json|jsonc|ya?ml)$";
-            types = [ "text" ];
-          };
-        };
-
         preCommit = dk.preCommit {
           src = ./.;
           hooks = {
@@ -67,15 +53,20 @@
             cspell.enable = true;
             deadnix.enable = true;
             dprint.enable = true;
+            eslint.enable = true;
             markdownlint-cli2.enable = true;
             nixfmt.enable = true;
+            prettier = {
+              enable = true;
+              package = dk.nodeTool "prettier";
+              files = "\\.(css|js|mjs|json|jsonc|ya?ml)$";
+            };
             shellcheck.enable = true;
             shfmt.enable = true;
             sort-file-contents.enable = true;
             statix.enable = true;
             taplo.enable = true;
           };
-          devHooks = nodeHooks;
         };
       in
       {
@@ -85,21 +76,13 @@
         devShells.default = pkgs.mkShell {
           name = "ignit-dev";
 
-          inputsFrom = [ preCommit.shell ];
+          inputsFrom = [ preCommit ];
 
           packages = [
             kiln.packages.${system}.kiln
           ]
-          ++ (with pkgs; [
-            nodejs_26
-            pnpm_12
-          ]);
+          ++ builtins.attrValues dk.nodeToolchain;
         };
-
-        # ------------------------------------------------------------------------------------------
-        # Checks
-        # ------------------------------------------------------------------------------------------
-        checks.pre-commit = preCommit.check;
 
         # ------------------------------------------------------------------------------------------
         # Formatter
