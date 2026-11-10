@@ -30,5 +30,5 @@ syntect
 taplo
 twikoo
 unlayered
-waka
+wakatime
 xmark
