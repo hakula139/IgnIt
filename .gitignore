@@ -14,4 +14,3 @@ node_modules/
 **/.agents/plans/
 **/.claude/agent-memory-local/
 **/.claude/settings.local.json
-/.claude/worktrees/
