@@ -31,7 +31,7 @@ Templates read translations through `t('key')`. Client JavaScript reads `data-i1
 
 ## Verification
 
-Run these before review. In a new checkout or worktree, also run them before the first commit, since `run-hooks` installs the hooks and the pnpm dependencies they run from:
+Run these before review:
 
 ```bash
 nix develop -c run-hooks
