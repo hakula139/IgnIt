@@ -1,4 +1,0 @@
-{
-  // example/themes/IgnIt links back to the repository root.
-  "ignores": ["example/themes/**"],
-}

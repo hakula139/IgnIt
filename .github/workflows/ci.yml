@@ -4,7 +4,6 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -17,8 +16,6 @@ concurrency:
 jobs:
   nix:
     uses: hakula139/devkit/.github/workflows/nix.yml@v3
-    secrets:
-      CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
     with:
       macos: false
 
@@ -39,12 +36,13 @@ jobs:
 
   result:
     name: CI Result
+    # A skipped required check passes, so the gate must run after failures too.
     if: ${{ !cancelled() }}
     needs: [nix, check]
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     permissions:
       actions: read
-    timeout-minutes: 5
     steps:
       - name: Check results
         uses: hakula139/devkit/.github/actions/ci-result@v3

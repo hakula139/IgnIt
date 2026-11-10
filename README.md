@@ -79,8 +79,6 @@ weight = 1
 external = true
 ```
 
-For the complete schema (`[params.background]`, `[params.comments]`, `[params.lightgallery]`, `[params.footer]`, `[params.section]`) and the full menu field list, see [Parameters](docs/parameters.md). For visual customization, social icon overrides, comment provider wiring, and other extension patterns, see [Customization](docs/customization.md).
-
 ## Theme Development
 
 See [kiln's assets guide](https://github.com/hakula139/kiln/blob/main/docs/assets.md) for source layout and publication rules.
@@ -95,8 +93,6 @@ pnpm build                      # Build the example site to example/public/
 ```
 
 Use `kiln build --root example --minify` to check production compression.
-
-See [CSS customization](docs/customization.md#visual-tokens) for site overrides and page stylesheets.
 
 For theme contributor constraints, including CSS layering and dependency updates, see [`AGENTS.md`](./AGENTS.md).
 

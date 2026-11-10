@@ -36,7 +36,7 @@
       devkit,
       ...
     }:
-    devkit.lib.eachSystem [ "aarch64-darwin" "x86_64-linux" ] (
+    devkit.lib.eachSystem (builtins.attrNames kiln.packages) (
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};

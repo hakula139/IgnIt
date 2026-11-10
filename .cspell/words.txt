@@ -33,13 +33,11 @@ neodb
 netease
 neue
 nixfmt
-nixos
 nixpkgs
 noopener
 noreferrer
 noto
 nums
-numtide
 oklab
 onclick
 outchain
@@ -56,7 +54,6 @@ segoe
 sfmono
 shfmt
 shortcode
-smol
 songid
 songtype
 statix

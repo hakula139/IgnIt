@@ -1,14 +1,12 @@
 # AGENTS.md: IgnIt
 
-Project-specific instructions for coding assistants working on the IgnIt theme. `CLAUDE.md` is a relative symlink to this file. Follow the user's global instructions for scope, writing, comments, and Git workflow.
-
 IgnIt supplies MiniJinja templates, Tailwind CSS, and JavaScript to [kiln](https://github.com/hakula139/kiln) sites. Keep user-facing configuration guidance in [README.md](README.md) and [docs/](docs/). Check the theme contract and its consuming site when changing a shared template.
 
 ## Theme inputs and output
 
 Follow [kiln's asset and stylesheet contracts](https://github.com/hakula139/kiln/blob/main/docs/assets.md). Preserve handwritten source comments.
 
-Keep CSS rules in the partial for their concern. Use semantic component classes for repeated patterns and Tailwind utilities for small layout or responsive adjustments in templates. Define shared tokens in `tokens.css` under `@theme`, with dark values under `[data-theme='dark']`. Import order controls precedence within a layer. Rules that override `prose` typography or third-party styles stay unlayered. `print.css` must remain unlayered to take precedence when printing. Use Tailwind v4 utility names and trailing `!` for important utilities in `@apply`.
+Keep CSS rules in the partial for their concern. Use semantic component classes for repeated patterns and Tailwind utilities for small layout or responsive adjustments in templates. Define shared tokens in `tokens.css` under `@theme`, with dark values under `[data-theme='dark']`. Rules that override `prose` typography or third-party styles stay unlayered. `print.css` must remain unlayered to take precedence when printing. Use Tailwind v4 utility names and trailing `!` for important utilities in `@apply`.
 
 Maple Mono's variable font needs the `calt` feature setting in `tokens.css` for its ligatures.
 
@@ -31,13 +29,11 @@ curl -sL "https://cdn.jsdelivr.net/npm/<pkg>@<version>/<path>" \
 
 Templates read translations through `t('key')`. Client JavaScript reads `data-i18n-*` values on the document root or individual elements. Add a new string to both `i18n/en.toml` and `i18n/zh-Hans.toml`, then add it to the key reference in [docs/i18n.md](docs/i18n.md). kiln's site → theme → English fallback is documented there.
 
-## Verification and conventions
+## Verification
 
-In each new checkout or worktree, run `nix develop -c true` and `pnpm install --frozen-lockfile` once to provide the generated config and Node tools the pre-commit hooks need. Before review, run the checks CI runs:
+Run these before review. In a new checkout or worktree, also run them before the first commit, since `run-hooks` installs the hooks and the pnpm dependencies they run from:
 
 ```bash
-nix develop -c run-hooks  # Run the pre-commit hooks on every tracked file
-nix develop -c pnpm build # Build the example site
+nix develop -c run-hooks
+nix develop -c pnpm build
 ```
-
-Add project-specific spellings to `.cspell/words.txt`, one per line in alphabetical order. Assign pull requests to `hakula139` and label `feat` PRs `enhancement`.
