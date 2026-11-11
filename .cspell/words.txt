@@ -15,7 +15,7 @@ endmacro
 endset
 fediverse
 fontawesome
-Giscus
+giscus
 glassmorphism
 Hakula
 IgnIt
@@ -45,7 +45,6 @@ selectattr
 shellcheck
 shfmt
 songid
-statix
 stylesheet
 syntect
 taplo
