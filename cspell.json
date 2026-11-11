@@ -3,7 +3,6 @@
   "language": "en",
   "useGitignore": true,
   "gitignoreRoot": ".",
-  "allowCompoundWords": true,
   "dictionaryDefinitions": [
     {
       "name": "project-words",
