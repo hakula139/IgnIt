@@ -2,6 +2,7 @@
   "version": "0.2",
   "language": "en",
   "useGitignore": true,
+  "gitignoreRoot": ".",
   "allowCompoundWords": true,
   "dictionaryDefinitions": [
     {
@@ -11,5 +12,5 @@
     }
   ],
   "dictionaries": ["project-words"],
-  "ignorePaths": ["pnpm-lock.yaml"]
+  "ignorePaths": ["flake.lock", "pnpm-lock.yaml"]
 }

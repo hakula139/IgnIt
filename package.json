@@ -2,9 +2,14 @@
   "private": true,
   "scripts": {
     "build": "kiln build --root example",
-    "dev": "kiln serve --root example",
-    "format": "prettier --check .",
-    "lint": "eslint ."
+    "dev": "kiln serve --root example"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^12.0.0",
+      "onFail": "error"
+    }
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
