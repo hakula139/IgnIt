@@ -52,7 +52,6 @@
             prettier = {
               enable = true;
               package = dk.nodeTool "prettier";
-              files = "\\.(css|js|mjs|json|jsonc|ya?ml)$";
             };
             shellcheck.enable = true;
             shfmt.enable = true;
