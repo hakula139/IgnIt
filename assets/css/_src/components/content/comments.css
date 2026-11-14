@@ -1,9 +1,4 @@
 .twikoo {
-  /* Keep dates intact when comment metadata wraps on narrow screens. */
-  .tk-time {
-    @apply whitespace-nowrap;
-  }
-
   /* ── Text and Actions ── */
 
   .el-input__inner::placeholder,
@@ -45,6 +40,10 @@
   .tk-comments-error,
   .tk-error-message {
     color: var(--callout-danger-fg);
+  }
+
+  .tk-time {
+    @apply whitespace-nowrap;
   }
 
   /* ── Badges ── */
