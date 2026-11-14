@@ -42,6 +42,10 @@
     color: var(--callout-danger-fg);
   }
 
+  .tk-time {
+    @apply whitespace-nowrap;
+  }
+
   /* ── Badges ── */
 
   .tk-tag {
