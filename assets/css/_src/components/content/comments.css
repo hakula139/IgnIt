@@ -1,4 +1,9 @@
 .twikoo {
+  /* Keep dates intact when comment metadata wraps on narrow screens. */
+  .tk-time {
+    @apply whitespace-nowrap;
+  }
+
   /* ── Text and Actions ── */
 
   .el-input__inner::placeholder,
