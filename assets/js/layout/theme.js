@@ -12,12 +12,14 @@
   const DARK = 'dark';
   const LIGHT = 'light';
 
+  let volatileTheme = null;
+
   const toggleTheme = () => {
     enableTransition();
     const current = document.documentElement.getAttribute('data-theme');
     const theme = current === DARK ? LIGHT : DARK;
     setTheme(theme);
-    localStorage.setItem(STORAGE_KEY, theme);
+    storeTheme(theme);
   };
 
   const enableTransition = () => {
@@ -43,7 +45,26 @@
     }
   };
 
-  const getStoredTheme = () => localStorage.getItem(STORAGE_KEY);
+  const getStoredTheme = () => {
+    if (volatileTheme !== null) {
+      return volatileTheme;
+    }
+
+    try {
+      return localStorage.getItem(STORAGE_KEY);
+    } catch {
+      return null;
+    }
+  };
+
+  const storeTheme = (theme) => {
+    try {
+      localStorage.setItem(STORAGE_KEY, theme);
+      volatileTheme = null;
+    } catch {
+      volatileTheme = theme;
+    }
+  };
 
   const prefersDark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
 
