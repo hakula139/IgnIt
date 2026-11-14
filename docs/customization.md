@@ -67,10 +67,10 @@ Overriding wholesale loses future theme updates for that file. Prefer surgical o
 
 Menu items configured under `[[menu.main]]` or `[[menu.social]]` carry an `icon` field. IgnIt's icon dispatcher accepts two forms:
 
-| Spec form         | Renders as                                       | Source                                                                                          |
-| ----------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
-| `"fab fa-github"` | `<i class="fab fa-github">`                      | Font Awesome glyph (any FA class, including `fas`, `far`, `fal`, custom).                       |
-| `"svg:github"`    | Inline `<svg>` from `_partials/icons/github.svg` | Theme-bundled SVG, or a same-name file in your site's `templates/_partials/icons/` (site wins). |
+| Spec form         | Renders as                                       | Source                                                                                           |
+| ----------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `"fab fa-github"` | `<i class="fab fa-github">`                      | Font Awesome Free glyph (`fas`, `far`, `fab`). Load the matching CSS and fonts for other styles. |
+| `"svg:github"`    | Inline `<svg>` from `_partials/icons/github.svg` | Theme-bundled SVG, or a same-name file in your site's `templates/_partials/icons/` (site wins).  |
 
 Specs with the `svg:` prefix take the SVG path, and everything else falls through to the Font Awesome path.
 
