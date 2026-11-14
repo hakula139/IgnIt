@@ -8,10 +8,7 @@ export default [
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'script',
-      globals: {
-        ...globals.browser,
-        twikoo: 'readonly',
-      },
+      globals: globals.browser,
     },
     rules: {
       'curly': ['error', 'all'],
