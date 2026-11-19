@@ -184,6 +184,8 @@ overrides:
   '@tailwindcss/typography>postcss-selector-parser': ^7.0.0
   eslint>minimatch: ^11.0.3
 
+pnpmfileChecksum: sha256-7tdPmfVrbgL4gezhwmFY+MZAHe2hUNs8Axu1KxIAJF8=
+
 importers:
 
   .:
